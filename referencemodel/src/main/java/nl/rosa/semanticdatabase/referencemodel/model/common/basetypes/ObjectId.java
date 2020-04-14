@@ -10,4 +10,15 @@ If none of the subtypes is suitable, direct instances of this class may be used.
  */
 public class ObjectId {
     private String value;
+
+    public ObjectId(String value) {
+        if (value.isEmpty()) {
+            throw new IllegalArgumentException("empty value");
+        }
+        this.value = value;
+    }
+
+    public ObjectId() {
+
+    }
 }
