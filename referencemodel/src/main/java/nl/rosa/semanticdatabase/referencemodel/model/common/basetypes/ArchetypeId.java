@@ -73,6 +73,7 @@ public class ArchetypeId extends ObjectId{
         }
         validateVersionID(versionId);
     }
+
     private static String toValue(String rmOriginator,
                                   String rmName,
                                   String rmEntity,
@@ -85,6 +86,57 @@ public class ArchetypeId extends ObjectId{
                 .append(toDomainConcept(conceptName, specialisation))
                 .append(AXIS_SEPARATOR)
                 .append(versionID)
+                .toString();
+    }
+
+    public boolean equalsIgnoreVersionId(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ArchetypeId that = (ArchetypeId) o;
+
+        if (qualifiedRmEntity != null ? !qualifiedRmEntity.equals(that.qualifiedRmEntity) : that.qualifiedRmEntity != null)
+            return false;
+        return domainConcept != null ? domainConcept.equals(that.domainConcept) : that.domainConcept == null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ArchetypeId that = (ArchetypeId) o;
+
+        if (qualifiedRmEntity != null ? !qualifiedRmEntity.equals(that.qualifiedRmEntity) : that.qualifiedRmEntity != null)
+            return false;
+        if (domainConcept != null ? !domainConcept.equals(that.domainConcept) : that.domainConcept != null)
+            return false;
+        if (versionId != null ? !versionId.equals(that.versionId) : that.versionId != null) return false;
+        if (rmOriginator != null ? !rmOriginator.equals(that.rmOriginator) : that.rmOriginator != null) return false;
+        if (rmName != null ? !rmName.equals(that.rmName) : that.rmName != null) return false;
+        if (rmEntity != null ? !rmEntity.equals(that.rmEntity) : that.rmEntity != null) return false;
+        if (conceptName != null ? !conceptName.equals(that.conceptName) : that.conceptName != null) return false;
+        return specialisation != null ? specialisation.equals(that.specialisation) : that.specialisation == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = qualifiedRmEntity != null ? qualifiedRmEntity.hashCode() : 0;
+        result = 31 * result + (domainConcept != null ? domainConcept.hashCode() : 0);
+        result = 31 * result + (versionId != null ? versionId.hashCode() : 0);
+        result = 31 * result + (rmOriginator != null ? rmOriginator.hashCode() : 0);
+        result = 31 * result + (rmName != null ? rmName.hashCode() : 0);
+        result = 31 * result + (rmEntity != null ? rmEntity.hashCode() : 0);
+        result = 31 * result + (conceptName != null ? conceptName.hashCode() : 0);
+        result = 31 * result + (specialisation != null ? specialisation.hashCode() : 0);
+        return result;
+    }
+
+    public String base() {
+        return new StringBuffer(toQualifiedRmEntity(rmOriginator,
+                rmName, rmEntity))
+                .append(AXIS_SEPARATOR)
+                .append(toDomainConcept(conceptName, specialisation))
                 .toString();
     }
 

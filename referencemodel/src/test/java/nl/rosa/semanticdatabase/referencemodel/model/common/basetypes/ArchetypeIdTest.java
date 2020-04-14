@@ -26,9 +26,9 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
-public class ArchetypeIDTest extends TestCase {
+public class ArchetypeIdTest extends TestCase {
 
-    public ArchetypeIDTest(String test) {
+    public ArchetypeIdTest(String test) {
         super(test);
     }
 
@@ -60,7 +60,7 @@ public class ArchetypeIDTest extends TestCase {
                     SECTIONS[ i ][ 4 ],
                     SECTIONS[ i ][ 5 ]);
 
-            assertArchetypeID(aid, i);
+            assertArchetypeId(aid, i);
         }
     }
 
@@ -110,7 +110,7 @@ public class ArchetypeIDTest extends TestCase {
                                            String versionTwo,
                                            boolean expected) {
         assertEquals(expected,
-                new ArchetypeId(baseOne + versionOne).equalsIgnoreVersionID(
+                new ArchetypeId(baseOne + versionOne).equalsIgnoreVersionId(
                         new ArchetypeId(baseTwo + versionTwo)));
 
     }
@@ -172,7 +172,7 @@ public class ArchetypeIDTest extends TestCase {
 
 
     // assert content of archetype id
-    private void assertArchetypeID(ArchetypeId aid, int i) {
+    private void assertArchetypeId(ArchetypeId aid, int i) {
         assertEquals("value", STRING_VALUE[ i ], aid.getValue());
         assertEquals("contextID", null, aid.contextId());
         assertEquals("localID", STRING_VALUE[ i ], aid.localId());
