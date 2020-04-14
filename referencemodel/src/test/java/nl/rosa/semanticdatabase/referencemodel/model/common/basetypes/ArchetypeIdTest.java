@@ -46,14 +46,14 @@ public class ArchetypeIDTest extends TestCase {
 
     public void testConstructorTakesStringValue() throws Exception {
         for (int i = 0; i < STRING_VALUE.length; i++) {
-            assertArchetypeID(new ArchetypeID(STRING_VALUE[ i ]), i);
+            assertArchetypeId(new ArchetypeId(STRING_VALUE[ i ]), i);
         }
     }
 
     public void testConstructorTakesSections() throws Exception {
         for (int i = 0; i < SECTIONS.length; i++) {
 
-            ArchetypeID aid = new ArchetypeID(SECTIONS[ i ][ 0 ],
+            ArchetypeId aid = new ArchetypeId(SECTIONS[ i ][ 0 ],
                     SECTIONS[ i ][ 1 ],
                     SECTIONS[ i ][ 2 ],
                     SECTIONS[ i ][ 3 ],
@@ -81,7 +81,7 @@ public class ArchetypeIDTest extends TestCase {
 
         for (int i = 0; i < data.length; i++) {
             try {
-                new ArchetypeID(data[ i ]);
+                new ArchetypeId(data[ i ]);
                 fail("should fail on " + data[ i ]);
             } catch (Exception e) {
                 assertTrue(e instanceof IllegalArgumentException);
@@ -110,20 +110,20 @@ public class ArchetypeIDTest extends TestCase {
                                            String versionTwo,
                                            boolean expected) {
         assertEquals(expected,
-                new ArchetypeID(baseOne + versionOne).equalsIgnoreVersionID(
-                        new ArchetypeID(baseTwo + versionTwo)));
+                new ArchetypeId(baseOne + versionOne).equalsIgnoreVersionID(
+                        new ArchetypeId(baseTwo + versionTwo)));
 
     }
 
     public void testBase() {
         String base = "openehr-ehr_rm-section.physical_examination";
-        assertEquals(base, new ArchetypeID(base + ".v1").base());
+        assertEquals(base, new ArchetypeId(base + ".v1").base());
     }
 
     public void testMultipleSpecialisation() {
-        ArchetypeID aid = null;
+        ArchetypeId aid = null;
         try {
-            aid = new ArchetypeID("openEHR-EHR-CLUSTER.exam-generic-joint.v1");
+            aid = new ArchetypeId("openEHR-EHR-CLUSTER.exam-generic-joint.v1");
 
             List<String> list = new ArrayList<String>();
             list.add("generic");
@@ -138,10 +138,10 @@ public class ArchetypeIDTest extends TestCase {
     }
 
     public void testWithConceptInSwedish() {
-        ArchetypeID aid = null;
+        ArchetypeId aid = null;
         try {
             // Omvrdnadsanteckning
-            aid = new ArchetypeID(
+            aid = new ArchetypeId(
                     "openEHR-EHR-CLUSTER.Omv\u00E5rdnadsanteckning.v1");
 
             fail("expect to fail on Swedish concept name");
@@ -152,15 +152,15 @@ public class ArchetypeIDTest extends TestCase {
     }
 
     public void testArchetypeBase() {
-        ArchetypeID aid = null;
+        ArchetypeId aid = null;
         try {
-            aid = new ArchetypeID("openEHR-EHR-CLUSTER.exam.v1");
+            aid = new ArchetypeId("openEHR-EHR-CLUSTER.exam.v1");
             assertEquals("wrong base", "openEHR-EHR-CLUSTER.exam", aid.base());
 
-            aid = new ArchetypeID("openEHR-EHR-CLUSTER.exam-generic.v1");
+            aid = new ArchetypeId("openEHR-EHR-CLUSTER.exam-generic.v1");
             assertEquals("wrong base", "openEHR-EHR-CLUSTER.exam-generic", aid.base());
 
-            aid = new ArchetypeID("openEHR-EHR-CLUSTER.exam-generic-joint.v1");
+            aid = new ArchetypeId("openEHR-EHR-CLUSTER.exam-generic-joint.v1");
             assertEquals("wrong base", "openEHR-EHR-CLUSTER.exam-generic-joint", aid.base());
 
 
@@ -172,10 +172,10 @@ public class ArchetypeIDTest extends TestCase {
 
 
     // assert content of archetype id
-    private void assertArchetypeID(ArchetypeID aid, int i) {
+    private void assertArchetypeID(ArchetypeId aid, int i) {
         assertEquals("value", STRING_VALUE[ i ], aid.getValue());
-        assertEquals("contextID", null, aid.contextID());
-        assertEquals("localID", STRING_VALUE[ i ], aid.localID());
+        assertEquals("contextID", null, aid.contextId());
+        assertEquals("localID", STRING_VALUE[ i ], aid.localId());
 
         assertEquals("rmOriginator", SECTIONS[ i ][ 0 ],
                 aid.rmOriginator());
@@ -196,7 +196,7 @@ public class ArchetypeIDTest extends TestCase {
         assertEquals("domainConcept", AXES[ i ][ 1 ],
                 aid.domainConcept());
         assertEquals("versionID", AXES[ i ][ 2 ],
-                aid.versionID());
+                aid.versionId());
     }
 
     private static String[] STRING_VALUE = {
