@@ -1,11 +1,12 @@
-package nl.rosa.semanticdatabase.referencemodel.model.common.basetypes.archetypeid;
+package nl.rosa.semanticdatabase.referencemodel.model.support.basetypes.archetypeid;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.fail;
 
 public class ArchetypeIdTest {
 

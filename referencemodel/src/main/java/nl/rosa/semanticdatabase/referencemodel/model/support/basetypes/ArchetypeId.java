@@ -1,15 +1,11 @@
-package nl.rosa.semanticdatabase.referencemodel.model.common.basetypes.archetypeid;
+package nl.rosa.semanticdatabase.referencemodel.model.support.basetypes;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import nl.rosa.semanticdatabase.base.rminfo.RMPropertyIgnore;
-import nl.rosa.semanticdatabase.referencemodel.model.common.basetypes.ObjectId;
 import org.springframework.lang.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

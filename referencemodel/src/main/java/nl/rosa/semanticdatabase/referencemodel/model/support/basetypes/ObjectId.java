@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.referencemodel.model.common.basetypes;
+package nl.rosa.semanticdatabase.referencemodel.model.support.basetypes;
 
 
 /*
@@ -9,7 +9,7 @@ To identify another object in another service, use an OBJECT_REF, or else use a 
 If none of the subtypes is suitable, direct instances of this class may be used.
  */
 public class ObjectId {
-    private String value;
+    protected String value;
 
     public ObjectId(String value) {
         if (value.isEmpty()) {
@@ -20,13 +20,5 @@ public class ObjectId {
 
     public ObjectId() {
 
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 }
