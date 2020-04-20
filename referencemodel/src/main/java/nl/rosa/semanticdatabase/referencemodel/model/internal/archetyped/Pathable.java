@@ -5,13 +5,19 @@ import org.springframework.lang.Nullable;
 import java.util.Collection;
 import java.util.List;
 
+/**
+ * The PATHABLE class defines the pathing capabilities used by nearly all classes in the openEHR reference model,
+ * mostly via inheritance of LOCATABLE. The defining characteristics of PATHABLE objects are that they can
+ * locate child objects using paths, and they know their parent object in a compositional hierarchy.
+ * The parent feature is defined as abstract in the model, and may be implemented in any way convenient.
+ */
 public class Pathable {
 
     /**
      * Parent of this node in a compositional hierarchy.
      */
     @Nullable
-    private Pathable parent;
+    protected Pathable parent;
     @Nullable
     private String parentAttributeName;
 

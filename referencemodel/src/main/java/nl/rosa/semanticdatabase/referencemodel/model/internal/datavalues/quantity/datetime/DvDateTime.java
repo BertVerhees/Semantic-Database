@@ -1,7 +1,12 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.datetime;
 
+import lombok.Getter;
+import lombok.Setter;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.datatypes.CodePhrase;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.SingleValuedDataValue;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.ReferenceRange;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.datetime.DateTimeParsers;
 import org.springframework.lang.Nullable;
 
 import java.time.LocalDateTime;
@@ -11,6 +16,8 @@ import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQueries;
 import java.util.List;
 
+@Getter
+@Setter
 public class DvDateTime extends DvTemporal<Long> implements SingleValuedDataValue<TemporalAccessor> {
 
 	private TemporalAccessor value;
@@ -33,7 +40,13 @@ public class DvDateTime extends DvTemporal<Long> implements SingleValuedDataValu
 	}
 
 
-	public DvDateTime(@Nullable List<ReferenceRange> otherReferenceRanges, @Nullable DvInterval normalRange, @Nullable CodePhrase normalStatus, @Nullable String magnitudeStatus, @Nullable DvDuration accuracy, TemporalAccessor value) {
+	public DvDateTime(
+			@Nullable List<ReferenceRange> otherReferenceRanges,
+			@Nullable DvInterval normalRange,
+			@Nullable CodePhrase normalStatus,
+			@Nullable String magnitudeStatus,
+			@Nullable DvDuration accuracy,
+			TemporalAccessor value) {
 		super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus, accuracy);
 		this.value = value;
 	}

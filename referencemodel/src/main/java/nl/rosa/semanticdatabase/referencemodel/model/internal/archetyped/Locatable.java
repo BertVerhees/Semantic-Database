@@ -1,5 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.archetyped;
 
+import lombok.Getter;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.DvText;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.support.identification.UIDBasedId;
 import org.springframework.lang.Nullable;
@@ -8,6 +10,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+@Getter
+@Setter
 public class Locatable extends Pathable{
     public Locatable() {
     }
@@ -45,7 +49,7 @@ public class Locatable extends Pathable{
      by referring to the generating archetype local terminology.
      At an archetype root point, the value of this attribute is always the stringified form of the archetype_id found in the archetype_details object.
      */
-    private String archetypeNodeId;
+    private DvText archetypeNodeId;
     /** Optional globally unique object identifier for root points of archetyped structures
      */
     private UIDBasedId uid;
@@ -66,16 +70,18 @@ public class Locatable extends Pathable{
 
     /**
      * Clinical concept of the archetype as a whole (= derived from the archetype_node_id' of the root node)
-     * @return
+     * @return DvText
      */
-    //TODO
     public DvText concept(){
+        if(isArchetypeRoot()){
+            return archetypeNodeId;
+        }
         return null;
     }
 
     /**
      * True if this node is the root of an archetyped structure.
-     * @return
+     * @return boolean
      */
     //TODO
 

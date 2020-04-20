@@ -1,7 +1,12 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues;
 
+import lombok.Getter;
+import lombok.Setter;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.datatypes.CodePhrase;
 import org.springframework.lang.Nullable;
 
+@Getter
+@Setter
 public class DvCodedText extends DvText {
 
     private CodePhrase definingCode;

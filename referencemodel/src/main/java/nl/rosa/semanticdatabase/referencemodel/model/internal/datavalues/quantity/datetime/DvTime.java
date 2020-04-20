@@ -1,5 +1,10 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.datetime;
 
+import nl.rosa.semanticdatabase.referencemodel.model.internal.datatypes.CodePhrase;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.SingleValuedDataValue;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.DvInterval;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.ReferenceRange;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.datetime.DateTimeParsers;
 import org.springframework.lang.Nullable;
 
 import java.time.LocalTime;
@@ -27,7 +32,13 @@ public class DvTime extends DvTemporal<Double> implements SingleValuedDataValue<
         this.value = DateTimeParsers.parseTimeValue(iso8601Time);
     }
 
-    public DvTime(@Nullable List<ReferenceRange> otherReferenceRanges, @Nullable DvInterval normalRange, @Nullable CodePhrase normalStatus, @Nullable String magnitudeStatus, @Nullable DvDuration accuracy, TemporalAccessor value) {
+    public DvTime(
+            @Nullable List<ReferenceRange> otherReferenceRanges,
+            @Nullable DvInterval normalRange,
+            @Nullable CodePhrase normalStatus,
+            @Nullable String magnitudeStatus,
+            @Nullable DvDuration accuracy,
+            TemporalAccessor value) {
         super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus, accuracy);
         this.value = value;
     }
