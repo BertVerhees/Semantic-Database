@@ -1,6 +1,5 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.support.identification;
 
-import nl.rosa.semanticdatabase.base.rminfo.RMPropertyIgnore;
 import org.springframework.lang.Nullable;
 
 import java.util.Objects;
@@ -86,15 +85,14 @@ public class ArchetypeId extends ObjectId {
      * @param specialisation
      * @param versionId
      */
-    @JsonCreator
-    public ArchetypeId(@JsonProperty("qualified_rm_entity") String qualifiedRmEntity,
-                       @JsonProperty("domain_concept") String domainConcept,
-                       @JsonProperty("rm_originator") String rmOriginator,
-                       @JsonProperty("rm_name") String rmName,
-                       @JsonProperty("rm_entity") String rmEntity,
-                       @JsonProperty("specialisation") String specialisation,
-                       @JsonProperty("versionId") String versionId,
-                       @JsonProperty("value") String value) {
+    public ArchetypeId(String qualifiedRmEntity,
+                       String domainConcept,
+                       String rmOriginator,
+                       String rmName,
+                       String rmEntity,
+                       String specialisation,
+                       String versionId,
+                       String value) {
         if (value != null) {
             parseValue(value);
             setValue(value);

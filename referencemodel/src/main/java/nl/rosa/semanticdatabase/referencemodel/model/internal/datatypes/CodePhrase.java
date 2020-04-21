@@ -1,10 +1,17 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.datatypes;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.RMObject;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.support.identification.TerminologyId;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Getter
+@Setter
+@EqualsAndHashCode
 public class CodePhrase extends RMObject {
 
     private TerminologyId terminologyId;
