@@ -10,7 +10,7 @@ import java.util.List;
 public abstract class DvTemporal<MagnitudeType extends Comparable> extends DvAbsoluteQuantity<DvDuration, MagnitudeType> {
 
     @Nullable
-    private DvDuration accuracy;
+    protected DvDuration accuracy;
 
     public DvTemporal() {
     }

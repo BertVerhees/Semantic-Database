@@ -1,7 +1,11 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.archetyped;
 
+import lombok.Getter;
+import lombok.Setter;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathSegment;
 import org.springframework.lang.Nullable;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -11,6 +15,8 @@ import java.util.List;
  * locate child objects using paths, and they know their parent object in a compositional hierarchy.
  * The parent feature is defined as abstract in the model, and may be implemented in any way convenient.
  */
+@Getter
+@Setter
 public class Pathable {
 
     /**
@@ -62,6 +68,17 @@ public class Pathable {
      */
     public String pathOfItem(Pathable pathable) {
         return null;
+    }
+
+    public List<PathSegment> getPathSegments() {
+        Pathable parent = getParent();
+        if (parent == null) {
+            return new ArrayList<>();
+        }
+
+        List<PathSegment> segments = parent.getPathSegments();
+        segments.add(new PathSegment(parentAttributeName));
+        return segments;
     }
 
     /**

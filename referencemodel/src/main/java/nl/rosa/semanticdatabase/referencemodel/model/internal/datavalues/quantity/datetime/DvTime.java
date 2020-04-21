@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.datetime;
 
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datatypes.CodePhrase;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.SingleValuedDataValue;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.ReferenceRange;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datetime.DateTimeParsers;
@@ -11,12 +10,22 @@ import java.time.LocalTime;
 import java.time.temporal.TemporalAccessor;
 import java.util.List;
 
-public class DvTime extends DvTemporal<Double> implements SingleValuedDataValue<TemporalAccessor> {
+public class DvTime extends DvTemporal<Double> {
 
     private TemporalAccessor value;
 
 
     public DvTime() {
+    }
+
+    @Override
+    public DvDuration getAccuracy() {
+        return null;
+    }
+
+    @Override
+    public Double getMagnitude() {
+        return null;
     }
 
     public DvTime(TemporalAccessor value) {

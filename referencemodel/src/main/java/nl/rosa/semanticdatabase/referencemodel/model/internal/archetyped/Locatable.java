@@ -16,14 +16,14 @@ public class Locatable extends Pathable{
     public Locatable() {
     }
 
-    public Locatable(String archetypeNodeId, DvText name) {
+    public Locatable(DvText archetypeNodeId, DvText name) {
         this.name = name;
         this.archetypeNodeId = archetypeNodeId;
     }
 
     public Locatable(
             @Nullable UIDBasedId uid,
-            String archetypeNodeId,
+            DvText archetypeNodeId,
             DvText name,
             @Nullable Archetyped archetypeDetails,
             @Nullable FeederAudit feederAudit,

@@ -1,7 +1,8 @@
-package nl.rosa.semanticdatabase.referencemodel.model.internal.archetyped.util;
+package nl.rosa.semanticdatabase.referencemodel.model.internal.paths;
 
 import java.util.Map;
 import java.util.regex.Pattern;
+import com.google.common.base.Joiner;
 
 /**
  * An object which joins pieces of text (specified as an array, {@link Iterable}, varargs or even a

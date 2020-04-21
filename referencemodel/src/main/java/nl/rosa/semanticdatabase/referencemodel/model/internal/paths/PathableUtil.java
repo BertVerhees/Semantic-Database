@@ -1,9 +1,12 @@
-package nl.rosa.semanticdatabase.referencemodel.model.internal.archetyped.util;
+package nl.rosa.semanticdatabase.referencemodel.model.internal.paths;
 
 import nl.rosa.semanticdatabase.referencemodel.model.internal.archetyped.Pathable;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.rminfo.ModelInfoLookup;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.rminfo.RMInfoLookup;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class PathableUtil {
     /**
@@ -30,7 +33,7 @@ public class PathableUtil {
         Pathable parent = pathable.getParent();
         String parentAttributeName = unindexedPathSegment.getNodeName();
 
-        ModelInfoLookup modelInfoLookup = ArchieRMInfoLookup.getInstance();
+        ModelInfoLookup modelInfoLookup = RMInfoLookup.getInstance();
         Object attributeValue = RMObjectAttributes.getAttributeValueFromRMObject(parent, parentAttributeName, modelInfoLookup);
         Integer index = null;
 

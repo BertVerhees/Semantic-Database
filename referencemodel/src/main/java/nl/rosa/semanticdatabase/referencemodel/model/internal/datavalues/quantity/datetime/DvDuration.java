@@ -1,7 +1,8 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.datetime;
 
+import lombok.Getter;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datatypes.CodePhrase;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.SingleValuedDataValue;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.DvAmount;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.ReferenceRange;
@@ -11,11 +12,18 @@ import org.springframework.lang.Nullable;
 import java.time.temporal.TemporalAmount;
 import java.util.List;
 
-public class DvDuration extends DvAmount<Long> implements SingleValuedDataValue<TemporalAmount> {
+@Getter
+@Setter
+public class DvDuration extends DvAmount<Long> {
 
 	private TemporalAmount value;
 
 	public DvDuration() {
+	}
+
+	@Override
+	public Long getMagnitude() {
+		return null;
 	}
 
 	public DvDuration(TemporalAmount value) {

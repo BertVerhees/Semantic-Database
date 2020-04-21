@@ -3,7 +3,6 @@ package nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quanti
 import lombok.Getter;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datatypes.CodePhrase;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.SingleValuedDataValue;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.ReferenceRange;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datetime.DateTimeParsers;
@@ -18,12 +17,17 @@ import java.util.List;
 
 @Getter
 @Setter
-public class DvDateTime extends DvTemporal<Long> implements SingleValuedDataValue<TemporalAccessor> {
+public class DvDateTime extends DvTemporal<Long> {
 
 	private TemporalAccessor value;
 
 
 	public DvDateTime() {
+	}
+
+	@Override
+	public DvDuration getAccuracy() {
+		return null;
 	}
 
 	public DvDateTime(TemporalAccessor value) {

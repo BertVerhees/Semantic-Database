@@ -3,7 +3,6 @@ package nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quanti
 import lombok.Getter;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datatypes.CodePhrase;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.SingleValuedDataValue;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity.ReferenceRange;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datetime.DateTimeParsers;
@@ -15,14 +14,14 @@ import java.util.List;
 
 @Getter
 @Setter
-public class DvDate extends DvTemporal<Long> implements SingleValuedDataValue<Temporal> {
+public class DvDate extends DvTemporal<Long> {
     private Temporal value;
     public DvDate() {
     }
 
     @Override
     public DvDuration getAccuracy() {
-        return ;
+        return accuracy;
     }
 
     @Override
@@ -58,7 +57,6 @@ public class DvDate extends DvTemporal<Long> implements SingleValuedDataValue<Te
         return value;
     }
 
-    @Override
     public void setValue(Temporal value) {
         if(value.isSupported(ChronoField.HOUR_OF_DAY)) {
             //TODO: do we really need this validation?

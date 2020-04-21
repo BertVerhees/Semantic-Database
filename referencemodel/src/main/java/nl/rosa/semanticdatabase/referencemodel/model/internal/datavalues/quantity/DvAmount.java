@@ -1,11 +1,15 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.quantity;
 
+import lombok.Getter;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datatypes.CodePhrase;
 import org.springframework.lang.Nullable;
 
 import javax.xml.bind.annotation.*;
 import java.util.List;
 
+@Getter
+@Setter
 public abstract class DvAmount<MagnitudeType extends Comparable> extends DvQuantified<Double, MagnitudeType> {
     @Nullable
     private Double accuracy;
