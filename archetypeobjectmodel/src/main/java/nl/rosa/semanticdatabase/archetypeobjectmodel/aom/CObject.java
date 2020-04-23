@@ -1,8 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.utils.AOMUtils;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathSegment;
 
@@ -72,7 +72,6 @@ public abstract class CObject extends ArchetypeConstraint {
      * Get the meaning of this CObject in the defined meaning and description language.
      * See ArchieLanguageConfiguation
      */
-    @JsonIgnore
     public String getMeaning() {
         ArchetypeTerm termDefinition = getTerm();
         if(termDefinition!=null && termDefinition.getText()!=null) {
@@ -85,7 +84,6 @@ public abstract class CObject extends ArchetypeConstraint {
      * Get the meaning of this CObject in the defined meaning and description language.
      * See ArchieLanguageConfiguation
      */
-    @JsonIgnore
     public String getDescription() {
         ArchetypeTerm termDefinition = getTerm();
         if(termDefinition!=null && termDefinition.getDescription()!=null) {

@@ -1,12 +1,11 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.nedap.archie.aom.utils.AOMUtils;
-import com.nedap.archie.base.Cardinality;
-import com.nedap.archie.base.MultiplicityInterval;
-import com.nedap.archie.paths.PathSegment;
-import com.nedap.archie.query.APathQuery;
+import lombok.Getter;
+import lombok.Setter;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Cardinality;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.base.MultiplicityInterval;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathSegment;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
@@ -25,6 +24,8 @@ import java.util.List;
         "children"
 })
 
+@Getter
+@Setter
 public class CAttribute extends ArchetypeConstraint {
 
     @XmlAttribute(name="rm_attribute_name")
@@ -44,38 +45,6 @@ public class CAttribute extends ArchetypeConstraint {
     }
     public CAttribute(String rmAttributeName) {
         this.rmAttributeName = rmAttributeName;
-    }
-
-    public String getRmAttributeName() {
-        return rmAttributeName;
-    }
-
-    public void setRmAttributeName(String rmAttributeName) {
-        this.rmAttributeName = rmAttributeName;
-    }
-
-    public MultiplicityInterval getExistence() {
-        return existence;
-    }
-
-    public void setExistence(MultiplicityInterval existence) {
-        this.existence = existence;
-    }
-
-    public String getDifferentialPath() {
-        return differentialPath;
-    }
-
-    public void setDifferentialPath(String differentialPath) {
-        this.differentialPath = differentialPath;
-    }
-
-    public boolean isMultiple() {
-        return multiple;
-    }
-
-    public void setMultiple(boolean multiple) {
-        this.multiple = multiple;
     }
 
     public CObject getChild(String nodeId) {
@@ -285,19 +254,6 @@ public class CAttribute extends ArchetypeConstraint {
         return -1;
     }
 
-    public Cardinality getCardinality() {
-        return cardinality;
-    }
-
-    public void setCardinality(Cardinality cardinality) {
-        this.cardinality = cardinality;
-    }
-
-    @Override
-    public String toString() {
-        return "Cattribute: " + rmAttributeName + ", " + children.size() + " children";
-    }
-
     public List<PathSegment> getPathSegments() {
         CObject parent = getParent();
         if(parent == null) {
@@ -310,11 +266,6 @@ public class CAttribute extends ArchetypeConstraint {
             segments.addAll(new APathQuery(differentialPath).getPathSegments());
         }
         return segments;
-    }
-
-    @Override
-    public CObject getParent() {
-        return (CObject) super.getParent();
     }
 
     public String getLogicalPath() {
@@ -334,9 +285,6 @@ public class CAttribute extends ArchetypeConstraint {
 
 
     /* Operations defined by UML */
-
-    @JsonIgnore
-    @XmlTransient
     public boolean isSingle() {
         return !multiple;
     }
@@ -360,11 +308,6 @@ public class CAttribute extends ArchetypeConstraint {
         return false;
     }
 
-    //TODO: congruent and conforms to?
-
-
-    @Override
-    @JsonIgnore
     public boolean isLeaf() {
         return children != null && children.size() > 0;
     }
@@ -433,7 +376,6 @@ public class CAttribute extends ArchetypeConstraint {
         }
     }
 
-    @JsonIgnore
     public boolean isSecondOrderConstrained() {
         return getSocParent() != null || (getParent() != null && getParent().getSocParent() != null);
     }
@@ -444,7 +386,6 @@ public class CAttribute extends ArchetypeConstraint {
      * calculates sum of all occurrences lower bounds; where no occurrences are stated, 0 is assumed
      * @return
      */
-    @JsonIgnore
     public int getAggregateOccurrencesLowerSum() {
         int sum = 0;
         for(CObject cObject:getChildren()) {
@@ -460,7 +401,6 @@ public class CAttribute extends ArchetypeConstraint {
      *  object, and 1 for all optional objects
      * @return
      */
-    @JsonIgnore
     public int getMinimumChildCount() {
         int result = 0;
         boolean foundOptional = false;

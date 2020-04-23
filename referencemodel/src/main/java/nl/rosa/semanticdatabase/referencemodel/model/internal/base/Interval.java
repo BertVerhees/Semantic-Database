@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.lang.Nullable;
 
 import java.time.temporal.TemporalAmount;
+import java.util.Objects;
 
 @Getter
 @Setter
@@ -141,6 +142,86 @@ public class Interval<T> {
 
     private boolean isComparable(T value) {
         return value == null || value instanceof Comparable;
+    }
+
+    /**
+     * True if there is any overlap between intervals represented by Current and
+     * `other'. True if at least one limit of other is strictly inside the limits
+     * of this interval.
+     *
+     * @param other
+     * @return
+     */
+    public Boolean intersects(Interval<T> other) {
+        return (lowerUnbounded && other.lowerUnbounded) ||
+                (upperUnbounded && other.upperUnbounded) ||
+                (compareTo(lower, other.lower) < 0 && compareTo(upper, other.upper) < 0 && compareTo(other.lower, upper) < 0) ||
+                (compareTo(other.lower, lower) < 0 && compareTo(other.upper, upper) < 0 && compareTo(lower, other.upper) < 0) ||
+                other.contains(this) || this.contains(other);
+    }
+
+    /**
+     * True if current interval properly contains `other'? True if all points of
+     * `other' are inside the current interval.
+     *
+     * @param other
+     * @return
+     */
+    public Boolean contains(Interval<T> other) {
+        boolean otherHasLower = false;
+        boolean otherHasUpper = false;
+        if (other.lowerUnbounded) {
+            otherHasLower = this.lowerUnbounded;
+        } else {
+            otherHasLower = has(other.lower);
+        }
+        if (other.upperUnbounded) {
+            otherHasUpper = this.upperUnbounded;
+        } else {
+            otherHasUpper = has(other.upper);
+        }
+        return otherHasLower && otherHasUpper;
+    }
+
+    /**
+     * Returns true if both sets subsume each other.
+     *
+     * @param other
+     * @return
+     */
+    public Boolean setsAreEqual(Interval<T> other) {
+        return this.contains(other) && other.contains(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Interval<?> interval = (Interval<?>) o;
+
+        return (lowerUnbounded == interval.lowerUnbounded) &&
+                (upperUnbounded == interval.upperUnbounded) &&
+                (lowerUnbounded || lowerIncluded == interval.lowerIncluded) &&
+                (upperUnbounded || upperIncluded == interval.upperIncluded) &&
+                (lowerUnbounded || Objects.equals(lower, interval.lower)) &&
+                (upperUnbounded || Objects.equals(upper, interval.upper));
+    }
+
+    private int compareTo(T intervalValue, T value) {
+        Comparable comparableIntervalValue;
+        Comparable comparableValue;
+        if (value instanceof TemporalAmount && !(value instanceof Comparable) && isNonComparableTemporalAmount(intervalValue)) {
+            //TemporalAmount is not comparable, but can always be converted to a duration that is comparable.
+            comparableValue = value == null ? null : IntervalDurationConverter.from((TemporalAmount) value);
+            comparableIntervalValue = intervalValue == null ? null : IntervalDurationConverter.from((TemporalAmount) intervalValue);
+        } else if (!(isComparable(intervalValue) && isComparable(value))) {
+            throw new UnsupportedOperationException("subclasses of interval not implementing comparable should implement their own has method");
+        } else {
+            comparableValue = (Comparable) value;
+            comparableIntervalValue = (Comparable) intervalValue;
+        }
+        return comparableValue.compareTo(comparableIntervalValue);
     }
 
 }
