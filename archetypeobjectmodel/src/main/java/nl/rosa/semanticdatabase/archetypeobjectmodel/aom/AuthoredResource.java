@@ -1,14 +1,11 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nedap.archie.base.terminology.TerminologyCode;
-import com.nedap.archie.rminfo.RMPropertyIgnore;
-import com.nedap.archie.xml.adapters.ResourceDescriptionAdapter;
-import com.nedap.archie.xml.adapters.TranslationDetailsAdapter;
+import lombok.Getter;
+import lombok.Setter;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyCode;
+import org.springframework.lang.Nullable;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -22,11 +19,9 @@ import java.util.Map;
  * However, where normally every attribute is directly mapped to a field, the field from the language section of an
  * archetype in ADL are mapped to a LanguageSection object. This is done to enable odin parsing directly from odin to
  * objects, instead of steps in between.
- *
- * Created by pieter.bos on 15/10/15.
  */
-@XmlType(name="AUTHORED_RESOURCE")
-@XmlAccessorType(XmlAccessType.PROPERTY)
+@Getter
+@Setter
 public abstract class AuthoredResource extends ArchetypeModelObject {
 
     @Nullable
@@ -39,35 +34,6 @@ public abstract class AuthoredResource extends ArchetypeModelObject {
 
     private ResourceAnnotations annotations;
 
-    @XmlElement(name="is_controlled")
-    public Boolean getControlled() {
-        return controlled;
-    }
-
-    public void setControlled(Boolean controlled) {
-        this.controlled = controlled;
-    }
-
-    @XmlElement(name="uid")
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid;
-    }
-
-    @XmlElement(name="description")
-    @XmlJavaTypeAdapter(ResourceDescriptionAdapter.class)
-    public ResourceDescription getDescription() {
-        return description;
-    }
-
-    public void setDescription(ResourceDescription description) {
-        this.description = description;
-    }
-
-    @XmlElement(name="original_language")
     public TerminologyCode getOriginalLanguage() {
         if(content == null) {
             return null;

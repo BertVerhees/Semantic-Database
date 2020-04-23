@@ -1,56 +1,29 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nedap.archie.ArchieLanguageConfiguration;
-import com.nedap.archie.aom.Archetype;
-import com.nedap.archie.aom.CObject;
-import com.nedap.archie.aom.CPrimitiveObject;
-import com.nedap.archie.aom.terminology.ArchetypeTerm;
-import com.nedap.archie.aom.terminology.ArchetypeTerminology;
-import com.nedap.archie.aom.terminology.TerminologyCodeWithArchetypeTerm;
-import com.nedap.archie.aom.terminology.ValueSet;
-import com.nedap.archie.aom.utils.AOMUtils;
-import com.nedap.archie.base.terminology.TerminologyCode;
+import lombok.Getter;
+import lombok.Setter;
+import nl.rosa.semanticdatabase.LanguageConfiguration;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.Archetype;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CObject;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CPrimitiveObject;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ArchetypeTerm;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ArchetypeTerminology;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.TerminologyCodeWithArchetypeTerm;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ValueSet;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.utils.AOMUtils;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyCode;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
 
-/**
- *
- * Created by pieter.bos on 15/10/15.
- */
-@XmlType(name="C_TERMINOLOGY_CODE")
-@XmlAccessorType(XmlAccessType.FIELD)
+@Getter
+@Setter
 public class CTerminologyCode extends CPrimitiveObject<String, TerminologyCode> {
 
-    @XmlElement(name="assumed_value")
     private TerminologyCode assumedValue;
     private List<String> constraint = new ArrayList<>();
-
-    @Override
-    public TerminologyCode getAssumedValue() {
-        return assumedValue;
-    }
-
-    @Override
-    public void setAssumedValue(TerminologyCode assumedValue) {
-        this.assumedValue = assumedValue;
-    }
-
-    @Override
-    public List<String> getConstraint() {
-        return this.constraint;
-    }
-
-    @Override
-    public void setConstraint(List<String> constraint) {
-        this.constraint = constraint;
-    }
 
     @Override
     public void addConstraint(String constraint) {
@@ -93,8 +66,8 @@ public class CTerminologyCode extends CPrimitiveObject<String, TerminologyCode> 
             return result;
         }
         ArchetypeTerminology terminology = archetype.getTerminology(this);
-        String language = ArchieLanguageConfiguration.getMeaningAndDescriptionLanguage();
-        String defaultLanguage = ArchieLanguageConfiguration.getDefaultMeaningAndDescriptionLanguage();
+        String language = LanguageConfiguration.getMeaningAndDescriptionLanguage();
+        String defaultLanguage = LanguageConfiguration.getDefaultMeaningAndDescriptionLanguage();
         for(String constraint:getConstraint()) {
             if(constraint.startsWith("at")) {
                 ArchetypeTerm termDefinition = terminology.getTermDefinition(language, constraint);

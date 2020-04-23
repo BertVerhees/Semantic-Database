@@ -1,48 +1,21 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives;
 
-import com.nedap.archie.aom.CObject;
-import com.nedap.archie.aom.CPrimitiveObject;
+import lombok.Getter;
+import lombok.Setter;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CObject;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CPrimitiveObject;
+import org.springframework.lang.Nullable;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
 
-/**
- * Created by pieter.bos on 15/10/15.
- */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="C_BOOLEAN")
+@Getter
+@Setter
 public class CBoolean extends CPrimitiveObject<Boolean, Boolean> {
-    @XmlElement(name="assumed_value")
     private Boolean assumedValue;
     @Nullable
     private List<Boolean> constraint = new ArrayList<>();
-
-    @Override
-    public Boolean getAssumedValue() {
-        return assumedValue;
-    }
-
-    @Override
-    public void setAssumedValue(Boolean assumedValue) {
-        this.assumedValue = assumedValue;
-    }
-
-    @Override
-    public List<Boolean> getConstraint() {
-        return constraint;
-    }
-
-    @Override
-    public void setConstraint(List<Boolean> constraint) {
-        this.constraint = constraint;
-
-    }
 
     @Override
     public void addConstraint(Boolean constraint) {

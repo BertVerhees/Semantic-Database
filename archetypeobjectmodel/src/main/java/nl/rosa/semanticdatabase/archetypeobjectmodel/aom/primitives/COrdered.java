@@ -1,14 +1,11 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives;
 
-import com.nedap.archie.aom.CObject;
-import com.nedap.archie.aom.CPrimitiveObject;
-import com.nedap.archie.base.Interval;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CObject;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CPrimitiveObject;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Interval;
 
 import java.util.function.BiFunction;
 
-/**
- * Created by pieter.bos on 15/10/15.
- */
 public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
 
     @Override

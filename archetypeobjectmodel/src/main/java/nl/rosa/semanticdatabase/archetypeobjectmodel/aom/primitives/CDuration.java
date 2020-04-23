@@ -1,50 +1,19 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives;
 
-import com.nedap.archie.base.Interval;
-import com.nedap.archie.xml.adapters.DurationIntervalXmlAdapter;
-import com.nedap.archie.xml.adapters.DurationXmlAdapter;
+import lombok.Getter;
+import lombok.Setter;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Interval;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by pieter.bos on 15/10/15.
- */
-@XmlType(name="C_DURATION")
-@XmlAccessorType(XmlAccessType.FIELD)
+@Getter
+@Setter
 public class CDuration extends CTemporal<TemporalAmount> {
 
-    @XmlJavaTypeAdapter(DurationXmlAdapter.class)
-    @XmlElement(name="assumed_value")
     private TemporalAmount assumedValue;
-    @XmlJavaTypeAdapter(DurationIntervalXmlAdapter.class)
     private List<Interval<TemporalAmount>> constraint = new ArrayList<>();
-
-    @Override
-    public TemporalAmount getAssumedValue() {
-        return assumedValue;
-    }
-
-    @Override
-    public void setAssumedValue(TemporalAmount assumedValue) {
-        this.assumedValue = assumedValue;
-    }
-
-    @Override
-    public List<Interval<TemporalAmount>> getConstraint() {
-        return constraint;
-    }
-
-    @Override
-    public void setConstraint(List<Interval<TemporalAmount>> constraint) {
-        this.constraint = constraint;
-    }
 
     public List<Interval<TemporalAmount>> getConstraints() {
         return constraint;

@@ -1,7 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.nedap.archie.base.terminology.TerminologyCode;
+import lombok.Getter;
+import lombok.Setter;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyCode;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,31 +12,12 @@ import java.util.concurrent.ConcurrentHashMap;
  * in the AOM spec and you should not need to use it directly. Use the methods on AuthoredResource instead.
  * It is included for proper ODIN parsing.
  * See AuthoredResource for more information about this design choice.
- *
- * Created by pieter.bos on 02/11/15.
  */
+
+@Getter
+@Setter
 public class LanguageSection extends ArchetypeModelObject {
 
     private TerminologyCode originalLanguage;
     private Map<String, TranslationDetails> translations = new ConcurrentHashMap<>();
-
-
-    @JsonProperty
-    public TerminologyCode getOriginalLanguage() {
-        return originalLanguage;
-    }
-
-    public void setOriginalLanguage(TerminologyCode originalLanguage) {
-        this.originalLanguage = originalLanguage;
-    }
-
-    @JsonProperty
-    public Map<String, TranslationDetails> getTranslations() {
-        return translations;
-    }
-
-    public void setTranslations(Map<String, TranslationDetails> translations) {
-        this.translations = translations;
-    }
-
 }

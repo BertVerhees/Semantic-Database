@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 
-import com.nedap.archie.rminfo.ArchieModelNamingStrategy;
-import com.nedap.archie.rminfo.ModelInfoLookup;
+import lombok.Getter;
+import lombok.Setter;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.rminfo.ReferenceModelNamingStrategy;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.rminfo.ModelInfoLookup;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.BiFunction;
@@ -13,11 +12,9 @@ import java.util.function.BiFunction;
 /**
  * Primitive object. Parameterized with a Constraint type and AssumedAndDefault value type, to be able to override
  * the methods in subclasses easily
- *
- * Created by pieter.bos on 15/10/15.
  */
-@XmlType(name="C_PRIMITIVE_OBJECT")
-@XmlAccessorType(XmlAccessType.FIELD)
+@Getter
+@Setter
 public abstract class CPrimitiveObject<Constraint, ValueType> extends CDefinedObject<ValueType> {
 
     public static final String PRIMITIVE_NODE_ID_VALUE = "id9999";
@@ -33,16 +30,6 @@ public abstract class CPrimitiveObject<Constraint, ValueType> extends CDefinedOb
     public abstract void setConstraint(List<Constraint> constraint);
 
     public abstract void addConstraint(Constraint constraint);
-
-    public Boolean getEnumeratedTypeConstraint() {
-        return enumeratedTypeConstraint;
-    }
-
-    public void setEnumeratedTypeConstraint(Boolean enumeratedTypeConstraint) {
-        this.enumeratedTypeConstraint = enumeratedTypeConstraint;
-    }
-
-
 
     public String getNodeId() {
         return PRIMITIVE_NODE_ID_VALUE;
@@ -124,7 +111,7 @@ public abstract class CPrimitiveObject<Constraint, ValueType> extends CDefinedOb
     public String constrainedTypename () {
         //TODO: this works usually, but probably needs RM access
         //TODO: add to parserPostProcessor that rmTypeName will be set
-        return ArchieModelNamingStrategy.snakeCaseStrategy.translate(this.getClass().getSimpleName().substring(1));
+        return ReferenceModelNamingStrategy.snakeCaseStrategy.translate(this.getClass().getSimpleName().substring(1));
     }
 
     public String getRmTypeName() {

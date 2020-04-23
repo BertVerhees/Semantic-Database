@@ -1,18 +1,12 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nedap.archie.aom.primitives.CTerminologyCode;
-import com.nedap.archie.aom.terminology.ArchetypeTerm;
-import com.nedap.archie.aom.terminology.ArchetypeTerminology;
-import com.nedap.archie.aom.terminology.ValueSet;
-import com.nedap.archie.aom.utils.AOMUtils;
-import com.nedap.archie.aom.utils.ArchetypeParsePostProcesser;
-import com.nedap.archie.definitions.AdlCodeDefinitions;
-import com.nedap.archie.query.AOMPathQuery;
-import com.nedap.archie.xml.adapters.ArchetypeTerminologyAdapter;
+import lombok.Getter;
+import lombok.Setter;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ArchetypeTerm;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ArchetypeTerminology;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.utils.ArchetypeParsePostProcesser;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.query.AOMPathQuery;
 
-import javax.xml.bind.annotation.*;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -20,138 +14,35 @@ import java.util.stream.Collectors;
  * Note: this Archetype does not conform to the UML model completely:
  * - it extends AuthoredResource - needed because otherwise we would have multiple inheritance
  * - it contains fields from AuthoredArchetype - needed because it saves complicated casting in java to call these methods otherwise
- *
- * Created by pieter.bos on 15/10/15.
  */
-@XmlRootElement(name="archetype")
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ARCHETYPE", propOrder = {
-        "archetypeId",
-        //"differential",
-        "parentArchetypeId",
-        "definition",
-        "terminology",
-        "rules",
-        "buildUid",
-        "rmRelease",
-        "generated",
-        "otherMetaData"
-})
+@Getter
+@Setter
 public class Archetype extends AuthoredResource {
 
-    @XmlElement(name="parent_archetype_id")
     private String parentArchetypeId;
-    @XmlAttribute(name="is_differential")
     private boolean differential = false;
-    @XmlElement(name = "archetype_id")
     private ArchetypeHRID archetypeId;
 
     private CComplexObject definition;
-    @XmlJavaTypeAdapter(ArchetypeTerminologyAdapter.class)
     private ArchetypeTerminology terminology;
     private RulesSection rules = null;
 
-    @XmlAttribute(name="adl_version")
     private String adlVersion;
-    @XmlElement(name="build_uid")
     private String buildUid;
-    @XmlAttribute(name="rm_release")
     private String rmRelease;
-    @XmlAttribute(name="is_generated")
     private Boolean generated = false;
 
-    @XmlElement(name="other_meta_data")
     //TODO: this probably requires a custom XmlAdapter
     private Map<String, String> otherMetaData = new LinkedHashMap<>();
-
-    public String getParentArchetypeId() {
-        return parentArchetypeId;
-    }
-
-    public void setParentArchetypeId(String parentArchetypeId) {
-        this.parentArchetypeId = parentArchetypeId;
-    }
-
-    public boolean isDifferential() {
-        return differential;
-    }
-
-    public void setDifferential(boolean differential) {
-        this.differential = differential;
-    }
-
-    public ArchetypeHRID getArchetypeId() {
-        return archetypeId;
-    }
-
-    public void setArchetypeId(ArchetypeHRID archetypeId) {
-        this.archetypeId = archetypeId;
-    }
-
-    public CComplexObject getDefinition() {
-        return definition;
-    }
 
     public void setDefinition(CComplexObject definition) {
         definition.setArchetype(this);
         this.definition = definition;
     }
 
-    public RulesSection getRules() {
-        return rules;
-    }
-
-    public void setRules(RulesSection rules) {
-        this.rules = rules;
-    }
-
-    public ArchetypeTerminology getTerminology() {
-        return terminology;
-    }
-
     public void setTerminology(ArchetypeTerminology terminology) {
         this.terminology = terminology;
         terminology.setOwnerArchetype(this);
-    }
-
-    public String getAdlVersion() {
-        return adlVersion;
-    }
-
-    public void setAdlVersion(String adlVersion) {
-        this.adlVersion = adlVersion;
-    }
-
-    public String getBuildUid() {
-        return buildUid;
-    }
-
-    public void setBuildUid(String buildUid) {
-        this.buildUid = buildUid;
-    }
-
-    public String getRmRelease() {
-        return rmRelease;
-    }
-
-    public void setRmRelease(String rmRelease) {
-        this.rmRelease = rmRelease;
-    }
-
-    public Boolean getGenerated() {
-        return generated;
-    }
-
-    public void setGenerated(Boolean generated) {
-        this.generated = generated;
-    }
-
-    public Map<String, String> getOtherMetaData() {
-        return otherMetaData;
-    }
-
-    public void setOtherMetaData(Map<String, String> otherMetaData) {
-        this.otherMetaData = otherMetaData;
     }
 
     public void addOtherMetadata(String text, String value) {

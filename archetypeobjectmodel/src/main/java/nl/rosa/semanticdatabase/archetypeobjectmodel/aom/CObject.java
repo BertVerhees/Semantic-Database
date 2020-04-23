@@ -2,6 +2,8 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 
 import lombok.Getter;
 import lombok.Setter;
+import nl.rosa.semanticdatabase.LanguageConfiguration;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ArchetypeTerm;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.utils.AOMUtils;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathSegment;
@@ -53,10 +55,10 @@ public abstract class CObject extends ArchetypeConstraint {
         if(archetype == null) {
             return null;
         }
-        ArchetypeTerm result = archetype.getTerm(this, ArchieLanguageConfiguration.getMeaningAndDescriptionLanguage());
+        ArchetypeTerm result = archetype.getTerm(this, LanguageConfiguration.getMeaningAndDescriptionLanguage());
         if(result == null) {
             //no translation in the given language. Fall back to the default.
-            result = archetype.getTerm(this, ArchieLanguageConfiguration.getDefaultMeaningAndDescriptionLanguage());
+            result = archetype.getTerm(this, LanguageConfiguration.getDefaultMeaningAndDescriptionLanguage());
         }
         if(result == null && archetype.getOriginalLanguage() != null && archetype.getOriginalLanguage().getCodeString() != null) {
             result = archetype.getTerm(this, archetype.getOriginalLanguage().getCodeString());
@@ -101,7 +103,7 @@ public abstract class CObject extends ArchetypeConstraint {
         if(archetype == null) {
             return null;
         }
-        ArchetypeTerm termDefinition = archetype.getTerm(this, ArchieLanguageConfiguration.getLogicalPathLanguage());
+        ArchetypeTerm termDefinition = archetype.getTerm(this, LanguageConfiguration.getLogicalPathLanguage());
         if(termDefinition!=null && termDefinition.getText()!=null) {
             meaning = termDefinition.getText();
         }

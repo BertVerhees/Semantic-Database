@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.rminfo;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.rminfo.ModelNamingStrategy;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -9,7 +10,7 @@ import java.lang.reflect.Method;
  * Created by pieter.bos on 29/03/16.
  * A naming helper for both Archie RM and AOM objects
  */
-public class ArchieModelNamingStrategy implements ModelNamingStrategy {
+public class ReferenceModelNamingStrategy implements ModelNamingStrategy {
 
     public static final PropertyNamingStrategy.SnakeCaseStrategy snakeCaseStrategy = new PropertyNamingStrategy.SnakeCaseStrategy();
 

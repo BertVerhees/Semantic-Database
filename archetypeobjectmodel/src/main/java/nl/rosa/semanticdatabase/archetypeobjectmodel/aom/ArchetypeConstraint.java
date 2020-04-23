@@ -3,10 +3,11 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathSegment;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathUtil;
 
-/**
- * Created by pieter.bos on 15/10/15.
- */
+import java.util.List;
+
 @Getter
 @Setter
 public abstract class ArchetypeConstraint extends ArchetypeModelObject {
@@ -25,7 +26,14 @@ public abstract class ArchetypeConstraint extends ArchetypeModelObject {
     }
 
     @JsonIgnore
+    public abstract List<PathSegment> getPathSegments();
+
+    @JsonIgnore
     public abstract boolean isLeaf();
+
+    public final String getPath() {
+        return PathUtil.getPath(getPathSegments());
+    }
 
 
     @JsonIgnore

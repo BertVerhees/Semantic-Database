@@ -2,7 +2,6 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives;
 
 /**
  * TODO: cConformsTo for temporal and date types
- * Created by pieter.bos on 15/10/15.
  */
 public abstract class CTemporal<T> extends COrdered<T>{
 

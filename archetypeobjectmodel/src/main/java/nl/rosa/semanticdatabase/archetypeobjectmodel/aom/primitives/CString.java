@@ -1,26 +1,15 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives;
 
 import com.google.common.collect.Lists;
-import com.nedap.archie.aom.CObject;
-import com.nedap.archie.aom.CPrimitiveObject;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CPrimitiveObject;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.BiFunction;
 
-/**
- * Created by pieter.bos on 15/10/15.
- */
-@XmlType(name="C_STRING")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class CString extends CPrimitiveObject<String, String> {
 
-    @XmlElement(name="assumed_value")
     private String assumedValue;
     private List<String> constraint = new ArrayList<>();
 
@@ -30,26 +19,6 @@ public class CString extends CPrimitiveObject<String, String> {
 
     public CString(String constraint) {
         this.constraint = Lists.newArrayList(constraint);
-    }
-
-    @Override
-    public String getAssumedValue() {
-        return assumedValue;
-    }
-
-    @Override
-    public void setAssumedValue(String assumedValue) {
-        this.assumedValue = assumedValue;
-    }
-
-    @Override
-    public List<String> getConstraint() {
-        return constraint;
-    }
-
-    @Override
-    public void setConstraint(List<String> constraint) {
-        this.constraint = constraint;
     }
 
     @Override

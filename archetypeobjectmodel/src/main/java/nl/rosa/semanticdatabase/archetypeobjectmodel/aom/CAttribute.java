@@ -1,39 +1,22 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 import lombok.Setter;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.utils.AOMUtils;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Cardinality;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathSegment;
 
-import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by pieter.bos on 15/10/15.
- */
-@JsonPropertyOrder({"@type", "rm_attribute_name", "path", "logical_path", "differential_path", "multiple", "mandatory", "existence", "cardinality", "children"})
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="C_ATTRIBUTE", propOrder = {
-        "existence",
-        "differentialPath",
-        "multiple",
-        "cardinality",
-        "children"
-})
 
 @Getter
 @Setter
 public class CAttribute extends ArchetypeConstraint {
 
-    @XmlAttribute(name="rm_attribute_name")
     private String rmAttributeName;
     private MultiplicityInterval existence;
-    @XmlElement(name="differential_path")
     private String differentialPath;
-    @XmlElement(name="is_multiple")
     private boolean multiple;
 
     private Cardinality cardinality;
@@ -100,6 +83,11 @@ public class CAttribute extends ArchetypeConstraint {
             }
         }
         return null;
+    }
+
+    @Override
+    public CObject getParent() {
+        return (CObject) super.getParent();
     }
 
     public CObject getChildByMeaning(String meaning) {

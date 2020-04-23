@@ -21,7 +21,7 @@ public class ArchieAOMInfoLookup extends ReflectionModelInfoLookup {
     private static ArchieAOMInfoLookup instance;
 
     public ArchieAOMInfoLookup() {
-        super(new ArchieModelNamingStrategy(), ArchetypeModelObject.class, ArchieAOMInfoLookup.class.getClassLoader(), false /* no attributes without field */);
+        super(new ReferenceModelNamingStrategy(), ArchetypeModelObject.class, ArchieAOMInfoLookup.class.getClassLoader(), false /* no attributes without field */);
 
     }
 
