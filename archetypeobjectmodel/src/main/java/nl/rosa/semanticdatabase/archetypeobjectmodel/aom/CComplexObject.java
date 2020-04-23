@@ -1,11 +1,17 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.Getter;
+import lombok.Setter;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.query.AOMPathQuery;
+import nl.rosa.semanticdatabase.base.SemanticDatabaseBase;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class CComplexObject extends CDefinedObject {
+@Getter
+@Setter
+public class CComplexObject extends CDefinedObject<SemanticDatabaseBase> {
 
     private List<CAttribute> attributes = new ArrayList();
 
@@ -24,7 +30,6 @@ public class CComplexObject extends CDefinedObject {
         archetype = null;
     }
 
-    @Override
     public boolean isRootNode() {
         return this.getParent() == null && this.archetype != null;
     }
@@ -58,7 +63,6 @@ public class CComplexObject extends CDefinedObject {
      * @param nameOrDifferentialpath name of the attribute, or the full differential path of the attribute
      * @return
      */
-    @Override
     public CAttribute getAttribute(String nameOrDifferentialpath) {
         for(CAttribute attribute:attributes) {
             if(attribute.getRmAttributeName().equals(nameOrDifferentialpath) && attribute.getDifferentialPath() == null) {
