@@ -92,7 +92,7 @@ public interface ModelInfoLookup {
      * @param cPrimitiveObject the AOM constraint
      * @return the rm object converted to the corresponding AOM object
      */
-    Object convertToConstraintObject(Object object, CPrimitiveObject cPrimitiveObject);
+    Object convertToConstraintObject(Object object, Object cPrimitiveObject);
 
 
     /**
@@ -107,7 +107,7 @@ public interface ModelInfoLookup {
      * Callback after an RM Object has been created based on a constraint. Can for example be used
      * to set names or archetype ID Node values
      */
-    void processCreatedObject(Object createdObject, CObject constraint);
+    void processCreatedObject(Object createdObject, Object constraint);
 
 
     /**

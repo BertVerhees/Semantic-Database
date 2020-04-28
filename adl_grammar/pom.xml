@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>nl.rosa.semanticdatabase</groupId>
-    <artifactId>archetypeobjectmodel</artifactId>
+    <artifactId>adl_grammar</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>archetypeobjectmodel</name>
+    <name>adl_grammar</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -21,20 +21,9 @@
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -47,15 +36,9 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>nl.rosa.semanticdatabase</groupId>
-            <artifactId>referencemodel</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>nl.rosa.semanticdatabase</groupId>
-            <artifactId>adl_grammar</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4</artifactId>
+            <version>4.8-1</version>
         </dependency>
     </dependencies>
 
@@ -64,6 +47,19 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4-maven-plugin</artifactId>
+                <version>4.8-1</version>
+                <executions>
+                    <execution>
+                        <id>antlr</id>
+                        <goals>
+                            <goal>antlr4</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
