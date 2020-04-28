@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints;
 
-import com.nedap.archie.aom.primitives.CDateTime;
-import com.nedap.archie.serializer.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.CDateTime;
 
 /**
  * @author Marko Pipan

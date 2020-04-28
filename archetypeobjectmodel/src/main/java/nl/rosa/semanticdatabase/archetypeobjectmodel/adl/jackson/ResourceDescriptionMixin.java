@@ -1,8 +1,7 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.jackson;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.nedap.archie.base.terminology.TerminologyCode;
-import org.openehr.odin.jackson.serializers.TermCodeAsStringConverter;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyCode;
 
 public class ResourceDescriptionMixin {
 

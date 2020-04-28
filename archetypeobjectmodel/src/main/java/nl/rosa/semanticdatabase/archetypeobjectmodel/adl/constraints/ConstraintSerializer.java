@@ -1,11 +1,9 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints;
 
 
-import com.nedap.archie.aom.CObject;
-import com.nedap.archie.serializer.adl.ADLDefinitionSerializer;
-import com.nedap.archie.serializer.adl.ADLStringBuilder;
-
-import static com.nedap.archie.serializer.adl.ArchetypeSerializeUtils.buildOccurrences;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLStringBuilder;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CObject;
 
 /**
  * @author Marko Pipan

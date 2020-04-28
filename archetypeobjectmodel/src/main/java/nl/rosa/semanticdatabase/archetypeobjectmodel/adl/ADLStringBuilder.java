@@ -1,12 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.nedap.archie.serializer.adl.jackson.ArchetypeODINMapperFactory;
-import com.nedap.archie.serializer.odin.StructureStringBuilder;
-import com.nedap.archie.serializer.odin.StructuredStringAppendable;
-import org.openehr.odin.jackson.ODINMapper;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.jackson.ArchetypeODINMapperFactory;
 
-import static com.nedap.archie.serializer.odin.OdinStringBuilder.quoteText;
 
 /**
  * @author markopi

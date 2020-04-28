@@ -1,8 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints;
 
 
-import com.nedap.archie.aom.CArchetypeRoot;
-import com.nedap.archie.serializer.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CArchetypeRoot;
 
 /**
  * @author Marko Pipan

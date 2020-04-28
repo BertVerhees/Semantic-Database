@@ -1,23 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl14.treewalkers;
 
-import com.nedap.archie.adl14.aom14.CDVOrdinal;
-import com.nedap.archie.adl14.aom14.CDVOrdinalItem;
-import com.nedap.archie.adl14.aom14.CDVQuantity;
-import com.nedap.archie.adl14.aom14.CDVQuantityItem;
-import com.nedap.archie.adlparser.antlr.Adl14Parser.*;
-import com.nedap.archie.adlparser.treewalkers.BaseTreeWalker;
-import com.nedap.archie.antlr.errors.ANTLRParserErrors;
-import com.nedap.archie.aom.*;
-import com.nedap.archie.aom.primitives.CInteger;
-import com.nedap.archie.aom.primitives.CReal;
-import com.nedap.archie.aom.primitives.CString;
-import com.nedap.archie.aom.primitives.CTerminologyCode;
-import com.nedap.archie.base.Cardinality;
-import com.nedap.archie.base.Interval;
-import com.nedap.archie.base.MultiplicityInterval;
-import com.nedap.archie.base.terminology.TerminologyCode;
-import com.nedap.archie.rules.Assertion;
-import org.antlr.v4.runtime.tree.TerminalNode;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adlparser.treewalkers.BaseTreeWalker;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CComplexObject;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.RulesSection;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints;
 
-import com.nedap.archie.aom.CComplexObjectProxy;
-import com.nedap.archie.serializer.adl.ADLDefinitionSerializer;
+
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CComplexObjectProxy;
 
 /**
  * @author markopi

@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl14.aom14;
 
-import com.nedap.archie.base.terminology.TerminologyCode;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyCode;
 
 import java.util.Map;
 

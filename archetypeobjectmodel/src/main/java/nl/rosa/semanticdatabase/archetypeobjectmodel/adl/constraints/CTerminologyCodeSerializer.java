@@ -1,9 +1,9 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints;
 
 
-import com.nedap.archie.aom.primitives.CTerminologyCode;
-import com.nedap.archie.aom.utils.AOMUtils;
-import com.nedap.archie.serializer.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.CTerminologyCode;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.utils.AOMUtils;
 
 /**
  * @author Marko Pipan

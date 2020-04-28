@@ -1,8 +1,9 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints;
 
-import com.nedap.archie.aom.primitives.COrdered;
-import com.nedap.archie.base.Interval;
-import com.nedap.archie.serializer.adl.ADLDefinitionSerializer;
+
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.COrdered;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Interval;
 
 /**
  * @author markopi

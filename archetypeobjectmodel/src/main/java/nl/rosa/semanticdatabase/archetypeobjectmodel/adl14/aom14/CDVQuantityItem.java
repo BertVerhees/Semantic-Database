@@ -1,10 +1,10 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl14.aom14;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nedap.archie.aom.primitives.CInteger;
-import com.nedap.archie.aom.primitives.CReal;
-import com.nedap.archie.aom.primitives.CString;
-import com.nedap.archie.base.Interval;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.CInteger;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.CReal;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.CString;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Interval;
 
 public class CDVQuantityItem {
 

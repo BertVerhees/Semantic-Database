@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl14.log;
 
-import com.nedap.archie.aom.terminology.ValueSet;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ValueSet;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

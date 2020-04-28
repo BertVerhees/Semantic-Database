@@ -1,9 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints;
 
 import com.google.common.base.Joiner;
-import com.nedap.archie.aom.*;
-import com.nedap.archie.base.Cardinality;
-import com.nedap.archie.serializer.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CComplexObject;
 
 import java.util.ArrayList;
 import java.util.List;

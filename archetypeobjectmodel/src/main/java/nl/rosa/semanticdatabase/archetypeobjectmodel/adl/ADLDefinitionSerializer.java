@@ -1,12 +1,12 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl;
 
-import com.nedap.archie.aom.*;
-import com.nedap.archie.aom.primitives.*;
-import com.nedap.archie.aom.terminology.ArchetypeTerm;
-import com.nedap.archie.aom.terminology.ArchetypeTerminology;
-import com.nedap.archie.aom.utils.AOMUtils;
-import com.nedap.archie.base.terminology.TerminologyCode;
-import com.nedap.archie.serializer.adl.constraints.*;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints.*;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.*;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.*;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ArchetypeTerm;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ArchetypeTerminology;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.utils.AOMUtils;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyCode;
 
 import java.util.HashMap;
 import java.util.Map;

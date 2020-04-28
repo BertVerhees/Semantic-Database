@@ -1,13 +1,9 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl;
 
-import com.nedap.archie.aom.RulesSection;
-import com.nedap.archie.rules.*;
-import com.nedap.archie.serializer.adl.rules.*;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints.ConstraintSerializer;
-import nl.rosa.semanticdatabase.archetypeobjectmodel.rules.BinaryOperator;
-import nl.rosa.semanticdatabase.archetypeobjectmodel.rules.Constraint;
-import nl.rosa.semanticdatabase.archetypeobjectmodel.rules.UnaryOperator;
-import nl.rosa.semanticdatabase.archetypeobjectmodel.rules.VariableReference;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.rules.*;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.RulesSection;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.rules.*;
 
 import java.util.HashMap;
 import java.util.Map;

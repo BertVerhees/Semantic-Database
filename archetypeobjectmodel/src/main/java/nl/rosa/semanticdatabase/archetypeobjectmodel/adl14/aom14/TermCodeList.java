@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl14.aom14;
 
-import com.nedap.archie.aom.terminology.ArchetypeTerm;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ArchetypeTerm;
 
 import java.util.Map;
 

@@ -1,8 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.rules;
 
-import com.nedap.archie.rules.RuleElement;
-import com.nedap.archie.serializer.adl.ADLRulesSerializer;
-import com.nedap.archie.serializer.adl.ADLStringBuilder;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLRulesSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLStringBuilder;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.rules.RuleElement;
 
 /**
  * Created by pieter.bos on 15/06/16.

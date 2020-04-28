@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl;
 
-import com.nedap.archie.aom.Archetype;
-import com.nedap.archie.aom.OperationalTemplate;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.Archetype;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.OperationalTemplate;
 
 import java.util.function.Function;
 

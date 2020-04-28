@@ -1,8 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl;
 
 import com.google.common.base.Joiner;
-import com.nedap.archie.aom.Archetype;
-import com.nedap.archie.aom.AuthoredArchetype;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.Archetype;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.AuthoredArchetype;
 
 import java.util.LinkedHashMap;
 import java.util.List;

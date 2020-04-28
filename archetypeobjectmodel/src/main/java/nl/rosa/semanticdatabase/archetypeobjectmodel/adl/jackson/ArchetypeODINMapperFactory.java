@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.jackson;
 
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.nedap.archie.aom.ResourceDescription;
-import com.nedap.archie.aom.terminology.ArchetypeTerm;
-import com.nedap.archie.aom.terminology.ArchetypeTerminology;
-import org.openehr.odin.jackson.ODINMapper;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.ResourceDescription;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ArchetypeTerm;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ArchetypeTerminology;
 
 public class ArchetypeODINMapperFactory {
 

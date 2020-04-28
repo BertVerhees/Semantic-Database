@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.rules;
 
-import com.nedap.archie.rules.ForAllStatement;
-import com.nedap.archie.serializer.adl.ADLRulesSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLRulesSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.rules.ForAllStatement;
 
 /**
  * Created by pieter.bos on 15/06/16.

@@ -1,10 +1,10 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl14.aom14;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nedap.archie.aom.primitives.CInteger;
-import com.nedap.archie.aom.primitives.CTerminologyCode;
-import com.nedap.archie.base.Interval;
-import com.nedap.archie.base.terminology.TerminologyCode;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.CInteger;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.CTerminologyCode;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyCode;
+import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Interval;
 
 import java.util.Arrays;
 

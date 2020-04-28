@@ -1,8 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl14.log;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nedap.archie.aom.terminology.ArchetypeTerm;
-import com.nedap.archie.aom.utils.AOMUtils;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ArchetypeTerm;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.utils.AOMUtils;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

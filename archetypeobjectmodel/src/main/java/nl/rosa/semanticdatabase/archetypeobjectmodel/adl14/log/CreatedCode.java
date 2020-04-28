@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl14.log;
 
-import com.nedap.archie.base.terminology.TerminologyCode;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyCode;
 
 public class CreatedCode {
 

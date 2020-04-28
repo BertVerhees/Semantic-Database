@@ -1,8 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints;
 
 
-import com.nedap.archie.aom.primitives.CInteger;
-import com.nedap.archie.serializer.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.CInteger;
 
 /**
  * @author Marko Pipan

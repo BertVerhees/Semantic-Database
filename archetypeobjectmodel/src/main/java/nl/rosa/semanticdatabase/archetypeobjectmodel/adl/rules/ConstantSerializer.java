@@ -1,8 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.rules;
 
-import com.nedap.archie.rules.Constant;
-import com.nedap.archie.rules.ExpressionType;
-import com.nedap.archie.serializer.adl.ADLRulesSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLRulesSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.rules.Constant;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.rules.ExpressionType;
 
 /**
  * Created by pieter.bos on 15/06/16.

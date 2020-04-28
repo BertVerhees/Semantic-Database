@@ -1,11 +1,7 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl14.treewalkers;
 
-import com.nedap.archie.adl14.ADL14ConversionConfiguration;
-import com.nedap.archie.adlparser.antlr.Adl14BaseListener;
-import com.nedap.archie.adlparser.antlr.Adl14Parser.*;
-import com.nedap.archie.antlr.errors.ANTLRParserErrors;
-import com.nedap.archie.aom.*;
-import org.antlr.v4.runtime.tree.TerminalNode;
+
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.Archetype;
 
 /**
  * ANTLR listener for an ADLS file. Uses the listener construction for the topmost elements, switches to custom treewalker

@@ -1,11 +1,9 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints;
 
 
-import com.nedap.archie.aom.ArchetypeSlot;
-import com.nedap.archie.rules.Assertion;
-import com.nedap.archie.serializer.adl.ADLDefinitionSerializer;
-import com.nedap.archie.serializer.adl.ADLRulesSerializer;
-import com.nedap.archie.serializer.adl.ArchetypeSerializeUtils;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLDefinitionSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ArchetypeSerializeUtils;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.ArchetypeSlot;
 
 /**
  * Created by bna on 27.01.2015.
