@@ -3,12 +3,10 @@ package nl.rosa.semanticdatabase.referencemodel.model.internal.archetyped;
 import lombok.Getter;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.DvText;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.support.identification.UIDBasedId;
+import nl.rosa.semanticdatabase.base.support.identification.UIDBasedId;
 import org.springframework.lang.Nullable;
 
-import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 @Getter
 @Setter

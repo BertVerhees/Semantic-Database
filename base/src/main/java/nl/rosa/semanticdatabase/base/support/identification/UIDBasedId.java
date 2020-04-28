@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.referencemodel.model.internal.support.identification;
+package nl.rosa.semanticdatabase.base.support.identification;
 
 import org.springframework.lang.Nullable;
 

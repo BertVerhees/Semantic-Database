@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.referencemodel.model.internal.base;
+package nl.rosa.semanticdatabase.base;
 
 import java.time.Duration;
 import java.time.temporal.TemporalAmount;

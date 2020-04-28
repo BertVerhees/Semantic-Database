@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives;
 
 import lombok.Getter;
 import lombok.Setter;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Interval;
+import nl.rosa.semanticdatabase.base.Interval;
 
 import java.time.temporal.TemporalAccessor;
 import java.util.ArrayList;

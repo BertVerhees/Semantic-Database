@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl;
 
 
-import nl.rosa.semanticdatabase.referencemodel.model.internal.base.MultiplicityInterval;
+import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 
 /**
  * @author Marko Pipan

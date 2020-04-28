@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.CInteger;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.CTerminologyCode;
 import nl.rosa.semanticdatabase.base.terminology.TerminologyCode;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Interval;
+import nl.rosa.semanticdatabase.base.Interval;
 
 import java.util.Arrays;
 

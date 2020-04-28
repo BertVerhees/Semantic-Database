@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives;
 
 import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CObject;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CPrimitiveObject;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Interval;
+import nl.rosa.semanticdatabase.base.Interval;
 
 import java.util.function.BiFunction;
 

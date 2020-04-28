@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Interval;
+import nl.rosa.semanticdatabase.base.Interval;
 
 import java.beans.Transient;
 import java.util.ArrayList;

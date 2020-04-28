@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.generic;
 
 import nl.rosa.semanticdatabase.referencemodel.model.internal.datavalues.DvIdentifier;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.support.identification.PartyRef;
+import nl.rosa.semanticdatabase.base.support.identification.PartyRef;
 import org.springframework.lang.Nullable;
 
 import java.util.ArrayList;

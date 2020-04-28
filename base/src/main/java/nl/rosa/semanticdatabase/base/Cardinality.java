@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.base.MultiplicityInterval;
 
 public class Cardinality extends SemanticDatabaseBase {
 

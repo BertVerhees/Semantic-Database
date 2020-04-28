@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.archetyped;
 
-import nl.rosa.semanticdatabase.referencemodel.model.internal.support.identification.ArchetypeId;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.support.identification.TemplateId;
+import nl.rosa.semanticdatabase.base.support.identification.ArchetypeId;
+import nl.rosa.semanticdatabase.base.support.identification.TemplateId;
 
 import javax.annotation.Nullable;
 

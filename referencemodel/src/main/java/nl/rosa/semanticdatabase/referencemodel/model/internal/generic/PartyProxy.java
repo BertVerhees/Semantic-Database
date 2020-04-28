@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.model.internal.generic;
 
 import org.springframework.lang.Nullable;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.support.identification.PartyRef;
+import nl.rosa.semanticdatabase.base.support.identification.PartyRef;
 
 public abstract class PartyProxy {
     @Nullable

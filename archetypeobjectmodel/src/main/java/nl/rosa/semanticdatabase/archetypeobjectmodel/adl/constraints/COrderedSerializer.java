@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints;
 
 import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLDefinitionSerializer;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.COrdered;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Interval;
+import nl.rosa.semanticdatabase.base.Interval;
 
 /**
  * @author markopi
