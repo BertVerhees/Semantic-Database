@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.adl;
 
-import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints.ConstraintSerializer;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.rules.ConstraintSerializer;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.rules.*;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.RulesSection;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.rules.*;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.rules.RuleStatement;
 
 import java.util.HashMap;
 import java.util.Map;

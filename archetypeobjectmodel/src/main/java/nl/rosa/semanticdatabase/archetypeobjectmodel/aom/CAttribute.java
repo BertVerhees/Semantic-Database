@@ -3,7 +3,8 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 import lombok.Getter;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.utils.AOMUtils;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.base.Cardinality;
+import nl.rosa.semanticdatabase.base.Cardinality;
+import nl.rosa.semanticdatabase.query.APathQuery;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathSegment;
 
@@ -267,9 +268,9 @@ public class CAttribute extends ArchetypeConstraint {
         return path;
     }
 
-    public CAttribute clone() {
-        return (CAttribute) super.clone();
-    }
+//    public CAttribute clone() {
+//        return (CAttribute) super.clone();
+//    }
 
 
     /* Operations defined by UML */

@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 
-import com.nedap.archie.rules.RuleStatement;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.rules.RuleStatement;
 
 import java.util.ArrayList;
 import java.util.List;

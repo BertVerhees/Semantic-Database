@@ -1,11 +1,8 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.rules;
 
 
-import com.nedap.archie.aom.CPrimitiveObject;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CPrimitiveObject;
 
-/**
- * Created by pieter.bos on 27/10/15.
- */
 public class Constraint<T extends CPrimitiveObject> extends Leaf {
 
     private T item;

@@ -1,18 +1,12 @@
-package nl.rosa.semanticdatabase.referencemodel.model.internal.rminfo;
-
-import lombok.Getter;
-import lombok.Setter;
+package nl.rosa.semanticdatabase.base.rminfo;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collection;
 
 /**
- * Created by:
- * User: BV, Date: 21-4-2020, Time: 15:32
+ * Created by pieter.bos on 25/03/16.
  */
-@Getter
-@Setter
 public class RMAttributeInfo {
     private final String name;
     private final Field field;
@@ -39,5 +33,54 @@ public class RMAttributeInfo {
 
         this.typeInCollection = typeInCollection;
         this.typeNameInCollection = typeNameInCollection;
+    }
+
+    public String getRmName() {
+        return name;
+    }
+
+    public Method getGetMethod() {
+        return getMethod;
+    }
+
+    public Method getSetMethod() {
+        return setMethod;
+    }
+
+    public Method getAddMethod() {
+        return addMethod;
+    }
+
+    public Field getField() {
+        return field;
+    }
+
+    public boolean isMultipleValued() {
+        return isMultipleValued;
+    }
+
+    public Class getType() {
+        return type;
+    }
+
+    public boolean isNullable() {
+        return nullable;
+    }
+
+    /**
+     * If isMultipleValued == true, this will return the type used in the collection, eg if the the collection is List&lt;String&gt;, this will return String.class
+     * @return
+     */
+    public Class getTypeInCollection() {
+        return typeInCollection;
+    }
+
+    public boolean isComputed() {
+        return computed;
+    }
+
+
+    public String getTypeNameInCollection() {
+        return typeNameInCollection;
     }
 }

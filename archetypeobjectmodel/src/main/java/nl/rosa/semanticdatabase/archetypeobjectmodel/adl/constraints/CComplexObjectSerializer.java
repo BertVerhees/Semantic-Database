@@ -2,15 +2,15 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.adl.constraints;
 
 import com.google.common.base.Joiner;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLDefinitionSerializer;
-import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CComplexObject;
+import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.*;
+import nl.rosa.semanticdatabase.base.Cardinality;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.nedap.archie.serializer.adl.ArchetypeSerializeUtils.buildOccurrences;
-
+import static nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ArchetypeSerializeUtils.buildOccurrences;
 
 /**
  * @author Marko Pipan

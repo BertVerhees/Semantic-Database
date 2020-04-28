@@ -7,6 +7,7 @@ import nl.rosa.semanticdatabase.referencemodel.model.internal.base.MultiplicityI
  * @author Marko Pipan
  */
 public class ArchetypeSerializeUtils {
+
     public static void buildOccurrences(ADLStringBuilder builder, MultiplicityInterval occ) {
         if(occ == null) {
             builder.append("*");

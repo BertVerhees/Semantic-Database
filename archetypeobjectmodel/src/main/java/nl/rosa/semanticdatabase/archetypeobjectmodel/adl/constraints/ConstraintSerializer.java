@@ -5,6 +5,8 @@ import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLDefinitionSerializer
 import nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ADLStringBuilder;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CObject;
 
+import static nl.rosa.semanticdatabase.archetypeobjectmodel.adl.ArchetypeSerializeUtils.buildOccurrences;
+
 /**
  * @author Marko Pipan
  */

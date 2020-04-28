@@ -2,9 +2,9 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 
 import lombok.Getter;
 import lombok.Setter;
-import nl.rosa.semanticdatabase.LanguageConfiguration;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.terminology.ArchetypeTerm;
 import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.utils.AOMUtils;
+import nl.rosa.semanticdatabase.base.LanguageConfiguration;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathSegment;
 
@@ -18,8 +18,6 @@ import java.util.function.BiFunction;
  * Slightly deviates from the openEHR Archetype Model by including the getAttributes() and getAttribute() methods here
  * This enables one to type: archetype.getDefinition().getAttribute("context").getChild("id13").getAttribute("value")
  * without casting.
- *
- * Created by pieter.bos on 15/10/15.
  */
 @Getter
 @Setter
