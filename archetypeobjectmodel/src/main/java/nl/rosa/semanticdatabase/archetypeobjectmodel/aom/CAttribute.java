@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.archetypeobjectmodel.aom.utils.AOMUtils;
 import nl.rosa.semanticdatabase.base.Cardinality;
 import nl.rosa.semanticdatabase.query.APathQuery;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathSegment;
+import nl.rosa.semanticdatabase.base.paths.PathSegment;
 
 import java.util.ArrayList;
 import java.util.List;

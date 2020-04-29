@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.referencemodel.model.internal.archetyped;
 
 import lombok.Getter;
 import lombok.Setter;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathSegment;
+import nl.rosa.semanticdatabase.base.paths.PathSegment;
 import org.springframework.lang.Nullable;
 
 import java.util.ArrayList;

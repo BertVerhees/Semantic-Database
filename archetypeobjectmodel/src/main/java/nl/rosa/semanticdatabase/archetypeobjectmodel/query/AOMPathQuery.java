@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.query;
 
 
 import com.google.common.collect.Lists;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathSegment;
+import nl.rosa.semanticdatabase.base.paths.PathSegment;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -3,8 +3,8 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.aom;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathSegment;
-import nl.rosa.semanticdatabase.referencemodel.model.internal.paths.PathUtil;
+import nl.rosa.semanticdatabase.base.paths.PathSegment;
+import nl.rosa.semanticdatabase.base.paths.PathUtil;
 
 import java.util.List;
 
