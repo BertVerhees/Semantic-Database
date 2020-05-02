@@ -1,0 +1,36 @@
+package nl.rosa.semanticdatabase.odin;
+
+/*
+ * #%L
+ * OpenEHR - Java Model Stack
+ * %%
+ * Copyright (C) 2016 - 2017 Cognitive Medical Systems
+ * %%
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * #L%
+ * Author: Claude Nanjo
+ */
+
+
+import com.nedap.archie.adlparser.antlr.odinParser;
+
+import java.io.Serializable;
+
+public class TimeIntervalObject extends org.openehr.odin.IntervalObject<org.openehr.odin.TimeObject, odinParser.Time_valueContext> implements Serializable {
+
+    @Override
+    protected org.openehr.odin.TimeObject extractFromContext(odinParser.Time_valueContext ctx) {
+        return org.openehr.odin.TimeObject.extractTimeFromContext(ctx);
+    }
+
+}
