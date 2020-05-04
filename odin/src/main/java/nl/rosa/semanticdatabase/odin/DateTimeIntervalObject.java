@@ -21,18 +21,16 @@ package nl.rosa.semanticdatabase.odin;
  * Author: Claude Nanjo
  */
 
-import com.nedap.archie.adlparser.antlr.odinParser;
-
 import java.io.Serializable;
 
 /**
  * Created by cnanjo on 4/8/16.
  */
-public class DateTimeIntervalObject extends org.openehr.odin.IntervalObject<org.openehr.odin.DateTimeObject, odinParser.Date_time_valueContext> implements Serializable {
+public class DateTimeIntervalObject extends IntervalObject<DateTimeObject, odinParser.Date_time_valueContext> implements Serializable {
 
     @Override
-    protected org.openehr.odin.DateTimeObject extractFromContext(odinParser.Date_time_valueContext ctx) {
-        return org.openehr.odin.DateTimeObject.extractDateTimeFromContext(ctx);
+    protected DateTimeObject extractFromContext(odinParser.Date_time_valueContext ctx) {
+        return DateTimeObject.extractDateTimeFromContext(ctx);
     }
 
 }

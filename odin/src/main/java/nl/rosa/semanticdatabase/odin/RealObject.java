@@ -21,23 +21,21 @@ package nl.rosa.semanticdatabase.odin;
  * Author: Claude Nanjo
  */
 
-import com.nedap.archie.adlparser.antlr.odinParser;
-
 import java.io.Serializable;
 
 /**
  * Created by cnanjo on 4/8/16.
  */
-public class RealObject extends org.openehr.odin.PrimitiveObject<String> implements Serializable {
+public class RealObject extends PrimitiveObject<String> implements Serializable {
 
     public Float getAsFloat() {
         return Float.parseFloat(getValue());
     }
 
 
-    public static org.openehr.odin.RealObject extractRealObject(odinParser.Real_valueContext ctx) {
+    public static RealObject extractRealObject(odinParser.Real_valueContext ctx) {
         String value = ctx.getText();
-        org.openehr.odin.RealObject cReal = new org.openehr.odin.RealObject();
+        RealObject cReal = new RealObject();
         cReal.setValue(value);
         return cReal;
     }

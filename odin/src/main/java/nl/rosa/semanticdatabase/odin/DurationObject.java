@@ -21,8 +21,6 @@ package nl.rosa.semanticdatabase.odin;
  * Author: Claude Nanjo
  */
 
-import com.nedap.archie.adlparser.antlr.odinParser;
-
 import java.io.Serializable;
 
 /**

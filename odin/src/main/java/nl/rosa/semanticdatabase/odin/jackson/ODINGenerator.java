@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.odin.jackson;
 
+import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.core.base.GeneratorBase;
 import com.fasterxml.jackson.core.io.IOContext;
 import com.fasterxml.jackson.core.json.JsonWriteContext;
-import com.nedap.archie.serializer.odin.OdinStringBuilder;
-import com.nedap.archie.serializer.odin.StructuredStringWriter;
+import nl.rosa.semanticdatabase.odin.serializer.OdinStringBuilder;
+import nl.rosa.semanticdatabase.odin.serializer.StructuredStringWriter;
 
 import java.io.IOException;
 import java.io.Writer;

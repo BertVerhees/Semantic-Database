@@ -21,15 +21,13 @@ package nl.rosa.semanticdatabase.odin;
  * Author: Claude Nanjo
  */
 
-import com.nedap.archie.adlparser.antlr.odinParser;
-
 import java.io.Serializable;
 
-public class IntegerIntervalObject extends IntervalObject<org.openehr.odin.IntegerObject, odinParser.Integer_valueContext> implements Serializable {
+public class IntegerIntervalObject extends IntervalObject<IntegerObject, odinParser.Integer_valueContext> implements Serializable {
 
     @Override
-    protected org.openehr.odin.IntegerObject extractFromContext(odinParser.Integer_valueContext ctx) {
-        return org.openehr.odin.IntegerObject.extractIntegerObject(ctx);
+    protected IntegerObject extractFromContext(odinParser.Integer_valueContext ctx) {
+        return IntegerObject.extractIntegerObject(ctx);
     }
 
     public String toString() {

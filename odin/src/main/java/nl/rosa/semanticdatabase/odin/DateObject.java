@@ -21,18 +21,16 @@ package nl.rosa.semanticdatabase.odin;
  * Author: Claude Nanjo
  */
 
-import com.nedap.archie.adlparser.antlr.odinParser;
-
 import java.io.Serializable;
 
 /**
  * Created by cnanjo on 4/8/16.
  */
-public class DateObject extends org.openehr.odin.PrimitiveObject<String> implements Serializable {
+public class DateObject extends PrimitiveObject<String> implements Serializable {
 
-    public static org.openehr.odin.DateObject extractDateFromContext(odinParser.Date_valueContext ctx) {
+    public static DateObject extractDateFromContext(odinParser.Date_valueContext ctx) {
         String value = ctx.getText();
-        org.openehr.odin.DateObject date = new org.openehr.odin.DateObject();
+        DateObject date = new DateObject();
         date.setValue(value);
         return date;
     }

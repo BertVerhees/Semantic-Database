@@ -7,9 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.nedap.archie.base.Interval;
-import com.nedap.archie.base.terminology.TerminologyCode;
-import org.openehr.odin.jackson.serializers.*;
 
 import java.net.URI;
 import java.net.URL;

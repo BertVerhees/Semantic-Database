@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.odin.jackson;
 
+import com.fasterxml.jackson.core.*;
 import com.fasterxml.jackson.core.format.InputAccessor;
 import com.fasterxml.jackson.core.format.MatchStrength;
 import com.fasterxml.jackson.core.io.IOContext;

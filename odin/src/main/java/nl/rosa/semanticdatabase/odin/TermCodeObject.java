@@ -26,5 +26,5 @@ import java.io.Serializable;
 /**
  * Created by cnanjo on 4/8/16.
  */
-public class TermCodeObject extends org.openehr.odin.PrimitiveObject<String> implements Serializable {
+public class TermCodeObject extends PrimitiveObject<String> implements Serializable {
 }

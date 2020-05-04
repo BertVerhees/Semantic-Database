@@ -54,7 +54,7 @@
         </dependency>
         <dependency>
             <groupId>nl.rosa.semanticdatabase</groupId>
-            <artifactId>adl_grammar</artifactId>
+            <artifactId>grammars</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>

@@ -21,8 +21,6 @@ package nl.rosa.semanticdatabase.odin;
  * Author: Claude Nanjo
  */
 
-import com.nedap.archie.adlparser.antlr.odinParser;
-
 import java.io.Serializable;
 
 /**
@@ -53,9 +51,9 @@ public class IntegerObject extends PrimitiveObject<String> implements Serializab
 
     }
 
-    public static org.openehr.odin.IntegerObject extractIntegerObject(odinParser.Integer_valueContext ctx) {
+    public static IntegerObject extractIntegerObject(odinParser.Integer_valueContext ctx) {
         String value = ctx.getText();
-        org.openehr.odin.IntegerObject cInteger = new org.openehr.odin.IntegerObject();
+        IntegerObject cInteger = new IntegerObject();
         cInteger.setValue(value);
         return cInteger;
     }
@@ -69,10 +67,10 @@ public class IntegerObject extends PrimitiveObject<String> implements Serializab
     public boolean equals(Object obj) {
         if(obj == null) {
             return false;
-        } else if(!(obj instanceof org.openehr.odin.IntegerObject)) {
+        } else if(!(obj instanceof IntegerObject)) {
             return false;
         }
-        org.openehr.odin.IntegerObject other = (org.openehr.odin.IntegerObject)obj;
+        IntegerObject other = (IntegerObject)obj;
         if(this == other) {
             return true;
         } else if(this.getValue() != null && other.getValue() != null && this.getValue().equals(other.getValue())) {

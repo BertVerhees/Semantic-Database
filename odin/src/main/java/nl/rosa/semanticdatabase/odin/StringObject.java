@@ -26,7 +26,7 @@ import java.io.Serializable;
 /**
  * Created by cnanjo on 4/8/16.
  */
-public class StringObject extends org.openehr.odin.PrimitiveObject<String> implements Serializable {
+public class StringObject extends PrimitiveObject<String> implements Serializable {
 
     public StringObject() {
         super();
@@ -46,10 +46,10 @@ public class StringObject extends org.openehr.odin.PrimitiveObject<String> imple
     public boolean equals(Object obj) {
         if(obj == null) {
             return false;
-        } else if(!(obj instanceof org.openehr.odin.StringObject)) {
+        } else if(!(obj instanceof StringObject)) {
             return false;
         }
-        org.openehr.odin.StringObject other = (org.openehr.odin.StringObject)obj;
+        StringObject other = (StringObject)obj;
         if(this == other) {
             return true;
         } else if(this.getValue() != null && other.getValue() != null && this.getValue().equals(other.getValue())) {

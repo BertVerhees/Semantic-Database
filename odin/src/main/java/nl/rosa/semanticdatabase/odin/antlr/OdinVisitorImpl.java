@@ -21,12 +21,8 @@ package nl.rosa.semanticdatabase.odin.antlr;
  * Author: Claude Nanjo
  */
 
-import com.nedap.archie.adlparser.antlr.odinBaseVisitor;
-import com.nedap.archie.adlparser.antlr.odinParser;
-import com.nedap.archie.adlparser.antlr.odinVisitor;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.TerminalNode;
-import org.openehr.odin.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

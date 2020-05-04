@@ -30,10 +30,10 @@ import java.util.List;
  */
 public class OdinAttribute implements Serializable {
     private String name;
-    private List<org.openehr.odin.OdinObject> children;
+    private List<OdinObject> children;
 
     public OdinAttribute() {
-        children = new ArrayList<org.openehr.odin.OdinObject>();
+        children = new ArrayList<OdinObject>();
     }
 
     public OdinAttribute(String name) {
@@ -49,7 +49,7 @@ public class OdinAttribute implements Serializable {
         this.name = name;
     }
 
-    public void addChild(org.openehr.odin.OdinObject child) {
+    public void addChild(OdinObject child) {
         children.add(child);
     }
 
@@ -60,14 +60,14 @@ public class OdinAttribute implements Serializable {
      * @return
      */
     public boolean isPrimitiveValuedAttribute() {
-        return children.size() == 1 && children.get(0)  instanceof org.openehr.odin.PrimitiveObject;
+        return children.size() == 1 && children.get(0)  instanceof PrimitiveObject;
     }
 
     public boolean isPrimitiveList() {
 
         String type = children.get(0).getClass().getName();
-        for(org.openehr.odin.OdinObject child : children) {
-            if(!(child instanceof org.openehr.odin.PrimitiveObject) && !child.getClass().getName().equals(type)) {
+        for(OdinObject child : children) {
+            if(!(child instanceof PrimitiveObject) && !child.getClass().getName().equals(type)) {
                 return false;
             }
         }
@@ -80,17 +80,17 @@ public class OdinAttribute implements Serializable {
      *
      * @return
      */
-    public org.openehr.odin.PrimitiveObject<?> getPrimitiveObjectChild() {
+    public PrimitiveObject<?> getPrimitiveObjectChild() {
         if(isPrimitiveValuedAttribute()) {
-            return (org.openehr.odin.PrimitiveObject<?>) children.get(0);
+            return (PrimitiveObject<?>) children.get(0);
         } else {
             return null;
         }
     }
 
-    public org.openehr.odin.StringObject getStringObject() {
-        if(isPrimitiveValuedAttribute() && getPrimitiveObjectChild() instanceof org.openehr.odin.StringObject) {
-            return (org.openehr.odin.StringObject) children.get(0);
+    public StringObject getStringObject() {
+        if(isPrimitiveValuedAttribute() && getPrimitiveObjectChild() instanceof StringObject) {
+            return (StringObject) children.get(0);
         } else {
             return null;
         }
@@ -103,8 +103,8 @@ public class OdinAttribute implements Serializable {
     public List<String> getChildrenAsStringList() {
         List<String> retVal = new ArrayList<>();
         if(isPrimitiveList()) {
-            for(org.openehr.odin.OdinObject child : children) {
-                retVal.add(((org.openehr.odin.StringObject)child).getValue());
+            for(OdinObject child : children) {
+                retVal.add(((StringObject)child).getValue());
             }
         } else {
             throw new RuntimeException("Attribute must only have StringObject children");
@@ -115,15 +115,15 @@ public class OdinAttribute implements Serializable {
     public List<String> getChildrenAsStringList(boolean includeSingletons) {
         List<String> retVal = new ArrayList<>();
         if(isPrimitiveList()) {
-            for(org.openehr.odin.OdinObject child : children) {
-                retVal.add(((org.openehr.odin.StringObject)child).getValue());
+            for(OdinObject child : children) {
+                retVal.add(((StringObject)child).getValue());
             }
             if(retVal.size() == 2 && retVal.get(1).equals("...")) { //Remove list indicator
                 retVal.remove(1);
             }
         } else {
-            if(children.size() == 1 && children.get(0) instanceof org.openehr.odin.StringObject) {
-                retVal.add(((org.openehr.odin.StringObject)children.get(0)).getValue());
+            if(children.size() == 1 && children.get(0) instanceof StringObject) {
+                retVal.add(((StringObject)children.get(0)).getValue());
             }
         }
         return retVal;
@@ -132,22 +132,22 @@ public class OdinAttribute implements Serializable {
     public List<Integer> getChildrenAsIntegerList(boolean includeSingletons) {
         List<Integer> retVal = new ArrayList<>();
         if(isPrimitiveList()) {
-            for(org.openehr.odin.OdinObject child : children) {
-                retVal.add(((org.openehr.odin.IntegerObject)child).getAsInteger());
+            for(OdinObject child : children) {
+                retVal.add(((IntegerObject)child).getAsInteger());
             }
             if(retVal.size() == 2 && retVal.get(1).equals("...")) { //Remove list indicator
                 retVal.remove(1);
             }
         } else {
-            if(children.size() == 1 && children.get(0) instanceof org.openehr.odin.IntegerObject) {
-                retVal.add(((org.openehr.odin.IntegerObject)children.get(0)).getAsInteger());
+            if(children.size() == 1 && children.get(0) instanceof IntegerObject) {
+                retVal.add(((IntegerObject)children.get(0)).getAsInteger());
             }
         }
         return retVal;
     }
 
-    public org.openehr.odin.StringObject getStringObjectAt(int index) {
-        return (org.openehr.odin.StringObject)children.get(index);
+    public StringObject getStringObjectAt(int index) {
+        return (StringObject)children.get(index);
     }
 
     public String getStringValueAt(int index) {
@@ -161,18 +161,18 @@ public class OdinAttribute implements Serializable {
      * @param attributeName
      * @return
      */
-    public org.openehr.odin.OdinAttribute getChildAttribute(String attributeName) {
-        org.openehr.odin.OdinAttribute retVal = null;
-        org.openehr.odin.CompositeOdinObject attrBody = getSoleCompositeObjectBody();
+    public OdinAttribute getChildAttribute(String attributeName) {
+        OdinAttribute retVal = null;
+        CompositeOdinObject attrBody = getSoleCompositeObjectBody();
         if(attrBody != null) {
             retVal = attrBody.getAttribute(attributeName);
         }
         return retVal;
     }
 
-    public org.openehr.odin.BooleanObject getBooleanObject() {
-        if(isPrimitiveValuedAttribute() && getPrimitiveObjectChild() instanceof org.openehr.odin.BooleanObject) {
-            return (org.openehr.odin.BooleanObject) children.get(0);
+    public BooleanObject getBooleanObject() {
+        if(isPrimitiveValuedAttribute() && getPrimitiveObjectChild() instanceof BooleanObject) {
+            return (BooleanObject) children.get(0);
         } else {
             return null;
         }
@@ -182,33 +182,33 @@ public class OdinAttribute implements Serializable {
         return getBooleanObject().getValue();
     }
 
-    public org.openehr.odin.RealObject getRealObject() {
-        if(isPrimitiveValuedAttribute() && getPrimitiveObjectChild() instanceof org.openehr.odin.RealObject) {
-            return (org.openehr.odin.RealObject) children.get(0);
+    public RealObject getRealObject() {
+        if(isPrimitiveValuedAttribute() && getPrimitiveObjectChild() instanceof RealObject) {
+            return (RealObject) children.get(0);
         } else {
             return null;
         }
     }
 
-    public org.openehr.odin.IntegerObject getIntegerObject() {
-        if(isPrimitiveValuedAttribute() && getPrimitiveObjectChild() instanceof org.openehr.odin.IntegerObject) {
-            return (org.openehr.odin.IntegerObject) children.get(0);
+    public IntegerObject getIntegerObject() {
+        if(isPrimitiveValuedAttribute() && getPrimitiveObjectChild() instanceof IntegerObject) {
+            return (IntegerObject) children.get(0);
         } else {
             return null;
         }
     }
 
-    public org.openehr.odin.IntegerIntervalObject getIntegerIntervalObject() {
-        if(children.get(0) instanceof org.openehr.odin.IntegerIntervalObject) {
-            return (org.openehr.odin.IntegerIntervalObject) children.get(0);
+    public IntegerIntervalObject getIntegerIntervalObject() {
+        if(children.get(0) instanceof IntegerIntervalObject) {
+            return (IntegerIntervalObject) children.get(0);
         } else {
             return null;
         }
     }
 
-    public org.openehr.odin.CharObject getCharacterObject() {
-        if(isPrimitiveValuedAttribute() && getPrimitiveObjectChild() instanceof org.openehr.odin.CharObject) {
-            return (org.openehr.odin.CharObject) children.get(0);
+    public CharObject getCharacterObject() {
+        if(isPrimitiveValuedAttribute() && getPrimitiveObjectChild() instanceof CharObject) {
+            return (CharObject) children.get(0);
         } else {
             return null;
         }
@@ -221,10 +221,10 @@ public class OdinAttribute implements Serializable {
      *
      * @return
      */
-    public org.openehr.odin.CompositeOdinObject getSoleCompositeObjectBody() {
+    public CompositeOdinObject getSoleCompositeObjectBody() {
         if(!isPrimitiveValuedAttribute() && children.size() == 1) {
-            if(children.get(0) instanceof org.openehr.odin.CompositeOdinObject) {
-                return (org.openehr.odin.CompositeOdinObject)children.get(0);
+            if(children.get(0) instanceof CompositeOdinObject) {
+                return (CompositeOdinObject)children.get(0);
             } else {
                 return null;
             }
@@ -233,7 +233,7 @@ public class OdinAttribute implements Serializable {
         }
     }
 
-    public List<org.openehr.odin.OdinObject> getChildren() {
+    public List<OdinObject> getChildren() {
         return children;
     }
 
