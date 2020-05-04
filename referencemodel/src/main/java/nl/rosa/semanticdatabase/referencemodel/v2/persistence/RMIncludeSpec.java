@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public final class IncludeSpec extends PRMBase {
+public final class RMIncludeSpec extends PRMBase {
     private String id;
 }

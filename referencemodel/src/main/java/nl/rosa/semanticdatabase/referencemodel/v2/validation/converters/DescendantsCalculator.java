@@ -1,18 +1,19 @@
 package nl.rosa.semanticdatabase.referencemodel.v2.validation.converters;
 
-import org.openehr.bmm.core.BmmClass;
-import org.openehr.bmm.core.BmmModel;
+
+import nl.rosa.semanticdatabase.referencemodel.core.RMClass;
+import nl.rosa.semanticdatabase.referencemodel.core.RMModel;
 
 import java.util.Map;
 
 public class DescendantsCalculator {
 
-    public void calculateDescendants(BmmModel model) {
+    public void calculateDescendants(RMModel model) {
 
-        final Map<String, BmmClass> classDefinitions = model.getClassDefinitions();
+        final Map<String, RMClass> classDefinitions = model.getClassDefinitions();
 
-        for(BmmClass bmmClass:classDefinitions.values()) {
-            for(BmmClass ancestor:bmmClass.getAncestors().values()) {
+        for(RMClass bmmClass:classDefinitions.values()) {
+            for(RMClass ancestor:bmmClass.getAncestors().values()) {
                 ancestor.addImmediateDescendant(bmmClass.getName());
             }
         }

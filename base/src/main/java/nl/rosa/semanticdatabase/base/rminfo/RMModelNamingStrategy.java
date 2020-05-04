@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
  * Created by pieter.bos on 29/03/16.
  * A naming helper for both Archie RM and AOM objects
  */
-public class ArchieModelNamingStrategy implements ModelNamingStrategy {
+public class RMModelNamingStrategy implements ModelNamingStrategy {
 
     public static final PropertyNamingStrategy.SnakeCaseStrategy snakeCaseStrategy = new PropertyNamingStrategy.SnakeCaseStrategy();
 

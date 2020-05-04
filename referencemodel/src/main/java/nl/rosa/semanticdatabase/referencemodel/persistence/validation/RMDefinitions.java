@@ -177,15 +177,15 @@ public class RMDefinitions extends RMBasicDefinitions {
     }
 
     /**
-     * is the software version of the BMM (defined by the constant `Bmm_version', above)
+     * is the software version of the BMM (defined by the constant `RM_version', above)
      * compatible with that found in the schema?
      * Returns True if the two versions have the same major version number
      *
-     * @param aSchemaBmmVersion
+     * @param aSchemaRMVersion
      * @return
      */
-    public static boolean isVersionCompatible(String aSchemaBmmVersion) {
-        return aSchemaBmmVersion.substring (0, aSchemaBmmVersion.indexOf ('.', 0)).equals (BMM_INTERNAL_VERSION.substring (0, BMM_INTERNAL_VERSION.indexOf ('.', 0)));
+    public static boolean isVersionCompatible(String aSchemaRMVersion) {
+        return aSchemaRMVersion.substring (0, aSchemaRMVersion.indexOf ('.', 0)).equals (BMM_INTERNAL_VERSION.substring (0, BMM_INTERNAL_VERSION.indexOf ('.', 0)));
     }
 
     /**

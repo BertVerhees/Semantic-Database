@@ -32,7 +32,7 @@ public class RMSchemaConverter {
      * package structure in which all top-level qualified package names like xx.yy.zz have been
      * expanded out to a hierarchy of BMM_PACKAGE objects
      */
-    private RMSchemaValidator RMSchemaValidator;
+    private RMSchemaValidator schemaValidator;
 
     /**
      * Create the BmmSchemaConverter for the given BmmRepository. The given BmmRepository will be used as the source
@@ -41,7 +41,7 @@ public class RMSchemaConverter {
      */
     public RMSchemaConverter(RMRepository RMRepository) {
         this.RMRepository = RMRepository;
-        RMSchemaValidator = new RMSchemaValidator(RMRepository);
+        schemaValidator = new RMSchemaValidator(RMRepository);
     }
 
     /**
@@ -54,27 +54,27 @@ public class RMSchemaConverter {
      */
     public RMValidationResult validateConvertAndAddToRepo(PRMSchema schema) {
         //clear error messages
-        RMSchemaValidator = new RMSchemaValidator(RMRepository);
+        schemaValidator = new RMSchemaValidator(RMRepository);
 
         logger.info("loading " + schema.getSchemaId());
 
         RMValidationResult result = new RMValidationResult();
-        result.setLogger(RMSchemaValidator.getLogger());
+        result.setLogger(schemaValidator.getLogger());
         result.setSchemaId(schema.getSchemaId());
         result.setOriginalSchema(schema);
         try {
             //Step 1: run validations that can be run on the persisted file format
             //validate some basics of the schema: check that everything defined in tje packages part appears in classes
             //and the other way around
-            RMSchemaValidator.validateCreated(result, schema);
-            RMSchemaValidator.checkNoExceptions();
+            schemaValidator.validateCreated(result, schema);
+            schemaValidator.checkNoExceptions();
 
             //Check that this P_BMM file has a version compatible with this library
-            RMSchemaValidator.validateBmmVersion(result, schema);
-            RMSchemaValidator.checkNoExceptions();
+            schemaValidator.validateRMVersion(result, schema);
+            schemaValidator.checkNoExceptions();
             //validate that includes exist
-            RMSchemaValidator.validateIncludes(result, schema);
-            RMSchemaValidator.checkNoExceptions();
+            schemaValidator.validateIncludes(result, schema);
+            schemaValidator.checkNoExceptions();
 
             //convert some maps into case insensitive ones, to make some lookups case insensitive
             //this keeps the original casing, just the lookup is different
@@ -86,21 +86,21 @@ public class RMSchemaConverter {
 
             //and process included schemas, storing a clone of the original schema in the BmmValidationResult
             //this step also validates and converts any included schemas, storing the result in the repository
-            new IncludesProcessor().cloneSchemaAndAddIncludes(result, RMRepository, RMSchemaValidator.getLogger());
-            RMSchemaValidator.checkNoExceptions();
+            new IncludesProcessor().cloneSchemaAndAddIncludes(result, RMRepository, schemaValidator.getLogger());
+            schemaValidator.checkNoExceptions();
 
             //step 3: validate the merged schema, including the includes
-            RMSchemaValidator.validateSchemaAfterMergeOfIncludes(result);
-            RMSchemaValidator.checkNoExceptions();
+            schemaValidator.validateSchemaAfterMergeOfIncludes(result);
+            schemaValidator.checkNoExceptions();
 
             //step 4: create model
-            RMModel RMModel = new RMModelCreator().create(result);
+            RMModel rmModel = new RMModelCreator().create(result);
 
-            RMSchemaValidator.checkNoExceptions();
+            schemaValidator.checkNoExceptions();
 
             //set the descendants and ancestors properties
-            new DescendantsCalculator().calculateDescendants(RMModel);
-            result.setRMModel(RMModel);
+            new DescendantsCalculator().calculateDescendants(rmModel);
+            result.setRMModel(rmModel);
 
             //add the model and closure to the repository, but only if no errors
             createModelsByClosureAndVersion(result);
@@ -146,7 +146,7 @@ public class RMSchemaConverter {
         String qualifiedRmClosureName = RMDefinitions.publisherQualifiedRmClosureName(modelPublisher, modelName) + "_" + RMValidationResult.getRMModel().getRmRelease();
         RMValidationResult existingSchema = RMRepository.getModelByClosure(qualifiedRmClosureName);
         if (existingSchema != null) {
-            RMSchemaValidator.getLogger().addInfo(MessageIds.ec_schema_duplicate_found,
+            schemaValidator.getLogger().addInfo(MessageIds.ec_schema_duplicate_found,
                     qualifiedRmClosureName,
                     existingSchema.getSchemaId(),
                     schemaId);

@@ -9,13 +9,13 @@ import nl.rosa.semanticdatabase.base.MultiplicityInterval;
  */
 @Getter
 @Setter
-public class RMContainerProperty extends RMProperty<RMContainerTypeElement> {
+public class RMContainerProperty extends RMProperty<RMContainerType> {
     private MultiplicityInterval cardinality;
 
     public RMContainerProperty() {
     }
 
-    public RMContainerProperty(String name, RMContainerTypeElement type) {
+    public RMContainerProperty(String name, RMContainerType type) {
         super(name, type);
     }
 }

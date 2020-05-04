@@ -35,17 +35,17 @@ public class TypeCreator {
 
     private RMType createContainerType(PRMContainerType typeDef, RMModel schema, RMClass bmmClass) {
         PRMContainerType containerType = typeDef;
-        RMContainerType bmmContainerType = new RMContainerType();
+        RMContainerType rmContainerType = new RMContainerType();
         RMType containedType = createRMType(containerType.getTypeRef(), schema, bmmClass);
 
         RMClass containerClass = schema.getClassDefinition(containerType.getContainerType());
         if(containerClass == null) {
             throw new RuntimeException("Container type is null for " + containerType.getContainerType());
         } else {
-            bmmContainerType.setContainerType(containerClass);
+            rmContainerType.setContainerType(containerClass);
         }
-        bmmContainerType.setBaseType(containedType);
-        return bmmContainerType;
+        rmContainerType.setBaseType(containedType);
+        return rmContainerType;
 
     }
 

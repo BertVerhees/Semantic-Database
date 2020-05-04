@@ -1,20 +1,20 @@
 package nl.rosa.semanticdatabase.referencemodel.v2.validation.validators;
 
-import org.openehr.bmm.persistence.validation.BmmMessageIds;
-import org.openehr.bmm.v2.persistence.BmmIncludeSpec;
-import org.openehr.bmm.v2.persistence.PBmmSchema;
-import org.openehr.bmm.v2.validation.BmmRepository;
-import org.openehr.bmm.v2.validation.BmmValidation;
-import org.openehr.bmm.v2.validation.BmmValidationResult;
-import org.openehr.utils.message.MessageLogger;
+import nl.rosa.semanticdatabase.message.MessageLogger;
+import nl.rosa.semanticdatabase.referencemodel.persistence.validation.MessageIds;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMSchema;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.RMIncludeSpec;
+import nl.rosa.semanticdatabase.referencemodel.v2.validation.RMRepository;
+import nl.rosa.semanticdatabase.referencemodel.v2.validation.RMValidation;
+import nl.rosa.semanticdatabase.referencemodel.v2.validation.RMValidationResult;
 
-public class IncludesValidation implements BmmValidation {
+public class IncludesValidation implements RMValidation {
     @Override
-    public void validate(BmmValidationResult validationResult, BmmRepository repository, MessageLogger logger, PBmmSchema schema) {
+    public void validate(RMValidationResult validationResult, RMRepository repository, MessageLogger logger, PRMSchema schema) {
         if(schema.getIncludes() != null) {
-            for(BmmIncludeSpec includeSpec:schema.getIncludes().values()) {
+            for(RMIncludeSpec includeSpec:schema.getIncludes().values()) {
                 if (!repository.containsPersistentSchema(includeSpec.getId())) {
-                    logger.addError(BmmMessageIds.EC_INCLUDE_NOT_FOUND, schema.getSchemaId(), includeSpec.getId());
+                    logger.addError(MessageIds.EC_INCLUDE_NOT_FOUND, schema.getSchemaId(), includeSpec.getId());
                 }
             }
         }

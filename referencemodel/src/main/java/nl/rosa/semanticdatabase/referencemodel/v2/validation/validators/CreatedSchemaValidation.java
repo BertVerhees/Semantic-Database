@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.referencemodel.v2.validation.validators;
 
 import nl.rosa.semanticdatabase.message.MessageLogger;
 import nl.rosa.semanticdatabase.referencemodel.persistence.validation.MessageIds;
+import nl.rosa.semanticdatabase.referencemodel.persistence.validation.RMDefinitions;
 import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMSchema;
 import nl.rosa.semanticdatabase.referencemodel.v2.validation.RMRepository;
 import nl.rosa.semanticdatabase.referencemodel.v2.validation.RMValidation;
@@ -31,7 +32,7 @@ public class CreatedSchemaValidation implements RMValidation {
         //validate package & class structure
         schema.doRecursivePackages(persistedPackage -> {
             //check for lower-down qualified names
-            if((!schema.getPackages().containsKey(persistedPackage.getName())) && persistedPackage.getName().indexOf(BmmDefinitions.PACKAGE_NAME_DELIMITER) >=0) {
+            if((!schema.getPackages().containsKey(persistedPackage.getName())) && persistedPackage.getName().indexOf(RMDefinitions.PACKAGE_NAME_DELIMITER) >=0) {
                 logger.addError(MessageIds.EC_ILLEGAL_QUALIFIED_PACKAGE_NAME,
                         schema.getSchemaId(),
                         persistedPackage.getName());

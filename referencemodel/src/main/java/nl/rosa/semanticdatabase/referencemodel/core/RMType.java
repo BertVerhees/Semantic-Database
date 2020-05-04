@@ -32,17 +32,17 @@ import java.util.List;
  */
 public abstract class RMType extends RMTypeElement {
 
-    public static final String BMM_SIMPLE_TYPE = "BMM_SIMPLE_TYPE";
-    public static final String BMM_SIMPLE_TYPE_OPEN = "BMM_SIMPLE_TYPE_OPEN";
-    public static final String BMM_CONTAINER_TYPE = "BMM_CONTAINER_TYPE";
-    public static final String BMM_GENERIC_TYPE = "BMM_GENERIC_TYPE";
-    public static final String BMM_GENERIC_PARAMETER = "BMM_GENERIC_PARAMETER";
+    public static final String RM_SIMPLE_TYPE = "RM_SIMPLE_TYPE";
+    public static final String RM_SIMPLE_TYPE_OPEN = "RM_SIMPLE_TYPE_OPEN";
+    public static final String RM_CONTAINER_TYPE = "RM_CONTAINER_TYPE";
+    public static final String RM_GENERIC_TYPE = "RM_GENERIC_TYPE";
+    public static final String RM_GENERIC_PARAMETER = "RM_GENERIC_PARAMETER";
 
-    public static final String P_BMM_SIMPLE_TYPE = "P_BMM_SIMPLE_TYPE";
-    public static final String P_BMM_SIMPLE_TYPE_OPEN = "P_BMM_SIMPLE_TYPE_OPEN";
-    public static final String P_BMM_CONTAINER_TYPE = "P_BMM_CONTAINER_TYPE";
-    public static final String P_BMM_GENERIC_TYPE = "P_BMM_GENERIC_TYPE";
-    public static final String P_BMM_GENERIC_PARAMETER = "P_BMM_GENERIC_PARAMETER";
+    public static final String P_RM_SIMPLE_TYPE = "P_RM_SIMPLE_TYPE";
+    public static final String P_RM_SIMPLE_TYPE_OPEN = "P_RM_SIMPLE_TYPE_OPEN";
+    public static final String P_RM_CONTAINER_TYPE = "P_RM_CONTAINER_TYPE";
+    public static final String P_RM_GENERIC_TYPE = "P_RM_GENERIC_TYPE";
+    public static final String P_RM_GENERIC_PARAMETER = "P_RM_GENERIC_PARAMETER";
 
     /**
      * Determine if there are any type substitutions.
@@ -54,7 +54,7 @@ public abstract class RMType extends RMTypeElement {
     }
 
     /**
-     * List of type substitutions if any available for this type within the current BMM model.
+     * List of type substitutions if any available for this type within the current RM model.
      *
      * @return
      */

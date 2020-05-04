@@ -1,9 +1,9 @@
 package nl.rosa.semanticdatabase.referencemodel.v2.validation.validators;
 
 import nl.rosa.semanticdatabase.message.MessageLogger;
-import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMClass;
-import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMProperty;
-import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMSchema;
+import nl.rosa.semanticdatabase.referencemodel.persistence.validation.MessageIds;
+import nl.rosa.semanticdatabase.referencemodel.persistence.validation.RMDefinitions;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.*;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
@@ -22,155 +22,155 @@ public class PropertyValidator extends ValidatorBase {
         this.schema = schema;
     }
 
-    public void validateProperty(PRMClass pBmmClass, PRMProperty pBmmProperty) {
+    public void validateProperty(PRMClass pRMClass, PRMProperty pRMProperty) {
         //first check if any property replicates a property from a parent class
-        validateOverriddenPropertyType(pBmmClass, pBmmProperty);
+        validateOverriddenPropertyType(pRMClass, pRMProperty);
 
         //For single properties, check if property type is empty or not defined in the schema
-        if(pBmmProperty instanceof PBmmSingleProperty) {
-            validateSingleProperty(pBmmClass, pBmmProperty);
-        } else if(pBmmProperty instanceof PBmmSinglePropertyOpen) {
-            validateSimpleOpenProperty(pBmmClass, pBmmProperty);
-        } else if(pBmmProperty instanceof PBmmContainerProperty) {
-            validateContainerProperty(pBmmClass, pBmmProperty);
-        } else if (pBmmProperty instanceof PBmmGenericProperty){
-            validateGenericProperty(pBmmClass, pBmmProperty);
+        if(pRMProperty instanceof PRMSingleProperty) {
+            validateSingleProperty(pRMClass, pRMProperty);
+        } else if(pRMProperty instanceof PRMSinglePropertyOpen) {
+            validateSimpleOpenProperty(pRMClass, pRMProperty);
+        } else if(pRMProperty instanceof PRMContainerProperty) {
+            validateContainerProperty(pRMClass, pRMProperty);
+        } else if (pRMProperty instanceof PRMGenericProperty){
+            validateGenericProperty(pRMClass, pRMProperty);
         }
     }
 
 
-    private void validateGenericProperty(PBmmClass pBmmClass, PBmmProperty pBmmProperty) {
-        PBmmGenericProperty genericPropertyDefinition = (PBmmGenericProperty)pBmmProperty;
-        PBmmGenericType attributeTypeDefinition = genericPropertyDefinition.getTypeDef();
+    private void validateGenericProperty(PRMClass pRMClass, PRMProperty pRMProperty) {
+        PRMGenericProperty genericPropertyDefinition = (PRMGenericProperty)pRMProperty;
+        PRMGenericType attributeTypeDefinition = genericPropertyDefinition.getTypeDef();
         if(attributeTypeDefinition != null) {
             if(!schema.hasClassOrPrimitiveDefinition(attributeTypeDefinition.getRootType())) {
-                addValidityError(schema, pBmmClass.getSourceSchemaId(), BmmMessageIds.EC_GENERIC_PROPERTY_ROOT_TYPE_NOT_FOUND, pBmmClass.getSourceSchemaId(),
-                        pBmmClass.getName(),
-                        pBmmProperty.getName(),
+                addValidityError(schema, pRMClass.getSourceSchemaId(), MessageIds.EC_GENERIC_PROPERTY_ROOT_TYPE_NOT_FOUND, pRMClass.getSourceSchemaId(),
+                        pRMClass.getName(),
+                        pRMProperty.getName(),
                         attributeTypeDefinition.getRootType());
             }
 
-            for(PBmmType genericParameter:attributeTypeDefinition.getGenericParameterDefs().values()) {
-                validateGenericTypeDefParameter(pBmmClass, pBmmProperty, attributeTypeDefinition, genericParameter);
+            for(PRMType genericParameter:attributeTypeDefinition.getGenericParameterDefs().values()) {
+                validateGenericTypeDefParameter(pRMClass, pRMProperty, attributeTypeDefinition, genericParameter);
             }
         } else {
-            addValidityError(schema, pBmmClass.getSourceSchemaId(), BmmMessageIds.EC_GENERIC_PROPERTY_TYPE_DEF_UNDEFINED,
-                    pBmmClass.getSourceSchemaId(),
-                    pBmmClass.getName(),
-                    pBmmProperty.getName());
+            addValidityError(schema, pRMClass.getSourceSchemaId(), MessageIds.EC_GENERIC_PROPERTY_TYPE_DEF_UNDEFINED,
+                    pRMClass.getSourceSchemaId(),
+                    pRMClass.getName(),
+                    pRMProperty.getName());
         }
     }
 
-    private void validateGenericTypeDefParameter(PBmmClass pBmmClass, PBmmProperty pBmmProperty, PBmmGenericType attributeTypeDefinition, PBmmType genericParameter) {
+    private void validateGenericTypeDefParameter(PRMClass pRMClass, PRMProperty pRMProperty, PRMGenericType attributeTypeDefinition, PRMType genericParameter) {
         List<String> typeReferences = genericParameter.flattenedTypeList();
         for(String typeReference:typeReferences) {
             if(!schema.hasClassOrPrimitiveDefinition(typeReference)) {
-                if (pBmmClass.isGeneric()) {  //it might be a formal parameter, to be matched against those of enclosing class
-                    Map<String, PBmmGenericParameter> genericParameters = pBmmClass.getGenericParameterDefs();
+                if (pRMClass.isGeneric()) {  //it might be a formal parameter, to be matched against those of enclosing class
+                    Map<String, PRMGenericParameter> genericParameters = pRMClass.getGenericParameterDefs();
                     if (!genericParameters.containsKey(typeReference)) {
-                        addValidityError(schema, pBmmClass.getSourceSchemaId(), BmmMessageIds.EC_GENERIC_PROPERTY_TYPE_PARAMETER_NOT_FOUND,
-                                pBmmClass.getSourceSchemaId(),
-                                pBmmClass.getName(),
-                                pBmmProperty.getName(),
+                        addValidityError(schema, pRMClass.getSourceSchemaId(), MessageIds.EC_GENERIC_PROPERTY_TYPE_PARAMETER_NOT_FOUND,
+                                pRMClass.getSourceSchemaId(),
+                                pRMClass.getName(),
+                                pRMProperty.getName(),
                                 attributeTypeDefinition.getRootType());
                     } else {
                         //Should this be logged?
                     }
                 } else {
                     //cannot have a generic type declaration for a non-generic class
-                    addValidityError(schema, pBmmClass.getSourceSchemaId(), BmmMessageIds.EC_GENERIC_PARAMETER_NOT_FOUND,
-                            pBmmClass.getSourceSchemaId(),
-                            pBmmClass.getName(),
-                            pBmmProperty.getName(),
+                    addValidityError(schema, pRMClass.getSourceSchemaId(), MessageIds.EC_GENERIC_PARAMETER_NOT_FOUND,
+                            pRMClass.getSourceSchemaId(),
+                            pRMClass.getName(),
+                            pRMProperty.getName(),
                             typeReference);
                 }
             }
         }
     }
 
-    private void validateContainerProperty(PBmmClass pBmmClass, PBmmProperty pBmmProperty) {
-        PBmmContainerProperty containerPropertyDefinition = (PBmmContainerProperty) pBmmProperty;
-        PBmmContainerType attributeTypeDefinition = containerPropertyDefinition.getTypeRef();
-        PBmmType attributeTypeReference = attributeTypeDefinition.getTypeRef();
+    private void validateContainerProperty(PRMClass pRMClass, PRMProperty pRMProperty) {
+        PRMContainerProperty containerPropertyDefinition = (PRMContainerProperty) pRMProperty;
+        PRMContainerType attributeTypeDefinition = containerPropertyDefinition.getTypeRef();
+        PRMType attributeTypeReference = attributeTypeDefinition.getTypeRef();
         if(!schema.hasClassOrPrimitiveDefinition(attributeTypeDefinition.getContainerType())) {
-            addValidityError(schema, pBmmClass.getSourceSchemaId(), BmmMessageIds.EC_CONTAINER_TYPE_NOT_FOUND,
-                    pBmmClass.getSourceSchemaId(),
-                    pBmmClass.getName(),
-                    pBmmProperty.getName(),
+            addValidityError(schema, pRMClass.getSourceSchemaId(), MessageIds.EC_CONTAINER_TYPE_NOT_FOUND,
+                    pRMClass.getSourceSchemaId(),
+                    pRMClass.getName(),
+                    pRMProperty.getName(),
                     attributeTypeDefinition.getType());
         } else if(attributeTypeReference != null){
             //Loop through types inside container type
             List<String> typeReferences = attributeTypeReference.flattenedTypeList();
             if(typeReferences != null) {
                 for(String typeReference:typeReferences) {
-                    validateContainerTypeReference(pBmmClass, pBmmProperty, attributeTypeDefinition, typeReference);
+                    validateContainerTypeReference(pRMClass, pRMProperty, attributeTypeDefinition, typeReference);
                 }
             } else {
                 //Should this be logged?
             }
         } else {
-            addValidityError(schema, pBmmClass.getSourceSchemaId(), BmmMessageIds.EC_CONTAINER_PROPERTY_TARGET_TYPE_NOT_DEFINED,
-                    pBmmClass.getSourceSchemaId(),
-                    pBmmClass.getName(),
-                    pBmmProperty.getName());
+            addValidityError(schema, pRMClass.getSourceSchemaId(), MessageIds.EC_CONTAINER_PROPERTY_TARGET_TYPE_NOT_DEFINED,
+                    pRMClass.getSourceSchemaId(),
+                    pRMClass.getName(),
+                    pRMProperty.getName());
         }
         if(containerPropertyDefinition.getCardinality() == null) {
-//                    addValidityInfo(pBmmClass.getSourceSchemaId(), BmmMessageIds.EC_CONTAINER_PROPERTY_CARDINALITY_NOT_DEFINED,
-//                            pBmmClass.getSourceSchemaId(),
-//                            pBmmClass.getName(),
-//                            pBmmProperty.getName());
+//                    addValidityInfo(pRMClass.getSourceSchemaId(), RMMessageIds.EC_CONTAINER_PROPERTY_CARDINALITY_NOT_DEFINED,
+//                            pRMClass.getSourceSchemaId(),
+//                            pRMClass.getName(),
+//                            pRMProperty.getName());
         }
     }
 
-    private void validateContainerTypeReference(PBmmClass pBmmClass, PBmmProperty pBmmProperty, PBmmContainerType attributeTypeDefinition, String typeReference) {
+    private void validateContainerTypeReference(PRMClass pRMClass, PRMProperty pRMProperty, PRMContainerType attributeTypeDefinition, String typeReference) {
         if (!schema.hasClassOrPrimitiveDefinition(typeReference)) {
-            if (pBmmClass.isGeneric()) {  //it might be a formal parameter, to be matched against those of enclosing class
-                Map<String, PBmmGenericParameter> genericParameters = pBmmClass.getGenericParameterDefs();
+            if (pRMClass.isGeneric()) {  //it might be a formal parameter, to be matched against those of enclosing class
+                Map<String, PRMGenericParameter> genericParameters = pRMClass.getGenericParameterDefs();
                 if (!genericParameters.containsKey(typeReference)) {
-                    addValidityError(schema, pBmmClass.getSourceSchemaId(), BmmMessageIds.EC_GENERIC_PROPERTY_TYPE_PARAMETER_NOT_FOUND,
-                            pBmmClass.getSourceSchemaId(),
-                            pBmmClass.getName(),
-                            pBmmProperty.getName(),
+                    addValidityError(schema, pRMClass.getSourceSchemaId(), MessageIds.EC_GENERIC_PROPERTY_TYPE_PARAMETER_NOT_FOUND,
+                            pRMClass.getSourceSchemaId(),
+                            pRMClass.getName(),
+                            pRMProperty.getName(),
                             attributeTypeDefinition.getType());
                 }
             } else {
-                addValidityError(schema, pBmmClass.getSourceSchemaId(), BmmMessageIds.EC_CONTAINER_PROPERTY_TARGET_TYPE_NOT_FOUND,
-                        pBmmClass.getSourceSchemaId(),
-                        pBmmClass.getName(),
-                        pBmmProperty.getName(),
+                addValidityError(schema, pRMClass.getSourceSchemaId(), MessageIds.EC_CONTAINER_PROPERTY_TARGET_TYPE_NOT_FOUND,
+                        pRMClass.getSourceSchemaId(),
+                        pRMClass.getName(),
+                        pRMProperty.getName(),
                         attributeTypeDefinition.getType());
             }
         }
     }
 
-    private void validateSimpleOpenProperty(PRMClass pBmmClass, PRMProperty pBmmProperty) {
+    private void validateSimpleOpenProperty(PRMClass pRMClass, PRMProperty pRMProperty) {
         //For open properties, check if the containing class is a generic class and has a parameter of that type
-        PBmmSinglePropertyOpen singlePropertyOpenDefinition = (PBmmSinglePropertyOpen) pBmmProperty;
-        PBmmOpenType attributeTypeDefinition = singlePropertyOpenDefinition.getTypeRef();
-        if(!pBmmClass.isGeneric() || !pBmmClass.getGenericParameterDefs().containsKey(attributeTypeDefinition.getType())) {
-            addValidityError(schema, pBmmClass.getSourceSchemaId(), BmmMessageIds.EC_SINGLE_OPEN_PARAMETER_NOT_FOUND, pBmmClass.getSourceSchemaId(), pBmmClass.getName(), pBmmProperty.getName(), attributeTypeDefinition.getType());
+        PRMSinglePropertyOpen singlePropertyOpenDefinition = (PRMSinglePropertyOpen) pRMProperty;
+        PRMOpenType attributeTypeDefinition = singlePropertyOpenDefinition.getTypeRef();
+        if(!pRMClass.isGeneric() || !pRMClass.getGenericParameterDefs().containsKey(attributeTypeDefinition.getType())) {
+            addValidityError(schema, pRMClass.getSourceSchemaId(), MessageIds.EC_SINGLE_OPEN_PARAMETER_NOT_FOUND, pRMClass.getSourceSchemaId(), pRMClass.getName(), pRMProperty.getName(), attributeTypeDefinition.getType());
         }
     }
 
-    private void validateSingleProperty(PBmmClass pBmmClass, PBmmProperty pBmmProperty) {
-        PBmmSingleProperty singlePropertyDefinition = (PBmmSingleProperty)pBmmProperty;
-        PBmmSimpleType attributeTypeDefinition = singlePropertyDefinition.getTypeRef();
+    private void validateSingleProperty(PRMClass pRMClass, PRMProperty pRMProperty) {
+        PRMSingleProperty singlePropertyDefinition = (PRMSingleProperty)pRMProperty;
+        PRMSimpleType attributeTypeDefinition = singlePropertyDefinition.getTypeRef();
         if(StringUtils.isEmpty(attributeTypeDefinition.getType()) || !schema.hasClassOrPrimitiveDefinition(attributeTypeDefinition.getType())) {
-            addValidityError(schema, pBmmClass.getSourceSchemaId(), BmmMessageIds.EC_SINGLE_PROPERTY_TYPE_NOT_FOUND,
-                    pBmmClass.getSourceSchemaId(),
-                    pBmmClass.getName(),
-                    pBmmProperty.getName(),
+            addValidityError(schema, pRMClass.getSourceSchemaId(), MessageIds.EC_SINGLE_PROPERTY_TYPE_NOT_FOUND,
+                    pRMClass.getSourceSchemaId(),
+                    pRMClass.getName(),
+                    pRMProperty.getName(),
                     attributeTypeDefinition.getType());
         }
     }
 
-    private void validateOverriddenPropertyType(PBmmClass pBmmClass, PBmmProperty pBmmProperty) {
-        for(String ancestorName:pBmmClass.getAncestorTypeNames()) {
-            PBmmClass ancestor = schema.findClassOrPrimitiveDefinition(BmmDefinitions.typeNameToClassKey(ancestorName));
+    private void validateOverriddenPropertyType(PRMClass pRMClass, PRMProperty pRMProperty) {
+        for(String ancestorName:pRMClass.getAncestorTypeNames()) {
+            PRMClass ancestor = schema.findClassOrPrimitiveDefinition(RMDefinitions.typeNameToClassKey(ancestorName));
             if(ancestor != null) {
-                PBmmProperty ancestorProperty = ancestor.getProperties().get(pBmmProperty.getName());
-                if (ancestor != null && ancestorProperty != null && !conformanceChecker.propertyConformsTo(schema, pBmmProperty, ancestorProperty)) {
-                    addValidityError(schema, pBmmClass.getSourceSchemaId(), BmmMessageIds.EC_OVERRIDDEN_PROPERTY_DOES_NOT_CONFORM, pBmmClass.getSourceSchemaId(), pBmmClass.getName(), pBmmProperty.getName(), ancestorName);
+                PRMProperty ancestorProperty = ancestor.getProperties().get(pRMProperty.getName());
+                if (ancestor != null && ancestorProperty != null && !conformanceChecker.propertyConformsTo(schema, pRMProperty, ancestorProperty)) {
+                    addValidityError(schema, pRMClass.getSourceSchemaId(), MessageIds.EC_OVERRIDDEN_PROPERTY_DOES_NOT_CONFORM, pRMClass.getSourceSchemaId(), pRMClass.getName(), pRMProperty.getName(), ancestorName);
                 }
             }
         }

@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 
 @Getter
 @Setter
-public class RMProperty<T extends RMTypeTypeElement> extends RMModelElement {
+public class RMProperty<T extends RMType> extends RMModelElement {
 
     public static final String P_BMM_GENERIC_PROPERTY = "P_GENERIC_PROPERTY";
     public static final String P_BMM_CONTAINER_PROPERTY = "P_CONTAINER_PROPERTY";
@@ -42,7 +42,7 @@ public class RMProperty<T extends RMTypeTypeElement> extends RMModelElement {
      * @return
      */
     public static boolean isContainerType(String type) {
-        return type.equals(RMTypeTypeElement.P_CONTAINER_TYPE) || type.equals(RMTypeTypeElement.CONTAINER_TYPE);
+        return type.equals(RMType.P_RM_CONTAINER_TYPE) || type.equals(RMType.RM_CONTAINER_TYPE);
     }
 
     /**

@@ -37,11 +37,11 @@ public final class PRMSchema extends PRMPackageContainer {
 
     private Map<String, PRMClass> primitiveTypes;
     private Map<String, PRMClass> classDefinitions;
-    private Map<String, IncludeSpec> includes;
+    private Map<String, RMIncludeSpec> includes;
 
     private String rmPublisher;
     private String rmRelease;
-    private String referenceModelVersion;
+    private String rmVersion;
     private String modelName;
     private String schemaName;
     private String schemaRevision;
@@ -77,7 +77,7 @@ public final class PRMSchema extends PRMPackageContainer {
         return classDefinitions;
     }
 
-    public Map<String, IncludeSpec> getIncludes() {
+    public Map<String, RMIncludeSpec> getIncludes() {
         if(includes == null) {
             includes = new CaseInsensitiveLinkedHashMap<>();
         }

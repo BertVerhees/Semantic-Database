@@ -1,27 +1,27 @@
 package nl.rosa.semanticdatabase.referencemodel.v2.validation.converters;
 
-import org.openehr.bmm.persistence.validation.BmmDefinitions;
-import org.openehr.bmm.v2.persistence.PBmmPackage;
-import org.openehr.bmm.v2.persistence.PBmmSchema;
+import nl.rosa.semanticdatabase.referencemodel.persistence.validation.RMDefinitions;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMPackage;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMSchema;
 
 import java.util.Map;
 import java.util.TreeMap;
 
 public class CanonicalPackagesGenerator {
 
-    public Map<String, PBmmPackage> generateCanonicalPackages(PBmmSchema schema) {
-        Map<String, PBmmPackage> canonicalPackages = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-        PBmmPackage childPackage = null;
+    public Map<String, PRMPackage> generateCanonicalPackages(PRMSchema schema) {
+        Map<String, PRMPackage> canonicalPackages = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        PRMPackage childPackage = null;
         String childPackageKey = null;
-        Map<String, PBmmPackage> packageContainer = null;
+        Map<String, PRMPackage> packageContainer = null;
         //top-level package canonicalisation: the result is that in each P_BMM_SCHEMA, the
         //attribute `canonical_packages' contains the mergeable structure
-        for (PBmmPackage topPackage : schema.getPackages().values()) {
+        for (PRMPackage topPackage : schema.getPackages().values()) {
             //Iterate over qualified name, inserting new packages for each of these names.
             //E.g. 'rm.composition.content' causes three new packages 'rm', 'composition'
             // and 'content' to be created and linked, with the 'rm' one being put in
             // `canonical_packages'
-            if (topPackage.getName().indexOf(BmmDefinitions.PACKAGE_NAME_DELIMITER) >= 0) {
+            if (topPackage.getName().indexOf(RMDefinitions.PACKAGE_NAME_DELIMITER) >= 0) {
                 packageContainer = canonicalPackages;
                 String[] packagePathComponents = topPackage.getName().split("\\.");
                 for (int index = 0; index < packagePathComponents.length; index++) {
@@ -29,7 +29,7 @@ public class CanonicalPackagesGenerator {
                     if (packageContainer.containsKey(childPackageKey)) {
                         childPackage = packageContainer.get(childPackageKey);
                     } else {
-                        childPackage = new PBmmPackage(packagePathComponents[index]);
+                        childPackage = new PRMPackage(packagePathComponents[index]);
                         packageContainer.put(childPackageKey, childPackage);
                     }
                     packageContainer = childPackage.getPackages();

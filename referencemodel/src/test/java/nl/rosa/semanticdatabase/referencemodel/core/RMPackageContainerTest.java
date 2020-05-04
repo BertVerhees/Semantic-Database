@@ -26,7 +26,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class RMRMRMPackageContainerTest {
+public class RMPackageContainerTest {
     @Test
     public void packageAtPath() throws Exception {
 
@@ -39,7 +39,7 @@ public class RMRMRMPackageContainerTest {
 
     @Test
     public void hasPackagePath() throws Exception {
-        BmmPackageContainer container = createPackageContainer();
+        RMPackageContainerImpl container = createPackageContainer();
         assertTrue(container.hasPackagePath("level_0.level_0_2.level_0_2_2"));
         assertTrue(container.hasPackagePath("level_0.level_0_1.level_0_1_1"));
         assertTrue(container.hasPackagePath("level_0.level_0_2"));
@@ -52,21 +52,21 @@ public class RMRMRMPackageContainerTest {
 
     @Test
     public void packageExistsInHierarchy() throws Exception {
-        BmmPackageContainer container = createPackageContainer();
-        assertTrue(container.hasPackageNameInHierarchy(new BmmPackage("level_0_1_2")));
-        assertTrue(container.hasPackageNameInHierarchy(new BmmPackage("level_0_1_1_1")));
-        assertFalse(container.hasPackageNameInHierarchy(new BmmPackage("level_3")));
+        RMPackageContainerImpl container = createPackageContainer();
+        assertTrue(container.hasPackageNameInHierarchy(new RMPackage("level_0_1_2")));
+        assertTrue(container.hasPackageNameInHierarchy(new RMPackage("level_0_1_1_1")));
+        assertFalse(container.hasPackageNameInHierarchy(new RMPackage("level_3")));
     }
 
-    public BmmPackage createPackageContainer() {
-        BmmPackage root = new BmmPackage("level_0");
-        BmmPackage level_0_1 = new BmmPackage("level_0_1");
-        BmmPackage level_0_2 = new BmmPackage("level_0_2");
-        BmmPackage level_0_1_1 = new BmmPackage("level_0_1_1");
-        BmmPackage level_0_1_2 = new BmmPackage("level_0_1_2");
-        BmmPackage level_0_2_1 = new BmmPackage("level_0_2_1");
-        BmmPackage level_0_2_2 = new BmmPackage("level_0_2_2");
-        BmmPackage level_0_1_1_1 = new BmmPackage("level_0_1_1_1");
+    public RMPackage createPackageContainer() {
+        RMPackage root = new RMPackage("level_0");
+        RMPackage level_0_1 = new RMPackage("level_0_1");
+        RMPackage level_0_2 = new RMPackage("level_0_2");
+        RMPackage level_0_1_1 = new RMPackage("level_0_1_1");
+        RMPackage level_0_1_2 = new RMPackage("level_0_1_2");
+        RMPackage level_0_2_1 = new RMPackage("level_0_2_1");
+        RMPackage level_0_2_2 = new RMPackage("level_0_2_2");
+        RMPackage level_0_1_1_1 = new RMPackage("level_0_1_1_1");
         root.addPackage(level_0_1);
         root.addPackage(level_0_2);
         level_0_1.addPackage(level_0_1_1);

@@ -11,11 +11,11 @@ import nl.rosa.semanticdatabase.referencemodel.v2.validation.validators.*;
  */
 public class RMSchemaValidator {
 
-    private final RMRepository RMRepository;
+    private final RMRepository rmRepository;
     private MessageLogger logger;
 
     public RMSchemaValidator(RMRepository RMRepository) {
-        this.RMRepository = RMRepository;
+        this.rmRepository = RMRepository;
         logger = new MessageLogger();
     }
 
@@ -37,16 +37,16 @@ public class RMSchemaValidator {
         run(new CreatedSchemaValidation(), RMValidationResult, schema);
     }
 
-    public void validateBmmVersion(RMValidationResult RMValidationResult, PRMSchema schema) {
-        run(new RMVersionValidation(), RMValidationResult, schema);
+    public void validateRMVersion(RMValidationResult rmValidationResult, PRMSchema schema) {
+        run(new RMVersionValidation(), rmValidationResult, schema);
     }
 
-    public void validateIncludes(RMValidationResult RMValidationResult, PRMSchema schema) {
-        run(new IncludesValidation(), RMValidationResult, schema);
+    public void validateIncludes(RMValidationResult rmValidationResult, PRMSchema schema) {
+        run(new IncludesValidation(), rmValidationResult, schema);
     }
 
     private void run(RMValidation validation, RMValidationResult RMValidationResult, PRMSchema schema) {
-        validation.validate(RMValidationResult, RMRepository, logger, schema);
+        validation.validate(RMValidationResult, rmRepository, logger, schema);
     }
 
     public MessageLogger getLogger() {

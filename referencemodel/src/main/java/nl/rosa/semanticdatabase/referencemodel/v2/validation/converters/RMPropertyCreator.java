@@ -47,42 +47,42 @@ public class RMPropertyCreator {
         return bmmProperty;
     }
 
-    private RMGenericProperty createGenericProperty(RMModel schema, PRMGenericProperty property, RMGenericType typeDefinition, RMClass bmmClass) {
-        RMGenericProperty bmmProperty = new RMGenericProperty(property.getName(), typeDefinition);
-        setBasics(property, bmmProperty);
-        PRMGenericType pbmmType = property.getTypeRef();
+    private RMGenericProperty createGenericProperty(RMModel schema, PRMGenericProperty property, RMGenericType typeDefinition, RMClass rmClass) {
+        RMGenericProperty rmProperty = new RMGenericProperty(property.getName(), typeDefinition);
+        setBasics(property, rmProperty);
+        PRMGenericType pRMType = property.getTypeRef();
         RMGenericType genericTypeDef = new RMGenericType();
-        genericTypeDef.setBaseClass(schema.getClassDefinition(pbmmType.getRootType()));
+        genericTypeDef.setBaseClass(schema.getClassDefinition(pRMType.getRootType()));
         List<RMType> genericParams = new ArrayList<>();
         TypeCreator typeCreator = new TypeCreator();
-        for(PRMType genericParamType: pbmmType.getGenericParamaterRefs()) {
-            genericParams.add(typeCreator.createRMType(genericParamType, schema, bmmClass));
+        for(PRMType genericParamType: pRMType.getGenericParamaterRefs()) {
+            genericParams.add(typeCreator.createRMType(genericParamType, schema, rmClass));
         }
         genericTypeDef.setGenericParameters(genericParams);
-        bmmProperty.setGenericTypeDef(genericTypeDef);
+        rmProperty.setRmGenericTypeDef(genericTypeDef);
         //bmmProperty.setGenericTypeDef();
-        return bmmProperty;
+        return rmProperty;
     }
 
-    private void setBasics(PRMProperty property, RMProperty bmmProperty) {
-        bmmProperty.setDocumentation(property.getDocumentation());
-        bmmProperty.setMandatory(property.isMandatory());
-        bmmProperty.setComputed(property.isComputed());
-        bmmProperty.setImInfrastructure(property.isImInfrastructure());
-        bmmProperty.setImRuntime(property.isImRuntime());
+    private void setBasics(PRMProperty property, RMProperty rmProperty) {
+        rmProperty.setDocumentation(property.getDocumentation());
+        rmProperty.setIsMandatory(property.isMandatory());
+        rmProperty.setIsComputed(property.isComputed());
+        rmProperty.setIsImInfrastructure(property.isImInfrastructure());
+        rmProperty.setIsImRuntime(property.isImRuntime());
 
-        if(bmmProperty.getMandatory() == null) {
-            bmmProperty.setMandatory(false);
+        if(rmProperty.getIsMandatory() == null) {
+            rmProperty.setIsMandatory(false);
         }
-        if(bmmProperty.getComputed() == null) {
-            bmmProperty.setComputed(false);
+        if(rmProperty.getIsComputed() == null) {
+            rmProperty.setIsComputed(false);
         }
-        if(bmmProperty.getImInfrastructure() == null) {
-            bmmProperty.setImInfrastructure(false);
+        if(rmProperty.getIsImInfrastructure() == null) {
+            rmProperty.setIsImInfrastructure(false);
         }
 
-        if(bmmProperty.getImRuntime() == null) {
-            bmmProperty.setImRuntime(false);
+        if(rmProperty.getIsImRuntime() == null) {
+            rmProperty.setIsImRuntime(false);
         }
     }
 

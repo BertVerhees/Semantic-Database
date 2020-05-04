@@ -23,7 +23,7 @@ public class ReferenceModelTypeNaming extends ClassNameIdResolver {
 
     private final static ImmutableBiMap<String, Class> classNaming = ImmutableBiMap.<String, Class>builder().
         put("P_BASE_TYPE", PRMBaseType.class).
-        put("INCLUDE_SPEC", IncludeSpec.class).
+        put("INCLUDE_SPEC", RMIncludeSpec.class).
         put("P_CLASS", PRMClass.class).
         put("P_CONTAINER_PROPERTY", PRMContainerProperty.class).
         put("P_ENUMERATION", PRMEnumeration.class).

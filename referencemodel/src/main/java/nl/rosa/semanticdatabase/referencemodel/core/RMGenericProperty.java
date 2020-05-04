@@ -1,25 +1,22 @@
 package nl.rosa.semanticdatabase.referencemodel.core;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
 /**
  * Default created on 2-5-2020
  */
 
-public class RMGenericRMProperty extends RMProperty<RMGenericRMTypeTypeElement> implements Serializable {
+@Getter
+@Setter
+public class RMGenericProperty extends RMProperty<RMGenericType> implements Serializable {
 
-    private RMGenericRMTypeTypeElement RMGenericTypeDef;//fix to call it typeDef once fix has been made to this attribute in parent class;
+    private RMGenericType rmGenericTypeDef;//fix to call it typeDef once fix has been made to this attribute in parent class;
 
-    public RMGenericRMProperty(String name, RMGenericRMTypeTypeElement type) {
+    public RMGenericProperty(String name, RMGenericType type) {
         super(name, type);
-    }
-
-    public RMGenericRMTypeTypeElement getRMGenericTypeDef() {
-        return RMGenericTypeDef;
-    }
-
-    public void setRMGenericTypeDef(RMGenericRMTypeTypeElement RMGenericTypeDef) {
-        this.RMGenericTypeDef = RMGenericTypeDef;
     }
 
 //    public String toString() {

@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.referencemodel.v2.validation.converters;
 
 import nl.rosa.semanticdatabase.message.MessageLogger;
 import nl.rosa.semanticdatabase.referencemodel.persistence.validation.MessageIds;
-import nl.rosa.semanticdatabase.referencemodel.v2.persistence.IncludeSpec;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.RMIncludeSpec;
 import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMClass;
 import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMPackage;
 import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMSchema;
@@ -22,13 +22,13 @@ public class IncludesProcessor {
     public List<String> getIncludeIds(PRMSchema schema) {
 
         return schema.getIncludes().values().stream()
-                .map( includeSpec -> includeSpec.getId()).collect(Collectors.toCollection(ArrayList::new));
+                .map(RMIncludeSpec -> RMIncludeSpec.getId()).collect(Collectors.toCollection(ArrayList::new));
     }
 
     public void cloneSchemaAndAddIncludes(RMValidationResult RMValidationResult, RMRepository RMRepository, MessageLogger logger) {
         //step 1: check that all includes exist
         PRMSchema schema = RMValidationResult.getOriginalSchema();
-        for(IncludeSpec include: schema.getIncludes().values()) {
+        for(RMIncludeSpec include: schema.getIncludes().values()) {
             if(!RMRepository.containsPersistentSchema(include.getId())) {
                 logger.addError(MessageIds.ec_schema_included_schema_not_found, include.getId());
             }
@@ -38,7 +38,7 @@ public class IncludesProcessor {
             PRMSchema clone = (PRMSchema) schema.clone();
             RMValidationResult.setSchemaWithMergedIncludes(clone);
             //step 2: get all BMM Models for all includes and merge into BmmModel
-            for (IncludeSpec include : schema.getIncludes().values()) {
+            for (RMIncludeSpec include : schema.getIncludes().values()) {
                 //check if already included. If so, don't include again.
                 // This prevents double includes plus a potential infinite loop
                 if(!RMValidationResult.getMergedSchemas().contains(include.getId()) || RMValidationResult.getFailedMergedSchemas().contains(include.getId())) {

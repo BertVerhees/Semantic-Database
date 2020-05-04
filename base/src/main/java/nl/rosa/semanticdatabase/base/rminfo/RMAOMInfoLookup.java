@@ -1,13 +1,5 @@
 package nl.rosa.semanticdatabase.base.rminfo;
 
-import com.nedap.archie.aom.Archetype;
-import com.nedap.archie.aom.ArchetypeModelObject;
-import com.nedap.archie.aom.CObject;
-import com.nedap.archie.aom.CPrimitiveObject;
-import com.nedap.archie.base.Cardinality;
-import com.nedap.archie.base.Interval;
-import com.nedap.archie.base.terminology.TerminologyCode;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -16,30 +8,30 @@ import java.util.Map;
 /**
  * Created by pieter.bos on 06/07/16.
  */
-public class ArchieAOMInfoLookup extends com.nedap.archie.rminfo.ReflectionModelInfoLookup {
+public class RMAOMInfoLookup extends ReflectionModelInfoLookup {
 
-    private static com.nedap.archie.rminfo.ArchieAOMInfoLookup instance;
+    private static RMAOMInfoLookup instance;
 
-    public ArchieAOMInfoLookup() {
-        super(new com.nedap.archie.rminfo.ArchieModelNamingStrategy(), ArchetypeModelObject.class, com.nedap.archie.rminfo.ArchieAOMInfoLookup.class.getClassLoader(), false /* no attributes without field */);
+    public RMAOMInfoLookup() {
+        super(new RMModelNamingStrategy(), ArchetypeModelObject.class, RMAOMInfoLookup.class.getClassLoader(), false /* no attributes without field */);
 
     }
 
-    public static com.nedap.archie.rminfo.ArchieAOMInfoLookup getInstance() {
+    public static RMAOMInfoLookup getInstance() {
         if(instance == null) {
-            instance = new com.nedap.archie.rminfo.ArchieAOMInfoLookup();
+            instance = new RMAOMInfoLookup();
         }
         return instance;
     }
 
     @Override
     protected void addTypes(Class baseClass) {
-        addClass(com.nedap.archie.aom.primitives.COrdered.class);
-        addClass(com.nedap.archie.aom.CSecondOrder.class);
-        addClass(com.nedap.archie.aom.CAttributeTuple.class);
-        addClass(com.nedap.archie.aom.ResourceDescriptionItem.class);
-        addClass(com.nedap.archie.aom.OperationalTemplate.class);
-        addClass(com.nedap.archie.aom.ArchetypeModelObject.class);
+        addClass(nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives.COrdered.class);
+        addClass(nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CSecondOrder.class);
+        addClass(nl.rosa.semanticdatabase.archetypeobjectmodel.aom.CAttributeTuple.class);
+        addClass(nl.rosa.semanticdatabase.archetypeobjectmodel.aom.ResourceDescriptionItem.class);
+        addClass(nl.rosa.semanticdatabase.archetypeobjectmodel.aom.OperationalTemplate.class);
+        addClass(nl.rosa.semanticdatabase.archetypeobjectmodel.aom.ArchetypeModelObject.class);
         addClass(com.nedap.archie.aom.primitives.CDate.class);
         addClass(com.nedap.archie.rules.Assertion.class);
         addClass(com.nedap.archie.aom.CDefinedObject.class);

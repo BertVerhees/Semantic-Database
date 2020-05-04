@@ -9,8 +9,8 @@ import java.util.stream.Collectors;
  * Default created on 2-5-2020
  */
 
-public class RMGenericRMTypeTypeElement extends RMTypeTypeElement implements Serializable {
-    public RMGenericRMTypeTypeElement() {
+public class RMGenericTypeElement extends RMTypeTypeElement implements Serializable {
+    public RMGenericTypeElement() {
         genericParameters = new ArrayList<>();
     }
 

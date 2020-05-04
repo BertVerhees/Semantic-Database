@@ -21,11 +21,16 @@ package nl.rosa.semanticdatabase.referencemodel.core;
  * Author: Claude Nanjo
  */
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Type reference that specifies containers with one generic parameter.
  *
  * Created by cnanjo on 4/11/16.
  */
+@Getter
+@Setter
 public class RMContainerType extends RMType {
 
     /**
