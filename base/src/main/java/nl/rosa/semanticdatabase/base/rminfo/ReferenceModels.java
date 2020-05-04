@@ -1,8 +1,6 @@
 package nl.rosa.semanticdatabase.base.rminfo;
 
 
-import com.nedap.archie.aom.Archetype;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -31,9 +29,9 @@ public class ReferenceModels {
         return referenceModelsById.get(new RMPackageId(publisher, aPackage));
     }
 
-    public ModelInfoLookup getModel(Archetype archetype) {
-        return referenceModelsById.get(new RMPackageId(archetype.getArchetypeId().getRmPublisher(), archetype.getArchetypeId().getRmPackage()));
-    }
+//    public ModelInfoLookup getModel(Archetype archetype) {
+//        return referenceModelsById.get(new RMPackageId(archetype.getArchetypeId().getRmPublisher(), archetype.getArchetypeId().getRmPackage()));
+//    }
 
     public List<ModelInfoLookup> getAllModels() {
         return new ArrayList<>(referenceModelsById.values());

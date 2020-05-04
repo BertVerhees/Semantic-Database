@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.message.MessageDescriptor;
 import nl.rosa.semanticdatabase.message.MessageLogger;
 import nl.rosa.semanticdatabase.message.MessageSeverity;
 import nl.rosa.semanticdatabase.referencemodel.persistence.validation.MessageIds;
-import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PSchema;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMSchema;
 
 public abstract class ValidatorBase {
 
@@ -29,7 +29,7 @@ public abstract class ValidatorBase {
      * @param sourceSchemaId
      * @param arguments
      */
-    protected void addValidityError(PSchema schema, String sourceSchemaId, MessageCode aKey, Object... arguments) {
+    protected void addValidityError(PRMSchema schema, String sourceSchemaId, MessageCode aKey, Object... arguments) {
         if(sourceSchemaId.equals(schema.getSchemaId())) {
             logger.addError(aKey, arguments);
         } else {

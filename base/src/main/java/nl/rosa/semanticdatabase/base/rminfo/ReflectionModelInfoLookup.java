@@ -1,18 +1,12 @@
 package nl.rosa.semanticdatabase.base.rminfo;
 
 import com.google.common.reflect.TypeToken;
-import com.nedap.archie.aom.CPrimitiveObject;
-import org.reflections.ReflectionUtils;
-import org.reflections.Reflections;
-import org.reflections.scanners.SubTypesScanner;
-import org.reflections.util.ClasspathHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.*;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Utility that defines the java mapping of type and attribute names of a given reference model.
@@ -26,9 +20,9 @@ import java.util.stream.Collectors;
  */
 public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
 
-    private static final Logger logger = LoggerFactory.getLogger(com.nedap.archie.rminfo.ReflectionModelInfoLookup.class);
+    private static final Logger logger = LoggerFactory.getLogger(ReflectionModelInfoLookup.class);
 
-    private ModelNamingStrategy namingStrategy;
+//    private ModelNamingStrategy namingStrategy;
 
     private String packageName;
     private ClassLoader classLoader;
@@ -47,46 +41,46 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
         Arrays.asList("getClass", "wait", "notify", "notifyAll", "clone", "finalize")
     );
 
-    public ReflectionModelInfoLookup(ModelNamingStrategy namingStrategy, Class baseClass) {
-        this(namingStrategy, baseClass, com.nedap.archie.rminfo.ReflectionModelInfoLookup.class.getClassLoader(), true);
-    }
+//    public ReflectionModelInfoLookup(ModelNamingStrategy namingStrategy, Class baseClass) {
+//        this(namingStrategy, baseClass, com.nedap.archie.rminfo.ReflectionModelInfoLookup.class.getClassLoader(), true);
+//    }
 
-    public ReflectionModelInfoLookup(ModelNamingStrategy namingStrategy, String packageName, ClassLoader classLoader) {
-        this.packageName = packageName;
-        this.namingStrategy = namingStrategy;
+//    public ReflectionModelInfoLookup(ModelNamingStrategy namingStrategy, String packageName, ClassLoader classLoader) {
+//        this.packageName = packageName;
+//        this.namingStrategy = namingStrategy;
+//
+//        this.classLoader = classLoader;
+//        Reflections reflections = new Reflections(packageName, new SubTypesScanner(false));
+//        Set<String> typeNames = reflections.getAllTypes();
+//
+//        typeNames.forEach(typeName -> {
+//            try {
+//                addClass(classLoader.loadClass(typeName));
+//            } catch (ClassNotFoundException e) {
+//                logger.error("error loading model info lookup", e);
+//            }
+//        });
+//        addSuperAndSubclassInfo();
+//        inConstructor = false;
+//    }
 
-        this.classLoader = classLoader;
-        Reflections reflections = new Reflections(packageName, new SubTypesScanner(false));
-        Set<String> typeNames = reflections.getAllTypes();
-
-        typeNames.forEach(typeName -> {
-            try {
-                addClass(classLoader.loadClass(typeName));
-            } catch (ClassNotFoundException e) {
-                logger.error("error loading model info lookup", e);
-            }
-        });
-        addSuperAndSubclassInfo();
-        inConstructor = false;
-    }
-
-    public ReflectionModelInfoLookup(ModelNamingStrategy namingStrategy, Class baseClass, ClassLoader classLoader, boolean addAttributesWithoutField) {
-        this.namingStrategy = namingStrategy;
-        this.addAttributesWithoutField = addAttributesWithoutField;
-
-        this.classLoader = classLoader;
-        addTypes(baseClass);
-        addSuperAndSubclassInfo();
-        inConstructor = false;
-    }
+//    public ReflectionModelInfoLookup(ModelNamingStrategy namingStrategy, Class baseClass, ClassLoader classLoader, boolean addAttributesWithoutField) {
+//        this.namingStrategy = namingStrategy;
+//        this.addAttributesWithoutField = addAttributesWithoutField;
+//
+//        this.classLoader = classLoader;
+//        addTypes(baseClass);
+//        addSuperAndSubclassInfo();
+//        inConstructor = false;
+//    }
 
     /**
      * Override to disable reflections scanning
-     * @param baseClass
+//     * @param baseClass
      */
-    protected void addTypes(Class baseClass) {
-        addSubtypesOf(baseClass);
-    }
+//    protected void addTypes(Class baseClass) {
+//        addSubtypesOf(baseClass);
+//    }
 
     private void addSuperAndSubclassInfo() {
         for(RMTypeInfo typeInfo:rmTypeNamesToRmTypeInfo.values()) {
@@ -112,51 +106,51 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
 
     /**
      * Add all subtypes of the given class
-     * @param baseClass
+//     * @param baseClass
      */
-    protected void addSubtypesOf(Class baseClass) {
-        Reflections reflections = new Reflections(ClasspathHelper.forClass(baseClass), new SubTypesScanner(false));
-        Set<Class<?>> classes = reflections.getSubTypesOf(baseClass);
+//    protected void addSubtypesOf(Class baseClass) {
+//        Reflections reflections = new Reflections(ClasspathHelper.forClass(baseClass), new SubTypesScanner(false));
+//        Set<Class<?>> classes = reflections.getSubTypesOf(baseClass);
+//
+//        classes.forEach(this::addClass);
+//        addClass(baseClass);
+//    }
 
-        classes.forEach(this::addClass);
-        addClass(baseClass);
-    }
+//    protected void addClass(Class clazz) {
+//        String rmTypeName = namingStrategy.getTypeName(clazz);
+//        RMTypeInfo typeInfo = new RMTypeInfo(clazz, rmTypeName);
+//        addAttributeInfo(clazz, typeInfo);
+//        rmTypeNamesToRmTypeInfo.put(rmTypeName, typeInfo);
+//        classesToRmTypeInfo.put(clazz, typeInfo);
+//        if(!inConstructor) {
+//            //if someone called this after initial creation, we need to update super/subclass info.
+//            //could be done more efficiently by only updating for the added class and parents/descendants, but
+//            //should not be a problem to do it this way
+//            addSuperAndSubclassInfo();
+//        }
+//    }
 
-    protected void addClass(Class clazz) {
-        String rmTypeName = namingStrategy.getTypeName(clazz);
-        RMTypeInfo typeInfo = new RMTypeInfo(clazz, rmTypeName);
-        addAttributeInfo(clazz, typeInfo);
-        rmTypeNamesToRmTypeInfo.put(rmTypeName, typeInfo);
-        classesToRmTypeInfo.put(clazz, typeInfo);
-        if(!inConstructor) {
-            //if someone called this after initial creation, we need to update super/subclass info.
-            //could be done more efficiently by only updating for the added class and parents/descendants, but
-            //should not be a problem to do it this way
-            addSuperAndSubclassInfo();
-        }
-    }
-
-    private void addAttributeInfo(Class clazz, RMTypeInfo typeInfo) {
-        //TODO: it's possible to constrain some method as well. should we do that here too?
-        TypeToken typeToken = TypeToken.of(clazz);
-
-        Set<Field> allFields = ReflectionUtils.getAllFields(clazz);
-        Map<String, Field> fieldsByName = allFields.stream()
-                .filter( field -> !field.getName().startsWith("$")) //jacoco adds $ fields.. annoying :)
-                .collect(Collectors.toMap((field) -> field.getName(), (field) -> field,
-                        (duplicate1, duplicate2) -> duplicate1));
-        for(Field field: fieldsByName.values()) {
-            addRMAttributeInfo(clazz, typeInfo, typeToken, field);
-        }
-        if(addAttributesWithoutField) {
-            Set<Method> getters = ReflectionUtils.getAllMethods(clazz, (method) -> method.getName().startsWith("get") || method.getName().startsWith("is"));
-            for (Method getMethod : getters) {
-                if(shouldAdd(getMethod)) {
-                    addRMAttributeInfo(clazz, typeInfo, typeToken, getMethod, fieldsByName);
-                }
-            }
-        }
-    }
+//    private void addAttributeInfo(Class clazz, RMTypeInfo typeInfo) {
+//        //TODO: it's possible to constrain some method as well. should we do that here too?
+//        TypeToken typeToken = TypeToken.of(clazz);
+//
+//        Set<Field> allFields = ReflectionUtils.getAllFields(clazz);
+//        Map<String, Field> fieldsByName = allFields.stream()
+//                .filter( field -> !field.getName().startsWith("$")) //jacoco adds $ fields.. annoying :)
+//                .collect(Collectors.toMap((field) -> field.getName(), (field) -> field,
+//                        (duplicate1, duplicate2) -> duplicate1));
+//        for(Field field: fieldsByName.values()) {
+//            addRMAttributeInfo(clazz, typeInfo, typeToken, field);
+//        }
+//        if(addAttributesWithoutField) {
+//            Set<Method> getters = ReflectionUtils.getAllMethods(clazz, (method) -> method.getName().startsWith("get") || method.getName().startsWith("is"));
+//            for (Method getMethod : getters) {
+//                if(shouldAdd(getMethod)) {
+//                    addRMAttributeInfo(clazz, typeInfo, typeToken, getMethod, fieldsByName);
+//                }
+//            }
+//        }
+//    }
 
     protected boolean shouldAdd(Method method) {
         if(method == null) {
@@ -166,123 +160,123 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
         return Modifier.isPublic(method.getModifiers()) && method.getAnnotation(RMPropertyIgnore.class) == null;
     }
 
-    protected void addRMAttributeInfo(Class clazz, RMTypeInfo typeInfo, TypeToken typeToken, Method getMethod, Map<String, Field> fieldsByName) {
-        String javaFieldName = null;
-        if(getMethod.getName().startsWith("is")) {
-            javaFieldName = lowerCaseFirstChar(getMethod.getName().substring(2));
-        } else {
-            javaFieldName = lowerCaseFirstChar(getMethod.getName().substring(3));
-        }
-        Field field = fieldsByName.get(javaFieldName);
-        if(field == null) {
-            field = fieldsByName.get(getMethod.getName());
-        }
-        String javaFieldNameUpperCased = upperCaseFirstChar(javaFieldName);
-        Method setMethod = null, addMethod = null;
-
-        if (getMethod == null) {
-            getMethod = getMethod(clazz, "is" + javaFieldNameUpperCased);
-        }
-        if (getMethod != null) {
-            setMethod = getMethod(clazz, "set" + javaFieldNameUpperCased, getMethod.getReturnType());
-            addMethod = getAddMethod(clazz, typeToken, javaFieldNameUpperCased, getMethod);
-        } else {
-            logger.debug("No get method found for attribute {} on class {}", javaFieldName, clazz.getSimpleName());
-        }
-
-        String attributeName = namingStrategy.getAttributeName(field, getMethod);
-
-        TypeToken fieldType = typeToken.resolveType(getMethod.getGenericReturnType());;
-
-        Class rawFieldType = fieldType.getRawType();
-        Class typeInCollection = getTypeInCollection(fieldType);
-       // if (setMethod != null) {
-            RMAttributeInfo attributeInfo = new RMAttributeInfo(
-                    attributeName,
-                    field,
-                    rawFieldType,
-                    typeInCollection,
-                    this.namingStrategy.getTypeName(typeInCollection),
-                    isNullable(clazz, getMethod, field),
-                    getMethod,
-                    setMethod,
-                    addMethod
-            );
-            if(typeInfo.getAttribute(attributeName) == null) {
-                typeInfo.addAttribute(attributeInfo);
-            }
-        //} else {
-        //    logger.info("property without a set method ignored for field {} on class {}", attributeName, clazz.getSimpleName());
-       // }
-    }
+//    protected void addRMAttributeInfo(Class clazz, RMTypeInfo typeInfo, TypeToken typeToken, Method getMethod, Map<String, Field> fieldsByName) {
+//        String javaFieldName = null;
+//        if(getMethod.getName().startsWith("is")) {
+//            javaFieldName = lowerCaseFirstChar(getMethod.getName().substring(2));
+//        } else {
+//            javaFieldName = lowerCaseFirstChar(getMethod.getName().substring(3));
+//        }
+//        Field field = fieldsByName.get(javaFieldName);
+//        if(field == null) {
+//            field = fieldsByName.get(getMethod.getName());
+//        }
+//        String javaFieldNameUpperCased = upperCaseFirstChar(javaFieldName);
+//        Method setMethod = null, addMethod = null;
+//
+//        if (getMethod == null) {
+//            getMethod = getMethod(clazz, "is" + javaFieldNameUpperCased);
+//        }
+//        if (getMethod != null) {
+//            setMethod = getMethod(clazz, "set" + javaFieldNameUpperCased, getMethod.getReturnType());
+//            addMethod = getAddMethod(clazz, typeToken, javaFieldNameUpperCased, getMethod);
+//        } else {
+//            logger.debug("No get method found for attribute {} on class {}", javaFieldName, clazz.getSimpleName());
+//        }
+//
+//        String attributeName = namingStrategy.getAttributeName(field, getMethod);
+//
+//        TypeToken fieldType = typeToken.resolveType(getMethod.getGenericReturnType());;
+//
+//        Class rawFieldType = fieldType.getRawType();
+//        Class typeInCollection = getTypeInCollection(fieldType);
+//       // if (setMethod != null) {
+//            RMAttributeInfo attributeInfo = new RMAttributeInfo(
+//                    attributeName,
+//                    field,
+//                    rawFieldType,
+//                    typeInCollection,
+//                    this.namingStrategy.getTypeName(typeInCollection),
+//                    isNullable(clazz, getMethod, field),
+//                    getMethod,
+//                    setMethod,
+//                    addMethod
+//            );
+//            if(typeInfo.getAttribute(attributeName) == null) {
+//                typeInfo.addAttribute(attributeInfo);
+//            }
+//        //} else {
+//        //    logger.info("property without a set method ignored for field {} on class {}", attributeName, clazz.getSimpleName());
+//       // }
+//    }
 
     protected boolean isNullable(Class clazz, Method getMethod, Field field) {
         return (field != null && field.getAnnotation(Nullable.class) != null) || getMethod.getAnnotation(Nullable.class) != null;
     }
 
 
-    private void addRMAttributeInfo(Class clazz, RMTypeInfo typeInfo, TypeToken typeToken, Field field) {
-        String javaFieldName = field.getName();
-        String javaFieldNameUpperCased = upperCaseFirstChar(javaFieldName);
-        Method getMethod = getMethod(clazz, "get" + javaFieldNameUpperCased);
-        Method setMethod = null, addMethod = null;
-        if (getMethod == null) {
-            getMethod = getMethod(clazz, "is" + javaFieldNameUpperCased);
-        }
-        if (getMethod != null) {
-            setMethod = getMethod(clazz, "set" + javaFieldNameUpperCased, getMethod.getReturnType());
-            addMethod = getAddMethod(clazz, typeToken, javaFieldNameUpperCased, getMethod);
-        } else {
-            logger.debug("No get method found for field {} on class {}", field.getName(), clazz.getSimpleName());
-        }
-
-        if(javaFieldName.startsWith("is")) {
-            //special case
-            String fieldNameWithoutPrefix = javaFieldName.substring(2);
-            String withoutPrefixUpperCased = upperCaseFirstChar(fieldNameWithoutPrefix);
-            if (getMethod == null) {
-                getMethod = getMethod(clazz, "is" + withoutPrefixUpperCased);
-            }
-            if (getMethod != null) {
-                if(setMethod == null) {
-                    setMethod = getMethod(clazz, "set" + withoutPrefixUpperCased, getMethod.getReturnType());
-                }
-                if(addMethod == null) {
-                    addMethod = getAddMethod(clazz, typeToken, withoutPrefixUpperCased, getMethod);
-                }
-            } else {
-                logger.debug("No get method found for attribute {} on class {}", javaFieldName, clazz.getSimpleName());
-            }
-
-        }
-        String attributeName = namingStrategy.getAttributeName(field, getMethod);
-
-        TypeToken fieldType = null;
-        if (getMethod != null) {
-            fieldType = typeToken.resolveType(getMethod.getGenericReturnType());
-        } else {
-            fieldType = typeToken.resolveType(field.getGenericType());
-        }
-
-        Class rawFieldType = fieldType.getRawType();
-        Class typeInCollection = getTypeInCollection(fieldType);
-        if (setMethod != null && (shouldAdd(setMethod) && shouldAdd(getMethod))) {
-            RMAttributeInfo attributeInfo = new RMAttributeInfo(
-                    attributeName,
-                    field,
-                    rawFieldType,
-                    typeInCollection,
-                    namingStrategy.getTypeName(typeInCollection),
-                    isNullable(clazz, getMethod, field),
-                    getMethod,
-                    setMethod,
-                    addMethod
-            );
-            typeInfo.addAttribute(attributeInfo);
-        } else {
-            logger.debug("property without a set method ignored for field {} on class {}", field.getName(), clazz.getSimpleName());
-        }
-    }
+//    private void addRMAttributeInfo(Class clazz, RMTypeInfo typeInfo, TypeToken typeToken, Field field) {
+//        String javaFieldName = field.getName();
+//        String javaFieldNameUpperCased = upperCaseFirstChar(javaFieldName);
+//        Method getMethod = getMethod(clazz, "get" + javaFieldNameUpperCased);
+//        Method setMethod = null, addMethod = null;
+//        if (getMethod == null) {
+//            getMethod = getMethod(clazz, "is" + javaFieldNameUpperCased);
+//        }
+//        if (getMethod != null) {
+//            setMethod = getMethod(clazz, "set" + javaFieldNameUpperCased, getMethod.getReturnType());
+//            addMethod = getAddMethod(clazz, typeToken, javaFieldNameUpperCased, getMethod);
+//        } else {
+//            logger.debug("No get method found for field {} on class {}", field.getName(), clazz.getSimpleName());
+//        }
+//
+//        if(javaFieldName.startsWith("is")) {
+//            //special case
+//            String fieldNameWithoutPrefix = javaFieldName.substring(2);
+//            String withoutPrefixUpperCased = upperCaseFirstChar(fieldNameWithoutPrefix);
+//            if (getMethod == null) {
+//                getMethod = getMethod(clazz, "is" + withoutPrefixUpperCased);
+//            }
+//            if (getMethod != null) {
+//                if(setMethod == null) {
+//                    setMethod = getMethod(clazz, "set" + withoutPrefixUpperCased, getMethod.getReturnType());
+//                }
+//                if(addMethod == null) {
+//                    addMethod = getAddMethod(clazz, typeToken, withoutPrefixUpperCased, getMethod);
+//                }
+//            } else {
+//                logger.debug("No get method found for attribute {} on class {}", javaFieldName, clazz.getSimpleName());
+//            }
+//
+//        }
+//        String attributeName = namingStrategy.getAttributeName(field, getMethod);
+//
+//        TypeToken fieldType = null;
+//        if (getMethod != null) {
+//            fieldType = typeToken.resolveType(getMethod.getGenericReturnType());
+//        } else {
+//            fieldType = typeToken.resolveType(field.getGenericType());
+//        }
+//
+//        Class rawFieldType = fieldType.getRawType();
+//        Class typeInCollection = getTypeInCollection(fieldType);
+//        if (setMethod != null && (shouldAdd(setMethod) && shouldAdd(getMethod))) {
+//            RMAttributeInfo attributeInfo = new RMAttributeInfo(
+//                    attributeName,
+//                    field,
+//                    rawFieldType,
+//                    typeInCollection,
+//                    namingStrategy.getTypeName(typeInCollection),
+//                    isNullable(clazz, getMethod, field),
+//                    getMethod,
+//                    setMethod,
+//                    addMethod
+//            );
+//            typeInfo.addAttribute(attributeInfo);
+//        } else {
+//            logger.debug("property without a set method ignored for field {} on class {}", field.getName(), clazz.getSimpleName());
+//        }
+//    }
 
     private Class getTypeInCollection(TypeToken fieldType) {
         Class rawFieldType = fieldType.getRawType();
@@ -305,28 +299,28 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
         return rawFieldType;
     }
 
-    private Method getAddMethod(Class clazz, TypeToken typeToken, String javaFieldNameUpperCased, Method getMethod) {
-        Method addMethod = null;
-        if (Collection.class.isAssignableFrom(getMethod.getReturnType())) {
-            Type[] typeArguments = ((ParameterizedType) getMethod.getGenericReturnType()).getActualTypeArguments();
-            if (typeArguments.length == 1) {
-                TypeToken singularParameter = typeToken.resolveType(typeArguments[0]);
-                //TODO: does this work or should we use the typeArguments[0].getSomething?
-                String addMethodName = "add" + toSingular(javaFieldNameUpperCased);
-                addMethod = getMethod(clazz, addMethodName, singularParameter.getRawType());
-                if (addMethod == null) {
-                    //Due to generics, this does not always work
-                    Set<Method> allAddMethods = ReflectionUtils.getAllMethods(clazz, ReflectionUtils.withName(addMethodName));
-                    if (allAddMethods.size() == 1) {
-                        addMethod = allAddMethods.iterator().next();
-                    } else {
-                        logger.debug("strange number of add methods for field {} on class {}", javaFieldNameUpperCased, clazz.getSimpleName());
-                    }
-                }
-            }
-        }
-        return addMethod;
-    }
+//    private Method getAddMethod(Class clazz, TypeToken typeToken, String javaFieldNameUpperCased, Method getMethod) {
+//        Method addMethod = null;
+//        if (Collection.class.isAssignableFrom(getMethod.getReturnType())) {
+//            Type[] typeArguments = ((ParameterizedType) getMethod.getGenericReturnType()).getActualTypeArguments();
+//            if (typeArguments.length == 1) {
+//                TypeToken singularParameter = typeToken.resolveType(typeArguments[0]);
+//                //TODO: does this work or should we use the typeArguments[0].getSomething?
+//                String addMethodName = "add" + toSingular(javaFieldNameUpperCased);
+//                addMethod = getMethod(clazz, addMethodName, singularParameter.getRawType());
+//                if (addMethod == null) {
+//                    //Due to generics, this does not always work
+//                    Set<Method> allAddMethods = ReflectionUtils.getAllMethods(clazz, ReflectionUtils.withName(addMethodName));
+//                    if (allAddMethods.size() == 1) {
+//                        addMethod = allAddMethods.iterator().next();
+//                    } else {
+//                        logger.debug("strange number of add methods for field {} on class {}", javaFieldNameUpperCased, clazz.getSimpleName());
+//                    }
+//                }
+//            }
+//        }
+//        return addMethod;
+//    }
 
     private String toSingular(String javaFieldNameUpperCased) {
         if(javaFieldNameUpperCased.endsWith("s")) {
@@ -421,10 +415,10 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
         return new ArrayList<>(classesToRmTypeInfo.values());
     }
 
-    @Override
-    public ModelNamingStrategy getNamingStrategy() {
-        return namingStrategy;
-    }
+//    @Override
+//    public ModelNamingStrategy getNamingStrategy() {
+//        return namingStrategy;
+//    }
 
     /**
      * Convert the given reference model object to the object required for the archetype constraint.
@@ -432,13 +426,13 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
      * for example, a CTerminologyCode can be used to check a CodePhrase or a DvCodedText. This cannot be directly checked and must be converted first.
      *
      * @param object
-     * @param cPrimitiveObject
+//     * @param cPrimitiveObject
      * @return
      */
-    @Override
-    public Object convertToConstraintObject(Object object, CPrimitiveObject cPrimitiveObject) {
-        return object;
-    }
+//    @Override
+//    public Object convertToConstraintObject(Object object, CPrimitiveObject cPrimitiveObject) {
+//        return object;
+//    }
 
     @Override
     public Object convertConstrainedPrimitiveToRMObject(Object object) {

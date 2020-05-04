@@ -1,28 +1,28 @@
 package nl.rosa.semanticdatabase.referencemodel.v2.validation.validators;
 
+import nl.rosa.semanticdatabase.message.MessageLogger;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMClass;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMProperty;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMSchema;
 import org.apache.commons.lang3.StringUtils;
-import org.openehr.bmm.persistence.validation.BmmDefinitions;
-import org.openehr.bmm.persistence.validation.BmmMessageIds;
-import org.openehr.bmm.v2.persistence.*;
-import org.openehr.utils.message.MessageLogger;
 
 import java.util.List;
 import java.util.Map;
 
 public class PropertyValidator extends ValidatorBase {
 
-    private final PBmmSchema schema;
+    private final PRMSchema schema;
     private MessageLogger logger;
 
     private ConformanceChecker conformanceChecker = new ConformanceChecker();
 
-    public PropertyValidator(MessageLogger logger, PBmmSchema schema) {
+    public PropertyValidator(MessageLogger logger, PRMSchema schema) {
         super(logger);
         this.logger = logger;
         this.schema = schema;
     }
 
-    public void validateProperty(PBmmClass pBmmClass, PBmmProperty pBmmProperty) {
+    public void validateProperty(PRMClass pBmmClass, PRMProperty pBmmProperty) {
         //first check if any property replicates a property from a parent class
         validateOverriddenPropertyType(pBmmClass, pBmmProperty);
 
@@ -143,7 +143,7 @@ public class PropertyValidator extends ValidatorBase {
         }
     }
 
-    private void validateSimpleOpenProperty(PBmmClass pBmmClass, PBmmProperty pBmmProperty) {
+    private void validateSimpleOpenProperty(PRMClass pBmmClass, PRMProperty pBmmProperty) {
         //For open properties, check if the containing class is a generic class and has a parameter of that type
         PBmmSinglePropertyOpen singlePropertyOpenDefinition = (PBmmSinglePropertyOpen) pBmmProperty;
         PBmmOpenType attributeTypeDefinition = singlePropertyOpenDefinition.getTypeRef();

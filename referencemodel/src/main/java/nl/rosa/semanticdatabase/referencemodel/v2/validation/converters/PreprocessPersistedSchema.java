@@ -6,23 +6,23 @@ import java.util.Map;
 
 public class PreprocessPersistedSchema {
     //convert all maps to case insensitive variants
-    public void preprocess(PSchema schema) {
+    public void preprocess(PRMSchema schema) {
         {
-            Map<String, PClass> classDefinitions = schema.getClassDefinitions();
-            CaseInsensitiveLinkedHashMap<PClass> newClassDefinitions = new CaseInsensitiveLinkedHashMap<>();
+            Map<String, PRMClass> classDefinitions = schema.getClassDefinitions();
+            CaseInsensitiveLinkedHashMap<PRMClass> newClassDefinitions = new CaseInsensitiveLinkedHashMap<>();
             newClassDefinitions.putAll(classDefinitions);
             schema.setClassDefinitions(newClassDefinitions);
-            for(PClass clazz:classDefinitions.values()) {
+            for(PRMClass clazz:classDefinitions.values()) {
                 clazz.setSourceSchemaId(schema.getSchemaId());
             }
         }
 
         {
-            Map<String, PClass> primitiveTypes = schema.getPrimitiveTypes();
-            CaseInsensitiveLinkedHashMap<PClass> newPrimitiveTypes = new CaseInsensitiveLinkedHashMap<>();
+            Map<String, PRMClass> primitiveTypes = schema.getPrimitiveTypes();
+            CaseInsensitiveLinkedHashMap<PRMClass> newPrimitiveTypes = new CaseInsensitiveLinkedHashMap<>();
             newPrimitiveTypes.putAll(primitiveTypes);
             schema.setPrimitiveTypes(newPrimitiveTypes);
-            for(PClass clazz:primitiveTypes.values()) {
+            for(PRMClass clazz:primitiveTypes.values()) {
                 clazz.setSourceSchemaId(schema.getSchemaId());
             }
         }
@@ -35,11 +35,11 @@ public class PreprocessPersistedSchema {
 
     }
 
-    private void convertPackages(PPackageContainer schema) {
-        Map<String, PPackage> packages = schema.getPackages();
-        CaseInsensitiveLinkedHashMap<PPackage> newpackages = new CaseInsensitiveLinkedHashMap<>();
+    private void convertPackages(PRMPackageContainer schema) {
+        Map<String, PRMPackage> packages = schema.getPackages();
+        CaseInsensitiveLinkedHashMap<PRMPackage> newpackages = new CaseInsensitiveLinkedHashMap<>();
         newpackages.putAll(packages);
-        for(PPackage bmmPackage:newpackages.values()) {
+        for(PRMPackage bmmPackage:newpackages.values()) {
             convertPackages(bmmPackage);
         }
         schema.setPackages(newpackages);

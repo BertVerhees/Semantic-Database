@@ -9,7 +9,7 @@ import com.google.common.collect.ImmutableBiMap;
 import nl.rosa.semanticdatabase.base.Interval;
 import nl.rosa.semanticdatabase.base.SemanticDatabaseBase;
 import nl.rosa.semanticdatabase.referencemodel.v2.persistence.*;
-import nl.rosa.semanticdatabase.referencemodel.persistence.validation.Definitions;
+import nl.rosa.semanticdatabase.referencemodel.persistence.validation.RMDefinitions;
 
 import java.io.IOException;
 
@@ -22,25 +22,25 @@ import java.io.IOException;
 public class ReferenceModelTypeNaming extends ClassNameIdResolver {
 
     private final static ImmutableBiMap<String, Class> classNaming = ImmutableBiMap.<String, Class>builder().
-        put("P_BASE_TYPE", PBaseType.class).
+        put("P_BASE_TYPE", PRMBaseType.class).
         put("INCLUDE_SPEC", IncludeSpec.class).
-        put("P_CLASS", PClass.class).
-        put("P_CONTAINER_PROPERTY", PContainerProperty.class).
-        put("P_ENUMERATION", PEnumeration.class).
-        put("P_ENUMERATION_STRING", PEnumerationString.class).
-        put("P_ENUMERATION_INTEGER", PEnumerationInteger.class).
-        put("P_GENERIC_PARAMETER", PGenericParameter.class).
-        put("P_GENERIC_PROPERTY", PGenericProperty.class).
-        put("P_GENERIC_TYPE", PGenericType.class).
-        put("P_OPEN_TYPE", POpenType.class).
-        put("P_CONTAINER_TYPE", PContainerType.class).
-        put("P_PACKAGE", PPackage.class).
-        put("P_PROPERTY", PProperty.class).
-        put("P_SCHEMA", PSchema.class).
-        put("P_SIMPLE_TYPE", PSimpleType.class).
-        put("P_SINGLE_PROPERTY", PSingleProperty.class).
-        put("P_SINGLE_PROPERTY_OPEN", PSinglePropertyOpen.class).
-        put("P_TYPE", PType.class).
+        put("P_CLASS", PRMClass.class).
+        put("P_CONTAINER_PROPERTY", PRMContainerProperty.class).
+        put("P_ENUMERATION", PRMEnumeration.class).
+        put("P_ENUMERATION_STRING", PRMEnumerationString.class).
+        put("P_ENUMERATION_INTEGER", PRMEnumerationInteger.class).
+        put("P_GENERIC_PARAMETER", PRMGenericParameter.class).
+        put("P_GENERIC_PROPERTY", PRMGenericProperty.class).
+        put("P_GENERIC_TYPE", PRMGenericType.class).
+        put("P_OPEN_TYPE", PRMOpenType.class).
+        put("P_CONTAINER_TYPE", PRMContainerType.class).
+        put("P_PACKAGE", PRMPackage.class).
+        put("P_PROPERTY", PRMProperty.class).
+        put("P_SCHEMA", PRMSchema.class).
+        put("P_SIMPLE_TYPE", PRMSimpleType.class).
+        put("P_SINGLE_PROPERTY", PRMSingleProperty.class).
+        put("P_SINGLE_PROPERTY_OPEN", PRMSinglePropertyOpen.class).
+        put("P_TYPE", PRMType.class).
         put("INTERVAL", Interval.class).build();
 
     private final static ImmutableBiMap<Class, String> inverseClassNaming = classNaming.inverse();
@@ -73,7 +73,7 @@ public class ReferenceModelTypeNaming extends ClassNameIdResolver {
 
     @Override
     protected JavaType _typeFromId(String typeName, DatabindContext ctxt) throws IOException {
-        String classKey = Definitions.typeNameToClassKey(typeName);
+        String classKey = RMDefinitions.typeNameToClassKey(typeName);
         Class result =  classNaming.get(classKey);
         if(result != null) {
             TypeFactory typeFactory = (ctxt == null) ? _typeFactory : ctxt.getTypeFactory();

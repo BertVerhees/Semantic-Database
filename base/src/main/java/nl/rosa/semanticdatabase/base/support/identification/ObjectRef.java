@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.base.support.identification;
 
-import nl.rosa.semanticdatabase.referencemodel.model.internal.RMObject;
+import nl.rosa.semanticdatabase.model.internal.RMObject;
 
 public class ObjectRef<Idtype extends ObjectId> extends RMObject {
     private String namespace;

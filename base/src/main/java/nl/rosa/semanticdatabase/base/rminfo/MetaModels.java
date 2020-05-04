@@ -1,10 +1,5 @@
 package nl.rosa.semanticdatabase.base.rminfo;
 
-import org.openehr.bmm.core.BmmModel;
-import org.openehr.bmm.persistence.validation.BmmDefinitions;
-import org.openehr.bmm.v2.validation.BmmRepository;
-import org.openehr.bmm.v2.validation.BmmValidationResult;
-
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -25,12 +20,12 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class MetaModels implements MetaModelInterface {
 
-    private final com.nedap.archie.rminfo.ReferenceModels models;
-    private final BmmRepository bmmRepository;
-    private AomProfiles aomProfiles;
+    private final ReferenceModels models;
+//    private final BmmRepository bmmRepository;
+//    private AomProfiles aomProfiles;
 
-    private com.nedap.archie.rminfo.MetaModel selectedModel;
-    private AomProfile selectedAomProfile;
+    private MetaModel selectedModel;
+//    private AomProfile selectedAomProfile;
 
     /**
      * Allows to set a specific RM version for a specific RM model, so that one is used instead of the one in the archetype
@@ -38,13 +33,13 @@ public class MetaModels implements MetaModelInterface {
     private Map<String, String> overriddenMetaModelVersions = new ConcurrentHashMap<>();
 
 
-    public MetaModels(com.nedap.archie.rminfo.ReferenceModels models, BmmRepository repository) {
+    public MetaModels(ReferenceModels models, BmmRepository repository) {
         this.models = models;
         this.bmmRepository = repository;
         aomProfiles = new AomProfiles();
     }
 
-    public MetaModels(com.nedap.archie.rminfo.ReferenceModels models, BmmRepository repository, AomProfiles profiles) {
+    public MetaModels(ReferenceModels models, BmmRepository repository, AomProfiles profiles) {
         this.models = models;
         this.bmmRepository = repository;
         aomProfiles = profiles;
@@ -82,9 +77,9 @@ public class MetaModels implements MetaModelInterface {
     /**
      * Select a meta model based on an archetype
      * @param archetype the archetype to find the model for
-     * @throws com.nedap.archie.rminfo.ModelNotFoundException when no BMM and no ModelInfoLookup model has been found matching the archetype
+     * @throws ModelNotFoundException when no BMM and no ModelInfoLookup model has been found matching the archetype
      */
-    public void selectModel(Archetype archetype) throws com.nedap.archie.rminfo.ModelNotFoundException { ;
+    public void selectModel(Archetype archetype) throws ModelNotFoundException { ;
         String overriddenVersion = getOverriddenModelVersion(archetype.getArchetypeId().getRmPublisher(), archetype.getArchetypeId().getRmPackage());
         selectModel(archetype, overriddenVersion == null ? archetype.getRmRelease(): overriddenVersion);
     }
@@ -93,9 +88,9 @@ public class MetaModels implements MetaModelInterface {
      * Select a model based on an archetype, but override the RM Release with the given rm release version
      * @param archetype the archetype to find the model for
      * @param rmVersion the version of the reference model you want to check with.
-     * @throws com.nedap.archie.rminfo.ModelNotFoundException
+     * @throws ModelNotFoundException
      */
-    public void selectModel(Archetype archetype, String rmVersion) throws com.nedap.archie.rminfo.ModelNotFoundException { ;
+    public void selectModel(Archetype archetype, String rmVersion) throws ModelNotFoundException { ;
         selectModel(archetype.getArchetypeId().getRmPublisher(), archetype.getArchetypeId().getRmPackage(), rmVersion);
     }
 
@@ -105,10 +100,10 @@ public class MetaModels implements MetaModelInterface {
      * @param rmPublisher RM Publisher
      * @param rmPackage RM Package
      * @param rmRelease the version of the reference model you want to check with.
-     * @throws com.nedap.archie.rminfo.ModelNotFoundException
+     * @throws ModelNotFoundException
      */
-    public void selectModel(String rmPublisher, String rmPackage, String rmRelease) throws com.nedap.archie.rminfo.ModelNotFoundException {
-        com.nedap.archie.rminfo.ModelInfoLookup selectedModel = null;
+    public void selectModel(String rmPublisher, String rmPackage, String rmRelease) throws ModelNotFoundException {
+        ModelInfoLookup selectedModel = null;
         BmmModel selectedBmmModel = null;
         if(models != null) {
              selectedModel = models.getModel(rmPublisher, rmPackage);
@@ -124,9 +119,9 @@ public class MetaModels implements MetaModelInterface {
         }
 
         if(selectedModel == null && selectedBmmModel == null) {
-            throw new com.nedap.archie.rminfo.ModelNotFoundException(String.format("model for %s.%s version %s not found", rmPublisher, rmPackage, rmRelease));
+            throw new ModelNotFoundException(String.format("model for %s.%s version %s not found", rmPublisher, rmPackage, rmRelease));
         }
-        this.selectedModel = new com.nedap.archie.rminfo.MetaModel(selectedModel, selectedBmmModel, selectedAomProfile);
+        this.selectedModel = new MetaModel(selectedModel, selectedBmmModel, selectedAomProfile);
 
     }
 
@@ -150,7 +145,7 @@ public class MetaModels implements MetaModelInterface {
         return null;
     }
 
-    public com.nedap.archie.rminfo.ModelInfoLookup getSelectedModelInfoLookup() {
+    public ModelInfoLookup getSelectedModelInfoLookup() {
         return selectedModel == null ? null : selectedModel.getSelectedModel();
     }
 
@@ -158,11 +153,11 @@ public class MetaModels implements MetaModelInterface {
         return selectedModel == null ? null : selectedModel.getSelectedBmmModel();
     }
 
-    public com.nedap.archie.rminfo.MetaModel getSelectedModel() {
+    public MetaModel getSelectedModel() {
         return selectedModel;
     }
 
-    public com.nedap.archie.rminfo.ReferenceModels getReferenceModels() {
+    public ReferenceModels getReferenceModels() {
         return models;
     }
 
@@ -218,9 +213,9 @@ public class MetaModels implements MetaModelInterface {
         return selectedModel.validatePrimitiveType(rmTypeName, rmAttributeName, cObject);
     }
 
-    private void checkThatModelHasBeenSelected() throws com.nedap.archie.rminfo.NoModelSelectedException {
+    private void checkThatModelHasBeenSelected() throws NoModelSelectedException {
         if(selectedModel == null) {
-            throw new com.nedap.archie.rminfo.NoModelSelectedException("Please call the selectModel() method before trying to use MetaModels");
+            throw new NoModelSelectedException("Please call the selectModel() method before trying to use MetaModels");
         }
 
     }

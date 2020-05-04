@@ -2,17 +2,17 @@ package nl.rosa.semanticdatabase.referencemodel.v2.validation.validators;
 
 import nl.rosa.semanticdatabase.message.MessageLogger;
 import nl.rosa.semanticdatabase.referencemodel.persistence.validation.MessageIds;
-import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PSchema;
-import nl.rosa.semanticdatabase.referencemodel.v2.validation.Repository;
-import nl.rosa.semanticdatabase.referencemodel.v2.validation.Validation;
-import nl.rosa.semanticdatabase.referencemodel.v2.validation.ValidationResult;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMSchema;
+import nl.rosa.semanticdatabase.referencemodel.v2.validation.RMRepository;
+import nl.rosa.semanticdatabase.referencemodel.v2.validation.RMValidation;
+import nl.rosa.semanticdatabase.referencemodel.v2.validation.RMValidationResult;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreatedSchemaValidation implements Validation {
+public class CreatedSchemaValidation implements RMValidation {
     @Override
-    public void validate(ValidationResult validationResult, Repository repository, MessageLogger logger, PSchema schema) {
+    public void validate(RMValidationResult RMValidationResult, RMRepository RMRepository, MessageLogger logger, PRMSchema schema) {
         List<String> packageNames = new ArrayList<>();
 
         //check top-level names - package names cannot contain each other and be siblings

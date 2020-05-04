@@ -1,9 +1,9 @@
 package nl.rosa.semanticdatabase.referencemodel.v2.validation.converters;
 
-import org.openehr.bmm.persistence.validation.BmmDefinitions;
-import org.openehr.bmm.v2.persistence.PBmmClass;
-import org.openehr.bmm.v2.persistence.PBmmGenericParameter;
-import org.openehr.bmm.v2.persistence.PBmmSchema;
+import nl.rosa.semanticdatabase.referencemodel.persistence.validation.RMDefinitions;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMClass;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMGenericParameter;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMSchema;
 
 import java.util.*;
 import java.util.function.Consumer;
@@ -17,18 +17,18 @@ public class ProcessClassesInOrder {
      * @param action
      * @param classesToProcess
      */
-    public void doAllClassesInOrder(PBmmSchema schema, Consumer<PBmmClass> action, List<PBmmClass> classesToProcess) {
+    public void doAllClassesInOrder(PRMSchema schema, Consumer<PRMClass> action, List<PRMClass> classesToProcess) {
         int attempts = schema.getClassDefinitions().size() * 10;
         int tries = 0;
         List<String> visitedClasses = new ArrayList<>();
-        Queue<PBmmClass> queue = new LinkedList<>();
+        Queue<PRMClass> queue = new LinkedList<>();
         //Initial queue population
-        for (PBmmClass bmmClass : classesToProcess) {
+        for (PRMClass bmmClass : classesToProcess) {
             processClass(schema, action, visitedClasses, queue, bmmClass);
         }
         //Go through the queue and remove nodes whose ancestors have already been processed
         while (!queue.isEmpty() && tries < attempts) {
-            PBmmClass element = queue.remove();
+            PRMClass element = queue.remove();
             if (element == null) {
 
             } else {
@@ -38,25 +38,25 @@ public class ProcessClassesInOrder {
         }
     }
 
-    private void processClass(PBmmSchema schema, Consumer<PBmmClass> action, List<String> visitedClasses, Queue<PBmmClass> queue, PBmmClass bmmClass) {
+    private void processClass(PRMSchema schema, Consumer<PRMClass> action, List<String> visitedClasses, Queue<PRMClass> queue, PRMClass bmmClass) {
         if (!visitedClasses.contains(bmmClass.getName().toUpperCase())) {
             boolean allAncestorsAndDependenciesVisited = true;
             for (String ancestor : bmmClass.getAncestorTypeNames()) {
-                String ancestorClassName = BmmDefinitions.typeNameToClassKey(ancestor);
+                String ancestorClassName = RMDefinitions.typeNameToClassKey(ancestor);
                 if (!visitedClasses.contains(ancestorClassName.toUpperCase())) {
                     allAncestorsAndDependenciesVisited = false;
-                    PBmmClass ancestorDef = schema.findClassOrPrimitiveDefinition(ancestorClassName);
+                    PRMClass ancestorDef = schema.findClassOrPrimitiveDefinition(ancestorClassName);
                     queue.add(ancestorDef);
                 }
 
             }
             if (bmmClass.isGeneric()) {
-                Map<String, PBmmGenericParameter> parameters = bmmClass.getGenericParameterDefs();
-                for (PBmmGenericParameter parameter : parameters.values()) {
+                Map<String, PRMGenericParameter> parameters = bmmClass.getGenericParameterDefs();
+                for (PRMGenericParameter parameter : parameters.values()) {
                     String conformsTo = parameter.getConformsToType();
                     if (conformsTo != null && !visitedClasses.contains(conformsTo.toUpperCase())) {
                         allAncestorsAndDependenciesVisited = false;
-                        PBmmClass dependency = schema.findClassOrPrimitiveDefinition(conformsTo);
+                        PRMClass dependency = schema.findClassOrPrimitiveDefinition(conformsTo);
                         queue.add(dependency);
                     }
                 }

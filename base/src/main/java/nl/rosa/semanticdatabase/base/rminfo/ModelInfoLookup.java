@@ -1,11 +1,8 @@
 package nl.rosa.semanticdatabase.base.rminfo;
 
-import com.nedap.archie.aom.Archetype;
-import com.nedap.archie.aom.CObject;
-import com.nedap.archie.aom.CPrimitiveObject;
-import com.nedap.archie.base.MultiplicityInterval;
-import com.nedap.archie.paths.PathSegment;
-import com.nedap.archie.query.APathQuery;
+import nl.rosa.semanticdatabase.base.MultiplicityInterval;
+import nl.rosa.semanticdatabase.base.paths.PathSegment;
+import nl.rosa.semanticdatabase.query.APathQuery;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -84,7 +81,7 @@ public interface ModelInfoLookup {
      * Returns the naming strategy for the java classes of this model
      * @return
      */
-    ModelNamingStrategy getNamingStrategy();
+//    ModelNamingStrategy getNamingStrategy();
 
     /**
      * Converts the given rm object with the constraint in cPrimitiveObject to the corresponding AOM model
@@ -95,7 +92,7 @@ public interface ModelInfoLookup {
      * @param cPrimitiveObject the AOM constraint
      * @return the rm object converted to the corresponding AOM object
      */
-    Object convertToConstraintObject(Object object, CPrimitiveObject cPrimitiveObject);
+//    Object convertToConstraintObject(Object object, CPrimitiveObject cPrimitiveObject);
 
 
     /**
@@ -110,7 +107,7 @@ public interface ModelInfoLookup {
      * Callback after an RM Object has been created based on a constraint. Can for example be used
      * to set names or archetype ID Node values
      */
-    void processCreatedObject(Object createdObject, CObject constraint);
+//    void processCreatedObject(Object createdObject, CObject constraint);
 
 
     /**
@@ -158,17 +155,17 @@ public interface ModelInfoLookup {
      * @return Each key is a path that was updated as a result of the previously updated path and each corresponding
      * value is this path's updated value
      */
-    Map<String, Object> pathHasBeenUpdated(Object rmObject, Archetype archetype, String pathOfParent, Object parent);
+//    Map<String, Object> pathHasBeenUpdated(Object rmObject, Archetype archetype, String pathOfParent, Object parent);
 
     /**
      * True if the given attribute at given type is ok for given CPrimitiveObject, false otherwise
      * TODO: this should be solved with AOM_PROFILE
-     * @param rmTypeName the type name of the type to checjk
-     * @param rmAttributeName the attribute name of the attribute to check
-     * @param cObject the primitive object to validate
+//     * @param rmTypeName the type name of the type to checjk
+//     * @param rmAttributeName the attribute name of the attribute to check
+//     * @param cObject the primitive object to validate
      * @return true if valid, false if not valid
      */
-    boolean validatePrimitiveType(String rmTypeName, String rmAttributeName, CPrimitiveObject cObject);
+//    boolean validatePrimitiveType(String rmTypeName, String rmAttributeName, CPrimitiveObject cObject);
 
     Collection<RMPackageId> getId();
 
