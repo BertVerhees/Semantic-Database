@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.referencemodel.model;
+package nl.rosa.semanticdatabase.referencemodel.model_structure;
 
 import lombok.Getter;
 import lombok.Setter;

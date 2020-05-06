@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.referencemodel.model_access;
 import lombok.Getter;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.referencemodel.base.BmmDefinitions;
-import nl.rosa.semanticdatabase.referencemodel.model.BmmModel;
+import nl.rosa.semanticdatabase.referencemodel.model_structure.BmmModel;
 
 import java.util.List;
 import java.util.Map;

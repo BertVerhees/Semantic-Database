@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.model_access;
 
-import nl.rosa.semanticdatabase.referencemodel.model.BmmModel;
-import nl.rosa.semanticdatabase.referencemodel.model.BmmPackageContainer;
+import nl.rosa.semanticdatabase.referencemodel.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.referencemodel.model_structure.BmmPackageContainer;
 import org.junit.Test;
 
 /**
