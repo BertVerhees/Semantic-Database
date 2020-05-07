@@ -1,5 +1,6 @@
 package model_access;
 import model_structure.BmmPackageContainer;
+import classes.BmmClass;
 import model_structure.BmmModel;
 
 
@@ -13,8 +14,8 @@ abstract public class BmmSchema extends PBmmPackageContainer, BmmModelMetadata, 
   //
 
   private String bmmVersion;
-  private BmmClass primitiveTypes;
-  private BmmClass classDefinitions;
+  private classes.BmmClass primitiveTypes;
+  private classes.BmmClass classDefinitions;
   private model_access.BmmIncludeSpec includes;
   private model_structure.BmmModel bmmSchema;
   private model_access.BmmSchemaState state;
@@ -60,7 +61,7 @@ abstract public class BmmSchema extends PBmmPackageContainer, BmmModelMetadata, 
    * Set the value of primitiveTypes
    * @param newVar the new value of primitiveTypes
    */
-  public void setPrimitiveTypes (BmmClass newVar) {
+  public void setPrimitiveTypes (classes.BmmClass newVar) {
     primitiveTypes = newVar;
   }
 
@@ -68,7 +69,7 @@ abstract public class BmmSchema extends PBmmPackageContainer, BmmModelMetadata, 
    * Get the value of primitiveTypes
    * @return the value of primitiveTypes
    */
-  public BmmClass getPrimitiveTypes () {
+  public classes.BmmClass getPrimitiveTypes () {
     return primitiveTypes;
   }
 
@@ -76,7 +77,7 @@ abstract public class BmmSchema extends PBmmPackageContainer, BmmModelMetadata, 
    * Set the value of classDefinitions
    * @param newVar the new value of classDefinitions
    */
-  public void setClassDefinitions (BmmClass newVar) {
+  public void setClassDefinitions (classes.BmmClass newVar) {
     classDefinitions = newVar;
   }
 
@@ -84,7 +85,7 @@ abstract public class BmmSchema extends PBmmPackageContainer, BmmModelMetadata, 
    * Get the value of classDefinitions
    * @return the value of classDefinitions
    */
-  public BmmClass getClassDefinitions () {
+  public classes.BmmClass getClassDefinitions () {
     return classDefinitions;
   }
 

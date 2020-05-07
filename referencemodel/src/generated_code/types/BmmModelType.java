@@ -1,4 +1,6 @@
 package types;
+import classes.BmmValueSpec;
+import classes.BmmClass;
 
 
 /**
@@ -17,11 +19,11 @@ abstract public class BmmModelType extends BmmEffectiveType {
   // Fields
   //
 
-  private BmmValueSpec valueConstraint;
+  private classes.BmmValueSpec valueConstraint;
   /**
    * Defining class of this type.
    */
-  private BmmClass baseClass;
+  private classes.BmmClass baseClass;
   
   //
   // Constructors
@@ -41,7 +43,7 @@ abstract public class BmmModelType extends BmmEffectiveType {
    * Set the value of valueConstraint
    * @param newVar the new value of valueConstraint
    */
-  public void setValueConstraint (BmmValueSpec newVar) {
+  public void setValueConstraint (classes.BmmValueSpec newVar) {
     valueConstraint = newVar;
   }
 
@@ -49,7 +51,7 @@ abstract public class BmmModelType extends BmmEffectiveType {
    * Get the value of valueConstraint
    * @return the value of valueConstraint
    */
-  public BmmValueSpec getValueConstraint () {
+  public classes.BmmValueSpec getValueConstraint () {
     return valueConstraint;
   }
 
@@ -58,7 +60,7 @@ abstract public class BmmModelType extends BmmEffectiveType {
    * Defining class of this type.
    * @param newVar the new value of baseClass
    */
-  public void setBaseClass (BmmClass newVar) {
+  public void setBaseClass (classes.BmmClass newVar) {
     baseClass = newVar;
   }
 
@@ -67,7 +69,7 @@ abstract public class BmmModelType extends BmmEffectiveType {
    * Defining class of this type.
    * @return the value of baseClass
    */
-  public BmmClass getBaseClass () {
+  public classes.BmmClass getBaseClass () {
     return baseClass;
   }
 

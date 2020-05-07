@@ -1,4 +1,5 @@
 package model_structure;
+import classes.BmmClass;
 
 
 /**
@@ -10,7 +11,7 @@ public class BmmPackage {
   // Fields
   //
 
-  private BmmClass classes;
+  private classes.BmmClass classes;
   
   //
   // Constructors
@@ -30,7 +31,7 @@ public class BmmPackage {
    * Set the value of classes
    * @param newVar the new value of classes
    */
-  public void setClasses (BmmClass newVar) {
+  public void setClasses (classes.BmmClass newVar) {
     classes = newVar;
   }
 
@@ -38,7 +39,7 @@ public class BmmPackage {
    * Get the value of classes
    * @return the value of classes
    */
-  public BmmClass getClasses () {
+  public classes.BmmClass getClasses () {
     return classes;
   }
 
@@ -47,9 +48,9 @@ public class BmmPackage {
   //
 
   /**
-   * @return       BmmClass
+   * @return       classes.BmmClass
    */
-  public BmmClass rootClasses()
+  public classes.BmmClass rootClasses()
   {
   }
 

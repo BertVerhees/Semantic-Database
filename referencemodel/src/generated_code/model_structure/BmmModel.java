@@ -1,5 +1,7 @@
 package model_structure;
 import model_access.BmmModelMetadata;
+import classes.BmmClass;
+import classes.BmmEnumeration;
 import types.BmmSimpleType;
 
 
@@ -12,7 +14,7 @@ public class BmmModel extends BmmPackageContainer, BmmModelMetadata {
   // Fields
   //
 
-  private BmmClass classDefinitions;
+  private classes.BmmClass classDefinitions;
   private model_structure.BmmModel usedModels;
   
   //
@@ -33,7 +35,7 @@ public class BmmModel extends BmmPackageContainer, BmmModelMetadata {
    * Set the value of classDefinitions
    * @param newVar the new value of classDefinitions
    */
-  public void setClassDefinitions (BmmClass newVar) {
+  public void setClassDefinitions (classes.BmmClass newVar) {
     classDefinitions = newVar;
   }
 
@@ -41,7 +43,7 @@ public class BmmModel extends BmmPackageContainer, BmmModelMetadata {
    * Get the value of classDefinitions
    * @return the value of classDefinitions
    */
-  public BmmClass getClassDefinitions () {
+  public classes.BmmClass getClassDefinitions () {
     return classDefinitions;
   }
 
@@ -74,18 +76,18 @@ public class BmmModel extends BmmPackageContainer, BmmModelMetadata {
 
 
   /**
-   * @return       BmmClass
+   * @return       classes.BmmClass
    * @param        name
    */
-  public BmmClass classDefinition(String name)
+  public classes.BmmClass classDefinition(String name)
   {
   }
 
 
   /**
-   * @return       BmmClass
+   * @return       classes.BmmClass
    */
-  public BmmClass typeDefinition()
+  public classes.BmmClass typeDefinition()
   {
   }
 
@@ -109,10 +111,10 @@ public class BmmModel extends BmmPackageContainer, BmmModelMetadata {
 
 
   /**
-   * @return       BmmEnumeration
+   * @return       classes.BmmEnumeration
    * @param        name
    */
-  public BmmEnumeration enumerationDefinition(String name)
+  public classes.BmmEnumeration enumerationDefinition(String name)
   {
   }
 
@@ -161,11 +163,11 @@ public class BmmModel extends BmmPackageContainer, BmmModelMetadata {
 
 
   /**
-   * @return       BmmClass
+   * @return       classes.BmmClass
    * @param        typeName
    * @param        propertyPath
    */
-  public BmmClass classDefintionAtPath(String typeName, String propertyPath)
+  public classes.BmmClass classDefintionAtPath(String typeName, String propertyPath)
   {
   }
 
@@ -224,9 +226,9 @@ public class BmmModel extends BmmPackageContainer, BmmModelMetadata {
 
 
   /**
-   * @return       new_class
+   * @return       undef
    */
-  public new_class booleanTypeDefinition()
+  public undef booleanTypeDefinition()
   {
   }
 

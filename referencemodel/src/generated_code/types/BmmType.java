@@ -67,9 +67,8 @@ abstract public class BmmType extends BmmEntity {
   /**
    * Type with any container abstracted away.
    * When UnitaryType: Result = self.
-   * @return       BmmUnitaryType
    */
-  public BmmUnitaryType unitaryType()
+  public void unitaryType()
   {
   }
 
@@ -77,9 +76,8 @@ abstract public class BmmType extends BmmEntity {
   /**
    * Type with any container abstracted away, and any formal parameter replaced by
    * its effective constraint type. When BmmEffectiveType Result=self
-   * @return       BmmEffectiveType
    */
-  public BmmEffectiveType effectiveType()
+  public void effectiveType()
   {
   }
 

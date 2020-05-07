@@ -55,4 +55,90 @@ public class BmmContainerType extends BmmType {
   //
 
 
+  //
+  // Accessor methods
+  //
+
+  /**
+   * Set the value of containerClass
+   * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
+   * @param newVar the new value of containerClass
+   */
+  public void setContainerClass (BmmGenericClass newVar) {
+    containerClass = newVar;
+  }
+
+  /**
+   * Get the value of containerClass
+   * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
+   * @return the value of containerClass
+   */
+  public BmmGenericClass getContainerClass () {
+    return containerClass;
+  }
+
+  /**
+   * Set the value of itemType
+   * The container item type.
+   * @param newVar the new value of itemType
+   */
+  public void setItemType (types.BmmUnitaryType newVar) {
+    itemType = newVar;
+  }
+
+  /**
+   * Get the value of itemType
+   * The container item type.
+   * @return the value of itemType
+   */
+  public types.BmmUnitaryType getItemType () {
+    return itemType;
+  }
+
+  /**
+   * Set the value of isOrdered
+   * True indicates that order of the items in the container attribute is considered
+   * significant and must be preserved, e.g. across sessions, serialisation,
+   * deserialisation etc. Otherwise known as 'list' semantics.
+   * @param newVar the new value of isOrdered
+   */
+  public void setIsOrdered (boolean newVar) {
+    isOrdered = newVar;
+  }
+
+  /**
+   * Get the value of isOrdered
+   * True indicates that order of the items in the container attribute is considered
+   * significant and must be preserved, e.g. across sessions, serialisation,
+   * deserialisation etc. Otherwise known as 'list' semantics.
+   * @return the value of isOrdered
+   */
+  public boolean getIsOrdered () {
+    return isOrdered;
+  }
+
+  /**
+   * Set the value of isUnique
+   * True indicates that only unique instances of items in the container are allowed.
+   * Otherwise known as 'set' semantics.
+   * @param newVar the new value of isUnique
+   */
+  public void setIsUnique (boolean newVar) {
+    isUnique = newVar;
+  }
+
+  /**
+   * Get the value of isUnique
+   * True indicates that only unique instances of items in the container are allowed.
+   * Otherwise known as 'set' semantics.
+   * @return the value of isUnique
+   */
+  public boolean getIsUnique () {
+    return isUnique;
+  }
+
+  //
+  // Other methods
+  //
+
 }
