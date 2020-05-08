@@ -1,9 +1,9 @@
 
 
 /**
- * Class BmmValueSpec
+ * Class MultiplicityInterval
  */
-public class BmmValueSpec {
+public class MultiplicityInterval {
 
   //
   // Fields
@@ -13,7 +13,7 @@ public class BmmValueSpec {
   //
   // Constructors
   //
-  public BmmValueSpec () { };
+  public MultiplicityInterval () { };
   
   //
   // Methods

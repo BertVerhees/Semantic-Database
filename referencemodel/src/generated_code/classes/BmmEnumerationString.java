@@ -32,9 +32,8 @@ public class BmmEnumerationString extends BmmEnumeration {
 
   /**
    * Optional list of specific values. Must be 1:1 with item_names list.
-   * @return       BmmStringValue
    */
-  public BmmStringValue itemValues()
+  public void itemValues()
   {
   }
 

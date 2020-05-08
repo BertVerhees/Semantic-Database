@@ -1,7 +1,11 @@
 package classes;
 import entities.BmmEntity;
 import types.BmmModelType;
+import class_features.BmmProperty;
 import model_structure.BmmPackage;
+import class_features.BmmConstant;
+import class_features.BmmFunction;
+import class_features.BmmProcedure;
 import expressions.ElAssertion;
 
 
@@ -42,7 +46,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
   /**
    * List of attributes defined in this class.
    */
-  private BmmProperty properties;
+  private class_features.BmmProperty properties;
   /**
    * Reference to original source schema defining this class. Useful for UI tools to determine which original schema file to open for a given class for manual editing.
    */
@@ -50,7 +54,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
   /**
    * List of computed references to base classes of immediate inheritance descendants, derived when members of ancestors are attached at creation time.
    */
-  private BmmClass immediateDescendants;
+  private undef immediateDescendants;
   /**
    * True if this definition overrides a class of the same name in an included schema.
    */
@@ -58,18 +62,18 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
   /**
    * List of constants defined in this class.
    */
-  private BmmConstant constants;
+  private class_features.BmmConstant constants;
   /**
    * List of functions defined in this class.
    */
-  private BmmFunction functions;
-  private BmmProcedure procedures;
+  private class_features.BmmFunction functions;
+  private class_features.BmmProcedure procedures;
   private expressions.ElAssertion inVariants;
   /**
    * Subset of procedures that may be used to initialise a new instance of an object, and whose execution will guarantee that class invariants are satisfied.
    */
-  private BmmProcedure creators;
-  private BmmProcedure convertors;
+  private class_features.BmmProcedure creators;
+  private class_features.BmmProcedure convertors;
   
   //
   // Constructors
@@ -126,7 +130,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * List of attributes defined in this class.
    * @param newVar the new value of properties
    */
-  public void setProperties (BmmProperty newVar) {
+  public void setProperties (class_features.BmmProperty newVar) {
     properties = newVar;
   }
 
@@ -135,7 +139,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * List of attributes defined in this class.
    * @return the value of properties
    */
-  public BmmProperty getProperties () {
+  public class_features.BmmProperty getProperties () {
     return properties;
   }
 
@@ -167,7 +171,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * descendants, derived when members of ancestors are attached at creation time.
    * @param newVar the new value of immediateDescendants
    */
-  public void setImmediateDescendants (BmmClass newVar) {
+  public void setImmediateDescendants (undef newVar) {
     immediateDescendants = newVar;
   }
 
@@ -177,7 +181,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * descendants, derived when members of ancestors are attached at creation time.
    * @return the value of immediateDescendants
    */
-  public BmmClass getImmediateDescendants () {
+  public undef getImmediateDescendants () {
     return immediateDescendants;
   }
 
@@ -206,7 +210,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * List of constants defined in this class.
    * @param newVar the new value of constants
    */
-  public void setConstants (BmmConstant newVar) {
+  public void setConstants (class_features.BmmConstant newVar) {
     constants = newVar;
   }
 
@@ -215,7 +219,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * List of constants defined in this class.
    * @return the value of constants
    */
-  public BmmConstant getConstants () {
+  public class_features.BmmConstant getConstants () {
     return constants;
   }
 
@@ -224,7 +228,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * List of functions defined in this class.
    * @param newVar the new value of functions
    */
-  public void setFunctions (BmmFunction newVar) {
+  public void setFunctions (class_features.BmmFunction newVar) {
     functions = newVar;
   }
 
@@ -233,7 +237,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * List of functions defined in this class.
    * @return the value of functions
    */
-  public BmmFunction getFunctions () {
+  public class_features.BmmFunction getFunctions () {
     return functions;
   }
 
@@ -241,7 +245,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * Set the value of procedures
    * @param newVar the new value of procedures
    */
-  public void setProcedures (BmmProcedure newVar) {
+  public void setProcedures (class_features.BmmProcedure newVar) {
     procedures = newVar;
   }
 
@@ -249,7 +253,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * Get the value of procedures
    * @return the value of procedures
    */
-  public BmmProcedure getProcedures () {
+  public class_features.BmmProcedure getProcedures () {
     return procedures;
   }
 
@@ -275,7 +279,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * and whose execution will guarantee that class invariants are satisfied.
    * @param newVar the new value of creators
    */
-  public void setCreators (BmmProcedure newVar) {
+  public void setCreators (class_features.BmmProcedure newVar) {
     creators = newVar;
   }
 
@@ -285,7 +289,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * and whose execution will guarantee that class invariants are satisfied.
    * @return the value of creators
    */
-  public BmmProcedure getCreators () {
+  public class_features.BmmProcedure getCreators () {
     return creators;
   }
 
@@ -293,7 +297,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * Set the value of convertors
    * @param newVar the new value of convertors
    */
-  public void setConvertors (BmmProcedure newVar) {
+  public void setConvertors (class_features.BmmProcedure newVar) {
     convertors = newVar;
   }
 
@@ -301,7 +305,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * Get the value of convertors
    * @return the value of convertors
    */
-  public BmmProcedure getConvertors () {
+  public class_features.BmmProcedure getConvertors () {
     return convertors;
   }
 
@@ -388,9 +392,8 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
 
   /**
    * List of all feature definitions introduced in this class.
-   * @return       BmmClassScoped
    */
-  public BmmClassScoped features()
+  public void features()
   {
   }
 
@@ -398,9 +401,8 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
   /**
    * Consolidated list of all feature definitions from this class and all inheritance
    * ancestors.
-   * @return       BmmClassScoped
    */
-  public BmmClassScoped flatFeatures()
+  public void flatFeatures()
   {
   }
 
@@ -408,9 +410,9 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
   /**
    * List of all properties due to current and ancestor classes, keyed by property
    * name.
-   * @return       BmmProperty
+   * @return       class_features.BmmProperty
    */
-  public BmmProperty flatProperties()
+  public class_features.BmmProperty flatProperties()
   {
   }
 

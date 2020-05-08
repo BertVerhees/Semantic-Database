@@ -2,6 +2,7 @@ package model_structure;
 import model_access.BmmModelMetadata;
 import classes.BmmClass;
 import classes.BmmEnumeration;
+import class_features.BmmProperty;
 import types.BmmSimpleType;
 
 
@@ -136,9 +137,9 @@ public class BmmModel extends BmmPackageContainer, BmmModelMetadata {
 
 
   /**
-   * @return       BmmProperty
+   * @return       class_features.BmmProperty
    */
-  public BmmProperty propertyDefinition()
+  public class_features.BmmProperty propertyDefinition()
   {
   }
 
@@ -155,9 +156,9 @@ public class BmmModel extends BmmPackageContainer, BmmModelMetadata {
 
 
   /**
-   * @return       BmmProperty
+   * @return       class_features.BmmProperty
    */
-  public BmmProperty propertyDefintionAtPath()
+  public class_features.BmmProperty propertyDefintionAtPath()
   {
   }
 

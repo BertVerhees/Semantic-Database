@@ -1,4 +1,5 @@
 package types;
+import classes.BmmGenericClass;
 
 
 /**
@@ -28,7 +29,7 @@ public class BmmGenericType extends BmmModelType {
   /**
    * The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.
    */
-  private BmmGenericClass baseClass;
+  private classes.BmmGenericClass baseClass;
   private types.BmmUnitaryType new_attribute;
   
   //
@@ -73,7 +74,7 @@ public class BmmGenericType extends BmmModelType {
    * BMM_GENERIC_TYPE.
    * @param newVar the new value of baseClass
    */
-  public void setBaseClass (BmmGenericClass newVar) {
+  public void setBaseClass (classes.BmmGenericClass newVar) {
     baseClass = newVar;
   }
 
@@ -83,7 +84,7 @@ public class BmmGenericType extends BmmModelType {
    * BMM_GENERIC_TYPE.
    * @return the value of baseClass
    */
-  public BmmGenericClass getBaseClass () {
+  public classes.BmmGenericClass getBaseClass () {
     return baseClass;
   }
 
@@ -128,9 +129,9 @@ public class BmmGenericType extends BmmModelType {
 
   /**
    * Effective underlying class for this type, abstracting away any container type.
-   * @return       BmmGenericClass
+   * @return       classes.BmmGenericClass
    */
-  public BmmGenericClass effectiveBaseClass()
+  public classes.BmmGenericClass effectiveBaseClass()
   {
   }
 

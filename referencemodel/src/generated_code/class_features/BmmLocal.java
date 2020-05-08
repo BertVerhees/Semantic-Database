@@ -1,9 +1,10 @@
+package class_features;
 
 
 /**
- * Class BmmConstant
+ * Class BmmLocal
  */
-public class BmmConstant {
+public class BmmLocal extends BmmVariable {
 
   //
   // Fields
@@ -13,7 +14,7 @@ public class BmmConstant {
   //
   // Constructors
   //
-  public BmmConstant () { };
+  public BmmLocal () { };
   
   //
   // Methods

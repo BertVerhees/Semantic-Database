@@ -1,4 +1,5 @@
 package types;
+import classes.BmmGenericClass;
 
 
 /**
@@ -31,7 +32,7 @@ public class BmmContainerType extends BmmType {
   /**
    * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
    */
-  private BmmGenericClass containerClass;
+  private classes.BmmGenericClass containerClass;
   /**
    * The container item type.
    */
@@ -64,7 +65,7 @@ public class BmmContainerType extends BmmType {
    * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
    * @param newVar the new value of containerClass
    */
-  public void setContainerClass (BmmGenericClass newVar) {
+  public void setContainerClass (classes.BmmGenericClass newVar) {
     containerClass = newVar;
   }
 
@@ -73,7 +74,7 @@ public class BmmContainerType extends BmmType {
    * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
    * @return the value of containerClass
    */
-  public BmmGenericClass getContainerClass () {
+  public classes.BmmGenericClass getContainerClass () {
     return containerClass;
   }
 

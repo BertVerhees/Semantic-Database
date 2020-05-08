@@ -1,4 +1,4 @@
-import classes.BmmClass;
+package classes;
 import types.BmmSimpleType;
 
 

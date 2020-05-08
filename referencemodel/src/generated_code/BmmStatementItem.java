@@ -1,9 +1,9 @@
 
 
 /**
- * Class BmmProcedure
+ * Class BmmStatementItem
  */
-public class BmmProcedure {
+public class BmmStatementItem {
 
   //
   // Fields
@@ -13,7 +13,7 @@ public class BmmProcedure {
   //
   // Constructors
   //
-  public BmmProcedure () { };
+  public BmmStatementItem () { };
   
   //
   // Methods

@@ -1,4 +1,5 @@
 package types;
+import classes.BmmSimpleClass;
 
 
 /**
@@ -19,7 +20,7 @@ public class BmmSimpleType extends BmmModelType {
   // Fields
   //
 
-  private BmmSimpleClass baseClass;
+  private classes.BmmSimpleClass baseClass;
   
   //
   // Constructors
@@ -39,7 +40,7 @@ public class BmmSimpleType extends BmmModelType {
    * Set the value of baseClass
    * @param newVar the new value of baseClass
    */
-  public void setBaseClass (BmmSimpleClass newVar) {
+  public void setBaseClass (classes.BmmSimpleClass newVar) {
     baseClass = newVar;
   }
 
@@ -47,7 +48,7 @@ public class BmmSimpleType extends BmmModelType {
    * Get the value of baseClass
    * @return the value of baseClass
    */
-  public BmmSimpleClass getBaseClass () {
+  public classes.BmmSimpleClass getBaseClass () {
     return baseClass;
   }
 
@@ -57,9 +58,9 @@ public class BmmSimpleType extends BmmModelType {
 
   /**
    * Main design class for this type, from which properties etc can be extracted.
-   * @return       BmmSimpleClass
+   * @return       classes.BmmSimpleClass
    */
-  public BmmSimpleClass effectiveBaseClass()
+  public classes.BmmSimpleClass effectiveBaseClass()
   {
   }
 
