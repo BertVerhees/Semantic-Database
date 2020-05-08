@@ -1,8 +1,8 @@
 package model_structure;
-import model_access.BmmModelMetadata;
+import class_features.BmmProperty;
 import classes.BmmClass;
 import classes.BmmEnumeration;
-import class_features.BmmProperty;
+import model_access.BmmModelMetadata;
 import types.BmmSimpleType;
 
 

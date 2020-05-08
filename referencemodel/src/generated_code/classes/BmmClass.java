@@ -1,12 +1,12 @@
 package classes;
-import entities.BmmEntity;
-import types.BmmModelType;
-import class_features.BmmProperty;
-import model_structure.BmmPackage;
 import class_features.BmmConstant;
 import class_features.BmmFunction;
 import class_features.BmmProcedure;
+import class_features.BmmProperty;
+import entities.BmmEntity;
 import expressions.ElAssertion;
+import model_structure.BmmPackage;
+import types.BmmModelType;
 
 
 /**
