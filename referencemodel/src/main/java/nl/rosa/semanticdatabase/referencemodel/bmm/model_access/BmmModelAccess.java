@@ -1,12 +1,13 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.model_access;
-import model_structure.BmmDefintions;
-import model_structure.BmmModel;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDefinitions;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmModel;
 
 
 /**
  * Class BmmModelAccess
  */
-public class BmmModelAccess extends BmmDefintions {
+public class BmmModelAccess extends BmmDefinitions {
 
   //
   // Fields
@@ -17,8 +18,8 @@ public class BmmModelAccess extends BmmDefintions {
    * Hash<String,BMM_SCHEMA_DESCRIPTOR>
    */
   private model_access.BmmSchemaDescriptor allSchemas;
-  private model_structure.BmmModel bmmModels;
-  private model_structure.BmmModel matchingBmmModels;
+  private BmmModel bmmModels;
+  private BmmModel matchingBmmModels;
   
   //
   // Constructors
@@ -72,7 +73,7 @@ public class BmmModelAccess extends BmmDefintions {
    * Set the value of bmmModels
    * @param newVar the new value of bmmModels
    */
-  public void setBmmModels (model_structure.BmmModel newVar) {
+  public void setBmmModels (BmmModel newVar) {
     bmmModels = newVar;
   }
 
@@ -80,7 +81,7 @@ public class BmmModelAccess extends BmmDefintions {
    * Get the value of bmmModels
    * @return the value of bmmModels
    */
-  public model_structure.BmmModel getBmmModels () {
+  public BmmModel getBmmModels () {
     return bmmModels;
   }
 
@@ -88,7 +89,7 @@ public class BmmModelAccess extends BmmDefintions {
    * Set the value of matchingBmmModels
    * @param newVar the new value of matchingBmmModels
    */
-  public void setMatchingBmmModels (model_structure.BmmModel newVar) {
+  public void setMatchingBmmModels (BmmModel newVar) {
     matchingBmmModels = newVar;
   }
 
@@ -96,7 +97,7 @@ public class BmmModelAccess extends BmmDefintions {
    * Get the value of matchingBmmModels
    * @return the value of matchingBmmModels
    */
-  public model_structure.BmmModel getMatchingBmmModels () {
+  public BmmModel getMatchingBmmModels () {
     return matchingBmmModels;
   }
 
@@ -132,7 +133,7 @@ public class BmmModelAccess extends BmmDefintions {
    * @return       model_structure.BmmModel
    * @param        aModelKey
    */
-  public model_structure.BmmModel bmmModel(String aModelKey)
+  public BmmModel bmmModel(String aModelKey)
   {
   }
 

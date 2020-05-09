@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
-import types.BmmType;
-import types.BmmTupleType;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmTupleType;
 
 
 /**
@@ -20,7 +21,7 @@ public class ElTuple extends ElInstanceRef {
   /**
    * Static type inferred from literal value.
    */
-  private types.BmmTupleType type;
+  private BmmTupleType type;
   
   //
   // Constructors
@@ -61,7 +62,7 @@ public class ElTuple extends ElInstanceRef {
    * Static type inferred from literal value.
    * @param newVar the new value of type
    */
-  public void setType (types.BmmTupleType newVar) {
+  public void setType (BmmTupleType newVar) {
     type = newVar;
   }
 
@@ -70,7 +71,7 @@ public class ElTuple extends ElInstanceRef {
    * Static type inferred from literal value.
    * @return the value of type
    */
-  public types.BmmTupleType getType () {
+  public BmmTupleType getType () {
     return type;
   }
 
@@ -82,7 +83,7 @@ public class ElTuple extends ElInstanceRef {
    * Return type.
    * @return       types.BmmType
    */
-  public types.BmmType evalType()
+  public BmmType evalType()
   {
   }
 

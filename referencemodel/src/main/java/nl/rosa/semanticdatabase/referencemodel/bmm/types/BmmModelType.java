@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.types;
-import classes.BmmValueSpec;
-import classes.BmmClass;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmValueSpec;
+import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 
 
 /**
@@ -13,7 +14,7 @@ import classes.BmmClass;
  * Result = defining_class.is_primitive.
  * 
  */
-abstract public class BmmModelType extends BmmEffectiveType {
+public interface BmmModelType extends BmmEffectiveType {
 
   //
   // Fields

@@ -6,31 +6,8 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
  * A typed entity that is a feature within a context, and which may therefore be
  * Void, i.e. 'nullable'.
  */
-abstract public class BmmTypedFeature extends BmmTyped {
+public interface BmmTypedFeature extends BmmTyped {
 
-  //
-  // Fields
-  //
-  /**
-
-   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
-   * {default = false}   */
-
-  private boolean isNullable;
-  
-  //
-  // Constructors
-  //
-  public BmmTypedFeature () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
 
   /**
    * Set the value of isNullable
@@ -39,10 +16,7 @@ abstract public class BmmTypedFeature extends BmmTyped {
    * {default = false}
    * @param newVar the new value of isNullable
    */
-  public void setIsNullable (boolean newVar) {
-    isNullable = newVar;
-  }
-
+  public void setIsNullable (boolean newVar);
   /**
    * Get the value of isNullable
    * True if this element can be null (Void) at execution time. May be interpreted as
@@ -50,12 +24,6 @@ abstract public class BmmTypedFeature extends BmmTyped {
    * {default = false}
    * @return the value of isNullable
    */
-  public boolean getIsNullable () {
-    return isNullable;
-  }
-
-  //
-  // Other methods
-  //
+  public boolean getIsNullable ();
 
 }

@@ -1,19 +1,20 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.model_access;
-import model_structure.BmmDefintions;
-import model_structure.BmmModel;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDefinitions;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmModel;
 
 
 /**
  * Class BmmSchemaDescriptor
  */
-abstract public class BmmSchemaDescriptor extends BmmDefintions {
+public interface BmmSchemaDescriptor extends BmmDefinitions {
 
   //
   // Fields
   //
 
   private model_access.BmmSchema bmmSchema;
-  private model_structure.BmmModel bmmModel;
+  private BmmModel bmmModel;
   private String schemaId;
   private Hash<String,String> metaData;
   private List<String> includes;
@@ -52,7 +53,7 @@ abstract public class BmmSchemaDescriptor extends BmmDefintions {
    * Set the value of bmmModel
    * @param newVar the new value of bmmModel
    */
-  public void setBmmModel (model_structure.BmmModel newVar) {
+  public void setBmmModel (BmmModel newVar) {
     bmmModel = newVar;
   }
 
@@ -60,7 +61,7 @@ abstract public class BmmSchemaDescriptor extends BmmDefintions {
    * Get the value of bmmModel
    * @return the value of bmmModel
    */
-  public model_structure.BmmModel getBmmModel () {
+  public BmmModel getBmmModel () {
     return bmmModel;
   }
 

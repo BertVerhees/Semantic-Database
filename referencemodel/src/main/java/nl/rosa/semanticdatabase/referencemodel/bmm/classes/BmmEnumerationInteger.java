@@ -1,12 +1,10 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.classes;
-import literal_values.BmmLiteralValue;
-
 
 /**
  * Class BmmEnumerationInteger
  * Integer-based enumeration meta-type.
  */
-public class BmmEnumerationInteger extends BmmLiteralValue, BmmEnumeration {
+public class BmmEnumerationInteger extends BmmEnumeration {
 
   //
   // Fields

@@ -1,52 +1,21 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
-import types.BmmType;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
 
 
 /**
  * Class ElExpression
  * Abstract parent of all typed expression tree items.
  */
-abstract public class ElExpression {
+public interface ElExpression {
 
-  //
-  // Fields
-  //
-
-  
-  //
-  // Constructors
-  //
-  public ElExpression () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
-  /**
-   * Meta-type of expression entity used in type-checking and evaluation.
-   * Effected in descendants.
-   * @return       types.BmmType
-   */
-  abstract public types.BmmType evalType();
-
+  BmmType evalType();
 
   /**
    * True if eval_type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name()
    * = Boolean)
    * @return       boolean
+   * Post_result: Result = eval_type().equal( {BMM_MODEL}.boolean_type_definition())
    */
-  public boolean isBoolean()
-  {
-  }
-
-
+  boolean isBoolean();
 }

@@ -1,6 +1,5 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
 
-import lombok.*;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 
 
@@ -8,33 +7,40 @@ import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
  * Class BmmClassScoped
  * A class entity having a signature and a class as its scope.
  */
+public interface BmmClassScoped extends BmmClassEntity {
 
-@Data
-abstract public class BmmClassScoped extends BmmClassEntity {
+  //
+  // Accessor methods
+  //
 
   /**
+   * Set the value of visibility
    * Visibility of this item to client entities.
-   * TODO: define scheme; probably need to support C++/Java scheme as well as better type-based schemes.
+   * TODO: define scheme; probably need to support C++/Java scheme as well as better
+   * type-based schemes.
+   * @param newVar the new value of visibility
    */
+  void setVisibility (Object newVar);
 
-  private Object visibility;
-  private BmmClass scope;
-  
-  //
-  // Constructors
-  //
+  /**
+   * Get the value of visibility
+   * Visibility of this item to client entities.
+   * TODO: define scheme; probably need to support C++/Java scheme as well as better
+   * type-based schemes.
+   * @return the value of visibility
+   */
+  Object getVisibility ();
 
-  @Builder
-  public BmmClassScoped(boolean isSynthesisedGeneric, Object visibility, BmmClass scope) {
-    super(isSynthesisedGeneric);
-    this.visibility = visibility;
-    this.scope = scope;
-  }
+  /**
+   * Set the value of scope
+   * @param newVar the new value of scope
+   */
+  void setScope (BmmClass newVar);
 
-  public BmmClassScoped(Object visibility, BmmClass scope) {
-    this.visibility = visibility;
-    this.scope = scope;
-  }
+  /**
+   * Get the value of scope
+   * @return the value of scope
+   */
+  public BmmClass getScope ();
 
-  public BmmClassScoped () { };
 }

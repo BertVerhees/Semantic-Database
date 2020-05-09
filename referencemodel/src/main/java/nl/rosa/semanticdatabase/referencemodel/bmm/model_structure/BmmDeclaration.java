@@ -1,34 +1,22 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.model_structure;
 
 
+import java.util.Map;
+
 /**
  * Class BmmDeclaration
  */
-public class BmmDeclaration extends BmmDefintions {
+public interface BmmDeclaration extends BmmDefinitions {
 
   //
   // Fields
   //
 
   private String name;
-  private Hash<String,ANY> documentation;
-  private model_structure.BmmDeclaration scope;
-  private Hash<String,ANY> extensions;
+  private Map<String,Object> documentation;
+  private BmmDeclaration scope;
+  private Map<String,Object> extensions;
   
-  //
-  // Constructors
-  //
-  public BmmDeclaration () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
   /**
    * Set the value of name
    * @param newVar the new value of name

@@ -1,6 +1,5 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
 
-import lombok.*;
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDeclaration;
 
 
@@ -8,30 +7,32 @@ import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDeclaratio
  * Class BmmClassEntity
  * Any entity declared within a class.
  */
-@Data
-abstract public class BmmClassEntity extends BmmDeclaration {
+public interface BmmClassEntity extends BmmDeclaration {
 
   /**
-   * True if this feature was synthesised due to generic substitution in an inherited type, or further constraining of a formal generic parameter.
-   * {default = false}   */
+   * Set the value of isSynthesisedGeneric
+   * True if this feature was synthesised due to generic substitution in an inherited
+   * type, or further constraining of a formal generic parameter.
+   * {default = false}
+   * @param newVar the new value of isSynthesisedGeneric
+   */
+  void setIsSynthesisedGeneric (boolean newVar);
 
-  private boolean isSynthesisedGeneric;
+  /**
+   * Get the value of isSynthesisedGeneric
+   * True if this feature was synthesised due to generic substitution in an inherited
+   * type, or further constraining of a formal generic parameter.
+   * {default = false}
+   * @return the value of isSynthesisedGeneric
+   */
+  boolean getIsSynthesisedGeneric ();
 
-  @Builder
-  public BmmClassEntity(boolean isSynthesisedGeneric) {
-    this.isSynthesisedGeneric = isSynthesisedGeneric;
-  }
-
-  public BmmClassEntity () { };
-  
   /**
    * Formal signature of this element, in the form:
    * name [arg1_name: T_arg1, �?][:T_value]
    * Specific implementations in descendants.
    */
-  public void signature()
-  {
-  }
+  public void signature();
 
 
 }

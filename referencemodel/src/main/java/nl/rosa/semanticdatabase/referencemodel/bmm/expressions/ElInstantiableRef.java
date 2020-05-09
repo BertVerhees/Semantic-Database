@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
-import types.BmmType;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
 
 
 /**
@@ -62,7 +63,7 @@ public class ElInstantiableRef extends ElScopedRef {
    * definition.type.
    * @return       types.BmmType
    */
-  public types.BmmType evalType()
+  public BmmType evalType()
   {
   }
 

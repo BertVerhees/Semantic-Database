@@ -1,5 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
-import types.BmmIndexedContainerType;
+
+import lombok.Data;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmIndexedContainerType;
 
 
 /**
@@ -7,6 +9,7 @@ import types.BmmIndexedContainerType;
  * Meta-type of for properties of linear container type, such as Hash<Index_type,
  * T> etc.
  */
+@Data
 public class BmmIndexedContainerProperty extends BmmContainerProperty {
 
   //
@@ -16,12 +19,12 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
   /**
    * Declared or inferred static type of the entity.
    */
-  private types.BmmIndexedContainerType type;
+  private BmmIndexedContainerType type;
   
   //
   // Constructors
   //
-  public BmmIndexedContainerProperty() { };
+  public BmmIndexedContainerProperty () { };
   
   //
   // Methods
@@ -37,7 +40,7 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
    * Declared or inferred static type of the entity.
    * @param newVar the new value of type
    */
-  public void setType (types.BmmIndexedContainerType newVar) {
+  public void setType (BmmIndexedContainerType newVar) {
     type = newVar;
   }
 
@@ -46,7 +49,7 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
    * Declared or inferred static type of the entity.
    * @return the value of type
    */
-  public types.BmmIndexedContainerType getType () {
+  public BmmIndexedContainerType getType () {
     return type;
   }
 

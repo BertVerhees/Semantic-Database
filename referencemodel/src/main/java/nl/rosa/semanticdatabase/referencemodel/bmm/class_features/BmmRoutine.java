@@ -1,41 +1,16 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
-import expressions.ElAssertion;
-import functional_elements.BmmStatementItem;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.expressions.ElAssertion;
+import nl.rosa.semanticdatabase.referencemodel.bmm.functional_elements.BmmStatementItem;
+
+import java.util.List;
 
 
 /**
  * Class BmmRoutine
  * A feature defining a routine, scoped to a class.
  */
-abstract public class BmmRoutine extends BmmClassScoped {
-
-  //
-  // Fields
-  //
-
-  /**
-   * Formal parameters of the routine.
-   */
-  private class_features.BmmParameter parameters;
-  /**
-   * Local variables of the routine.
-   */
-  private class_features.BmmLocal locals;
-  private expressions.ElAssertion preConditions;
-  private expressions.ElAssertion postCondtions;
-  /**
-   * Body of a routine, i.e. executable program.
-   */
-  private functional_elements.BmmStatementItem body;
-  
-  //
-  // Constructors
-  //
-  public BmmRoutine () { };
-  
-  //
-  // Methods
-  //
+public interface BmmRoutine extends BmmClassScoped {
 
 
   //
@@ -47,86 +22,66 @@ abstract public class BmmRoutine extends BmmClassScoped {
    * Formal parameters of the routine.
    * @param newVar the new value of parameters
    */
-  public void setParameters (class_features.BmmParameter newVar) {
-    parameters = newVar;
-  }
+  void setParameters (List<BmmParameter> newVar);
 
   /**
    * Get the value of parameters
    * Formal parameters of the routine.
    * @return the value of parameters
    */
-  public class_features.BmmParameter getParameters () {
-    return parameters;
-  }
+  List<BmmParameter> getParameters ();
 
   /**
    * Set the value of locals
    * Local variables of the routine.
    * @param newVar the new value of locals
    */
-  public void setLocals (class_features.BmmLocal newVar) {
-    locals = newVar;
-  }
+  void setLocals (List<BmmLocal> newVar);
 
   /**
    * Get the value of locals
    * Local variables of the routine.
    * @return the value of locals
    */
-  public class_features.BmmLocal getLocals () {
-    return locals;
-  }
+  List<BmmLocal> getLocals ();
 
   /**
    * Set the value of preConditions
    * @param newVar the new value of preConditions
    */
-  public void setPreConditions (expressions.ElAssertion newVar) {
-    preConditions = newVar;
-  }
+  void setPreConditions (List<ElAssertion> newVar);
 
   /**
    * Get the value of preConditions
    * @return the value of preConditions
    */
-  public expressions.ElAssertion getPreConditions () {
-    return preConditions;
-  }
+  List<ElAssertion> getPreConditions ();
 
   /**
    * Set the value of postCondtions
    * @param newVar the new value of postCondtions
    */
-  public void setPostCondtions (expressions.ElAssertion newVar) {
-    postCondtions = newVar;
-  }
+  void setPostCondtions (List<ElAssertion> newVar);
 
   /**
    * Get the value of postCondtions
    * @return the value of postCondtions
    */
-  public expressions.ElAssertion getPostCondtions () {
-    return postCondtions;
-  }
+  List<ElAssertion> getPostCondtions ();
 
   /**
    * Set the value of body
    * Body of a routine, i.e. executable program.
    * @param newVar the new value of body
    */
-  public void setBody (functional_elements.BmmStatementItem newVar) {
-    body = newVar;
-  }
+  void setBody (BmmStatementItem newVar);
 
   /**
    * Get the value of body
    * Body of a routine, i.e. executable program.
    * @return the value of body
    */
-  public functional_elements.BmmStatementItem getBody () {
-    return body;
-  }
+  BmmStatementItem getBody ();
 
   //
   // Other methods
@@ -136,18 +91,14 @@ abstract public class BmmRoutine extends BmmClassScoped {
    * Return number of arguments of this routine.
    * @return       Integer
    */
-  public Integer arity()
-  {
-  }
+  Integer arity();
 
 
   /**
    * Formal signature of this element, in the form
    * '[arg1_name: T_arg1, �?]:T_value'.
    */
-  public void signature()
-  {
-  }
+  void signature();
 
 
 }

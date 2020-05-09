@@ -1,13 +1,14 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.classes;
-import entities.BmmEntity;
-import model_structure.BmmModule;
-import types.BmmModelType;
-import class_features.BmmProperty;
-import model_structure.BmmPackage;
-import class_features.BmmConstant;
-import class_features.BmmFunction;
-import class_features.BmmProcedure;
-import expressions.ElAssertion;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.*;
+import nl.rosa.semanticdatabase.referencemodel.bmm.entities.BmmEntity;
+import nl.rosa.semanticdatabase.referencemodel.bmm.expressions.ElAssertion;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmModule;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmPackage;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmModelType;
+
+import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -30,119 +31,50 @@ import expressions.ElAssertion;
  * data property set at creation or construction time.
  * 
  */
-abstract public class BmmClass extends BmmEntity, BmmModule {
+public interface BmmClass extends BmmEntity, BmmModule {
 
-  //
-  // Fields
-  //
-
-  /**
-   * List of immediate inheritance parents.
-   */
-  private types.BmmModelType ancestors;
-  /**
-   * Package this class belongs to.
-   */
-  private model_structure.BmmPackage package;
-  /**
-   * List of attributes defined in this class.
-   */
-  private class_features.BmmProperty properties;
-  /**
-   * Reference to original source schema defining this class. Useful for UI tools to determine which original schema file to open for a given class for manual editing.
-   */
-  private String sourceSchemaId;
-  /**
-   * List of computed references to base classes of immediate inheritance descendants, derived when members of ancestors are attached at creation time.
-   */
-  private undef immediateDescendants;
-  /**
-   * True if this definition overrides a class of the same name in an included schema.
-   */
-  private boolean isOverride;
-  /**
-   * List of constants defined in this class.
-   */
-  private class_features.BmmConstant constants;
-  /**
-   * List of functions defined in this class.
-   */
-  private class_features.BmmFunction functions;
-  private class_features.BmmProcedure procedures;
-  private expressions.ElAssertion inVariants;
-  /**
-   * Subset of procedures that may be used to initialise a new instance of an object, and whose execution will guarantee that class invariants are satisfied.
-   */
-  private class_features.BmmProcedure creators;
-  private class_features.BmmProcedure convertors;
-  
-  //
-  // Constructors
-  //
-  public BmmClass () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
 
   /**
    * Set the value of ancestors
    * List of immediate inheritance parents.
    * @param newVar the new value of ancestors
    */
-  public void setAncestors (types.BmmModelType newVar) {
-    ancestors = newVar;
-  }
+  void setAncestors (Map<String, BmmModelType> newVar);
 
   /**
    * Get the value of ancestors
    * List of immediate inheritance parents.
    * @return the value of ancestors
    */
-  public types.BmmModelType getAncestors () {
-    return ancestors;
-  }
+  Map<String, BmmModelType> getAncestors ();
 
   /**
    * Set the value of package
    * Package this class belongs to.
    * @param newVar the new value of package
    */
-  public void setPackage (model_structure.BmmPackage newVar) {
-    package = newVar;
-  }
+  void setPackage (BmmPackage newVar);
 
   /**
    * Get the value of package
    * Package this class belongs to.
    * @return the value of package
    */
-  public model_structure.BmmPackage getPackage () {
-    return package;
-  }
+  BmmPackage getPackage ();
 
   /**
    * Set the value of properties
    * List of attributes defined in this class.
    * @param newVar the new value of properties
    */
-  public void setProperties (class_features.BmmProperty newVar) {
-    properties = newVar;
-  }
+  void setProperties (Map<String, BmmProperty> newVar);
 
   /**
    * Get the value of properties
    * List of attributes defined in this class.
    * @return the value of properties
    */
-  public class_features.BmmProperty getProperties () {
-    return properties;
-  }
+  Map<String, BmmProperty> getProperties ();
 
   /**
    * Set the value of sourceSchemaId
@@ -151,9 +83,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * editing.
    * @param newVar the new value of sourceSchemaId
    */
-  public void setSourceSchemaId (String newVar) {
-    sourceSchemaId = newVar;
-  }
+  void setSourceSchemaId (String newVar);
 
   /**
    * Get the value of sourceSchemaId
@@ -162,9 +92,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * editing.
    * @return the value of sourceSchemaId
    */
-  public String getSourceSchemaId () {
-    return sourceSchemaId;
-  }
+  String getSourceSchemaId ();
 
   /**
    * Set the value of immediateDescendants
@@ -172,9 +100,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * descendants, derived when members of ancestors are attached at creation time.
    * @param newVar the new value of immediateDescendants
    */
-  public void setImmediateDescendants (undef newVar) {
-    immediateDescendants = newVar;
-  }
+  void setImmediateDescendants (List<BmmClass> newVar);
 
   /**
    * Get the value of immediateDescendants
@@ -182,9 +108,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * descendants, derived when members of ancestors are attached at creation time.
    * @return the value of immediateDescendants
    */
-  public undef getImmediateDescendants () {
-    return immediateDescendants;
-  }
+  List<BmmClass> getImmediateDescendants ();
 
   /**
    * Set the value of isOverride
@@ -192,9 +116,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * schema.
    * @param newVar the new value of isOverride
    */
-  public void setIsOverride (boolean newVar) {
-    isOverride = newVar;
-  }
+  void setIsOverride (boolean newVar);
 
   /**
    * Get the value of isOverride
@@ -202,77 +124,59 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * schema.
    * @return the value of isOverride
    */
-  public boolean getIsOverride () {
-    return isOverride;
-  }
+  boolean getIsOverride ();
 
   /**
    * Set the value of constants
    * List of constants defined in this class.
    * @param newVar the new value of constants
    */
-  public void setConstants (class_features.BmmConstant newVar) {
-    constants = newVar;
-  }
+  void setConstants (Map<String, BmmConstant> newVar);
 
   /**
    * Get the value of constants
    * List of constants defined in this class.
    * @return the value of constants
    */
-  public class_features.BmmConstant getConstants () {
-    return constants;
-  }
+  Map<String, BmmConstant> getConstants ();
 
   /**
    * Set the value of functions
    * List of functions defined in this class.
    * @param newVar the new value of functions
    */
-  public void setFunctions (class_features.BmmFunction newVar) {
-    functions = newVar;
-  }
+  void setFunctions (Map<String, BmmFunction> newVar);
 
   /**
    * Get the value of functions
    * List of functions defined in this class.
    * @return the value of functions
    */
-  public class_features.BmmFunction getFunctions () {
-    return functions;
-  }
+  Map<String, BmmFunction> getFunctions ();
 
   /**
    * Set the value of procedures
    * @param newVar the new value of procedures
    */
-  public void setProcedures (class_features.BmmProcedure newVar) {
-    procedures = newVar;
-  }
+  void setProcedures (Map<String, BmmProcedure> newVar);
 
   /**
    * Get the value of procedures
    * @return the value of procedures
    */
-  public class_features.BmmProcedure getProcedures () {
-    return procedures;
-  }
+  Map<String, BmmProcedure> getProcedures ();
 
   /**
    * Set the value of inVariants
    * @param newVar the new value of inVariants
    */
-  public void setInVariants (expressions.ElAssertion newVar) {
-    inVariants = newVar;
-  }
+  void setInVariants (List<ElAssertion> newVar);
 
   /**
    * Get the value of inVariants
    * @return the value of inVariants
    */
-  public expressions.ElAssertion getInVariants () {
-    return inVariants;
-  }
+  List<ElAssertion> getInVariants ();
 
   /**
    * Set the value of creators
@@ -280,9 +184,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * and whose execution will guarantee that class invariants are satisfied.
    * @param newVar the new value of creators
    */
-  public void setCreators (class_features.BmmProcedure newVar) {
-    creators = newVar;
-  }
+  void setCreators (Map<String, BmmProcedure> newVar);
 
   /**
    * Get the value of creators
@@ -290,52 +192,35 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * and whose execution will guarantee that class invariants are satisfied.
    * @return the value of creators
    */
-  public class_features.BmmProcedure getCreators () {
-    return creators;
-  }
+  Map<String, BmmProcedure> getCreators ();
 
   /**
    * Set the value of convertors
    * @param newVar the new value of convertors
    */
-  public void setConvertors (class_features.BmmProcedure newVar) {
-    convertors = newVar;
-  }
+  void setConvertors (Map<String, BmmProcedure> newVar);
 
   /**
    * Get the value of convertors
    * @return the value of convertors
    */
-  public class_features.BmmProcedure getConvertors () {
-    return convertors;
-  }
+  Map<String, BmmProcedure> getConvertors ();
 
-  //
-  // Other methods
-  //
-
-  /**
-   * Generate a type object that represents the type for which this class is the
-   * definer.
-   * @return       types.BmmModelType
-   */
-  abstract public types.BmmModelType type();
+  BmmModelType type();
 
 
   /**
    * List of all inheritance parent class names, recursively.
    * @return       List<String>
    */
-  abstract public List<String> allAncestors();
+  List<String> allAncestors();
 
 
   /**
    * Compute all descendants by following immediate_descendants.
    * @return       List<String>
    */
-  public List<String> allDescendants()
-  {
-  }
+  List<String> allDescendants();
 
 
   /**
@@ -346,18 +231,14 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * list includes primitive types.
    * @return       List<String>
    */
-  public List<String> suppliers()
-  {
-  }
+  List<String> suppliers();
 
 
   /**
    * Same as suppliers minus primitive types, as defined in input schema.
    * @return       List<String>
    */
-  public List<String> suppliersNonPrimitive()
-  {
-  }
+  List<String> suppliersNonPrimitive();
 
 
   /**
@@ -367,18 +248,14 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * includes primitive types.
    * @return       List<String>
    */
-  public List<String> supplierClosure()
-  {
-  }
+  List<String> supplierClosure();
 
 
   /**
    * Fully qualified package name, of form: package.package
    * @return       String
    */
-  public String packagePath()
-  {
-  }
+  String packagePath();
 
 
   /**
@@ -386,36 +263,25 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * lower-case and class in original case.
    * @return       String
    */
-  public String classPath()
-  {
-  }
+  String classPath();
 
 
   /**
    * List of all feature definitions introduced in this class.
    */
-  public void features()
-  {
-  }
+  List<BmmClassScoped> features();
 
 
   /**
    * Consolidated list of all feature definitions from this class and all inheritance
    * ancestors.
    */
-  public void flatFeatures()
-  {
-  }
-
+  List<BmmClassScoped> flatFeatures();
 
   /**
    * List of all properties due to current and ancestor classes, keyed by property
    * name.
    * @return       class_features.BmmProperty
    */
-  public class_features.BmmProperty flatProperties()
-  {
-  }
-
-
+  List<BmmProperty> flatProperties();
 }

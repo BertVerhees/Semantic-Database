@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.model_structure;
-import classes.BmmClass;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 
 
 /**

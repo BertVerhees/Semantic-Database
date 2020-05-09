@@ -1,13 +1,14 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
-import class_features.BmmOperator;
-import class_features.BmmFunction;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmOperator;
+import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmFunction;
 
 
 /**
  * Class ElOperator
  * Abstract parent of operator types.
  */
-abstract public class ElOperator extends ElExpression {
+public interface ElOperator extends ElExpression {
 
   //
   // Fields

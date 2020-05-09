@@ -1,5 +1,8 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.classes;
-import literal_values.BmmLiteralValue;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.literal_values.BmmLiteralValue;
+
+import java.util.List;
 
 
 /**
@@ -18,7 +21,7 @@ public class BmmEnumeration extends BmmSimpleClass {
   /**
    * Optional list of specific values. Must be 1:1 with item_names list.
    */
-  private literal_values.BmmLiteralValue itemValues;
+  private BmmLiteralValue itemValues;
   
   //
   // Constructors
@@ -59,7 +62,7 @@ public class BmmEnumeration extends BmmSimpleClass {
    * Optional list of specific values. Must be 1:1 with item_names list.
    * @param newVar the new value of itemValues
    */
-  public void setItemValues (literal_values.BmmLiteralValue newVar) {
+  public void setItemValues (BmmLiteralValue newVar) {
     itemValues = newVar;
   }
 
@@ -68,7 +71,7 @@ public class BmmEnumeration extends BmmSimpleClass {
    * Optional list of specific values. Must be 1:1 with item_names list.
    * @return the value of itemValues
    */
-  public literal_values.BmmLiteralValue getItemValues () {
+  public BmmLiteralValue getItemValues () {
     return itemValues;
   }
 

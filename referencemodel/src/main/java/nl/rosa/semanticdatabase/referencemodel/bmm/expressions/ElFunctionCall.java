@@ -1,5 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
-import types.BmmType;
+
+import lombok.Data;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
 
 
 /**
@@ -7,49 +9,29 @@ import types.BmmType;
  * A call made on a closed function agent, returning a result. Equivalent to an
  * 'application' of a function in Lambda calculus.
  */
-public class ElFunctionCall extends ElScopedRef, ElAgentCall {
+@Data
+public class ElFunctionCall implements ElScopedRef, ElAgentCall {
 
   //
   // Fields
   //
 
+  // ElAgentCall
+  /**
+   * The agent being called.
+   */
+  private ElAgent agent;
+
+
   /**
    * The function agent being called.
    */
-  private expressions.ElFunctionAgent agent;
+  private ElFunctionAgent agent;
   
   //
   // Constructors
   //
   public ElFunctionCall () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of agent
-   * The function agent being called.
-   * @param newVar the new value of agent
-   */
-  public void setAgent (expressions.ElFunctionAgent newVar) {
-    agent = newVar;
-  }
-
-  /**
-   * Get the value of agent
-   * The function agent being called.
-   * @return the value of agent
-   */
-  public expressions.ElFunctionAgent getAgent () {
-    return agent;
-  }
-
   //
   // Other methods
   //
@@ -58,7 +40,7 @@ public class ElFunctionCall extends ElScopedRef, ElAgentCall {
    * Return agent.definition.type.
    * @return       types.BmmType
    */
-  public types.BmmType evalType()
+  public BmmType evalType()
   {
   }
 

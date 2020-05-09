@@ -7,35 +7,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
  * The is_composition attribute indicates whether the property has sub-part or an
  * association semantics with respect to the owning class.
  */
-abstract public class BmmProperty extends BmmInstantiableClass, BmmClassScoped {
-
-  //
-  // Fields
-  //
-  /**
-
-   * True if this property is marked with info model im_runtime property.
-   * {default = false}   */
-
-  private boolean isImRuntime;
-  /**
-   * True if this property was marked with info model im_infrastructure flag.{default = false}
-   */
-  private boolean isImInfrastructure;  /**
-
-   * True if this property instance is a compositional sub-part of the owning class instance. Equivalent to 'composition' in UML associations (but missing from UML properties without associations) and also 'cascade-delete' semantics in ER schemas.
-   * {default = false}   */
-
-  private boolean isComposition;
-  
-  //
-  // Constructors
-  //
-  public BmmProperty() { };
-  
-  //
-  // Methods
-  //
+public interface BmmProperty extends BmmInstantiableClass, BmmClassScoped {
 
 
   //
@@ -48,9 +20,7 @@ abstract public class BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * {default = false}
    * @param newVar the new value of isImRuntime
    */
-  public void setIsImRuntime (boolean newVar) {
-    isImRuntime = newVar;
-  }
+  void setIsImRuntime (boolean newVar);
 
   /**
    * Get the value of isImRuntime
@@ -58,9 +28,7 @@ abstract public class BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * {default = false}
    * @return the value of isImRuntime
    */
-  public boolean getIsImRuntime () {
-    return isImRuntime;
-  }
+  boolean getIsImRuntime ();
 
   /**
    * Set the value of isImInfrastructure
@@ -68,9 +36,7 @@ abstract public class BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * = false}
    * @param newVar the new value of isImInfrastructure
    */
-  public void setIsImInfrastructure (boolean newVar) {
-    isImInfrastructure = newVar;
-  }
+  void setIsImInfrastructure (boolean newVar);
 
   /**
    * Get the value of isImInfrastructure
@@ -78,9 +44,7 @@ abstract public class BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * = false}
    * @return the value of isImInfrastructure
    */
-  public boolean getIsImInfrastructure () {
-    return isImInfrastructure;
-  }
+  boolean getIsImInfrastructure ();
 
   /**
    * Set the value of isComposition
@@ -91,9 +55,7 @@ abstract public class BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * {default = false}
    * @param newVar the new value of isComposition
    */
-  public void setIsComposition (boolean newVar) {
-    isComposition = newVar;
-  }
+  void setIsComposition (boolean newVar);
 
   /**
    * Get the value of isComposition
@@ -104,9 +66,7 @@ abstract public class BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * {default = false}
    * @return the value of isComposition
    */
-  public boolean getIsComposition () {
-    return isComposition;
-  }
+  boolean getIsComposition ();
 
   //
   // Other methods
@@ -115,7 +75,7 @@ abstract public class BmmProperty extends BmmInstantiableClass, BmmClassScoped {
   /**
    * Interval form of 0..1, 1..1 etc, derived from is_nullable.
    */
-  public void existence()
+  void existence()
   {
   }
 
@@ -124,7 +84,7 @@ abstract public class BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * Name of this property to display in UI.
    * @return       String
    */
-  public String displayName()
+  String displayName()
   {
   }
 

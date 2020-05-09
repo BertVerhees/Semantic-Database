@@ -6,7 +6,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.functional_elements;
  * Abstract parent of 'statement' types that may be defined to implement BMM
  * Routines.
  */
-abstract public class BmmStatement extends BmmStatementItem {
+public interface BmmStatement extends BmmStatementItem {
 
   //
   // Fields

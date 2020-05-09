@@ -1,15 +1,43 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
 
 
+import lombok.Data;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
+
 /**
  * Class BmmParameter
  * A routine parameter variable.
  */
-public class BmmParameter extends BmmVariable {
+@Data
+public class BmmParameter implements BmmVariable {
 
   //
   // Fields
   //
+
+  // BmmVariable
+  /**
+   * Routine within which variable is defined.
+   */
+  private BmmRoutine scope;
+
+
+  // BmmTypedFeature
+  /**
+   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
+   * {default = false}   */
+
+  private boolean isNullable;
+
+
+  // BmmTyped
+  /**
+   * Declared or inferred static type of the entity.
+   */
+  private BmmType type;
+
+
+  private boolean isSynthesisedGeneric;
 
   /**
    * Optional read/write direction of the parameter. If none-supplied, the parameter is treated as in, i.e. readable.
@@ -19,39 +47,6 @@ public class BmmParameter extends BmmVariable {
   //
   // Constructors
   //
-  public BmmParameter() { };
+  public BmmParameter () { };
   
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of direction
-   * Optional read/write direction of the parameter. If none-supplied, the parameter
-   * is treated as in, i.e. readable.
-   * @param newVar the new value of direction
-   */
-  public void setDirection (BmmParameterDirection newVar) {
-    direction = newVar;
-  }
-
-  /**
-   * Get the value of direction
-   * Optional read/write direction of the parameter. If none-supplied, the parameter
-   * is treated as in, i.e. readable.
-   * @return the value of direction
-   */
-  public BmmParameterDirection getDirection () {
-    return direction;
-  }
-
-  //
-  // Other methods
-  //
-
 }

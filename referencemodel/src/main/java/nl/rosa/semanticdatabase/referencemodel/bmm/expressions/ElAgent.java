@@ -1,5 +1,8 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
-import class_features.BmmRoutine;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmRoutine;
+
+import java.util.List;
 
 
 /**
@@ -10,78 +13,36 @@ import class_features.BmmRoutine;
  * (struct=?, style=3), where struct is an open argument.
  * Evaluation type (i.e. type of runtime evaluated form) is BMM_SIGNATURE.
  */
-abstract public class ElAgent extends ElScopedRef {
+public interface ElAgent extends ElScopedRef {
 
-  //
-  // Fields
-  //
-
-  /**
-   * Name of the routine being called.
-   */
-  private String name;
-  /**
-   * Closed arguments of a routine call as a tuple of objects.
-   */
-  private expressions.ElTuple closedArgs;
-  /**
-   * Optional list of names of open arguments of the call. If not provided, and the name refers to a routine with more arguments than supplied in closed_args, the missing arguments are inferred from the definition.
-   */
-  private List<String> openArgs;
-  /**
-   * Reference to definition of a routine for which this is an agent, if one exists.
-   */
-  private class_features.BmmRoutine definition;
-  
-  //
-  // Constructors
-  //
-  public ElAgent () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
 
   /**
    * Set the value of name
    * Name of the routine being called.
    * @param newVar the new value of name
    */
-  public void setName (String newVar) {
-    name = newVar;
-  }
+  public void setName (String newVar);
 
   /**
    * Get the value of name
    * Name of the routine being called.
    * @return the value of name
    */
-  public String getName () {
-    return name;
-  }
+  public String getName ();
 
   /**
    * Set the value of closedArgs
    * Closed arguments of a routine call as a tuple of objects.
    * @param newVar the new value of closedArgs
    */
-  public void setClosedArgs (expressions.ElTuple newVar) {
-    closedArgs = newVar;
-  }
+  public void setClosedArgs (ElTuple newVar);
 
   /**
    * Get the value of closedArgs
    * Closed arguments of a routine call as a tuple of objects.
    * @return the value of closedArgs
    */
-  public expressions.ElTuple getClosedArgs () {
-    return closedArgs;
-  }
+  public ElTuple getClosedArgs ();
 
   /**
    * Set the value of openArgs
@@ -90,9 +51,7 @@ abstract public class ElAgent extends ElScopedRef {
    * missing arguments are inferred from the definition.
    * @param newVar the new value of openArgs
    */
-  public void setOpenArgs (List<String> newVar) {
-    openArgs = newVar;
-  }
+  public void setOpenArgs (List<String> newVar);
 
   /**
    * Get the value of openArgs
@@ -101,27 +60,21 @@ abstract public class ElAgent extends ElScopedRef {
    * missing arguments are inferred from the definition.
    * @return the value of openArgs
    */
-  public List<String> getOpenArgs () {
-    return openArgs;
-  }
+  public List<String> getOpenArgs ();
 
   /**
    * Set the value of definition
    * Reference to definition of a routine for which this is an agent, if one exists.
    * @param newVar the new value of definition
    */
-  public void setDefinition (class_features.BmmRoutine newVar) {
-    definition = newVar;
-  }
+  public void setDefinition (BmmRoutine newVar);
 
   /**
    * Get the value of definition
    * Reference to definition of a routine for which this is an agent, if one exists.
    * @return the value of definition
    */
-  public class_features.BmmRoutine getDefinition () {
-    return definition;
-  }
+  public BmmRoutine getDefinition ();
 
   //
   // Other methods
@@ -132,19 +85,11 @@ abstract public class ElAgent extends ElScopedRef {
    * return type, if any.
    * Post_result: Result = definition.signature
    */
-  public void evalType()
-  {
-  }
-
-
+  public void evalType();
   /**
    * True if there are no open arguments.
    * Post_result_validity: Result = open_arguments = Void
    * @return       boolean
    */
-  public boolean isCallable()
-  {
-  }
-
-
+  public boolean isCallable();
 }

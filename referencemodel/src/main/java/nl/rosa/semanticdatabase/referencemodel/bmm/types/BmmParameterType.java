@@ -20,7 +20,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.types;
  * or if not set, Any.
  * 
  */
-abstract public class BmmParameterType extends BmmUnitaryType {
+public interface BmmParameterType extends BmmUnitaryType {
 
   //
   // Fields

@@ -1,21 +1,63 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
-import types.BmmContainerType;
+
+import lombok.Data;
+import nl.rosa.semanticdatabase.base.MultiplicityInterval;
+import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmContainerType;
 
 
 /**
  * Class BmmContainerProperty
  * Meta-type of for properties of linear container type, such as List<T> etc.
  */
-public class BmmContainerProperty extends BmmProperty {
+@Data
+public class BmmContainerProperty implements BmmProperty {
 
   //
   // Fields
   //
 
+  // BmmTypedfeature
+  /**
+   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
+   * {default = false}   */
+
+  private boolean isNullable;
+
+
+  // BmmTyped
+
+  //BmmClassScoped
+  /**
+   * Visibility of this item to client entities.
+   * TODO: define scheme; probably need to support C++/Java scheme as well as better type-based schemes.   */
+
+  private Object visibility;
+  private BmmClass scope;
+  // BmmProperty
+  private boolean isSynthesisedGeneric;
+  /**
+
+   * True if this property is marked with info model im_runtime property.
+   * {default = false}   */
+
+  private boolean isImRuntime;
+  /**
+   * True if this property was marked with info model im_infrastructure flag.{default = false}
+   */
+  private boolean isImInfrastructure;  /**
+
+   * True if this property instance is a compositional sub-part of the owning class instance. Equivalent to 'composition' in UML associations (but missing from UML properties without associations) and also 'cascade-delete' semantics in ER schemas.
+   * {default = false}   */
+
+  private boolean isComposition;
+
+
+
   /**
    * Declared or inferred static type of the entity.
    */
-  private types.BmmContainerType type;
+  private BmmContainerType type;
   /**
    * Cardinality of this container.
    */
@@ -24,7 +66,7 @@ public class BmmContainerProperty extends BmmProperty {
   //
   // Constructors
   //
-  public BmmContainerProperty() { };
+  public BmmContainerProperty () { };
   
   //
   // Methods
@@ -40,7 +82,7 @@ public class BmmContainerProperty extends BmmProperty {
    * Declared or inferred static type of the entity.
    * @param newVar the new value of type
    */
-  public void setType (types.BmmContainerType newVar) {
+  public void setType (BmmContainerType newVar) {
     type = newVar;
   }
 
@@ -49,7 +91,7 @@ public class BmmContainerProperty extends BmmProperty {
    * Declared or inferred static type of the entity.
    * @return the value of type
    */
-  public types.BmmContainerType getType () {
+  public BmmContainerType getType () {
     return type;
   }
 

@@ -1,14 +1,15 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.model_access;
-import persistence.PBmmPackageContainer;
-import model_structure.BmmPackageContainer;
-import classes.BmmClass;
-import model_structure.BmmModel;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.persistence.PBmmPackageContainer;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmPackageContainer;
+import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmModel;
 
 
 /**
  * Class BmmSchema
  */
-abstract public class BmmSchema extends PBmmPackageContainer, BmmModelMetadata, BmmPackageContainer {
+public interface BmmSchema extends PBmmPackageContainer, BmmModelMetadata, BmmPackageContainer {
 
   //
   // Fields
@@ -18,7 +19,7 @@ abstract public class BmmSchema extends PBmmPackageContainer, BmmModelMetadata, 
   private classes.BmmClass primitiveTypes;
   private classes.BmmClass classDefinitions;
   private model_access.BmmIncludeSpec includes;
-  private model_structure.BmmModel bmmSchema;
+  private BmmModel bmmSchema;
   private model_access.BmmSchemaState state;
   private String modelName;
   private String schemaName;
@@ -110,7 +111,7 @@ abstract public class BmmSchema extends PBmmPackageContainer, BmmModelMetadata, 
    * Set the value of bmmSchema
    * @param newVar the new value of bmmSchema
    */
-  public void setBmmSchema (model_structure.BmmModel newVar) {
+  public void setBmmSchema (BmmModel newVar) {
     bmmSchema = newVar;
   }
 
@@ -118,7 +119,7 @@ abstract public class BmmSchema extends PBmmPackageContainer, BmmModelMetadata, 
    * Get the value of bmmSchema
    * @return the value of bmmSchema
    */
-  public model_structure.BmmModel getBmmSchema () {
+  public BmmModel getBmmSchema () {
     return bmmSchema;
   }
 

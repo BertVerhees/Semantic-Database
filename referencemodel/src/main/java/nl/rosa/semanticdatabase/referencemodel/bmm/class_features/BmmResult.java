@@ -1,17 +1,43 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
 
 
+import lombok.Data;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
+
 /**
  * Class BmmResult
  * Automatically declared variable representing result instance of a Function call.
  */
-public class BmmResult extends BmmVariable {
+@Data
+public class BmmResult implements BmmVariable {
 
   //
   // Fields
   //
-  /**
 
+  // BmmVariable
+  /**
+   * Routine within which variable is defined.
+   */
+  private BmmRoutine scope;
+
+  // BmmTypedFeature
+  /**
+   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
+   * {default = false}   */
+
+  private boolean isNullable;
+
+
+  // BmmTyped
+  /**
+   * Declared or inferred static type of the entity.
+   */
+  private BmmType type;
+
+
+  private boolean isSynthesisedGeneric;
+  /**
    * Name of this model element.
    * {default = "Result"}   */
 
@@ -20,39 +46,6 @@ public class BmmResult extends BmmVariable {
   //
   // Constructors
   //
-  public BmmResult() { };
+  public BmmResult () { };
   
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of name
-   * Name of this model element.
-   * {default = "Result"}
-   * @param newVar the new value of name
-   */
-  public void setName (String newVar) {
-    name = newVar;
-  }
-
-  /**
-   * Get the value of name
-   * Name of this model element.
-   * {default = "Result"}
-   * @return the value of name
-   */
-  public String getName () {
-    return name;
-  }
-
-  //
-  // Other methods
-  //
-
 }

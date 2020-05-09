@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.model_structure;
-import model_access.BmmModelMetadata;
-import classes.BmmClass;
-import classes.BmmEnumeration;
-import class_features.BmmProperty;
-import types.BmmSimpleType;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_access.BmmModelMetadata;
+import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
+import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmEnumeration;
+import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmProperty;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmSimpleType;
 
 
 /**
@@ -221,7 +222,7 @@ public class BmmModel extends BmmPackageContainer, BmmModelMetadata {
   /**
    * @return       types.BmmSimpleType
    */
-  public types.BmmSimpleType anyTypeDefinition()
+  public BmmSimpleType anyTypeDefinition()
   {
   }
 

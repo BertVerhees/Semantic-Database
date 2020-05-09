@@ -1,6 +1,8 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
 
 
+import lombok.Data;
+
 /**
  * Class ElDefined
  * A predicate taking one external variable reference argument, that returns true
@@ -10,13 +12,21 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
  * probably to be removed.
  * 
  */
-public class ElDefined extends ElPredicate {
+@Data
+public class ElDefined implements ElPredicate {
 
   //
   // Fields
   //
 
-  
+  // ElPredicate
+  /**
+   * The target instance of this predicate.
+   */
+  private ElInstanceRef operand;
+
+
+
   //
   // Constructors
   //

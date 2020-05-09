@@ -6,7 +6,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
  * A reference that is scoped by a containing entity and requires a context
  * qualifier if it is not the currently scoping entity.
  */
-abstract public class ElScopedRef extends ElInstanceRef {
+public interface ElScopedRef extends ElInstanceRef {
 
   //
   // Fields

@@ -7,7 +7,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.literal_values;
  * be inline values of primitive types in the usual fashion or complex objects in
  * syntax form, e.g. JSON.
  */
-public class BmmLiteralValue {
+public interface BmmLiteralValue {
 
   //
   // Fields

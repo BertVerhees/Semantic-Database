@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.types;
-import entities.BmmEntity;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.entities.BmmEntity;
 
 
 /**
@@ -9,7 +10,7 @@ import entities.BmmEntity;
  * kind, that defines the type of an attribute, or function result or argument. It
  * may include generic parameters that might or might not be bound. See subtypes.
  */
-abstract public class BmmType extends BmmEntity {
+public interface BmmType extends BmmEntity {
 
   //
   // Fields
@@ -80,8 +81,6 @@ abstract public class BmmType extends BmmEntity {
   public void effectiveType()
   {
   }
-
-
 
 
 }

@@ -5,7 +5,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.functional_elements;
  * Class BmmStatementItem
  * Abstract parent of statement types.
  */
-abstract public class BmmStatementItem {
+public interface BmmStatementItem {
 
   //
   // Fields

@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
-import types.BmmType;
-import literal_values.BmmLiteralValue;
+
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
+import nl.rosa.semanticdatabase.referencemodel.bmm.literal_values.BmmLiteralValue;
 
 
 /**
@@ -17,7 +18,7 @@ public class ElLiteral extends ElInstanceRef {
   /**
    * The reference item from which the value of this node can be computed.
    */
-  private literal_values.BmmLiteralValue value;
+  private BmmLiteralValue value;
   
   //
   // Constructors
@@ -38,7 +39,7 @@ public class ElLiteral extends ElInstanceRef {
    * The reference item from which the value of this node can be computed.
    * @param newVar the new value of value
    */
-  public void setValue (literal_values.BmmLiteralValue newVar) {
+  public void setValue (BmmLiteralValue newVar) {
     value = newVar;
   }
 
@@ -47,7 +48,7 @@ public class ElLiteral extends ElInstanceRef {
    * The reference item from which the value of this node can be computed.
    * @return the value of value
    */
-  public literal_values.BmmLiteralValue getValue () {
+  public BmmLiteralValue getValue () {
     return value;
   }
 
@@ -59,7 +60,7 @@ public class ElLiteral extends ElInstanceRef {
    * Return value.type.
    * @return       types.BmmType
    */
-  public types.BmmType evalType()
+  public BmmType evalType()
   {
   }
 

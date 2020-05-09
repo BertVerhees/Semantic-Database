@@ -6,7 +6,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.types;
  * Parent of meta-types that may be used as the type of any instantiated object
  * that is not a container object.
  */
-abstract public class BmmUnitaryType extends BmmType {
+public interface BmmUnitaryType extends BmmType {
 
   //
   // Fields
