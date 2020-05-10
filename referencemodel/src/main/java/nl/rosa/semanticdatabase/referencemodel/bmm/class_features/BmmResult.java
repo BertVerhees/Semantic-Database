@@ -2,7 +2,10 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
 
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
+
+import java.util.Map;
 
 /**
  * Class BmmResult
@@ -14,6 +17,15 @@ public class BmmResult implements BmmVariable {
   //
   // Fields
   //
+
+  // BmmDeclaration
+  private String name;
+  private Map<String,Object> documentation;
+  private BmmDeclaration scope;
+  private Map<String,Object> extensions;
+
+  // BmmClassEntity
+  private boolean isSynthesisedGeneric;
 
   // BmmVariable
   /**

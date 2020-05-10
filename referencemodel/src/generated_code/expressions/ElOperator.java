@@ -1,6 +1,6 @@
 package expressions;
-import class_features.BmmOperator;
 import class_features.BmmFunction;
+import class_features.BmmOperator;
 
 
 /**

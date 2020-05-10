@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
 
 import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmRoutine;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmSignature;
 
 import java.util.List;
 
@@ -21,28 +22,28 @@ public interface ElAgent extends ElScopedRef {
    * Name of the routine being called.
    * @param newVar the new value of name
    */
-  public void setName (String newVar);
+  void setName (String newVar);
 
   /**
    * Get the value of name
    * Name of the routine being called.
    * @return the value of name
    */
-  public String getName ();
+  String getName ();
 
   /**
    * Set the value of closedArgs
    * Closed arguments of a routine call as a tuple of objects.
    * @param newVar the new value of closedArgs
    */
-  public void setClosedArgs (ElTuple newVar);
+  void setClosedArgs (ElTuple newVar);
 
   /**
    * Get the value of closedArgs
    * Closed arguments of a routine call as a tuple of objects.
    * @return the value of closedArgs
    */
-  public ElTuple getClosedArgs ();
+  ElTuple getClosedArgs ();
 
   /**
    * Set the value of openArgs
@@ -51,7 +52,7 @@ public interface ElAgent extends ElScopedRef {
    * missing arguments are inferred from the definition.
    * @param newVar the new value of openArgs
    */
-  public void setOpenArgs (List<String> newVar);
+  void setOpenArgs (List<String> newVar);
 
   /**
    * Get the value of openArgs
@@ -60,21 +61,21 @@ public interface ElAgent extends ElScopedRef {
    * missing arguments are inferred from the definition.
    * @return the value of openArgs
    */
-  public List<String> getOpenArgs ();
+  List<String> getOpenArgs ();
 
   /**
    * Set the value of definition
    * Reference to definition of a routine for which this is an agent, if one exists.
    * @param newVar the new value of definition
    */
-  public void setDefinition (BmmRoutine newVar);
+  void setDefinition (BmmRoutine newVar);
 
   /**
    * Get the value of definition
    * Reference to definition of a routine for which this is an agent, if one exists.
    * @return the value of definition
    */
-  public BmmRoutine getDefinition ();
+  BmmRoutine getDefinition ();
 
   //
   // Other methods
@@ -85,11 +86,11 @@ public interface ElAgent extends ElScopedRef {
    * return type, if any.
    * Post_result: Result = definition.signature
    */
-  public void evalType();
+  BmmSignature evalType();
   /**
    * True if there are no open arguments.
    * Post_result_validity: Result = open_arguments = Void
    * @return       boolean
    */
-  public boolean isCallable();
+  boolean isCallable();
 }

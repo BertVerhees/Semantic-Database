@@ -1,6 +1,6 @@
 package expressions;
-import types.BmmType;
 import types.BmmTupleType;
+import types.BmmType;
 
 
 /**

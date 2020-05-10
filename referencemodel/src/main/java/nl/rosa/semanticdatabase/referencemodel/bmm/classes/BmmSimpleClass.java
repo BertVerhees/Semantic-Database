@@ -1,10 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.classes;
 
 import lombok.Data;
-import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmConstant;
-import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmFunction;
-import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmProcedure;
-import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmProperty;
+import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.*;
 import nl.rosa.semanticdatabase.referencemodel.bmm.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmModelType;
@@ -78,19 +75,6 @@ public class BmmSimpleClass implements BmmClass {
   //
   public BmmSimpleClass () { };
   
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
   /**
    * Generate a type object that represents the type of this class. Can only be an
    * instance of BMM_SIMPLE_TYPE or a descendant.
@@ -98,7 +82,80 @@ public class BmmSimpleClass implements BmmClass {
    */
   public BmmSimpleType type()
   {
+    //TODO
+    return null;
   }
 
 
+  @Override
+  public List<String> allAncestors() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<String> allDescendants() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<String> suppliers() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<String> suppliersNonPrimitive() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<String> supplierClosure() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public String packagePath() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public String classPath() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<BmmClassScoped> features() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<BmmClassScoped> flatFeatures() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<BmmProperty> flatProperties() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
+  }
 }

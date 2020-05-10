@@ -53,14 +53,14 @@ public interface BmmClass extends BmmEntity, BmmModule {
    * Package this class belongs to.
    * @param newVar the new value of package
    */
-  void setPackage (BmmPackage newVar);
+  void set_package (BmmPackage newVar);
 
   /**
    * Get the value of package
    * Package this class belongs to.
    * @return the value of package
    */
-  BmmPackage getPackage ();
+  BmmPackage get_package ();
 
   /**
    * Set the value of properties
@@ -116,7 +116,7 @@ public interface BmmClass extends BmmEntity, BmmModule {
    * schema.
    * @param newVar the new value of isOverride
    */
-  void setIsOverride (boolean newVar);
+  void setOverride (boolean newVar);
 
   /**
    * Get the value of isOverride
@@ -124,7 +124,7 @@ public interface BmmClass extends BmmEntity, BmmModule {
    * schema.
    * @return the value of isOverride
    */
-  boolean getIsOverride ();
+  boolean isOverride ();
 
   /**
    * Set the value of constants
@@ -205,9 +205,6 @@ public interface BmmClass extends BmmEntity, BmmModule {
    * @return the value of convertors
    */
   Map<String, BmmProcedure> getConvertors ();
-
-  BmmModelType type();
-
 
   /**
    * List of all inheritance parent class names, recursively.

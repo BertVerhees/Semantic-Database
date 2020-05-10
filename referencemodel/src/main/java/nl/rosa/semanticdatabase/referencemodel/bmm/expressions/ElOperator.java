@@ -9,38 +9,6 @@ import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmFunction;
  * Abstract parent of operator types.
  */
 public interface ElOperator extends ElExpression {
-
-  //
-  // Fields
-  //
-
-  /**
-   * True if the natural precedence of operators is overridden in the expression represented by this node of the expression tree. If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands.
-   */
-  private boolean precedenceOverridden;
-  /**
-   * The symbol actually used in the expression, or intended to be used for serialisation. Must be a member of OPERATOR_DEF.symbols.
-   */
-  private String symbol;
-  /**
-   * Function equivalent to this operator, inferred by matching operator against functions defined in interface of principal operand.
-   */
-  private class_features.BmmFunction definition;
-  
-  //
-  // Constructors
-  //
-  public ElOperator () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
   /**
    * Set the value of precedenceOverridden
    * True if the natural precedence of operators is overridden in the expression
@@ -49,9 +17,7 @@ public interface ElOperator extends ElExpression {
    * operator node and its operands.
    * @param newVar the new value of precedenceOverridden
    */
-  public void setPrecedenceOverridden (boolean newVar) {
-    precedenceOverridden = newVar;
-  }
+  void setPrecedenceOverridden (boolean newVar);
 
   /**
    * Get the value of precedenceOverridden
@@ -61,9 +27,7 @@ public interface ElOperator extends ElExpression {
    * operator node and its operands.
    * @return the value of precedenceOverridden
    */
-  public boolean getPrecedenceOverridden () {
-    return precedenceOverridden;
-  }
+  boolean getPrecedenceOverridden ();
 
   /**
    * Set the value of symbol
@@ -71,9 +35,7 @@ public interface ElOperator extends ElExpression {
    * serialisation. Must be a member of OPERATOR_DEF.symbols.
    * @param newVar the new value of symbol
    */
-  public void setSymbol (String newVar) {
-    symbol = newVar;
-  }
+  void setSymbol (String newVar);
 
   /**
    * Get the value of symbol
@@ -81,9 +43,7 @@ public interface ElOperator extends ElExpression {
    * serialisation. Must be a member of OPERATOR_DEF.symbols.
    * @return the value of symbol
    */
-  public String getSymbol () {
-    return symbol;
-  }
+  String getSymbol ();
 
   /**
    * Set the value of definition
@@ -91,9 +51,7 @@ public interface ElOperator extends ElExpression {
    * functions defined in interface of principal operand.
    * @param newVar the new value of definition
    */
-  public void setDefinition (class_features.BmmFunction newVar) {
-    definition = newVar;
-  }
+  void setDefinition (BmmFunction newVar);
 
   /**
    * Get the value of definition
@@ -101,9 +59,7 @@ public interface ElOperator extends ElExpression {
    * functions defined in interface of principal operand.
    * @return the value of definition
    */
-  public class_features.BmmFunction getDefinition () {
-    return definition;
-  }
+  BmmFunction getDefinition ();
 
   //
   // Other methods
@@ -113,18 +69,11 @@ public interface ElOperator extends ElExpression {
    * Operator definition derived from definition.operator_definition().
    * @return       class_features.BmmOperator
    */
-  public class_features.BmmOperator operatorDefinition()
-  {
-  }
-
+  BmmOperator operatorDefinition();
 
   /**
    * Function call equivalent to this operator.
    * @return       expressions.ElFunctionCall
    */
-  public expressions.ElFunctionCall equivalentCall()
-  {
-  }
-
-
+  ElFunctionCall equivalentCall();
 }

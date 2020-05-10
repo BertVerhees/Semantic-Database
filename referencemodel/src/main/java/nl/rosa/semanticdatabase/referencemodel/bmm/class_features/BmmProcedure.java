@@ -5,8 +5,10 @@ import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.referencemodel.bmm.functional_elements.BmmStatementItem;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDeclaration;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Class BmmProcedure
@@ -19,7 +21,14 @@ public class BmmProcedure extends BmmRoutine {
   //
   // Fields
   //
-  // BmmRoutine
+
+  // BmmDeclaration
+  private String name;
+  private Map<String,Object> documentation;
+  private BmmDeclaration scope;
+  private Map<String,Object> extensions;
+
+  // BmmClassEntity
   private boolean isSynthesisedGeneric;
 
   /**

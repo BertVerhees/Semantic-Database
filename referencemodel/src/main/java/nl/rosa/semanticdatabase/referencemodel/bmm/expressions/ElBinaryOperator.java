@@ -1,77 +1,59 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
 
 
+import lombok.Data;
+import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmFunction;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
+
 /**
  * Class ElBinaryOperator
  * Binary operator expression node
  */
-public class ElBinaryOperator extends ElOperator {
+@Data
+public class ElBinaryOperator implements ElOperator {
 
-  //
-  // Fields
-  //
+  // ElOperator
+  /**
+   * True if the natural precedence of operators is overridden in the expression represented
+   * by this node of the expression tree.
+   * If True, parentheses should be introduced around the totality of the syntax expression
+   * corresponding to this operator node and its operands.
+   */
+  private boolean precedenceOverridden;
+  /**
+   * The symbol actually used in the expression, or intended to be used for serialisation.
+   * Must be a member of OPERATOR_DEF.symbols.
+   */
+  private String symbol;
+  /**
+   * Function equivalent to this operator, inferred by matching operator against functions
+   * defined in interface of principal operand.
+   */
+  private BmmFunction definition;
+
 
   /**
    * Left operand node.
    */
-  private expressions.ElExpression leftOperand;
+  private ElExpression leftOperand;
   /**
    * Right operand node.
    */
-  private expressions.ElTerminal rightOperand;
+  private ElTerminal rightOperand;
   
   //
   // Constructors
   //
   public ElBinaryOperator () { };
-  
-  //
-  // Methods
-  //
 
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of leftOperand
-   * Left operand node.
-   * @param newVar the new value of leftOperand
-   */
-  public void setLeftOperand (expressions.ElExpression newVar) {
-    leftOperand = newVar;
+  @Override
+  public BmmType evalType() {
+    return null;
   }
 
-  /**
-   * Get the value of leftOperand
-   * Left operand node.
-   * @return the value of leftOperand
-   */
-  public expressions.ElExpression getLeftOperand () {
-    return leftOperand;
+  @Override
+  public boolean isBoolean() {
+    return false;
   }
-
-  /**
-   * Set the value of rightOperand
-   * Right operand node.
-   * @param newVar the new value of rightOperand
-   */
-  public void setRightOperand (expressions.ElTerminal newVar) {
-    rightOperand = newVar;
-  }
-
-  /**
-   * Get the value of rightOperand
-   * Right operand node.
-   * @return the value of rightOperand
-   */
-  public expressions.ElTerminal getRightOperand () {
-    return rightOperand;
-  }
-
-  //
-  // Other methods
-  //
 
 }

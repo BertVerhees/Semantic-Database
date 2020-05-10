@@ -8,79 +8,48 @@ import java.util.Map;
  */
 public interface BmmDeclaration extends BmmDefinitions {
 
-  //
-  // Fields
-  //
-
-  private String name;
-  private Map<String,Object> documentation;
-  private BmmDeclaration scope;
-  private Map<String,Object> extensions;
-  
   /**
    * Set the value of name
    * @param newVar the new value of name
    */
-  public void setName (String newVar) {
-    name = newVar;
-  }
-
+  void setName (String newVar);
   /**
    * Get the value of name
    * @return the value of name
    */
-  public String getName () {
-    return name;
-  }
+  String getName ();
 
   /**
    * Set the value of documentation
    * @param newVar the new value of documentation
    */
-  public void setDocumentation (Hash<String,ANY> newVar) {
-    documentation = newVar;
-  }
-
+  void setDocumentation (Map<String,Object> newVar);
   /**
    * Get the value of documentation
    * @return the value of documentation
    */
-  public Hash<String,ANY> getDocumentation () {
-    return documentation;
-  }
+  Map<String,Object> getDocumentation ();
 
   /**
    * Set the value of scope
    * @param newVar the new value of scope
    */
-  public void setScope (model_structure.BmmDeclaration newVar) {
-    scope = newVar;
-  }
-
+  void setScope (BmmDeclaration newVar);
   /**
    * Get the value of scope
    * @return the value of scope
    */
-  public model_structure.BmmDeclaration getScope () {
-    return scope;
-  }
-
+  BmmDeclaration getScope ();
   /**
    * Set the value of extensions
    * @param newVar the new value of extensions
    */
-  public void setExtensions (Hash<String,ANY> newVar) {
-    extensions = newVar;
-  }
-
+  void setExtensions (Map<String,Object> newVar);
   /**
    * Get the value of extensions
    * @return the value of extensions
    */
-  public Hash<String,ANY> getExtensions () {
-    return extensions;
-  }
-
+  Map<String,Object> getExtensions ();
   //
   // Other methods
   //
@@ -88,9 +57,5 @@ public interface BmmDeclaration extends BmmDefinitions {
   /**
    * @return       boolean
    */
-  public boolean isRootScope()
-  {
-  }
-
-
+  boolean isRootScope();
 }

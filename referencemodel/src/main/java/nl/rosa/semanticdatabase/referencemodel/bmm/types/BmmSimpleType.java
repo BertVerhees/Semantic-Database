@@ -1,6 +1,8 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.types;
 
+import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmSimpleClass;
+import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmValueSpec;
 
 
 /**
@@ -15,55 +17,23 @@ import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmSimpleClass;
  * Result is base_class.name .
  * 
  */
-public class BmmSimpleType extends BmmModelType {
+@Data
+public class BmmSimpleType implements BmmModelType {
 
   //
   // Fields
   //
 
-  private classes.BmmSimpleClass baseClass;
+  // BmmModelType
+  private BmmValueSpec valueConstraint;
+  /**
+   * Defining class of this type.
+   */
+  private BmmSimpleClass baseClass;
   
   //
   // Constructors
   //
   public BmmSimpleType () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of baseClass
-   * @param newVar the new value of baseClass
-   */
-  public void setBaseClass (classes.BmmSimpleClass newVar) {
-    baseClass = newVar;
-  }
-
-  /**
-   * Get the value of baseClass
-   * @return the value of baseClass
-   */
-  public classes.BmmSimpleClass getBaseClass () {
-    return baseClass;
-  }
-
-  //
-  // Other methods
-  //
-
-  /**
-   * Main design class for this type, from which properties etc can be extracted.
-   * @return       classes.BmmSimpleClass
-   */
-  public classes.BmmSimpleClass effectiveBaseClass()
-  {
-  }
-
 
 }

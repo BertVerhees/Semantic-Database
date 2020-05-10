@@ -2,8 +2,11 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
 
 import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmUnitaryType;
+
+import java.util.Map;
 
 
 /**
@@ -16,6 +19,15 @@ public class BmmUnitaryProperty implements BmmProperty {
   //
   // Fields
   //
+
+  // BmmDeclaration
+  private String name;
+  private Map<String,Object> documentation;
+  private BmmDeclaration scope;
+  private Map<String,Object> extensions;
+
+  // BmmClassEntity
+  private boolean isSynthesisedGeneric;
 
   // BmmTypedFeature
   /**

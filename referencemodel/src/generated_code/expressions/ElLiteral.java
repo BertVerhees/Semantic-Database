@@ -1,6 +1,6 @@
 package expressions;
-import types.BmmType;
 import literal_values.BmmLiteralValue;
+import types.BmmType;
 
 
 /**

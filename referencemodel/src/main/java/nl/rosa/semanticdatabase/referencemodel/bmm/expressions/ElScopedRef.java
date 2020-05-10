@@ -8,24 +8,6 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
  */
 public interface ElScopedRef extends ElInstanceRef {
 
-  //
-  // Fields
-  //
-
-  /**
-   * Reference to an owning object for this terminal element, if it is not the current scope.
-   */
-  private expressions.ElInstanceRef scope;
-  
-  //
-  // Constructors
-  //
-  public ElScopedRef () { };
-  
-  //
-  // Methods
-  //
-
 
   //
   // Accessor methods
@@ -37,9 +19,7 @@ public interface ElScopedRef extends ElInstanceRef {
    * current scope.
    * @param newVar the new value of scope
    */
-  public void setScope (expressions.ElInstanceRef newVar) {
-    scope = newVar;
-  }
+  void setScope (ElInstanceRef newVar);
 
   /**
    * Get the value of scope
@@ -47,12 +27,6 @@ public interface ElScopedRef extends ElInstanceRef {
    * current scope.
    * @return the value of scope
    */
-  public expressions.ElInstanceRef getScope () {
-    return scope;
-  }
-
-  //
-  // Other methods
-  //
+  ElInstanceRef getScope ();
 
 }

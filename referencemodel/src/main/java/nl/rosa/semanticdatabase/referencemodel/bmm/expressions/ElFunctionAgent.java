@@ -18,6 +18,13 @@ public class ElFunctionAgent implements ElAgent {
   // Fields
   //
 
+  // ElScopedRef
+  /**
+   * Reference to an owning object for this terminal element, if it is not the current scope.
+   */
+  private ElInstanceRef scope;
+
+
   // ElAgent
   /**
    * Name of the routine being called.
@@ -40,34 +47,4 @@ public class ElFunctionAgent implements ElAgent {
   // Constructors
   //
   public ElFunctionAgent () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of definition
-   * @param newVar the new value of definition
-   */
-  public void setDefinition (class_features.BmmFunction newVar) {
-    definition = newVar;
-  }
-
-  /**
-   * Get the value of definition
-   * @return the value of definition
-   */
-  public class_features.BmmFunction getDefinition () {
-    return definition;
-  }
-
-  //
-  // Other methods
-  //
-
 }

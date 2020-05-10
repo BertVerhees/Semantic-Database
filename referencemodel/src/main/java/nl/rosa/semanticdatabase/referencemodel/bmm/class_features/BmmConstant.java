@@ -3,7 +3,11 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
 import lombok.*;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.literal_values.BmmLiteralValue;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDeclaration;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmSignature;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
+
+import java.util.Map;
 
 
 /**
@@ -16,6 +20,15 @@ public class BmmConstant implements BmmClassScoped, BmmInstantiableClass {
   //
   // Fields
   //
+  // BmmClassEntity
+  private boolean isSynthesisedGeneric;
+
+  // BmmDeclaration
+  private String name;
+  private Map<String,Object> documentation;
+  private BmmDeclaration scope;
+  private Map<String,Object> extensions;
+
 
   // BmmTypedFeature
   /**
@@ -40,10 +53,6 @@ public class BmmConstant implements BmmClassScoped, BmmInstantiableClass {
   private Object visibility;
   private BmmClass scope;
 
-
-
-  private boolean isSynthesisedGeneric;
-
   /**
    * The value of the constant.
    */
@@ -53,18 +62,15 @@ public class BmmConstant implements BmmClassScoped, BmmInstantiableClass {
   // Constructors
   //
   public BmmConstant () { };
-  
-  //
-  // Methods
-  //
 
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
+  /**
+   * Formal signature of this element, in the form:
+   * name [arg1_name: T_arg1, �?][:T_value]
+   * Specific implementations in descendants.
+   */
+  public BmmSignature signature(){
+    //TODO
+    return null;
+  }
 
 }

@@ -41,6 +41,6 @@ public interface BmmClassScoped extends BmmClassEntity {
    * Get the value of scope
    * @return the value of scope
    */
-  public BmmClass getScope ();
+  BmmClass getScope ();
 
 }

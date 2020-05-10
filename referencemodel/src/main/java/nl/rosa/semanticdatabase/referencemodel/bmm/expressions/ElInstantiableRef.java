@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
 
+import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
 
 
@@ -8,11 +9,19 @@ import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
  * Terminal item corresponding to a reference to a directly instantiable entity,
  * i.e. a variable, constant, or property.
  */
+@Data
 public class ElInstantiableRef extends ElScopedRef {
 
   //
   // Fields
   //
+
+  // BmmElScopedRef
+  /**
+   * Reference to an owning object for this terminal element, if it is not the current scope.
+   */
+  private ElInstanceRef scope;
+
 
   /**
    * Definition of the constant, property or variable, inferred by inspection of the current scoping instance.

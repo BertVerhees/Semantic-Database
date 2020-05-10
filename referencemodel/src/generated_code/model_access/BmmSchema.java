@@ -1,8 +1,8 @@
 package model_access;
-import persistence.PBmmPackageContainer;
-import model_structure.BmmPackageContainer;
 import classes.BmmClass;
 import model_structure.BmmModel;
+import model_structure.BmmPackageContainer;
+import persistence.PBmmPackageContainer;
 
 
 /**

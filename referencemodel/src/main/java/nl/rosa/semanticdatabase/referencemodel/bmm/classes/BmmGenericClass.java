@@ -1,15 +1,11 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.classes;
 
 import lombok.Data;
-import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmConstant;
-import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmFunction;
-import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmProcedure;
-import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmProperty;
+import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.*;
 import nl.rosa.semanticdatabase.referencemodel.bmm.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmPackage;
-import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmModelType;
-import nl.rosa.semanticdatabase.referencemodel.classes.BmmClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmGenericType;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmModelType;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmParameterType;
 
 import java.util.List;
@@ -35,7 +31,7 @@ import java.util.Map;
  * 
  */
 @Data
-public class BmmGenericClass extends BmmClass {
+public class BmmGenericClass implements BmmClass {
 
   //
   // Fields
@@ -89,65 +85,84 @@ public class BmmGenericClass extends BmmClass {
   // Constructors
   //
   public BmmGenericClass () { };
-  
-  //
-  // Methods
-  //
 
 
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of genericParameters
-   * @param newVar the new value of genericParameters
-   */
-  public void setGenericParameters (BmmParameterType newVar) {
-    genericParameters = newVar;
-  }
-
-  /**
-   * Get the value of genericParameters
-   * @return the value of genericParameters
-   */
-  public BmmParameterType getGenericParameters () {
-    return genericParameters;
-  }
-
-  //
-  // Other methods
-  //
-
-  /**
-   * Add suppliers from generic parameters.
-   * @return       List<String>
-   */
-  public List<String> suppliers()
-  {
-  }
-
-
-  /**
-   * For a generic class, type to which generic parameter a_name conforms e.g. if
-   * this class is Interval <T:Comparable> then the Result will be the single type
-   * Comparable. For an unconstrained type T, the Result will be Any.
-   * @return       String
-   * @param        name
-   */
-  public String genericParameterConformanceType(String name)
-  {
-  }
-
-
-  /**
-   * Generate a fully open BMM_GENERIC_TYPE instance that corresponds to this class
-   * definition
-   * @return       types.BmmGenericType
-   */
   public BmmGenericType type()
   {
+    //TODO
+    return null;
   }
 
 
+  @Override
+  public List<String> allAncestors() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<String> allDescendants() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<String> suppliers() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<String> suppliersNonPrimitive() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<String> supplierClosure() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public String packagePath() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public String classPath() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<BmmClassScoped> features() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<BmmClassScoped> flatFeatures() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public List<BmmProperty> flatProperties() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
+  }
 }

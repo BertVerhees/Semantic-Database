@@ -16,11 +16,11 @@ public class ElFunctionCall implements ElScopedRef, ElAgentCall {
   // Fields
   //
 
-  // ElAgentCall
+  // ElScopedRef
   /**
-   * The agent being called.
+   * Reference to an owning object for this terminal element, if it is not the current scope.
    */
-  private ElAgent agent;
+  private ElInstanceRef scope;
 
 
   /**
@@ -42,6 +42,8 @@ public class ElFunctionCall implements ElScopedRef, ElAgentCall {
    */
   public BmmType evalType()
   {
+    //TODO
+    return null;
   }
 
 

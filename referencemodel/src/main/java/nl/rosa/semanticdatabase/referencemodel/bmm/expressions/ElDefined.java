@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
 
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmSimpleType;
 
 /**
  * Class ElDefined
@@ -31,18 +32,15 @@ public class ElDefined implements ElPredicate {
   // Constructors
   //
   public ElDefined () { };
-  
-  //
-  // Methods
-  //
 
+  @Override
+  public BmmSimpleType evalType() {
+    return null;
+  }
 
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
+  @Override
+  public boolean isBoolean() {
+    return false;
+  }
 
 }

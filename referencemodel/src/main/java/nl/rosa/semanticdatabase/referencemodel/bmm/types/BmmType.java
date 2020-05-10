@@ -2,6 +2,8 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.types;
 
 import nl.rosa.semanticdatabase.referencemodel.bmm.entities.BmmEntity;
 
+import java.util.List;
+
 
 /**
  * Class BmmType
@@ -12,75 +14,32 @@ import nl.rosa.semanticdatabase.referencemodel.bmm.entities.BmmEntity;
  */
 public interface BmmType extends BmmEntity {
 
-  //
-  // Fields
-  //
-
-  
-  //
-  // Constructors
-  //
-  public BmmType () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
   /**
    * True if type is based only on a primitive class, or a collection thereof.
    * Effected in descendants.
    * @return       String
    */
-  public String typeName()
-  {
-  }
-
-
+  String typeName();
   /**
    * Completely flattened list of type names, flattening out all generic parameters.
    * @return       List<String>
    */
-  public List<String> flattenedTypeList()
-  {
-  }
-
-
+  List<String> flattenedTypeList();
   /**
    * Signature form of the type name, which for generics includes generic parameter
    * constrainer types E.g. Interval<T:Ordered>.
    * Defaults to the value of type_name().
    * @return       String
    */
-  public String typeSignature()
-  {
-  }
-
-
+  String typeSignature();
   /**
    * Type with any container abstracted away.
    * When UnitaryType: Result = self.
    */
-  public void unitaryType()
-  {
-  }
-
-
+  BmmUnitaryType unitaryType();
   /**
    * Type with any container abstracted away, and any formal parameter replaced by
    * its effective constraint type. When BmmEffectiveType Result=self
    */
-  public void effectiveType()
-  {
-  }
-
-
+  BmmEffectiveType effectiveType();
 }

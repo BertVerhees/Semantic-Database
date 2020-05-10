@@ -1,6 +1,9 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.types;
 
+import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmGenericClass;
+
+import java.util.List;
 
 
 /**
@@ -24,20 +27,16 @@ import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmGenericClass;
  * True if item_type is primitive.
  * 
  */
-public class BmmContainerType extends BmmType {
-
-  //
-  // Fields
-  //
-
+@Data
+public class BmmContainerType implements BmmType {
   /**
    * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
    */
-  private classes.BmmGenericClass containerClass;
+  private BmmGenericClass containerClass;
   /**
    * The container item type.
    */
-  private types.BmmUnitaryType itemType;
+  private BmmUnitaryType itemType;
   /**
    * True indicates that order of the items in the container attribute is considered significant and must be preserved, e.g. across sessions, serialisation, deserialisation etc. Otherwise known as 'list' semantics.
    */
@@ -50,97 +49,69 @@ public class BmmContainerType extends BmmType {
   //
   // Constructors
   //
-  public BmmContainerType () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
+  public BmmContainerType () { }
 
   /**
-   * Set the value of containerClass
-   * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
-   * @param newVar the new value of containerClass
+   * Return full type name, e.g. List<ELEMENT>.
+   * @return
    */
-  public void setContainerClass (classes.BmmGenericClass newVar) {
-    containerClass = newVar;
+  @Override
+  public String typeName() {
+    //TODO
+    return null;
   }
 
   /**
-   * Get the value of containerClass
-   * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
-   * @return the value of containerClass
+   * Flattened list of type names with container type name abstracted away.
+   * Post_result: Result = item_type.flattened_type_list
+   * @return
    */
-  public classes.BmmGenericClass getContainerClass () {
-    return containerClass;
+  @Override
+  public List<String> flattenedTypeList() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public String typeSignature() {
+    //TODO
+    return null;
   }
 
   /**
-   * Set the value of itemType
-   * The container item type.
-   * @param newVar the new value of itemType
+   * Return item_type.
    */
-  public void setItemType (types.BmmUnitaryType newVar) {
-    itemType = newVar;
+  @Override
+  public BmmUnitaryType unitaryType() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public BmmEffectiveType effectiveType() {
+    //TODO
+    return null;
   }
 
   /**
-   * Get the value of itemType
-   * The container item type.
-   * @return the value of itemType
+   * True if the container class is abstract.
+   * @return
    */
-  public types.BmmUnitaryType getItemType () {
-    return itemType;
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
   }
 
   /**
-   * Set the value of isOrdered
-   * True indicates that order of the items in the container attribute is considered
-   * significant and must be preserved, e.g. across sessions, serialisation,
-   * deserialisation etc. Otherwise known as 'list' semantics.
-   * @param newVar the new value of isOrdered
+   * True if item_type is primitive.
+   * Post_result: Result = item_type.is_primitive
+   * @return
    */
-  public void setIsOrdered (boolean newVar) {
-    isOrdered = newVar;
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
   }
-
-  /**
-   * Get the value of isOrdered
-   * True indicates that order of the items in the container attribute is considered
-   * significant and must be preserved, e.g. across sessions, serialisation,
-   * deserialisation etc. Otherwise known as 'list' semantics.
-   * @return the value of isOrdered
-   */
-  public boolean getIsOrdered () {
-    return isOrdered;
-  }
-
-  /**
-   * Set the value of isUnique
-   * True indicates that only unique instances of items in the container are allowed.
-   * Otherwise known as 'set' semantics.
-   * @param newVar the new value of isUnique
-   */
-  public void setIsUnique (boolean newVar) {
-    isUnique = newVar;
-  }
-
-  /**
-   * Get the value of isUnique
-   * True indicates that only unique instances of items in the container are allowed.
-   * Otherwise known as 'set' semantics.
-   * @return the value of isUnique
-   */
-  public boolean getIsUnique () {
-    return isUnique;
-  }
-
-  //
-  // Other methods
-  //
 
 }

@@ -1,6 +1,6 @@
 package types;
-import classes.BmmValueSpec;
 import classes.BmmClass;
+import classes.BmmValueSpec;
 
 
 /**

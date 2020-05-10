@@ -18,6 +18,13 @@ public class ElProcedureAgent implements ElAgent {
   // Fields
   //
 
+  // ElScopedRef
+  /**
+   * Reference to an owning object for this terminal element, if it is not the current scope.
+   */
+  private ElInstanceRef scope;
+
+
   // ElAgent
   /**
    * Name of the routine being called.

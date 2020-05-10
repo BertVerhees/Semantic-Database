@@ -1,13 +1,17 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
 
 
+import lombok.Data;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
+
 /**
  * Class ElConstraintExpression
  * Special kind of expression representing a constraint on values. Used with the
  * 'matches' operator. Does not follow the ordinary model of binary operator, since
  * the constraint is not itself a value-returning expression.
  */
-public class ElConstraintExpression extends ElExpression {
+@Data
+public class ElConstraintExpression implements ElExpression {
 
   //
   // Fields
@@ -16,7 +20,7 @@ public class ElConstraintExpression extends ElExpression {
   /**
    * Left operand of constraint expression.
    */
-  private expressions.ElExpression leftOperand;
+  private ElExpression leftOperand;
   /**
    * Right hand side of the constraint expression. Redefined in sub-types.
    */
@@ -28,52 +32,17 @@ public class ElConstraintExpression extends ElExpression {
   public ElConstraintExpression () { };
   
   //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of leftOperand
-   * Left operand of constraint expression.
-   * @param newVar the new value of leftOperand
-   */
-  public void setLeftOperand (expressions.ElExpression newVar) {
-    leftOperand = newVar;
-  }
-
-  /**
-   * Get the value of leftOperand
-   * Left operand of constraint expression.
-   * @return the value of leftOperand
-   */
-  public expressions.ElExpression getLeftOperand () {
-    return leftOperand;
-  }
-
-  /**
-   * Set the value of constraint
-   * Right hand side of the constraint expression. Redefined in sub-types.
-   * @param newVar the new value of constraint
-   */
-  public void setConstraint (Object newVar) {
-    constraint = newVar;
-  }
-
-  /**
-   * Get the value of constraint
-   * Right hand side of the constraint expression. Redefined in sub-types.
-   * @return the value of constraint
-   */
-  public Object getConstraint () {
-    return constraint;
-  }
-
-  //
   // Other methods
   //
+  @Override
+  public BmmType evalType() {
+    return null;
+  }
+
+  @Override
+  public boolean isBoolean() {
+    return false;
+  }
+
 
 }

@@ -8,27 +8,4 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.types;
  */
 public interface BmmUnitaryType extends BmmType {
 
-  //
-  // Fields
-  //
-
-  
-  //
-  // Constructors
-  //
-  public BmmUnitaryType () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
 }

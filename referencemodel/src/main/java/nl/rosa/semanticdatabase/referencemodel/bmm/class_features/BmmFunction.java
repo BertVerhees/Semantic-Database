@@ -5,9 +5,11 @@ import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.referencemodel.bmm.functional_elements.BmmStatementItem;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Class BmmFunction
@@ -21,6 +23,17 @@ public class BmmFunction implements BmmRoutine, BmmTypedFeature {
   //
   // Fields
   //
+
+  // BmmDeclaration
+  private String name;
+  private Map<String,Object> documentation;
+  private BmmDeclaration scope;
+  private Map<String,Object> extensions;
+
+  // BmmClassEntity
+  private boolean isSynthesisedGeneric;
+
+
 
   // BmmTypedFeature
   /**
@@ -78,55 +91,4 @@ public class BmmFunction implements BmmRoutine, BmmTypedFeature {
   //
   public BmmFunction () { };
   
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of operatorDefinition
-   * Optional details enabling a function to be represented as an operator in a
-   * syntactic representation.
-   * @param newVar the new value of operatorDefinition
-   */
-  public void setOperatorDefinition (class_features.BmmOperator newVar) {
-    operatorDefinition = newVar;
-  }
-
-  /**
-   * Get the value of operatorDefinition
-   * Optional details enabling a function to be represented as an operator in a
-   * syntactic representation.
-   * @return the value of operatorDefinition
-   */
-  public class_features.BmmOperator getOperatorDefinition () {
-    return operatorDefinition;
-  }
-
-  /**
-   * Set the value of result
-   * Automatically created Result variable, usable in body and post-condition.
-   * @param newVar the new value of result
-   */
-  public void setResult (class_features.BmmResult newVar) {
-    result = newVar;
-  }
-
-  /**
-   * Get the value of result
-   * Automatically created Result variable, usable in body and post-condition.
-   * @return the value of result
-   */
-  public class_features.BmmResult getResult () {
-    return result;
-  }
-
-  //
-  // Other methods
-  //
-
 }
