@@ -1,26 +1,28 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.model_access;
 
-import nl.rosa.semanticdatabase.referencemodel.bmm.persistence.PBmmPackageContainer;
-import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmPackageContainer;
+import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmModel;
+
+import java.util.List;
 
 
 /**
  * Class BmmSchema
  */
-public interface BmmSchema extends PBmmPackageContainer, BmmModelMetadata, BmmPackageContainer {
+@Data
+abstract public class BmmSchema extends BmmModelMetadata {
 
   //
   // Fields
   //
 
   private String bmmVersion;
-  private classes.BmmClass primitiveTypes;
-  private classes.BmmClass classDefinitions;
-  private model_access.BmmIncludeSpec includes;
+  private BmmClass primitiveTypes;
+  private BmmClass classDefinitions;
+  private BmmIncludeSpec includes;
   private BmmModel bmmSchema;
-  private model_access.BmmSchemaState state;
+  private BmmSchemaState state;
   private String modelName;
   private String schemaName;
   private String schemaRevision;
@@ -34,244 +36,52 @@ public interface BmmSchema extends PBmmPackageContainer, BmmModelMetadata, BmmPa
   //
   public BmmSchema () { };
   
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
 
   /**
-   * Set the value of bmmVersion
-   * @param newVar the new value of bmmVersion
-   */
-  public void setBmmVersion (String newVar) {
-    bmmVersion = newVar;
-  }
-
-  /**
-   * Get the value of bmmVersion
-   * @return the value of bmmVersion
-   */
-  public String getBmmVersion () {
-    return bmmVersion;
-  }
-
-  /**
-   * Set the value of primitiveTypes
-   * @param newVar the new value of primitiveTypes
-   */
-  public void setPrimitiveTypes (classes.BmmClass newVar) {
-    primitiveTypes = newVar;
-  }
-
-  /**
-   * Get the value of primitiveTypes
-   * @return the value of primitiveTypes
-   */
-  public classes.BmmClass getPrimitiveTypes () {
-    return primitiveTypes;
-  }
-
-  /**
-   * Set the value of classDefinitions
-   * @param newVar the new value of classDefinitions
-   */
-  public void setClassDefinitions (classes.BmmClass newVar) {
-    classDefinitions = newVar;
-  }
-
-  /**
-   * Get the value of classDefinitions
-   * @return the value of classDefinitions
-   */
-  public classes.BmmClass getClassDefinitions () {
-    return classDefinitions;
-  }
-
-  /**
-   * Set the value of includes
-   * @param newVar the new value of includes
-   */
-  public void setIncludes (model_access.BmmIncludeSpec newVar) {
-    includes = newVar;
-  }
-
-  /**
-   * Get the value of includes
-   * @return the value of includes
-   */
-  public model_access.BmmIncludeSpec getIncludes () {
-    return includes;
-  }
-
-  /**
-   * Set the value of bmmSchema
-   * @param newVar the new value of bmmSchema
-   */
-  public void setBmmSchema (BmmModel newVar) {
-    bmmSchema = newVar;
-  }
-
-  /**
-   * Get the value of bmmSchema
-   * @return the value of bmmSchema
-   */
-  public BmmModel getBmmSchema () {
-    return bmmSchema;
-  }
-
-  /**
-   * Set the value of state
-   * @param newVar the new value of state
-   */
-  public void setState (model_access.BmmSchemaState newVar) {
-    state = newVar;
-  }
-
-  /**
-   * Get the value of state
-   * @return the value of state
-   */
-  public model_access.BmmSchemaState getState () {
-    return state;
-  }
-
-  /**
-   * Set the value of modelName
-   * @param newVar the new value of modelName
-   */
-  public void setModelName (String newVar) {
-    modelName = newVar;
-  }
-
-  /**
-   * Get the value of modelName
-   * @return the value of modelName
-   */
-  public String getModelName () {
-    return modelName;
-  }
-
-  /**
-   * Set the value of schemaName
-   * @param newVar the new value of schemaName
-   */
-  public void setSchemaName (String newVar) {
-    schemaName = newVar;
-  }
-
-  /**
-   * Get the value of schemaName
-   * @return the value of schemaName
-   */
-  public String getSchemaName () {
-    return schemaName;
-  }
-
-  /**
-   * Set the value of schemaRevision
-   * @param newVar the new value of schemaRevision
-   */
-  public void setSchemaRevision (String newVar) {
-    schemaRevision = newVar;
-  }
-
-  /**
-   * Get the value of schemaRevision
-   * @return the value of schemaRevision
-   */
-  public String getSchemaRevision () {
-    return schemaRevision;
-  }
-
-  /**
-   * Set the value of schemaLifecycleState
-   * @param newVar the new value of schemaLifecycleState
-   */
-  public void setSchemaLifecycleState (String newVar) {
-    schemaLifecycleState = newVar;
-  }
-
-  /**
-   * Get the value of schemaLifecycleState
-   * @return the value of schemaLifecycleState
-   */
-  public String getSchemaLifecycleState () {
-    return schemaLifecycleState;
-  }
-
-  /**
-   * Set the value of schemaAuthor
-   * @param newVar the new value of schemaAuthor
-   */
-  public void setSchemaAuthor (String newVar) {
-    schemaAuthor = newVar;
-  }
-
-  /**
-   * Get the value of schemaAuthor
-   * @return the value of schemaAuthor
-   */
-  public String getSchemaAuthor () {
-    return schemaAuthor;
-  }
-
-  /**
-   * Set the value of schemaDescription
-   * @param newVar the new value of schemaDescription
-   */
-  public void setSchemaDescription (String newVar) {
-    schemaDescription = newVar;
-  }
-
-  /**
-   * Get the value of schemaDescription
-   * @return the value of schemaDescription
-   */
-  public String getSchemaDescription () {
-    return schemaDescription;
-  }
-
-  /**
-   * Set the value of schemaContributors
-   * @param newVar the new value of schemaContributors
-   */
-  public void setSchemaContributors (List<String> newVar) {
-    schemaContributors = newVar;
-  }
-
-  /**
-   * Get the value of schemaContributors
-   * @return the value of schemaContributors
-   */
-  public List<String> getSchemaContributors () {
-    return schemaContributors;
-  }
-
-  //
-  // Other methods
-  //
-
-  /**
+   * Do some basic validation post initial creation
+   *
+   * check that package structure is regular:
+   *
+   * only top-level packages can have qualified names
+   *
+   * no top-level package name can be a direct parent or child of another (child package must be declared under the parent)
+   *
+   * check that all classes are mentioned in the package structure
+   *
+   * check that all models refer to valid packages
+   *
+   * Pre_state: state = State_created
+   * Post_state: passed implies state = State_validated_created
    */
   abstract public void validateCreated();
 
 
   /**
+   * Finalisation work:
+   *
+   * convert packages to canonical form, i.e. full hierarchy with no packages with names like aa.bb.cc
+   *
+   * set up include processing list
+   *
+   * Pre_state: state = State_validated_created
+   * Post_state: state = State_includes_processed or state = State_includes_pending
    */
   abstract public void loadFinalise();
 
 
   /**
+   * Merge in class and package definitions from other, except where the current schema already has
+   * a definition for the given type or package.
+   *
+   * Pre_state: state = State_includes_pending
+   * Pre_other_valid: includes_to_process.has (included_schema.schema_id)
    * @param        other
    */
-  abstract public void merge(model_access.BmmSchema other);
+  abstract public void merge(BmmSchema other);
 
 
   /**
+   * Main validation prior to generation of bmm_model.
    */
   public void validate()
   {
@@ -279,23 +89,36 @@ public interface BmmSchema extends PBmmPackageContainer, BmmModelMetadata, BmmPa
 
 
   /**
+   * Populate bmm_model from schema.
+   * Pre_state: state = P_BMM_PACKAGE_STATE.State_includes_processed
    */
   abstract public void createBmmModel();
 
 
   /**
+   * True when validation may be commenced.
+   * Post_state: state = State_includes_processed
    * @return       boolean
    */
   public boolean readToValidate()
   {
+    //TODO
+    return false;
   }
 
 
   /**
+   * Identifier of this schema, used for stating inclusions and identifying files. Formed as:
+   *
+   * rm_publisher '' _schema_name '' _rm_release
+   *
+   * E.g. 'openehr_rm_ehr_1.0.4'.
    * @return       String
    */
   public String schemaId()
   {
+    //TODO
+    return null;
   }
 
 

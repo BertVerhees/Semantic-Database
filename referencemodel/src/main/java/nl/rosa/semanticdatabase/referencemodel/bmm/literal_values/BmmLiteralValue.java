@@ -7,45 +7,21 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.literal_values;
  * be inline values of primitive types in the usual fashion or complex objects in
  * syntax form, e.g. JSON.
  */
-public interface BmmLiteralValue {
-
-  //
-  // Fields
-  //
-
-  /**
-   * A serial representation of the value.
-   */
-  private String valueLiteral;
-  /**
-   * A native representation of the value, possibly derived by deserialising value_literal.
-   */
-  private Object value;
-  /**
-   * Optional specification of formalism of the value_literal attribute for complex values. Value may be any of json | yawl | xml | odin | rdf or another value agreed by the user community. If not set, json is assumed.
-   */
-  private String syntax;
-  //
-  // Accessor methods
-  //
+abstract public class BmmLiteralValue {
 
   /**
    * Set the value of valueLiteral
    * A serial representation of the value.
    * @param newVar the new value of valueLiteral
    */
-  public void setValueLiteral (String newVar) {
-    valueLiteral = newVar;
-  }
+  abstract void setValueLiteral(String newVar);
 
   /**
    * Get the value of valueLiteral
    * A serial representation of the value.
    * @return the value of valueLiteral
    */
-  public String getValueLiteral () {
-    return valueLiteral;
-  }
+  abstract String getValueLiteral();
 
   /**
    * Set the value of value
@@ -53,9 +29,7 @@ public interface BmmLiteralValue {
    * value_literal.
    * @param newVar the new value of value
    */
-  public void setValue (Object newVar) {
-    value = newVar;
-  }
+  abstract void setValue(Object newVar);
 
   /**
    * Get the value of value
@@ -63,9 +37,7 @@ public interface BmmLiteralValue {
    * value_literal.
    * @return the value of value
    */
-  public Object getValue () {
-    return value;
-  }
+  abstract Object getValue();
 
   /**
    * Set the value of syntax
@@ -74,9 +46,7 @@ public interface BmmLiteralValue {
    * agreed by the user community. If not set, json is assumed.
    * @param newVar the new value of syntax
    */
-  public void setSyntax (String newVar) {
-    syntax = newVar;
-  }
+  abstract void setSyntax(String newVar);
 
   /**
    * Get the value of syntax
@@ -85,12 +55,6 @@ public interface BmmLiteralValue {
    * agreed by the user community. If not set, json is assumed.
    * @return the value of syntax
    */
-  public String getSyntax () {
-    return syntax;
-  }
-
-  //
-  // Other methods
-  //
+  abstract String getSyntax();
 
 }

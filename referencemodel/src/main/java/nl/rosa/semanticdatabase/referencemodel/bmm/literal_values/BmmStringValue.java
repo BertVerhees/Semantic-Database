@@ -1,18 +1,29 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.literal_values;
 
 
+import lombok.Data;
+
 /**
  * Class BmmStringValue
  * Meta-type for a literal String value, for which type is fixed to the BMM_TYPE
  * representing String and value is of type String.
  */
+@Data
 public class BmmStringValue extends BmmLiteralValue {
 
   //
   // Fields
   //
 
+  // BmmLiteralValue
   /**
+   * A serial representation of the value.
+   */
+  private String valueLiteral;
+  /**
+   * Optional specification of formalism of the value_literal attribute for complex values. Value may be any of json | yawl | xml | odin | rdf or another value agreed by the user community. If not set, json is assumed.
+   */
+  private String syntax;/**
    * Native String value.
    */
   private String value;
@@ -22,35 +33,4 @@ public class BmmStringValue extends BmmLiteralValue {
   //
   public BmmStringValue () { };
   
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of value
-   * Native String value.
-   * @param newVar the new value of value
-   */
-  public void setValue (String newVar) {
-    value = newVar;
-  }
-
-  /**
-   * Get the value of value
-   * Native String value.
-   * @return the value of value
-   */
-  public String getValue () {
-    return value;
-  }
-
-  //
-  // Other methods
-  //
-
 }

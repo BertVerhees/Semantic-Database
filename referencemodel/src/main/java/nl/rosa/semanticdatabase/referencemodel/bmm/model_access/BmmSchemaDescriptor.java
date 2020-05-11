@@ -3,32 +3,20 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.model_access;
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDefinitions;
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmModel;
 
+import java.util.List;
+import java.util.Map;
+
 
 /**
  * Class BmmSchemaDescriptor
  */
-public interface BmmSchemaDescriptor extends BmmDefinitions {
+abstract public class BmmSchemaDescriptor implements BmmDefinitions {
 
-  //
-  // Fields
-  //
-
-  private model_access.BmmSchema bmmSchema;
+  private BmmSchema bmmSchema;
   private BmmModel bmmModel;
   private String schemaId;
-  private Hash<String,String> metaData;
+  private Map<String,String> metaData;
   private List<String> includes;
-  
-  //
-  // Constructors
-  //
-  public BmmSchemaDescriptor () { };
-  
-  //
-  // Methods
-  //
-
-
   //
   // Accessor methods
   //
@@ -37,82 +25,52 @@ public interface BmmSchemaDescriptor extends BmmDefinitions {
    * Set the value of bmmSchema
    * @param newVar the new value of bmmSchema
    */
-  public void setBmmSchema (model_access.BmmSchema newVar) {
-    bmmSchema = newVar;
-  }
-
+  abstract void setBmmSchema(BmmSchema newVar);
   /**
    * Get the value of bmmSchema
    * @return the value of bmmSchema
    */
-  public model_access.BmmSchema getBmmSchema () {
-    return bmmSchema;
-  }
-
+  abstract BmmSchema getBmmSchema();
   /**
    * Set the value of bmmModel
    * @param newVar the new value of bmmModel
    */
-  public void setBmmModel (BmmModel newVar) {
-    bmmModel = newVar;
-  }
-
+  abstract void setBmmModel(BmmModel newVar);
   /**
    * Get the value of bmmModel
    * @return the value of bmmModel
    */
-  public BmmModel getBmmModel () {
-    return bmmModel;
-  }
-
+  abstract BmmModel getBmmModel();
   /**
    * Set the value of schemaId
    * @param newVar the new value of schemaId
    */
-  public void setSchemaId (String newVar) {
-    schemaId = newVar;
-  }
-
+  abstract void setSchemaId(String newVar);
   /**
    * Get the value of schemaId
    * @return the value of schemaId
    */
-  public String getSchemaId () {
-    return schemaId;
-  }
-
+  abstract String getSchemaId();
   /**
    * Set the value of metaData
    * @param newVar the new value of metaData
    */
-  public void setMetaData (Hash<String,String> newVar) {
-    metaData = newVar;
-  }
-
+  abstract void setMetaData(Map<String, String> newVar);
   /**
    * Get the value of metaData
    * @return the value of metaData
    */
-  public Hash<String,String> getMetaData () {
-    return metaData;
-  }
-
+  abstract Map<String,String> getMetaData();
   /**
    * Set the value of includes
    * @param newVar the new value of includes
    */
-  public void setIncludes (List<String> newVar) {
-    includes = newVar;
-  }
-
+  abstract void setIncludes(List<String> newVar);
   /**
    * Get the value of includes
    * @return the value of includes
    */
-  public List<String> getIncludes () {
-    return includes;
-  }
-
+  abstract List<String> getIncludes();
   //
   // Other methods
   //
@@ -120,46 +78,28 @@ public interface BmmSchemaDescriptor extends BmmDefinitions {
   /**
    * @return       boolean
    */
-  public boolean isTopLevel()
-  {
-  }
+  abstract boolean isTopLevel();
 
 
   /**
    * @return       boolean
    */
-  public boolean isBmmCompatible()
-  {
-  }
+  abstract boolean isBmmCompatible();
+
+  /**
+   */
+  abstract void load();
 
 
   /**
    */
-  public void load()
-  {
-  }
-
-
-  /**
-   */
-  public void validateMerged()
-  {
-  }
-
-
+  abstract void validateMerged();
   /**
    * @param        allSchemaList
    */
-  public void validateIncludes(List<String> allSchemaList)
-  {
-  }
-
+  abstract void validateIncludes(List<String> allSchemaList);
 
   /**
    */
-  public void createModel()
-  {
-  }
-
-
+  abstract void createModel();
 }

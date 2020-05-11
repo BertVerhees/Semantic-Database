@@ -1,18 +1,25 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.literal_values;
 
 
+import lombok.Data;
+
 /**
  * Class BmmIntegerValue
  * Meta-type for a literal Integer value, for which type is fixed to the BMM_TYPE
  * representing Integer and value is of type Integer.
  */
+@Data
 public class BmmIntegerValue extends BmmLiteralValue {
 
-  //
-  // Fields
-  //
-
+  // BmmLiteralValue
   /**
+   * A serial representation of the value.
+   */
+  private String valueLiteral;
+  /**
+   * Optional specification of formalism of the value_literal attribute for complex values. Value may be any of json | yawl | xml | odin | rdf or another value agreed by the user community. If not set, json is assumed.
+   */
+  private String syntax;/**
    * Native Integer value.
    */
   private Integer value;
@@ -22,35 +29,4 @@ public class BmmIntegerValue extends BmmLiteralValue {
   //
   public BmmIntegerValue () { };
   
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of value
-   * Native Integer value.
-   * @param newVar the new value of value
-   */
-  public void setValue (Integer newVar) {
-    value = newVar;
-  }
-
-  /**
-   * Get the value of value
-   * Native Integer value.
-   * @return the value of value
-   */
-  public Integer getValue () {
-    return value;
-  }
-
-  //
-  // Other methods
-  //
-
 }

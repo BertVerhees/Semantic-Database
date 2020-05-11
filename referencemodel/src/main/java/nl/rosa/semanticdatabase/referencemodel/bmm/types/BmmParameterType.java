@@ -1,6 +1,10 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.types;
 
 
+import lombok.Data;
+
+import java.util.List;
+
 /**
  * Class BmmParameterType
  * Definition of a generic parameter in a class definition of a generic type.
@@ -20,7 +24,8 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.types;
  * or if not set, Any.
  * 
  */
-public interface BmmParameterType extends BmmUnitaryType {
+@Data
+public class BmmParameterType implements BmmUnitaryType {
 
   //
   // Fields
@@ -33,95 +38,28 @@ public interface BmmParameterType extends BmmUnitaryType {
   /**
    * Optional conformance constraint that must be the name of a defined type.
    */
-  private types.BmmEffectiveType typeConstraint;
+  private BmmEffectiveType typeConstraint;
   /**
    * If set, is the corresponding generic parameter definition in an ancestor class.
    */
-  private types.BmmParameterType inheritancePrecursor;
-  
+  private BmmParameterType inheritancePrecursor;
+
   //
   // Constructors
   //
   public BmmParameterType () { };
-  
-  //
-  // Methods
-  //
 
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of name
-   * Name of the parameter, e.g. 'T' etc. The name is limited to 1 character and
-   * upper-case.
-   * @param newVar the new value of name
-   */
-  public void setName (String newVar) {
-    name = newVar;
+  @Override
+  public String typeName() {
+    //TODO
+    return null;
   }
 
-  /**
-   * Get the value of name
-   * Name of the parameter, e.g. 'T' etc. The name is limited to 1 character and
-   * upper-case.
-   * @return the value of name
-   */
-  public String getName () {
-    return name;
+  @Override
+  public List<String> flattenedTypeList() {
+    //TODO
+    return null;
   }
-
-  /**
-   * Set the value of typeConstraint
-   * Optional conformance constraint that must be the name of a defined type.
-   * @param newVar the new value of typeConstraint
-   */
-  public void setTypeConstraint (types.BmmEffectiveType newVar) {
-    typeConstraint = newVar;
-  }
-
-  /**
-   * Get the value of typeConstraint
-   * Optional conformance constraint that must be the name of a defined type.
-   * @return the value of typeConstraint
-   */
-  public types.BmmEffectiveType getTypeConstraint () {
-    return typeConstraint;
-  }
-
-  /**
-   * Set the value of inheritancePrecursor
-   * If set, is the corresponding generic parameter definition in an ancestor class.
-   * @param newVar the new value of inheritancePrecursor
-   */
-  public void setInheritancePrecursor (types.BmmParameterType newVar) {
-    inheritancePrecursor = newVar;
-  }
-
-  /**
-   * Get the value of inheritancePrecursor
-   * If set, is the corresponding generic parameter definition in an ancestor class.
-   * @return the value of inheritancePrecursor
-   */
-  public types.BmmParameterType getInheritancePrecursor () {
-    return inheritancePrecursor;
-  }
-
-  //
-  // Other methods
-  //
-
-  /**
-   * Result is either conforms_to_type or
-   * inheritance_precursor.flattened_conforms_to_type.
-   * @return       types.BmmEffectiveType
-   */
-  public types.BmmEffectiveType flattenedConformsToType()
-  {
-  }
-
 
   /**
    * Signature form of the open type, including constrainer type if there is one,
@@ -130,7 +68,32 @@ public interface BmmParameterType extends BmmUnitaryType {
    */
   public String typeSignature()
   {
+    //TODO
+    return null;
   }
 
 
+  @Override
+  public BmmUnitaryType unitaryType() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public BmmEffectiveType effectiveType() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
+  }
 }
