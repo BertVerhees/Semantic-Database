@@ -28,7 +28,7 @@ import java.util.Map;
  * 
  */
 @Data
-public class BmmTupleType extends BmmEffectiveType {
+public class BmmTupleType implements BmmEffectiveType {
 
   //
   // Fields
@@ -110,4 +110,21 @@ public class BmmTupleType extends BmmEffectiveType {
     return null;
   }
 
+  @Override
+  public String typeBaseName() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
+  }
 }

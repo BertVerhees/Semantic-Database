@@ -17,7 +17,7 @@ import java.util.Map;
  * a computed (rather than data) element, generally assumed to be state-changing.
  */
 @Data
-public class BmmProcedure extends BmmRoutine {
+public class BmmProcedure implements BmmRoutine {
 
   //
   // Fields

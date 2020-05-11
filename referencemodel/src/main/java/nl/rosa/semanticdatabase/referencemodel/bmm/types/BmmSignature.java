@@ -24,7 +24,7 @@ import java.util.List;
  * 
  */
 @Data
-public class BmmSignature extends BmmEffectiveType {
+public class BmmSignature implements BmmEffectiveType {
 
   //
   // Fields
@@ -105,5 +105,23 @@ public class BmmSignature extends BmmEffectiveType {
   public BmmEffectiveType effectiveType() {
     //TODO
     return null;
+  }
+
+  @Override
+  public String typeBaseName() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
   }
 }

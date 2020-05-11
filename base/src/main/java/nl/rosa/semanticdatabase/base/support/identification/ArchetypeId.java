@@ -109,7 +109,6 @@ public class ArchetypeId extends ObjectId {
 
     }
 
-    @RMPropertyIgnore
     public String getFullId() {
         StringBuilder result = new StringBuilder(30);
         if (namespace != null) {
@@ -138,7 +137,6 @@ public class ArchetypeId extends ObjectId {
         return result.toString();
     }
 
-    @RMPropertyIgnore
     public String getSemanticId() {
         StringBuilder result = new StringBuilder();
         if (namespace != null) {

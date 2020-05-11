@@ -7,7 +7,7 @@ import lombok.Data;
  * Class BmmPackageContainer
  */
 @Data
-public class BmmPackageContainer extends BmmDeclaration {
+public class BmmPackageContainer implements BmmDeclaration {
 
   //
   // Fields

@@ -1,18 +1,22 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.model_structure;
 
+import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
+
+import java.util.List;
 
 
 /**
  * Class BmmPackage
  */
-public class BmmPackage {
+@Data
+public class BmmPackage extends BmmPackageContainer{
 
   //
   // Fields
   //
 
-  private classes.BmmClass classes;
+  private List<BmmClass> classes;
   
   //
   // Constructors
@@ -22,37 +26,13 @@ public class BmmPackage {
   //
   // Methods
   //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of classes
-   * @param newVar the new value of classes
-   */
-  public void setClasses (classes.BmmClass newVar) {
-    classes = newVar;
-  }
-
-  /**
-   * Get the value of classes
-   * @return the value of classes
-   */
-  public classes.BmmClass getClasses () {
-    return classes;
-  }
-
-  //
-  // Other methods
-  //
-
   /**
    * @return       classes.BmmClass
    */
-  public classes.BmmClass rootClasses()
+  public List<BmmClass> rootClasses()
   {
+    //TODO
+    return null;
   }
 
 
@@ -61,6 +41,8 @@ public class BmmPackage {
    */
   public String path()
   {
+    //TODO
+    return null;
   }
 
 

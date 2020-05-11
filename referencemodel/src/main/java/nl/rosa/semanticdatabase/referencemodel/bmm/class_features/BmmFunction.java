@@ -133,14 +133,6 @@ public class BmmFunction implements BmmRoutine, BmmTypedFeature {
   public boolean isRootScope() {
     return false;
   }
-  /**
-   * True if this declaration entity is the root of the declaration hierarchy.
-   * @return
-   */
-  @Override
-  public boolean isRootScope() {
-    return false;
-  }
 
   /**
    * Formal string form of the type as per UML.

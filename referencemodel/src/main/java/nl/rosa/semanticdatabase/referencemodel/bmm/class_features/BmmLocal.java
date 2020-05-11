@@ -15,7 +15,7 @@ import java.util.Map;
  * Class BmmLocal
  */
 @Data
-public class BmmLocal extends BmmVariable {
+public class BmmLocal implements BmmVariable {
 
   //
   // Fields
