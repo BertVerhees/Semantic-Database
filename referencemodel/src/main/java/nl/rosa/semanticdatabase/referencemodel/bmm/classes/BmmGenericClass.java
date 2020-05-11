@@ -154,6 +154,7 @@ public class BmmGenericClass implements BmmClass {
     return null;
   }
 
+  // BmmEntity
   @Override
   public boolean isAbstract() {
     //TODO
@@ -165,6 +166,7 @@ public class BmmGenericClass implements BmmClass {
     //TODO
     return false;
   }
+
   /**
    * True if this declaration entity is the root of the declaration hierarchy.
    * @return

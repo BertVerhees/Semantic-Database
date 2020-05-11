@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * Class BmmDeclaration
  */
-public interface BmmDeclaration extends BmmDefinitions {
+public interface BmmDeclaration {
 
   /**
    * Set the value of name

@@ -1,6 +1,8 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.types;
 
 
+import lombok.Data;
+
 /**
  * Class BmmIndexedContainerType
  * Meta-type of linear container type that indexes the contained items in the
@@ -10,53 +12,30 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.types;
  * Return full type name, e.g. HashMap<String, ELEMENT>.
  * 
  */
+@Data
 public class BmmIndexedContainerType extends BmmContainerType {
-
-  //
-  // Fields
-  //
 
   /**
    * Type of the element index, typically String or Integer, but may be a numeric type or indeed any type from which a hash value can be derived.
    */
-  private types.BmmSimpleType indexType;
+  private BmmSimpleType indexType;
   
   //
   // Constructors
   //
   public BmmIndexedContainerType () { };
   
-  //
-  // Methods
-  //
 
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of indexType
-   * Type of the element index, typically String or Integer, but may be a numeric
-   * type or indeed any type from which a hash value can be derived.
-   * @param newVar the new value of indexType
-   */
-  public void setIndexType (types.BmmSimpleType newVar) {
-    indexType = newVar;
+  // BmmEntity
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
   }
 
-  /**
-   * Get the value of indexType
-   * Type of the element index, typically String or Integer, but may be a numeric
-   * type or indeed any type from which a hash value can be derived.
-   * @return the value of indexType
-   */
-  public types.BmmSimpleType getIndexType () {
-    return indexType;
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
   }
-
-  //
-  // Other methods
-  //
-
 }

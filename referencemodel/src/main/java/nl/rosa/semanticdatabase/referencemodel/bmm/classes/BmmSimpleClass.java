@@ -24,10 +24,6 @@ import java.util.Map;
 @Data
 public class BmmSimpleClass implements BmmClass {
 
-  //
-  // Fields
-  //
-
   // BmmClass
   /**
    * List of immediate inheritance parents.
@@ -147,6 +143,7 @@ public class BmmSimpleClass implements BmmClass {
     return null;
   }
 
+  // BmmEntity
   @Override
   public boolean isAbstract() {
     //TODO
@@ -158,6 +155,7 @@ public class BmmSimpleClass implements BmmClass {
     //TODO
     return false;
   }
+
   /**
    * True if this declaration entity is the root of the declaration hierarchy.
    * @return

@@ -85,6 +85,7 @@ public class BmmParameterType implements BmmUnitaryType {
     return null;
   }
 
+  // BmmEntity
   @Override
   public boolean isAbstract() {
     //TODO

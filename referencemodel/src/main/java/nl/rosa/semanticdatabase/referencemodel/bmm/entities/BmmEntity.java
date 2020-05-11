@@ -1,11 +1,9 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.entities;
 
-import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDefinitions;
-
 /**
  * Class BmmEntity
  */
-public interface BmmEntity extends BmmDefinitions {
+public interface BmmEntity {
   /**
    * If true, indicates an abstract class in a BMM model, or a type based on an
    * abstract class, i.e. a type that cannot be directly instantiated.

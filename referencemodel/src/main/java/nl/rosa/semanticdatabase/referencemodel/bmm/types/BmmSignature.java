@@ -113,6 +113,7 @@ public class BmmSignature implements BmmEffectiveType {
     return null;
   }
 
+  // BmmEntity
   @Override
   public boolean isAbstract() {
     //TODO

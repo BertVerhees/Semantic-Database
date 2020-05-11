@@ -99,5 +99,18 @@ public class BmmSimpleType implements BmmModelType {
     return null;
   }
 
+  // BmmEntity
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
+  }
+
 
 }

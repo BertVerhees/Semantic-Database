@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.model_access;
 import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmPackageContainer;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * Class BmmSchema
  */
 @Data
-abstract public class BmmSchema extends BmmModelMetadata {
+abstract public class BmmSchema extends BmmPackageContainer {
 
   //
   // Fields
@@ -30,6 +31,7 @@ abstract public class BmmSchema extends BmmModelMetadata {
   private String schemaAuthor;
   private String schemaDescription;
   private List<String> schemaContributors;
+  private BmmModelMetadata bmmModelMetadata;
   
   //
   // Constructors

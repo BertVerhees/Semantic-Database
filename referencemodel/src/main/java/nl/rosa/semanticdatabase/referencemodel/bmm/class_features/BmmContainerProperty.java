@@ -4,10 +4,7 @@ import lombok.Data;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDeclaration;
-import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmContainerType;
-import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmEffectiveType;
-import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmSignature;
-import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmUnitaryType;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.*;
 
 import java.util.List;
 import java.util.Map;
@@ -19,15 +16,6 @@ import java.util.Map;
  */
 @Data
 public class BmmContainerProperty implements BmmProperty {
-
-  //
-  // Fields
-  //
-
-  //BmmEntity
-  private boolean isAbstract;
-  private boolean isPrimitive;
-
 
   // BmmDeclaration
   private String name;
@@ -105,6 +93,11 @@ public class BmmContainerProperty implements BmmProperty {
   {
     //TODO
     return null;
+  }
+
+  @Override
+  public void setType(BmmType newVar) {
+    this.type = (BmmContainerType) newVar;
   }
 
   /**
@@ -190,5 +183,29 @@ public class BmmContainerProperty implements BmmProperty {
   public BmmSignature signature() {
     //TODO
     return null;
+  }
+
+  // BmmEntity
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public void setScope(BmmClass newVar) {
+    this.scope = newVar;
+  }
+
+  @Override
+  @Deprecated
+  public void setScope(BmmDeclaration newVar) {
+    this.scope = (BmmClass) newVar;
   }
 }

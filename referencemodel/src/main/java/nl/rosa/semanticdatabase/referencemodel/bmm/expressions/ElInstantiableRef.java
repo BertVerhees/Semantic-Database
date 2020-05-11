@@ -10,7 +10,7 @@ import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
  * i.e. a variable, constant, or property.
  */
 @Data
-public class ElInstantiableRef extends ElScopedRef {
+public class ElInstantiableRef<T> implements ElScopedRef {
 
   //
   // Fields

@@ -24,11 +24,6 @@ public class BmmUnitaryProperty implements BmmProperty {
   // Fields
   //
 
-  //BmmEntity
-  private boolean isAbstract;
-  private boolean isPrimitive;
-
-
   // BmmDeclaration
   private String name;
   private Map<String,Object> documentation;
@@ -206,5 +201,18 @@ public class BmmUnitaryProperty implements BmmProperty {
   public String displayName() {
     //TODO
     return null;
+  }
+
+  // BmmEntity
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
   }
 }

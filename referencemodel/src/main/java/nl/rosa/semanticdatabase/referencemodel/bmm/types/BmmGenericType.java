@@ -24,7 +24,7 @@ import java.util.List;
  * 
  */
 @Data
-public class BmmGenericType extends BmmModelType {
+public class BmmGenericType implements BmmModelType {
 
   //
   // Fields
@@ -32,10 +32,6 @@ public class BmmGenericType extends BmmModelType {
 
   // Bmm ModelType
   private BmmValueSpec valueConstraint;
-  /**
-   * Defining class of this type.
-   */
-  private BmmClass baseClass;
 
 
   /**
@@ -102,7 +98,6 @@ public class BmmGenericType extends BmmModelType {
    * True if this declaration entity is the root of the declaration hierarchy.
    * @return
    */
-  @Override
   public boolean isRootScope() {
     return false;
   }
@@ -127,17 +122,6 @@ public class BmmGenericType extends BmmModelType {
     return null;
   }
 
-  /**
-   * Signature form of the type name, which for generics includes generic parameter constrainer types E.g. Interval<T:Ordered>.
-   *
-   * Defaults to the value of type_name().
-   * @return
-   */
-  @Override
-  public String typeSignature() {
-    //TODO
-    return null;
-  }
 
   /**
    * Type with any container abstracted away.
@@ -157,6 +141,18 @@ public class BmmGenericType extends BmmModelType {
   public BmmEffectiveType effectiveType() {
     //TODO
     return null;
+  }
+  // BmmEntity
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
   }
 
 }

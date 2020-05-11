@@ -149,4 +149,18 @@ public class BmmConstant implements BmmClassScoped, BmmInstantiable {
     //TODO
     return null;
   }
+
+  // BmmEntity
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
+  }
+
 }

@@ -17,15 +17,6 @@ import java.util.Map;
 @Data
 public class BmmLocal implements BmmVariable {
 
-  //
-  // Fields
-  //
-
-  //BmmEntity
-  private boolean isAbstract;
-  private boolean isPrimitive;
-
-
   // BmmDeclaration
   private String name;
   private Map<String,Object> documentation;
@@ -144,5 +135,18 @@ public class BmmLocal implements BmmVariable {
   public BmmSignature signature() {
     //TODO
     return null;
+  }
+
+  // BmmEntity
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
   }
 }

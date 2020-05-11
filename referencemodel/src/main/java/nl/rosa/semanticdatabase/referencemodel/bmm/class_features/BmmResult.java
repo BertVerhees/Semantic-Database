@@ -22,11 +22,6 @@ public class BmmResult implements BmmVariable {
   // Fields
   //
 
-  //BmmEntity
-  private boolean isAbstract;
-  private boolean isPrimitive;
-
-
   // BmmDeclaration
   private Map<String,Object> documentation;
   private Map<String,Object> extensions;
@@ -148,5 +143,17 @@ public class BmmResult implements BmmVariable {
     return null;
   }
 
+  // BmmEntity
+  @Override
+  public boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isPrimitive() {
+    //TODO
+    return false;
+  }
 
 }

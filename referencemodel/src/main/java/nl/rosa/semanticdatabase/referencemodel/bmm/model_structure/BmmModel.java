@@ -15,7 +15,7 @@ import java.util.List;
  * Class BmmModel
  */
 @Data
-public class BmmModel extends BmmPackageContainer, implements BmmModelMetadata {
+public class BmmModel extends BmmPackageContainer {
 
   //
   // Fields
@@ -23,7 +23,9 @@ public class BmmModel extends BmmPackageContainer, implements BmmModelMetadata {
 
   private BmmClass classDefinitions;
   private BmmModel usedModels;
-  
+  private BmmModelMetadata bmmModelMetadata;
+
+
   //
   // Constructors
   //

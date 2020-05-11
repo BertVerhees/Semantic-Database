@@ -1,6 +1,5 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.model_access;
 
-import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDefinitions;
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmModel;
 
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.Map;
 /**
  * Class BmmSchemaDescriptor
  */
-abstract public class BmmSchemaDescriptor implements BmmDefinitions {
+abstract public class BmmSchemaDescriptor {
 
   private BmmSchema bmmSchema;
   private BmmModel bmmModel;
