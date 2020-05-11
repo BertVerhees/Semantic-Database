@@ -7,28 +7,4 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.functional_elements;
  * Routines.
  */
 public interface BmmStatement extends BmmStatementItem {
-
-  //
-  // Fields
-  //
-
-  
-  //
-  // Constructors
-  //
-  public BmmStatement () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  //
-  // Other methods
-  //
-
 }

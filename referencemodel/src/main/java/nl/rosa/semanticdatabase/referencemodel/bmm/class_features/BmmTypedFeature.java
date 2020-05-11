@@ -16,7 +16,7 @@ public interface BmmTypedFeature extends BmmTyped {
    * {default = false}
    * @param newVar the new value of isNullable
    */
-  public void setIsNullable (boolean newVar);
+  public void setNullable (boolean newVar);
   /**
    * Get the value of isNullable
    * True if this element can be null (Void) at execution time. May be interpreted as
@@ -24,6 +24,6 @@ public interface BmmTypedFeature extends BmmTyped {
    * {default = false}
    * @return the value of isNullable
    */
-  public boolean getIsNullable ();
+  public boolean isNullable ();
 
 }

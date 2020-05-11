@@ -6,6 +6,7 @@ import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.referencemodel.bmm.functional_elements.BmmStatementItem;
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDeclaration;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmSignature;
 
 import java.util.List;
 import java.util.Map;
@@ -25,7 +26,6 @@ public class BmmProcedure extends BmmRoutine {
   // BmmDeclaration
   private String name;
   private Map<String,Object> documentation;
-  private BmmDeclaration scope;
   private Map<String,Object> extensions;
 
   // BmmClassEntity
@@ -61,4 +61,36 @@ public class BmmProcedure extends BmmRoutine {
   // Constructors
   //
   public BmmProcedure () { };
+
+  /**
+   * Return number of arguments of this routine.
+   * @return
+   */
+  @Override
+  public Integer arity() {
+    //TODO
+    return null;
+  }
+
+  /**
+   * Formal signature of this element, in the form
+   *
+   * '[arg1_name: T_arg1, …​]:T_value'.
+   * @return
+   */
+  @Override
+  public BmmSignature signature() {
+    //TODO
+    return null;
+  }
+  /**
+   * True if this declaration entity is the root of the declaration hierarchy.
+   * @return
+   */
+  @Override
+  public boolean isRootScope() {
+    return false;
+  }
+
+
 }

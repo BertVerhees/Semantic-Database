@@ -31,7 +31,7 @@ import java.util.Map;
  * data property set at creation or construction time.
  * 
  */
-public interface BmmClass extends BmmEntity, BmmModule {
+public interface BmmClass extends BmmModule, BmmEntity {
 
 
   /**

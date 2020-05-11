@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
 
+import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.referencemodel.bmm.functional_elements.BmmStatementItem;
 
@@ -16,6 +17,18 @@ public interface BmmRoutine extends BmmClassScoped {
   //
   // Accessor methods
   //
+
+  /**
+   * Set the value of scope
+   * @param newVar the new value of scope
+   */
+  void setScope (BmmClass newVar);
+  /**
+   * Get the value of scope
+   * @return the value of scope
+   */
+  BmmClass getScope ();
+
 
   /**
    * Set the value of parameters
@@ -92,13 +105,6 @@ public interface BmmRoutine extends BmmClassScoped {
    * @return       Integer
    */
   Integer arity();
-
-
-  /**
-   * Formal signature of this element, in the form
-   * '[arg1_name: T_arg1, �?]:T_value'.
-   */
-  void signature();
 
 
 }

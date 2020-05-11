@@ -2,7 +2,6 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.entities;
 
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDefinitions;
 
-
 /**
  * Class BmmEntity
  */

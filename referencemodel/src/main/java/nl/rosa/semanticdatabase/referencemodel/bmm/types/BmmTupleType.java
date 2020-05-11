@@ -1,6 +1,11 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.types;
 
 
+import lombok.Data;
+
+import java.util.List;
+import java.util.Map;
+
 /**
  * Class BmmTupleType
  * Special type representing the type of a tuple, i.e. an array of any number of
@@ -22,6 +27,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.types;
  * Return base_name.
  * 
  */
+@Data
 public class BmmTupleType extends BmmEffectiveType {
 
   //
@@ -32,7 +38,7 @@ public class BmmTupleType extends BmmEffectiveType {
   /**
    * List of types of the items of the tuple, keyed by purpose in the tuple.
    */
-  private Hash<String,BmmType> itemTypes;
+  private Map<String,BmmType> itemTypes;
   
   //
   // Constructors
@@ -44,46 +50,64 @@ public class BmmTupleType extends BmmEffectiveType {
   //
 
 
-  //
-  // Accessor methods
-  //
-
   /**
-   * Set the value of baseName
-   * @param newVar the new value of baseName
+   * True if this declaration entity is the root of the declaration hierarchy.
+   * @return
    */
-  public void setBaseName (String newVar) {
-    baseName = newVar;
+  public boolean isRootScope() {
+    return false;
   }
 
   /**
-   * Get the value of baseName
-   * @return the value of baseName
+   * Formal string form of the type as per UML.
+   * @return
    */
-  public String getBaseName () {
-    return baseName;
+  @Override
+  public String typeName() {
+    //TODO
+    return null;
   }
 
   /**
-   * Set the value of itemTypes
-   * List of types of the items of the tuple, keyed by purpose in the tuple.
-   * @param newVar the new value of itemTypes
+   * Completely flattened list of type names, flattening out all generic parameters.
+   * @return
    */
-  public void setItemTypes (Hash<String,BmmType> newVar) {
-    itemTypes = newVar;
+  @Override
+  public List<String> flattenedTypeList() {
+    //TODO
+    return null;
   }
 
   /**
-   * Get the value of itemTypes
-   * List of types of the items of the tuple, keyed by purpose in the tuple.
-   * @return the value of itemTypes
+   * Signature form of the type name, which for generics includes generic parameter constrainer types E.g. Interval<T:Ordered>.
+   *
+   * Defaults to the value of type_name().
+   * @return
    */
-  public Hash<String,BmmType> getItemTypes () {
-    return itemTypes;
+  @Override
+  public String typeSignature() {
+    //TODO
+    return null;
   }
 
-  //
-  // Other methods
-  //
+  /**
+   * Type with any container abstracted away.
+   * @return
+   */
+  @Override
+  public BmmUnitaryType unitaryType() {
+    //TODO
+    return null;
+  }
+
+  /**
+   * Type with any container abstracted away, and any formal parameter replaced by its effective constraint type.
+   * @return
+   */
+  @Override
+  public BmmEffectiveType effectiveType() {
+    //TODO
+    return null;
+  }
 
 }

@@ -1,6 +1,10 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.types;
 
 
+import lombok.Data;
+
+import java.util.List;
+
 /**
  * Class BmmSignature
  * Non-entity meta-type that expresses the type structure of any referenceable
@@ -19,6 +23,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.types;
  * Return base_name
  * 
  */
+@Data
 public class BmmSignature extends BmmEffectiveType {
 
   //
@@ -29,85 +34,76 @@ public class BmmSignature extends BmmEffectiveType {
   /**
    * Type of arguments in the signature, if any; represented as a type-tuple (list of arbitrary types).
    */
-  private types.BmmTupleType argumentTypes;  /**
+  private BmmTupleType argumentTypes;  /**
 
    * Result type of signature, if any.
    *    */
 
-  private types.BmmType resultType;
+  private BmmType resultType;
   
   //
   // Constructors
   //
   public BmmSignature () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
 
   /**
-   * Set the value of baseName
-   * @param newVar the new value of baseName
+   * True if this declaration entity is the root of the declaration hierarchy.
+   * @return
    */
-  public void setBaseName (String newVar) {
-    baseName = newVar;
+  @Override
+  public boolean isRootScope() {
+    return false;
   }
 
   /**
-   * Get the value of baseName
-   * @return the value of baseName
+   * Formal string form of the type as per UML.
+   * @return
    */
-  public String getBaseName () {
-    return baseName;
+  @Override
+  public String typeName() {
+    //TODO
+    return null;
   }
 
   /**
-   * Set the value of argumentTypes
-   * Type of arguments in the signature, if any; represented as a type-tuple (list of
-   * arbitrary types).
-   * @param newVar the new value of argumentTypes
+   * Completely flattened list of type names, flattening out all generic parameters.
+   * @return
    */
-  public void setArgumentTypes (types.BmmTupleType newVar) {
-    argumentTypes = newVar;
+  @Override
+  public List<String> flattenedTypeList() {
+    //TODO
+    return null;
   }
 
   /**
-   * Get the value of argumentTypes
-   * Type of arguments in the signature, if any; represented as a type-tuple (list of
-   * arbitrary types).
-   * @return the value of argumentTypes
+   * Signature form of the type name, which for generics includes generic parameter constrainer types E.g. Interval<T:Ordered>.
+   *
+   * Defaults to the value of type_name().
+   * @return
    */
-  public types.BmmTupleType getArgumentTypes () {
-    return argumentTypes;
+  @Override
+  public String typeSignature() {
+    //TODO
+    return null;
   }
 
   /**
-   * Set the value of resultType
-   * Result type of signature, if any.
-   * 
-   * @param newVar the new value of resultType
+   * Type with any container abstracted away.
+   * @return
    */
-  public void setResultType (types.BmmType newVar) {
-    resultType = newVar;
+  @Override
+  public BmmUnitaryType unitaryType() {
+    //TODO
+    return null;
   }
 
   /**
-   * Get the value of resultType
-   * Result type of signature, if any.
-   * 
-   * @return the value of resultType
+   * Type with any container abstracted away, and any formal parameter replaced by its effective constraint type.
+   * @return
    */
-  public types.BmmType getResultType () {
-    return resultType;
+  @Override
+  public BmmEffectiveType effectiveType() {
+    //TODO
+    return null;
   }
-
-  //
-  // Other methods
-  //
-
 }

@@ -1,13 +1,15 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
 
 
+import nl.rosa.semanticdatabase.base.MultiplicityInterval;
+
 /**
  * Class BmmProperty
  * Meta-type of a property definition within a class definition of an object model.
  * The is_composition attribute indicates whether the property has sub-part or an
  * association semantics with respect to the owning class.
  */
-public interface BmmProperty extends BmmInstantiableClass, BmmClassScoped {
+public interface BmmProperty extends BmmInstantiable, BmmClassScoped {
 
 
   //
@@ -20,7 +22,7 @@ public interface BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * {default = false}
    * @param newVar the new value of isImRuntime
    */
-  void setIsImRuntime (boolean newVar);
+  void setImRuntime (boolean newVar);
 
   /**
    * Get the value of isImRuntime
@@ -28,7 +30,7 @@ public interface BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * {default = false}
    * @return the value of isImRuntime
    */
-  boolean getIsImRuntime ();
+  boolean isImRuntime ();
 
   /**
    * Set the value of isImInfrastructure
@@ -36,7 +38,7 @@ public interface BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * = false}
    * @param newVar the new value of isImInfrastructure
    */
-  void setIsImInfrastructure (boolean newVar);
+  void setImInfrastructure (boolean newVar);
 
   /**
    * Get the value of isImInfrastructure
@@ -44,7 +46,7 @@ public interface BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * = false}
    * @return the value of isImInfrastructure
    */
-  boolean getIsImInfrastructure ();
+  boolean isImInfrastructure ();
 
   /**
    * Set the value of isComposition
@@ -55,7 +57,7 @@ public interface BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * {default = false}
    * @param newVar the new value of isComposition
    */
-  void setIsComposition (boolean newVar);
+  void setComposition (boolean newVar);
 
   /**
    * Get the value of isComposition
@@ -66,7 +68,7 @@ public interface BmmProperty extends BmmInstantiableClass, BmmClassScoped {
    * {default = false}
    * @return the value of isComposition
    */
-  boolean getIsComposition ();
+  boolean isComposition ();
 
   //
   // Other methods
@@ -75,18 +77,12 @@ public interface BmmProperty extends BmmInstantiableClass, BmmClassScoped {
   /**
    * Interval form of 0..1, 1..1 etc, derived from is_nullable.
    */
-  void existence()
-  {
-  }
+  MultiplicityInterval existence();
 
 
   /**
    * Name of this property to display in UI.
    * @return       String
    */
-  String displayName()
-  {
-  }
-
-
+  String displayName();
 }

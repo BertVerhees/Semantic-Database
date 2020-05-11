@@ -113,5 +113,65 @@ public class BmmContainerType implements BmmType {
     //TODO
     return false;
   }
+  /**
+   * True if this declaration entity is the root of the declaration hierarchy.
+   * @return
+   */
+  @Override
+  public boolean isRootScope() {
+    return false;
+  }
+
+  /**
+   * Formal string form of the type as per UML.
+   * @return
+   */
+  @Override
+  public String typeName() {
+    //TODO
+    return null;
+  }
+
+  /**
+   * Completely flattened list of type names, flattening out all generic parameters.
+   * @return
+   */
+  @Override
+  public List<String> flattenedTypeList() {
+    //TODO
+    return null;
+  }
+
+  /**
+   * Signature form of the type name, which for generics includes generic parameter constrainer types E.g. Interval<T:Ordered>.
+   *
+   * Defaults to the value of type_name().
+   * @return
+   */
+  @Override
+  public String typeSignature() {
+    //TODO
+    return null;
+  }
+
+  /**
+   * Type with any container abstracted away.
+   * @return
+   */
+  @Override
+  public BmmUnitaryType unitaryType() {
+    //TODO
+    return null;
+  }
+
+  /**
+   * Type with any container abstracted away, and any formal parameter replaced by its effective constraint type.
+   * @return
+   */
+  @Override
+  public BmmEffectiveType effectiveType() {
+    //TODO
+    return null;
+  }
 
 }

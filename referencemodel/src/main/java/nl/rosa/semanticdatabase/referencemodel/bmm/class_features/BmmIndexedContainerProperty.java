@@ -63,7 +63,8 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
    */
   public String displayName()
   {
+    //TODO
+    return null;
   }
-
 
 }

@@ -11,6 +11,7 @@
         <module>archetypeobjectmodel</module>
         <module>referencemodel</module>
         <module>semanticdatabase-web</module>
+        <module>untitled</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

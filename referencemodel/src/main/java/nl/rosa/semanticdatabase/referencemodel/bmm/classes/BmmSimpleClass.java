@@ -158,4 +158,12 @@ public class BmmSimpleClass implements BmmClass {
     //TODO
     return false;
   }
+  /**
+   * True if this declaration entity is the root of the declaration hierarchy.
+   * @return
+   */
+  @Override
+  public boolean isRootScope() {
+    return false;
+  }
 }

@@ -25,17 +25,6 @@ public interface BmmLiteralValue {
    * Optional specification of formalism of the value_literal attribute for complex values. Value may be any of json | yawl | xml | odin | rdf or another value agreed by the user community. If not set, json is assumed.
    */
   private String syntax;
-  
-  //
-  // Constructors
-  //
-  public BmmLiteralValue () { };
-  
-  //
-  // Methods
-  //
-
-
   //
   // Accessor methods
   //

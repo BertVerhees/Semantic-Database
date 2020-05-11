@@ -5,7 +5,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
  * Class BmmVariable
  * A mutable entity whose scope is a routine.
  */
-public interface BmmVariable extends BmmInstantiableClass, BmmClassEntity {
+public interface BmmVariable extends BmmInstantiable, BmmClassEntity {
 
 
   /**
@@ -22,10 +22,4 @@ public interface BmmVariable extends BmmInstantiableClass, BmmClassEntity {
    */
   BmmRoutine getScope ();
 
-
-  /**
-   * Formal signature of this element, in the form 'name [arg1_name: T_arg1,
-   * �?][:T_value]'.
-   */
-  public void signature();
 }
