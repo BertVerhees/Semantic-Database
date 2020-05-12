@@ -44,5 +44,11 @@ public class ElTuple implements ElInstanceRef {
     return null;
   }
 
+  @Override
+  public boolean isBoolean() {
+    //TODO
+    return false;
+  }
+
 
 }

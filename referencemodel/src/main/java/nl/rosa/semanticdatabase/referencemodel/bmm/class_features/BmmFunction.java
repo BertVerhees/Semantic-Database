@@ -94,6 +94,11 @@ public class BmmFunction implements BmmRoutine, BmmTypedFeature {
   //
   public BmmFunction () { };
 
+  @Override
+  public void setScope(BmmClass newVar) {
+    this.scope = newVar;
+  }
+
   /**
    * Return number of arguments of this routine.
    * @return
@@ -123,6 +128,12 @@ public class BmmFunction implements BmmRoutine, BmmTypedFeature {
   public boolean isBoolean(){
     //TODO
     return false;
+  }
+
+  @Override
+  @Deprecated
+  public void setScope(BmmDeclaration newVar) {
+    this.scope = (BmmClass) newVar;
   }
 
   /**

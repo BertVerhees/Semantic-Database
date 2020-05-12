@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
 
 import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmFunction;
+import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmOperator;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
 
 /**
@@ -48,12 +49,25 @@ public class ElBinaryOperator implements ElOperator {
 
   @Override
   public BmmType evalType() {
+    //TODO
     return null;
   }
 
   @Override
   public boolean isBoolean() {
+    //TODO
     return false;
   }
 
+  @Override
+  public BmmOperator operatorDefinition() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public ElFunctionCall equivalentCall() {
+    //TODO
+    return null;
+  }
 }

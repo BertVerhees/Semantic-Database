@@ -27,7 +27,7 @@ public interface ElOperator extends ElExpression {
    * operator node and its operands.
    * @return the value of precedenceOverridden
    */
-  boolean getPrecedenceOverridden ();
+  boolean isPrecedenceOverridden ();
 
   /**
    * Set the value of symbol

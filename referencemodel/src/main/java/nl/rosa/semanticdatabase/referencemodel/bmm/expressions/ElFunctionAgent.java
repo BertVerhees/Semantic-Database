@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
 import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.BmmRoutine;
+import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmSignature;
 
 import java.util.List;
 
@@ -47,4 +48,28 @@ public class ElFunctionAgent implements ElAgent {
   // Constructors
   //
   public ElFunctionAgent () { };
+
+  @Override
+  @Deprecated
+  public void setDefinition(BmmRoutine newVar) {
+    this.definition = (BmmFunction) newVar;
+  }
+
+  @Override
+  public BmmSignature evalType() {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public boolean isBoolean() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public boolean isCallable() {
+    //TODO
+    return false;
+  }
 }

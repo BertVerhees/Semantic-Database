@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.class_features;
 import lombok.*;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.literal_values.BmmLiteralValue;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmEffectiveType;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmSignature;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
@@ -89,6 +90,16 @@ public class BmmConstant implements BmmClassScoped, BmmInstantiable {
   }
 
 
+  @Override
+  @Deprecated
+  public void setScope(BmmDeclaration newVar) {
+    this.scope = (BmmClass) newVar;
+  }
+
+  @Override
+  public void setScope(BmmClass newVar) {
+    this.scope = newVar;
+  }
   /**
    * True if this declaration entity is the root of the declaration hierarchy.
    * @return

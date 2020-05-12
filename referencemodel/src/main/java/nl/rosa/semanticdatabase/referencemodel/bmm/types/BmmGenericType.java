@@ -1,6 +1,5 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.types;
 
-import com.sun.xml.bind.v2.TODO;
 import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmGenericClass;
@@ -155,4 +154,14 @@ public class BmmGenericType implements BmmModelType {
     return false;
   }
 
+  @Override
+  public void setBaseClass(BmmClass newVar) {
+    this.baseClass = (BmmGenericClass) newVar;
+  }
+
+  @Override
+  public String typeBaseName() {
+    //TODO
+    return null;
+  }
 }

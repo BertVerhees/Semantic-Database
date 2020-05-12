@@ -75,31 +75,9 @@ public class BmmUnitaryProperty implements BmmProperty {
   //
   public BmmUnitaryProperty () { };
   
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of type
-   * Declared or inferred static type of the entity.
-   * @param newVar the new value of type
-   */
-  public void setType (BmmUnitaryType newVar) {
-    type = newVar;
-  }
-
-  /**
-   * Get the value of type
-   * Declared or inferred static type of the entity.
-   * @return the value of type
-   */
-  public BmmUnitaryType getType () {
-    return type;
+  @Override
+  public void setType(BmmType newVar) {
+    this.type = (BmmUnitaryType) newVar;
   }
 
   //
@@ -113,6 +91,12 @@ public class BmmUnitaryProperty implements BmmProperty {
   public boolean isBoolean(){
     //TODO
     return false;
+  }
+
+  @Override
+  @Deprecated
+  public void setScope(BmmDeclaration newVar) {
+    this.scope = (BmmClass) newVar;
   }
 
   /**
@@ -214,5 +198,10 @@ public class BmmUnitaryProperty implements BmmProperty {
   public boolean isPrimitive() {
     //TODO
     return false;
+  }
+
+  @Override
+  public void setScope(BmmClass newVar) {
+    this.scope = newVar;
   }
 }

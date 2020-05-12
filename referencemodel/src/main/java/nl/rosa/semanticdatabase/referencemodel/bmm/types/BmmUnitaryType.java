@@ -8,5 +8,9 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.types;
  */
 public interface BmmUnitaryType extends BmmType {
 
+        /**
+         * Result = self.
+         * @return
+         */
         BmmUnitaryType unitaryType();
 }

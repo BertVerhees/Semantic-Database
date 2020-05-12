@@ -83,6 +83,18 @@ public class BmmProcedure implements BmmRoutine {
     //TODO
     return null;
   }
+
+  @Override
+  @Deprecated
+  public void setScope(BmmDeclaration newVar) {
+    this.scope = (BmmClass) newVar;
+  }
+
+  @Override
+  public void setScope(BmmClass newVar) {
+    this.scope = newVar;
+  }
+
   /**
    * True if this declaration entity is the root of the declaration hierarchy.
    * @return

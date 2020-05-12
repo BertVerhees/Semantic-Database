@@ -3,6 +3,8 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.classes;
 import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.*;
 import nl.rosa.semanticdatabase.referencemodel.bmm.expressions.ElAssertion;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDeclaration;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmGenericType;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmModelType;
@@ -19,16 +21,6 @@ import java.util.Map;
  * (effected) type (): BMM_GENERIC_TYPE
  * Generate a fully open BMM_GENERIC_TYPE instance that corresponds to this class
  * definition
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
  */
 @Data
 public class BmmGenericClass implements BmmClass {
@@ -80,7 +72,19 @@ public class BmmGenericClass implements BmmClass {
 
 
   private BmmParameterType genericParameters;
-  
+
+  private BmmModel scope;
+  private String name;
+  private Map<String, Object> documentation;
+  private Map<String, Object> extensions;
+
+  @Override
+  @Deprecated
+  public void setScope(BmmDeclaration newVar) {
+    this.scope = (BmmModel) newVar;
+  }
+
+
   //
   // Constructors
   //
@@ -174,5 +178,10 @@ public class BmmGenericClass implements BmmClass {
   @Override
   public boolean isRootScope() {
     return false;
+  }
+
+  @Override
+  public void setScope(BmmModel scope) {
+    this.scope = scope;
   }
 }

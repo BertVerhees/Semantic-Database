@@ -3,6 +3,8 @@ package nl.rosa.semanticdatabase.referencemodel.bmm.classes;
 import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.class_features.*;
 import nl.rosa.semanticdatabase.referencemodel.bmm.expressions.ElAssertion;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmDeclaration;
+import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.referencemodel.bmm.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmModelType;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmSimpleType;
@@ -64,6 +66,11 @@ public class BmmSimpleClass implements BmmClass {
    */
   private Map<String, BmmProcedure> creators;
   private Map<String, BmmProcedure> convertors;
+
+  private BmmModel scope;
+  private String name;
+  private Map<String, Object> documentation;
+  private Map<String, Object> extensions;
 
 
   //
@@ -156,6 +163,12 @@ public class BmmSimpleClass implements BmmClass {
     return false;
   }
 
+  @Override
+  @Deprecated
+  public void setScope(BmmDeclaration newVar) {
+    this.scope = (BmmModel) newVar;
+  }
+
   /**
    * True if this declaration entity is the root of the declaration hierarchy.
    * @return
@@ -164,4 +177,10 @@ public class BmmSimpleClass implements BmmClass {
   public boolean isRootScope() {
     return false;
   }
+
+  @Override
+  public void setScope(BmmModel scope) {
+    this.scope = scope;
+  }
+
 }

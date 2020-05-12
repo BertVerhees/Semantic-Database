@@ -74,6 +74,14 @@ public class ElInstantiableRef<T> implements ElScopedRef {
    */
   public BmmType evalType()
   {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public boolean isBoolean() {
+    //TODO
+    return false;
   }
 
 

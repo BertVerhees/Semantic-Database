@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
 
+import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
 
 
@@ -10,11 +11,8 @@ import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
  * which feature references are scoped; corresponds to 'self', 'this' or 'Current'
  * in various programming languages.
  */
-public class ElSelfRef extends ElInstanceRef {
-
-  //
-  // Fields
-  //
+@Data
+public class ElSelfRef implements ElInstanceRef {
 
   /**
    * Type of the current scoping instance, inferred from expression context.
@@ -25,34 +23,6 @@ public class ElSelfRef extends ElInstanceRef {
   // Constructors
   //
   public ElSelfRef () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of type
-   * Type of the current scoping instance, inferred from expression context.
-   * @param newVar the new value of type
-   */
-  public void setType (BmmType newVar) {
-    type = newVar;
-  }
-
-  /**
-   * Get the value of type
-   * Type of the current scoping instance, inferred from expression context.
-   * @return the value of type
-   */
-  public BmmType getType () {
-    return type;
-  }
-
   //
   // Other methods
   //
@@ -63,6 +33,14 @@ public class ElSelfRef extends ElInstanceRef {
    */
   public BmmType evalType()
   {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public boolean isBoolean() {
+    //TODO
+    return false;
   }
 
 

@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
 
+import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
 import nl.rosa.semanticdatabase.referencemodel.bmm.literal_values.BmmLiteralValue;
 
@@ -9,7 +10,8 @@ import nl.rosa.semanticdatabase.referencemodel.bmm.literal_values.BmmLiteralValu
  * Literal value of any type known in the model, including primitive types. Defined
  * via a BMM_LITERAL_VALUE.
  */
-public class ElLiteral extends ElInstanceRef {
+@Data
+public class ElLiteral implements ElInstanceRef {
 
   //
   // Fields
@@ -62,6 +64,14 @@ public class ElLiteral extends ElInstanceRef {
    */
   public BmmType evalType()
   {
+    //TODO
+    return null;
+  }
+
+  @Override
+  public boolean isBoolean() {
+    //TODO
+    return false;
   }
 
 

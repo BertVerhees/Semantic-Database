@@ -69,6 +69,7 @@ public class BmmResult implements BmmVariable {
     return false;
   }
 
+
   /**
    * True if this declaration entity is the root of the declaration hierarchy.
    * @return
@@ -156,4 +157,13 @@ public class BmmResult implements BmmVariable {
     return false;
   }
 
+  @Override
+  public void setScope(BmmRoutine newVar) {
+    this.scope = newVar;
+  }
+  @Override
+  @Deprecated
+  public void setScope(BmmDeclaration newVar) {
+    this.scope = (BmmRoutine) newVar;
+  }
 }

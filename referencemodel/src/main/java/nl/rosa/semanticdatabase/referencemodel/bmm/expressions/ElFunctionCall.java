@@ -46,5 +46,16 @@ public class ElFunctionCall implements ElScopedRef, ElAgentCall {
     return null;
   }
 
+  @Override
+  public boolean isBoolean() {
+    //TODO
+    return false;
+  }
 
+
+  @Override
+  @Deprecated
+  public void setAgent(ElAgent newVar) {
+    this.agent = (ElFunctionAgent) newVar;
+  }
 }

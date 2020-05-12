@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.types;
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.referencemodel.bmm.classes.BmmValueSpec;
 
@@ -42,7 +43,6 @@ public class BmmSimpleType implements BmmModelType {
    * True if this declaration entity is the root of the declaration hierarchy.
    * @return
    */
-  @Override
   public boolean isRootScope() {
     return false;
   }
@@ -113,4 +113,15 @@ public class BmmSimpleType implements BmmModelType {
   }
 
 
+  @Override
+  @Deprecated
+  public void setBaseClass(BmmClass newVar) {
+    this.baseClass = (BmmSimpleClass) newVar;
+  }
+
+  @Override
+  public String typeBaseName() {
+    //TODO
+    return null;
+  }
 }

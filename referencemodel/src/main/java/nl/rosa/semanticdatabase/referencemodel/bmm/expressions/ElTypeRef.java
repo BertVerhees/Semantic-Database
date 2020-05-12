@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.referencemodel.bmm.expressions;
 
+import lombok.Data;
 import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
 
 
@@ -10,7 +11,8 @@ import nl.rosa.semanticdatabase.referencemodel.bmm.types.BmmType;
  * {TypeName}.
  * May be used as a value, or as the qualifier for a function or constant access.
  */
-public class ElTypeRef extends ElInstanceRef {
+@Data
+public class ElTypeRef implements ElInstanceRef {
 
   //
   // Fields
@@ -28,28 +30,13 @@ public class ElTypeRef extends ElInstanceRef {
   //
 
 
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of type
-   * @param newVar the new value of type
-   */
-  public void setType (BmmType newVar) {
-    type = newVar;
+  @Override
+  public BmmType evalType() {
+    return null;
   }
 
-  /**
-   * Get the value of type
-   * @return the value of type
-   */
-  public BmmType getType () {
-    return type;
+  @Override
+  public boolean isBoolean() {
+    return false;
   }
-
-  //
-  // Other methods
-  //
-
 }

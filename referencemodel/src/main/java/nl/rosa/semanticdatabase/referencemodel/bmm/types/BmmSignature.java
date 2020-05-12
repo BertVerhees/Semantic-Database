@@ -50,7 +50,6 @@ public class BmmSignature implements BmmEffectiveType {
    * True if this declaration entity is the root of the declaration hierarchy.
    * @return
    */
-  @Override
   public boolean isRootScope() {
     return false;
   }

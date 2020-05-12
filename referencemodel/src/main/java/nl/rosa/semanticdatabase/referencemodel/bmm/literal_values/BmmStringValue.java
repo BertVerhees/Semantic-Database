@@ -32,5 +32,11 @@ public class BmmStringValue extends BmmLiteralValue {
   // Constructors
   //
   public BmmStringValue () { };
-  
+
+  @Override
+  @Deprecated
+  void setValue(Object newVar) {
+    this.value = (String) newVar;
+  }
+
 }

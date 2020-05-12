@@ -28,5 +28,11 @@ public class BmmIntegerValue extends BmmLiteralValue {
   // Constructors
   //
   public BmmIntegerValue () { };
-  
+
+  @Override
+  @Deprecated
+  void setValue(Object newVar) {
+    this.value = (Integer) newVar;
+  }
+
 }
