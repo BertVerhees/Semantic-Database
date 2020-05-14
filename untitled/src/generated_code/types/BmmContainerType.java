@@ -1,4 +1,4 @@
-package types;
+package nl.rosa.semanticdatabase.bmm.types;
 import classes.BmmGenericClass;
 
 
@@ -36,7 +36,7 @@ public class BmmContainerType extends BmmType {
   /**
    * The container item type.
    */
-  private types.BmmUnitaryType itemType;
+  private nl.rosa.semanticdatabase.bmm.types.BmmUnitaryType itemType;
   /**
    * True indicates that order of the items in the container attribute is considered significant and must be preserved, e.g. across sessions, serialisation, deserialisation etc. Otherwise known as 'list' semantics.
    */
@@ -83,7 +83,7 @@ public class BmmContainerType extends BmmType {
    * The container item type.
    * @param newVar the new value of itemType
    */
-  public void setItemType (types.BmmUnitaryType newVar) {
+  public void setItemType (nl.rosa.semanticdatabase.bmm.types.BmmUnitaryType newVar) {
     itemType = newVar;
   }
 
@@ -92,7 +92,7 @@ public class BmmContainerType extends BmmType {
    * The container item type.
    * @return the value of itemType
    */
-  public types.BmmUnitaryType getItemType () {
+  public nl.rosa.semanticdatabase.bmm.types.BmmUnitaryType getItemType () {
     return itemType;
   }
 

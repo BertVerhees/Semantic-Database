@@ -1,5 +1,5 @@
 package class_features;
-import types.BmmContainerType;
+import nl.rosa.semanticdatabase.bmm.types.BmmContainerType;
 
 
 /**
@@ -15,7 +15,7 @@ public class BmmContainerProperty extends BmmProperty {
   /**
    * Declared or inferred static type of the entity.
    */
-  private types.BmmContainerType type;
+  private nl.rosa.semanticdatabase.bmm.types.BmmContainerType type;
   /**
    * Cardinality of this container.
    */
@@ -40,7 +40,7 @@ public class BmmContainerProperty extends BmmProperty {
    * Declared or inferred static type of the entity.
    * @param newVar the new value of type
    */
-  public void setType (types.BmmContainerType newVar) {
+  public void setType (nl.rosa.semanticdatabase.bmm.types.BmmContainerType newVar) {
     type = newVar;
   }
 
@@ -49,7 +49,7 @@ public class BmmContainerProperty extends BmmProperty {
    * Declared or inferred static type of the entity.
    * @return the value of type
    */
-  public types.BmmContainerType getType () {
+  public nl.rosa.semanticdatabase.bmm.types.BmmContainerType getType () {
     return type;
   }
 

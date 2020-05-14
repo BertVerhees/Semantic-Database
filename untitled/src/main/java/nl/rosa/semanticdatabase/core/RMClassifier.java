@@ -22,12 +22,12 @@ public class RMClassifier extends RMModelElement {
      */
     private String typeCategory;
     /**
-     * Signature form of the type, which for generics includes generic parameter constrainer types E.g. Interval&lt;T:Ordered&gt;
+     * Signature form of the type, which for generics includes generic parameter constrainer nl.rosa.semanticdatabase.bmm.types E.g. Interval&lt;T:Ordered&gt;
      */
     private String typeSignature;
     /**
      * Name of the this type in form allowing other type to be RT-conformance tested against it; 'RT' conformance means
-     * 'relation-target' conformance, which abstracts away container types like List&lt;&gt;, Set&lt;&gt; etc and compares the
+     * 'relation-target' conformance, which abstracts away container nl.rosa.semanticdatabase.bmm.types like List&lt;&gt;, Set&lt;&gt; etc and compares the
      * dynamic type with the relation target type in the UML sense, i.e. regardless of whether there is single or
      * multiple containment.
      *

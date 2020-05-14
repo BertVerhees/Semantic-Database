@@ -11,9 +11,9 @@ import java.util.Map;
 
 /**
  * Meta-type corresponding a class definition in an object model.
- * Inheritance is specified by the ancestors attribute, which contains a list of types rather than classes.
+ * Inheritance is specified by the ancestors attribute, which contains a list of nl.rosa.semanticdatabase.bmm.types rather than classes.
  * Inheritance is thus understood in BMM as a stated relationship between classes.
- * The equivalent relationship between types is conformance.
+ * The equivalent relationship between nl.rosa.semanticdatabase.bmm.types is conformance.
  *
  * NOTE: unlike UML, the name is just the root name, even if the class is generic. Use type_name() to obtain the qualified type name.
  */
@@ -128,8 +128,8 @@ public class RMClass extends RMClassifier {
 
     /**
      * List of names of immediate supplier classes, including concrete generic parameters, concrete descendants of
-     * abstract statically defined types, and inherited suppliers. (Where generics are unconstrained, no class name is
-     * added, since logically it would be 'ANY' and this can always be assumed anyway). This list includes primitive types.
+     * abstract statically defined nl.rosa.semanticdatabase.bmm.types, and inherited suppliers. (Where generics are unconstrained, no class name is
+     * added, since logically it would be 'ANY' and this can always be assumed anyway). This list includes primitive nl.rosa.semanticdatabase.bmm.types.
      *
      * @return
      */
@@ -138,7 +138,7 @@ public class RMClass extends RMClassifier {
     }
 
     /**
-     * Same as `suppliers' minus primitive types, as defined in input schema.
+     * Same as `suppliers' minus primitive nl.rosa.semanticdatabase.bmm.types, as defined in input schema.
      *
      * @return
      */
@@ -149,7 +149,7 @@ public class RMClass extends RMClassifier {
     /**
      * List of names of all classes in full supplier closure, including concrete generic parameters; (where generics
      * are unconstrained, no class name is added, since logically it would be 'ANY' and this can always be assumed
-     * anyway). This list includes primitive types.
+     * anyway). This list includes primitive nl.rosa.semanticdatabase.bmm.types.
      *
      * @return
      */

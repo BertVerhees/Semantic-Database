@@ -188,7 +188,7 @@ public class Adl14RulesParser extends BaseTreeWalker {
             Expression left = parseEqualityExpression(context.equalityExpression());
             Expression right = parseRelOpExpression(context.relOpExpression());
             if(left.getType() != null && right.getType() != null && left.getType() != right.getType()) {
-                throw new IllegalArgumentException("arithmetic relop expression with different types: " + left.getType() + " + " + right.getType());
+                throw new IllegalArgumentException("arithmetic relop expression with different nl.rosa.semanticdatabase.bmm.types: " + left.getType() + " + " + right.getType());
             }
             return new BinaryOperator(left.getType(), OperatorKind.parse(context.equalityBinop().getText()), left, right);
         } else {
@@ -201,7 +201,7 @@ public class Adl14RulesParser extends BaseTreeWalker {
             Expression left = parseRelOpExpression(context.relOpExpression());
             Expression right = parseArithmeticExpression(context.arithmeticExpression());
             if(left.getType() != null && right.getType() != null && left.getType() != right.getType()) {
-                throw new IllegalArgumentException("arithmetic relop expression with different types: " + left.getType() + " + " + right.getType());
+                throw new IllegalArgumentException("arithmetic relop expression with different nl.rosa.semanticdatabase.bmm.types: " + left.getType() + " + " + right.getType());
             }
             return new BinaryOperator(left.getType(), OperatorKind.parse(context.relationalBinop().getText()), left, right);
         } else {

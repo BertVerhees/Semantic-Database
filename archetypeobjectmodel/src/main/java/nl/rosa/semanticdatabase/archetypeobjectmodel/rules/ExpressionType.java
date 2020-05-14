@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.rules;
 
 /**
- * TODO: this should contain all primitive types and primitive types should be merged into this
+ * TODO: this should contain all primitive nl.rosa.semanticdatabase.bmm.types and primitive nl.rosa.semanticdatabase.bmm.types should be merged into this
  * Created by pieter.bos on 27/10/15.
  */
 public enum ExpressionType {

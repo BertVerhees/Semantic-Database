@@ -75,7 +75,7 @@ relOpExpression:
 
 
 //
-// Expressions evaluating to all kinds of value types
+// Expressions evaluating to all kinds of value nl.rosa.semanticdatabase.bmm.types
 //
 
 arithmeticExpression

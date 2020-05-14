@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.aom.primitives;
 
 /**
- * TODO: cConformsTo for temporal and date types
+ * TODO: cConformsTo for temporal and date nl.rosa.semanticdatabase.bmm.types
  */
 public abstract class CTemporal<T> extends COrdered<T>{
 

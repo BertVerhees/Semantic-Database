@@ -1,5 +1,5 @@
 package class_features;
-import types.BmmUnitaryType;
+import nl.rosa.semanticdatabase.bmm.types.BmmUnitaryType;
 
 
 /**
@@ -15,7 +15,7 @@ public class BmmUnitaryProperty extends BmmProperty {
   /**
    * Declared or inferred static type of the entity.
    */
-  private types.BmmUnitaryType type;
+  private nl.rosa.semanticdatabase.bmm.types.BmmUnitaryType type;
   
   //
   // Constructors
@@ -36,7 +36,7 @@ public class BmmUnitaryProperty extends BmmProperty {
    * Declared or inferred static type of the entity.
    * @param newVar the new value of type
    */
-  public void setType (types.BmmUnitaryType newVar) {
+  public void setType (nl.rosa.semanticdatabase.bmm.types.BmmUnitaryType newVar) {
     type = newVar;
   }
 
@@ -45,7 +45,7 @@ public class BmmUnitaryProperty extends BmmProperty {
    * Declared or inferred static type of the entity.
    * @return the value of type
    */
-  public types.BmmUnitaryType getType () {
+  public nl.rosa.semanticdatabase.bmm.types.BmmUnitaryType getType () {
     return type;
   }
 

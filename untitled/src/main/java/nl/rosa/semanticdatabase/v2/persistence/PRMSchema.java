@@ -132,7 +132,7 @@ public final class PRMSchema extends PRMPackageContainer {
     }
 
     /**
-     * Finds class either among class definitions or primitive definitions in case primitives are used directly as types.
+     * Finds class either among class definitions or primitive definitions in case primitives are used directly as nl.rosa.semanticdatabase.bmm.types.
      *
      * @param className
      * @return

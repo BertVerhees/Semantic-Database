@@ -37,7 +37,7 @@ public class RMDefinitions extends RMBasicDefinitions {
     public static final String UNKNOWN_TYPE_NAME = "UNKNOWN";
 
     /**
-     * built-in container types used to represent class-class 1:N relations
+     * built-in container nl.rosa.semanticdatabase.bmm.types used to represent class-class 1:N relations
      */
     public static final List<String> BMM_CONTAINER_TYPES = Collections.unmodifiableList(new ArrayList<String>() {{
         add("List");

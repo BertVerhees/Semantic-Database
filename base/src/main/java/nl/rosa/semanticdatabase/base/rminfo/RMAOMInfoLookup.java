@@ -86,7 +86,7 @@ public class RMAOMInfoLookup extends ReflectionModelInfoLookup {
 //        addClass(com.nedap.archie.base.terminology.TerminologyCode.class);
 //        addClass(com.nedap.archie.rules.ExpressionVariable.class);
 //        addClass(com.nedap.archie.aom.terminology.ValueSet.class);
-//        addClass(com.nedap.archie.xml.types.CodeDefinitionSet.class);
+//        addClass(com.nedap.archie.xml.nl.rosa.semanticdatabase.bmm.types.CodeDefinitionSet.class);
 //        addClass(com.nedap.archie.aom.TranslationDetails.class);
 //        addClass(com.nedap.archie.rules.QueryVariable.class);
 //        addClass(com.nedap.archie.base.Cardinality.class);

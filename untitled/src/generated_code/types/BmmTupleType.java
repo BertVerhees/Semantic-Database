@@ -1,10 +1,10 @@
-package types;
+package nl.rosa.semanticdatabase.bmm.types;
 
 
 /**
  * Class BmmTupleType
  * Special type representing the type of a tuple, i.e. an array of any number of
- * other types. This includes both container and unitary types, since tuple
+ * other nl.rosa.semanticdatabase.bmm.types. This includes both container and unitary nl.rosa.semanticdatabase.bmm.types, since tuple
  * instances represent concrete objects.
  * Note that both open and closed generic parameters are allowed, as with any
  * generic type, but open generic parameters are only valid within the scope of a
@@ -30,7 +30,7 @@ public class BmmTupleType extends BmmEffectiveType {
 
   private String baseName = "Tuple";
   /**
-   * List of types of the items of the tuple, keyed by purpose in the tuple.
+   * List of nl.rosa.semanticdatabase.bmm.types of the items of the tuple, keyed by purpose in the tuple.
    */
   private Hash<String,BmmType> itemTypes;
   
@@ -66,7 +66,7 @@ public class BmmTupleType extends BmmEffectiveType {
 
   /**
    * Set the value of itemTypes
-   * List of types of the items of the tuple, keyed by purpose in the tuple.
+   * List of nl.rosa.semanticdatabase.bmm.types of the items of the tuple, keyed by purpose in the tuple.
    * @param newVar the new value of itemTypes
    */
   public void setItemTypes (Hash<String,BmmType> newVar) {
@@ -75,7 +75,7 @@ public class BmmTupleType extends BmmEffectiveType {
 
   /**
    * Get the value of itemTypes
-   * List of types of the items of the tuple, keyed by purpose in the tuple.
+   * List of nl.rosa.semanticdatabase.bmm.types of the items of the tuple, keyed by purpose in the tuple.
    * @return the value of itemTypes
    */
   public Hash<String,BmmType> getItemTypes () {

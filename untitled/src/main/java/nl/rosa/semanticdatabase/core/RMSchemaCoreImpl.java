@@ -104,7 +104,7 @@ public class RMSchemaCoreImpl implements RMSchemaCore, Serializable {
      */
     private String archetypeParentClass;
     /**
-     * Returns the name of a parent class of logical 'data types' used within the schema to provide archetype capability, enabling
+     * Returns the name of a parent class of logical 'data nl.rosa.semanticdatabase.bmm.types' used within the schema to provide archetype capability, enabling
      * filtering of classes in RM visualisation. If empty, 'Any' is assumed. Persisted attribute.
      *
      * @return
@@ -122,7 +122,7 @@ public class RMSchemaCoreImpl implements RMSchemaCore, Serializable {
      * Method returns a class whose descendants should be made visible in tree and grid renderings of the archetype
      * definition, if archetype_parent_class is not set, designate . For openEHR and CEN this class is normally the
      * same as the archetype_parent_class, i.e. LOCATABLE and RECORD_COMPONENT respectively. It is typically set for CEN,
-     * because archetype_parent_class may not be stated, due to demographic types not inheriting from it.
+     * because archetype_parent_class may not be stated, due to demographic nl.rosa.semanticdatabase.bmm.types not inheriting from it.
      *
      * @return
      */

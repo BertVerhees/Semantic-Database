@@ -72,8 +72,8 @@ public interface ModelInfoLookup {
     RMAttributeInfo getAttributeInfo(String rmTypeName, String attributeName);
 
     /**
-     * Returns a list of all known types
-     * @return a list of all knowns types
+     * Returns a list of all known nl.rosa.semanticdatabase.bmm.types
+     * @return a list of all knowns nl.rosa.semanticdatabase.bmm.types
      */
     List<RMTypeInfo> getAllTypes();
 
@@ -209,7 +209,7 @@ public interface ModelInfoLookup {
         RMTypeInfo parentTypeInfo = getTypeInfo(parentType);
         RMTypeInfo childTypeInfo = getTypeInfo(childType);
         if (childTypeInfo == null || parentTypeInfo == null) {
-            return true;//cannot check with RM types, will validate elsewhere
+            return true;//cannot check with RM nl.rosa.semanticdatabase.bmm.types, will validate elsewhere
         }
         return childTypeInfo.isDescendantOrEqual(parentTypeInfo);
     }

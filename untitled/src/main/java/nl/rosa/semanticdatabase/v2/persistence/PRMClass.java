@@ -48,7 +48,7 @@ public class PRMClass extends PRMBase {
     /**
      * Get a list of ancestors type names. Combines the ancestors and ancestor_defs attributes, so can always
      * be used instead of those two separately. Warning: generates type names including generic parameters,
-     * you may have to strip those for certain types of operations
+     * you may have to strip those for certain nl.rosa.semanticdatabase.bmm.types of operations
      * @return
      */
     @JsonIgnore

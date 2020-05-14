@@ -1,5 +1,5 @@
 package classes;
-import types.BmmSimpleType;
+import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 
 /**
@@ -40,9 +40,9 @@ public class BmmSimpleClass extends BmmClass {
   /**
    * Generate a type object that represents the type of this class. Can only be an
    * instance of BMM_SIMPLE_TYPE or a descendant.
-   * @return       types.BmmSimpleType
+   * @return       nl.rosa.semanticdatabase.bmm.types.BmmSimpleType
    */
-  public types.BmmSimpleType type()
+  public nl.rosa.semanticdatabase.bmm.types.BmmSimpleType type()
   {
   }
 

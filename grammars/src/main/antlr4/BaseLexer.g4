@@ -84,7 +84,7 @@ fragment ARCHETYPE_HRID_ROOT : (NAMESPACE '::')? IDENTIFIER '-' IDENTIFIER '-' I
 VERSION_ID          : DIGIT+ '.' DIGIT+ '.' DIGIT+ ( ( '-rc' | '-alpha' ) ( '.' DIGIT+ )? )? ;
 fragment IDENTIFIER : ALPHA_CHAR WORD_CHAR* ;
 
-// --------------------- composed primitive types -------------------
+// --------------------- composed primitive nl.rosa.semanticdatabase.bmm.types -------------------
 
 TERM_CODE_REF : '[' TERM_CODE_CHAR+ ( '(' TERM_CODE_CHAR+ ')' )? '::' TERM_CODE_CHAR+ ']' ;  // e.g. [ICD10AM(1998)::F23]; [ISO_639-1::en]
 fragment TERM_CODE_CHAR: NAME_CHAR | '.';
@@ -141,7 +141,7 @@ GUID : HEX_DIGIT+ '-' HEX_DIGIT+ '-' HEX_DIGIT+ '-' HEX_DIGIT+ '-' HEX_DIGIT+ ;
 ALPHA_UC_ID : ALPHA_UCHAR WORD_CHAR* ;           // used for type ids
 ALPHA_LC_ID : ALPHA_LCHAR WORD_CHAR* ;           // used for attribute / method ids
 
-// --------------------- atomic primitive types -------------------
+// --------------------- atomic primitive nl.rosa.semanticdatabase.bmm.types -------------------
 
 INTEGER : DIGIT+ E_SUFFIX? ;
 REAL :    DIGIT+ '.' DIGIT+ E_SUFFIX? ;

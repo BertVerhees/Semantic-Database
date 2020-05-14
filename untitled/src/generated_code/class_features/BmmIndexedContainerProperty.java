@@ -1,5 +1,5 @@
 package class_features;
-import types.BmmIndexedContainerType;
+import nl.rosa.semanticdatabase.bmm.types.BmmIndexedContainerType;
 
 
 /**
@@ -16,7 +16,7 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
   /**
    * Declared or inferred static type of the entity.
    */
-  private types.BmmIndexedContainerType type;
+  private nl.rosa.semanticdatabase.bmm.types.BmmIndexedContainerType type;
   
   //
   // Constructors
@@ -37,7 +37,7 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
    * Declared or inferred static type of the entity.
    * @param newVar the new value of type
    */
-  public void setType (types.BmmIndexedContainerType newVar) {
+  public void setType (nl.rosa.semanticdatabase.bmm.types.BmmIndexedContainerType newVar) {
     type = newVar;
   }
 
@@ -46,7 +46,7 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
    * Declared or inferred static type of the entity.
    * @return the value of type
    */
-  public types.BmmIndexedContainerType getType () {
+  public nl.rosa.semanticdatabase.bmm.types.BmmIndexedContainerType getType () {
     return type;
   }
 
@@ -55,7 +55,7 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
   //
 
   /**
-   * Name of this property in form name: ContainerTypeName<IndexTypeName, …?>.
+   * Name of this property in form name: ContainerTypeName<IndexTypeName, ï¿½?>.
    * @return       String
    */
   public String displayName()

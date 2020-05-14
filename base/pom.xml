@@ -10,7 +10,7 @@
     </parent>
     <groupId>nl.rosa.semanticdatabase</groupId>
     <artifactId>base</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>base</name>
     <packaging>jar</packaging>
     <description>Base project for Spring Boot</description>

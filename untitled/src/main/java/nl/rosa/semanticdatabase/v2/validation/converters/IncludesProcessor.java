@@ -90,7 +90,7 @@ public class IncludesProcessor {
 
         //If a package already exist, merge its classes, for each child package repeat...
         //Merge class definitions first. If you see a class with the same name, log it (complain) - OpenEHR has no notion of namespaces. Need to fix spec to support them.
-        //this automatically includes primitive types
+        //this automatically includes primitive nl.rosa.semanticdatabase.bmm.types
         for(String className:included.getClassDefinitions().keySet()) {
             PRMClass bmmClass = included.getClassDefinitions().get(className);
             including.getClassDefinitions().put(className, (PRMClass) bmmClass.clone());

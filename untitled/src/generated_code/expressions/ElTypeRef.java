@@ -1,5 +1,5 @@
 package expressions;
-import types.BmmType;
+import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 
 /**
@@ -15,7 +15,7 @@ public class ElTypeRef extends ElInstanceRef {
   // Fields
   //
 
-  private types.BmmType type;
+  private nl.rosa.semanticdatabase.bmm.types.BmmType type;
   
   //
   // Constructors
@@ -35,7 +35,7 @@ public class ElTypeRef extends ElInstanceRef {
    * Set the value of type
    * @param newVar the new value of type
    */
-  public void setType (types.BmmType newVar) {
+  public void setType (nl.rosa.semanticdatabase.bmm.types.BmmType newVar) {
     type = newVar;
   }
 
@@ -43,7 +43,7 @@ public class ElTypeRef extends ElInstanceRef {
    * Get the value of type
    * @return the value of type
    */
-  public types.BmmType getType () {
+  public nl.rosa.semanticdatabase.bmm.types.BmmType getType () {
     return type;
   }
 

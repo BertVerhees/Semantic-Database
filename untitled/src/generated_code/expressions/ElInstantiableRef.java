@@ -1,5 +1,5 @@
 package expressions;
-import types.BmmType;
+import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 
 /**
@@ -60,9 +60,9 @@ public class ElInstantiableRef extends ElScopedRef {
    * Type definition (i.e. BMM meta-type definition object) of the constant, property
    * or variable, inferred by inspection of the current scoping instance. Return
    * definition.type.
-   * @return       types.BmmType
+   * @return       nl.rosa.semanticdatabase.bmm.types.BmmType
    */
-  public types.BmmType evalType()
+  public nl.rosa.semanticdatabase.bmm.types.BmmType evalType()
   {
   }
 
