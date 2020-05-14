@@ -2,9 +2,9 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
 
 import lombok.Data;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProperty;
-import classes.BmmClass;
-import classes.BmmEnumeration;
-import classes.BmmSimpleClass;
+import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
+import nl.rosa.semanticdatabase.bmm.classes.BmmEnumeration;
+import nl.rosa.semanticdatabase.bmm.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.bmm.model_access.BmmModelMetadata;
 import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 

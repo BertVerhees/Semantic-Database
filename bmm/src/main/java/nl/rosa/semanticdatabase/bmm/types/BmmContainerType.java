@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
 import lombok.Data;
-import classes.BmmGenericClass;
+import nl.rosa.semanticdatabase.bmm.classes.BmmGenericClass;
 
 import java.util.List;
 

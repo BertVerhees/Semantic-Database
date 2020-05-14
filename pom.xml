@@ -7,11 +7,11 @@
         <module>grammars</module>
         <module>utils</module>
         <module>base</module>
-        <module>odin</module>
-        <module>archetypeobjectmodel</module>
+<!--        <module>odin</module>-->
+<!--        <module>archetypeobjectmodel</module>-->
         <module>referencemodel</module>
         <module>semanticdatabase-web</module>
-        <module>untitled</module>
+<!--        <module>untitled</module>-->
         <module>bmm</module>
     </modules>
     <parent>
