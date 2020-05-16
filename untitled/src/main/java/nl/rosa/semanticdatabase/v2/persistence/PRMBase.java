@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.referencemodel.v2.persistence;
 
 
 import nl.rosa.semanticdatabase.base.SemanticDatabaseBase;
-import nl.rosa.semanticdatabase.util.KryoUtil;
+import nl.rosa.semanticdatabase.bmmcontroller.persistence.util.KryoUtil;
 import com.esotericsoftware.kryo.Kryo;
 
 

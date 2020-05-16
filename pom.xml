@@ -13,6 +13,7 @@
         <module>semanticdatabase-web</module>
 <!--        <module>untitled</module>-->
         <module>bmm</module>
+        <module>bmmcontroller</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

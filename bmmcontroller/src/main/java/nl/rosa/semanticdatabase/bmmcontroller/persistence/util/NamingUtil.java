@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.util;
+package nl.rosa.semanticdatabase.bmmcontroller.persistence.util;
 
 import com.google.common.base.CaseFormat;
 
