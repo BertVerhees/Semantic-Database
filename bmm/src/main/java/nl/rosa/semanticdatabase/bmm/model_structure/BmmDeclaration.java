@@ -8,52 +8,27 @@ import java.util.Map;
  */
 public interface BmmDeclaration {
 
-  /**
-   * Set the value of name
-   * @param newVar the new value of name
-   */
   void setName (String newVar);
-  /**
-   * Get the value of name
-   * @return the value of name
-   */
   String getName ();
-
-  /**
-   * Set the value of documentation
-   * @param newVar the new value of documentation
-   */
   void setDocumentation (Map<String,Object> newVar);
-  /**
-   * Get the value of documentation
-   * @return the value of documentation
-   */
   Map<String,Object> getDocumentation ();
 
   /**
-   * Set the value of scope
-   * @param newVar the new value of scope
+   * Model element within which an element is declared.
    */
   void setScope (BmmDeclaration newVar);
   /**
-   * Get the value of scope
-   * @return the value of scope
+   * Model element within which an element is declared.
    */
   BmmDeclaration getScope ();
   /**
-   * Set the value of extensions
-   * @param newVar the new value of extensions
+   * Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.
    */
   void setExtensions (Map<String,Object> newVar);
   /**
-   * Get the value of extensions
-   * @return the value of extensions
+   * Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.
    */
   Map<String,Object> getExtensions ();
-  //
-  // Other methods
-  //
-
   /**
    * @return       boolean
    */

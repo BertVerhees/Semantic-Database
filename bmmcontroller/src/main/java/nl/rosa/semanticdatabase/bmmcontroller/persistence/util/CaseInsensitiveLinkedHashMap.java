@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmmcontroller.persistence;
+package nl.rosa.semanticdatabase.bmmcontroller.persistence.util;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;

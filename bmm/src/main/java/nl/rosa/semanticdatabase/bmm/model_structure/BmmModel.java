@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.bmm.model_structure;
 
+import lombok.Builder;
 import lombok.Data;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProperty;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
@@ -9,6 +10,7 @@ import nl.rosa.semanticdatabase.bmm.model_access.BmmModelMetadata;
 import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -17,7 +19,14 @@ import java.util.List;
 @Data
 public class BmmModel extends BmmPackageContainer {
 
-  private BmmClass classDefinitions;
+  /**
+   * All classes in this model, keyed by type name.
+   */
+  private Map<String,BmmClass> classDefinitions;
+  /**
+   * List of other models 'used' (i.e. 'imported' by this model). Classes in the current model may refer to classes
+   * in a used model by specifying the other class’s scope meta-attribute.
+   */
   private BmmModel usedModels;
   private BmmModelMetadata bmmModelMetadata;
 
@@ -28,7 +37,23 @@ public class BmmModel extends BmmPackageContainer {
   public BmmModel () {
     super();
   }
-  
+
+  @Builder
+  public BmmModel(
+          BmmPackage packages,
+          BmmPackageContainer scope,
+          String name,
+          Map<String, Object> documentation,
+          Map<String, Object> extensions,
+          Map<String,BmmClass> classDefinitions,
+          BmmModel usedModels,
+          BmmModelMetadata bmmModelMetadata) {
+    super(packages, scope, name, documentation, extensions);
+    this.classDefinitions = classDefinitions;
+    this.usedModels = usedModels;
+    this.bmmModelMetadata = bmmModelMetadata;
+  }
+
   //
   // Methods
   //

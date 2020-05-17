@@ -6,11 +6,11 @@
         <groupId>nl.rosa.semanticdatabase</groupId>
         <artifactId>semanticdatabase</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath> <!-- lookup parent from RMRepository -->
+        <relativePath></relativePath> <!-- lookup parent from RMRepository -->
     </parent>
     <groupId>nl.rosa.semanticdatabase</groupId>
     <artifactId>base</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <name>base</name>
     <packaging>jar</packaging>
     <description>Base project for Spring Boot</description>

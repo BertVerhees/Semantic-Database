@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmm.model_access;
+package nl.rosa.semanticdatabase.bmmcontroller.model_access;
 
 import lombok.Data;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;

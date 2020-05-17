@@ -1,7 +1,8 @@
-package nl.rosa.semanticdatabase.bmm.model_access;
+package nl.rosa.semanticdatabase.bmmcontroller.model_access;
 
 import lombok.Data;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
+import nl.rosa.semanticdatabase.bmm.model_access.BmmModelMetadata;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmPackageContainer;
 
@@ -19,9 +20,9 @@ abstract public class BmmSchema extends BmmPackageContainer {
   //
 
   private String bmmVersion;
-  private BmmClass primitiveTypes;
-  private BmmClass classDefinitions;
-  private BmmIncludeSpec includes;
+  private BmmClass primitiveTypes;  //JSON
+  private BmmClass classDefinitions;  //JSON
+  private BmmIncludeSpec includes;  //JSON
   private BmmModel bmmSchema;
   private BmmSchemaState state;
   private String modelName;

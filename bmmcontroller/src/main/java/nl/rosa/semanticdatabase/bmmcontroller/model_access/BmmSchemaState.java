@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmm.model_access;
+package nl.rosa.semanticdatabase.bmmcontroller.model_access;
 
 /**
  * Enumeration of processing states of a BMM_SCHEMA used by creation and validation routines in BMM_SCHEMA.
