@@ -4,7 +4,7 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 import lombok.Data;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmm.expressions.ElAssertion;
-import nl.rosa.semanticdatabase.bmm.functional_elements.BmmStatementItem;
+import nl.rosa.semanticdatabase.bmm.routine_implementation.BmmStatementItem;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmm.types.BmmSignature;
 

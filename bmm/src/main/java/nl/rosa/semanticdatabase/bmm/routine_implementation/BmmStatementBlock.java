@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmm.functional_elements;
+package nl.rosa.semanticdatabase.bmm.routine_implementation;
 
 
 import lombok.Data;
@@ -10,11 +10,6 @@ import lombok.Data;
  */
 @Data
 public class BmmStatementBlock implements BmmStatementItem {
-
-  //
-  // Fields
-  //
-
   /**
    * Child blocks of the current block.
    */

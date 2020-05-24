@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmm.expressions.ElAssertion;
-import nl.rosa.semanticdatabase.bmm.functional_elements.BmmStatementItem;
+import nl.rosa.semanticdatabase.bmm.routine_implementation.BmmStatementItem;
 
 import java.util.List;
 

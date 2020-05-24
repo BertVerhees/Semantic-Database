@@ -10,29 +10,8 @@ import lombok.Data;
  */
 @Data
 public class BmmIntegerValue extends BmmLiteralValue {
-
-  // BmmLiteralValue
   /**
-   * A serial representation of the value.
-   */
-  private String valueLiteral;
-  /**
-   * Optional specification of formalism of the value_literal attribute for complex values. Value may be any of json | yawl | xml | odin | rdf or another value agreed by the user community. If not set, json is assumed.
-   */
-  private String syntax;/**
    * Native Integer value.
    */
   private Integer value;
-  
-  //
-  // Constructors
-  //
-  public BmmIntegerValue () { };
-
-  @Override
-  @Deprecated
-  void setValue(Object newVar) {
-    this.value = (Integer) newVar;
-  }
-
 }
