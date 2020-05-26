@@ -21,7 +21,7 @@ public class AomProfile {
     private String archetypeVisualiseDescendantsOf;
 
     /**
-     * Allowed type substitutions: Actual RM type names keyed by AOM built-in nl.rosa.semanticdatabase.bmm.types which can substitute
+     * Allowed type substitutions: Actual RM type names keyed by AOM built-in nl.rosa.semanticdatabase.bmm.model.types which can substitute
      * for them in an archetype. E.g. &lt;value = "String", key = "ISO8601_DATE"&gt; means that if RM property
      * TYPE.some_property is of type String, an ISO8601_DATE is allowed at that position in the archetype.
      */
@@ -33,7 +33,7 @@ public class AomProfile {
     private Map<String, String> aomLifecycleMappings;
 
     /**
-     * Mappings from AOM built-in nl.rosa.semanticdatabase.bmm.types to actual nl.rosa.semanticdatabase.bmm.types in RM: whenever the type name is encountered in
+     * Mappings from AOM built-in nl.rosa.semanticdatabase.bmm.model.types to actual nl.rosa.semanticdatabase.bmm.model.types in RM: whenever the type name is encountered in
      * an archetype, it is mapped to a specific RM type.
      */
     private Map<String, AomTypeMapping> aomRmTypeMappings;
@@ -43,7 +43,7 @@ public class AomProfile {
     private AomTerminologyProfile terminologyProfile;
 
     /**
-     * @return Allowed type substitutions: Actual RM type names keyed by AOM built-in nl.rosa.semanticdatabase.bmm.types which can substitute
+     * @return Allowed type substitutions: Actual RM type names keyed by AOM built-in nl.rosa.semanticdatabase.bmm.model.types which can substitute
      * for them in an archetype. E.g. &lt;value = "String", key = "ISO8601_DATE"&gt; means that if RM property
      * TYPE.some_property is of type String, an ISO8601_DATE is allowed at that position in the archetype.
      */
@@ -53,7 +53,7 @@ public class AomProfile {
 
     /**
      *
-     * @param aomRmTypeSubstitutions Allowed type substitutions: Actual RM type names keyed by AOM built-in nl.rosa.semanticdatabase.bmm.types which can substitute
+     * @param aomRmTypeSubstitutions Allowed type substitutions: Actual RM type names keyed by AOM built-in nl.rosa.semanticdatabase.bmm.model.types which can substitute
      * for them in an archetype. E.g. &lt;value = "String", key = "ISO8601_DATE"&gt; means that if RM property
      * TYPE.some_property is of type String, an ISO8601_DATE is allowed at that position in the archetype.
      */
@@ -97,7 +97,7 @@ public class AomProfile {
 
     /**
      *
-     * @return Mappings from AOM built-in nl.rosa.semanticdatabase.bmm.types to actual nl.rosa.semanticdatabase.bmm.types in RM: whenever the type name is encountered in
+     * @return Mappings from AOM built-in nl.rosa.semanticdatabase.bmm.model.types to actual nl.rosa.semanticdatabase.bmm.model.types in RM: whenever the type name is encountered in
      * an archetype, it is mapped to a specific RM type.
      */
     public Map<String, AomTypeMapping> getAomRmTypeMappings() {
@@ -106,7 +106,7 @@ public class AomProfile {
 
     /**
      *
-     * @param aomRmTypeMappings Mappings from AOM built-in nl.rosa.semanticdatabase.bmm.types to actual nl.rosa.semanticdatabase.bmm.types in RM: whenever the type name is encountered in
+     * @param aomRmTypeMappings Mappings from AOM built-in nl.rosa.semanticdatabase.bmm.model.types to actual nl.rosa.semanticdatabase.bmm.model.types in RM: whenever the type name is encountered in
      * an archetype, it is mapped to a specific RM type.
      */
     public void setAomRmTypeMappings(Map<String, AomTypeMapping> aomRmTypeMappings) {

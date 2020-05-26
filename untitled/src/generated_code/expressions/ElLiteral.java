@@ -1,11 +1,11 @@
 package expressions;
 import literal_values.BmmLiteralValue;
-import nl.rosa.semanticdatabase.bmm.types.BmmType;
+import nl.rosa.semanticdatabase.bmm.model.types.BmmType;
 
 
 /**
  * Class ElLiteral
- * Literal value of any type known in the model, including primitive nl.rosa.semanticdatabase.bmm.types. Defined
+ * Literal value of any type known in the model, including primitive nl.rosa.semanticdatabase.bmm.model.types. Defined
  * via a BMM_LITERAL_VALUE.
  */
 public class ElLiteral extends ElInstanceRef {
@@ -57,9 +57,9 @@ public class ElLiteral extends ElInstanceRef {
 
   /**
    * Return value.type.
-   * @return       nl.rosa.semanticdatabase.bmm.types.BmmType
+   * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmType
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmType evalType()
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmType evalType()
   {
   }
 

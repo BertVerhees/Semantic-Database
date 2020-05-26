@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmm.types;
+package nl.rosa.semanticdatabase.bmm.model.types;
 
 
 /**
@@ -19,7 +19,7 @@ public class BmmIndexedContainerType extends BmmContainerType {
   /**
    * Type of the element index, typically String or Integer, but may be a numeric type or indeed any type from which a hash value can be derived.
    */
-  private nl.rosa.semanticdatabase.bmm.types.BmmSimpleType indexType;
+  private nl.rosa.semanticdatabase.bmm.model.types.BmmSimpleType indexType;
   
   //
   // Constructors
@@ -41,7 +41,7 @@ public class BmmIndexedContainerType extends BmmContainerType {
    * type or indeed any type from which a hash value can be derived.
    * @param newVar the new value of indexType
    */
-  public void setIndexType (nl.rosa.semanticdatabase.bmm.types.BmmSimpleType newVar) {
+  public void setIndexType (nl.rosa.semanticdatabase.bmm.model.types.BmmSimpleType newVar) {
     indexType = newVar;
   }
 
@@ -51,7 +51,7 @@ public class BmmIndexedContainerType extends BmmContainerType {
    * type or indeed any type from which a hash value can be derived.
    * @return the value of indexType
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmSimpleType getIndexType () {
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmSimpleType getIndexType () {
     return indexType;
   }
 

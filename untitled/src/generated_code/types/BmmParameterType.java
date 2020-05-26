@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmm.types;
+package nl.rosa.semanticdatabase.bmm.model.types;
 
 
 /**
@@ -33,11 +33,11 @@ abstract public class BmmParameterType extends BmmUnitaryType {
   /**
    * Optional conformance constraint that must be the name of a defined type.
    */
-  private nl.rosa.semanticdatabase.bmm.types.BmmEffectiveType typeConstraint;
+  private nl.rosa.semanticdatabase.bmm.model.types.BmmEffectiveType typeConstraint;
   /**
    * If set, is the corresponding generic parameter definition in an ancestor class.
    */
-  private nl.rosa.semanticdatabase.bmm.types.BmmParameterType inheritancePrecursor;
+  private nl.rosa.semanticdatabase.bmm.model.types.BmmParameterType inheritancePrecursor;
   
   //
   // Constructors
@@ -78,7 +78,7 @@ abstract public class BmmParameterType extends BmmUnitaryType {
    * Optional conformance constraint that must be the name of a defined type.
    * @param newVar the new value of typeConstraint
    */
-  public void setTypeConstraint (nl.rosa.semanticdatabase.bmm.types.BmmEffectiveType newVar) {
+  public void setTypeConstraint (nl.rosa.semanticdatabase.bmm.model.types.BmmEffectiveType newVar) {
     typeConstraint = newVar;
   }
 
@@ -87,7 +87,7 @@ abstract public class BmmParameterType extends BmmUnitaryType {
    * Optional conformance constraint that must be the name of a defined type.
    * @return the value of typeConstraint
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmEffectiveType getTypeConstraint () {
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmEffectiveType getTypeConstraint () {
     return typeConstraint;
   }
 
@@ -96,7 +96,7 @@ abstract public class BmmParameterType extends BmmUnitaryType {
    * If set, is the corresponding generic parameter definition in an ancestor class.
    * @param newVar the new value of inheritancePrecursor
    */
-  public void setInheritancePrecursor (nl.rosa.semanticdatabase.bmm.types.BmmParameterType newVar) {
+  public void setInheritancePrecursor (nl.rosa.semanticdatabase.bmm.model.types.BmmParameterType newVar) {
     inheritancePrecursor = newVar;
   }
 
@@ -105,7 +105,7 @@ abstract public class BmmParameterType extends BmmUnitaryType {
    * If set, is the corresponding generic parameter definition in an ancestor class.
    * @return the value of inheritancePrecursor
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmParameterType getInheritancePrecursor () {
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmParameterType getInheritancePrecursor () {
     return inheritancePrecursor;
   }
 
@@ -116,9 +116,9 @@ abstract public class BmmParameterType extends BmmUnitaryType {
   /**
    * Result is either conforms_to_type or
    * inheritance_precursor.flattened_conforms_to_type.
-   * @return       nl.rosa.semanticdatabase.bmm.types.BmmEffectiveType
+   * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmEffectiveType
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmEffectiveType flattenedConformsToType()
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmEffectiveType flattenedConformsToType()
   {
   }
 

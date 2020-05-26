@@ -4,7 +4,7 @@ package literal_values;
 /**
  * Class BmmLiteralValue
  * Meta-type for literal instance values declared in a model. Instance values may
- * be inline values of primitive nl.rosa.semanticdatabase.bmm.types in the usual fashion or complex objects in
+ * be inline values of primitive nl.rosa.semanticdatabase.bmm.model.types in the usual fashion or complex objects in
  * syntax form, e.g. JSON.
  */
 public class BmmLiteralValue {

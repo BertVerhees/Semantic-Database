@@ -1,5 +1,5 @@
 package expressions;
-import nl.rosa.semanticdatabase.bmm.types.BmmType;
+import nl.rosa.semanticdatabase.bmm.model.types.BmmType;
 
 
 /**
@@ -56,9 +56,9 @@ public class ElFunctionCall extends ElScopedRef, ElAgentCall {
 
   /**
    * Return agent.definition.type.
-   * @return       nl.rosa.semanticdatabase.bmm.types.BmmType
+   * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmType
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmType evalType()
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmType evalType()
   {
   }
 

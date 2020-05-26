@@ -52,7 +52,7 @@ public class RMModel extends RMPackageContainerImpl implements RMSchemaCore, RMP
     }
 
     /**
-     * List of keys in `class_definitions' of items marked as primitive nl.rosa.semanticdatabase.bmm.types, as defined in input schema.
+     * List of keys in `class_definitions' of items marked as primitive nl.rosa.semanticdatabase.bmm.model.types, as defined in input schema.
      *
      * Note: no caching at this time. This list is created from scratch every time.
      *
@@ -69,7 +69,7 @@ public class RMModel extends RMPackageContainerImpl implements RMSchemaCore, RMP
     }
 
     /**
-     * List of keys in `class_definitions' of items that are enumeration nl.rosa.semanticdatabase.bmm.types, as defined in input schema.
+     * List of keys in `class_definitions' of items that are enumeration nl.rosa.semanticdatabase.bmm.model.types, as defined in input schema.
      *
      * Note: no caching at this time. This list is created from scratch every time.
      *
@@ -106,7 +106,7 @@ public class RMModel extends RMPackageContainerImpl implements RMSchemaCore, RMP
 
     /**
      * True if `a_ms_property_type' is a valid 'MS' dynamic type for `a_property' in BMM type `a_bmm_type_name'.
-     * 'MS' conformance means 'model-semantic' conformance, which abstracts away container nl.rosa.semanticdatabase.bmm.types like List&lt;&gt;, Set&lt;&gt;
+     * 'MS' conformance means 'model-semantic' conformance, which abstracts away container nl.rosa.semanticdatabase.bmm.model.types like List&lt;&gt;, Set&lt;&gt;
      *  etc and compares the dynamic type with the relation target type in the UML sense, i.e. regardless of whether
      *  there is single or multiple containment.
      *
@@ -130,7 +130,7 @@ public class RMModel extends RMPackageContainerImpl implements RMSchemaCore, RMP
     }
 
     /**
-     * Return all ancestor nl.rosa.semanticdatabase.bmm.types of `a_class_name' up to root class (usually 'ANY', 'Object' or something similar).
+     * Return all ancestor nl.rosa.semanticdatabase.bmm.model.types of `a_class_name' up to root class (usually 'ANY', 'Object' or something similar).
      * Does not include current class. Returns empty list if none.
      *
      * @param className
@@ -182,14 +182,14 @@ public class RMModel extends RMPackageContainerImpl implements RMSchemaCore, RMP
     }
 
     /**
-     * Check conformance of `a_desc_type' to `an_anc_type'; the nl.rosa.semanticdatabase.bmm.types may be generic, and may contain open generic
-     * parameters like 'T' etc. These are replaced with their apporpriate constrainer nl.rosa.semanticdatabase.bmm.types, or Any during the conformance
+     * Check conformance of `a_desc_type' to `an_anc_type'; the nl.rosa.semanticdatabase.bmm.model.types may be generic, and may contain open generic
+     * parameters like 'T' etc. These are replaced with their apporpriate constrainer nl.rosa.semanticdatabase.bmm.model.types, or Any during the conformance
      * testing process.
      *
      * Conformance is found if:
      *
-     * [base class test] nl.rosa.semanticdatabase.bmm.types are non-generic, and either type names are identical, or else `a_desc_type' has
-     * `an_anc_type' in its ancestors both nl.rosa.semanticdatabase.bmm.types are generic and pass base class test; number of generic params matches,
+     * [base class test] nl.rosa.semanticdatabase.bmm.model.types are non-generic, and either type names are identical, or else `a_desc_type' has
+     * `an_anc_type' in its ancestors both nl.rosa.semanticdatabase.bmm.model.types are generic and pass base class test; number of generic params matches,
      * and each generic parameter type, after 'open parameter' substitution, recursively passes `type_name_conforms_to'
      * test descendant type is generic and ancestor type is not, and they pass base classes test
      *
@@ -391,7 +391,7 @@ public class RMModel extends RMPackageContainerImpl implements RMSchemaCore, RMP
     }
 
     /**
-     * Returns the name of a parent class of logical 'data nl.rosa.semanticdatabase.bmm.types' used within the schema to provide archetype capability, enabling
+     * Returns the name of a parent class of logical 'data nl.rosa.semanticdatabase.bmm.model.types' used within the schema to provide archetype capability, enabling
      * filtering of classes in RM visualisation. If empty, 'Any' is assumed. Persisted attribute.
      *
      * @return
@@ -402,7 +402,7 @@ public class RMModel extends RMPackageContainerImpl implements RMSchemaCore, RMP
     }
 
     /**
-     * Sets the name of a parent class of logical 'data nl.rosa.semanticdatabase.bmm.types' used within the schema to provide archetype capability,
+     * Sets the name of a parent class of logical 'data nl.rosa.semanticdatabase.bmm.model.types' used within the schema to provide archetype capability,
      * enabling filtering of classes in RM visualisation. If empty, 'Any' is assumed. Persisted attribute.
      *
      * @param archetypeDataValueParentClass
@@ -450,7 +450,7 @@ public class RMModel extends RMPackageContainerImpl implements RMSchemaCore, RMP
      * Method returns a class whose descendants should be made visible in tree and grid renderings of the archetype
      * definition, if archetype_parent_class is not set, designate . For openEHR and CEN this class is normally the
      * same as the archetype_parent_class, i.e. LOCATABLE and RECORD_COMPONENT respectively. It is typically set for CEN,
-     * because archetype_parent_class may not be stated, due to demographic nl.rosa.semanticdatabase.bmm.types not inheriting from it.
+     * because archetype_parent_class may not be stated, due to demographic nl.rosa.semanticdatabase.bmm.model.types not inheriting from it.
      *
      * @return
      */
@@ -463,7 +463,7 @@ public class RMModel extends RMPackageContainerImpl implements RMSchemaCore, RMP
      * Method a class whose descendants should be made visible in tree and grid renderings of the archetype
      * definition, if archetype_parent_class is not set, designate . For openEHR and CEN this class is normally the
      * same as the archetype_parent_class, i.e. LOCATABLE and RECORD_COMPONENT respectively. It is typically set for CEN,
-     * because archetype_parent_class may not be stated, due to demographic nl.rosa.semanticdatabase.bmm.types not inheriting from it.
+     * because archetype_parent_class may not be stated, due to demographic nl.rosa.semanticdatabase.bmm.model.types not inheriting from it.
      *
      * @param archetypeVisualizeDescendantsOf
      */

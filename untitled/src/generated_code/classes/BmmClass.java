@@ -7,15 +7,15 @@ import entities.BmmEntity;
 import expressions.ElAssertion;
 import model_structure.BmmModule;
 import model_structure.BmmPackage;
-import nl.rosa.semanticdatabase.bmm.types.BmmModelType;
+import nl.rosa.semanticdatabase.bmm.model.types.BmmModelType;
 
 
 /**
  * Class BmmClass
  * Meta-type corresponding a class definition in an object model. Inheritance is
- * specified by the ancestors attribute, which contains a list of nl.rosa.semanticdatabase.bmm.types rather than
+ * specified by the ancestors attribute, which contains a list of nl.rosa.semanticdatabase.bmm.model.types rather than
  * classes. Inheritance is thus understood in BMM as a stated relationship between
- * classes. The equivalent relationship between nl.rosa.semanticdatabase.bmm.types is conformance.
+ * classes. The equivalent relationship between nl.rosa.semanticdatabase.bmm.model.types is conformance.
  * 
  * NOTE
  * unlike UML, the name is just the root name, even if the class is generic. Use
@@ -39,7 +39,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
   /**
    * List of immediate inheritance parents.
    */
-  private nl.rosa.semanticdatabase.bmm.types.BmmModelType ancestors;
+  private nl.rosa.semanticdatabase.bmm.model.types.BmmModelType ancestors;
   /**
    * Package this class belongs to.
    */
@@ -95,7 +95,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * List of immediate inheritance parents.
    * @param newVar the new value of ancestors
    */
-  public void setAncestors (nl.rosa.semanticdatabase.bmm.types.BmmModelType newVar) {
+  public void setAncestors (nl.rosa.semanticdatabase.bmm.model.types.BmmModelType newVar) {
     ancestors = newVar;
   }
 
@@ -104,7 +104,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * List of immediate inheritance parents.
    * @return the value of ancestors
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmModelType getAncestors () {
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmModelType getAncestors () {
     return ancestors;
   }
 
@@ -317,9 +317,9 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
   /**
    * Generate a type object that represents the type for which this class is the
    * definer.
-   * @return       nl.rosa.semanticdatabase.bmm.types.BmmModelType
+   * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmModelType
    */
-  abstract public nl.rosa.semanticdatabase.bmm.types.BmmModelType type();
+  abstract public nl.rosa.semanticdatabase.bmm.model.types.BmmModelType type();
 
 
   /**
@@ -340,10 +340,10 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
 
   /**
    * List of names of immediate supplier classes, including concrete generic
-   * parameters, concrete descendants of abstract statically defined nl.rosa.semanticdatabase.bmm.types, and
+   * parameters, concrete descendants of abstract statically defined nl.rosa.semanticdatabase.bmm.model.types, and
    * inherited suppliers. (Where generics are unconstrained, no class name is added,
    * since logically it would be Any and this can always be assumed anyway). This
-   * list includes primitive nl.rosa.semanticdatabase.bmm.types.
+   * list includes primitive nl.rosa.semanticdatabase.bmm.model.types.
    * @return       List<String>
    */
   public List<String> suppliers()
@@ -352,7 +352,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
 
 
   /**
-   * Same as suppliers minus primitive nl.rosa.semanticdatabase.bmm.types, as defined in input schema.
+   * Same as suppliers minus primitive nl.rosa.semanticdatabase.bmm.model.types, as defined in input schema.
    * @return       List<String>
    */
   public List<String> suppliersNonPrimitive()
@@ -364,7 +364,7 @@ abstract public class BmmClass extends BmmEntity, BmmModule {
    * ist of names of all classes in full supplier closure, including concrete generic
    * parameters; (where generics are unconstrained, no class name is added, since
    * logically it would be Any and this can always be assumed anyway). This list
-   * includes primitive nl.rosa.semanticdatabase.bmm.types.
+   * includes primitive nl.rosa.semanticdatabase.bmm.model.types.
    * @return       List<String>
    */
   public List<String> supplierClosure()

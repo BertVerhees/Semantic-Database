@@ -52,7 +52,7 @@ assumed_string_value: ';' string_value ;
 
 
 
-// ADL2 term nl.rosa.semanticdatabase.bmm.types: [ac3], [ac3; at5], [at5], [local :: at0001, at0002, at0003]
+// ADL2 term nl.rosa.semanticdatabase.bmm.model.types: [ac3], [ac3; at5], [at5], [local :: at0001, at0002, at0003]
 c_terminology_code: localTermCode | qualifiedTermCode;
 
 localTermCode: '[' ( ( AC_CODE ( ';' AT_CODE )? ) | AT_CODE ) ']' ;

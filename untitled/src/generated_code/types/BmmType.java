@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmm.types;
+package nl.rosa.semanticdatabase.bmm.model.types;
 import entities.BmmEntity;
 
 
@@ -55,7 +55,7 @@ abstract public class BmmType extends BmmEntity {
 
   /**
    * Signature form of the type name, which for generics includes generic parameter
-   * constrainer nl.rosa.semanticdatabase.bmm.types E.g. Interval<T:Ordered>.
+   * constrainer nl.rosa.semanticdatabase.bmm.model.types E.g. Interval<T:Ordered>.
    * Defaults to the value of type_name().
    * @return       String
    */

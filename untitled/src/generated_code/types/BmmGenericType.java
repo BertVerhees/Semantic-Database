@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmm.types;
+package nl.rosa.semanticdatabase.bmm.model.types;
 import classes.BmmGenericClass;
 
 
@@ -23,14 +23,14 @@ public class BmmGenericType extends BmmModelType {
   //
 
   /**
-   * Generic parameters of the root_type in this type specifier. The order must match the order of the owning class�s formal generic parameter declarations, and the nl.rosa.semanticdatabase.bmm.types may be defined nl.rosa.semanticdatabase.bmm.types or formal parameter nl.rosa.semanticdatabase.bmm.types.
+   * Generic parameters of the root_type in this type specifier. The order must match the order of the owning class�s formal generic parameter declarations, and the nl.rosa.semanticdatabase.bmm.model.types may be defined nl.rosa.semanticdatabase.bmm.model.types or formal parameter nl.rosa.semanticdatabase.bmm.model.types.
    */
   private List<BmmUnitaryType> genericParameters;
   /**
    * The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.
    */
   private classes.BmmGenericClass baseClass;
-  private nl.rosa.semanticdatabase.bmm.types.BmmUnitaryType new_attribute;
+  private nl.rosa.semanticdatabase.bmm.model.types.BmmUnitaryType new_attribute;
   
   //
   // Constructors
@@ -50,7 +50,7 @@ public class BmmGenericType extends BmmModelType {
    * Set the value of genericParameters
    * Generic parameters of the root_type in this type specifier. The order must match
    * the order of the owning class�s formal generic parameter declarations, and the
-   * nl.rosa.semanticdatabase.bmm.types may be defined nl.rosa.semanticdatabase.bmm.types or formal parameter nl.rosa.semanticdatabase.bmm.types.
+   * nl.rosa.semanticdatabase.bmm.model.types may be defined nl.rosa.semanticdatabase.bmm.model.types or formal parameter nl.rosa.semanticdatabase.bmm.model.types.
    * @param newVar the new value of genericParameters
    */
   public void setGenericParameters (List<BmmUnitaryType> newVar) {
@@ -61,7 +61,7 @@ public class BmmGenericType extends BmmModelType {
    * Get the value of genericParameters
    * Generic parameters of the root_type in this type specifier. The order must match
    * the order of the owning class�s formal generic parameter declarations, and the
-   * nl.rosa.semanticdatabase.bmm.types may be defined nl.rosa.semanticdatabase.bmm.types or formal parameter nl.rosa.semanticdatabase.bmm.types.
+   * nl.rosa.semanticdatabase.bmm.model.types may be defined nl.rosa.semanticdatabase.bmm.model.types or formal parameter nl.rosa.semanticdatabase.bmm.model.types.
    * @return the value of genericParameters
    */
   public List<BmmUnitaryType> getGenericParameters () {
@@ -92,7 +92,7 @@ public class BmmGenericType extends BmmModelType {
    * Set the value of new_attribute
    * @param newVar the new value of new_attribute
    */
-  public void setNew_attribute (nl.rosa.semanticdatabase.bmm.types.BmmUnitaryType newVar) {
+  public void setNew_attribute (nl.rosa.semanticdatabase.bmm.model.types.BmmUnitaryType newVar) {
     new_attribute = newVar;
   }
 
@@ -100,7 +100,7 @@ public class BmmGenericType extends BmmModelType {
    * Get the value of new_attribute
    * @return the value of new_attribute
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmUnitaryType getNew_attribute () {
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmUnitaryType getNew_attribute () {
     return new_attribute;
   }
 
@@ -110,7 +110,7 @@ public class BmmGenericType extends BmmModelType {
 
   /**
    * Signature form of the type, which for generics includes generic parameter
-   * constrainer nl.rosa.semanticdatabase.bmm.types E.g. Interval<T:Ordered>.
+   * constrainer nl.rosa.semanticdatabase.bmm.model.types E.g. Interval<T:Ordered>.
    * @return       String
    */
   public String typeSignature()
@@ -137,7 +137,7 @@ public class BmmGenericType extends BmmModelType {
 
 
   /**
-   * True if all generic parameters from ancestor generic nl.rosa.semanticdatabase.bmm.types have been substituted
+   * True if all generic parameters from ancestor generic nl.rosa.semanticdatabase.bmm.model.types have been substituted
    * in this type.
    * @return       boolean
    */

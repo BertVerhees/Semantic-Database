@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.repositories.expressions;
 
-import nl.rosa.semanticdatabase.bmm.expressions.ElTuple;
+import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElTuple;
 import org.springframework.data.repository.CrudRepository;
 
 /**

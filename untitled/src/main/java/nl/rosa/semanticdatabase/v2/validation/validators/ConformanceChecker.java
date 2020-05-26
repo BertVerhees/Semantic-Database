@@ -8,7 +8,7 @@ import java.util.List;
 public class ConformanceChecker {
 
     /**
-     * True if `a_child_prop' conforms to `a_parent_prop' such that it could be used to override it; same nl.rosa.semanticdatabase.bmm.types are not considered conforming
+     * True if `a_child_prop' conforms to `a_parent_prop' such that it could be used to override it; same nl.rosa.semanticdatabase.bmm.model.types are not considered conforming
      *
      * @param aChildProperty
      * @param aParentProperty

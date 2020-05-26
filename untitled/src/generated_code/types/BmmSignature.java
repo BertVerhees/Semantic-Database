@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmm.types;
+package nl.rosa.semanticdatabase.bmm.model.types;
 
 
 /**
@@ -27,14 +27,14 @@ public class BmmSignature extends BmmEffectiveType {
 
   private String baseName = "Signature";
   /**
-   * Type of arguments in the signature, if any; represented as a type-tuple (list of arbitrary nl.rosa.semanticdatabase.bmm.types).
+   * Type of arguments in the signature, if any; represented as a type-tuple (list of arbitrary nl.rosa.semanticdatabase.bmm.model.types).
    */
-  private nl.rosa.semanticdatabase.bmm.types.BmmTupleType argumentTypes;  /**
+  private nl.rosa.semanticdatabase.bmm.model.types.BmmTupleType argumentTypes;  /**
 
    * Result type of signature, if any.
    *    */
 
-  private nl.rosa.semanticdatabase.bmm.types.BmmType resultType;
+  private nl.rosa.semanticdatabase.bmm.model.types.BmmType resultType;
   
   //
   // Constructors
@@ -69,20 +69,20 @@ public class BmmSignature extends BmmEffectiveType {
   /**
    * Set the value of argumentTypes
    * Type of arguments in the signature, if any; represented as a type-tuple (list of
-   * arbitrary nl.rosa.semanticdatabase.bmm.types).
+   * arbitrary nl.rosa.semanticdatabase.bmm.model.types).
    * @param newVar the new value of argumentTypes
    */
-  public void setArgumentTypes (nl.rosa.semanticdatabase.bmm.types.BmmTupleType newVar) {
+  public void setArgumentTypes (nl.rosa.semanticdatabase.bmm.model.types.BmmTupleType newVar) {
     argumentTypes = newVar;
   }
 
   /**
    * Get the value of argumentTypes
    * Type of arguments in the signature, if any; represented as a type-tuple (list of
-   * arbitrary nl.rosa.semanticdatabase.bmm.types).
+   * arbitrary nl.rosa.semanticdatabase.bmm.model.types).
    * @return the value of argumentTypes
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmTupleType getArgumentTypes () {
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmTupleType getArgumentTypes () {
     return argumentTypes;
   }
 
@@ -92,7 +92,7 @@ public class BmmSignature extends BmmEffectiveType {
    * 
    * @param newVar the new value of resultType
    */
-  public void setResultType (nl.rosa.semanticdatabase.bmm.types.BmmType newVar) {
+  public void setResultType (nl.rosa.semanticdatabase.bmm.model.types.BmmType newVar) {
     resultType = newVar;
   }
 
@@ -102,7 +102,7 @@ public class BmmSignature extends BmmEffectiveType {
    * 
    * @return the value of resultType
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmType getResultType () {
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmType getResultType () {
     return resultType;
   }
 

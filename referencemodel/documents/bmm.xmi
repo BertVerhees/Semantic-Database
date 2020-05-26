@@ -383,7 +383,7 @@
         </UML:Class>
        </UML:Namespace.ownedElement>
       </UML:Package>
-      <UML:Package visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uiDxbxX4ayaEB" name="nl.rosa.semanticdatabase.bmm.types">
+      <UML:Package visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uiDxbxX4ayaEB" name="nl.rosa.semanticdatabase.bmm.model.types">
        <UML:Namespace.ownedElement>
         <UML:Class visibility="public" isSpecification="false" namespace="uiDxbxX4ayaEB" isAbstract="true" isLeaf="false" isRoot="false" xmi.id="ugrhGzU4tGAeY" comment="Abstract idea of specifying a type in some context. This is not the same as 'defining' a class. A type specification is essentially a reference of some kind, that defines the type of an attribute, or function result or argument. It may include generic parameters that might or might not be bound. See subtypes." name="BmmType">
          <UML:GeneralizableElement.generalization>
@@ -400,7 +400,7 @@
             <UML:Parameter kind="return" xmi.id="ukkw6Slp2awnX" type="u9qqOYlYNZUyJ"/>
            </UML:BehavioralFeature.parameter>
           </UML:Operation>
-          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ukkAfXoBRNAJy" comment="Signature form of the type name, which for generics includes generic parameter constrainer nl.rosa.semanticdatabase.bmm.types E.g. Interval&lt;T:Ordered>.&#xa;Defaults to the value of type_name()." isOverride="false" name="typeSignature" isInline="false" isVirtual="false">
+          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ukkAfXoBRNAJy" comment="Signature form of the type name, which for generics includes generic parameter constrainer nl.rosa.semanticdatabase.bmm.model.types E.g. Interval&lt;T:Ordered>.&#xa;Defaults to the value of type_name()." isOverride="false" name="typeSignature" isInline="false" isVirtual="false">
            <UML:BehavioralFeature.parameter>
             <UML:Parameter kind="return" xmi.id="ubTmiRkUv5tFq" type="uB8ZgRpFeuI75"/>
            </UML:BehavioralFeature.parameter>
@@ -409,7 +409,7 @@
           <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uappFYIDO4yEa" comment="Type with any container abstracted away, and any formal parameter replaced by its effective constraint type. When BmmEffectiveType Result=self" isOverride="false" name="effectiveType" isInline="false" isVirtual="false"/>
          </UML:Classifier.feature>
         </UML:Class>
-        <UML:Class visibility="public" isSpecification="false" namespace="uiDxbxX4ayaEB" isAbstract="true" isLeaf="false" isRoot="false" xmi.id="uIveflPNLbawT" comment="Parent of meta-nl.rosa.semanticdatabase.bmm.types that may be used as the type of any instantiated object that is not a container object." name="BmmUnitaryType">
+        <UML:Class visibility="public" isSpecification="false" namespace="uiDxbxX4ayaEB" isAbstract="true" isLeaf="false" isRoot="false" xmi.id="uIveflPNLbawT" comment="Parent of meta-nl.rosa.semanticdatabase.bmm.model.types that may be used as the type of any instantiated object that is not a container object." name="BmmUnitaryType">
          <UML:GeneralizableElement.generalization>
           <UML:Generalization xmi.idref="uUxSRvg7UmnMA"/>
          </UML:GeneralizableElement.generalization>
@@ -473,10 +473,10 @@
           <UML:Generalization xmi.idref="uzoG9ONwmrhId"/>
          </UML:GeneralizableElement.generalization>
          <UML:Classifier.feature>
-          <UML:Attribute visibility="private" isSpecification="false" xmi.id="uJUHTMgRK08wy" type="uCTVwwlqdpRTX" comment="Generic parameters of the root_type in this type specifier. The order must match the order of the owning class’s formal generic parameter declarations, and the nl.rosa.semanticdatabase.bmm.types may be defined nl.rosa.semanticdatabase.bmm.types or formal parameter nl.rosa.semanticdatabase.bmm.types." name="genericParameters"/>
+          <UML:Attribute visibility="private" isSpecification="false" xmi.id="uJUHTMgRK08wy" type="uCTVwwlqdpRTX" comment="Generic parameters of the root_type in this type specifier. The order must match the order of the owning class’s formal generic parameter declarations, and the nl.rosa.semanticdatabase.bmm.model.types may be defined nl.rosa.semanticdatabase.bmm.model.types or formal parameter nl.rosa.semanticdatabase.bmm.model.types." name="genericParameters"/>
           <UML:Attribute visibility="private" isSpecification="false" xmi.id="urzjIHRGsf8Eu" type="uHMHTLdMbBxXy" comment="The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE." name="baseClass"/>
           <UML:Attribute visibility="private" isSpecification="false" xmi.id="uBSMH51shwtlJ" type="uIveflPNLbawT" name="new_attribute"/>
-          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uaYdoiC7q98QI" comment="Signature form of the type, which for generics includes generic parameter constrainer nl.rosa.semanticdatabase.bmm.types E.g. Interval&lt;T:Ordered>." isOverride="false" name="typeSignature" isInline="false" isVirtual="false">
+          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uaYdoiC7q98QI" comment="Signature form of the type, which for generics includes generic parameter constrainer nl.rosa.semanticdatabase.bmm.model.types E.g. Interval&lt;T:Ordered>." isOverride="false" name="typeSignature" isInline="false" isVirtual="false">
            <UML:BehavioralFeature.parameter>
             <UML:Parameter kind="return" xmi.id="uFCQvw4r1B2Rz" type="uB8ZgRpFeuI75"/>
            </UML:BehavioralFeature.parameter>
@@ -491,20 +491,20 @@
             <UML:Parameter kind="return" xmi.id="uRFV51lql6kZf" type="uHMHTLdMbBxXy"/>
            </UML:BehavioralFeature.parameter>
           </UML:Operation>
-          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uG8kaDPuiTSZb" comment="True if all generic parameters from ancestor generic nl.rosa.semanticdatabase.bmm.types have been substituted in this type." isOverride="false" name="isOpen" isInline="false" isVirtual="false">
+          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uG8kaDPuiTSZb" comment="True if all generic parameters from ancestor generic nl.rosa.semanticdatabase.bmm.model.types have been substituted in this type." isOverride="false" name="isOpen" isInline="false" isVirtual="false">
            <UML:BehavioralFeature.parameter>
             <UML:Parameter kind="return" xmi.id="uh2ZdX3beMfDG" type="uO9EhB4Y7dSnx"/>
            </UML:BehavioralFeature.parameter>
           </UML:Operation>
          </UML:Classifier.feature>
         </UML:Class>
-        <UML:Class visibility="public" isSpecification="false" namespace="uiDxbxX4ayaEB" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uUEP7SDuvLYjP" comment="Special type representing the type of a tuple, i.e. an array of any number of other nl.rosa.semanticdatabase.bmm.types. This includes both container and unitary nl.rosa.semanticdatabase.bmm.types, since tuple instances represent concrete objects.&#xa;Note that both open and closed generic parameters are allowed, as with any generic type, but open generic parameters are only valid within the scope of a generic class.&#xa;&#xa;effected) type_base_name (): String&#xa;Post_result: Result.is_equal (base_name())&#xa;Return base_name.&#xa;(effected) is_primitive (): Boolean&#xa;Result = True.&#xa;(effected) is_abstract (): Boolean&#xa;Result = False.&#xa;(effected) type_name (): String&#xa;Post_result: Result.is_equal (base_name())&#xa;Return base_name.&#xa;" name="BmmTupleType">
+        <UML:Class visibility="public" isSpecification="false" namespace="uiDxbxX4ayaEB" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uUEP7SDuvLYjP" comment="Special type representing the type of a tuple, i.e. an array of any number of other nl.rosa.semanticdatabase.bmm.model.types. This includes both container and unitary nl.rosa.semanticdatabase.bmm.model.types, since tuple instances represent concrete objects.&#xa;Note that both open and closed generic parameters are allowed, as with any generic type, but open generic parameters are only valid within the scope of a generic class.&#xa;&#xa;effected) type_base_name (): String&#xa;Post_result: Result.is_equal (base_name())&#xa;Return base_name.&#xa;(effected) is_primitive (): Boolean&#xa;Result = True.&#xa;(effected) is_abstract (): Boolean&#xa;Result = False.&#xa;(effected) type_name (): String&#xa;Post_result: Result.is_equal (base_name())&#xa;Return base_name.&#xa;" name="BmmTupleType">
          <UML:GeneralizableElement.generalization>
           <UML:Generalization xmi.idref="uznrsoX172WOx"/>
          </UML:GeneralizableElement.generalization>
          <UML:Classifier.feature>
           <UML:Attribute visibility="private" isSpecification="false" xmi.id="ujVu8rnGSrXDh" type="uB8ZgRpFeuI75" initialValue="Tuple" name="baseName"/>
-          <UML:Attribute visibility="private" isSpecification="false" xmi.id="u2VDu5akaK8uZ" type="uFxkUvi8Y5XXu" comment="List of nl.rosa.semanticdatabase.bmm.types of the items of the tuple, keyed by purpose in the tuple." name="itemTypes"/>
+          <UML:Attribute visibility="private" isSpecification="false" xmi.id="u2VDu5akaK8uZ" type="uFxkUvi8Y5XXu" comment="List of nl.rosa.semanticdatabase.bmm.model.types of the items of the tuple, keyed by purpose in the tuple." name="itemTypes"/>
          </UML:Classifier.feature>
         </UML:Class>
         <UML:Class visibility="public" isSpecification="false" namespace="uiDxbxX4ayaEB" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="ucQyFmVyKa6Pf" comment="Non-entity meta-type that expresses the type structure of any referenceable element of a model. Consists of potential arguments and result, with constraints in descendants determining the exact form.&#xa;&#xa;(effected) type_base_name (): String&#xa;Post_result: Result.is_equal (base_name())&#xa;Return base_name.&#xa;(effected) is_abstract (): Boolean&#xa;Result = False.&#xa;(effected) is_primitive (): Boolean&#xa;Result = True.&#xa;(effected) type_name (): String&#xa;Post_result: Result.is_equal (base_name())&#xa;Return base_name&#xa;" name="BmmSignature">
@@ -513,7 +513,7 @@
          </UML:GeneralizableElement.generalization>
          <UML:Classifier.feature>
           <UML:Attribute visibility="private" isSpecification="false" xmi.id="usZQYTpjmJf5u" type="uB8ZgRpFeuI75" initialValue="Signature" name="baseName"/>
-          <UML:Attribute visibility="private" isSpecification="false" xmi.id="uXnWWuNrxEOLS" type="uUEP7SDuvLYjP" comment="Type of arguments in the signature, if any; represented as a type-tuple (list of arbitrary nl.rosa.semanticdatabase.bmm.types)." name="argumentTypes"/>
+          <UML:Attribute visibility="private" isSpecification="false" xmi.id="uXnWWuNrxEOLS" type="uUEP7SDuvLYjP" comment="Type of arguments in the signature, if any; represented as a type-tuple (list of arbitrary nl.rosa.semanticdatabase.bmm.model.types)." name="argumentTypes"/>
           <UML:Attribute visibility="private" isSpecification="false" xmi.id="uojiAiBvppf9r" type="ugrhGzU4tGAeY" comment="Result type of signature, if any.&#xa;" name="resultType"/>
          </UML:Classifier.feature>
         </UML:Class>
@@ -551,7 +551,7 @@
       <UML:Generalization discriminator="" visibility="public" isSpecification="false" namespace="Logical_View" child="urJ00zM9fKkKf" xmi.id="uuTPwR6APOOyt" parent="uvSTjN0mScWMv" name=""/>
       <UML:Package visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="upo3CuPHOU39S" name="classes">
        <UML:Namespace.ownedElement>
-        <UML:Class visibility="public" isSpecification="false" namespace="upo3CuPHOU39S" isAbstract="true" isLeaf="false" isRoot="false" xmi.id="uK2qtPnFVoDnS" comment="Meta-type corresponding a class definition in an object model. Inheritance is specified by the ancestors attribute, which contains a list of nl.rosa.semanticdatabase.bmm.types rather than classes. Inheritance is thus understood in BMM as a stated relationship between classes. The equivalent relationship between nl.rosa.semanticdatabase.bmm.types is conformance.&#xa;&#xa;NOTE&#xa;unlike UML, the name is just the root name, even if the class is generic. Use type_name() to obtain the qualified type name.&#xa;&#xa;&#xa;(effected) is_primitive (): Boolean&#xa;True if this class is designated a primitive type within the overall type system of the schema. Set from schema.&#xa;(effected) is_abstract (): Boolean&#xa;True if this class is abstract in its model. Value provided from an underlying data property set at creation or construction time.&#xa;" name="BmmClass">
+        <UML:Class visibility="public" isSpecification="false" namespace="upo3CuPHOU39S" isAbstract="true" isLeaf="false" isRoot="false" xmi.id="uK2qtPnFVoDnS" comment="Meta-type corresponding a class definition in an object model. Inheritance is specified by the ancestors attribute, which contains a list of nl.rosa.semanticdatabase.bmm.model.types rather than classes. Inheritance is thus understood in BMM as a stated relationship between classes. The equivalent relationship between nl.rosa.semanticdatabase.bmm.model.types is conformance.&#xa;&#xa;NOTE&#xa;unlike UML, the name is just the root name, even if the class is generic. Use type_name() to obtain the qualified type name.&#xa;&#xa;&#xa;(effected) is_primitive (): Boolean&#xa;True if this class is designated a primitive type within the overall type system of the schema. Set from schema.&#xa;(effected) is_abstract (): Boolean&#xa;True if this class is abstract in its model. Value provided from an underlying data property set at creation or construction time.&#xa;" name="BmmClass">
          <UML:GeneralizableElement.generalization>
           <UML:Generalization xmi.idref="u8cyA3AtlEn85"/>
           <UML:Generalization xmi.idref="uMX3GeYLRKG53"/>
@@ -584,17 +584,17 @@
             <UML:Parameter kind="return" xmi.id="uful61drtET8r" type="u9qqOYlYNZUyJ"/>
            </UML:BehavioralFeature.parameter>
           </UML:Operation>
-          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uFQWI9La3gngQ" comment="List of names of immediate supplier classes, including concrete generic parameters, concrete descendants of abstract statically defined nl.rosa.semanticdatabase.bmm.types, and inherited suppliers. (Where generics are unconstrained, no class name is added, since logically it would be Any and this can always be assumed anyway). This list includes primitive nl.rosa.semanticdatabase.bmm.types." isOverride="false" name="suppliers" isInline="false" isVirtual="false">
+          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uFQWI9La3gngQ" comment="List of names of immediate supplier classes, including concrete generic parameters, concrete descendants of abstract statically defined nl.rosa.semanticdatabase.bmm.model.types, and inherited suppliers. (Where generics are unconstrained, no class name is added, since logically it would be Any and this can always be assumed anyway). This list includes primitive nl.rosa.semanticdatabase.bmm.model.types." isOverride="false" name="suppliers" isInline="false" isVirtual="false">
            <UML:BehavioralFeature.parameter>
             <UML:Parameter kind="return" xmi.id="uNcdSO7H7wE02" type="u9qqOYlYNZUyJ"/>
            </UML:BehavioralFeature.parameter>
           </UML:Operation>
-          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u3oq4lyv0aOSO" comment="Same as suppliers minus primitive nl.rosa.semanticdatabase.bmm.types, as defined in input schema." isOverride="false" name="suppliersNonPrimitive" isInline="false" isVirtual="false">
+          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u3oq4lyv0aOSO" comment="Same as suppliers minus primitive nl.rosa.semanticdatabase.bmm.model.types, as defined in input schema." isOverride="false" name="suppliersNonPrimitive" isInline="false" isVirtual="false">
            <UML:BehavioralFeature.parameter>
             <UML:Parameter kind="return" xmi.id="u1GT5lX66G9xY" type="u9qqOYlYNZUyJ"/>
            </UML:BehavioralFeature.parameter>
           </UML:Operation>
-          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u0DgpG7tVN8UB" comment="ist of names of all classes in full supplier closure, including concrete generic parameters; (where generics are unconstrained, no class name is added, since logically it would be Any and this can always be assumed anyway). This list includes primitive nl.rosa.semanticdatabase.bmm.types." isOverride="false" name="supplierClosure" isInline="false" isVirtual="false">
+          <UML:Operation visibility="public" isSpecification="false" isQuery="false" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u0DgpG7tVN8UB" comment="ist of names of all classes in full supplier closure, including concrete generic parameters; (where generics are unconstrained, no class name is added, since logically it would be Any and this can always be assumed anyway). This list includes primitive nl.rosa.semanticdatabase.bmm.model.types." isOverride="false" name="supplierClosure" isInline="false" isVirtual="false">
            <UML:BehavioralFeature.parameter>
             <UML:Parameter kind="return" xmi.id="u14O5aKV79Fel" type="u9qqOYlYNZUyJ"/>
            </UML:BehavioralFeature.parameter>
@@ -717,7 +717,7 @@
           </UML:Operation>
          </UML:Classifier.feature>
         </UML:Class>
-        <UML:Class visibility="public" isSpecification="false" namespace="umbtB0b9aHmc2" isAbstract="true" isLeaf="false" isRoot="false" xmi.id="u1laT00b84w87" comment="Abstract parent of operator nl.rosa.semanticdatabase.bmm.types." name="ElOperator">
+        <UML:Class visibility="public" isSpecification="false" namespace="umbtB0b9aHmc2" isAbstract="true" isLeaf="false" isRoot="false" xmi.id="u1laT00b84w87" comment="Abstract parent of operator nl.rosa.semanticdatabase.bmm.model.types." name="ElOperator">
          <UML:GeneralizableElement.generalization>
           <UML:Generalization xmi.idref="uCnyV4vCqJgtj"/>
          </UML:GeneralizableElement.generalization>
@@ -804,7 +804,7 @@
           <UML:Attribute visibility="private" isSpecification="false" xmi.id="uqodhhkvhlblG" type="ugrhGzU4tGAeY" name="type"/>
          </UML:Classifier.feature>
         </UML:Class>
-        <UML:Class visibility="public" isSpecification="false" namespace="umbtB0b9aHmc2" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uee40NWtIv1g0" comment="Literal value of any type known in the model, including primitive nl.rosa.semanticdatabase.bmm.types. Defined via a BMM_LITERAL_VALUE." name="ElLiteral">
+        <UML:Class visibility="public" isSpecification="false" namespace="umbtB0b9aHmc2" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uee40NWtIv1g0" comment="Literal value of any type known in the model, including primitive nl.rosa.semanticdatabase.bmm.model.types. Defined via a BMM_LITERAL_VALUE." name="ElLiteral">
          <UML:GeneralizableElement.generalization>
           <UML:Generalization xmi.idref="ujzG1PlUrWv5d"/>
          </UML:GeneralizableElement.generalization>
@@ -916,7 +916,7 @@
          </UML:GeneralizableElement.generalization>
          <UML:Classifier.feature>
           <UML:Attribute visibility="private" isSpecification="false" xmi.id="uK7n91GlbqHLu" type="uJflj4JqUtvj7" comment="Left operand of constraint expression." name="leftOperand"/>
-          <UML:Attribute visibility="private" isSpecification="false" xmi.id="uKmpWHeICkTzE" type="umJiy36Rd0yl1" comment="Right hand side of the constraint expression. Redefined in sub-nl.rosa.semanticdatabase.bmm.types." name="constraint"/>
+          <UML:Attribute visibility="private" isSpecification="false" xmi.id="uKmpWHeICkTzE" type="umJiy36Rd0yl1" comment="Right hand side of the constraint expression. Redefined in sub-nl.rosa.semanticdatabase.bmm.model.types." name="constraint"/>
          </UML:Classifier.feature>
         </UML:Class>
        </UML:Namespace.ownedElement>
@@ -1146,7 +1146,7 @@
       <UML:Generalization discriminator="" visibility="public" isSpecification="false" namespace="Logical_View" child="uMyZm0u4nDlCz" xmi.id="uWONy0RGmmHH0" parent="uN5DMRcyGCB90" name=""/>
       <UML:Package visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="u4RKV03svdLcU" name="literal_values">
        <UML:Namespace.ownedElement>
-        <UML:Class visibility="public" isSpecification="false" namespace="u4RKV03svdLcU" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uHRTt3oE7J5at" comment="Meta-type for literal instance values declared in a model. Instance values may be inline values of primitive nl.rosa.semanticdatabase.bmm.types in the usual fashion or complex objects in syntax form, e.g. JSON." name="BmmLiteralValue">
+        <UML:Class visibility="public" isSpecification="false" namespace="u4RKV03svdLcU" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uHRTt3oE7J5at" comment="Meta-type for literal instance values declared in a model. Instance values may be inline values of primitive nl.rosa.semanticdatabase.bmm.model.types in the usual fashion or complex objects in syntax form, e.g. JSON." name="BmmLiteralValue">
          <UML:Classifier.feature>
           <UML:Attribute visibility="private" isSpecification="false" xmi.id="uEodkOeuj69kg" type="uB8ZgRpFeuI75" comment="A serial representation of the value." name="valueLiteral"/>
           <UML:Attribute visibility="private" isSpecification="false" xmi.id="uXrN5LEWAP5Bx" type="umJiy36Rd0yl1" comment="A native representation of the value, possibly derived by deserialising value_literal." name="value"/>
@@ -1204,7 +1204,7 @@
       <UML:Class visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uRiwS0nLwEEO1" name="T"/>
       <UML:Package visibility="public" isSpecification="false" namespace="Logical_View" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uaGZItAGZ6az9" name="functional_elements">
        <UML:Namespace.ownedElement>
-        <UML:Class visibility="public" isSpecification="false" namespace="uaGZItAGZ6az9" isAbstract="true" isLeaf="false" isRoot="false" xmi.id="u3SImp0tHtJpu" comment="Abstract parent of statement nl.rosa.semanticdatabase.bmm.types." name="BmmStatementItem"/>
+        <UML:Class visibility="public" isSpecification="false" namespace="uaGZItAGZ6az9" isAbstract="true" isLeaf="false" isRoot="false" xmi.id="u3SImp0tHtJpu" comment="Abstract parent of statement nl.rosa.semanticdatabase.bmm.model.types." name="BmmStatementItem"/>
         <UML:Class visibility="public" isSpecification="false" namespace="uaGZItAGZ6az9" isAbstract="false" isLeaf="false" isRoot="false" xmi.id="uMZQJ0BsjgyEB" comment="A statement 'block' corresponding to the programming language concept of the same name. May be used to establish scope in specific languages." name="BmmStatementBlock">
          <UML:GeneralizableElement.generalization>
           <UML:Generalization xmi.idref="uzIPPzTrzDKRO"/>
@@ -1213,7 +1213,7 @@
           <UML:Attribute visibility="private" isSpecification="false" xmi.id="ujTSCFqbUjRFW" type="u3SImp0tHtJpu" comment="Child blocks of the current block." name="items"/>
          </UML:Classifier.feature>
         </UML:Class>
-        <UML:Class visibility="public" isSpecification="false" namespace="uaGZItAGZ6az9" isAbstract="true" isLeaf="false" isRoot="false" xmi.id="uMPlduhhuD9Js" comment="Abstract parent of 'statement' nl.rosa.semanticdatabase.bmm.types that may be defined to implement BMM Routines." name="BmmStatement">
+        <UML:Class visibility="public" isSpecification="false" namespace="uaGZItAGZ6az9" isAbstract="true" isLeaf="false" isRoot="false" xmi.id="uMPlduhhuD9Js" comment="Abstract parent of 'statement' nl.rosa.semanticdatabase.bmm.model.types that may be defined to implement BMM Routines." name="BmmStatement">
          <UML:GeneralizableElement.generalization>
           <UML:Generalization xmi.idref="uigslgv1XPMil"/>
          </UML:GeneralizableElement.generalization>

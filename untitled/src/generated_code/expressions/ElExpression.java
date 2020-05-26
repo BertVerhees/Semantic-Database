@@ -1,5 +1,5 @@
 package expressions;
-import nl.rosa.semanticdatabase.bmm.types.BmmType;
+import nl.rosa.semanticdatabase.bmm.model.types.BmmType;
 
 
 /**
@@ -34,9 +34,9 @@ abstract public class ElExpression {
   /**
    * Meta-type of expression entity used in type-checking and evaluation.
    * Effected in descendants.
-   * @return       nl.rosa.semanticdatabase.bmm.types.BmmType
+   * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmType
    */
-  abstract public nl.rosa.semanticdatabase.bmm.types.BmmType evalType();
+  abstract public nl.rosa.semanticdatabase.bmm.model.types.BmmType evalType();
 
 
   /**

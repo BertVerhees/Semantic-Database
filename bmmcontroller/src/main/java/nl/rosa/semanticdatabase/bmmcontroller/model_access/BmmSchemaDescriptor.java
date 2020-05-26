@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmcontroller.model_access;
 
-import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.bmm.model.model_structure.BmmModel;
 
 import java.util.List;
 import java.util.Map;

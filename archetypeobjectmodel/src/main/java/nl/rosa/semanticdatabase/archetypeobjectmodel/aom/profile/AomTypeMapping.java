@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.archetypeobjectmodel.aom.profile;
 import java.util.Map;
 
 /**
- * Data object expressing a mapping between two nl.rosa.semanticdatabase.bmm.types.
+ * Data object expressing a mapping between two nl.rosa.semanticdatabase.bmm.model.types.
  *
  * Created by cnanjo on 5/30/16.
  */

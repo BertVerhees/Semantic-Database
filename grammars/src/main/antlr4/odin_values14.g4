@@ -1,5 +1,5 @@
 //
-// grammar defining ODIN terminal value nl.rosa.semanticdatabase.bmm.types, including atoms, lists and intervals
+// grammar defining ODIN terminal value nl.rosa.semanticdatabase.bmm.model.types, including atoms, lists and intervals
 //
 
 grammar odin_values14;

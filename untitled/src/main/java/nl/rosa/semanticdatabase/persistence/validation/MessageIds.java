@@ -28,7 +28,7 @@ import nl.rosa.semanticdatabase.message.MessageCode;
         ec_schema_includes_valiidation_failed(I18n.register("Reference Model schema {0} includes validation failed: %N{1}")),
         ec_schema_version_incompatible_with_tool(I18n.register("Reference Model BMM schema {0} incompatible with current release {1} of the tool; obtain up to date schemas")),
         ec_schema_conv_fail_err(I18n.register("Reference Model schema {0} load data conversion failure; reason: {1}")),
-        ec_schema_info_loaded(I18n.register("Reference Model schema {0} loaded: {1} primitive nl.rosa.semanticdatabase.bmm.types, {2} class definitions")),
+        ec_schema_info_loaded(I18n.register("Reference Model schema {0} loaded: {1} primitive nl.rosa.semanticdatabase.bmm.model.types, {2} class definitions")),
         ec_schema_merged_schema(I18n.register("Merged schema {0} into schema {1}")),
         ec_model_access_w1(I18n.register("Reference Model checking is OFF")),
         ec_schema_duplicate_schema_found(I18n.register("Duplicate Reference Model schema found for model ''{0}'' in file {1}, ignoring latter")),
@@ -68,12 +68,12 @@ import nl.rosa.semanticdatabase.message.MessageCode;
         ec_INCWARN(I18n.register("Schema {0} included schema {1} validity warning")),
         EC_ARCHETYPE_PARENT_CLASS_UNDEFINED(I18n.register("Schema {0} archetype parent class {1} not defined in schema")),
         EC_RM_RELEASE_INVALID(I18n.register("Schema {0} RM release {1} not valid; should be 3-part numeric version")),
-        ec_class_not_in_definitions(I18n.register("Schema {0} defines class {1}, but class is not in defined classes or primitive nl.rosa.semanticdatabase.bmm.types for package {2}")),
+        ec_class_not_in_definitions(I18n.register("Schema {0} defines class {1}, but class is not in defined classes or primitive nl.rosa.semanticdatabase.bmm.model.types for package {2}")),
         ec_class_name_empty(I18n.register("Schema {0} contains an empty class name in package {1}")),
         //Added for java-model-stack
         ec_object_file_not_valid(I18n.register("EC Object file not valid")),
         ec_schema_load_error(I18n.register("BMM Schema load error")),
-        SCHEMA_CREATED(I18n.register("Schema {0} created succesfully, defining {1} primitive nl.rosa.semanticdatabase.bmm.types and {2} classes"));
+        SCHEMA_CREATED(I18n.register("Schema {0} created succesfully, defining {1} primitive nl.rosa.semanticdatabase.bmm.model.types and {2} classes"));
 
         private final String template;
 

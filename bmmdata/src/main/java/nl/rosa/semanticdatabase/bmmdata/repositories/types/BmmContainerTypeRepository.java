@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.repositories.types;
 
-import nl.rosa.semanticdatabase.bmm.types.BmmContainerType;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmContainerType;
 import org.springframework.data.repository.CrudRepository;
 
 /**

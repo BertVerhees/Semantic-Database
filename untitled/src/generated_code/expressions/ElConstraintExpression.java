@@ -18,7 +18,7 @@ public class ElConstraintExpression extends ElExpression {
    */
   private expressions.ElExpression leftOperand;
   /**
-   * Right hand side of the constraint expression. Redefined in sub-nl.rosa.semanticdatabase.bmm.types.
+   * Right hand side of the constraint expression. Redefined in sub-nl.rosa.semanticdatabase.bmm.model.types.
    */
   private Object constraint;
   
@@ -56,7 +56,7 @@ public class ElConstraintExpression extends ElExpression {
 
   /**
    * Set the value of constraint
-   * Right hand side of the constraint expression. Redefined in sub-nl.rosa.semanticdatabase.bmm.types.
+   * Right hand side of the constraint expression. Redefined in sub-nl.rosa.semanticdatabase.bmm.model.types.
    * @param newVar the new value of constraint
    */
   public void setConstraint (Object newVar) {
@@ -65,7 +65,7 @@ public class ElConstraintExpression extends ElExpression {
 
   /**
    * Get the value of constraint
-   * Right hand side of the constraint expression. Redefined in sub-nl.rosa.semanticdatabase.bmm.types.
+   * Right hand side of the constraint expression. Redefined in sub-nl.rosa.semanticdatabase.bmm.model.types.
    * @return the value of constraint
    */
   public Object getConstraint () {

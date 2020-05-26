@@ -1,10 +1,10 @@
 package nl.rosa.semanticdatabase.bmmcontroller.model_access;
 
 import lombok.Data;
-import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
+import nl.rosa.semanticdatabase.bmm.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmm.model_access.BmmModelMetadata;
-import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
-import nl.rosa.semanticdatabase.bmm.model_structure.BmmPackageContainer;
+import nl.rosa.semanticdatabase.bmm.model.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.bmm.model.model_structure.BmmPackageContainer;
 
 import java.util.List;
 

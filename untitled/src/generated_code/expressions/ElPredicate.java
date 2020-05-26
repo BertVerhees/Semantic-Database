@@ -1,5 +1,5 @@
 package expressions;
-import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
+import nl.rosa.semanticdatabase.bmm.model.types.BmmSimpleType;
 
 
 /**
@@ -55,9 +55,9 @@ public class ElPredicate extends ElTerminal {
 
   /**
    * Return {BMM_MODEL}.boolean_type_definition().
-   * @return       nl.rosa.semanticdatabase.bmm.types.BmmSimpleType
+   * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmSimpleType
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmSimpleType evalType()
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmSimpleType evalType()
   {
   }
 

@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.repositories.routine_implementation;
 
-import nl.rosa.semanticdatabase.bmm.routine_implementation.BmmStatementBlock;
+import nl.rosa.semanticdatabase.bmmdata.model.routine_implementation.BmmStatementBlock;
 import org.springframework.data.repository.CrudRepository;
 
 /**

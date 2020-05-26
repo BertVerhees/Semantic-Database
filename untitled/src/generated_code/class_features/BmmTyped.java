@@ -1,5 +1,5 @@
 package class_features;
-import nl.rosa.semanticdatabase.bmm.types.BmmType;
+import nl.rosa.semanticdatabase.bmm.model.types.BmmType;
 
 
 /**
@@ -16,7 +16,7 @@ abstract public class BmmTyped extends BmmType {
   /**
    * Declared or inferred static type of the entity.
    */
-  private nl.rosa.semanticdatabase.bmm.types.BmmType type;
+  private nl.rosa.semanticdatabase.bmm.model.types.BmmType type;
   
   //
   // Constructors
@@ -37,7 +37,7 @@ abstract public class BmmTyped extends BmmType {
    * Declared or inferred static type of the entity.
    * @param newVar the new value of type
    */
-  public void setType (nl.rosa.semanticdatabase.bmm.types.BmmType newVar) {
+  public void setType (nl.rosa.semanticdatabase.bmm.model.types.BmmType newVar) {
     type = newVar;
   }
 
@@ -46,7 +46,7 @@ abstract public class BmmTyped extends BmmType {
    * Declared or inferred static type of the entity.
    * @return the value of type
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmType getType () {
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmType getType () {
     return type;
   }
 

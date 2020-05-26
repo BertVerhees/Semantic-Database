@@ -112,7 +112,7 @@ public class RMGenericClass extends RMClass implements Serializable {
     }
 
     /**
-     * Signature form of the type, which for generics includes generic parameter constrainer nl.rosa.semanticdatabase.bmm.types
+     * Signature form of the type, which for generics includes generic parameter constrainer nl.rosa.semanticdatabase.bmm.model.types
      * E.g. Interval&lt;T:Ordered&gt;
      *
      * @return

@@ -1,6 +1,6 @@
 package classes;
-import nl.rosa.semanticdatabase.bmm.types.BmmGenericType;
-import nl.rosa.semanticdatabase.bmm.types.BmmParameterType;
+import nl.rosa.semanticdatabase.bmm.model.types.BmmGenericType;
+import nl.rosa.semanticdatabase.bmm.model.types.BmmParameterType;
 
 
 /**
@@ -27,7 +27,7 @@ public class BmmGenericClass extends BmmClass {
   // Fields
   //
 
-  private nl.rosa.semanticdatabase.bmm.types.BmmParameterType genericParameters;
+  private nl.rosa.semanticdatabase.bmm.model.types.BmmParameterType genericParameters;
   
   //
   // Constructors
@@ -47,7 +47,7 @@ public class BmmGenericClass extends BmmClass {
    * Set the value of genericParameters
    * @param newVar the new value of genericParameters
    */
-  public void setGenericParameters (nl.rosa.semanticdatabase.bmm.types.BmmParameterType newVar) {
+  public void setGenericParameters (nl.rosa.semanticdatabase.bmm.model.types.BmmParameterType newVar) {
     genericParameters = newVar;
   }
 
@@ -55,7 +55,7 @@ public class BmmGenericClass extends BmmClass {
    * Get the value of genericParameters
    * @return the value of genericParameters
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmParameterType getGenericParameters () {
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmParameterType getGenericParameters () {
     return genericParameters;
   }
 
@@ -87,9 +87,9 @@ public class BmmGenericClass extends BmmClass {
   /**
    * Generate a fully open BMM_GENERIC_TYPE instance that corresponds to this class
    * definition
-   * @return       nl.rosa.semanticdatabase.bmm.types.BmmGenericType
+   * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmGenericType
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmGenericType type()
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmGenericType type()
   {
   }
 

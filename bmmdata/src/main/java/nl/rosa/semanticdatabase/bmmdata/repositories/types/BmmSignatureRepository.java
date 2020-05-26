@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.repositories.types;
 
-import nl.rosa.semanticdatabase.bmm.types.BmmSignature;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 import org.springframework.data.repository.CrudRepository;
 
 /**

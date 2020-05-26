@@ -32,7 +32,7 @@ object_value_block : ( '(' type_id ')' )? '<' ( primitive_object | attr_vals? | 
 
 keyed_object : '[' primitive_value ']' '=' object_block ; // TODO: probably should limit to String and Integer?
 
-// ------ leaf nl.rosa.semanticdatabase.bmm.types ------
+// ------ leaf nl.rosa.semanticdatabase.bmm.model.types ------
 
 primitive_object :
       primitive_value 

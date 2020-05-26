@@ -99,7 +99,7 @@ public class PropertyValidator extends ValidatorBase {
                     pRMProperty.getName(),
                     attributeTypeDefinition.getType());
         } else if(attributeTypeReference != null){
-            //Loop through nl.rosa.semanticdatabase.bmm.types inside container type
+            //Loop through nl.rosa.semanticdatabase.bmm.model.types inside container type
             List<String> typeReferences = attributeTypeReference.flattenedTypeList();
             if(typeReferences != null) {
                 for(String typeReference:typeReferences) {

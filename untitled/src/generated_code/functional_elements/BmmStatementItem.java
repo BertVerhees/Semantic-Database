@@ -3,7 +3,7 @@ package functional_elements;
 
 /**
  * Class BmmStatementItem
- * Abstract parent of statement nl.rosa.semanticdatabase.bmm.types.
+ * Abstract parent of statement nl.rosa.semanticdatabase.bmm.model.types.
  */
 abstract public class BmmStatementItem {
 

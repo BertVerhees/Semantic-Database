@@ -1,5 +1,5 @@
 package expressions;
-import nl.rosa.semanticdatabase.bmm.types.BmmType;
+import nl.rosa.semanticdatabase.bmm.model.types.BmmType;
 
 
 /**
@@ -18,7 +18,7 @@ public class ElSelfRef extends ElInstanceRef {
   /**
    * Type of the current scoping instance, inferred from expression context.
    */
-  private nl.rosa.semanticdatabase.bmm.types.BmmType type;
+  private nl.rosa.semanticdatabase.bmm.model.types.BmmType type;
   
   //
   // Constructors
@@ -39,7 +39,7 @@ public class ElSelfRef extends ElInstanceRef {
    * Type of the current scoping instance, inferred from expression context.
    * @param newVar the new value of type
    */
-  public void setType (nl.rosa.semanticdatabase.bmm.types.BmmType newVar) {
+  public void setType (nl.rosa.semanticdatabase.bmm.model.types.BmmType newVar) {
     type = newVar;
   }
 
@@ -48,7 +48,7 @@ public class ElSelfRef extends ElInstanceRef {
    * Type of the current scoping instance, inferred from expression context.
    * @return the value of type
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmType getType () {
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmType getType () {
     return type;
   }
 
@@ -58,9 +58,9 @@ public class ElSelfRef extends ElInstanceRef {
 
   /**
    * Return type.
-   * @return       nl.rosa.semanticdatabase.bmm.types.BmmType
+   * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmType
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmType evalType()
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmType evalType()
   {
   }
 

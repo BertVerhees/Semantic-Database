@@ -3,7 +3,7 @@ import class_features.BmmProperty;
 import classes.BmmClass;
 import classes.BmmEnumeration;
 import model_access.BmmModelMetadata;
-import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
+import nl.rosa.semanticdatabase.bmm.model.types.BmmSimpleType;
 
 
 /**
@@ -219,9 +219,9 @@ public class BmmModel extends BmmPackageContainer, BmmModelMetadata {
 
 
   /**
-   * @return       nl.rosa.semanticdatabase.bmm.types.BmmSimpleType
+   * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmSimpleType
    */
-  public nl.rosa.semanticdatabase.bmm.types.BmmSimpleType anyTypeDefinition()
+  public nl.rosa.semanticdatabase.bmm.model.types.BmmSimpleType anyTypeDefinition()
   {
   }
 

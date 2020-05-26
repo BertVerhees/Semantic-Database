@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * Utility that defines the java mapping of type and attribute names of a given reference model.
  *
- * Use it to obtain java classes for RM Type Names, and java fields, getters, setters and nl.rosa.semanticdatabase.bmm.types for RM Attribute Names
+ * Use it to obtain java classes for RM Type Names, and java fields, getters, setters and nl.rosa.semanticdatabase.bmm.model.types for RM Attribute Names
  *
  * This class is never directly created, but subclasses must be created that setup the correct model. Create a subclass
  * per model you want to use with Archie, for example one for an OpenEHR RM implementation, or the CIMI RM implementation
@@ -283,7 +283,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
         if (Collection.class.isAssignableFrom(rawFieldType)) {
             Type[] actualTypeArguments = ((ParameterizedType) fieldType.getType()).getActualTypeArguments();
             if (actualTypeArguments.length == 1) {
-                //the java reflection api is kind of tricky with nl.rosa.semanticdatabase.bmm.types. This works for the archie RM, but may cause problems for other RMs. The fix is implementing more ways
+                //the java reflection api is kind of tricky with nl.rosa.semanticdatabase.bmm.model.types. This works for the archie RM, but may cause problems for other RMs. The fix is implementing more ways
                 if (actualTypeArguments[0] instanceof Class) {
                     return (Class) actualTypeArguments[0];
                 } else if (actualTypeArguments[0] instanceof ParameterizedType) {
@@ -391,7 +391,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
 
     private String getTypeWithoutGenericType(String rmTypeName) {
         if(rmTypeName.indexOf('<') > 0) {
-            //strip generic nl.rosa.semanticdatabase.bmm.types, cannot handle them yet
+            //strip generic nl.rosa.semanticdatabase.bmm.model.types, cannot handle them yet
             rmTypeName = rmTypeName.substring(0, rmTypeName.indexOf('<'));
         }
         return rmTypeName;

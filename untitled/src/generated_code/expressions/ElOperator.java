@@ -5,7 +5,7 @@ import class_features.BmmOperator;
 
 /**
  * Class ElOperator
- * Abstract parent of operator nl.rosa.semanticdatabase.bmm.types.
+ * Abstract parent of operator nl.rosa.semanticdatabase.bmm.model.types.
  */
 abstract public class ElOperator extends ElExpression {
 
