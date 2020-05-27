@@ -3,10 +3,10 @@ package nl.rosa.semanticdatabase.referencemodel.v2.validation.converters;
 
 import nl.rosa.semanticdatabase.message.MessageLogger;
 import nl.rosa.semanticdatabase.referencemodel.persistence.validation.MessageIds;
-import nl.rosa.semanticdatabase.referencemodel.v2.persistence.RMIncludeSpec;
 import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMClass;
 import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMPackage;
 import nl.rosa.semanticdatabase.referencemodel.v2.persistence.PRMSchema;
+import nl.rosa.semanticdatabase.referencemodel.v2.persistence.RMIncludeSpec;
 import nl.rosa.semanticdatabase.referencemodel.v2.validation.RMRepository;
 import nl.rosa.semanticdatabase.referencemodel.v2.validation.RMSchemaConverter;
 import nl.rosa.semanticdatabase.referencemodel.v2.validation.RMValidationResult;
