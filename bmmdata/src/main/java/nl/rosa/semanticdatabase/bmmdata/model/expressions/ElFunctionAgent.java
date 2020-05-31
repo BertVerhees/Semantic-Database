@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmRoutine;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
@@ -13,7 +14,7 @@ import java.util.List;
  * An agent whose signature is of a function, i.e. has a result type.
  */
 @Data
-public class ElFunctionAgent implements ElAgent {
+public class ElFunctionAgent extends BmmBaseEntity implements ElAgent {
 
   //
   // Fields

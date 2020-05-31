@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.model.routine_implementation.BmmStatementItem;
@@ -21,7 +22,7 @@ import java.util.Map;
  * non-state-changing.
  */
 @Data
-public class BmmFunction implements BmmRoutine, BmmTypedFeature {
+public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFeature {
 
   //
   // Fields

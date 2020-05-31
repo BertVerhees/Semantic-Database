@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.model_structure;
 
 import lombok.Data;
 import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 import java.util.Map;
 
@@ -10,7 +11,7 @@ import java.util.Map;
  * Class BmmPackageContainer
  */
 @Data
-public abstract class BmmPackageContainer implements BmmDeclaration {
+public abstract class BmmPackageContainer extends BmmBaseEntity implements BmmDeclaration {
 
   private Long id;
 

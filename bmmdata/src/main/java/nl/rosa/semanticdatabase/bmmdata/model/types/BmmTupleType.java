@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,7 @@ import java.util.Map;
  * 
  */
 @Data
-public class BmmTupleType implements BmmEffectiveType {
+public class BmmTupleType extends BmmBaseEntity implements BmmEffectiveType {
 
   //
   // Fields

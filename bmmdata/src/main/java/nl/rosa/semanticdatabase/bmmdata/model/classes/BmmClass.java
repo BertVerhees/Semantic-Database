@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.model.classes;
 
+import nl.rosa.semanticdatabase.bmmdata.model.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.model.entities.BmmEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModule;

@@ -1,6 +1,8 @@
 package nl.rosa.semanticdatabase.bmmdata.model.classes;
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.model.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;
@@ -23,7 +25,7 @@ import java.util.Map;
  * 
  */
 @Data
-public class BmmSimpleClass implements BmmClass {
+public class BmmSimpleClass extends BmmBaseEntity implements BmmClass {
 
   // BmmClass
   /**

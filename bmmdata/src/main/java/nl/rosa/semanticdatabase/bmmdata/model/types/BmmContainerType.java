@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmGenericClass;
 
 import java.util.List;
@@ -28,7 +29,7 @@ import java.util.List;
  * 
  */
 @Data
-public class BmmContainerType implements BmmType {
+public class BmmContainerType extends BmmBaseEntity implements BmmType {
   /**
    * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
    */

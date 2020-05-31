@@ -1,13 +1,15 @@
 package nl.rosa.semanticdatabase.bmmdata.model.classes;
 
 
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
+
 /**
  * Class BmmValueSpec
  * Definition of a range-constrained class whose value range is defined by
  * reference to a 'value set' within an external resource, e.g. a reference data
  * service.
  */
-public class BmmValueSpec {
+public class BmmValueSpec extends BmmBaseEntity {
 
   //
   // Fields

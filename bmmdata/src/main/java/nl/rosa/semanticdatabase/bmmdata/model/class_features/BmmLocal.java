@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmEffectiveType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
@@ -15,7 +16,7 @@ import java.util.Map;
  * Class BmmLocal
  */
 @Data
-public class BmmLocal implements BmmVariable {
+public class BmmLocal extends BmmBaseEntity implements BmmVariable {
 
   // BmmDeclaration
   private String name;

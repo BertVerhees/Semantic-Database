@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
 
@@ -12,7 +13,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
  * in various programming languages.
  */
 @Data
-public class ElSelfRef implements ElInstanceRef {
+public class ElSelfRef extends BmmBaseEntity implements ElInstanceRef {
 
   /**
    * Type of the current scoping instance, inferred from expression context.

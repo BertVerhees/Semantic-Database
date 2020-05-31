@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
 /**
@@ -11,7 +12,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
  * the constraint is not itself a value-returning expression.
  */
 @Data
-public class ElConstraintExpression implements ElExpression {
+public class ElConstraintExpression extends BmmBaseEntity implements ElExpression {
 
   //
   // Fields

@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmGenericClass;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSpec;
@@ -23,7 +24,7 @@ import java.util.List;
  * 
  */
 @Data
-public class BmmGenericType implements BmmModelType {
+public class BmmGenericType extends BmmBaseEntity implements BmmModelType {
 
   //
   // Fields

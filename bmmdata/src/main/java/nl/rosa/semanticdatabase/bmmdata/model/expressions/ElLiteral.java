@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.literal_values.BmmLiteralValue;
 
@@ -11,7 +12,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.literal_values.BmmLiteralValue;
  * via a BMM_LITERAL_VALUE.
  */
 @Data
-public class ElLiteral implements ElInstanceRef {
+public class ElLiteral extends BmmBaseEntity implements ElInstanceRef {
 
   //
   // Fields

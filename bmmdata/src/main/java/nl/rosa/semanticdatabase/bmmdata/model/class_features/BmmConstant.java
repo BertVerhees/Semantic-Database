@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.*;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.literal_values.BmmLiteralValue;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
@@ -18,7 +19,7 @@ import java.util.Map;
  * An immutable, static value-returning element scoped to a class.
  */
 @Data
-public class BmmConstant implements BmmClassScoped, BmmInstantiable {
+public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmInstantiable {
 
   //
   // Fields

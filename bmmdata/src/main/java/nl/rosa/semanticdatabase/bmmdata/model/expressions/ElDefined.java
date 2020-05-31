@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
 
 /**
@@ -14,7 +15,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
  * 
  */
 @Data
-public class ElDefined implements ElPredicate {
+public class ElDefined extends BmmBaseEntity implements ElPredicate {
 
   //
   // Fields

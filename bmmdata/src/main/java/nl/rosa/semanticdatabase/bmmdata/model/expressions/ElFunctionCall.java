@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
 
@@ -10,7 +11,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
  * 'application' of a function in Lambda calculus.
  */
 @Data
-public class ElFunctionCall implements ElScopedRef, ElAgentCall {
+public class ElFunctionCall extends BmmBaseEntity implements ElScopedRef, ElAgentCall {
 
   //
   // Fields

@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.routine_implementation;
 
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 /**
  * Class BmmStatementBlock
@@ -9,7 +10,7 @@ import lombok.Data;
  * same name. May be used to establish scope in specific languages.
  */
 @Data
-public class BmmStatementBlock implements BmmStatementItem {
+public class BmmStatementBlock extends BmmBaseEntity implements BmmStatementItem {
   /**
    * Child blocks of the current block.
    */

@@ -7,9 +7,10 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
  */
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 @Data
-public class BmmOperator {
+public class BmmOperator extends BmmBaseEntity {
 
   //
   // Fields

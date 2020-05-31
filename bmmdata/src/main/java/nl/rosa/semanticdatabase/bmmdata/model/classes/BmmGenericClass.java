@@ -1,6 +1,8 @@
 package nl.rosa.semanticdatabase.bmmdata.model.classes;
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.model.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;
@@ -22,7 +24,7 @@ import java.util.Map;
  * definition
  */
 @Data
-public class BmmGenericClass implements BmmClass {
+public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
 
   //
   // Fields
@@ -96,6 +98,26 @@ public class BmmGenericClass implements BmmClass {
     return null;
   }
 
+
+  @Override
+  public void setProperties(Map<String, BmmProperty> newVar) {
+
+  }
+
+  @Override
+  public void setConstants(Map<String, BmmConstant> newVar) {
+
+  }
+
+  @Override
+  public void setFunctions(Map<String, BmmFunction> newVar) {
+
+  }
+
+  @Override
+  public void setProcedures(Map<String, BmmProcedure> newVar) {
+
+  }
 
   @Override
   public List<String> allAncestors() {

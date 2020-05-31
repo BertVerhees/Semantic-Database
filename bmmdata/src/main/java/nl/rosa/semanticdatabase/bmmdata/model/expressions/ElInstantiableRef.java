@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
 
@@ -10,7 +11,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
  * i.e. a variable, constant, or property.
  */
 @Data
-public class ElInstantiableRef<T> implements ElScopedRef {
+public class ElInstantiableRef<T> extends BmmBaseEntity implements ElScopedRef {
 
   //
   // Fields

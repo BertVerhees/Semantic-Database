@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmOperator;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
@@ -11,7 +12,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
  * Binary operator expression node
  */
 @Data
-public class ElBinaryOperator implements ElOperator {
+public class ElBinaryOperator extends BmmBaseEntity implements ElOperator {
 
   // ElOperator
   /**
