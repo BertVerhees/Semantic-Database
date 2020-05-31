@@ -10,6 +10,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 
@@ -21,17 +22,34 @@ import java.util.Map;
 @Data
 public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
 
-  //
-  // Fields
-  //
-
-  // BmmDeclaration
+  /**
+   * BmmDeclaration
+   */
+  @NotNull
   private String name;
-  private Map<String,Object> documentation;
-  private Map<String,Object> extensions;
+  private Map<String, Object> documentation;
+  private Map<String, Object> extensions;
 
-  // BmmClassEntity
+  @Override
+  public boolean isRootScope(){
+    return scope.equals(this);
+  }
+  /**
+   * BmmClassEntity
+   */
   private boolean isSynthesisedGeneric;
+  /**
+   * BmmClassScoped
+   */
+  private Object visibility;
+  @NotNull private BmmClass scope;
+  /**
+   * BmmProperty
+   */
+  private boolean isImRuntime;
+  private boolean isImInfrastructure;
+  private boolean isComposition;
+
 
   // BmmTypedFeature
   /**
@@ -41,28 +59,6 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
   private boolean isNullable;
 
 
-  //BmmClassScoped
-  /**
-   * Visibility of this item to client entities.
-   * TODO: define scheme; probably need to support C++/Java scheme as well as better type-based schemes.   */
-
-  private Object visibility;
-  private BmmClass scope;
-  /**
-
-   * True if this property is marked with info model im_runtime property.
-   * {default = false}   */
-
-  private boolean isImRuntime;
-  /**
-   * True if this property was marked with info model im_infrastructure flag.{default = false}
-   */
-  private boolean isImInfrastructure;  /**
-
-   * True if this property instance is a compositional sub-part of the owning class instance. Equivalent to 'composition' in UML associations (but missing from UML properties without associations) and also 'cascade-delete' semantics in ER schemas.
-   * {default = false}   */
-
-  private boolean isComposition;
 
 
 
@@ -100,14 +96,6 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
     this.scope = (BmmClass) newVar;
   }
 
-  /**
-   * True if this declaration entity is the root of the declaration hierarchy.
-   * @return
-   */
-  @Override
-  public boolean isRootScope() {
-    return false;
-  }
 
   /**
    * Formal string form of the type as per UML.

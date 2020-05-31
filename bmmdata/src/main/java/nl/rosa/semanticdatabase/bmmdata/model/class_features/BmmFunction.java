@@ -12,6 +12,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 
@@ -24,22 +25,35 @@ import java.util.Map;
 @Data
 public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFeature {
 
-  //
-  // Fields
-  //
-
-  // BmmDeclaration
+  /**
+   * BmmDeclaration
+   */
+  @NotNull
   private String name;
-  private Map<String,Object> documentation;
-  private Map<String,Object> extensions;
+  private Map<String, Object> documentation;
+  private Map<String, Object> extensions;
 
-  // BmmClassEntity
+  @Override
+  public boolean isRootScope(){
+    return scope.equals(this);
+  }
+  /**
+   * BmmClassEntity
+   */
   private boolean isSynthesisedGeneric;
-
-  //BmmEntity
-  private boolean isAbstract;
-  private boolean isPrimitive;
-
+  /**
+   * BmmClassScoped
+   */
+  private Object visibility;
+  @NotNull private BmmClass scope;
+  /**
+   * BmmRoutine
+   */
+  private List<BmmParameter> parameters;
+  private List<BmmLocal> locals;
+  private List<ElAssertion> preConditions;
+  private List<ElAssertion> postCondtions;
+  private BmmStatementItem body;
 
   // BmmTypedFeature
   /**
@@ -137,14 +151,6 @@ public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFe
     this.scope = (BmmClass) newVar;
   }
 
-  /**
-   * True if this declaration entity is the root of the declaration hierarchy.
-   * @return
-   */
-  @Override
-  public boolean isRootScope() {
-    return false;
-  }
 
   /**
    * Formal string form of the type as per UML.

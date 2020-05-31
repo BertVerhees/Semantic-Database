@@ -9,6 +9,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 
@@ -18,19 +19,26 @@ import java.util.Map;
 @Data
 public class BmmLocal extends BmmBaseEntity implements BmmVariable {
 
-  // BmmDeclaration
-  private String name;
-  private Map<String,Object> documentation;
-  private Map<String,Object> extensions;
+  /**
+   * BmmDeclaration
+   */
+  @NotNull private String name;
+  private Map<String, Object> documentation;
+  private Map<String, Object> extensions;
 
-  // BmmClassEntity
+  @Override
+  public boolean isRootScope(){
+    return scope.equals(this);
+  }
+  /**
+   * BmmClassEntity
+   */
   private boolean isSynthesisedGeneric;
 
-  // BmmVariable
   /**
-   * Routine within which variable is defined.
+   * BmmVariable
    */
-  private BmmRoutine scope;
+  @NotNull private BmmRoutine scope;
 
   // BmmTypedFeature
   /**
@@ -40,6 +48,11 @@ public class BmmLocal extends BmmBaseEntity implements BmmVariable {
   private boolean isNullable;
 
 
+  /**
+   * BmmEntity
+   */
+  private boolean isAbstract;
+  private boolean isPrimitive;
   // BmmTyped
   /**
    * Declared or inferred static type of the entity.
@@ -62,15 +75,6 @@ public class BmmLocal extends BmmBaseEntity implements BmmVariable {
     return false;
   }
 
-
-  /**
-   * True if this declaration entity is the root of the declaration hierarchy.
-   * @return
-   */
-  @Override
-  public boolean isRootScope() {
-    return false;
-  }
 
   /**
    * Formal string form of the type as per UML.

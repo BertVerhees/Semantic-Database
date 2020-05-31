@@ -10,6 +10,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 
@@ -21,20 +22,35 @@ import java.util.Map;
 @Data
 public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmInstantiable {
 
-  //
-  // Fields
-  //
+  /**
+   * BmmDeclaration
+   */
+  @NotNull
+  private String name;
+  private Map<String, Object> documentation;
+  private Map<String, Object> extensions;
+
+  @Override
+  public boolean isRootScope(){
+    return scope.equals(this);
+  }
+  /**
+   * BmmClassEntity
+   */
+  private boolean isSynthesisedGeneric;
+
+  /**
+   * BmmClassScoped
+   */
+  private Object visibility;
+  @NotNull private BmmClass scope;
+
+
+
   //BmmEntity
   private boolean isAbstract;
   private boolean isPrimitive;
 
-  // BmmClassEntity
-  private boolean isSynthesisedGeneric;
-
-  // BmmDeclaration
-  private String name;
-  private Map<String,Object> documentation;
-  private Map<String,Object> extensions;
 
 
   // BmmTypedFeature
@@ -100,14 +116,6 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
   @Override
   public void setScope(BmmClass newVar) {
     this.scope = newVar;
-  }
-  /**
-   * True if this declaration entity is the root of the declaration hierarchy.
-   * @return
-   */
-  @Override
-  public boolean isRootScope() {
-    return false;
   }
 
   /**

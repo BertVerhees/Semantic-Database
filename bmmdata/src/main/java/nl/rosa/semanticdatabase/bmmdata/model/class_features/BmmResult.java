@@ -9,6 +9,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 
@@ -19,22 +20,30 @@ import java.util.Map;
 @Data
 public class BmmResult extends BmmBaseEntity implements BmmVariable {
 
-  //
-  // Fields
-  //
-
-  // BmmDeclaration
-  private Map<String,Object> documentation;
-  private Map<String,Object> extensions;
-
-  // BmmClassEntity
-  private boolean isSynthesisedGeneric;
-
-  // BmmVariable
   /**
-   * Routine within which variable is defined.
+   * BmmDeclaration
    */
-  private BmmRoutine scope;
+  @NotNull private String name;
+  private Map<String, Object> documentation;
+  private Map<String, Object> extensions;
+
+  @Override
+  public boolean isRootScope(){
+    return scope.equals(this);
+  }
+  /**
+   * BmmClassEntity
+   */
+  private boolean isSynthesisedGeneric;
+  /**
+   * BmmVariable
+   */
+  @NotNull private BmmRoutine scope;
+
+  //BmmEntity
+  private boolean isAbstract;
+  private boolean isPrimitive;
+
 
   // BmmTypedFeature
   /**
@@ -50,14 +59,6 @@ public class BmmResult extends BmmBaseEntity implements BmmVariable {
    */
   private BmmType type;
 
-  /**
-   * Name of this model element.
-   * {default = "Result"}   */
-  private String name;
-  
-  //
-  // Constructors
-  //
   public BmmResult () { };
 
   /**
@@ -67,16 +68,6 @@ public class BmmResult extends BmmBaseEntity implements BmmVariable {
    */
   public boolean isBoolean(){
     //TODO
-    return false;
-  }
-
-
-  /**
-   * True if this declaration entity is the root of the declaration hierarchy.
-   * @return
-   */
-  @Override
-  public boolean isRootScope() {
     return false;
   }
 
@@ -160,11 +151,6 @@ public class BmmResult extends BmmBaseEntity implements BmmVariable {
 
   @Override
   public void setScope(BmmRoutine newVar) {
-    this.scope = newVar;
-  }
-  @Override
-  @Deprecated
-  public void setScope(BmmDeclaration newVar) {
-    this.scope = (BmmRoutine) newVar;
+    scope = newVar;
   }
 }

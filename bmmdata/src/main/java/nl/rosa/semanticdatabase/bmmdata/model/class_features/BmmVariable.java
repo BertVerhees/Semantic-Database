@@ -9,17 +9,12 @@ public interface BmmVariable extends BmmInstantiable, BmmClassEntity {
 
 
   /**
-   * Set the value of scope
+   * 1..1
+   * (redefined)
+   * scope: BMM_ROUTINE
    * Routine within which variable is defined.
-   * @param newVar the new value of scope
    */
   void setScope (BmmRoutine newVar);
-
-  /**
-   * Get the value of scope
-   * Routine within which variable is defined.
-   * @return the value of scope
-   */
   BmmRoutine getScope ();
 
 }

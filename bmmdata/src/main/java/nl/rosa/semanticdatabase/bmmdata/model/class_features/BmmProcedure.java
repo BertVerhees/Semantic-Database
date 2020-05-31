@@ -9,6 +9,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.routine_implementation.BmmStatemen
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 
@@ -20,42 +21,35 @@ import java.util.Map;
 @Data
 public class BmmProcedure extends BmmBaseEntity implements BmmRoutine {
 
-  //
-  // Fields
-  //
-
-  // BmmDeclaration
-  private String name;
-  private Map<String,Object> documentation;
-  private Map<String,Object> extensions;
-
-  // BmmClassEntity
-  private boolean isSynthesisedGeneric;
-
   /**
-   * Formal parameters of the routine.
+   * BmmDeclaration
+   */
+  @NotNull
+  private String name;
+  private Map<String, Object> documentation;
+  private Map<String, Object> extensions;
+
+  @Override
+  public boolean isRootScope(){
+    return scope.equals(this);
+  }
+  /**
+   * BmmClassEntity
+   */
+  private boolean isSynthesisedGeneric;
+  /**
+   * BmmClassScoped
+   */
+  private Object visibility;
+  @NotNull private BmmClass scope;
+  /**
+   * BmmRoutine
    */
   private List<BmmParameter> parameters;
-  /**
-   * Local variables of the routine.
-   */
   private List<BmmLocal> locals;
   private List<ElAssertion> preConditions;
   private List<ElAssertion> postCondtions;
-  /**
-   * Body of a routine, i.e. executable program.
-   */
   private BmmStatementItem body;
-
-
-  //BmmClassScoped
-  /**
-   * Visibility of this item to client entities.
-   * TODO: define scheme; probably need to support C++/Java scheme as well as better type-based schemes.   */
-
-  private Object visibility;
-  private BmmClass scope;
-
 
 
   //
@@ -95,15 +89,5 @@ public class BmmProcedure extends BmmBaseEntity implements BmmRoutine {
   public void setScope(BmmClass newVar) {
     this.scope = newVar;
   }
-
-  /**
-   * True if this declaration entity is the root of the declaration hierarchy.
-   * @return
-   */
-  @Override
-  public boolean isRootScope() {
-    return false;
-  }
-
 
 }

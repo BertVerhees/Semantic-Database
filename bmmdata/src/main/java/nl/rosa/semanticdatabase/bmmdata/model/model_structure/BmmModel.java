@@ -2,11 +2,11 @@ package nl.rosa.semanticdatabase.bmmdata.model.model_structure;
 
 import lombok.Builder;
 import lombok.Data;
+import nl.rosa.semanticdatabase.bmm.model_access.BmmModelMetadata;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmProperty;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmEnumeration;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmSimpleClass;
-import nl.rosa.semanticdatabase.bmm.model_access.BmmModelMetadata;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
 
 import java.util.List;

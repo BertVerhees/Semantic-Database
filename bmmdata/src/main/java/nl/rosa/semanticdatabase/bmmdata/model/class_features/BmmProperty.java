@@ -11,63 +11,33 @@ import nl.rosa.semanticdatabase.base.MultiplicityInterval;
  */
 public interface BmmProperty extends BmmInstantiable, BmmClassScoped {
 
-
-  //
-  // Accessor methods
-  //
-
   /**
-   * Set the value of isImRuntime
-   * True if this property is marked with info model im_runtime property.
+   * 0..1
+   * is_im_runtime: Boolean
    * {default = false}
-   * @param newVar the new value of isImRuntime
+   * True if this property is marked with info model im_runtime property.
    */
   void setImRuntime (boolean newVar);
-
-  /**
-   * Get the value of isImRuntime
-   * True if this property is marked with info model im_runtime property.
-   * {default = false}
-   * @return the value of isImRuntime
-   */
   boolean isImRuntime ();
 
   /**
-   * Set the value of isImInfrastructure
-   * True if this property was marked with info model im_infrastructure flag.{default
-   * = false}
-   * @param newVar the new value of isImInfrastructure
+   * 0..1
+   * is_im_infrastructure: Boolean
+   * {default = false}
+   * True if this property was marked with info model im_infrastructure flag.
    */
   void setImInfrastructure (boolean newVar);
-
-  /**
-   * Get the value of isImInfrastructure
-   * True if this property was marked with info model im_infrastructure flag.{default
-   * = false}
-   * @return the value of isImInfrastructure
-   */
   boolean isImInfrastructure ();
 
   /**
-   * Set the value of isComposition
-   * True if this property instance is a compositional sub-part of the owning class
-   * instance. Equivalent to 'composition' in UML associations (but missing from UML
-   * properties without associations) and also 'cascade-delete' semantics in ER
-   * schemas.
+   * 0..1
+   * is_composition: Boolean
    * {default = false}
-   * @param newVar the new value of isComposition
+   * True if this property instance is a compositional sub-part of the owning class instance.
+   * Equivalent to 'composition' in UML associations (but missing from UML properties without associations)
+   * and also 'cascade-delete' semantics in ER schemas.
    */
   void setComposition (boolean newVar);
-
-  /**
-   * Get the value of isComposition
-   * True if this property instance is a compositional sub-part of the owning class
-   * instance. Equivalent to 'composition' in UML associations (but missing from UML
-   * properties without associations) and also 'cascade-delete' semantics in ER
-   * schemas.
-   * {default = false}
-   * @return the value of isComposition
-   */
   boolean isComposition ();
 
   //

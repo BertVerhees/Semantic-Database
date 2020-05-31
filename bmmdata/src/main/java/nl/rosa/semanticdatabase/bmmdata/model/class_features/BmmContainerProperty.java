@@ -7,6 +7,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.types.*;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 
@@ -18,14 +19,33 @@ import java.util.Map;
 @Data
 public class BmmContainerProperty extends BmmBaseEntity implements BmmProperty {
 
-  // BmmDeclaration
+  /**
+   * BmmDeclaration
+   */
+  @NotNull
   private String name;
-  private Map<String,Object> documentation;
-  private Map<String,Object> extensions;
+  private Map<String, Object> documentation;
+  private Map<String, Object> extensions;
 
-  // BmmClassEntity
+  @Override
+  public boolean isRootScope(){
+    return scope.equals(this);
+  }
+  /**
+   * BmmClassEntity
+   */
   private boolean isSynthesisedGeneric;
-
+  /**
+   * BmmClassScoped
+   */
+  private Object visibility;
+  @NotNull private BmmClass scope;
+  /**
+   * BmmProperty
+   */
+  private boolean isImRuntime;
+  private boolean isImInfrastructure;
+  private boolean isComposition;
 
   // BmmTypedfeature
   /**
@@ -36,30 +56,6 @@ public class BmmContainerProperty extends BmmBaseEntity implements BmmProperty {
 
 
   // BmmTyped
-
-  //BmmClassScoped
-  /**
-   * Visibility of this item to client entities.
-   * TODO: define scheme; probably need to support C++/Java scheme as well as better type-based schemes.   */
-
-  private Object visibility;
-  private BmmClass scope;
-  /**
-   * True if this property is marked with info model im_runtime property.
-   * {default = false}   */
-
-  private boolean isImRuntime;
-  /**
-   * True if this property was marked with info model im_infrastructure flag.{default = false}
-   */
-  private boolean isImInfrastructure;  /**
-
-   * True if this property instance is a compositional sub-part of the owning class instance. Equivalent to 'composition' in UML associations (but missing from UML properties without associations) and also 'cascade-delete' semantics in ER schemas.
-   * {default = false}   */
-
-  private boolean isComposition;
-
-
 
   /**
    * Declared or inferred static type of the entity.
@@ -108,15 +104,6 @@ public class BmmContainerProperty extends BmmBaseEntity implements BmmProperty {
    */
   public boolean isBoolean(){
     //TODO
-    return false;
-  }
-
-  /**
-   * True if this declaration entity is the root of the declaration hierarchy.
-   * @return
-   */
-  @Override
-  public boolean isRootScope() {
     return false;
   }
 

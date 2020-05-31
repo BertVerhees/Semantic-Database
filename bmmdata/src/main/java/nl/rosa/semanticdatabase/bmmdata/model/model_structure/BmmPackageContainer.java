@@ -13,7 +13,20 @@ import java.util.Map;
 @Data
 public abstract class BmmPackageContainer extends BmmBaseEntity implements BmmDeclaration {
 
-  private Long id;
+  /**
+   * BmmDeclaration
+   */
+  @NonNull
+  private String name;
+  private Map<String, Object> documentation;
+  @NonNull //redefined
+  private BmmPackageContainer scope;
+  private Map<String, Object> extensions;
+
+  @Override
+  public boolean isRootScope(){
+    return scope.equals(this);
+  }
 
   /**
    * Child packages; keys all in upper case for guaranteed matching.
@@ -22,29 +35,8 @@ public abstract class BmmPackageContainer extends BmmBaseEntity implements BmmDe
   /**
    * Model element within which a referenceable element is known.
    */
-  @NonNull private BmmPackageContainer scope;
 
-  /**
-   * Name of this model element.
-   */
-  @NonNull private String name;
-  /**
-   * Optional documentation of this element, as a keyed list.
-   * It is strongly recommended to use the following key /type combinations for the relevant purposes:
-   * "purpose": String
-   * "keywords": List<String>
-   * "use": String
-   * "misuse": String
-   * "references": String
-   * Other keys and value types may be freely added.
-   */
-  private Map<String, Object> documentation;
-  private Map<String, Object> extensions;
 
-  @Override
-  public boolean isRootScope() {
-    return scope.equals(this);
-  }
 
   public BmmPackageContainer() {
   }

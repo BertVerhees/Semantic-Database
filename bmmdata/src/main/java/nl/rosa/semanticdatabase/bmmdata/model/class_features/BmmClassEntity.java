@@ -11,24 +11,19 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 public interface BmmClassEntity extends BmmDeclaration {
 
   /**
-   * Set the value of isSynthesisedGeneric
-   * True if this feature was synthesised due to generic substitution in an inherited
-   * type, or further constraining of a formal generic parameter.
+   * 0..1
+   * is_synthesised_generic: Boolean
    * {default = false}
-   * @param newVar the new value of isSynthesisedGeneric
+   * True if this feature was synthesised due to generic substitution in an inherited type, or further
+   * constraining of a formal generic parameter.
    */
   void setSynthesisedGeneric (boolean newVar);
-
-  /**
-   * Get the value of isSynthesisedGeneric
-   * True if this feature was synthesised due to generic substitution in an inherited
-   * type, or further constraining of a formal generic parameter.
-   * {default = false}
-   * @return the value of isSynthesisedGeneric
-   */
   boolean isSynthesisedGeneric ();
 
   /**
+   * 1..1
+   * (abstract)
+   * signature (): BMM_SIGNATURE
    * Formal signature of this element, in the form:
    * name [arg1_name: T_arg1, �?][:T_value]
    * Specific implementations in descendants.

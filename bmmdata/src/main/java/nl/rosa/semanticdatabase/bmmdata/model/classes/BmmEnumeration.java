@@ -13,9 +13,6 @@ import java.util.Map;
 @Data
 public class BmmEnumeration extends BmmSimpleClass {
 
-  //
-  // Fields
-  //
 
   /**
    * The list of names of the enumeration. If no values are supplied, the integer values 0, 1, 2, �? are assumed.

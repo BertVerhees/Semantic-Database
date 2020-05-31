@@ -14,33 +14,20 @@ public interface BmmClassScoped extends BmmClassEntity {
   //
 
   /**
-   * Set the value of visibility
+   * 0..1
+   * visibility: Any
    * Visibility of this item to client entities.
-   * TODO: define scheme; probably need to support C++/Java scheme as well as better
-   * type-based schemes.
-   * @param newVar the new value of visibility
    */
   void setVisibility (Object newVar);
-
-  /**
-   * Get the value of visibility
-   * Visibility of this item to client entities.
-   * TODO: define scheme; probably need to support C++/Java scheme as well as better
-   * type-based schemes.
-   * @return the value of visibility
-   */
   Object getVisibility ();
 
   /**
-   * Set the value of scope
-   * @param newVar the new value of scope
+   * 1..1
+   * (redefined)
+   * scope: BMM_CLASS
+   * Class within which a referenceable element is known.
    */
   void setScope (BmmClass newVar);
-
-  /**
-   * Get the value of scope
-   * @return the value of scope
-   */
   BmmClass getScope ();
 
 }
