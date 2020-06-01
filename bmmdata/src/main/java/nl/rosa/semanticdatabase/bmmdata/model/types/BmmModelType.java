@@ -16,30 +16,16 @@ import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
  */
 public interface BmmModelType extends BmmEffectiveType {
   /**
-   * Set the value of valueConstraint
-   * @param newVar the new value of valueConstraint
+   * 0..1
+   * value_constraint: BMM_VALUE_SET_SPEC
    */
   void setValueConstraint (BmmValueSpec newVar);
-  /**
-   * Get the value of valueConstraint
-   * @return the value of valueConstraint
-   */
   BmmValueSpec getValueConstraint ();
   /**
-   * Set the value of baseClass
+   * 1..1
+   * base_class: BMM_CLASS
    * Defining class of this type.
-   * @param newVar the new value of baseClass
    */
   void setBaseClass (BmmClass newVar);
-  /**
-   * Get the value of baseClass
-   * Defining class of this type.
-   * @return the value of baseClass
-   */
   BmmClass getBaseClass ();
-
-  //
-  // Other methods
-  //
-
 }

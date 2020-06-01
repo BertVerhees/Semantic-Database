@@ -7,31 +7,44 @@ import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmOperator;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Class ElUnaryOperator
  * Unary operator expression node.
  */
 @Data
 public class ElUnaryOperator extends BmmBaseEntity implements ElOperator {
-
-  //
-  // Fields
-  //
-
-  // ElOperator
+/**
+ *      ElOperator
+ *        ElExpression
+ */
   /**
-   * True if the natural precedence of operators is overridden in the expression represented by this node of the expression tree. If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands.
+   * ElOperator
    */
-  private boolean precedenceOverridden;
-  /**
-   * The symbol actually used in the expression, or intended to be used for serialisation. Must be a member of OPERATOR_DEF.symbols.
-   */
+  private Boolean precedenceOverridden;
   private String symbol;
-  /**
-   * Function equivalent to this operator, inferred by matching operator against functions defined in interface of principal operand.
-   */
+  @NotNull
   private BmmFunction definition;
-
+  // Functions
+  @NotNull
+  public BmmOperator operatorDefinition(){
+    return null;
+  }
+  @NotNull
+  public ElFunctionCall equivalentcall;
+  /**
+   * ElExpression
+   */
+  @NotNull
+  public BmmType evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+//======================================================================================
 
   /**
    * Operand node.
@@ -62,7 +75,7 @@ public class ElUnaryOperator extends BmmBaseEntity implements ElOperator {
   }
 
   @Override
-  public boolean isBoolean() {
+  public Boolean isBoolean() {
     //TODO
     return false;
   }

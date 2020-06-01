@@ -4,6 +4,8 @@ import lombok.Data;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
+import javax.validation.constraints.NotNull;
+
 
 /**
  * Class ElTypeRef
@@ -14,6 +16,29 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
  */
 @Data
 public class ElTypeRef extends BmmBaseEntity implements ElInstanceRef {
+  /**
+   *    ElInstanceRef
+   *      ElTerminal
+   *        ElExpression
+   */
+  /**
+   * ElInstanceRef
+   */
+  /**
+   * ElTerminal
+   */
+  /**
+   * ElExpression
+   */
+  @NotNull
+  public BmmType evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+//======================================================================================
 
   //
   // Fields
@@ -37,7 +62,7 @@ public class ElTypeRef extends BmmBaseEntity implements ElInstanceRef {
   }
 
   @Override
-  public boolean isBoolean() {
+  public Boolean isBoolean() {
     return false;
   }
 }

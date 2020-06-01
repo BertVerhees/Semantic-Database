@@ -22,7 +22,7 @@ public class BmmBaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    public boolean isNew() {
+    public Boolean isNew() {
         return this.id == null;
     }
 }

@@ -9,6 +9,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmEnumeration;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +19,20 @@ import java.util.Map;
  */
 @Data
 public class BmmModel extends BmmPackageContainer {
-
+  /**
+   * BmmDeclaration
+   */
+  @NotNull
+  private String name;
+  private Map<String, Object> documentation;
+  @NotNull
+  private BmmDeclaration scope;
+  private Map<String, Object> extensions;
+  // Functions;
+  @Override
+  public Boolean isRootScope(){
+    return scope.equals(this);
+  }
   /**
    * All classes in this model, keyed by type name.
    */
@@ -96,10 +110,10 @@ public class BmmModel extends BmmPackageContainer {
 
   /**
    * True if a_class_name has a class definition in the model.
-   * @return       boolean
+   * @return       Boolean
    * @param        className
    */
-  public boolean hasClassDefinition(String className)
+  public Boolean hasClassDefinition(String className)
   {
     //TODO
     return false;
@@ -108,10 +122,10 @@ public class BmmModel extends BmmPackageContainer {
   /**
    * True if a_type_name is already concretely known in the system, including if it is generic,
    * which may be open, partially open or closed.
-   * @return       boolean
+   * @return       Boolean
    * @param        typeName
    */
-  public boolean hasTypeDefinition(String typeName)
+  public Boolean hasTypeDefinition(String typeName)
   {
     //TODO
     return false;
@@ -165,12 +179,12 @@ public class BmmModel extends BmmPackageContainer {
    * which abstracts away container nl.rosa.semanticdatabase.bmm.model.types like List<>, Set<> etc
    * and compares the dynamic type with the relation target type in the UML sense,
    * i.e. regardless of whether there is single or multiple containment.
-   * @return       boolean
+   * @return       Boolean
    * @param        bmmTypeName
    * @param        bmmPropertyName
    * @param        modelSemanticPropertyName
    */
-  public boolean modelSemanticConformantType(
+  public Boolean modelSemanticConformantType(
           String bmmTypeName, String bmmPropertyName, String modelSemanticPropertyName)
   {
     //TODO
@@ -214,11 +228,11 @@ public class BmmModel extends BmmPackageContainer {
 
   /**
    * True if a_class_name is a descendant in the model of a_parent_class_name.
-   * @return       boolean
+   * @return       Boolean
    * @param        className
    * @param        parentCLassName
    */
-  public boolean isDescendantOf(String className, String parentCLassName)
+  public Boolean isDescendantOf(String className, String parentCLassName)
   {
     //TODO
     return false;
@@ -236,11 +250,11 @@ public class BmmModel extends BmmPackageContainer {
    * * both nl.rosa.semanticdatabase.bmm.model.types are generic and pass base class test; number of generic params matches,
    *   and each generic parameter type, after 'open parameter' substitution, recursively passes; type_name_conforms_to test
    * * descendant type is generic and ancestor type is not, and they pass base classes test.
-   * @return       boolean
+   * @return       Boolean
    * @param        descType
    * @param        ancestorType
    */
-  public boolean typeConformsTo(String descType, String ancestorType)
+  public Boolean typeConformsTo(String descType, String ancestorType)
   {
     //TODO
     return false;
@@ -291,7 +305,7 @@ public class BmmModel extends BmmPackageContainer {
   /**
    * @return       undef
    */
-  public BmmSimpleType booleanTypeDefinition()
+  public BmmSimpleType BooleanTypeDefinition()
   {
     //TODO
     return null;

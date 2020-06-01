@@ -9,9 +9,17 @@ package nl.rosa.semanticdatabase.bmmdata.model.types;
 public interface BmmEffectiveType extends BmmUnitaryType {
 
   /**
-   * Name of base generator type, i.e. excluding any generic parts if present.
-   *
-   * @return       String
+   * 1..1
+   * (effected)
+   * effective_type (): BMM_EFFECTIVE_TYPE
+   * Result = self.
    */
-  public String typeBaseName();
+  BmmEffectiveType getEffectiveType();
+  /**
+   * 1..1
+   * (abstract)
+   * type_base_name (): String
+   * Name of base generator type, i.e. excluding any generic parts if present.
+   */
+  String typeBaseName();
 }

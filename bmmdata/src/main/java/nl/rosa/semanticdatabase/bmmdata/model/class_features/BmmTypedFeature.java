@@ -10,20 +10,12 @@ public interface BmmTypedFeature extends BmmTyped {
 
 
   /**
-   * Set the value of isNullable
-   * True if this element can be null (Void) at execution time. May be interpreted as
-   * optionality in subtypes..
+   * 0..1
+   * is_nullable: Boolean
    * {default = false}
-   * @param newVar the new value of isNullable
+   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
    */
-  public void setNullable (boolean newVar);
-  /**
-   * Get the value of isNullable
-   * True if this element can be null (Void) at execution time. May be interpreted as
-   * optionality in subtypes..
-   * {default = false}
-   * @return the value of isNullable
-   */
-  public boolean isNullable ();
+  public void setIsNullable (Boolean newVar);
+  public Boolean getIsNullable ();
 
 }

@@ -12,6 +12,9 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 @Data
 public class BmmStatementBlock extends BmmBaseEntity implements BmmStatementItem {
   /**
+   * BmmStatementItem
+   */
+  /**
    * Child blocks of the current block.
    */
   private BmmStatementItem items;

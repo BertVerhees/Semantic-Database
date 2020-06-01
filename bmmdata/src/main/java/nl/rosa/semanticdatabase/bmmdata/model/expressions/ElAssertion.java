@@ -11,10 +11,6 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 @Data
 public class ElAssertion extends BmmBaseEntity {
 
-  //
-  // Fields
-  //
-
   /**
    * Optional tag, typically used to designate design intention of the assertion, e.g. "Inv_all_members_valid".
    */

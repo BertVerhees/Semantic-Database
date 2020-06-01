@@ -11,10 +11,6 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 @Data
 public class ElTupleItem extends BmmBaseEntity {
 
-  //
-  // Fields
-  //
-
   /**
    * Reference to value entity. If Void, this indicates that the item in this position is Void, e.g. within a routine call parameter list.
    */

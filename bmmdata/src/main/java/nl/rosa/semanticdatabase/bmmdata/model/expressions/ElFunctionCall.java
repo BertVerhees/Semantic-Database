@@ -4,6 +4,8 @@ import lombok.Data;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
+import javax.validation.constraints.NotNull;
+
 
 /**
  * Class ElFunctionCall
@@ -12,10 +14,52 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
  */
 @Data
 public class ElFunctionCall extends BmmBaseEntity implements ElScopedRef, ElAgentCall {
+/**
+ *  ElScopedRef
+ *    ElInstanceRef
+ *      ElTerminal
+ *        ElExpression
+ *  ElAgentCall
+ */
+/**
+ * ElInstanceRef
+ */
+  /**
+   * ElExpression
+   */
+  @NotNull
+  public BmmType evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+  /**
+   * ElScopedRef
+   */
+  private ElInstanceRef scope;
+  /**
+   * ElTerminal
+   */
+  /**
+   * ElExpression
+   */
+  @NotNull
+  public BmmType evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+  /**
+   * ElAgentCall
+   */
+  @NotNull
+  private ElAgent agent;
+//======================================================================================
 
-  //
-  // Fields
-  //
 
   // ElScopedRef
   /**
@@ -48,7 +92,7 @@ public class ElFunctionCall extends BmmBaseEntity implements ElScopedRef, ElAgen
   }
 
   @Override
-  public boolean isBoolean() {
+  public Boolean isBoolean() {
     //TODO
     return false;
   }

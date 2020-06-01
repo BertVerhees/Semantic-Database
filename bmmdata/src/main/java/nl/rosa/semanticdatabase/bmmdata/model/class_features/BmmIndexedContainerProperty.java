@@ -11,10 +11,16 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmIndexedContainerType;
  */
 @Data
 public class BmmIndexedContainerProperty extends BmmContainerProperty {
-
-  //
-  // Fields
-  //
+  /**
+   * BmmProperty
+   *  BmmClassScoped
+   *    BmmClassEntity
+   *      BmmDeclaration
+   *  BmmInstantiable
+   *    BmmTypedFeature
+   *      BmmTyped
+   *        BmmType
+   */
 
   /**
    * Declared or inferred static type of the entity.

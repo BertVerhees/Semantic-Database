@@ -8,29 +8,24 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
  * Parent type of predicate of any object reference.
  */
 public interface ElPredicate extends ElTerminal {
-  //
-  // Accessor methods
-  //
 
   /**
-   * Set the value of operand
+   * 1..1
+   * operand: EL_INSTANCE_REF
    * The target instance of this predicate.
    * @param newVar the new value of operand
    */
   public void setOperand (ElInstanceRef newVar);
-
-  /**
-   * Get the value of operand
-   * The target instance of this predicate.
-   * @return the value of operand
-   */
   public ElInstanceRef getOperand ();
   //
   // Other methods
   //
 
   /**
-   * Return {BMM_MODEL}.boolean_type_definition().
+   * 1..1
+   * (effected)
+   * eval_type (): BMM_SIMPLE_TYPE
+   * Return {BMM_MODEL}.Boolean_type_definition().
    * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmSimpleType
    */
   public BmmSimpleType evalType();

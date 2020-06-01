@@ -18,34 +18,24 @@ public interface ElAgent extends ElScopedRef {
 
 
   /**
-   * Set the value of name
+   * 1..1
+   * name: String
    * Name of the routine being called.
-   * @param newVar the new value of name
    */
   void setName (String newVar);
-
-  /**
-   * Get the value of name
-   * Name of the routine being called.
-   * @return the value of name
-   */
   String getName ();
 
   /**
-   * Set the value of closedArgs
+   * 0..1
+   * closed_args: EL_TUPLE
    * Closed arguments of a routine call as a tuple of objects.
-   * @param newVar the new value of closedArgs
    */
   void setClosedArgs (ElTuple newVar);
-
-  /**
-   * Get the value of closedArgs
-   * Closed arguments of a routine call as a tuple of objects.
-   * @return the value of closedArgs
-   */
   ElTuple getClosedArgs ();
 
   /**
+   * 0..1
+   * open_args: List<String>
    * Set the value of openArgs
    * Optional list of names of open arguments of the call. If not provided, and the
    * name refers to a routine with more arguments than supplied in closed_args, the
@@ -53,28 +43,15 @@ public interface ElAgent extends ElScopedRef {
    * @param newVar the new value of openArgs
    */
   void setOpenArgs (List<String> newVar);
-
-  /**
-   * Get the value of openArgs
-   * Optional list of names of open arguments of the call. If not provided, and the
-   * name refers to a routine with more arguments than supplied in closed_args, the
-   * missing arguments are inferred from the definition.
-   * @return the value of openArgs
-   */
   List<String> getOpenArgs ();
 
   /**
-   * Set the value of definition
+   * 0..1
+   * definition: BMM_ROUTINE
    * Reference to definition of a routine for which this is an agent, if one exists.
    * @param newVar the new value of definition
    */
   void setDefinition (BmmRoutine newVar);
-
-  /**
-   * Get the value of definition
-   * Reference to definition of a routine for which this is an agent, if one exists.
-   * @return the value of definition
-   */
   BmmRoutine getDefinition ();
 
   //
@@ -90,7 +67,7 @@ public interface ElAgent extends ElScopedRef {
   /**
    * True if there are no open arguments.
    * Post_result_validity: Result = open_arguments = Void
-   * @return       boolean
+   * @return       Boolean
    */
-  boolean isCallable();
+  Boolean isCallable();
 }

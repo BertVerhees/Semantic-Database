@@ -4,6 +4,9 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 import lombok.Data;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * Class ElDefined
@@ -16,10 +19,34 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
  */
 @Data
 public class ElDefined extends BmmBaseEntity implements ElPredicate {
-
-  //
-  // Fields
-  //
+/**
+ * ElPredicate
+ *  ElTerminal
+ *    ElExpression
+ */
+  /**
+   * ElPredicate
+   */
+  private ElInstanceRef operand;
+  // Functions
+  public BmmSimpleType evalType(){
+    return null;
+  }
+  /**
+   * ElTerminal
+   */
+  /**
+   * ElExpression
+   */
+  @NotNull
+  public BmmType evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+//========================================================================
 
   // ElPredicate
   /**
@@ -40,7 +67,7 @@ public class ElDefined extends BmmBaseEntity implements ElPredicate {
   }
 
   @Override
-  public boolean isBoolean() {
+  public Boolean isBoolean() {
     return false;
   }
 

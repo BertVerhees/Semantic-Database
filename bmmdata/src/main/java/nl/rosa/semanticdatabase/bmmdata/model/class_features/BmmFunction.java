@@ -26,6 +26,17 @@ import java.util.Map;
 public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFeature {
 
   /**
+   * BmmRoutine
+   *  BmmClassScoped
+   *    BmmClassEntity
+   *      BmmDeclaration
+   * BmmTypedFeature
+   *   BmmTyped
+   *     BmmType
+   */
+
+
+  /**
    * BmmDeclaration
    */
   @NotNull
@@ -34,13 +45,13 @@ public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFe
   private Map<String, Object> extensions;
 
   @Override
-  public boolean isRootScope(){
+  public Boolean isRootScope(){
     return scope.equals(this);
   }
   /**
    * BmmClassEntity
    */
-  private boolean isSynthesisedGeneric;
+  private Boolean isSynthesisedGeneric;
   /**
    * BmmClassScoped
    */
@@ -55,26 +66,35 @@ public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFe
   private List<ElAssertion> postCondtions;
   private BmmStatementItem body;
 
-  // BmmTypedFeature
   /**
-   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
-   * {default = false}   */
+   * BmmEntity
+   */
+  @Override
+  public Boolean isAbstract() {
+    //TODO
+    return false;
+  }
 
-  private boolean isNullable;
+  @Override
+  public Boolean isPrimitive() {
+    //TODO
+    return false;
+  }
 
-
-  // BmmTyped
   /**
-   * Declared or inferred static type of the entity.
+   * BmmTypedFeature
+   */
+  private Boolean isNullable;
+  /**
+   * BmmTyped
    */
   private BmmType type;
 
 
   //BmmClassScoped
   /**
-   * Visibility of this item to client entities.
-   * TODO: define scheme; probably need to support C++/Java scheme as well as better type-based schemes.   */
-
+   * BmmClassScoped
+   */
   private Object visibility;
   private BmmClass scope;
 
@@ -138,9 +158,9 @@ public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFe
   /**
    * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() =
    * 'Boolean').
-   * @return       boolean
+   * @return       Boolean
    */
-  public boolean isBoolean(){
+  public Boolean isBoolean(){
     //TODO
     return false;
   }
@@ -204,18 +224,6 @@ public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFe
     return null;
   }
 
-  // BmmEntity
-  @Override
-  public boolean isAbstract() {
-    //TODO
-    return false;
-  }
-
-  @Override
-  public boolean isPrimitive() {
-    //TODO
-    return false;
-  }
 
 
 

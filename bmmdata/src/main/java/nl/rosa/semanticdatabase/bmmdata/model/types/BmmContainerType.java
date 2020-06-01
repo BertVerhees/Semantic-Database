@@ -4,6 +4,7 @@ import lombok.Data;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmGenericClass;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -30,22 +31,104 @@ import java.util.List;
  */
 @Data
 public class BmmContainerType extends BmmBaseEntity implements BmmType {
+/**
+ * BmmType
+ *  BmmEntity
+ */
   /**
+   * BmmType
+   */
+  // Functions
+  @NotNull
+  public String typeName(){
+    return null;
+  }
+  @NotNull
+  public List<String> flattenedTypeList(){
+    return null;
+  }
+  @NotNull
+  public String typeSignature(){
+    return null;
+  }
+  @NotNull
+  public BmmUnitaryType unitaryType(){
+    return null;
+  }
+  @NotNull
+  public BmmEffectiveType effectiveType(){
+    return null;
+  }
+  /**
+   * BmmEntity
+   */
+  // Functions
+  @NotNull
+  public Boolean isAbstract(){
+    return null;
+  }
+  @NotNull
+  public Boolean isPrimitive(){
+    return null;
+  }
+  //==================================================================================
+  /**
+   * BmmEntity
+   */
+  /**
+   * 0..1
+   * is_primitive: Boolean
+   * True if this class represents a type considered to be primitive in the type system,
+   * i.e. any typically built-in or standard library type such as String, Date, Hash<K,V> etc.
+   * @return
+   */
+  @NotNull
+  public Boolean isPrimitive(){
+    return false;
+  };
+  /**
+   * 0..1
+   * is_abstract: Boolean
+   * True if this class is marked as abstract, i.e. direct instances cannot be created from its direct type.
+   */
+  @NotNull
+  public Boolean isAbstract(){
+    return false;
+  };
+
+  /**
+   * 1..1
+   * container_class: BMM_GENERIC_CLASS
    * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
    */
+  @NotNull
   private BmmGenericClass containerClass;
   /**
+   * 1..1
+   * item_type: BMM_UNITARY_TYPE
    * The container item type.
    */
+  @NotNull
   private BmmUnitaryType itemType;
   /**
-   * True indicates that order of the items in the container attribute is considered significant and must be preserved, e.g. across sessions, serialisation, deserialisation etc. Otherwise known as 'list' semantics.
+   * 0..1
+   * is_ordered: Boolean
+   * {default = true}
+   * True indicates that order of the items in the container attribute is considered significant and must be preserved,
+   * e.g. across sessions, serialisation, deserialisation etc. Otherwise known as 'list' semantics.
+   * True indicates that order of the items in the container attribute is considered significant
+   * and must be preserved, e.g. across sessions, serialisation, deserialisation etc. Otherwise known
+   * as 'list' semantics.
    */
-  private boolean isOrdered = true;
+  private Boolean isOrdered = true;
   /**
-   * True indicates that only unique instances of items in the container are allowed. Otherwise known as 'set' semantics.
+   * 0..1
+   * is_unique: Boolean
+   * {default = false}
+   * True indicates that only unique instances of items in the container are allowed.
+   * Otherwise known as 'set' semantics.
    */
-  private boolean isUnique = false;
+  private Boolean isUnique = false;
   
   //
   // Constructors
@@ -95,30 +178,10 @@ public class BmmContainerType extends BmmBaseEntity implements BmmType {
   }
 
   /**
-   * True if the container class is abstract.
-   * @return
-   */
-  @Override
-  public boolean isAbstract() {
-    //TODO
-    return false;
-  }
-
-  /**
-   * True if item_type is primitive.
-   * Post_result: Result = item_type.is_primitive
-   * @return
-   */
-  @Override
-  public boolean isPrimitive() {
-    //TODO
-    return false;
-  }
-  /**
    * True if this declaration entity is the root of the declaration hierarchy.
    * @return
    */
-  public boolean isRootScope() {
+  public Boolean isRootScope() {
     return false;
   }
 

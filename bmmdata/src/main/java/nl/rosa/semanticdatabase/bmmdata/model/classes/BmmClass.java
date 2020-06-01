@@ -35,177 +35,111 @@ public interface BmmClass extends BmmModule, BmmEntity {
 
 
   /**
-   * Set the value of ancestors
+   * 0..1
+   * ancestors: Hash<String,BMM_MODEL_TYPE>
    * List of immediate inheritance parents.
-   * @param newVar the new value of ancestors
    */
   void setAncestors (Map<String, BmmModelType> newVar);
-
-  /**
-   * Get the value of ancestors
-   * List of immediate inheritance parents.
-   * @return the value of ancestors
-   */
   Map<String, BmmModelType> getAncestors ();
 
   /**
-   * Set the value of package
+   * 1..1
+   * package: BMM_PACKAGE
    * Package this class belongs to.
-   * @param newVar the new value of package
    */
   void set_package (BmmPackage newVar);
-
-  /**
-   * Get the value of package
-   * Package this class belongs to.
-   * @return the value of package
-   */
   BmmPackage get_package ();
 
   /**
-   * Set the value of properties
+   * 0..1
+   * properties: Hash<String,BMM_PROPERTY>
    * List of attributes defined in this class.
-   * @param newVar the new value of properties
    */
   void setProperties (Map<String, BmmProperty> newVar);
-
-  /**
-   * Get the value of properties
-   * List of attributes defined in this class.
-   * @return the value of properties
-   */
   Map<String, BmmProperty> getProperties ();
 
   /**
-   * Set the value of sourceSchemaId
-   * Reference to original source schema defining this class. Useful for UI tools to
-   * determine which original schema file to open for a given class for manual
-   * editing.
-   * @param newVar the new value of sourceSchemaId
+   * 1..1
+   * source_schema_id: String
+   * Reference to original source schema defining this class.
+   * Useful for UI tools to determine which original schema file to open for a given class for manual editing.
    */
   void setSourceSchemaId (String newVar);
-
-  /**
-   * Get the value of sourceSchemaId
-   * Reference to original source schema defining this class. Useful for UI tools to
-   * determine which original schema file to open for a given class for manual
-   * editing.
-   * @return the value of sourceSchemaId
-   */
   String getSourceSchemaId ();
 
   /**
-   * Set the value of immediateDescendants
+   * 0..1
+   * immediate_descendants: List<BMM_CLASS>
    * List of computed references to base classes of immediate inheritance
    * descendants, derived when members of ancestors are attached at creation time.
-   * @param newVar the new value of immediateDescendants
    */
   void setImmediateDescendants (List<BmmClass> newVar);
-
-  /**
-   * Get the value of immediateDescendants
-   * List of computed references to base classes of immediate inheritance
-   * descendants, derived when members of ancestors are attached at creation time.
-   * @return the value of immediateDescendants
-   */
   List<BmmClass> getImmediateDescendants ();
 
   /**
-   * Set the value of isOverride
+   * 1..1
+   * is_override: Boolean
    * True if this definition overrides a class of the same name in an included
    * schema.
-   * @param newVar the new value of isOverride
    */
-  void setOverride (boolean newVar);
+  void setIsOverride (Boolean newVar);
+  Boolean getIsOverride ();
 
   /**
-   * Get the value of isOverride
-   * True if this definition overrides a class of the same name in an included
-   * schema.
-   * @return the value of isOverride
-   */
-  boolean isOverride ();
-
-  /**
-   * Set the value of constants
+   * 0..1
+   * constants: Hash<String,BMM_CONSTANT>
    * List of constants defined in this class.
-   * @param newVar the new value of constants
    */
   void setConstants (Map<String, BmmConstant> newVar);
-
-  /**
-   * Get the value of constants
-   * List of constants defined in this class.
-   * @return the value of constants
-   */
   Map<String, BmmConstant> getConstants ();
 
   /**
-   * Set the value of functions
+   * 0..1
+   * functions: Hash<String,BMM_FUNCTION>
    * List of functions defined in this class.
-   * @param newVar the new value of functions
    */
   void setFunctions (Map<String, BmmFunction> newVar);
-
-  /**
-   * Get the value of functions
-   * List of functions defined in this class.
-   * @return the value of functions
-   */
   Map<String, BmmFunction> getFunctions ();
 
   /**
-   * Set the value of procedures
-   * @param newVar the new value of procedures
+   * 0..1
+   * procedures: Hash<String,BMM_PROCEDURE>
+   * List of procedures defined in this class.
    */
   void setProcedures (Map<String, BmmProcedure> newVar);
-
-  /**
-   * Get the value of procedures
-   * @return the value of procedures
-   */
   Map<String, BmmProcedure> getProcedures ();
 
   /**
-   * Set the value of inVariants
-   * @param newVar the new value of inVariants
+   * 0..1
+   * invariants: List<EL_ASSERTION>
    */
   void setInVariants (List<ElAssertion> newVar);
-
-  /**
-   * Get the value of inVariants
-   * @return the value of inVariants
-   */
   List<ElAssertion> getInVariants ();
 
   /**
-   * Set the value of creators
+   * 0..1
+   * creators: Hash<String,BMM_PROCEDURE>
    * Subset of procedures that may be used to initialise a new instance of an object,
    * and whose execution will guarantee that class invariants are satisfied.
-   * @param newVar the new value of creators
    */
   void setCreators (Map<String, BmmProcedure> newVar);
-
-  /**
-   * Get the value of creators
-   * Subset of procedures that may be used to initialise a new instance of an object,
-   * and whose execution will guarantee that class invariants are satisfied.
-   * @return the value of creators
-   */
   Map<String, BmmProcedure> getCreators ();
 
   /**
-   * Set the value of convertors
-   * @param newVar the new value of convertors
+   * 0..1
+   * converters: Hash<String,BMM_PROCEDURE>
+   * Subset of creators that create a new instance from a single argument of another type.
    */
   void setConvertors (Map<String, BmmProcedure> newVar);
-
-  /**
-   * Get the value of convertors
-   * @return the value of convertors
-   */
   Map<String, BmmProcedure> getConvertors ();
-
+//---------------------------------------------------------------------------------------------
+  /**
+   * 1..1
+   * (abstract)
+   * type (): BMM_MODEL_TYPE
+   * Generate a type object that represents the type for which this class is the definer.
+   */
+  BmmModelType type();
   /**
    * List of all inheritance parent class names, recursively.
    * @return       List<String>

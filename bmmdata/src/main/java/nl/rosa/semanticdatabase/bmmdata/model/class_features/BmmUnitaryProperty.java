@@ -21,6 +21,15 @@ import java.util.Map;
  */
 @Data
 public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
+  /**
+   * BmmProperty
+   *  BmmInstantiable
+   *    BmmTypedFeature
+   *      BmmTyped
+   *        BmmType
+   *  BmmClassEntity
+   *    BmmDeclaration
+   */
 
   /**
    * BmmDeclaration
@@ -31,13 +40,13 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
   private Map<String, Object> extensions;
 
   @Override
-  public boolean isRootScope(){
+  public Boolean isRootScope(){
     return scope.equals(this);
   }
   /**
    * BmmClassEntity
    */
-  private boolean isSynthesisedGeneric;
+  private Boolean isSynthesisedGeneric;
   /**
    * BmmClassScoped
    */
@@ -46,9 +55,9 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
   /**
    * BmmProperty
    */
-  private boolean isImRuntime;
-  private boolean isImInfrastructure;
-  private boolean isComposition;
+  private Boolean isImRuntime;
+  private Boolean isImInfrastructure;
+  private Boolean isComposition;
 
 
   // BmmTypedFeature
@@ -56,7 +65,7 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
    * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
    * {default = false}   */
 
-  private boolean isNullable;
+  private Boolean isNullable;
 
 
 
@@ -83,9 +92,9 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
   /**
    * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() =
    * 'Boolean').
-   * @return       boolean
+   * @return       Boolean
    */
-  public boolean isBoolean(){
+  public Boolean isBoolean(){
     //TODO
     return false;
   }
@@ -178,13 +187,13 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
 
   // BmmEntity
   @Override
-  public boolean isAbstract() {
+  public Boolean isAbstract() {
     //TODO
     return false;
   }
 
   @Override
-  public boolean isPrimitive() {
+  public Boolean isPrimitive() {
     //TODO
     return false;
   }

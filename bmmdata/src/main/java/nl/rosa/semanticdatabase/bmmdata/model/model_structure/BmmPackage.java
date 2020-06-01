@@ -3,7 +3,9 @@ package nl.rosa.semanticdatabase.bmmdata.model.model_structure;
 import lombok.Data;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -11,7 +13,20 @@ import java.util.List;
  */
 @Data
 public class BmmPackage extends BmmPackageContainer{
-
+  /**
+   * BmmDeclaration
+   */
+  @NotNull
+  private String name;
+  private Map<String, Object> documentation;
+  @NotNull
+  private BmmDeclaration scope;
+  private Map<String, Object> extensions;
+  // Functions;
+  @Override
+  public Boolean isRootScope(){
+    return scope.equals(this);
+  }
 
   /**
    * 0..1

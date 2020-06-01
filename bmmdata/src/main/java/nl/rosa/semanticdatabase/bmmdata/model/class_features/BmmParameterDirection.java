@@ -10,10 +10,6 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 @Data
 public class BmmParameterDirection extends BmmBaseEntity {
 
-  //
-  // Fields
-  //
-
   /**
    * Parameter is an input parameter, and treated as readonly by the receiving routine.
    */

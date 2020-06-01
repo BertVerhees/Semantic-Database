@@ -5,7 +5,9 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmProcedure;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmRoutine;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -15,6 +17,46 @@ import java.util.List;
  */
 @Data
 public class ElProcedureAgent extends BmmBaseEntity implements ElAgent {
+/**
+ * ElAgent
+ *  ElScopedRef
+ *    ElInstanceRef
+ *      ElTerminal
+ *        ElExpression
+ */
+  /**
+   * ElInstanceRef
+   */
+  /**
+   * ElExpression
+   */
+  @NotNull
+  public BmmType evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+  /**
+   * ElScopedRef
+   */
+  private ElInstanceRef scope;
+  /**
+   * ElTerminal
+   */
+  /**
+   * ElExpression
+   */
+  @NotNull
+  public BmmType evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+//======================================================================================
 
   //
   // Fields
@@ -63,13 +105,13 @@ public class ElProcedureAgent extends BmmBaseEntity implements ElAgent {
   }
 
   @Override
-  public boolean isBoolean() {
+  public Boolean isBoolean() {
     //TODO
     return false;
   }
 
   @Override
-  public boolean isCallable() {
+  public Boolean isCallable() {
     //TODO
     return false;
   }

@@ -12,7 +12,12 @@ import java.util.Map;
  */
 @Data
 public class BmmEnumeration extends BmmSimpleClass {
-
+/**
+ * BmmClass
+ *  BmmModule
+ *    BHmmDeclaration
+ *  BmmEntity
+ */
 
   /**
    * The list of names of the enumeration. If no values are supplied, the integer values 0, 1, 2, �? are assumed.
@@ -43,13 +48,13 @@ public class BmmEnumeration extends BmmSimpleClass {
 
   // BmmEntity
   @Override
-  public boolean isAbstract() {
+  public Boolean isAbstract() {
     //TODO
     return false;
   }
 
   @Override
-  public boolean isPrimitive() {
+  public Boolean isPrimitive() {
     //TODO
     return false;
   }

@@ -5,6 +5,8 @@ import lombok.Data;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Class ElConstraintExpression
  * Special kind of expression representing a constraint on values. Used with the
@@ -13,11 +15,21 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
  */
 @Data
 public class ElConstraintExpression extends BmmBaseEntity implements ElExpression {
-
-  //
-  // Fields
-  //
-
+/**
+ * ElExpression
+ */
+/**
+ * ElExpression
+ */
+@NotNull
+public BmmType evalType(){
+  return null;
+}
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+//========================================================================
   /**
    * Left operand of constraint expression.
    */
@@ -41,7 +53,7 @@ public class ElConstraintExpression extends BmmBaseEntity implements ElExpressio
   }
 
   @Override
-  public boolean isBoolean() {
+  public Boolean isBoolean() {
     return false;
   }
 

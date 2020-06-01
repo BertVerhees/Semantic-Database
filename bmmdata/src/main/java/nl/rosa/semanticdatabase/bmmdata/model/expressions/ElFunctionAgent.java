@@ -5,7 +5,9 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmRoutine;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 
@@ -15,10 +17,69 @@ import java.util.List;
  */
 @Data
 public class ElFunctionAgent extends BmmBaseEntity implements ElAgent {
+/**
+ * ElAgent
+ *  ElScopedRef
+ *    ElInstanceRef
+ *      ElTerminal
+ *        ElExpression
+ */
+  /**
+   * ElAgent
+   */
+  @NotNull
+  private String name;
+  private ElTuple closedArgs;
+  private List<String> openArgs;
+  private BmmRoutine definition;
+  // Functions
+  @NotNull
+  public BmmSignature evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isCallable(){
+    return null;
+  }
+  /**
+   * ElScopedRef
+   */
+  private ElInstanceRef scope;
+/**
+ * ElInstanceRef
+ */
+  /**
+   * ElExpression
+   */
+  @NotNull
+  public BmmType evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+  /**
+   * ElScopedRef
+   */
+  private ElInstanceRef scope;
+  /**
+   * ElTerminal
+   */
+  /**
+   * ElExpression
+   */
+  @NotNull
+  public BmmType evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+//========================================================================
 
-  //
-  // Fields
-  //
+
 
   // ElScopedRef
   /**
@@ -63,13 +124,13 @@ public class ElFunctionAgent extends BmmBaseEntity implements ElAgent {
   }
 
   @Override
-  public boolean isBoolean() {
+  public Boolean isBoolean() {
     //TODO
     return false;
   }
 
   @Override
-  public boolean isCallable() {
+  public Boolean isCallable() {
     //TODO
     return false;
   }

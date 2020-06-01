@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 
-import lombok.Data;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmEffectiveType;
@@ -16,8 +15,16 @@ import java.util.Map;
 /**
  * Class BmmLocal
  */
-@Data
 public class BmmLocal extends BmmBaseEntity implements BmmVariable {
+  /**
+   * BmmVariable
+   *  BmmInstantiable
+   *    BmmTypedFeature
+   *      BmmTyped
+   *        BmmType
+   *  BmmClassEntity
+   *    BmmDeclaration
+   */
 
   /**
    * BmmDeclaration
@@ -27,13 +34,13 @@ public class BmmLocal extends BmmBaseEntity implements BmmVariable {
   private Map<String, Object> extensions;
 
   @Override
-  public boolean isRootScope(){
+  public Boolean isRootScope(){
     return scope.equals(this);
   }
   /**
    * BmmClassEntity
    */
-  private boolean isSynthesisedGeneric;
+  private Boolean isSynthesisedGeneric;
 
   /**
    * BmmVariable
@@ -45,14 +52,14 @@ public class BmmLocal extends BmmBaseEntity implements BmmVariable {
    * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
    * {default = false}   */
 
-  private boolean isNullable;
+  private Boolean isNullable;
 
 
   /**
    * BmmEntity
    */
-  private boolean isAbstract;
-  private boolean isPrimitive;
+  private Boolean isAbstract;
+  private Boolean isPrimitive;
   // BmmTyped
   /**
    * Declared or inferred static type of the entity.
@@ -68,9 +75,9 @@ public class BmmLocal extends BmmBaseEntity implements BmmVariable {
   /**
    * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() =
    * 'Boolean').
-   * @return       boolean
+   * @return       Boolean
    */
-  public boolean isBoolean(){
+  public Boolean isBoolean(){
     //TODO
     return false;
   }
@@ -145,13 +152,13 @@ public class BmmLocal extends BmmBaseEntity implements BmmVariable {
 
   // BmmEntity
   @Override
-  public boolean isAbstract() {
+  public Boolean isAbstract() {
     //TODO
     return false;
   }
 
   @Override
-  public boolean isPrimitive() {
+  public Boolean isPrimitive() {
     //TODO
     return false;
   }
@@ -164,5 +171,146 @@ public class BmmLocal extends BmmBaseEntity implements BmmVariable {
   @Deprecated
   public void setScope(BmmDeclaration newVar) {
     this.scope = (BmmRoutine) newVar;
+  }
+
+  public @NotNull String getName() {
+    return this.name;
+  }
+
+  public Map<String, Object> getDocumentation() {
+    return this.documentation;
+  }
+
+  public Map<String, Object> getExtensions() {
+    return this.extensions;
+  }
+
+  public Boolean getIsSynthesisedGeneric() {
+    return this.isSynthesisedGeneric;
+  }
+
+  public @NotNull BmmRoutine getScope() {
+    return this.scope;
+  }
+
+  public Boolean getIsNullable() {
+    return this.isNullable;
+  }
+
+  public Boolean getIsAbstract() {
+    return this.isAbstract;
+  }
+
+  public Boolean getIsPrimitive() {
+    return this.isPrimitive;
+  }
+
+  public BmmType getType() {
+    return this.type;
+  }
+
+  public void setName(@NotNull String name) {
+    this.name = name;
+  }
+
+  public void setDocumentation(Map<String, Object> documentation) {
+    this.documentation = documentation;
+  }
+
+  public void setExtensions(Map<String, Object> extensions) {
+    this.extensions = extensions;
+  }
+
+  public void setIsSynthesisedGeneric(Boolean isSynthesisedGeneric) {
+    this.isSynthesisedGeneric = isSynthesisedGeneric;
+  }
+
+  public void setIsNullable(Boolean isNullable) {
+    this.isNullable = isNullable;
+  }
+
+  public void setIsAbstract(Boolean isAbstract) {
+    this.isAbstract = isAbstract;
+  }
+
+  public void setIsPrimitive(Boolean isPrimitive) {
+    this.isPrimitive = isPrimitive;
+  }
+
+  public void setType(BmmType type) {
+    this.type = type;
+  }
+
+  public Boolean equals(final Object o) {
+    if (o == this) return true;
+    if (!(o instanceof BmmLocal)) return false;
+    final BmmLocal other = (BmmLocal) o;
+    if (!other.canEqual((Object) this)) return false;
+    final Object this$name = this.getName();
+    final Object other$name = other.getName();
+    if (this$name == null ? other$name != null : !this$name.equals(other$name)) return false;
+    final Object this$documentation = this.getDocumentation();
+    final Object other$documentation = other.getDocumentation();
+    if (this$documentation == null ? other$documentation != null : !this$documentation.equals(other$documentation))
+      return false;
+    final Object this$extensions = this.getExtensions();
+    final Object other$extensions = other.getExtensions();
+    if (this$extensions == null ? other$extensions != null : !this$extensions.equals(other$extensions))
+      return false;
+    final Object this$isSynthesisedGeneric = this.getIsSynthesisedGeneric();
+    final Object other$isSynthesisedGeneric = other.getIsSynthesisedGeneric();
+    if (this$isSynthesisedGeneric == null ? other$isSynthesisedGeneric != null : !this$isSynthesisedGeneric.equals(other$isSynthesisedGeneric))
+      return false;
+    final Object this$scope = this.getScope();
+    final Object other$scope = other.getScope();
+    if (this$scope == null ? other$scope != null : !this$scope.equals(other$scope)) return false;
+    final Object this$isNullable = this.getIsNullable();
+    final Object other$isNullable = other.getIsNullable();
+    if (this$isNullable == null ? other$isNullable != null : !this$isNullable.equals(other$isNullable))
+      return false;
+    final Object this$isAbstract = this.getIsAbstract();
+    final Object other$isAbstract = other.getIsAbstract();
+    if (this$isAbstract == null ? other$isAbstract != null : !this$isAbstract.equals(other$isAbstract))
+      return false;
+    final Object this$isPrimitive = this.getIsPrimitive();
+    final Object other$isPrimitive = other.getIsPrimitive();
+    if (this$isPrimitive == null ? other$isPrimitive != null : !this$isPrimitive.equals(other$isPrimitive))
+      return false;
+    final Object this$type = this.getType();
+    final Object other$type = other.getType();
+    if (this$type == null ? other$type != null : !this$type.equals(other$type)) return false;
+    return true;
+  }
+
+  protected Boolean canEqual(final Object other) {
+    return other instanceof BmmLocal;
+  }
+
+  public int hashCode() {
+    final int PRIME = 59;
+    int result = 1;
+    final Object $name = this.getName();
+    result = result * PRIME + ($name == null ? 43 : $name.hashCode());
+    final Object $documentation = this.getDocumentation();
+    result = result * PRIME + ($documentation == null ? 43 : $documentation.hashCode());
+    final Object $extensions = this.getExtensions();
+    result = result * PRIME + ($extensions == null ? 43 : $extensions.hashCode());
+    final Object $isSynthesisedGeneric = this.getIsSynthesisedGeneric();
+    result = result * PRIME + ($isSynthesisedGeneric == null ? 43 : $isSynthesisedGeneric.hashCode());
+    final Object $scope = this.getScope();
+    result = result * PRIME + ($scope == null ? 43 : $scope.hashCode());
+    final Object $isNullable = this.getIsNullable();
+    result = result * PRIME + ($isNullable == null ? 43 : $isNullable.hashCode());
+    final Object $isAbstract = this.getIsAbstract();
+    result = result * PRIME + ($isAbstract == null ? 43 : $isAbstract.hashCode());
+    final Object $isPrimitive = this.getIsPrimitive();
+    result = result * PRIME + ($isPrimitive == null ? 43 : $isPrimitive.hashCode());
+    final Object $type = this.getType();
+    result = result * PRIME + ($type == null ? 43 : $type.hashCode());
+    return result;
+  }
+
+  public String toString() {
+    return "BmmLocal(name=" + this.getName() + ", documentation=" + this.getDocumentation() + ", extensions=" + this.getExtensions() + ", isSynthesisedGeneric=" + this.getIsSynthesisedGeneric() + ", scope=" + this.getScope() + ", isNullable=" + this.getIsNullable() + ", isAbstract=" + this.getIsAbstract() + ", isPrimitive=" + this.getIsPrimitive() + ", type=" + this.getType() + ")";
   }
 }

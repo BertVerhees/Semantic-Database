@@ -3,7 +3,10 @@ package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 import lombok.Data;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
+import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSpec;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 /**
@@ -27,7 +30,59 @@ import java.util.List;
  */
 @Data
 public class BmmParameterType extends BmmBaseEntity implements BmmUnitaryType {
-
+  /**
+   *    BmmUnitaryType
+   *      BmmType
+   *        BmmEntity
+   */
+  /**
+   * BmmUnitaryType
+   */
+  // Functions
+  @NotNull
+  public BmmUnitaryType unitaryType(){
+    return null;
+  }
+  /**
+   * BmmType
+   */
+  // Functions
+  @NotNull
+  public String typeName(){
+    return null;
+  }
+  @NotNull
+  public List<String> flattenedTypeList(){
+    return null;
+  }
+  @NotNull
+  public String typeSignature(){
+    return null;
+  }
+  @NotNull
+  public BmmUnitaryType unitaryType(){
+    return null;
+  }
+  @NotNull
+  public BmmEffectiveType effectiveType(){
+    return null;
+  }
+  /**
+   * BmmEntity
+   */
+  // Functions
+  @NotNull
+  public Boolean isAbstract(){
+    return null;
+  }
+  @NotNull
+  public Boolean isPrimitive(){
+    return null;
+  }
+  private BmmValueSpec valueConstraint;
+  @NotNull
+  private BmmClass baseClass;
+//==================================================================================
   //
   // Fields
   //
@@ -88,13 +143,13 @@ public class BmmParameterType extends BmmBaseEntity implements BmmUnitaryType {
 
   // BmmEntity
   @Override
-  public boolean isAbstract() {
+  public Boolean isAbstract() {
     //TODO
     return false;
   }
 
   @Override
-  public boolean isPrimitive() {
+  public Boolean isPrimitive() {
     //TODO
     return false;
   }

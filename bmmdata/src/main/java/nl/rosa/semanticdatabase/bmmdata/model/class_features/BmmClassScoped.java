@@ -9,10 +9,6 @@ import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
  */
 public interface BmmClassScoped extends BmmClassEntity {
 
-  //
-  // Accessor methods
-  //
-
   /**
    * 0..1
    * visibility: Any

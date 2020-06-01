@@ -17,8 +17,8 @@ public interface BmmProperty extends BmmInstantiable, BmmClassScoped {
    * {default = false}
    * True if this property is marked with info model im_runtime property.
    */
-  void setImRuntime (boolean newVar);
-  boolean isImRuntime ();
+  void setIsImRuntime (Boolean newVar);
+  Boolean getIsImRuntime ();
 
   /**
    * 0..1
@@ -26,8 +26,8 @@ public interface BmmProperty extends BmmInstantiable, BmmClassScoped {
    * {default = false}
    * True if this property was marked with info model im_infrastructure flag.
    */
-  void setImInfrastructure (boolean newVar);
-  boolean isImInfrastructure ();
+  void setIsImInfrastructure (Boolean newVar);
+  Boolean getIsImInfrastructure ();
 
   /**
    * 0..1
@@ -37,22 +37,23 @@ public interface BmmProperty extends BmmInstantiable, BmmClassScoped {
    * Equivalent to 'composition' in UML associations (but missing from UML properties without associations)
    * and also 'cascade-delete' semantics in ER schemas.
    */
-  void setComposition (boolean newVar);
-  boolean isComposition ();
+  void setIsComposition (Boolean newVar);
+  Boolean getIsComposition ();
 
   //
   // Other methods
   //
 
   /**
+   * 1..1
    * Interval form of 0..1, 1..1 etc, derived from is_nullable.
    */
   MultiplicityInterval existence();
 
 
   /**
+   * 1..1
    * Name of this property to display in UI.
-   * @return       String
    */
   String displayName();
 }

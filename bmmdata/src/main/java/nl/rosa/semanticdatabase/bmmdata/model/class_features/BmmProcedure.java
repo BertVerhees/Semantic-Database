@@ -20,6 +20,12 @@ import java.util.Map;
  */
 @Data
 public class BmmProcedure extends BmmBaseEntity implements BmmRoutine {
+  /**
+   * BmmRoutine
+   *  BmmClassScoped
+   *    BmmClassEntity
+   *      BmmDeclaration
+   */
 
   /**
    * BmmDeclaration
@@ -30,13 +36,13 @@ public class BmmProcedure extends BmmBaseEntity implements BmmRoutine {
   private Map<String, Object> extensions;
 
   @Override
-  public boolean isRootScope(){
+  public Boolean isRootScope(){
     return scope.equals(this);
   }
   /**
    * BmmClassEntity
    */
-  private boolean isSynthesisedGeneric;
+  private Boolean isSynthesisedGeneric;
   /**
    * BmmClassScoped
    */

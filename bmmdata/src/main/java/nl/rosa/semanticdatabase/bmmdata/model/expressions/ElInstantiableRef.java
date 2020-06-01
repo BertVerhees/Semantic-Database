@@ -4,6 +4,8 @@ import lombok.Data;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
+import javax.validation.constraints.NotNull;
+
 
 /**
  * Class ElInstantiableRef
@@ -12,11 +14,45 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
  */
 @Data
 public class ElInstantiableRef<T> extends BmmBaseEntity implements ElScopedRef {
-
-  //
-  // Fields
-  //
-
+/**
+ *  ElScopedRef
+ *    ElInstanceRef
+ *      ElTerminal
+ *        ElExpression
+ */
+  /**
+   * ElInstanceRef
+   */
+  /**
+   * ElExpression
+   */
+  @NotNull
+  public BmmType evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+  /**
+   * ElScopedRef
+   */
+  private ElInstanceRef scope;
+  /**
+   * ElTerminal
+   */
+  /**
+   * ElExpression
+   */
+  @NotNull
+  public BmmType evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+//======================================================================================
   // BmmElScopedRef
   /**
    * Reference to an owning object for this terminal element, if it is not the current scope.
@@ -80,7 +116,7 @@ public class ElInstantiableRef<T> extends BmmBaseEntity implements ElScopedRef {
   }
 
   @Override
-  public boolean isBoolean() {
+  public Boolean isBoolean() {
     //TODO
     return false;
   }

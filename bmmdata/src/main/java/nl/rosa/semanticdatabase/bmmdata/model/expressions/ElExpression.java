@@ -19,8 +19,8 @@ public interface ElExpression {
   /**
    * True if eval_type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name()
    * = Boolean)
-   * @return       boolean
-   * Post_result: Result = eval_type().equal( {BMM_MODEL}.boolean_type_definition())
+   * @return       Boolean
+   * Post_result: Result = eval_type().equal( {BMM_MODEL}.Boolean_type_definition())
    */
-  boolean isBoolean();
+  Boolean isBoolean();
 }

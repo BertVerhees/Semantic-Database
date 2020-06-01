@@ -11,29 +11,20 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 public interface BmmTyped extends BmmType {
 
   /**
-   * Set the value of type
+   * 1..1
+   * type: BMM_TYPE
    * Declared or inferred static type of the entity.
-   * @param newVar the new value of type
    */
   public void setType (BmmType newVar);
-
-  /**
-   * Get the value of type
-   * Declared or inferred static type of the entity.
-   * @return the value of type
-   */
   public BmmType getType ();
 
-  //
-  // Other methods
-  //
-
   /**
-   * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() =
-   * 'Boolean').
-   * @return       boolean
+   * 1..1
+   * is_boolean (): Boolean
+   * Post_result: Result = type().equal( {BMM_MODEL}.boolean_type_definition())
+   * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() = 'Boolean').
    */
-  public boolean isBoolean();
+  public Boolean isBoolean();
 
 
 }

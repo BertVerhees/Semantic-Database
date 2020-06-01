@@ -4,6 +4,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.types;
 import lombok.Data;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 
@@ -30,10 +31,69 @@ import java.util.Map;
  */
 @Data
 public class BmmTupleType extends BmmBaseEntity implements BmmEffectiveType {
-
-  //
-  // Fields
-  //
+  /**
+   *  BmmEffectiveType
+   *    BmmUnitaryType
+   *      BmmType
+   *        BmmEntity
+   */
+  /**
+   * BmmEffectiveType
+   */
+  // Functions;
+  @NotNull
+  public BmmEffectiveType getEffectiveType(){
+    return null;
+  }
+  @NotNull
+  public String typeBaseName(){
+    return null;
+  }
+  /**
+   * BmmUnitaryType
+   */
+  // Functions
+  @NotNull
+  public BmmUnitaryType unitaryType(){
+    return null;
+  }
+  /**
+   * BmmType
+   */
+  // Functions
+  @NotNull
+  public String typeName(){
+    return null;
+  }
+  @NotNull
+  public List<String> flattenedTypeList(){
+    return null;
+  }
+  @NotNull
+  public String typeSignature(){
+    return null;
+  }
+  @NotNull
+  public BmmUnitaryType unitaryType(){
+    return null;
+  }
+  @NotNull
+  public BmmEffectiveType effectiveType(){
+    return null;
+  }
+  /**
+   * BmmEntity
+   */
+  // Functions
+  @NotNull
+  public Boolean isAbstract(){
+    return null;
+  }
+  @NotNull
+  public Boolean isPrimitive(){
+    return null;
+  }
+//==================================================================================
 
   private String baseName = "Tuple";
   /**
@@ -55,7 +115,7 @@ public class BmmTupleType extends BmmBaseEntity implements BmmEffectiveType {
    * True if this declaration entity is the root of the declaration hierarchy.
    * @return
    */
-  public boolean isRootScope() {
+  public Boolean isRootScope() {
     return false;
   }
 
@@ -119,13 +179,13 @@ public class BmmTupleType extends BmmBaseEntity implements BmmEffectiveType {
 
   // BmmEntity
   @Override
-  public boolean isAbstract() {
+  public Boolean isAbstract() {
     //TODO
     return false;
   }
 
   @Override
-  public boolean isPrimitive() {
+  public Boolean isPrimitive() {
     //TODO
     return false;
   }

@@ -32,6 +32,8 @@ public interface BmmDeclaration {
   Map<String,Object> getDocumentation ();
 
   /**
+   * 1..1
+   * scope: BMM_DECLARATION
    * Model element within which an element is declared.
    */
   void setScope (BmmDeclaration newVar);
@@ -49,5 +51,5 @@ public interface BmmDeclaration {
    * Post_result: Result = (scope = self)
    * True if this declaration entity is the root of the declaration hierarchy.
    */
-  boolean isRootScope();
+  Boolean isRootScope();
 }

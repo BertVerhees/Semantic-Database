@@ -21,6 +21,15 @@ import java.util.Map;
  */
 @Data
 public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmInstantiable {
+  /**
+   * BmmClassScoped
+   *  BmmClassEntity
+   *    BmmDeclaration
+   * BmmInstantiable
+   *  BmmTypedFeature
+   *    BmmTyped
+   *      BmmType
+   */
 
   /**
    * BmmDeclaration
@@ -31,13 +40,13 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
   private Map<String, Object> extensions;
 
   @Override
-  public boolean isRootScope(){
+  public Boolean isRootScope(){
     return scope.equals(this);
   }
   /**
    * BmmClassEntity
    */
-  private boolean isSynthesisedGeneric;
+  private Boolean isSynthesisedGeneric;
 
   /**
    * BmmClassScoped
@@ -48,8 +57,8 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
 
 
   //BmmEntity
-  private boolean isAbstract;
-  private boolean isPrimitive;
+  private Boolean isAbstract;
+  private Boolean isPrimitive;
 
 
 
@@ -58,7 +67,7 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
    * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
    * {default = false}   */
 
-  private boolean isNullable;
+  private Boolean isNullable;
 
 
   // BmmTyped
@@ -99,9 +108,9 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
   /**
    * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() =
    * 'Boolean').
-   * @return       boolean
+   * @return       Boolean
    */
-  public boolean isBoolean(){
+  public Boolean isBoolean(){
     //TODO
     return false;
   }
@@ -172,13 +181,13 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
 
   // BmmEntity
   @Override
-  public boolean isAbstract() {
+  public Boolean isAbstract() {
     //TODO
     return false;
   }
 
   @Override
-  public boolean isPrimitive() {
+  public Boolean isPrimitive() {
     //TODO
     return false;
   }

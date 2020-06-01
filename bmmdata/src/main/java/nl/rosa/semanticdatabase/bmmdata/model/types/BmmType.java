@@ -15,31 +15,38 @@ import java.util.List;
 public interface BmmType extends BmmEntity {
 
   /**
-   * True if type is based only on a primitive class, or a collection thereof.
-   * Effected in descendants.
-   * @return       String
+   * 1..1
+   * (abstract)
+   * type_name (): String
+   * Formal string form of the type as per UML.
    */
   String typeName();
   /**
+   * 1..1
+   * (abstract)
+   * flattened_type_list (): List<String>
    * Completely flattened list of type names, flattening out all generic parameters.
-   * @return       List<String>
    */
   List<String> flattenedTypeList();
   /**
-   * Signature form of the type name, which for generics includes generic parameter
-   * constrainer nl.rosa.semanticdatabase.bmm.model.types E.g. Interval<T:Ordered>.
-   * Defaults to the value of type_name().
-   * @return       String
+   * 1..1
+   * type_signature (): String
+   * Signature form of the type name, which for generics includes generic parameter constrainer types
+   * E.g. Interval<T:Ordered>.
    */
   String typeSignature();
   /**
+   * 1..1
+   * (abstract)
+   * unitary_type (): BMM_UNITARY_TYPE
    * Type with any container abstracted away.
-   * When UnitaryType: Result = self.
    */
   BmmUnitaryType unitaryType();
   /**
-   * Type with any container abstracted away, and any formal parameter replaced by
-   * its effective constraint type. When BmmEffectiveType Result=self
+   * 1..1
+   * (abstract)
+   * effective_type (): BMM_EFFECTIVE_TYPE
+   * Type with any container abstracted away, and any formal parameter replaced by its effective constraint type.
    */
   BmmEffectiveType effectiveType();
 }

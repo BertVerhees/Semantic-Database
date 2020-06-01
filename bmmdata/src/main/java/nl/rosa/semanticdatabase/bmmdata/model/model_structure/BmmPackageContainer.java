@@ -2,9 +2,9 @@ package nl.rosa.semanticdatabase.bmmdata.model.model_structure;
 
 
 import lombok.Data;
-import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
+import javax.validation.constraints.NotNull;
 import java.util.Map;
 
 /**
@@ -16,15 +16,15 @@ public abstract class BmmPackageContainer extends BmmBaseEntity implements BmmDe
   /**
    * BmmDeclaration
    */
-  @NonNull
+  @NotNull
   private String name;
   private Map<String, Object> documentation;
-  @NonNull //redefined
-  private BmmPackageContainer scope;
+  @NotNull
+  private BmmDeclaration scope;
   private Map<String, Object> extensions;
-
+  // Functions;
   @Override
-  public boolean isRootScope(){
+  public Boolean isRootScope(){
     return scope.equals(this);
   }
 

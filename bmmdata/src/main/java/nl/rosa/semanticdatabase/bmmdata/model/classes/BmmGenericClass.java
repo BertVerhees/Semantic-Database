@@ -27,6 +27,12 @@ import java.util.Map;
  */
 @Data
 public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
+/**
+ * BmmClass
+ *  BmmModule
+ *    BHmmDeclaration
+ *  BmmEntity
+ */
 
   /**
    * BmmDeclaration
@@ -37,13 +43,36 @@ public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
   private Map<String, Object> extensions;
 
   @Override
-  public boolean isRootScope(){
+  public Boolean isRootScope(){
     return scope.equals(this);
   }
   /**
    * BmmModule
    */
   @NotNull private BmmModel scope;
+  /**
+   * BmmEntity
+   */
+  /**
+   * 0..1
+   * is_primitive: Boolean
+   * True if this class represents a type considered to be primitive in the type system,
+   * i.e. any typically built-in or standard library type such as String, Date, Hash<K,V> etc.
+   * @return
+   */
+  @NotNull
+  public Boolean isPrimitive(){
+    return false;
+  };
+  /**
+   * 0..1
+   * is_abstract: Boolean
+   * True if this class is marked as abstract, i.e. direct instances cannot be created from its direct type.
+   */
+  @NotNull
+  public Boolean isAbstract(){
+    return false;
+  };
   /**
    * BmmClass
    */
@@ -55,12 +84,10 @@ public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
   private String sourceSchemaId;
   private List<BmmClass> immediateDescendants;
   @NotNull
-  private boolean isOverride;
+  private Boolean isOverride;
   private Map<String, BmmConstant> constants;
   private Map<String, BmmFunction> functions;
   private Map<String, BmmProcedure> procedures;
-  private boolean isPrimitive;
-  private boolean isAbstract;
   private List<ElAssertion> inVariants;
   private Map<String, BmmProcedure> creators;
   private Map<String, BmmProcedure> convertors;
@@ -166,19 +193,6 @@ public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
   public List<BmmProperty> flatProperties() {
     //TODO
     return null;
-  }
-
-  // BmmEntity
-  @Override
-  public boolean isAbstract() {
-    //TODO
-    return false;
-  }
-
-  @Override
-  public boolean isPrimitive() {
-    //TODO
-    return false;
   }
 
   @Override

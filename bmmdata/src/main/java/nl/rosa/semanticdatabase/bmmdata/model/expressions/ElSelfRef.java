@@ -4,6 +4,8 @@ import lombok.Data;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
+import javax.validation.constraints.NotNull;
+
 
 /**
  * Class ElSelfRef
@@ -14,6 +16,29 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
  */
 @Data
 public class ElSelfRef extends BmmBaseEntity implements ElInstanceRef {
+/**
+ *    ElInstanceRef
+ *      ElTerminal
+ *        ElExpression
+ */
+  /**
+   * ElInstanceRef
+   */
+  /**
+   * ElTerminal
+   */
+  /**
+   * ElExpression
+   */
+  @NotNull
+  public BmmType evalType(){
+    return null;
+  }
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+//======================================================================================
 
   /**
    * Type of the current scoping instance, inferred from expression context.
@@ -39,7 +64,7 @@ public class ElSelfRef extends BmmBaseEntity implements ElInstanceRef {
   }
 
   @Override
-  public boolean isBoolean() {
+  public Boolean isBoolean() {
     //TODO
     return false;
   }

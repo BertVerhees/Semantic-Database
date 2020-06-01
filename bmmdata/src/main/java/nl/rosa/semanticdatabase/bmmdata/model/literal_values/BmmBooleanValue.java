@@ -10,5 +10,6 @@ import lombok.Data;
  */
 @Data
 public class BmmBooleanValue extends BmmLiteralValue {
+
   private Boolean value;
 }
