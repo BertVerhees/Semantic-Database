@@ -7,11 +7,6 @@ package nl.rosa.semanticdatabase.bmmdata.model.classes;
 public class BmmEnumerationInteger extends BmmEnumeration {
 
   //
-  // Fields
-  //
-
-  
-  //
   // Constructors
   //
   public BmmEnumerationInteger () { };

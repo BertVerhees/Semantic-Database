@@ -26,6 +26,48 @@ public class BmmProcedure extends BmmBaseEntity implements BmmRoutine {
    *    BmmClassEntity
    *      BmmDeclaration
    */
+  /**
+   * BmmRoutine
+   */
+  private List<BmmParameter> parameters;
+  private List<BmmLocal> locals;
+  private List<ElAssertion> preConditions;
+  private List<ElAssertion> postConditions;
+  private BmmStatementItem body;
+  // functions
+  public Integer arity(){
+    return null;
+  }
+  /**
+   * BmmClassScoped
+   */
+  private Object visibility;
+  private BmmClass scope;
+  /**
+   * BmmClassEntity
+   */
+  private Boolean isSynthesisedGeneric;
+  // function
+  @NotNull
+  public BmmSignature signature(){
+    return null;
+  }
+  /**
+   * BmmDeclaration
+   */
+  @NotNull
+  private String name;
+  private Map<String, Object> documentation;
+  @NotNull
+  private BmmDeclaration scope;
+  private Map<String, Object> extensions;
+  // Functions;
+  public Boolean isRootScope(){
+    return null;
+  }
+  //=============================================
+
+
 
   /**
    * BmmDeclaration

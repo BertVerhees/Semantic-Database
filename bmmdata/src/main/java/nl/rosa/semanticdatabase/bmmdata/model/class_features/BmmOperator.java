@@ -12,10 +12,6 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 @Data
 public class BmmOperator extends BmmBaseEntity {
 
-  //
-  // Fields
-  //
-
   /**
    * Position of operator in syntactic representation.
    */

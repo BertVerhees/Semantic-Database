@@ -10,11 +10,6 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
  * service.
  */
 public class BmmValueSpec extends BmmBaseEntity {
-
-  //
-  // Fields
-  //
-
   /**
    * Identifier of a resource (typically available as a service) that contains legal values of a specific type. This is typically a URI but need not be.
    */

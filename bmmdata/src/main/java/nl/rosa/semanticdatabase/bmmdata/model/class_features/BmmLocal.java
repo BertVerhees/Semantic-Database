@@ -25,7 +25,74 @@ public class BmmLocal extends BmmBaseEntity implements BmmVariable {
    *  BmmClassEntity
    *    BmmDeclaration
    */
-
+  /**
+   * BmmVariable
+   */
+  private BmmRoutine scope;
+  /**
+   * BmmDeclaration
+   */
+  @NotNull
+  private String name;
+  private Map<String, Object> documentation;
+  @NotNull
+  private BmmDeclaration scope;
+  private Map<String, Object> extensions;
+  // Functions;
+  public Boolean isRootScope(){
+    return null;
+  }
+  /**
+   * BmmClassEntity
+   */
+  private Boolean isSynthesisedGeneric;
+  // function
+  @NotNull
+  public BmmSignature signature(){
+    return null;
+  }
+  /**
+   * BmmType
+   */
+  // Functions
+  @NotNull
+  public String typeName(){
+    return null;
+  }
+  @NotNull
+  public List<String> flattenedTypeList(){
+    return null;
+  }
+  @NotNull
+  public String typeSignature(){
+    return null;
+  }
+  @NotNull
+  public BmmUnitaryType unitaryType(){
+    return null;
+  }
+  @NotNull
+  public BmmEffectiveType effectiveType(){
+    return null;
+  }
+  /**
+   * BmmTypedFeature
+   */
+  private Boolean isNullable;
+  /**
+   * BmmInstantiable
+   */
+  /**
+   * BmmTyped
+   */
+  @NotNull
+  private BmmType type;
+  // functions
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+//================================================================
   /**
    * BmmDeclaration
    */

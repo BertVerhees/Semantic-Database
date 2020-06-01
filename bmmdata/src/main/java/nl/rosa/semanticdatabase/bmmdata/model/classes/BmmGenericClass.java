@@ -30,10 +30,121 @@ public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
 /**
  * BmmClass
  *  BmmModule
- *    BHmmDeclaration
+ *    BmmDeclaration
  *  BmmEntity
  */
+  /**
+   * BmmEntity
+   */
+  // Functions
+  @NotNull
+  public Boolean isAbstract(){
+    return null;
+  }
+  @NotNull
+  public Boolean isPrimitive(){
+    return null;
+  }
+  /**
+   * BmmClass
+   */
+  private Map<String, BmmModelType> ancestors;
+  @NotNull
+  private BmmPackage _package;
+  private Map<String, BmmProperty> properties;
+  @NotNull
+  private String sourceSchemaId;
+  private List<BmmClass> immediateDescendants;
+  @NotNull
+  private Boolean isOverride;
+  private Map<String, BmmConstant> constants;
+  private Map<String, BmmFunction> functions;
+  private Map<String, BmmProcedure> procedures;
+  private List<ElAssertion> inVariants;
+  private Map<String, BmmProcedure> creators;
+  private Map<String, BmmProcedure> convertors;
+  // Functions
+  @NotNull
+  public BmmModelType type(){
+    return null;
+  }
+  public List<String> allAncestors(){
+    return null;
+  }
+  public List<String> allDescendants(){
+    return null;
+  }
+  public List<String> suppliers(){
+    return null;
+  }
+  public List<String> suppliersNonPrimitive(){
+    return null;
+  }
+  public List<String> supplierClosure(){
+    return null;
+  }
+  @NotNull
+  public String packagePath(){
+    return null;
+  }
+  @NotNull
+  public String classPath(){
+    return null;
+  }
+  @NotNull
+  public Boolean isAbstract(){
+    return null;
+  }
+  @NotNull
+  public Boolean isPrimitive(){
+    return null;
+  }
+  public List<BmmClassScoped> features(){
+    return null;
+  }
+  public List<BmmClassScoped> flatFeatures(){
+    return null;
+  }
+  public List<BmmProperty> flatProperties(){
+    return null;
+  }
+  /**
+   * BmmModule
+   */
+  @NotNull
+  private BmmModel scope;
+  /**
+   * BmmDeclaration
+   */
+  @NotNull
+  private String name;
+  private Map<String, Object> documentation;
+  @NotNull
+  private BmmDeclaration scope;
+  private Map<String, Object> extensions;
+  // Functions;
+  public Boolean isRootScope(){
+    return null;
+  }
 
+  /**
+   * BmmDeclaration
+   */
+  @NonNull
+  private String name;
+  private Map<String, Object> documentation;
+  private Map<String, Object> extensions;
+
+  @Override
+  public Boolean isRootScope(){
+    return scope.equals(this);
+  }
+  /**
+   * BmmModule
+   */
+  @NotNull
+  private BmmModel scope;
+  //============================================================
   /**
    * BmmDeclaration
    */

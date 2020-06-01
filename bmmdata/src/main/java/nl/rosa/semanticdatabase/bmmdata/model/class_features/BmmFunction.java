@@ -34,8 +34,82 @@ public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFe
    *   BmmTyped
    *     BmmType
    */
-
-
+  /**
+   * BmmEntity
+   */
+  // Functions
+  @NotNull
+  public Boolean isAbstract(){
+    return null;
+  }
+  @NotNull
+  public Boolean isPrimitive(){
+    return null;
+  }
+  /**
+   * BmmType
+   */
+  // Functions
+  @NotNull
+  public String typeName(){
+    return null;
+  }
+  @NotNull
+  public List<String> flattenedTypeList(){
+    return null;
+  }
+  @NotNull
+  public String typeSignature(){
+    return null;
+  }
+  @NotNull
+  public BmmUnitaryType unitaryType(){
+    return null;
+  }
+  @NotNull
+  public BmmEffectiveType effectiveType(){
+    return null;
+  }
+  /**
+   * BmmTyped
+   */
+  @NotNull
+  private BmmType type;
+  // functions
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+  /**
+   * BmmTypedFeature
+   */
+  private Boolean isNullable;
+  /**
+   * BmmRoutine
+   */
+  private List<BmmParameter> parameters;
+  private List<BmmLocal> locals;
+  private List<ElAssertion> preConditions;
+  private List<ElAssertion> postConditions;
+  private BmmStatementItem body;
+  // functions
+  public Integer arity(){
+    return null;
+  }
+  /**
+   * BmmClassScoped
+   */
+  private Object visibility;
+  private BmmClass scope;
+  /**
+   * BmmClassEntity
+   */
+  private Boolean isSynthesisedGeneric;
+  // function
+  @NotNull
+  public BmmSignature signature(){
+    return null;
+  }
   /**
    * BmmDeclaration
    */
@@ -43,78 +117,11 @@ public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFe
   private String name;
   private Map<String, Object> documentation;
   private Map<String, Object> extensions;
-
-  @Override
+  // Functions;
   public Boolean isRootScope(){
     return scope.equals(this);
   }
-  /**
-   * BmmClassEntity
-   */
-  private Boolean isSynthesisedGeneric;
-  /**
-   * BmmClassScoped
-   */
-  private Object visibility;
-  @NotNull private BmmClass scope;
-  /**
-   * BmmRoutine
-   */
-  private List<BmmParameter> parameters;
-  private List<BmmLocal> locals;
-  private List<ElAssertion> preConditions;
-  private List<ElAssertion> postCondtions;
-  private BmmStatementItem body;
-
-  /**
-   * BmmEntity
-   */
-  @Override
-  public Boolean isAbstract() {
-    //TODO
-    return false;
-  }
-
-  @Override
-  public Boolean isPrimitive() {
-    //TODO
-    return false;
-  }
-
-  /**
-   * BmmTypedFeature
-   */
-  private Boolean isNullable;
-  /**
-   * BmmTyped
-   */
-  private BmmType type;
-
-
-  //BmmClassScoped
-  /**
-   * BmmClassScoped
-   */
-  private Object visibility;
-  private BmmClass scope;
-
-  /**
-   * Formal parameters of the routine.
-   */
-  private List<BmmParameter> parameters;
-  /**
-   * Local variables of the routine.
-   */
-  private List<BmmLocal> locals;
-  private List<ElAssertion> preConditions;
-  private List<ElAssertion> postCondtions;
-  /**
-   * Body of a routine, i.e. executable program.
-   */
-  private BmmStatementItem body;
-
-
-
+  //=============================================
   /**
    * Optional details enabling a function to be represented as an operator in a syntactic representation.
    */
@@ -123,46 +130,10 @@ public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFe
    * Automatically created Result variable, usable in body and post-condition.
    */
   private BmmResult result;
-  
-  //
-  // Constructors
-  //
-  public BmmFunction () { };
 
   @Override
   public void setScope(BmmClass newVar) {
     this.scope = newVar;
-  }
-
-  /**
-   * Return number of arguments of this routine.
-   * @return
-   */
-  @Override
-  public Integer arity() {
-    //TODO
-    return null;
-  }
-  /**
-   * Formal signature of this element, in the form
-   *
-   * '[arg1_name: T_arg1, …​]:T_value'.
-   * @return
-   */
-  @Override
-  public BmmSignature signature() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() =
-   * 'Boolean').
-   * @return       Boolean
-   */
-  public Boolean isBoolean(){
-    //TODO
-    return false;
   }
 
   @Override
@@ -170,61 +141,6 @@ public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFe
   public void setScope(BmmDeclaration newVar) {
     this.scope = (BmmClass) newVar;
   }
-
-
-  /**
-   * Formal string form of the type as per UML.
-   * @return
-   */
-  @Override
-  public String typeName() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Completely flattened list of type names, flattening out all generic parameters.
-   * @return
-   */
-  @Override
-  public List<String> flattenedTypeList() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Signature form of the type name, which for generics includes generic parameter constrainer nl.rosa.semanticdatabase.bmm.model.types E.g. Interval<T:Ordered>.
-   *
-   * Defaults to the value of type_name().
-   * @return
-   */
-  @Override
-  public String typeSignature() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Type with any container abstracted away.
-   * @return
-   */
-  @Override
-  public BmmUnitaryType unitaryType() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Type with any container abstracted away, and any formal parameter replaced by its effective constraint type.
-   * @return
-   */
-  @Override
-  public BmmEffectiveType effectiveType() {
-    //TODO
-    return null;
-  }
-
-
 
 
 }

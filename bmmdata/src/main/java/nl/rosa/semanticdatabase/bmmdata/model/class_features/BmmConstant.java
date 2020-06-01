@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.*;
+import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.literal_values.BmmLiteralValue;
@@ -30,92 +31,106 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
    *    BmmTyped
    *      BmmType
    */
-
+  /**
+   * BmmEntity
+   */
+  // Functions
+  @NotNull
+  public Boolean isAbstract(){
+    return null;
+  }
+  @NotNull
+  public Boolean isPrimitive(){
+    return null;
+  }
+  /**
+   * BmmProperty
+   */
+  private Boolean isImRuntime;
+  private Boolean isImInfrastructure;
+  private Boolean isComposition;
+  // functions
+  @NotNull
+  public MultiplicityInterval existence(){
+    return null;
+  }
+  @NotNull
+  public String displayName(){
+    return null;
+  }
+  /**
+   * BmmClassScoped
+   */
+  private Object visibility;
+  private BmmClass scope;
   /**
    * BmmDeclaration
    */
   @NotNull
   private String name;
   private Map<String, Object> documentation;
+  @NotNull
   private Map<String, Object> extensions;
-
-  @Override
+  // Functions;
   public Boolean isRootScope(){
-    return scope.equals(this);
+    return null;
   }
   /**
    * BmmClassEntity
    */
   private Boolean isSynthesisedGeneric;
-
+  // function
+  @NotNull
+  public BmmSignature signature(){
+    return null;
+  }
   /**
-   * BmmClassScoped
+   * BmmType
    */
-  private Object visibility;
-  @NotNull private BmmClass scope;
-
-
-
-  //BmmEntity
-  private Boolean isAbstract;
-  private Boolean isPrimitive;
-
-
-
-  // BmmTypedFeature
+  // Functions
+  @NotNull
+  public String typeName(){
+    return null;
+  }
+  @NotNull
+  public List<String> flattenedTypeList(){
+    return null;
+  }
+  @NotNull
+  public String typeSignature(){
+    return null;
+  }
+  @NotNull
+  public BmmUnitaryType unitaryType(){
+    return null;
+  }
+  @NotNull
+  public BmmEffectiveType effectiveType(){
+    return null;
+  }
   /**
-   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
-   * {default = false}   */
-
+   * BmmTypedFeature
+   */
   private Boolean isNullable;
-
-
-  // BmmTyped
   /**
-   * Declared or inferred static type of the entity.
+   * BmmInstantiable
    */
-  private BmmType type;
-
-
-  // BmmClassScoped
   /**
-   * Visibility of this item to client entities.
-   * TODO: define scheme; probably need to support C++/Java scheme as well as better type-based schemes.   */
-
-  private Object visibility;
-  private BmmClass scope;
-
+   * BmmTyped
+   */
+  @NotNull
+  private BmmType type;
+  // functions
+  @NotNull
+  public Boolean isBoolean(){
+    return null;
+  }
+//================================================================
   /**
    * The value of the constant.
    */
   private BmmLiteralValue value;
   
-  //
-  // Constructors
-  //
-  public BmmConstant () { };
-
-  /**
-   * Formal signature of this element, in the form:
-   * name [arg1_name: T_arg1, �?][:T_value]
-   * Specific implementations in descendants.
-   */
-  public BmmSignature signature(){
-    //TODO
-    return null;
-  }
-
-  /**
-   * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() =
-   * 'Boolean').
-   * @return       Boolean
-   */
-  public Boolean isBoolean(){
-    //TODO
-    return false;
-  }
-
-
   @Override
   @Deprecated
   public void setScope(BmmDeclaration newVar) {
@@ -126,70 +141,4 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
   public void setScope(BmmClass newVar) {
     this.scope = newVar;
   }
-
-  /**
-   * Formal string form of the type as per UML.
-   * @return
-   */
-  @Override
-  public String typeName() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Completely flattened list of type names, flattening out all generic parameters.
-   * @return
-   */
-  @Override
-  public List<String> flattenedTypeList() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Signature form of the type name, which for generics includes generic parameter constrainer nl.rosa.semanticdatabase.bmm.model.types E.g. Interval<T:Ordered>.
-   *
-   * Defaults to the value of type_name().
-   * @return
-   */
-  @Override
-  public String typeSignature() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Type with any container abstracted away.
-   * @return
-   */
-  @Override
-  public BmmUnitaryType unitaryType() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Type with any container abstracted away, and any formal parameter replaced by its effective constraint type.
-   * @return
-   */
-  @Override
-  public BmmEffectiveType effectiveType() {
-    //TODO
-    return null;
-  }
-
-  // BmmEntity
-  @Override
-  public Boolean isAbstract() {
-    //TODO
-    return false;
-  }
-
-  @Override
-  public Boolean isPrimitive() {
-    //TODO
-    return false;
-  }
-
 }

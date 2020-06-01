@@ -12,10 +12,6 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 @Data
 public class BmmOperatorPosition extends BmmBaseEntity {
 
-  //
-  // Fields
-  //
-
   /**
    * Prefix operator position: operator comes before operand
    */
