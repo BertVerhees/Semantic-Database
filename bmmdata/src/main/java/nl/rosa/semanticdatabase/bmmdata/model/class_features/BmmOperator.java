@@ -24,9 +24,4 @@ public class BmmOperator extends BmmBaseEntity {
    * Formal name of the operator, e.g. 'minus' etc.
    */
   private String name;
-  
-  //
-  // Constructors
-  //
-  public BmmOperator () { };
 }

@@ -3,8 +3,10 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 import lombok.Data;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
-import nl.rosa.semanticdatabase.bmmdata.model.types.*;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmEffectiveType;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmIndexedContainerType;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -51,15 +53,12 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
   /**
    * BmmVariable
    */
-  private BmmRoutine scope;
   /**
    * BmmDeclaration
    */
   @NotNull
   private String name;
   private Map<String, Object> documentation;
-  @NotNull
-  private BmmDeclaration scope;
   private Map<String, Object> extensions;
   // Functions;
   public Boolean isRootScope(){
@@ -108,8 +107,6 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
   /**
    * BmmTyped
    */
-  @NotNull
-  private BmmType type;
   // functions
   @NotNull
   public Boolean isBoolean(){
@@ -120,52 +117,6 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
   /**
    * Declared or inferred static type of the entity.
    */
+  @NotNull
   private BmmIndexedContainerType type;
-  
-  //
-  // Constructors
-  //
-  public BmmIndexedContainerProperty () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
-  /**
-   * Set the value of type
-   * Declared or inferred static type of the entity.
-   * @param newVar the new value of type
-   */
-  public void setType (BmmIndexedContainerType newVar) {
-    type = newVar;
-  }
-
-  /**
-   * Get the value of type
-   * Declared or inferred static type of the entity.
-   * @return the value of type
-   */
-  public BmmIndexedContainerType getType () {
-    return type;
-  }
-
-  //
-  // Other methods
-  //
-
-  /**
-   * Name of this property in form name: ContainerTypeName<IndexTypeName, �?>.
-   * @return       String
-   */
-  public String displayName()
-  {
-    //TODO
-    return null;
-  }
-
 }
