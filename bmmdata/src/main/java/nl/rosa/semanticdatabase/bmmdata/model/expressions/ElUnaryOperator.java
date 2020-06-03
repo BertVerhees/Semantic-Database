@@ -50,17 +50,6 @@ public class ElUnaryOperator extends BmmBaseEntity implements ElOperator {
    * Operand node.
    */
   private ElExpression operand;
-  
-  //
-  // Constructors
-  //
-  public ElUnaryOperator () { };
-
-  @Override
-  public BmmOperator operatorDefinition() {
-    //TODO
-    return null;
-  }
 
   @Override
   public ElFunctionCall equivalentCall() {
@@ -68,19 +57,4 @@ public class ElUnaryOperator extends BmmBaseEntity implements ElOperator {
     return null;
   }
 
-  @Override
-  public BmmType evalType() {
-    //TODO
-    return null;
-  }
-
-  @Override
-  public Boolean isBoolean() {
-    //TODO
-    return false;
-  }
-
-  //
-  // Methods
-  //
 }

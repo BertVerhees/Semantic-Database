@@ -73,30 +73,6 @@ public class BmmContainerType extends BmmBaseEntity implements BmmType {
   }
   //==================================================================================
   /**
-   * BmmEntity
-   */
-  /**
-   * 0..1
-   * is_primitive: Boolean
-   * True if this class represents a type considered to be primitive in the type system,
-   * i.e. any typically built-in or standard library type such as String, Date, Hash<K,V> etc.
-   * @return
-   */
-  @NotNull
-  public Boolean isPrimitive(){
-    return false;
-  };
-  /**
-   * 0..1
-   * is_abstract: Boolean
-   * True if this class is marked as abstract, i.e. direct instances cannot be created from its direct type.
-   */
-  @NotNull
-  public Boolean isAbstract(){
-    return false;
-  };
-
-  /**
    * 1..1
    * container_class: BMM_GENERIC_CLASS
    * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
@@ -134,48 +110,6 @@ public class BmmContainerType extends BmmBaseEntity implements BmmType {
   // Constructors
   //
   public BmmContainerType () { }
-
-  /**
-   * Return full type name, e.g. List<ELEMENT>.
-   * @return
-   */
-  @Override
-  public String typeName() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Flattened list of type names with container type name abstracted away.
-   * Post_result: Result = item_type.flattened_type_list
-   * @return
-   */
-  @Override
-  public List<String> flattenedTypeList() {
-    //TODO
-    return null;
-  }
-
-  @Override
-  public String typeSignature() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Return item_type.
-   */
-  @Override
-  public BmmUnitaryType unitaryType() {
-    //TODO
-    return null;
-  }
-
-  @Override
-  public BmmEffectiveType effectiveType() {
-    //TODO
-    return null;
-  }
 
   /**
    * True if this declaration entity is the root of the declaration hierarchy.

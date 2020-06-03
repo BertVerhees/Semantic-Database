@@ -60,21 +60,4 @@ public class ElTuple extends BmmBaseEntity implements ElInstanceRef {
   // Methods
   //
 
-  /**
-   * Return type.
-   * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmType
-   */
-  public BmmType evalType()
-  {
-    //TODO
-    return null;
-  }
-
-  @Override
-  public Boolean isBoolean() {
-    //TODO
-    return false;
-  }
-
-
 }

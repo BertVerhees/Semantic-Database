@@ -76,10 +76,6 @@ public class BmmGenericType extends BmmBaseEntity implements BmmModelType {
     return null;
   }
   @NotNull
-  public BmmUnitaryType unitaryType(){
-    return null;
-  }
-  @NotNull
   public BmmEffectiveType effectiveType(){
     return null;
   }
@@ -96,10 +92,6 @@ public class BmmGenericType extends BmmBaseEntity implements BmmModelType {
     return null;
   }
   //==================================================================================
-  // Bmm ModelType
-  private BmmValueSpec valueConstraint;
-
-
   /**
    * Generic parameters of the root_type in this type specifier. The order must match the order of the owning class�s formal generic parameter declarations, and the nl.rosa.semanticdatabase.bmm.model.types may be defined nl.rosa.semanticdatabase.bmm.model.types or formal parameter nl.rosa.semanticdatabase.bmm.model.types.
    */
@@ -114,18 +106,6 @@ public class BmmGenericType extends BmmBaseEntity implements BmmModelType {
   // Constructors
   //
   public BmmGenericType () { };
-
-  /**
-   * Signature form of the type, which for generics includes generic parameter
-   * constrainer nl.rosa.semanticdatabase.bmm.model.types E.g. Interval<T:Ordered>.
-   * @return       String
-   */
-  public String typeSignature()
-  {
-    //TODO
-    return null;
-  }
-
 
   /**
    * Returns True if there is any substituted generic parameter.
@@ -168,67 +148,8 @@ public class BmmGenericType extends BmmBaseEntity implements BmmModelType {
     return false;
   }
 
-  /**
-   * Formal string form of the type as per UML.
-   * @return
-   */
-  @Override
-  public String typeName() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Completely flattened list of type names, flattening out all generic parameters.
-   * @return
-   */
-  @Override
-  public List<String> flattenedTypeList() {
-    //TODO
-    return null;
-  }
-
-
-  /**
-   * Type with any container abstracted away.
-   * @return
-   */
-  @Override
-  public BmmUnitaryType unitaryType() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Type with any container abstracted away, and any formal parameter replaced by its effective constraint type.
-   * @return
-   */
-  @Override
-  public BmmEffectiveType effectiveType() {
-    //TODO
-    return null;
-  }
-  // BmmEntity
-  @Override
-  public Boolean isAbstract() {
-    //TODO
-    return false;
-  }
-
-  @Override
-  public Boolean isPrimitive() {
-    //TODO
-    return false;
-  }
-
   @Override
   public void setBaseClass(BmmClass newVar) {
     this.baseClass = (BmmGenericClass) newVar;
-  }
-
-  @Override
-  public String typeBaseName() {
-    //TODO
-    return null;
   }
 }

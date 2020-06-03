@@ -43,19 +43,4 @@ public BmmType evalType(){
   // Constructors
   //
   public ElConstraintExpression () { };
-  
-  //
-  // Other methods
-  //
-  @Override
-  public BmmType evalType() {
-    return null;
-  }
-
-  @Override
-  public Boolean isBoolean() {
-    return false;
-  }
-
-
 }

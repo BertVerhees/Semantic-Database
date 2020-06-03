@@ -6,7 +6,6 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmOperator;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
 import javax.validation.constraints.NotNull;
 
@@ -48,37 +47,7 @@ public class ElAttached extends BmmBaseEntity implements ElPredicate {
   /**
    * ElExpression
    */
-  @NotNull
-  public BmmType evalType(){
-    return null;
-  }
-  @NotNull
-  public Boolean isBoolean(){
-    return null;
-  }
 //========================================================================
-  //
-  // Fields
-  //
-
-  // ElPredicate
-  /**
-   * The target instance of this predicate.
-   */
-  private ElInstanceRef operand;
-
-
-
-  //
-  // Constructors
-  //
-  public ElAttached () { };
-
-  @Override
-  public BmmSimpleType evalType() {
-    return null;
-  }
-
   @Override
   public Boolean isBoolean() {
     return false;

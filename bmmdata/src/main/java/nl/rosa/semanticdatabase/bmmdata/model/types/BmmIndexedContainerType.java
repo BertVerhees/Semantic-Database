@@ -67,23 +67,4 @@ public class BmmIndexedContainerType extends BmmContainerType {
    * Type of the element index, typically String or Integer, but may be a numeric type or indeed any type from which a hash value can be derived.
    */
   private BmmSimpleType indexType;
-  
-  //
-  // Constructors
-  //
-  public BmmIndexedContainerType () { };
-  
-
-  // BmmEntity
-  @Override
-  public Boolean isAbstract() {
-    //TODO
-    return false;
-  }
-
-  @Override
-  public Boolean isPrimitive() {
-    //TODO
-    return false;
-  }
 }

@@ -18,7 +18,7 @@ public interface ElOperator extends ElExpression {
    * operator node and its operands.
    */
   void setPrecedenceOverridden (Boolean newVar);
-  Boolean isPrecedenceOverridden ();
+  Boolean getPrecedenceOverridden ();
 
   /**
    * 0..1

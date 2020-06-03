@@ -60,10 +60,6 @@ public class BmmParameterType extends BmmBaseEntity implements BmmUnitaryType {
     return null;
   }
   @NotNull
-  public BmmUnitaryType unitaryType(){
-    return null;
-  }
-  @NotNull
   public BmmEffectiveType effectiveType(){
     return null;
   }
@@ -99,58 +95,4 @@ public class BmmParameterType extends BmmBaseEntity implements BmmUnitaryType {
    * If set, is the corresponding generic parameter definition in an ancestor class.
    */
   private BmmParameterType inheritancePrecursor;
-
-  //
-  // Constructors
-  //
-  public BmmParameterType () { };
-
-  @Override
-  public String typeName() {
-    //TODO
-    return null;
-  }
-
-  @Override
-  public List<String> flattenedTypeList() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Signature form of the open type, including constrainer type if there is one,
-   * e.g. T:Ordered.
-   * @return       String
-   */
-  public String typeSignature()
-  {
-    //TODO
-    return null;
-  }
-
-
-  @Override
-  public BmmUnitaryType unitaryType() {
-    //TODO
-    return null;
-  }
-
-  @Override
-  public BmmEffectiveType effectiveType() {
-    //TODO
-    return null;
-  }
-
-  // BmmEntity
-  @Override
-  public Boolean isAbstract() {
-    //TODO
-    return false;
-  }
-
-  @Override
-  public Boolean isPrimitive() {
-    //TODO
-    return false;
-  }
 }

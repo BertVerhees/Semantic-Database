@@ -72,10 +72,6 @@ public class BmmSignature extends BmmBaseEntity implements BmmEffectiveType {
     return null;
   }
   @NotNull
-  public BmmUnitaryType unitaryType(){
-    return null;
-  }
-  @NotNull
   public BmmEffectiveType effectiveType(){
     return null;
   }
@@ -121,74 +117,4 @@ public class BmmSignature extends BmmBaseEntity implements BmmEffectiveType {
     return false;
   }
 
-  /**
-   * Formal string form of the type as per UML.
-   * @return
-   */
-  @Override
-  public String typeName() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Completely flattened list of type names, flattening out all generic parameters.
-   * @return
-   */
-  @Override
-  public List<String> flattenedTypeList() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Signature form of the type name, which for generics includes generic parameter constrainer nl.rosa.semanticdatabase.bmm.model.types E.g. Interval<T:Ordered>.
-   *
-   * Defaults to the value of type_name().
-   * @return
-   */
-  @Override
-  public String typeSignature() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Type with any container abstracted away.
-   * @return
-   */
-  @Override
-  public BmmUnitaryType unitaryType() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Type with any container abstracted away, and any formal parameter replaced by its effective constraint type.
-   * @return
-   */
-  @Override
-  public BmmEffectiveType effectiveType() {
-    //TODO
-    return null;
-  }
-
-  @Override
-  public String typeBaseName() {
-    //TODO
-    return null;
-  }
-
-  // BmmEntity
-  @Override
-  public Boolean isAbstract() {
-    //TODO
-    return false;
-  }
-
-  @Override
-  public Boolean isPrimitive() {
-    //TODO
-    return false;
-  }
 }

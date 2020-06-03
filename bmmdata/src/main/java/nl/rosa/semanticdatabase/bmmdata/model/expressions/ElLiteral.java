@@ -39,45 +39,15 @@ public class ElLiteral extends BmmBaseEntity implements ElInstanceRef {
    * ElTerminal
    */
   /**
-   * ElExpression
-   */
-  @NotNull
-  public BmmType evalType(){
-    return null;
-  }
-  @NotNull
-  public Boolean isBoolean(){
-    return null;
-  }
-  /**
    * ElAgentCall
    */
   @NotNull
   private ElAgent agent;
 //======================================================================================
-  //
-  // Fields
-  //
-
   /**
    * The reference item from which the value of this node can be computed.
    */
   private BmmLiteralValue value;
-  
-  //
-  // Constructors
-  //
-  public ElLiteral () { };
-  
-  //
-  // Methods
-  //
-
-
-  //
-  // Accessor methods
-  //
-
   /**
    * Set the value of value
    * The reference item from which the value of this node can be computed.
@@ -95,26 +65,4 @@ public class ElLiteral extends BmmBaseEntity implements ElInstanceRef {
   public BmmLiteralValue getValue () {
     return value;
   }
-
-  //
-  // Other methods
-  //
-
-  /**
-   * Return value.type.
-   * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmType
-   */
-  public BmmType evalType()
-  {
-    //TODO
-    return null;
-  }
-
-  @Override
-  public Boolean isBoolean() {
-    //TODO
-    return false;
-  }
-
-
 }

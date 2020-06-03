@@ -39,30 +39,5 @@ public class ElTypeRef extends BmmBaseEntity implements ElInstanceRef {
     return null;
   }
 //======================================================================================
-
-  //
-  // Fields
-  //
-
   private BmmType type;
-  
-  //
-  // Constructors
-  //
-  public ElTypeRef () { };
-  
-  //
-  // Methods
-  //
-
-
-  @Override
-  public BmmType evalType() {
-    return null;
-  }
-
-  @Override
-  public Boolean isBoolean() {
-    return false;
-  }
 }

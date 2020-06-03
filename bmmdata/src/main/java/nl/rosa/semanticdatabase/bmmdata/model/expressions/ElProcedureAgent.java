@@ -5,7 +5,6 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmProcedure;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmRoutine;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -31,7 +30,7 @@ public class ElProcedureAgent extends BmmBaseEntity implements ElAgent {
    * ElExpression
    */
   @NotNull
-  public BmmType evalType(){
+  public BmmSignature evalType(){
     return null;
   }
   @NotNull
@@ -45,29 +44,7 @@ public class ElProcedureAgent extends BmmBaseEntity implements ElAgent {
   /**
    * ElTerminal
    */
-  /**
-   * ElExpression
-   */
-  @NotNull
-  public BmmType evalType(){
-    return null;
-  }
-  @NotNull
-  public Boolean isBoolean(){
-    return null;
-  }
 //======================================================================================
-
-  //
-  // Fields
-  //
-
-  // ElScopedRef
-  /**
-   * Reference to an owning object for this terminal element, if it is not the current scope.
-   */
-  private ElInstanceRef scope;
-
 
   // ElAgent
   /**
@@ -87,27 +64,10 @@ public class ElProcedureAgent extends BmmBaseEntity implements ElAgent {
    */
   private BmmProcedure definition;
   
-  //
-  // Constructors
-  //
-  public ElProcedureAgent () { };
-
   @Override
   @Deprecated
   public void setDefinition(BmmRoutine newVar) {
     this.definition = (BmmProcedure) newVar;
-  }
-
-  @Override
-  public BmmSignature evalType() {
-    //TODO
-    return null;
-  }
-
-  @Override
-  public Boolean isBoolean() {
-    //TODO
-    return false;
   }
 
   @Override

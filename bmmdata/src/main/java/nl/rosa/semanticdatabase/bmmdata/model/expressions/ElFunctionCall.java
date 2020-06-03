@@ -25,17 +25,6 @@ public class ElFunctionCall extends BmmBaseEntity implements ElScopedRef, ElAgen
  * ElInstanceRef
  */
   /**
-   * ElExpression
-   */
-  @NotNull
-  public BmmType evalType(){
-    return null;
-  }
-  @NotNull
-  public Boolean isBoolean(){
-    return null;
-  }
-  /**
    * ElScopedRef
    */
   private ElInstanceRef scope;
@@ -59,48 +48,4 @@ public class ElFunctionCall extends BmmBaseEntity implements ElScopedRef, ElAgen
   @NotNull
   private ElAgent agent;
 //======================================================================================
-
-
-  // ElScopedRef
-  /**
-   * Reference to an owning object for this terminal element, if it is not the current scope.
-   */
-  private ElInstanceRef scope;
-
-
-  /**
-   * The function agent being called.
-   */
-  private ElFunctionAgent agent;
-  
-  //
-  // Constructors
-  //
-  public ElFunctionCall () { };
-  //
-  // Other methods
-  //
-
-  /**
-   * Return agent.definition.type.
-   * @return       nl.rosa.semanticdatabase.bmm.model.types.BmmType
-   */
-  public BmmType evalType()
-  {
-    //TODO
-    return null;
-  }
-
-  @Override
-  public Boolean isBoolean() {
-    //TODO
-    return false;
-  }
-
-
-  @Override
-  @Deprecated
-  public void setAgent(ElAgent newVar) {
-    this.agent = (ElFunctionAgent) newVar;
-  }
 }
