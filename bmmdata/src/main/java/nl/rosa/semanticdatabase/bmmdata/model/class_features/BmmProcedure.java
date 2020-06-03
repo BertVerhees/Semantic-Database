@@ -42,7 +42,7 @@ public class BmmProcedure extends BmmBaseEntity implements BmmRoutine {
    * BmmClassScoped
    */
   private Object visibility;
-  private BmmClass scope;
+  @NotNull private BmmClass scope;
   /**
    * BmmClassEntity
    */
@@ -58,74 +58,13 @@ public class BmmProcedure extends BmmBaseEntity implements BmmRoutine {
   @NotNull
   private String name;
   private Map<String, Object> documentation;
-  @NotNull
-  private BmmDeclaration scope;
   private Map<String, Object> extensions;
   // Functions;
-  public Boolean isRootScope(){
-    return null;
-  }
-  //=============================================
-
-
-
-  /**
-   * BmmDeclaration
-   */
-  @NotNull
-  private String name;
-  private Map<String, Object> documentation;
-  private Map<String, Object> extensions;
-
   @Override
   public Boolean isRootScope(){
     return scope.equals(this);
   }
-  /**
-   * BmmClassEntity
-   */
-  private Boolean isSynthesisedGeneric;
-  /**
-   * BmmClassScoped
-   */
-  private Object visibility;
-  @NotNull private BmmClass scope;
-  /**
-   * BmmRoutine
-   */
-  private List<BmmParameter> parameters;
-  private List<BmmLocal> locals;
-  private List<ElAssertion> preConditions;
-  private List<ElAssertion> postCondtions;
-  private BmmStatementItem body;
-
-
-  //
-  // Constructors
-  //
-  public BmmProcedure () { };
-
-  /**
-   * Return number of arguments of this routine.
-   * @return
-   */
-  @Override
-  public Integer arity() {
-    //TODO
-    return null;
-  }
-
-  /**
-   * Formal signature of this element, in the form
-   *
-   * '[arg1_name: T_arg1, …​]:T_value'.
-   * @return
-   */
-  @Override
-  public BmmSignature signature() {
-    //TODO
-    return null;
-  }
+  //=============================================
 
   @Override
   @Deprecated

@@ -5,7 +5,6 @@ import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.model.literal_values.BmmLiteralValue;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmModelType;
@@ -57,10 +56,6 @@ public class BmmEnumeration extends BmmSimpleClass {
   private Map<String, BmmProcedure> creators;
   private Map<String, BmmProcedure> convertors;
   // Functions
-  @NotNull
-  public BmmModelType type(){
-    return null;
-  }
   public List<String> allAncestors(){
     return null;
   }
@@ -84,14 +79,6 @@ public class BmmEnumeration extends BmmSimpleClass {
   public String classPath(){
     return null;
   }
-  @NotNull
-  public Boolean isAbstract(){
-    return null;
-  }
-  @NotNull
-  public Boolean isPrimitive(){
-    return null;
-  }
   public List<BmmClassScoped> features(){
     return null;
   }
@@ -109,20 +96,6 @@ public class BmmEnumeration extends BmmSimpleClass {
   /**
    * BmmDeclaration
    */
-  @NotNull
-  private String name;
-  private Map<String, Object> documentation;
-  @NotNull
-  private BmmDeclaration scope;
-  private Map<String, Object> extensions;
-  // Functions;
-  public Boolean isRootScope(){
-    return null;
-  }
-
-  /**
-   * BmmDeclaration
-   */
   @NonNull
   private String name;
   private Map<String, Object> documentation;
@@ -132,12 +105,11 @@ public class BmmEnumeration extends BmmSimpleClass {
   public Boolean isRootScope(){
     return scope.equals(this);
   }
-  /**
-   * BmmModule
-   */
-  @NotNull
-  private BmmModel scope;
   //============================================================
+
+  public BmmEnumeration() {
+  }
+
   /**
    * The list of names of the enumeration. If no values are supplied, the integer values 0, 1, 2, �? are assumed.
    */
@@ -146,16 +118,6 @@ public class BmmEnumeration extends BmmSimpleClass {
    * Optional list of specific values. Must be 1:1 with item_names list.
    */
   private BmmLiteralValue itemValues;
-  
-  //
-  // Constructors
-  //
-  public BmmEnumeration () { };
-  
-  //
-  // Other methods
-  //
-
   /**
    * @return       Hash<String,String>
    */
@@ -164,21 +126,4 @@ public class BmmEnumeration extends BmmSimpleClass {
     //TODO
     return null;
   }
-
-  // BmmEntity
-  @Override
-  public Boolean isAbstract() {
-    //TODO
-    return false;
-  }
-
-  @Override
-  public Boolean isPrimitive() {
-    //TODO
-    return false;
-  }
-
-
-
-
 }
