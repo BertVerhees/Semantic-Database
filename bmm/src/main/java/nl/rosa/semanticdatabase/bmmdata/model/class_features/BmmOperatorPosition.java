@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 /**
@@ -10,6 +11,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
  * operators associated with 1- and 2- degree functions.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmOperatorPosition extends BmmBaseEntity {
 
   /**

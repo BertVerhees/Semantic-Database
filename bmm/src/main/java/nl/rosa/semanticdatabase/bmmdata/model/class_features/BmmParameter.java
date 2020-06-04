@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmEffectiveType;
@@ -18,6 +19,7 @@ import java.util.Map;
  * A routine parameter variable.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmParameter extends BmmBaseEntity implements BmmVariable {
 
   /**
@@ -26,23 +28,9 @@ public class BmmParameter extends BmmBaseEntity implements BmmVariable {
    *    BmmTypedFeature
    *      BmmTyped
    *        BmmType
-   *           BmmEntity
    *  BmmClassEntity
    *    BmmDeclaration
    */
-  /**
-   * BmmEntity
-   */
-  @Override
-  public Boolean isAbstract() {
-    //TODO
-    return false;
-  }
-  @Override
-  public Boolean isPrimitive() {
-    //TODO
-    return false;
-  }
   /**
    * BmmVariable
    */
@@ -98,6 +86,17 @@ public class BmmParameter extends BmmBaseEntity implements BmmVariable {
   public BmmEffectiveType effectiveType(){
     return null;
   }
+  @Override
+  public Boolean isAbstract() {
+    //TODO
+    return false;
+  }
+  @Override
+  public Boolean isPrimitive() {
+    //TODO
+    return false;
+  }
+
   /**
    * BmmTypedFeature
    */
@@ -115,6 +114,7 @@ public class BmmParameter extends BmmBaseEntity implements BmmVariable {
   public Boolean isBoolean(){
     return null;
   }
+
 //================================================================
   /**
    * Optional read/write direction of the parameter. If none-supplied, the parameter is treated as in, i.e. readable.

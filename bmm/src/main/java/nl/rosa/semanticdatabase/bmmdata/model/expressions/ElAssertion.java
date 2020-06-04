@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 /**
@@ -9,6 +10,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
  * Optionally tagged Boolean-returning expression.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ElAssertion extends BmmBaseEntity {
 
   /**

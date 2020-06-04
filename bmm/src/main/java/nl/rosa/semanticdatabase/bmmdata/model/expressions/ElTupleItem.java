@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 /**
@@ -9,6 +10,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
  * A single tuple item, with an optional name.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ElTupleItem extends BmmBaseEntity {
 
   /**

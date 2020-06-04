@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
 
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotNull;
  * 
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ElDefined extends BmmBaseEntity implements ElPredicate {
 /**
  * ElPredicate

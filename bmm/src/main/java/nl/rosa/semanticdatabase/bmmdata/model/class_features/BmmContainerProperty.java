@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
@@ -17,6 +18,7 @@ import java.util.Map;
  * Meta-type of for properties of linear container type, such as List<T> etc.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmContainerProperty extends BmmBaseEntity implements BmmProperty {
   /**
    * BmmProperty

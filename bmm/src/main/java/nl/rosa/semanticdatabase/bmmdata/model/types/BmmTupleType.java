@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 import javax.validation.constraints.NotNull;
@@ -30,6 +31,7 @@ import java.util.Map;
  * 
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmTupleType extends BmmBaseEntity implements BmmEffectiveType {
   /**
    *  BmmEffectiveType

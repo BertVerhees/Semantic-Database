@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmTupleType;
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
  * Defines an array of optionally named items each of any type.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ElTuple extends BmmBaseEntity implements ElInstanceRef {
 /**
  *    ElInstanceRef

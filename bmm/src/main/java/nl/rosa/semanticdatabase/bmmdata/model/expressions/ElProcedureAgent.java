@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmProcedure;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmRoutine;
@@ -15,6 +16,7 @@ import java.util.List;
  * An agent whose signature is of a procedure, i.e. has no result type.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ElProcedureAgent extends BmmBaseEntity implements ElAgent {
 /**
  * ElAgent

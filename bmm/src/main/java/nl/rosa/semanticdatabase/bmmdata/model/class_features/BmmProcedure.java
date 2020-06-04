@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElAssertion;
@@ -19,6 +20,7 @@ import java.util.Map;
  * a computed (rather than data) element, generally assumed to be state-changing.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmProcedure extends BmmBaseEntity implements BmmRoutine {
   /**
    * BmmRoutine

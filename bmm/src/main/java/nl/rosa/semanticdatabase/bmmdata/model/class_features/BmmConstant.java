@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
@@ -21,6 +22,7 @@ import java.util.Map;
  * An immutable, static value-returning element scoped to a class.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmInstantiable {
   /**
    * BmmClassScoped
@@ -31,18 +33,6 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
    *    BmmTyped
    *      BmmType
    */
-  /**
-   * BmmEntity
-   */
-  // Functions
-  @NotNull
-  public Boolean isAbstract(){
-    return null;
-  }
-  @NotNull
-  public Boolean isPrimitive(){
-    return null;
-  }
   /**
    * BmmProperty
    */
@@ -106,6 +96,15 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
   }
   @NotNull
   public BmmEffectiveType effectiveType(){
+    return null;
+  }
+  // Functions
+  @NotNull
+  public Boolean isAbstract(){
+    return null;
+  }
+  @NotNull
+  public Boolean isPrimitive(){
     return null;
   }
   /**

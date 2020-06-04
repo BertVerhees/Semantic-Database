@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.classes;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElAssertion;
@@ -24,6 +25,7 @@ import java.util.Map;
  * definition
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
 /**
  * BmmClass

@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmGenericClass;
 
@@ -30,10 +31,10 @@ import java.util.List;
  * 
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmContainerType extends BmmBaseEntity implements BmmType {
 /**
  * BmmType
- *  BmmEntity
  */
   /**
    * BmmType
@@ -59,9 +60,6 @@ public class BmmContainerType extends BmmBaseEntity implements BmmType {
   public BmmEffectiveType effectiveType(){
     return null;
   }
-  /**
-   * BmmEntity
-   */
   // Functions
   @NotNull
   public Boolean isAbstract(){

@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.literal_values.BmmLiteralValue;
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotNull;
  * via a BMM_LITERAL_VALUE.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ElLiteral extends BmmBaseEntity implements ElInstanceRef {
 /**
  *    ElInstanceRef

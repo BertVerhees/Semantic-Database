@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSpec;
@@ -28,6 +29,7 @@ import java.util.List;
  * 
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmSignature extends BmmBaseEntity implements BmmEffectiveType {
   /**
    *  BmmEffectiveType

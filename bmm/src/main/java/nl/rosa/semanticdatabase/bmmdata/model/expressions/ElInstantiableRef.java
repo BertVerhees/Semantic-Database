@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
@@ -13,6 +14,7 @@ import javax.validation.constraints.NotNull;
  * i.e. a variable, constant, or property.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ElInstantiableRef<T> extends BmmBaseEntity implements ElScopedRef {
 /**
  *  ElScopedRef

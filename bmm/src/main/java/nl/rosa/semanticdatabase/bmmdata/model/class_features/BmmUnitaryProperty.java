@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
@@ -20,6 +21,7 @@ import java.util.Map;
  * Meta-type of for properties of unitary type.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
   /**
    * BmmProperty

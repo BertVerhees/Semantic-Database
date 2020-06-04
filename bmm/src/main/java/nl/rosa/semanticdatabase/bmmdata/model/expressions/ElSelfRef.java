@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
@@ -13,6 +14,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
  * in various programming languages.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ElSelfRef extends BmmBaseEntity implements ElInstanceRef {
 /**
  *    ElInstanceRef

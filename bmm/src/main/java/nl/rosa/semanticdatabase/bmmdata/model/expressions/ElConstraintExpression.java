@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotNull;
  * the constraint is not itself a value-returning expression.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ElConstraintExpression extends BmmBaseEntity implements ElExpression {
 /**
  * ElExpression

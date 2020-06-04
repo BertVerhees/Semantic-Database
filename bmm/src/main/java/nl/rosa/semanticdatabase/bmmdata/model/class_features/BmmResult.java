@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmEffectiveType;
@@ -18,6 +19,7 @@ import java.util.Map;
  * Automatically declared variable representing result instance of a Function call.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmResult extends BmmBaseEntity implements BmmVariable {
   /**
    * BmmVariable
@@ -25,23 +27,9 @@ public class BmmResult extends BmmBaseEntity implements BmmVariable {
    *    BmmTypedFeature
    *      BmmTyped
    *        BmmType
-   *          BmmEntity
    *  BmmClassEntity
    *    BmmDeclaration
    */
-  // BmmEntity
-  @Override
-  public Boolean isAbstract() {
-    //TODO
-    return false;
-  }
-
-  @Override
-  public Boolean isPrimitive() {
-    //TODO
-    return false;
-  }
-
   /**
    * BmmVariable
    */
@@ -100,6 +88,17 @@ public class BmmResult extends BmmBaseEntity implements BmmVariable {
   @NotNull
   public BmmEffectiveType effectiveType(){
     return null;
+  }
+  @Override
+  public Boolean isAbstract() {
+    //TODO
+    return false;
+  }
+
+  @Override
+  public Boolean isPrimitive() {
+    //TODO
+    return false;
   }
   /**
    * BmmTypedFeature

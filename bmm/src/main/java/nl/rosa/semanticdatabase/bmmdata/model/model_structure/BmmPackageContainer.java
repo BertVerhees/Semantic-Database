@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.model_structure;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 import javax.validation.constraints.NotNull;
@@ -11,6 +12,7 @@ import java.util.Map;
  * Class BmmPackageContainer
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public abstract class BmmPackageContainer extends BmmBaseEntity implements BmmDeclaration {
 
   /**

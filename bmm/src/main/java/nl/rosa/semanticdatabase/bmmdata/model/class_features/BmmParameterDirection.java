@@ -2,12 +2,14 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 /**
  * Class BmmParameterDirection
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmParameterDirection extends BmmBaseEntity {
 
   /**

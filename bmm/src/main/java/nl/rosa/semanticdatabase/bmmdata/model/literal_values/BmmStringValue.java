@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.literal_values;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Class BmmStringValue
@@ -9,6 +10,7 @@ import lombok.Data;
  * representing String and value is of type String.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmStringValue extends BmmLiteralValue {
   /**
    * Native String value.

@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmOperator;
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotNull;
  * Unary operator expression node.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class ElUnaryOperator extends BmmBaseEntity implements ElOperator {
 /**
  *      ElOperator

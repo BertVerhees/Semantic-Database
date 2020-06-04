@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.literal_values;
 
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 /**
@@ -11,6 +12,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
  * syntax form, e.g. JSON.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 abstract public class BmmLiteralValue extends BmmBaseEntity {
 
   /**

@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmEffectiveType;
@@ -19,6 +20,7 @@ import java.util.Map;
  * T> etc.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public class BmmIndexedContainerProperty extends BmmContainerProperty {
   /**
    * BmmProperty
