@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmm.model_access;
+package nl.rosa.semanticdatabase.bmmdata.model.meta;
 
 
 /**
