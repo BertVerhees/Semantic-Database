@@ -56,9 +56,4 @@ public abstract class BmmPackageContainer extends BmmBaseEntity implements BmmDe
     this.extensions = extensions;
   }
 
-  @Override
-  @Deprecated
-  public void setScope(BmmDeclaration newVar){
-    this.scope = (BmmPackageContainer) newVar;
-  }
 }
