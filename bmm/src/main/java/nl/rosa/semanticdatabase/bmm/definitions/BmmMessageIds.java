@@ -21,8 +21,8 @@ package nl.rosa.semanticdatabase.bmm.definitions;
  * Author: Claude Nanjo
  */
 
-import org.openehr.utils.message.I18n;
-import org.openehr.utils.message.MessageCode;
+import nl.rosa.semanticdatabase.message.MessageCode;
+import nl.rosa.semanticdatabase.message.I18n;
 
 public enum BmmMessageIds implements MessageCode {
     ec_bmm_documentation_text(I18n.register("Documentation")),
