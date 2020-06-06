@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 
 /**
  * Class ElDefined
@@ -30,7 +30,7 @@ public class ElDefined extends BmmBaseEntity implements ElPredicate {
    */
   private ElInstanceRef operand;
   // Functions
-  @NotNull
+  @NonNull
   public BmmSimpleType evalType(){
     return null;
   }
@@ -40,7 +40,7 @@ public class ElDefined extends BmmBaseEntity implements ElPredicate {
   /**
    * ElExpression
    */
-  @NotNull
+  @NonNull
   public Boolean isBoolean(){
     return null;
   }

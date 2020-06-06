@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 
 
 /**
@@ -28,11 +28,11 @@ public class ElInstantiableRef<T> extends BmmBaseEntity implements ElScopedRef {
   /**
    * ElExpression
    */
-  @NotNull
+  @NonNull
   public BmmType evalType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isBoolean(){
     return null;
   }

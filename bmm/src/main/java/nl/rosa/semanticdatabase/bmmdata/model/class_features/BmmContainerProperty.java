@@ -8,7 +8,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.types.*;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -34,11 +34,11 @@ public class BmmContainerProperty extends BmmBaseEntity implements BmmProperty {
    * BmmEntity
    */
   // Functions
-  @NotNull
+  @NonNull
   public Boolean isAbstract(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isPrimitive(){
     return null;
   }
@@ -49,11 +49,11 @@ public class BmmContainerProperty extends BmmBaseEntity implements BmmProperty {
   private Boolean isImInfrastructure;
   private Boolean isComposition;
   // functions
-  @NotNull
+  @NonNull
   public MultiplicityInterval existence(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String displayName(){
     return null;
   }
@@ -68,7 +68,7 @@ public class BmmContainerProperty extends BmmBaseEntity implements BmmProperty {
   /**
    * BmmDeclaration
    */
-  @NotNull
+  @NonNull
   private String name;
   private Map<String, Object> documentation;
   private Map<String, Object> extensions;
@@ -84,7 +84,7 @@ public class BmmContainerProperty extends BmmBaseEntity implements BmmProperty {
    */
   private Boolean isSynthesisedGeneric;
   // function
-  @NotNull
+  @NonNull
   public BmmSignature signature(){
     return null;
   }
@@ -92,23 +92,23 @@ public class BmmContainerProperty extends BmmBaseEntity implements BmmProperty {
    * BmmType
    */
   // Functions
-  @NotNull
+  @NonNull
   public String typeName(){
     return null;
   }
-  @NotNull
+  @NonNull
   public List<String> flattenedTypeList(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String typeSignature(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmUnitaryType unitaryType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmEffectiveType effectiveType(){
     return null;
   }
@@ -122,10 +122,10 @@ public class BmmContainerProperty extends BmmBaseEntity implements BmmProperty {
   /**
    * BmmTyped
    */
-  @NotNull
+  @NonNull
   private BmmType type;
   // functions
-  @NotNull
+  @NonNull
   public Boolean isBoolean(){
     return null;
   }

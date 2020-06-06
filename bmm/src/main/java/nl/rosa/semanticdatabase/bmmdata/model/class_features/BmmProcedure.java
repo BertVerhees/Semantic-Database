@@ -10,7 +10,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.routine_implementation.BmmStatemen
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -44,20 +44,20 @@ public class BmmProcedure extends BmmBaseEntity implements BmmRoutine {
    * BmmClassScoped
    */
   private Object visibility;
-  @NotNull private BmmClass scope;
+  @NonNull private BmmClass scope;
   /**
    * BmmClassEntity
    */
   private Boolean isSynthesisedGeneric;
   // function
-  @NotNull
+  @NonNull
   public BmmSignature signature(){
     return null;
   }
   /**
    * BmmDeclaration
    */
-  @NotNull
+  @NonNull
   private String name;
   private Map<String, Object> documentation;
   private Map<String, Object> extensions;

@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSpec;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 
 /**
@@ -41,7 +41,7 @@ public class BmmParameterType extends BmmBaseEntity implements BmmUnitaryType {
    * BmmUnitaryType
    */
   // Functions
-  @NotNull
+  @NonNull
   public BmmUnitaryType unitaryType(){
     return null;
   }
@@ -49,19 +49,19 @@ public class BmmParameterType extends BmmBaseEntity implements BmmUnitaryType {
    * BmmType
    */
   // Functions
-  @NotNull
+  @NonNull
   public String typeName(){
     return null;
   }
-  @NotNull
+  @NonNull
   public List<String> flattenedTypeList(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String typeSignature(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmEffectiveType effectiveType(){
     return null;
   }
@@ -69,16 +69,16 @@ public class BmmParameterType extends BmmBaseEntity implements BmmUnitaryType {
    * BmmEntity
    */
   // Functions
-  @NotNull
+  @NonNull
   public Boolean isAbstract(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isPrimitive(){
     return null;
   }
   private BmmValueSpec valueConstraint;
-  @NotNull
+  @NonNull
   private BmmClass baseClass;
 //==================================================================================
   //

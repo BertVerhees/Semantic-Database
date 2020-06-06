@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.literal_values.BmmLiteralValue;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 
 
 /**
@@ -29,11 +29,11 @@ public class ElLiteral extends BmmBaseEntity implements ElInstanceRef {
   /**
    * ElExpression
    */
-  @NotNull
+  @NonNull
   public BmmType evalType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isBoolean(){
     return null;
   }
@@ -43,7 +43,7 @@ public class ElLiteral extends BmmBaseEntity implements ElInstanceRef {
   /**
    * ElAgentCall
    */
-  @NotNull
+  @NonNull
   private ElAgent agent;
 //======================================================================================
   /**

@@ -11,7 +11,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -50,12 +50,12 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
    * BmmClassScoped
    */
   private Object visibility;
-  @NotNull
+  @NonNull
   private BmmClass scope;
   /**
    * BmmDeclaration
    */
-  @NotNull
+  @NonNull
   private String name;
   private Map<String, Object> documentation;
 
@@ -69,7 +69,7 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
    */
   private Boolean isSynthesisedGeneric;
   // function
-  @NotNull
+  @NonNull
   public BmmSignature signature(){
     return null;
   }
@@ -77,23 +77,23 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
    * BmmType
    */
   // Functions
-  @NotNull
+  @NonNull
   public String typeName(){
     return null;
   }
-  @NotNull
+  @NonNull
   public List<String> flattenedTypeList(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String typeSignature(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmUnitaryType unitaryType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmEffectiveType effectiveType(){
     return null;
   }
@@ -108,11 +108,11 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
   private Boolean isImInfrastructure;
   private Boolean isComposition;
   // functions
-  @NotNull
+  @NonNull
   public MultiplicityInterval existence(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String displayName(){
     return null;
   }
@@ -123,7 +123,7 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
    * BmmTyped
    */
   // functions
-  @NotNull
+  @NonNull
   public Boolean isBoolean(){
     return null;
   }
@@ -131,7 +131,7 @@ public class BmmUnitaryProperty extends BmmBaseEntity implements BmmProperty {
   /**
    * Declared or inferred static type of the entity.
    */
-  @NotNull
+  @NonNull
   private BmmUnitaryType type;
 
   @Override

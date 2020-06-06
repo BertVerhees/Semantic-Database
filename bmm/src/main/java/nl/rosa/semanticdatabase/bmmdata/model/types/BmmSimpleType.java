@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSpec;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 
 
@@ -38,11 +38,11 @@ public class BmmSimpleType extends BmmBaseEntity implements BmmModelType {
    * BmmEffectiveType
    */
   // Functions;
-  @NotNull
+  @NonNull
   public BmmEffectiveType getEffectiveType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String typeBaseName(){
     return null;
   }
@@ -50,7 +50,7 @@ public class BmmSimpleType extends BmmBaseEntity implements BmmModelType {
    * BmmUnitaryType
    */
   // Functions
-  @NotNull
+  @NonNull
   public BmmUnitaryType unitaryType(){
     return null;
   }
@@ -58,19 +58,19 @@ public class BmmSimpleType extends BmmBaseEntity implements BmmModelType {
    * BmmType
    */
   // Functions
-  @NotNull
+  @NonNull
   public String typeName(){
     return null;
   }
-  @NotNull
+  @NonNull
   public List<String> flattenedTypeList(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String typeSignature(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmEffectiveType effectiveType(){
     return null;
   }
@@ -78,11 +78,11 @@ public class BmmSimpleType extends BmmBaseEntity implements BmmModelType {
    * BmmEntity
    */
   // Functions
-  @NotNull
+  @NonNull
   public Boolean isAbstract(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isPrimitive(){
     return null;
   }
@@ -95,7 +95,7 @@ public class BmmSimpleType extends BmmBaseEntity implements BmmModelType {
   /**
    * Defining class of this type.
    */
-  @NotNull
+  @NonNull
   private BmmSimpleClass baseClass;
   
   //

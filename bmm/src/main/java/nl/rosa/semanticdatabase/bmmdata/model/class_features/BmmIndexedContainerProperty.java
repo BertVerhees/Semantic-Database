@@ -9,7 +9,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmIndexedContainerType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -39,11 +39,11 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
   private Boolean isImInfrastructure;
   private Boolean isComposition;
   // functions
-  @NotNull
+  @NonNull
   public MultiplicityInterval existence(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String displayName(){
     return null;
   }
@@ -58,7 +58,7 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
   /**
    * BmmDeclaration
    */
-  @NotNull
+  @NonNull
   private String name;
   private Map<String, Object> documentation;
   private Map<String, Object> extensions;
@@ -71,7 +71,7 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
    */
   private Boolean isSynthesisedGeneric;
   // function
-  @NotNull
+  @NonNull
   public BmmSignature signature(){
     return null;
   }
@@ -79,23 +79,23 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
    * BmmType
    */
   // Functions
-  @NotNull
+  @NonNull
   public String typeName(){
     return null;
   }
-  @NotNull
+  @NonNull
   public List<String> flattenedTypeList(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String typeSignature(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmUnitaryType unitaryType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmEffectiveType effectiveType(){
     return null;
   }
@@ -110,7 +110,7 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
    * BmmTyped
    */
   // functions
-  @NotNull
+  @NonNull
   public Boolean isBoolean(){
     return null;
   }
@@ -119,6 +119,6 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
   /**
    * Declared or inferred static type of the entity.
    */
-  @NotNull
+  @NonNull
   private BmmIndexedContainerType type;
 }

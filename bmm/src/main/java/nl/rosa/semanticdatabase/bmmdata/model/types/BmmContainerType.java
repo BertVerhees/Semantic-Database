@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmGenericClass;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 
 
@@ -40,32 +40,32 @@ public class BmmContainerType extends BmmBaseEntity implements BmmType {
    * BmmType
    */
   // Functions
-  @NotNull
+  @NonNull
   public String typeName(){
     return null;
   }
-  @NotNull
+  @NonNull
   public List<String> flattenedTypeList(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String typeSignature(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmUnitaryType unitaryType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmEffectiveType effectiveType(){
     return null;
   }
   // Functions
-  @NotNull
+  @NonNull
   public Boolean isAbstract(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isPrimitive(){
     return null;
   }
@@ -75,14 +75,14 @@ public class BmmContainerType extends BmmBaseEntity implements BmmType {
    * container_class: BMM_GENERIC_CLASS
    * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
    */
-  @NotNull
+  @NonNull
   private BmmGenericClass containerClass;
   /**
    * 1..1
    * item_type: BMM_UNITARY_TYPE
    * The container item type.
    */
-  @NotNull
+  @NonNull
   private BmmUnitaryType itemType;
   /**
    * 0..1

@@ -10,7 +10,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +41,7 @@ public class BmmResult extends BmmBaseEntity implements BmmVariable {
   /**
    * BmmDeclaration
    */
-  @NotNull
+  @NonNull
   private String name;
   private Map<String, Object> documentation;
   private Map<String, Object> extensions;
@@ -61,7 +61,7 @@ public class BmmResult extends BmmBaseEntity implements BmmVariable {
    */
   private Boolean isSynthesisedGeneric;
   // function
-  @NotNull
+  @NonNull
   public BmmSignature signature(){
     return null;
   }
@@ -69,23 +69,23 @@ public class BmmResult extends BmmBaseEntity implements BmmVariable {
    * BmmType
    */
   // Functions
-  @NotNull
+  @NonNull
   public String typeName(){
     return null;
   }
-  @NotNull
+  @NonNull
   public List<String> flattenedTypeList(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String typeSignature(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmUnitaryType unitaryType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmEffectiveType effectiveType(){
     return null;
   }
@@ -110,10 +110,10 @@ public class BmmResult extends BmmBaseEntity implements BmmVariable {
   /**
    * BmmTyped
    */
-  @NotNull
+  @NonNull
   private BmmType type;
   // functions
-  @NotNull
+  @NonNull
   public Boolean isBoolean(){
     return null;
   }

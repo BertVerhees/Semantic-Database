@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmRoutine;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 
 
@@ -28,17 +28,17 @@ public class ElFunctionAgent extends BmmBaseEntity implements ElAgent {
   /**
    * ElAgent
    */
-  @NotNull
+  @NonNull
   private String name;
   private ElTuple closedArgs;
   private List<String> openArgs;
   private BmmRoutine definition;
   // Functions
-  @NotNull
+  @NonNull
   public BmmSignature evalType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isCallable(){
     return null;
   }
@@ -52,7 +52,7 @@ public class ElFunctionAgent extends BmmBaseEntity implements ElAgent {
   /**
    * ElExpression
    */
-  @NotNull
+  @NonNull
   public Boolean isBoolean(){
     return null;
   }
@@ -62,7 +62,7 @@ public class ElFunctionAgent extends BmmBaseEntity implements ElAgent {
   /**
    * ElExpression
    */
-  @NotNull
+  @NonNull
   //========================================================================
 @Override
   @Deprecated

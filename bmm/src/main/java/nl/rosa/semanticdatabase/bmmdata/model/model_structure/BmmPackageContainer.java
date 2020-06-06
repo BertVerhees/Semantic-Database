@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.Map;
 
 /**
@@ -18,10 +18,10 @@ public abstract class BmmPackageContainer extends BmmBaseEntity implements BmmDe
   /**
    * BmmDeclaration
    */
-  @NotNull
+  @NonNull
   private String name;
   private Map<String, Object> documentation;
-  @NotNull
+  @NonNull
   private BmmDeclaration scope;
   private Map<String, Object> extensions;
   // Functions;

@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -43,11 +43,11 @@ public class BmmTupleType extends BmmBaseEntity implements BmmEffectiveType {
    * BmmEffectiveType
    */
   // Functions;
-  @NotNull
+  @NonNull
   public BmmEffectiveType getEffectiveType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String typeBaseName(){
     return null;
   }
@@ -55,7 +55,7 @@ public class BmmTupleType extends BmmBaseEntity implements BmmEffectiveType {
    * BmmUnitaryType
    */
   // Functions
-  @NotNull
+  @NonNull
   public BmmUnitaryType unitaryType(){
     return null;
   }
@@ -63,19 +63,19 @@ public class BmmTupleType extends BmmBaseEntity implements BmmEffectiveType {
    * BmmType
    */
   // Functions
-  @NotNull
+  @NonNull
   public String typeName(){
     return null;
   }
-  @NotNull
+  @NonNull
   public List<String> flattenedTypeList(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String typeSignature(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmEffectiveType effectiveType(){
     return null;
   }
@@ -83,11 +83,11 @@ public class BmmTupleType extends BmmBaseEntity implements BmmEffectiveType {
    * BmmEntity
    */
   // Functions
-  @NotNull
+  @NonNull
   public Boolean isAbstract(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isPrimitive(){
     return null;
   }

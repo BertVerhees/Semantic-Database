@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.services.model_access;
 
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.bmmdata.services.CrudService;
 
 import java.util.Optional;
 
@@ -8,7 +9,7 @@ import java.util.Optional;
  * Default created on 5-6-2020
  */
 
-public interface BmmModelAccess {
+public interface BmmModelAccessService extends CrudService<BmmModelAccessService, Long> {
     /**
      * Loads data from Source and creates all Objects
      * @param schemaId

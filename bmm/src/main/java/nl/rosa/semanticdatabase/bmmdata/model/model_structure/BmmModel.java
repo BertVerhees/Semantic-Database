@@ -10,7 +10,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmEnumeration;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -24,10 +24,10 @@ public class BmmModel extends BmmPackageContainer {
   /**
    * BmmDeclaration
    */
-  @NotNull
+  @NonNull
   private String name;
   private Map<String, Object> documentation;
-  @NotNull
+  @NonNull
   private BmmDeclaration scope;
   private Map<String, Object> extensions;
   // Functions;

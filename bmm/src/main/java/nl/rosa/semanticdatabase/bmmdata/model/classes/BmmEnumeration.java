@@ -10,7 +10,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmModelType;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -31,11 +31,11 @@ public class BmmEnumeration extends BmmSimpleClass {
    * BmmEntity
    */
   // Functions
-  @NotNull
+  @NonNull
   public Boolean isAbstract(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isPrimitive(){
     return null;
   }
@@ -43,13 +43,13 @@ public class BmmEnumeration extends BmmSimpleClass {
    * BmmClass
    */
   private Map<String, BmmModelType> ancestors;
-  @NotNull
+  @NonNull
   private BmmPackage _package;
   private Map<String, BmmProperty> properties;
-  @NotNull
+  @NonNull
   private String sourceSchemaId;
   private List<BmmClass> immediateDescendants;
-  @NotNull
+  @NonNull
   private Boolean isOverride;
   private Map<String, BmmConstant> constants;
   private Map<String, BmmFunction> functions;
@@ -73,11 +73,11 @@ public class BmmEnumeration extends BmmSimpleClass {
   public List<String> supplierClosure(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String packagePath(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String classPath(){
     return null;
   }
@@ -93,7 +93,7 @@ public class BmmEnumeration extends BmmSimpleClass {
   /**
    * BmmModule
    */
-  @NotNull
+  @NonNull
   private BmmModel scope;
   /**
    * BmmDeclaration

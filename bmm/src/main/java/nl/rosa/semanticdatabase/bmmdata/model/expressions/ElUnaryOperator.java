@@ -8,7 +8,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmOperator;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 
 /**
  * Class ElUnaryOperator
@@ -26,23 +26,23 @@ public class ElUnaryOperator extends BmmBaseEntity implements ElOperator {
    */
   private Boolean precedenceOverridden;
   private String symbol;
-  @NotNull
+  @NonNull
   private BmmFunction definition;
   // Functions
-  @NotNull
+  @NonNull
   public BmmOperator operatorDefinition(){
     return null;
   }
-  @NotNull
+  @NonNull
   public ElFunctionCall equivalentcall;
   /**
    * ElExpression
    */
-  @NotNull
+  @NonNull
   public BmmType evalType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isBoolean(){
     return null;
   }

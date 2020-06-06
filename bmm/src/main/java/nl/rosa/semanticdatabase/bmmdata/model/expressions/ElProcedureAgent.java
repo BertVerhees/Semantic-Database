@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmProcedure;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmRoutine;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 
 
@@ -31,11 +31,11 @@ public class ElProcedureAgent extends BmmBaseEntity implements ElAgent {
   /**
    * ElExpression
    */
-  @NotNull
+  @NonNull
   public BmmSignature evalType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isBoolean(){
     return null;
   }

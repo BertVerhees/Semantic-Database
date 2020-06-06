@@ -5,7 +5,6 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;
 
 import java.util.Map;
-import java.util.Optional;
 
 /**
  * Default created on 5-6-2020
@@ -19,17 +18,17 @@ public class BmmModelAccess extends BmmBaseEntity {
      * all_schemas: Hash<String,BMM_SCHEMA_DESCRIPTOR>
      * All schemas found and loaded from schema_directory. Keyed by schema_id.
      */
-    private Optional<Map<String, BmmSchemaDescriptor>> allSchemas;
+    private Map<String, BmmSchemaDescriptor> allSchemas;
     /**
      * 0..1
      * bmm_models: Hash<String,BMM_MODEL>
      * Top-level (root) schemas in use. Table is keyed by model_id.
      */
-    private Optional<Map<String, BmmModel>> bmmModels;
+    private Map<String, BmmModel> bmmModels;
     /**
      * 0..1
      * matching_bmm_models: Hash<String,BMM_MODEL>
      * BMM_MODELs keyed by model_id() and any shorter form used in calls to
      */
-    private Optional<Map<String, BmmModel>> matchingBmmModels;
+    private Map<String, BmmModel> matchingBmmModels;
 }

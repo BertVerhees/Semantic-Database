@@ -11,7 +11,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmModelType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmParameterType;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -37,11 +37,11 @@ public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
    * BmmEntity
    */
   // Functions
-  @NotNull
+  @NonNull
   public Boolean isAbstract(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isPrimitive(){
     return null;
   }
@@ -49,13 +49,13 @@ public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
    * BmmClass
    */
   private Map<String, BmmModelType> ancestors;
-  @NotNull
+  @NonNull
   private BmmPackage _package;
   private Map<String, BmmProperty> properties;
-  @NotNull
+  @NonNull
   private String sourceSchemaId;
   private List<BmmClass> immediateDescendants;
-  @NotNull
+  @NonNull
   private Boolean isOverride;
   private Map<String, BmmConstant> constants;
   private Map<String, BmmFunction> functions;
@@ -64,7 +64,7 @@ public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
   private Map<String, BmmProcedure> creators;
   private Map<String, BmmProcedure> convertors;
   // Functions
-  @NotNull
+  @NonNull
   public BmmModelType type(){
     return null;
   }
@@ -83,11 +83,11 @@ public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
   public List<String> supplierClosure(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String packagePath(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String classPath(){
     return null;
   }
@@ -103,12 +103,12 @@ public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
   /**
    * BmmModule
    */
-  @NotNull
+  @NonNull
   private BmmModel scope;
   /**
    * BmmDeclaration
    */
-  @NotNull
+  @NonNull
   private String name;
   private Map<String, Object> documentation;
   private Map<String, Object> extensions;

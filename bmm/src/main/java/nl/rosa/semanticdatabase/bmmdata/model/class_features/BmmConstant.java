@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
@@ -12,7 +13,6 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
-import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 
@@ -40,11 +40,11 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
   private Boolean isImInfrastructure;
   private Boolean isComposition;
   // functions
-  @NotNull
+  @NonNull
   public MultiplicityInterval existence(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String displayName(){
     return null;
   }
@@ -56,10 +56,10 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
   /**
    * BmmDeclaration
    */
-  @NotNull
+  @NonNull
   private String name;
   private Map<String, Object> documentation;
-  @NotNull
+  @NonNull
   private Map<String, Object> extensions;
   // Functions;
   public Boolean isRootScope(){
@@ -70,7 +70,7 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
    */
   private Boolean isSynthesisedGeneric;
   // function
-  @NotNull
+  @NonNull
   public BmmSignature signature(){
     return null;
   }
@@ -78,32 +78,32 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
    * BmmType
    */
   // Functions
-  @NotNull
+  @NonNull
   public String typeName(){
     return null;
   }
-  @NotNull
+  @NonNull
   public List<String> flattenedTypeList(){
     return null;
   }
-  @NotNull
+  @NonNull
   public String typeSignature(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmUnitaryType unitaryType(){
     return null;
   }
-  @NotNull
+  @NonNull
   public BmmEffectiveType effectiveType(){
     return null;
   }
   // Functions
-  @NotNull
+  @NonNull
   public Boolean isAbstract(){
     return null;
   }
-  @NotNull
+  @NonNull
   public Boolean isPrimitive(){
     return null;
   }
@@ -117,10 +117,10 @@ public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmIns
   /**
    * BmmTyped
    */
-  @NotNull
+  @NonNull
   private BmmType type;
   // functions
-  @NotNull
+  @NonNull
   public Boolean isBoolean(){
     return null;
   }

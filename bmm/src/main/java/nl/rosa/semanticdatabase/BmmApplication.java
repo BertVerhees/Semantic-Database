@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmm;
+package nl.rosa.semanticdatabase;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

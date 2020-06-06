@@ -8,7 +8,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmOperator;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
 
-import javax.validation.constraints.NotNull;
+import lombok.NonNull;
 
 /**
  * Class ElAttached
@@ -37,14 +37,14 @@ public class ElAttached extends BmmBaseEntity implements ElPredicate {
    */
   private Boolean precedenceOverridden;
   private String symbol;
-  @NotNull
+  @NonNull
   private BmmFunction definition;
   // Functions
-  @NotNull
+  @NonNull
   public BmmOperator operatorDefinition(){
     return null;
   }
-  @NotNull
+  @NonNull
   public ElFunctionCall equivalentcall;
   /**
    * ElExpression
