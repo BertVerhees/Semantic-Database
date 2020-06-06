@@ -8,4 +8,5 @@ import nl.rosa.semanticdatabase.bmmdata.services.CrudService;
  */
 
 public interface BmmParameterService extends CrudService<BmmParameter, Long> {
+
 }

@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 
 
 /**
@@ -19,16 +18,5 @@ public interface BmmClassEntity extends BmmDeclaration {
    */
   void setIsSynthesisedGeneric (Boolean newVar);
   Boolean getIsSynthesisedGeneric ();
-
-  /**
-   * 1..1
-   * (abstract)
-   * signature (): BMM_SIGNATURE
-   * Formal signature of this element, in the form:
-   * name [arg1_name: T_arg1, �?][:T_value]
-   * Specific implementations in descendants.
-   */
-  BmmSignature signature();
-
 
 }
