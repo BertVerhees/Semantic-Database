@@ -2,14 +2,13 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
-import nl.rosa.semanticdatabase.bmmdata.model.types.*;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
-import lombok.NonNull;
-import java.util.List;
 import java.util.Map;
 
 
@@ -30,105 +29,28 @@ public class BmmContainerProperty extends BmmBaseEntity implements BmmProperty {
    *      BmmTyped
    *        BmmType
    */
-  /**
-   * BmmEntity
-   */
-  // Functions
-  @NonNull
-  public Boolean isAbstract(){
-    return null;
-  }
-  @NonNull
-  public Boolean isPrimitive(){
-    return null;
-  }
-  /**
-   * BmmProperty
-   */
+  // BmmProperty
   private Boolean isImRuntime;
   private Boolean isImInfrastructure;
   private Boolean isComposition;
-  // functions
-  @NonNull
-  public MultiplicityInterval existence(){
-    return null;
-  }
-  @NonNull
-  public String displayName(){
-    return null;
-  }
-  /**
-   * BmmClassScoped
-   */
+  // BmmClassScoped
   private Object visibility;
-  /**
-   * BmmVariable
-   */
+  // BmmVariable
   private BmmClass scope;
-  /**
-   * BmmDeclaration
-   */
+  // BmmDeclaration
   @NonNull
   private String name;
   private Map<String, Object> documentation;
   private Map<String, Object> extensions;
-
-
-
-  // Functions;
-  public Boolean isRootScope(){
-    return null;
-  }
-  /**
-   * BmmClassEntity
-   */
+  // BmmClassEntity
   private Boolean isSynthesisedGeneric;
-  // function
-  @NonNull
-  public BmmSignature signature(){
-    return null;
-  }
-  /**
-   * BmmType
-   */
-  // Functions
-  @NonNull
-  public String typeName(){
-    return null;
-  }
-  @NonNull
-  public List<String> flattenedTypeList(){
-    return null;
-  }
-  @NonNull
-  public String typeSignature(){
-    return null;
-  }
-  @NonNull
-  public BmmUnitaryType unitaryType(){
-    return null;
-  }
-  @NonNull
-  public BmmEffectiveType effectiveType(){
-    return null;
-  }
-  /**
-   * BmmTypedFeature
-   */
+  // BmmType
+  // BmmTypedFeature
   private Boolean isNullable;
-  /**
-   * BmmInstantiable
-   */
-  /**
-   * BmmTyped
-   */
+  // BmmInstantiable
+  // BmmTyped
   @NonNull
   private BmmType type;
-  // functions
-  @NonNull
-  public Boolean isBoolean(){
-    return null;
-  }
 //================================================================
   /**
    * Cardinality of this container.
@@ -145,5 +67,4 @@ public class BmmContainerProperty extends BmmBaseEntity implements BmmProperty {
   public void setScope(BmmDeclaration newVar) {
     this.scope = (BmmClass) newVar;
   }
-
 }

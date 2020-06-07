@@ -37,20 +37,4 @@ public interface ElOperator extends ElExpression {
    */
   void setDefinition (BmmFunction newVar);
   BmmFunction getDefinition ();
-
-  //
-  // Other methods
-  //
-
-  /**
-   * Operator definition derived from definition.operator_definition().
-   * @return       class_features.BmmOperator
-   */
-  BmmOperator operatorDefinition();
-
-  /**
-   * Function call equivalent to this operator.
-   * @return       expressions.ElFunctionCall
-   */
-  ElFunctionCall equivalentCall();
 }

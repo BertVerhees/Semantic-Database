@@ -39,21 +39,4 @@ public interface BmmProperty extends BmmInstantiable, BmmClassScoped {
    */
   void setIsComposition (Boolean newVar);
   Boolean getIsComposition ();
-
-  //
-  // Other methods
-  //
-
-  /**
-   * 1..1
-   * Interval form of 0..1, 1..1 etc, derived from is_nullable.
-   */
-  MultiplicityInterval existence();
-
-
-  /**
-   * 1..1
-   * Name of this property to display in UI.
-   */
-  String displayName();
 }

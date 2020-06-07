@@ -3,17 +3,14 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElAssertion;
-import nl.rosa.semanticdatabase.bmmdata.model.routine_implementation.BmmStatementItem;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmEffectiveType;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
+import nl.rosa.semanticdatabase.bmmdata.model.routine_implementation.BmmStatementItem;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
-import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -26,7 +23,6 @@ import java.util.Map;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFeature {
-
   /**
    * BmmRoutine
    *  BmmClassScoped
@@ -36,90 +32,28 @@ public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFe
    *   BmmTyped
    *     BmmType
    */
-  /**
-   * BmmType
-   */
-  // Functions
-  @NonNull
-  public String typeName(){
-    return null;
-  }
-  @NonNull
-  public List<String> flattenedTypeList(){
-    return null;
-  }
-  @NonNull
-  public String typeSignature(){
-    return null;
-  }
-  @NonNull
-  public BmmUnitaryType unitaryType(){
-    return null;
-  }
-  @NonNull
-  public BmmEffectiveType effectiveType(){
-    return null;
-  }
-  // Functions
-  @NonNull
-  public Boolean isAbstract(){
-    return null;
-  }
-  @NonNull
-  public Boolean isPrimitive(){
-    return null;
-  }
-  /**
-   * BmmTyped
-   */
+  // BmmType
+  // BmmTyped
   @NonNull
   private BmmType type;
-  // functions
-  @NonNull
-  public Boolean isBoolean(){
-    return null;
-  }
-  /**
-   * BmmTypedFeature
-   */
+  // BmmTypedFeature
   private Boolean isNullable;
-  /**
-   * BmmRoutine
-   */
+  // BmmRoutine
   private List<BmmParameter> parameters;
   private List<BmmLocal> locals;
   private List<ElAssertion> preConditions;
   private List<ElAssertion> postConditions;
   private BmmStatementItem body;
-  // functions
-  public Integer arity(){
-    return null;
-  }
-  /**
-   * BmmClassScoped
-   */
+  // BmmClassScoped
   private Object visibility;
   private BmmClass scope;
-  /**
-   * BmmClassEntity
-   */
+  // BmmClassEntity
   private Boolean isSynthesisedGeneric;
-  // function
-  @NonNull
-  public BmmSignature signature(){
-    return null;
-  }
-  /**
-   * BmmDeclaration
-   */
+  // BmmDeclaration
   @NonNull
   private String name;
   private Map<String, Object> documentation;
   private Map<String, Object> extensions;
-  // Functions;
-  public Boolean isRootScope(){
-    return scope.equals(this);
-  }
   //=============================================
   /**
    * Optional details enabling a function to be represented as an operator in a syntactic representation.
@@ -140,6 +74,4 @@ public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFe
   public void setScope(BmmDeclaration newVar) {
     this.scope = (BmmClass) newVar;
   }
-
-
 }

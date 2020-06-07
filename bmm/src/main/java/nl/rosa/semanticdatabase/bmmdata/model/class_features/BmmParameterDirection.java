@@ -26,10 +26,4 @@ public class BmmParameterDirection extends BmmBaseEntity {
    *    */
 
   private Object in_out;
-  
-  //
-  // Constructors
-  //
-  public BmmParameterDirection () { };
-  
 }

@@ -9,7 +9,6 @@ package nl.rosa.semanticdatabase.bmmdata.services.model_base_services.types;
  * that is not a container object.
  */
 public interface BmmUnitaryTypeService extends BmmTypeService {
-
         /**
          * 1..1
          * (effected)

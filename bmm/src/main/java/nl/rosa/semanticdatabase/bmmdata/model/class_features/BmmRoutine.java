@@ -50,15 +50,4 @@ public interface BmmRoutine extends BmmClassScoped {
   void setBody (BmmStatementItem newVar);
   BmmStatementItem getBody ();
 
-  //
-  // Other methods
-  //
-
-  /**
-   * Return number of arguments of this routine.
-   * @return       Integer
-   */
-  Integer arity();
-
-
 }

@@ -15,8 +15,6 @@ import java.util.List;
  * Evaluation type (i.e. type of runtime evaluated form) is BMM_SIGNATURE.
  */
 public interface ElAgent extends ElScopedRef {
-
-
   /**
    * 1..1
    * name: String
@@ -53,21 +51,4 @@ public interface ElAgent extends ElScopedRef {
    */
   void setDefinition (BmmRoutine newVar);
   BmmRoutine getDefinition ();
-
-  //
-  // Other methods
-  //
-
-  /**
-   * Eval type is the signature corresponding to the (remaining) open arguments and
-   * return type, if any.
-   * Post_result: Result = definition.signature
-   */
-  BmmSignature evalType();
-  /**
-   * True if there are no open arguments.
-   * Post_result_validity: Result = open_arguments = Void
-   * @return       Boolean
-   */
-  Boolean isCallable();
 }

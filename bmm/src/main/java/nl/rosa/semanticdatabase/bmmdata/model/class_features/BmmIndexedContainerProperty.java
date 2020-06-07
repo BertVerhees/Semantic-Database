@@ -2,15 +2,10 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.base.MultiplicityInterval;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmEffectiveType;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmIndexedContainerType;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
-
 import lombok.NonNull;
-import java.util.List;
+import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmIndexedContainerType;
+
 import java.util.Map;
 
 
@@ -32,90 +27,27 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
    *      BmmTyped
    *        BmmType
    */
-  /**
-   * BmmProperty
-   */
+  // BmmProperty
   private Boolean isImRuntime;
   private Boolean isImInfrastructure;
   private Boolean isComposition;
-  // functions
-  @NonNull
-  public MultiplicityInterval existence(){
-    return null;
-  }
-  @NonNull
-  public String displayName(){
-    return null;
-  }
-  /**
-   * BmmClassScoped
-   */
+  // BmmClassScoped
   private Object visibility;
   private BmmClass scope;
-  /**
-   * BmmVariable
-   */
-  /**
-   * BmmDeclaration
-   */
+  // BmmVariable
+  // BmmDeclaration
   @NonNull
   private String name;
   private Map<String, Object> documentation;
   private Map<String, Object> extensions;
-  // Functions;
-  public Boolean isRootScope(){
-    return null;
-  }
-  /**
-   * BmmClassEntity
-   */
+  // BmmClassEntity
   private Boolean isSynthesisedGeneric;
-  // function
-  @NonNull
-  public BmmSignature signature(){
-    return null;
-  }
-  /**
-   * BmmType
-   */
-  // Functions
-  @NonNull
-  public String typeName(){
-    return null;
-  }
-  @NonNull
-  public List<String> flattenedTypeList(){
-    return null;
-  }
-  @NonNull
-  public String typeSignature(){
-    return null;
-  }
-  @NonNull
-  public BmmUnitaryType unitaryType(){
-    return null;
-  }
-  @NonNull
-  public BmmEffectiveType effectiveType(){
-    return null;
-  }
-  /**
-   * BmmTypedFeature
-   */
+  // BmmType
+  // BmmTypedFeature
   private Boolean isNullable;
-  /**
-   * BmmInstantiable
-   */
-  /**
-   * BmmTyped
-   */
-  // functions
-  @NonNull
-  public Boolean isBoolean(){
-    return null;
-  }
+  // BmmInstantiable
+  // BmmTyped
 //================================================================
-
   /**
    * Declared or inferred static type of the entity.
    */

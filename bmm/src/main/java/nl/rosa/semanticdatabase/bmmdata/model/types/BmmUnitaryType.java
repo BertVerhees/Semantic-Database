@@ -7,12 +7,4 @@ package nl.rosa.semanticdatabase.bmmdata.model.types;
  * that is not a container object.
  */
 public interface BmmUnitaryType extends BmmType {
-
-        /**
-         * 1..1
-         * (effected)
-         * Result = self.
-         * @return
-         */
-        BmmUnitaryType unitaryType();
 }

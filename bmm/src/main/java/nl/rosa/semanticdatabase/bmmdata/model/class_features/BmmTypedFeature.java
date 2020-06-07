@@ -17,5 +17,4 @@ public interface BmmTypedFeature extends BmmTyped {
    */
   public void setIsNullable (Boolean newVar);
   public Boolean getIsNullable ();
-
 }

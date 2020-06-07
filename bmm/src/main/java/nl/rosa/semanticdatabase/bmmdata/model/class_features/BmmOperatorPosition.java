@@ -22,10 +22,4 @@ public class BmmOperatorPosition extends BmmBaseEntity {
    * Infix operator position: operator comes between left and right operands.
    */
   private Object infix;
-  
-  //
-  // Constructors
-  //
-  public BmmOperatorPosition () { };
-  
 }

@@ -3,14 +3,13 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElAssertion;
-import nl.rosa.semanticdatabase.bmmdata.model.routine_implementation.BmmStatementItem;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
+import nl.rosa.semanticdatabase.bmmdata.model.routine_implementation.BmmStatementItem;
 
-import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -28,44 +27,22 @@ public class BmmProcedure extends BmmBaseEntity implements BmmRoutine {
    *    BmmClassEntity
    *      BmmDeclaration
    */
-  /**
-   * BmmRoutine
-   */
+  // BmmRoutine
   private List<BmmParameter> parameters;
   private List<BmmLocal> locals;
   private List<ElAssertion> preConditions;
   private List<ElAssertion> postConditions;
   private BmmStatementItem body;
-  // functions
-  public Integer arity(){
-    return null;
-  }
-  /**
-   * BmmClassScoped
-   */
+  // BmmClassScoped
   private Object visibility;
   @NonNull private BmmClass scope;
-  /**
-   * BmmClassEntity
-   */
+  // BmmClassEntity
   private Boolean isSynthesisedGeneric;
-  // function
-  @NonNull
-  public BmmSignature signature(){
-    return null;
-  }
-  /**
-   * BmmDeclaration
-   */
+  // BmmDeclaration
   @NonNull
   private String name;
   private Map<String, Object> documentation;
   private Map<String, Object> extensions;
-  // Functions;
-  @Override
-  public Boolean isRootScope(){
-    return scope.equals(this);
-  }
   //=============================================
 
   @Override
@@ -78,5 +55,4 @@ public class BmmProcedure extends BmmBaseEntity implements BmmRoutine {
   public void setScope(BmmClass newVar) {
     this.scope = newVar;
   }
-
 }

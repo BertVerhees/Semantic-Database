@@ -1,9 +1,9 @@
 package nl.rosa.semanticdatabase.bmmdata.services.model_base_services.classes;
 
-import nl.rosa.semanticdatabase.bmmdata.services.model_base_services.class_features.BmmClassScopedService;
-import nl.rosa.semanticdatabase.bmmdata.services.model_base_services.class_features.BmmPropertyService;
+import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmClassScoped;
+import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmProperty;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmModelType;
 import nl.rosa.semanticdatabase.bmmdata.services.model_base_services.model_structure.BmmModuleService;
-import nl.rosa.semanticdatabase.bmmdata.services.model_base_services.types.BmmModelTypeService;
 
 import java.util.List;
 
@@ -52,7 +52,7 @@ public interface BmmClassService extends BmmModuleService {
    * type (): BMM_MODEL_TYPE
    * Generate a type object that represents the type for which this class is the definer.
    */
-  BmmModelTypeService type();
+  BmmModelType type();
   /**
    * List of all inheritance parent class names, recursively.
    * @return       List<String>
@@ -106,18 +106,18 @@ public interface BmmClassService extends BmmModuleService {
   /**
    * List of all feature definitions introduced in this class.
    */
-  List<BmmClassScopedService> features();
+  List<BmmClassScoped> features();
 
   /**
    * Consolidated list of all feature definitions from this class and all inheritance
    * ancestors.
    */
-  List<BmmClassScopedService> flatFeatures();
+  List<BmmClassScoped> flatFeatures();
 
   /**
    * List of all properties due to current and ancestor classes, keyed by property
    * name.
    * @return       class_features.BmmProperty
    */
-  List<BmmPropertyService> flatProperties();
+  List<BmmProperty> flatProperties();
 }

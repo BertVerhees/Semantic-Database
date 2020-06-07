@@ -7,7 +7,6 @@ import java.util.Map;
  * Class BmmDeclaration
  */
 public interface BmmDeclaration {
-
   /**
    * 1..1
    * name: String
@@ -45,11 +44,4 @@ public interface BmmDeclaration {
    */
   void setExtensions (Map<String,Object> newVar);
   Map<String,Object> getExtensions ();
-  /**
-   * 1..1
-   * is_root_scope (): Boolean
-   * Post_result: Result = (scope = self)
-   * True if this declaration entity is the root of the declaration hierarchy.
-   */
-  Boolean isRootScope();
 }

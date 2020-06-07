@@ -18,6 +18,4 @@ public interface BmmTypedService extends BmmTypeService {
    * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() = 'Boolean').
    */
   public Boolean isBoolean();
-
-
 }

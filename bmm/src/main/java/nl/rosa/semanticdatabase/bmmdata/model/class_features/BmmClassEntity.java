@@ -18,5 +18,4 @@ public interface BmmClassEntity extends BmmDeclaration {
    */
   void setIsSynthesisedGeneric (Boolean newVar);
   Boolean getIsSynthesisedGeneric ();
-
 }
