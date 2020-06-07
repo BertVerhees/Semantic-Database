@@ -12,8 +12,6 @@
 <!--        <module>referencemodel</module>-->
         <module>semanticdatabase-web</module>
         <module>bmm</module>
-        <module>bmmcontroller</module>
-        <module>bmmdata</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

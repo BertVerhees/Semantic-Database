@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.model_structure;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 
 import lombok.NonNull;
@@ -14,7 +15,7 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmPackage extends BmmPackageContainer{
+public class BmmPackage extends BmmBaseEntity implements BmmPackageContainer {
   /**
    * BmmDeclaration
    */
@@ -29,6 +30,10 @@ public class BmmPackage extends BmmPackageContainer{
   public Boolean isRootScope(){
     return scope.equals(this);
   }
+  /**
+   * BmmPackageContainer
+   */
+  private Map<String, BmmPackage> packages;
 
   /**
    * 0..1

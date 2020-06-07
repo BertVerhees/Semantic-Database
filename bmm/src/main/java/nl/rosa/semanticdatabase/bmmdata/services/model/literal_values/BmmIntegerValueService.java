@@ -7,5 +7,6 @@ import nl.rosa.semanticdatabase.bmmdata.services.CrudService;
  * Default created on 24-5-2020
  */
 
-public interface BmmIntegerValueService extends CrudService<BmmIntegerValue, Long> {
+public interface BmmIntegerValueService extends
+        CrudService<BmmIntegerValue, Long> {
 }

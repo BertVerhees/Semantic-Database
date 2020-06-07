@@ -1,16 +1,16 @@
 package nl.rosa.semanticdatabase.bmmdata.model.model_structure;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.meta.BmmModelMetadata;
+import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmProperty;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmEnumeration;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmSimpleClass;
+import nl.rosa.semanticdatabase.bmmdata.model.meta.BmmModelMetadata;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
 
-import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -20,7 +20,7 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmModel extends BmmPackageContainer {
+public class BmmModel extends BmmBaseEntity implements BmmPackageContainer {
   /**
    * BmmDeclaration
    */
@@ -36,6 +36,14 @@ public class BmmModel extends BmmPackageContainer {
     return scope.equals(this);
   }
   /**
+   * BmmPackageContainer
+   */
+  private Map<String, BmmPackage> packages;
+  /**
+   * Child packages; keys all in upper case for guaranteed matching.
+   */
+
+  /**
    * All classes in this model, keyed by type name.
    */
   private Map<String,BmmClass> classDefinitions;
@@ -47,32 +55,6 @@ public class BmmModel extends BmmPackageContainer {
   private BmmModelMetadata bmmModelMetadata;
 
 
-  //
-  // Constructors
-  //
-  public BmmModel () {
-    super();
-  }
-
-  @Builder
-  public BmmModel(
-          BmmPackage packages,
-          BmmPackageContainer scope,
-          String name,
-          Map<String, Object> documentation,
-          Map<String, Object> extensions,
-          Map<String,BmmClass> classDefinitions,
-          BmmModel usedModels,
-          BmmModelMetadata bmmModelMetadata) {
-    super(packages, scope, name, documentation, extensions);
-    this.classDefinitions = classDefinitions;
-    this.usedModels = usedModels;
-    this.bmmModelMetadata = bmmModelMetadata;
-  }
-
-  //
-  // Methods
-  //
   /**
    * Identifier of this model, lower-case, formed from:
    * rm_publisher '' model_name '' rm_release

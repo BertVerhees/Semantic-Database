@@ -2,8 +2,11 @@ package nl.rosa.semanticdatabase.bmmdata.model_access;
 
 import lombok.Data;
 import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
+import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmPackageContainer;
 
 import java.util.List;
@@ -13,12 +16,29 @@ import java.util.Map;
  * Default created on 6-6-2020
  */
 @Data
-public class BmmSchema extends BmmPackageContainer implements BmmModelMetadata {
+public class BmmSchema extends BmmBaseEntity implements BmmPackageContainer, BmmModelMetadata {
     /**
      * BmmModelMetadata
      */
     String rmPublisher;
     String rmRelease;
+    /**
+     * BmmDeclaration
+     */
+    @NonNull
+    private String name;
+    private Map<String, Object> documentation;
+    @NonNull
+    private BmmDeclaration scope;
+    private Map<String, Object> extensions;
+    // Functions;
+    @Override
+    public Boolean isRootScope(){
+        return scope.equals(this);
+    }/**
+     * BmmPackageContainer
+     */
+    private Map<String, BmmPackage> packages;
     /**
      * 1..1
      * bmm_version: String
