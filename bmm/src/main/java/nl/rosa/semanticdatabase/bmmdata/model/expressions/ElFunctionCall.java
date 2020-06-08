@@ -2,10 +2,8 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
-
 import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
 
 /**
@@ -15,39 +13,22 @@ import lombok.NonNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ElFunctionCall extends BmmBaseEntity implements ElScopedRef, ElAgentCall {
-/**
- *  ElScopedRef
- *    ElInstanceRef
- *      ElTerminal
- *        ElExpression
- *  ElAgentCall
- */
-/**
- * ElInstanceRef
- */
-  /**
-   * ElScopedRef
-   */
-  private ElInstanceRef scope;
-  /**
-   * ElTerminal
-   */
-  /**
-   * ElExpression
-   */
-  @NonNull
-  public BmmType evalType(){
-    return null;
-  }
-  @NonNull
-  public Boolean isBoolean(){
-    return null;
-  }
+public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
   /**
    * ElAgentCall
    */
   @NonNull
   private ElAgent agent;
 //======================================================================================
+
+  /**
+   * 1..1
+   * (effected)
+   * eval_type (): BMM_TYPE
+   * Return agent.definition.type.
+   * @return
+   */
+  public BmmType evalType(){
+    return null;
+  }
 }
