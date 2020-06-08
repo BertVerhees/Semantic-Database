@@ -15,14 +15,9 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 @EqualsAndHashCode(callSuper = true)
 public abstract class ElScopedRef extends BmmBaseEntity implements ElInstanceRef {
   /**
-   *    ElInstanceRef
    *      ElTerminal
    *        ElExpression
    */
-
-/**
- * ElInstanceRef
- */
   /**
    * ElExpression
    */
@@ -37,7 +32,6 @@ public abstract class ElScopedRef extends BmmBaseEntity implements ElInstanceRef
    * ElExpression
    */
 //=================================================================
-
   /**
    * 0..1
    * scope: EL_INSTANCE_REF

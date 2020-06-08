@@ -6,4 +6,5 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
  * A reference to an instance of any kind.
  */
 public interface ElInstanceRef extends ElTerminal {
+
 }
