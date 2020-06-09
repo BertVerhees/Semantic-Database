@@ -14,20 +14,18 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 public class ElTupleItem extends BmmBaseEntity {
 
   /**
-   * Reference to value entity. If Void, this indicates that the item in this position is Void, e.g. within a routine call parameter list.
+   * 0..1
+   * item: EL_EXPRESSION
+   * Reference to value entity. If Void, this indicates that the item in this position
+   * is Void, e.g. within a routine call parameter list.
    */
-  private ElExpression item;  /**
+  private ElExpression item;
 
-   * 
-   * 
+  /**
+   * 0..1
+   * name: String
    * Optional name of tuple item.
-   *    */
+   */
 
   private String name;
-  
-  //
-  // Constructors
-  //
-  public ElTupleItem () { };
-  
 }

@@ -2,11 +2,8 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmTupleType;
-
-import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
 
 /**
@@ -15,51 +12,22 @@ import lombok.NonNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ElTuple extends BmmBaseEntity implements ElInstanceRef {
-/**
- *    ElInstanceRef
- *      ElTerminal
- *        ElExpression
- */
+public class ElTuple extends ElInstanceRef {
   /**
-   * ElInstanceRef
-   */
-  /**
-   * ElTerminal
-   */
-  /**
-   * ElExpression
-   */
-  @NonNull
-  public BmmType evalType(){
-    return null;
-  }
-  @NonNull
-  public Boolean isBoolean(){
-    return null;
-  }
-//======================================================================================
-
-  //
-  // Fields
-  //
-
-  /**
+   * 0..1
+   * items: List<EL_TUPLE_ITEM>
    * Items in the tuple, potentially with names. Typical use is to represent an argument list to routine call.
    */
   private ElTupleItem items;
   /**
+   * 1..1
+   * type: BMM_TUPLE_TYPE
    * Static type inferred from literal value.
    */
   private BmmTupleType type;
-  
-  //
-  // Constructors
-  //
-  public ElTuple () { };
-  
-  //
-  // Methods
-  //
 
+  @Override
+  public BmmType evalType() {
+    return null;
+  }
 }

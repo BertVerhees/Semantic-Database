@@ -1,10 +1,14 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 /**
  * Class ElInstanceRef
  * A reference to an instance of any kind.
  */
-public interface ElInstanceRef extends ElTerminal {
-
+@Data
+@EqualsAndHashCode(callSuper = true)
+public abstract class ElInstanceRef extends ElTerminal {
 }

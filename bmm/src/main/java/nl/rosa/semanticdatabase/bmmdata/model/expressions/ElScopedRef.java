@@ -3,8 +3,6 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 /**
  * Class ElScopedRef
@@ -13,25 +11,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public abstract class ElScopedRef extends BmmBaseEntity implements ElInstanceRef {
-  /**
-   *      ElTerminal
-   *        ElExpression
-   */
-  /**
-   * ElExpression
-   */
-  @NonNull
-  public Boolean isBoolean(){
-    return null;
-  }
-  /**
-   * ElTerminal
-   */
-  /**
-   * ElExpression
-   */
-//=================================================================
+public abstract class ElScopedRef extends ElInstanceRef {
   /**
    * 0..1
    * scope: EL_INSTANCE_REF

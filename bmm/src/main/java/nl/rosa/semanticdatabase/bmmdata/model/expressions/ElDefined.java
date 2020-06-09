@@ -3,10 +3,6 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSimpleType;
-
-import lombok.NonNull;
 
 /**
  * Class ElDefined
@@ -19,30 +15,5 @@ import lombok.NonNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ElDefined extends BmmBaseEntity implements ElPredicate {
-/**
- * ElPredicate
- *  ElTerminal
- *    ElExpression
- */
-  /**
-   * ElPredicate
-   */
-  private ElInstanceRef operand;
-  // Functions
-  @NonNull
-  public BmmSimpleType evalType(){
-    return null;
-  }
-  /**
-   * ElTerminal
-   */
-  /**
-   * ElExpression
-   */
-  @NonNull
-  public Boolean isBoolean(){
-    return null;
-  }
-//========================================================================
+public class ElDefined extends ElPredicate {
 }

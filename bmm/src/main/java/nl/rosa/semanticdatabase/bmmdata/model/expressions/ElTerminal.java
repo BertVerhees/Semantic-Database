@@ -10,5 +10,6 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
  * an agent, i.e. a delayed function call;
  * a function call.
  */
-public interface ElTerminal extends ElExpression{
+public abstract class ElTerminal extends ElExpression{
+
 }

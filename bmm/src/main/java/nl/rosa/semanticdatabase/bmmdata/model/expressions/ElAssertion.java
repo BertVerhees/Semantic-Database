@@ -21,10 +21,5 @@ public class ElAssertion extends BmmBaseEntity {
    * The expression of this assertion.
    */
   private ElExpression expression;
-  
-  //
-  // Constructors
-  //
-  public ElAssertion () { };
-  
+
 }

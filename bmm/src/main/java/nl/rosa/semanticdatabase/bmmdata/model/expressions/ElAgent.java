@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmRoutine;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * Evaluation type (i.e. type of runtime evaluated form) is BMM_SIGNATURE.
  */
 @Data
+@EqualsAndHashCode(callSuper = true)
 public abstract class ElAgent extends ElScopedRef {
   /**
    * 1..1
@@ -51,9 +53,12 @@ public abstract class ElAgent extends ElScopedRef {
   private BmmRoutine definition;
   // Functions
   /**
+   * 1..1
+   * (effected)
+   * eval_type (): BMM_SIGNATURE
+   * Post_result: Result = definition.signature
    * Eval type is the signature corresponding to the (remaining) open arguments and
    * return type, if any.
-   * Post_result: Result = definition.signature
    */
   public BmmSignature evalType(){
     return null;

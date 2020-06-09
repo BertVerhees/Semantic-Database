@@ -1,14 +1,18 @@
 package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
-import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmOperator;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmFunction;
+import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmOperator;
 
 
 /**
  * Class ElOperator
  * Abstract parent of operator nl.rosa.semanticdatabase.bmm.model.types.
  */
-public interface ElOperator extends ElExpression {
+@Data
+@EqualsAndHashCode(callSuper = true)
+public abstract class ElOperator extends ElExpression {
   /**
    * 0..1
    * precedence_overridden: Boolean
@@ -17,8 +21,7 @@ public interface ElOperator extends ElExpression {
    * introduced around the totality of the syntax expression corresponding to this
    * operator node and its operands.
    */
-  void setPrecedenceOverridden (Boolean newVar);
-  Boolean getPrecedenceOverridden ();
+  private Boolean precedenceOverriden;
 
   /**
    * 0..1
@@ -26,8 +29,7 @@ public interface ElOperator extends ElExpression {
    * The symbol actually used in the expression, or intended to be used for
    * serialisation. Must be a member of OPERATOR_DEF.symbols.
    */
-  void setSymbol (String newVar);
-  String getSymbol ();
+  private String symbol;
 
   /**
    * 1..1
@@ -35,6 +37,27 @@ public interface ElOperator extends ElExpression {
    * Function equivalent to this operator, inferred by matching operator against
    * functions defined in interface of principal operand.
    */
-  void setDefinition (BmmFunction newVar);
-  BmmFunction getDefinition ();
+  private BmmFunction definition;
+
+  // Functions
+
+  /**
+   * 1..1
+   * operator_definition (): BMM_OPERATOR
+   * Operator definition derived from definition.operator_definition().
+   * @return
+   */
+  public BmmOperator operatorDefinition() {
+    return null;
+  }
+
+  /**
+   * 1..1
+   * equivalent_call (): EL_FUNCTION_CALL
+   * Function call equivalent to this operator.
+   * @return
+   */
+  public ElFunctionCall equivalentCall() {
+    return null;
+  }
 }

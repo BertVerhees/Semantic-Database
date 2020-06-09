@@ -2,10 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
-
-import lombok.NonNull;
 
 
 /**
@@ -15,40 +12,22 @@ import lombok.NonNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ElInstantiableRef<T> extends BmmBaseEntity implements ElScopedRef {
-/**
- *  ElScopedRef
- *    ElInstanceRef
- *      ElTerminal
- *        ElExpression
- */
-  /**
-   * ElInstanceRef
-   */
-  /**
-   * ElExpression
-   */
-  @NonNull
-  public BmmType evalType(){
-    return null;
-  }
-  @NonNull
-  public Boolean isBoolean(){
-    return null;
-  }
-  /**
-   * ElScopedRef
-   */
-  private ElInstanceRef scope;
-  /**
-   * ElTerminal
-   */
-  /**
-   * ElExpression
-   */
-//======================================================================================
+public class ElInstantiableRef<T> extends ElScopedRef {
   /**
    * Definition of the constant, property or variable, inferred by inspection of the current scoping instance.
    */
   private T definition;
+
+  // Functions
+  /**
+   * 1..1
+   * (effected)
+   * eval_type (): BMM_TYPE
+   * Type definition (i.e. BMM meta-type definition object) of the constant, property or variable,
+   * inferred by inspection of the current scoping instance. Return definition.type.
+   * @return
+   */
+  public BmmType evalType(){
+    return null;
+  }
 }

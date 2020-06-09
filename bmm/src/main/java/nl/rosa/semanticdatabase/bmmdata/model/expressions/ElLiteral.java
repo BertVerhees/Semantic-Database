@@ -2,11 +2,8 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.model.literal_values.BmmLiteralValue;
-
-import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
 
 /**
@@ -16,55 +13,23 @@ import lombok.NonNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ElLiteral extends BmmBaseEntity implements ElInstanceRef {
-/**
- *    ElInstanceRef
- *      ElTerminal
- *        ElExpression
- *  ElAgentCall
- */
+public class ElLiteral extends ElInstanceRef {
   /**
-   * ElInstanceRef
-   */
-  /**
-   * ElExpression
-   */
-  @NonNull
-  public BmmType evalType(){
-    return null;
-  }
-  @NonNull
-  public Boolean isBoolean(){
-    return null;
-  }
-  /**
-   * ElTerminal
-   */
-  /**
-   * ElAgentCall
-   */
-  @NonNull
-  private ElAgent agent;
-//======================================================================================
-  /**
+   * 1..1
+   * value: BMM_LITERAL_VALUE
    * The reference item from which the value of this node can be computed.
    */
   private BmmLiteralValue value;
-  /**
-   * Set the value of value
-   * The reference item from which the value of this node can be computed.
-   * @param newVar the new value of value
-   */
-  public void setValue (BmmLiteralValue newVar) {
-    value = newVar;
-  }
 
   /**
-   * Get the value of value
-   * The reference item from which the value of this node can be computed.
-   * @return the value of value
+   * 1..1
+   * (effected)
+   * eval_type (): BMM_TYPE
+   * Return value.type.
+   * @return
    */
-  public BmmLiteralValue getValue () {
-    return value;
+  @Override
+  public BmmType evalType() {
+    return null;
   }
 }

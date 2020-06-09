@@ -2,7 +2,6 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
 
 
@@ -15,23 +14,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ElSelfRef extends BmmBaseEntity implements ElInstanceRef {
-/**
- *    ElInstanceRef
- *      ElTerminal
- *        ElExpression
- */
-  /**
-   * ElInstanceRef
-   */
-  /**
-   * ElTerminal
-   */
-  /**
-   * ElExpression
-   */
-//======================================================================================
-
+public class ElSelfRef extends ElInstanceRef {
   /**
    * Type of the current scoping instance, inferred from expression context.
    */
@@ -46,12 +29,4 @@ public class ElSelfRef extends BmmBaseEntity implements ElInstanceRef {
     //TODO
     return null;
   }
-
-  @Override
-  public Boolean isBoolean() {
-    //TODO
-    return false;
-  }
-
-
 }

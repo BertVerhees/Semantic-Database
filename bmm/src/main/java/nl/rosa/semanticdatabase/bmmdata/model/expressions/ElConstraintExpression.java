@@ -3,10 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.expressions;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
-
-import lombok.NonNull;
 
 /**
  * Class ElConstraintExpression
@@ -16,33 +13,23 @@ import lombok.NonNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class ElConstraintExpression extends BmmBaseEntity implements ElExpression {
-/**
- * ElExpression
- */
-/**
- * ElExpression
- */
-@NonNull
-public BmmType evalType(){
-  return null;
-}
-  @NonNull
-  public Boolean isBoolean(){
-    return null;
-  }
-//========================================================================
+public class ElConstraintExpression extends ElExpression {
   /**
    * Left operand of constraint expression.
    */
   private ElExpression leftOperand;
   /**
-   * Right hand side of the constraint expression. Redefined in sub-nl.rosa.semanticdatabase.bmm.model.types.
+   * 1..1
+   * constraint: Any
+   * Right hand side of the constraint expression. Redefined in sub-types.
+   *
+   * Invariants
+   * Inv_boolean_result: is_boolean()
    */
   private Object constraint;
   
-  //
-  // Constructors
-  //
-  public ElConstraintExpression () { };
+  @Override
+  public BmmType evalType() {
+    return null;
+  }
 }
