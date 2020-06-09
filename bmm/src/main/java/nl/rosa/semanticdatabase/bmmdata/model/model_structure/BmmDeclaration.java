@@ -1,12 +1,18 @@
 package nl.rosa.semanticdatabase.bmmdata.model.model_structure;
 
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
+
 import java.util.Map;
 
 /**
  * Class BmmDeclaration
  */
-public interface BmmDeclaration {
+@Data
+@EqualsAndHashCode(callSuper = true)
+public abstract class BmmDeclaration extends BmmBaseEntity {
   /**
    * 1..1
    * name: String

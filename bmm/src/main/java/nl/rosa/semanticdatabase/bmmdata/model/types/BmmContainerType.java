@@ -2,10 +2,10 @@ package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmGenericClass;
 
-import lombok.NonNull;
 import java.util.List;
 
 
@@ -32,44 +32,9 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmContainerType extends BmmBaseEntity implements BmmType {
-/**
- * BmmType
- */
-  /**
-   * BmmType
-   */
-  // Functions
-  @NonNull
-  public String typeName(){
-    return null;
-  }
-  @NonNull
-  public List<String> flattenedTypeList(){
-    return null;
-  }
-  @NonNull
-  public String typeSignature(){
-    return null;
-  }
-  @NonNull
-  public BmmUnitaryType unitaryType(){
-    return null;
-  }
-  @NonNull
-  public BmmEffectiveType effectiveType(){
-    return null;
-  }
-  // Functions
-  @NonNull
-  public Boolean isAbstract(){
-    return null;
-  }
-  @NonNull
-  public Boolean isPrimitive(){
-    return null;
-  }
-  //==================================================================================
+@NoArgsConstructor
+public class BmmContainerType extends BmmType {
+
   /**
    * 1..1
    * container_class: BMM_GENERIC_CLASS
@@ -103,19 +68,37 @@ public class BmmContainerType extends BmmBaseEntity implements BmmType {
    * Otherwise known as 'set' semantics.
    */
   private Boolean isUnique = false;
-  
-  //
-  // Constructors
-  //
-  public BmmContainerType () { }
 
   /**
-   * True if this declaration entity is the root of the declaration hierarchy.
-   * @return
+   * BmmType
    */
-  public Boolean isRootScope() {
-    return false;
+  @Override
+  public @NonNull String typeName() {
+    return null;
   }
 
+  @Override
+  public @NonNull List<String> flattenedTypeList() {
+    return null;
+  }
 
+  @Override
+  public @NonNull BmmUnitaryType unitaryType() {
+    return null;
+  }
+
+  @Override
+  public @NonNull BmmEffectiveType effectiveType() {
+    return null;
+  }
+
+  @Override
+  public @NonNull Boolean isAbstract() {
+    return null;
+  }
+
+  @Override
+  public @NonNull Boolean isPrimitive() {
+    return null;
+  }
 }

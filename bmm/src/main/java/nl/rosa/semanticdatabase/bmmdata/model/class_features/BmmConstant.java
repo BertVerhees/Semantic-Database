@@ -7,8 +7,11 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.literal_values.BmmLiteralValue;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmEffectiveType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
+import java.util.List;
 import java.util.Map;
 
 
@@ -18,39 +21,12 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmConstant extends BmmBaseEntity implements BmmClassScoped, BmmInstantiable {
+public class BmmConstant extends BmmClassScoped implements BmmInstantiable {
   /**
-   * BmmClassScoped
-   *  BmmClassEntity
-   *    BmmDeclaration
    * BmmInstantiable
    *  BmmTypedFeature
-   *    BmmTyped
-   *      BmmType
-   */
-  // BmmProperty
-  private Boolean isImRuntime;
-  private Boolean isImInfrastructure;
-  private Boolean isComposition;
-  // BmmClassScoped
-  private Object visibility;
-  private BmmClass scope;
-  // BmmDeclaration
-  @NonNull
-  private String name;
-  private Map<String, Object> documentation;
-  @NonNull
-  private Map<String, Object> extensions;
-  // BmmClassEntity
-  private Boolean isSynthesisedGeneric;
-  // BmmType
-  // BmmTypedFeature
-  private Boolean isNullable;
-  // BmmInstantiable
-  // BmmTyped
-  @NonNull
-  private BmmType type;
-//================================================================
+   *   BmmTyped
+  //==================================================================================
   /**
    * The value of the constant.
    */

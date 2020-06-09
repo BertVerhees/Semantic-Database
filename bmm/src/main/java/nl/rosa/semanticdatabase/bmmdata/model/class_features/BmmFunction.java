@@ -9,7 +9,9 @@ import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.routine_implementation.BmmStatementItem;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmEffectiveType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
 
 import java.util.List;
 import java.util.Map;
@@ -22,17 +24,11 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmFunction extends BmmBaseEntity implements BmmRoutine, BmmTypedFeature {
+public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
   /**
-   * BmmRoutine
-   *  BmmClassScoped
-   *    BmmClassEntity
-   *      BmmDeclaration
    * BmmTypedFeature
    *   BmmTyped
-   *     BmmType
-   */
-  // BmmType
+  //==================================================================================
   // BmmTyped
   @NonNull
   private BmmType type;

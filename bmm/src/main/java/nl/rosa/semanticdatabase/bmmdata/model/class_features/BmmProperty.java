@@ -1,7 +1,14 @@
 package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmEffectiveType;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
+
+import java.util.List;
 
 /**
  * Class BmmProperty
@@ -9,16 +16,22 @@ import nl.rosa.semanticdatabase.base.MultiplicityInterval;
  * The is_composition attribute indicates whether the property has sub-part or an
  * association semantics with respect to the owning class.
  */
-public interface BmmProperty extends BmmInstantiable, BmmClassScoped {
-
+@Data
+@EqualsAndHashCode(callSuper = true)
+public abstract class BmmProperty extends BmmClassScoped implements BmmInstantiable {
+  /**
+   * BmmInstantiable
+   *  BmmTypedFeature
+   *   BmmTyped
+   */
+  //==================================================================================
   /**
    * 0..1
    * is_im_runtime: Boolean
    * {default = false}
    * True if this property is marked with info model im_runtime property.
    */
-  void setIsImRuntime (Boolean newVar);
-  Boolean getIsImRuntime ();
+  private Boolean isImRuntime;
 
   /**
    * 0..1
@@ -26,8 +39,7 @@ public interface BmmProperty extends BmmInstantiable, BmmClassScoped {
    * {default = false}
    * True if this property was marked with info model im_infrastructure flag.
    */
-  void setIsImInfrastructure (Boolean newVar);
-  Boolean getIsImInfrastructure ();
+  private Boolean isImInfrastructure;
 
   /**
    * 0..1
@@ -37,6 +49,29 @@ public interface BmmProperty extends BmmInstantiable, BmmClassScoped {
    * Equivalent to 'composition' in UML associations (but missing from UML properties without associations)
    * and also 'cascade-delete' semantics in ER schemas.
    */
-  void setIsComposition (Boolean newVar);
-  Boolean getIsComposition ();
+  private Boolean isComposition;
+
+  // Functions
+  /**
+   * 1..1
+   * existence (): Multiplicity_interval
+   * Interval form of 0..1, 1..1 etc, derived from is_nullable.
+   * @return
+   */
+  public MultiplicityInterval existence(){
+    return null;
+  }
+
+  /**
+   * 1..1
+   * display_name (): String
+   * Name of this property to display in UI.
+   *
+   * Invariants
+   * Inv_signature_no_args: signature.arguments = Void
+   * @return
+   */
+  public String displayName(){
+    return null;
+  }
 }
