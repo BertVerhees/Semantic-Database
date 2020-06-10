@@ -1,51 +1,27 @@
 package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 
-import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-
-import java.util.List;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * Class BmmUnitaryType
  * Parent of meta-nl.rosa.semanticdatabase.bmm.model.types that may be used as the type of any instantiated object
  * that is not a container object.
  */
-public abstract class BmmUnitaryType extends BmmBaseEntity implements BmmType {
-    /**
-     * BmmType
-     */
-    /**
-     * BmmType
-     */
+@Data
+@EqualsAndHashCode(callSuper = true)
+public abstract class BmmUnitaryType extends BmmType  {
     // Functions
-    @NonNull
-    public String typeName(){
+
+    /**
+     * 1..1
+     * (effected)
+     * unitary_type (): BMM_UNITARY_TYPE
+     * Result = self.
+     * @return
+     */
+    public BmmUnitaryType unitaryType() {
         return null;
     }
-    @NonNull
-    public List<String> flattenedTypeList(){
-        return null;
-    }
-    @NonNull
-    public String typeSignature(){
-        return null;
-    }
-    @NonNull
-    public BmmUnitaryType unitaryType(){
-        return null;
-    }
-    @NonNull
-    public BmmEffectiveType effectiveType(){
-        return null;
-    }
-    @NonNull
-    public Boolean isAbstract(){
-        return null;
-    }
-    @NonNull
-    public Boolean isPrimitive(){
-        return null;
-    }
-    //==================================================================================
 }

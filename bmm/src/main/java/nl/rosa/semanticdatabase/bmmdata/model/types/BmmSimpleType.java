@@ -2,12 +2,9 @@ package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmSimpleClass;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSpec;
-
 import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmSimpleClass;
+
 import java.util.List;
 
 
@@ -25,95 +22,63 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmSimpleType extends BmmBaseEntity implements BmmModelType {
+public class BmmSimpleType extends BmmModelType  {
   /**
-   * BmmModelType
-   *  BmmEffectiveType
-   *    BmmUnitaryType
-   *      BmmType
-   *        BmmEntity
-   */
-
-  /**
-   * BmmEffectiveType
-   */
-  // Functions;
-  @NonNull
-  public BmmEffectiveType getEffectiveType(){
-    return null;
-  }
-  @NonNull
-  public String typeBaseName(){
-    return null;
-  }
-  /**
-   * BmmUnitaryType
-   */
-  // Functions
-  @NonNull
-  public BmmUnitaryType unitaryType(){
-    return null;
-  }
-  /**
-   * BmmType
-   */
-  // Functions
-  @NonNull
-  public String typeName(){
-    return null;
-  }
-  @NonNull
-  public List<String> flattenedTypeList(){
-    return null;
-  }
-  @NonNull
-  public String typeSignature(){
-    return null;
-  }
-  @NonNull
-  public BmmEffectiveType effectiveType(){
-    return null;
-  }
-  /**
-   * BmmEntity
-   */
-  // Functions
-  @NonNull
-  public Boolean isAbstract(){
-    return null;
-  }
-  @NonNull
-  public Boolean isPrimitive(){
-    return null;
-  }
-  /**
-   *  BmmModelType
-   */
-  private BmmValueSpec valueConstraint;
-
-  //==================================================================================
-  /**
+   * 1..1
+   * (redefined)
+   * base_class: BMM_SIMPLE_CLASS
    * Defining class of this type.
    */
   @NonNull
   private BmmSimpleClass baseClass;
-  
-  //
-  // Constructors
-  //
-  public BmmSimpleType () { };
 
   /**
-   * True if this declaration entity is the root of the declaration hierarchy.
+   * 1..1
+   * (effected)
+   * type_name (): String
+   * Result is base_class.name.
    * @return
    */
-  public Boolean isRootScope() {
-    return false;
+  @Override
+  @NonNull
+  public  String typeName() {
+    return null;
   }
 
+  /**
+   * 1..1
+   * (effected)
+   * flattened_type_list (): List<String>
+   * Result is base_class.name .
+   * @return
+   */
   @Override
-  @Deprecated
-  public void setBaseClass(BmmClass newVar) {
+  @NonNull
+  public List<String> flattenedTypeList() {
+    return null;
+  }
 
+  /**
+   * 1..1
+   * (effected)
+   * is_abstract (): Boolean
+   * Result is base_class.is_abstract.
+   * @return
+   */
+  @Override
+  @NonNull
+  public Boolean isAbstract() {
+    return null;
+  }
+
+  /**
+   * 1..1
+   * effective_base_class (): BMM_SIMPLE_CLASS
+   * Main design class for this type, from which properties etc can be extracted.
+   * @return
+   */
+  @NonNull
+  public BmmSimpleClass effectiveBaseClass(){
+    return null;
   }
 }

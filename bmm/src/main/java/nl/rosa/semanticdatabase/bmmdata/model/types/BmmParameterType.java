@@ -3,11 +3,8 @@ package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSpec;
-
 import lombok.NonNull;
+
 import java.util.List;
 
 /**
@@ -27,63 +24,14 @@ import java.util.List;
  * (effected) effective_type (): BMM_EFFECTIVE_TYPE
  * Generate ultimate conformance type, which is either flattened_conforms_to_type
  * or if not set, Any.
+ *
+ *    * Invariants
+ *    * Inv_generic_name: name.count = 1 and name.is_upper
  * 
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmParameterType extends BmmBaseEntity implements BmmUnitaryType {
-  /**
-   *    BmmUnitaryType
-   *      BmmType
-   *        BmmEntity
-   */
-  /**
-   * BmmUnitaryType
-   */
-  // Functions
-  @NonNull
-  public BmmUnitaryType unitaryType(){
-    return null;
-  }
-  /**
-   * BmmType
-   */
-  // Functions
-  @NonNull
-  public String typeName(){
-    return null;
-  }
-  @NonNull
-  public List<String> flattenedTypeList(){
-    return null;
-  }
-  @NonNull
-  public String typeSignature(){
-    return null;
-  }
-  @NonNull
-  public BmmEffectiveType effectiveType(){
-    return null;
-  }
-  /**
-   * BmmEntity
-   */
-  // Functions
-  @NonNull
-  public Boolean isAbstract(){
-    return null;
-  }
-  @NonNull
-  public Boolean isPrimitive(){
-    return null;
-  }
-  private BmmValueSpec valueConstraint;
-  @NonNull
-  private BmmClass baseClass;
-//==================================================================================
-  //
-  // Fields
-  //
+public class BmmParameterType extends BmmUnitaryType  {
 
   /**
    * Name of the parameter, e.g. 'T' etc. The name is limited to 1 character and upper-case.
@@ -97,4 +45,81 @@ public class BmmParameterType extends BmmBaseEntity implements BmmUnitaryType {
    * If set, is the corresponding generic parameter definition in an ancestor class.
    */
   private BmmParameterType inheritancePrecursor;
+  /**
+   * 1..1
+   * flattened_conforms_to_type (): BMM_EFFECTIVE_TYPE
+   * Result is either conforms_to_type or inheritance_precursor.flattened_conforms_to_type.
+   * @return
+   */
+
+  // Functions
+  @NonNull
+  public BmmEffectiveType flattenedConformsToType (){
+    return null;
+  }
+  //================================================================
+  /**
+   * BmmType
+   * @return
+   */
+  /**
+   * 1..1
+   * (effected)
+   * type_name (): String
+   * Return name.
+   * @return
+   */
+  @Override
+  @NonNull
+  public String typeName() {
+    return null;
+  }
+
+  /**
+   * 1..1
+   * (effected)
+   * flattened_type_list (): List<String>
+   * Result is either flattened_conforms_to_type.flattened_type_list or the Any type.
+   * @return
+   */
+  @Override
+  public @NonNull List<String> flattenedTypeList() {
+    return null;
+  }
+
+  /**
+   * 1..1
+   * (effected)
+   * effective_type (): BMM_EFFECTIVE_TYPE
+   * Generate ultimate conformance type, which is either flattened_conforms_to_type or if not set, Any.
+   * @return
+   */
+  @Override
+  public @NonNull BmmEffectiveType effectiveType() {
+    return null;
+  }
+
+  /**
+   * 1..1
+   * (effected)
+   * is_abstract (): Boolean
+   * Result = False - generic parameters are understood by definition to be non-abstract.
+   * @return
+   */
+  @Override
+  public @NonNull Boolean isAbstract() {
+    return null;
+  }
+
+  /**
+   * 1..1
+   * (effected)
+   * is_primitive (): Boolean
+   * Result = False - generic parameters are understood by definition to be non-primitive.
+   * @return
+   */
+  @Override
+  public @NonNull Boolean isPrimitive() {
+    return null;
+  }
 }

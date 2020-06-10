@@ -3,9 +3,8 @@ package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-
 import lombok.NonNull;
+
 import java.util.List;
 import java.util.Map;
 
@@ -32,78 +31,66 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmTupleType extends BmmBaseEntity implements BmmEffectiveType {
-  /**
-   *  BmmEffectiveType
-   *    BmmUnitaryType
-   *      BmmType
-   *        BmmEntity
-   */
-  /**
-   * BmmEffectiveType
-   */
-  // Functions;
-  @NonNull
-  public BmmEffectiveType getEffectiveType(){
-    return null;
-  }
-  @NonNull
-  public String typeBaseName(){
-    return null;
-  }
-  /**
-   * BmmUnitaryType
-   */
-  // Functions
-  @NonNull
-  public BmmUnitaryType unitaryType(){
-    return null;
-  }
-  /**
-   * BmmType
-   */
-  // Functions
-  @NonNull
-  public String typeName(){
-    return null;
-  }
-  @NonNull
-  public List<String> flattenedTypeList(){
-    return null;
-  }
-  @NonNull
-  public String typeSignature(){
-    return null;
-  }
-  @NonNull
-  public BmmEffectiveType effectiveType(){
-    return null;
-  }
-  /**
-   * BmmEntity
-   */
-  // Functions
-  @NonNull
-  public Boolean isAbstract(){
-    return null;
-  }
-  @NonNull
-  public Boolean isPrimitive(){
-    return null;
-  }
-//==================================================================================
+public class BmmTupleType extends BmmEffectiveType  {
 
   private String baseName = "Tuple";
   /**
    * List of nl.rosa.semanticdatabase.bmm.model.types of the items of the tuple, keyed by purpose in the tuple.
    */
   private Map<String,BmmType> itemTypes;
+
   /**
-   * True if this declaration entity is the root of the declaration hierarchy.
+   * 1..1
+   * (effected)
+   * type_base_name (): String
+   * Post_result: Result.is_equal (base_name())
+   * Return base_name.
    * @return
    */
-  public Boolean isRootScope() {
+  @Override
+  public String typeBaseName() {
+    return baseName;
+  }
+
+  /**
+   * 1..1
+   * (effected)
+   * type_name (): String
+   * Post_result: Result.is_equal (base_name())
+   * Return base_name.
+   * @return
+   */
+  @Override
+  public @NonNull String typeName() {
+    return baseName;
+  }
+
+  @Override
+  public @NonNull List<String> flattenedTypeList() {
+    return null;
+  }
+
+  /**
+   * 1..1
+   * (effected)
+   * is_abstract (): Boolean
+   * Result = False.
+   * @return
+   */
+  @Override
+  public @NonNull Boolean isAbstract() {
     return false;
   }
 
+  /**
+   * 1..1
+   * (effected)
+   * is_primitive (): Boolean
+   * Result = True.
+   * @return
+   */
+  @Override
+  public @NonNull Boolean isPrimitive() {
+    return true;
+  }
 }

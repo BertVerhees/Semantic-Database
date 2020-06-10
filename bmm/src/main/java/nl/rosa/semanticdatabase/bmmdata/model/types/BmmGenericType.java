@@ -2,12 +2,9 @@ package nl.rosa.semanticdatabase.bmmdata.model.types;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmGenericClass;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSpec;
-
 import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmGenericClass;
+
 import java.util.List;
 
 
@@ -27,114 +24,55 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmGenericType extends BmmBaseEntity implements BmmModelType {
+public class BmmGenericType extends BmmModelType  {
   /**
-   * BmmModelType
-   *  BmmEffectiveType
-   *    BmmUnitaryType
-   *      BmmType
-   *        BmmEntity
+   * 1..1
+   * generic_parameters: List<BMM_UNITARY_TYPE>
+   * Generic parameters of the root_type in this type specifier. The order must match the order of the owning class’s
+   * formal generic parameter declarations, and the types may be defined types or formal parameter types.
    */
-  /**
-   *  BmmModelType
-   */
-  private BmmValueSpec valueConstraint;
   @NonNull
-  private BmmClass baseClass;
-  /**
-   * BmmEffectiveType
-   */
-  // Functions;
-  @NonNull
-  public BmmEffectiveType getEffectiveType(){
-    return null;
-  }
-  @NonNull
-  public String typeBaseName(){
-    return null;
-  }
-  /**
-   * BmmUnitaryType
-   */
-  // Functions
-  @NonNull
-  public BmmUnitaryType unitaryType(){
-    return null;
-  }
-  /**
-   * BmmType
-   */
-  // Functions
-  @NonNull
-  public String typeName(){
-    return null;
-  }
-  @NonNull
-  public List<String> flattenedTypeList(){
-    return null;
-  }
-  @NonNull
-  public String typeSignature(){
-    return null;
-  }
-  @NonNull
-  public BmmEffectiveType effectiveType(){
-    return null;
-  }
-  /**
-   * BmmEntity
-   */
-  // Functions
-  @NonNull
-  public Boolean isAbstract(){
-    return null;
-  }
-  @NonNull
-  public Boolean isPrimitive(){
-    return null;
-  }
-  //==================================================================================
-  /**
-   * Generic parameters of the root_type in this type specifier. The order must match the order of the owning class�s formal generic parameter declarations, and the nl.rosa.semanticdatabase.bmm.model.types may be defined nl.rosa.semanticdatabase.bmm.model.types or formal parameter nl.rosa.semanticdatabase.bmm.model.types.
-   */
   private List<BmmUnitaryType> genericParameters;
   /**
+   * 1..1
+   * (redefined)
+   * base_class: BMM_GENERIC_CLASS
    * The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.
    */
-  private BmmUnitaryType newAttribute;
+  @NonNull
+  private BmmGenericClass baseClass;
   
-  //
-  // Constructors
-  //
-  public BmmGenericType () { };
-
   /**
+   * 1-1
    * Returns True if there is any substituted generic parameter.
    * @return       Boolean
    */
+  @NonNull
   public Boolean isPartiallyClosed()
   {
     //TODO
     return false;
   }
 
-
   /**
+   * 1-1
    * Effective underlying class for this type, abstracting away any container type.
    * @return       classes.BmmGenericClass
    */
+  @NonNull
   public BmmGenericClass effectiveBaseClass()
   {
     //TODO
     return null;
   }
 
-
   /**
+   * 1-1
    * True if all generic parameters from ancestor generic nl.rosa.semanticdatabase.bmm.model.types have been substituted
    * in this type.
    * @return       Boolean
    */
+  @NonNull
   public Boolean isOpen()
   {
     //TODO
@@ -142,15 +80,38 @@ public class BmmGenericType extends BmmBaseEntity implements BmmModelType {
   }
 
   /**
-   * True if this declaration entity is the root of the declaration hierarchy.
+   * 1..1
+   * (effected)
+   * type_name (): String
+   * Return the full name of the type including generic parameters, e.g. DV_INTERVAL<T>, TABLE<List<THING>,String>.
    * @return
    */
-  public Boolean isRootScope() {
-    return false;
+  @Override
+  public @NonNull String typeName() {
+    return null;
   }
 
+  /**
+   * 1..1
+   * (effected)
+   * flattened_type_list (): List<String>
+   * Result is base_class.name followed by names of all generic parameter type names, which may be open or closed.
+   * @return
+   */
   @Override
-  public void setBaseClass(BmmClass newVar) {
-    this.baseClass = (BmmGenericClass) newVar;
+  public @NonNull List<String> flattenedTypeList() {
+    return null;
+  }
+
+  /**
+   * 1..1
+   * (effected)
+   * is_abstract (): Boolean
+   * True if base_class.is_abstract or if any (non-open) parameter type is abstract.
+   * @return
+   */
+  @Override
+  public @NonNull Boolean isAbstract() {
+    return null;
   }
 }
