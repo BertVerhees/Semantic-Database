@@ -1,5 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 
 
@@ -7,15 +9,16 @@ import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
  * Class BmmClassScoped
  * A class entity having a signature and a class as its scope.
  */
-public interface BmmClassScoped extends BmmClassEntity {
+@Data
+@EqualsAndHashCode(callSuper = true)
+public abstract class BmmClassScoped extends BmmClassEntity {
 
   /**
    * 0..1
    * visibility: Any
    * Visibility of this item to client entities.
    */
-  void setVisibility (Object newVar);
-  Object getVisibility ();
+  private Object visibility;
 
   /**
    * 1..1
@@ -23,7 +26,5 @@ public interface BmmClassScoped extends BmmClassEntity {
    * scope: BMM_CLASS
    * Class within which a referenceable element is known.
    */
-  void setScope (BmmClass newVar);
-  BmmClass getScope ();
-
+  private BmmClass scope;
 }

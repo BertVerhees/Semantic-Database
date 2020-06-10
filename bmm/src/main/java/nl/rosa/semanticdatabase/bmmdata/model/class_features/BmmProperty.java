@@ -3,28 +3,20 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmEffectiveType;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmUnitaryType;
-
-import java.util.List;
 
 /**
  * Class BmmProperty
  * Meta-type of a property definition within a class definition of an object model.
  * The is_composition attribute indicates whether the property has sub-part or an
  * association semantics with respect to the owning class.
+ *
+ * Invariants
+ * Inv_signature_no_args: signature.arguments = Void
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
 public abstract class BmmProperty extends BmmClassScoped implements BmmInstantiable {
-  /**
-   * BmmInstantiable
-   *  BmmTypedFeature
-   *   BmmTyped
-   */
-  //==================================================================================
   /**
    * 0..1
    * is_im_runtime: Boolean

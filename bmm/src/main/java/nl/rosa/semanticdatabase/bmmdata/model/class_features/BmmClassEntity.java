@@ -1,12 +1,17 @@
 package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 
 
 /**
  * Class BmmClassEntity
  * Any entity declared within a class.
  */
+@Data
+@EqualsAndHashCode(callSuper = true)
 public abstract class BmmClassEntity extends BmmDeclaration {
 
   /**
@@ -17,4 +22,15 @@ public abstract class BmmClassEntity extends BmmDeclaration {
    * constraining of a formal generic parameter.
    */
   private Boolean isSynthesisedGeneric;
+
+  /**
+   * 1..1
+   * (abstract)
+   * signature (): BMM_SIGNATURE
+   * Formal signature of this element, in the form:
+   * name [arg1_name: T_arg1, …​][:T_value]
+   * Specific implementations in descendants.
+   * @return
+   */
+  public abstract BmmSignature signature();
 }

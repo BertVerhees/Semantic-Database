@@ -1,7 +1,10 @@
 package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.model.routine_implementation.BmmStatementItem;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 
 import java.util.List;
 
@@ -10,44 +13,63 @@ import java.util.List;
  * Class BmmRoutine
  * A feature defining a routine, scoped to a class.
  */
-public interface BmmRoutine extends BmmClassScoped {
+@Data
+@EqualsAndHashCode(callSuper = true)
+public abstract class BmmRoutine extends BmmClassScoped {
 
   /**
    * 0..1
    * parameters: List<BMM_PARAMETER>
    * Formal parameters of the routine.
    */
-  void setParameters (List<BmmParameter> newVar);
-  List<BmmParameter> getParameters ();
+  private List<BmmParameter> parameters;
 
   /**
    * 0..1
    * locals: List<BMM_LOCAL>
    * Local variables of the routine.
    */
-  void setLocals (List<BmmLocal> newVar);
-  List<BmmLocal> getLocals ();
+  private List<BmmLocal> locals;
 
   /**
    * 0..1
    * pre_conditions: List<EL_ASSERTION>
    */
-  void setPreConditions (List<ElAssertion> newVar);
-  List<ElAssertion> getPreConditions ();
+  private List<ElAssertion> preConditions;
 
   /**
    * 0..1
    * post_conditions: List<EL_ASSERTION>
    */
-  void setPostConditions (List<ElAssertion> newVar);
-  List<ElAssertion> getPostConditions ();
+  private List<ElAssertion> postConditions;
 
   /**
    * 0..1
    * body: BMM_STATEMENT_ITEM
    * Body of a routine, i.e. executable program.
    */
-  void setBody (BmmStatementItem newVar);
-  BmmStatementItem getBody ();
+  private BmmStatementItem body;
+  // Functions
 
+  /**
+   * 1..1
+   * arity (): Integer
+   * Return number of arguments of this routine.
+   * @return
+   */
+  public Integer arity() {
+    return null;
+  }
+
+  /**
+   * 1..1
+   * (effected)
+   * signature ()
+   * Formal signature of this element, in the form
+   * '[arg1_name: T_arg1, …​]:T_value'.
+   * @return
+   */
+  public BmmSignature signature(){
+    return null;
+  }
 }

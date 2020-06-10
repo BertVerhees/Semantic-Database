@@ -3,6 +3,8 @@ package nl.rosa.semanticdatabase.bmmdata.model.model_structure;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
 
 import java.util.Map;
@@ -12,14 +14,15 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public abstract class BmmDeclaration extends BmmBaseEntity {
   /**
    * 1..1
    * name: String
    * Name of this model element.
    */
-  void setName (String newVar);
-  String getName ();
+  @NonNull
+  private String name;
 
   /**
    * 0..1
@@ -33,21 +36,32 @@ public abstract class BmmDeclaration extends BmmBaseEntity {
    * "references": String
    * Other keys and value types may be freely added.
    */
-  void setDocumentation (Map<String,Object> newVar);
-  Map<String,Object> getDocumentation ();
+  private Map<String, Object> documentation;
 
   /**
    * 1..1
    * scope: BMM_DECLARATION
    * Model element within which an element is declared.
    */
-  void setScope (BmmDeclaration newVar);
-  BmmDeclaration getScope ();
+  @NonNull
+  private BmmDeclaration scope;
   /**
    * 0..1
    * extensions: Hash<String, Any>
    * Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.
    */
-  void setExtensions (Map<String,Object> newVar);
-  Map<String,Object> getExtensions ();
+  private Map<String, Object> extensions;
+  // Functions
+
+  /**
+   * 1..1
+   * is_root_scope (): Boolean
+   * Post_result: Result = (scope = self)
+   * True if this declaration entity is the root of the declaration hierarchy.
+   * @return
+   */
+  @NonNull
+  public Boolean isRootScope(){
+    return null;
+  }
 }
