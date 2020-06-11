@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSpec;
+import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSetSpec;
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.*;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;

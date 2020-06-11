@@ -21,7 +21,7 @@ public abstract class BmmEffectiveType extends BmmUnitaryType {
      * Result = self.
      */
     @Override
-    public @NonNull BmmEffectiveType effectiveType() {
+    public BmmEffectiveType effectiveType() {
         return null;
     }
 

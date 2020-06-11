@@ -27,7 +27,6 @@ public abstract class BmmType extends BmmBaseEntity {
      * Formal string form of the type as per UML.
      * @return
      */
-    @NonNull
     public abstract String typeName();
 
     /**
@@ -37,7 +36,6 @@ public abstract class BmmType extends BmmBaseEntity {
      * Completely flattened list of type names, flattening out all generic parameters.
      * @return
      */
-    @NonNull
     public abstract List<String> flattenedTypeList();
 
     /**
@@ -48,7 +46,6 @@ public abstract class BmmType extends BmmBaseEntity {
      * Defaults to the value of type_name().
      * @return
      */
-    @NonNull
     public String typeSignature(){
         return null;
     }
@@ -60,7 +57,6 @@ public abstract class BmmType extends BmmBaseEntity {
      * Type with any container abstracted away.
      * @return
      */
-    @NonNull
     public abstract BmmUnitaryType unitaryType();
 
     /**
@@ -70,7 +66,6 @@ public abstract class BmmType extends BmmBaseEntity {
      * Type with any container abstracted away, and any formal parameter replaced by its effective constraint type.
      * @return
      */
-    @NonNull
     public abstract BmmEffectiveType effectiveType();
 
     /**
@@ -81,7 +76,6 @@ public abstract class BmmType extends BmmBaseEntity {
      * that cannot be directly instantiated.
      * @return
      */
-    @NonNull
     public abstract Boolean isAbstract();
 
     /**
@@ -92,6 +86,5 @@ public abstract class BmmType extends BmmBaseEntity {
      * i.e. be a primitive type, or be a definer of one.
      * @return
      */
-    @NonNull
     public abstract Boolean isPrimitive();
 }

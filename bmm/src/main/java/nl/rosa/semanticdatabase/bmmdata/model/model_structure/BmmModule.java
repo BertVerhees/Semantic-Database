@@ -1,16 +1,25 @@
 package nl.rosa.semanticdatabase.bmmdata.model.model_structure;
 
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+
 /**
  * Class BmmModule
  */
-public interface BmmModule extends BmmDeclaration{
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+public abstract class BmmModule extends BmmDeclaration{
     /**
      * 1..1
      * (redefined)
      * scope: BMM_MODEL
      * Model within which module is defined.
      */
-    BmmModel getScope();
-    void setScope(BmmModel scope);
+    @NonNull
+    private BmmModel scope;
+
 }

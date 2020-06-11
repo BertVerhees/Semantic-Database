@@ -53,8 +53,7 @@ public class BmmParameterType extends BmmUnitaryType  {
    */
 
   // Functions
-  @NonNull
-  public BmmEffectiveType flattenedConformsToType (){
+   public BmmEffectiveType flattenedConformsToType (){
     return null;
   }
   //================================================================
@@ -70,7 +69,6 @@ public class BmmParameterType extends BmmUnitaryType  {
    * @return
    */
   @Override
-  @NonNull
   public String typeName() {
     return null;
   }

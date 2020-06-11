@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
 
@@ -15,6 +16,7 @@ import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
 public abstract class BmmVariable extends BmmClassEntity implements BmmInstantiable {
   /**
    * 1..1
@@ -32,7 +34,6 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
    * Formal signature of this element, in the form 'name [arg1_name: T_arg1, …​][:T_value]'.
    * @return
    */
-  @NonNull
   public BmmSignature signature(){
     return null;
   }

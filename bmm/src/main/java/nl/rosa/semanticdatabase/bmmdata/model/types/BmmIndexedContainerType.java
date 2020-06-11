@@ -33,7 +33,6 @@ public class BmmIndexedContainerType extends BmmContainerType {
    * Return full type name, e.g. HashMap<String, ELEMENT>.
    * @return
    */
-  @NonNull
   public String typeName(){
     return null;
   }

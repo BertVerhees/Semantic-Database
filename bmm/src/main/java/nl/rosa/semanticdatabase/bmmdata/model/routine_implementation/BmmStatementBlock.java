@@ -3,7 +3,8 @@ package nl.rosa.semanticdatabase.bmmdata.model.routine_implementation;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
+
+import java.util.List;
 
 /**
  * Class BmmStatementBlock
@@ -12,18 +13,11 @@ import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmStatementBlock extends BmmBaseEntity implements BmmStatementItem {
-  /**
-   * BmmStatementItem
-   */
-  /**
-   * Child blocks of the current block.
-   */
-  private BmmStatementItem items;
-  
-  //
-  // Constructors
-  //
-  public BmmStatementBlock () { };
-  
+public class BmmStatementBlock extends BmmStatementItem {
+ /**
+  * 0..1
+  * items: List<BMM_STATEMENT_ITEM>
+  * Child blocks of the current block.
+  */
+  private List<BmmStatementItem> items;
 }

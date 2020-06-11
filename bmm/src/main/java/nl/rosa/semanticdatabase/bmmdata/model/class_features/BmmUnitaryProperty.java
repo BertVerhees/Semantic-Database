@@ -30,7 +30,11 @@ public class BmmUnitaryProperty extends BmmProperty  {
    */
   @NonNull
   private BmmUnitaryType type;
-
+  /**
+   * This is an inheritiance anomaly, please ignore, it has to do with Java not supporting multiple inheritance and
+   * interface use for that reason
+   * @param newVar
+   */
   @Override
   @Deprecated
   public void setType(BmmType newVar) {

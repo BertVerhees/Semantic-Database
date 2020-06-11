@@ -2,16 +2,10 @@ package nl.rosa.semanticdatabase.bmmdata.model.classes;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-import nl.rosa.semanticdatabase.bmmdata.model.class_features.*;
-import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElAssertion;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmPackage;
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmModelType;
+import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.model.types.BmmGenericType;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmParameterType;
 
-import lombok.NonNull;
 import java.util.List;
 import java.util.Map;
 
@@ -26,125 +20,52 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmGenericClass extends BmmBaseEntity implements BmmClass {
-/**
- * BmmClass
- *  BmmModule
- *    BmmDeclaration
- *  BmmEntity
- */
+public class BmmGenericClass extends BmmClass {
   /**
-   * BmmEntity
+   * 1..1
+   * generic_parameters: Hash<String,BMM_PARAMETER_TYPE>
+   * List of formal generic parameters, keyed by name.
+   * These are defined either directly on this class or by the inclusion of an ancestor class which is generic.
    */
-  // Functions
-  @NonNull
-  public Boolean isAbstract(){
-    return null;
-  }
-  @NonNull
-  public Boolean isPrimitive(){
-    return null;
-  }
+  private Map<String, BmmParameterType> genericParameters;
+
   /**
-   * BmmClass
+   * 0..1
+   * (redefined)
+   * suppliers (): List<String>
+   * Add suppliers from generic parameters.
+   * @return
    */
-  private Map<String, BmmModelType> ancestors;
-  @NonNull
-  private BmmPackage _package;
-  private Map<String, BmmProperty> properties;
-  @NonNull
-  private String sourceSchemaId;
-  private List<BmmClass> immediateDescendants;
-  @NonNull
-  private Boolean isOverride;
-  private Map<String, BmmConstant> constants;
-  private Map<String, BmmFunction> functions;
-  private Map<String, BmmProcedure> procedures;
-  private List<ElAssertion> inVariants;
-  private Map<String, BmmProcedure> creators;
-  private Map<String, BmmProcedure> convertors;
-  // Functions
-  @NonNull
-  public BmmModelType type(){
-    return null;
-  }
-  public List<String> allAncestors(){
-    return null;
-  }
-  public List<String> allDescendants(){
-    return null;
-  }
+  @Override
   public List<String> suppliers(){
     return null;
   }
-  public List<String> suppliersNonPrimitive(){
-    return null;
-  }
-  public List<String> supplierClosure(){
-    return null;
-  }
-  @NonNull
-  public String packagePath(){
-    return null;
-  }
-  @NonNull
-  public String classPath(){
-    return null;
-  }
-  public List<BmmClassScoped> features(){
-    return null;
-  }
-  public List<BmmClassScoped> flatFeatures(){
-    return null;
-  }
-  public List<BmmProperty> flatProperties(){
-    return null;
-  }
+
   /**
-   * BmmModule
+   * 1..1
+   * (effected)
+   * type (): BMM_GENERIC_TYPE
+   * Generate a fully open BMM_GENERIC_TYPE instance that corresponds to this class definition
+   * @return
    */
-  @NonNull
-  private BmmModel scope;
+  @Override
+  public BmmGenericType type() {
+    return null;
+  }
+
   /**
-   * BmmDeclaration
+   * 1..1
+   * generic_parameter_conformance_type (
+   * a_name: String[1]
+   * ): String
+   * For a generic class, type to which generic parameter a_name conforms
+   * e.g. if this class is Interval <T:Comparable> then the Result will be the single type Comparable.
+   * For an unconstrained type T, the Result will be Any.
+   * @param name
+   * @return
    */
-  @NonNull
-  private String name;
-  private Map<String, Object> documentation;
-  private Map<String, Object> extensions;
-  @Override
-  public Boolean isRootScope(){
-    return scope.equals(this);
-  }
-  //============================================================
-  private BmmParameterType genericParameters;
-
-  @Override
-  @Deprecated
-  public void setScope(BmmDeclaration newVar) {
-    this.scope = (BmmModel) newVar;
-  }
-  @Override
-  public void setProperties(Map<String, BmmProperty> newVar) {
-
+  public String genericParameterConformanceType(@NonNull String name){
+    return null;
   }
 
-  @Override
-  public void setConstants(Map<String, BmmConstant> newVar) {
-
-  }
-
-  @Override
-  public void setFunctions(Map<String, BmmFunction> newVar) {
-
-  }
-
-  @Override
-  public void setProcedures(Map<String, BmmProcedure> newVar) {
-
-  }
-  @Override
-  public void setScope(BmmModel scope) {
-    this.scope = scope;
-  }
 }

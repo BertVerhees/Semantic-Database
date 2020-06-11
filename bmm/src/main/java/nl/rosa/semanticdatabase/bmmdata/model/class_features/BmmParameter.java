@@ -3,12 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
-
-import java.util.Map;
 
 /**
  * Class BmmParameter
@@ -16,46 +11,35 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmParameter extends BmmBaseEntity implements BmmVariable {
+public class BmmParameter extends BmmVariable {
   /**
-   * BmmVariable
-   *  BmmInstantiable
-   *    BmmTypedFeature
-   *      BmmTyped
-   *        BmmType
-   *  BmmClassEntity
-   *    BmmDeclaration
-   */
-  // BmmVariable
-  private BmmRoutine scope;
-  // BmmDeclaration
-  @NonNull
-  private String name;
-  private Map<String, Object> documentation;
-  private Map<String, Object> extensions;
-  // BmmClassEntity
-  private Boolean isSynthesisedGeneric;
-  // BmmType
-  // BmmTypedFeature
-  private Boolean isNullable;
-  // BmmInstantiable
-  // BmmTyped
-  @NonNull
-  private BmmType type;
-//================================================================
-  /**
+   * 0..1
+   * direction: BMM_PARAMETER_DIRECTION
    * Optional read/write direction of the parameter. If none-supplied, the parameter is treated as in, i.e. readable.
    */
   private BmmParameterDirection direction;
-
+  /**
+   * 0..1
+   * is_nullable: Boolean
+   * {default = false}
+   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
+   */
+  private Boolean isNullable;
+  /**
+   * 1..1
+   * type: BMM_TYPE
+   * Declared or inferred static type of the entity.
+   */
+  private BmmType type;
+  /**
+   * 1..1
+   * is_boolean (): Boolean
+   * Post_result: Result = type().equal( {BMM_MODEL}.boolean_type_definition())
+   * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() = 'Boolean').
+   * @return
+   */
   @Override
-  public void setScope(BmmRoutine newVar) {
-    this.scope = newVar;
+  public Boolean isBoolean() {
+    return null;
   }
-  @Override
-  @Deprecated
-  public void setScope(BmmDeclaration newVar) {
-    this.scope = (BmmRoutine) newVar;
-  }
-
 }

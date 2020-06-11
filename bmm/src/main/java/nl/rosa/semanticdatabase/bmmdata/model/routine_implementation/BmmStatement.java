@@ -6,5 +6,5 @@ package nl.rosa.semanticdatabase.bmmdata.model.routine_implementation;
  * Abstract parent of 'statement' types that may be defined to implement BMM
  * Routines.
  */
-public interface BmmStatement extends BmmStatementItem {
+public abstract class BmmStatement extends BmmStatementItem {
 }

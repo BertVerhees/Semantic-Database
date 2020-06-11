@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.model.types;
 
-import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSpec;
+import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSetSpec;
 import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
 
 
@@ -20,7 +19,7 @@ public abstract class BmmModelType extends BmmEffectiveType {
    * 0..1
    * value_constraint: BMM_VALUE_SET_SPEC
    */
-  private BmmValueSpec valueConstraint;
+  private BmmValueSetSpec valueConstraint;
   /**
    * 1..1
    * base_class: BMM_CLASS
@@ -49,7 +48,7 @@ public abstract class BmmModelType extends BmmEffectiveType {
    * @return
    */
   @Override
-  public @NonNull Boolean isPrimitive() {
+  public Boolean isPrimitive() {
     return null;
   }
 }

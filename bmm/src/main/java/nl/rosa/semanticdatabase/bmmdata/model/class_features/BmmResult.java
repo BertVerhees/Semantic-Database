@@ -3,12 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.model.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.model.types.BmmType;
-
-import java.util.Map;
 
 /**
  * Class BmmResult
@@ -16,41 +11,37 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmResult extends BmmBaseEntity implements BmmVariable {
+public class BmmResult extends BmmVariable {
   /**
-   * BmmVariable
-   *  BmmInstantiable
-   *    BmmTypedFeature
-   *      BmmTyped
-   *        BmmType
-   *  BmmClassEntity
-   *    BmmDeclaration
+   * 0..1
+   * is_nullable: Boolean
+   * {default = false}
+   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
    */
-  // BmmVariable
-  private BmmRoutine scope;
-  // BmmDeclaration
-  @NonNull
-  private String name;
-  private Map<String, Object> documentation;
-  private Map<String, Object> extensions;
-  // BmmClassEntity
-  private Boolean isSynthesisedGeneric;
-  // BmmType
-  // BmmTypedFeature
   private Boolean isNullable;
-  // BmmInstantiable
-  // BmmTyped
-  @NonNull
+  /**
+   * 1..1
+   * type: BMM_TYPE
+   * Declared or inferred static type of the entity.
+   */
   private BmmType type;
-//================================================================
+  /**
+   * 1..1
+   * (redefined)
+   * name: String
+   * {default = "Result"}
+   * Name of this model element.
+   */
+  private String name;
+  /**
+   * 1..1
+   * is_boolean (): Boolean
+   * Post_result: Result = type().equal( {BMM_MODEL}.boolean_type_definition())
+   * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() = 'Boolean').
+   * @return
+   */
   @Override
-  public void setScope(BmmRoutine newVar) {
-  scope = newVar;
-}
-  @Override
-  @Deprecated
-  public void setScope(BmmDeclaration newVar) {
-    this.scope = (BmmRoutine) newVar;
+  public Boolean isBoolean() {
+    return null;
   }
-
 }

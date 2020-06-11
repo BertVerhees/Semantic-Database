@@ -58,17 +58,17 @@ public class BmmSignature extends BmmEffectiveType  {
   }
 
   @Override
-  public @NonNull String typeName() {
+  public String typeName() {
     return null;
   }
 
   @Override
-  public @NonNull List<String> flattenedTypeList() {
+  public List<String> flattenedTypeList() {
     return null;
   }
 
   @Override
-  public @NonNull Boolean isAbstract() {
+  public Boolean isAbstract() {
     return null;
   }
 
