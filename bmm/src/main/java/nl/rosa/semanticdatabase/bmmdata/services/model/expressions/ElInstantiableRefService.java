@@ -2,12 +2,11 @@ package nl.rosa.semanticdatabase.bmmdata.services.model.expressions;
 
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElInstantiableRef;
 import nl.rosa.semanticdatabase.bmmdata.services.CrudService;
-import nl.rosa.semanticdatabase.bmmdata.services.model_base_services.expressions.ElScopedRefService;
 
 /**
  * Default created on 24-5-2020
  */
 
 public interface ElInstantiableRefService extends
-        CrudService<ElInstantiableRef, Long>, ElScopedRefService {
+        CrudService<ElInstantiableRef, Long> {
 }

@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.services.model.expressions;
 
 import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElUnaryOperator;
-import nl.rosa.semanticdatabase.bmmdata.services.model_base_services.expressions.ElOperatorService;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -9,5 +8,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 
 public interface ElUnaryOperatorService extends
-        CrudRepository<ElUnaryOperator, Long>, ElOperatorService {
+        CrudRepository<ElUnaryOperator, Long> {
 }
