@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
+import javax.persistence.Entity;
+
 
 /**
  * Class ElInstantiableRef
@@ -12,6 +14,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class ElInstantiableRef<T> extends ElScopedRef {
   /**
    * Definition of the constant, property or variable, inferred by inspection of the current scoping instance.

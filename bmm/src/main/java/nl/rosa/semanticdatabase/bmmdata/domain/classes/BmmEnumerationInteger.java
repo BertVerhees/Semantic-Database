@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.Entity;
 import java.util.List;
 
 /**
@@ -11,6 +12,7 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class BmmEnumerationInteger extends BmmEnumeration {
   /**
    * 0..1

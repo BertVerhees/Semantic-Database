@@ -2,10 +2,13 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmUnitaryType;
+
+import javax.persistence.Entity;
 
 
 /**
@@ -14,6 +17,8 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmUnitaryType;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
+@NoArgsConstructor
 public class BmmUnitaryProperty extends BmmProperty  {
   /**
    * 0..1

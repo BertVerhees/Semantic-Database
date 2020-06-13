@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmGenericClass;
 
+import javax.persistence.Entity;
 import java.util.List;
 
 
@@ -24,6 +25,7 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class BmmGenericType extends BmmModelType  {
   /**
    * 1..1

@@ -5,12 +5,15 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
 
+import javax.persistence.Entity;
+
 /**
  * Class ElAssertion
  * Optionally tagged Boolean-returning expression.
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class ElAssertion extends BmmBaseEntity {
 
   /**

@@ -5,6 +5,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
+import javax.persistence.Entity;
+
 
 /**
  * Class ElFunctionCall
@@ -13,6 +15,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
   /**
    * ElAgentCall

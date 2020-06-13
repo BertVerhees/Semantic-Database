@@ -5,12 +5,15 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
+import javax.persistence.Entity;
+
 /**
  * Class BmmResult
  * Automatically declared variable representing result instance of a Function call.
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class BmmResult extends BmmVariable {
   /**
    * 0..1

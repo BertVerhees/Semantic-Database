@@ -5,6 +5,8 @@ import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmTupleType;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
+import javax.persistence.Entity;
+
 
 /**
  * Class ElTuple
@@ -12,6 +14,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class ElTuple extends ElInstanceRef {
   /**
    * 0..1

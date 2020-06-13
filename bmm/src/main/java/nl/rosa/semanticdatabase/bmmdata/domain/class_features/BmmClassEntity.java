@@ -5,8 +5,6 @@ import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 
-import javax.persistence.Entity;
-
 
 /**
  * Class BmmClassEntity
@@ -14,7 +12,6 @@ import javax.persistence.Entity;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Entity
 public abstract class BmmClassEntity extends BmmDeclaration {
 
   /**

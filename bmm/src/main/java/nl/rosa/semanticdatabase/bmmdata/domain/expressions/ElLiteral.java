@@ -5,6 +5,8 @@ import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmLiteralValue;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
+import javax.persistence.Entity;
+
 
 /**
  * Class ElLiteral
@@ -13,6 +15,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class ElLiteral extends ElInstanceRef {
   /**
    * 1..1

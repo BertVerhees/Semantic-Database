@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
+import javax.persistence.Entity;
+
 /**
  * Class ElConstraintExpression
  * Special kind of expression representing a constraint on values. Used with the
@@ -13,6 +15,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class ElConstraintExpression extends ElExpression {
   /**
    * Left operand of constraint expression.

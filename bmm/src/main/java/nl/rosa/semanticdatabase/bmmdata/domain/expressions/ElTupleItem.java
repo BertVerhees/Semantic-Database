@@ -5,12 +5,15 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
 
+import javax.persistence.Entity;
+
 /**
  * Class ElTupleItem
  * A single tuple item, with an optional name.
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class ElTupleItem extends BmmBaseEntity {
 
   /**

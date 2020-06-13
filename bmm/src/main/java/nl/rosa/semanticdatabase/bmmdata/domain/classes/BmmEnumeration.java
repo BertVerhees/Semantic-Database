@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmLiteralValue;
 
+import javax.persistence.Entity;
 import java.util.List;
 import java.util.Map;
 
@@ -12,14 +13,15 @@ import java.util.Map;
  * Class BmmEnumeration
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true, exclude = {"itemNames"})
+@Entity
 public class BmmEnumeration extends BmmSimpleClass {
  /**
   * 0..1
   * item_names: List<String>
   * The list of names of the enumeration. If no values are supplied, the integer values 0, 1, 2, …​ are assumed.
    */
-  private List<String> itemNames;
+ protected List<String> itemNames;
   /**
    * 0..1
    * item_values: List<BMM_LITERAL_VALUE>

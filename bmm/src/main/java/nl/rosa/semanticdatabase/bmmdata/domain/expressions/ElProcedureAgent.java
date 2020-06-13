@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmProcedure;
 
+import javax.persistence.Entity;
+
 
 /**
  * Class ElProcedureAgent
@@ -11,6 +13,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmProcedure;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class ElProcedureAgent extends ElAgent {
   private BmmProcedure definition;
 }

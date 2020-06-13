@@ -5,11 +5,14 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
+import javax.persistence.Entity;
+
 /**
  * Class BmmLocal
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class BmmLocal extends BmmVariable  {
   /**
    * 0..1

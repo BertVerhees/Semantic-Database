@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmSimpleClass;
 
+import javax.persistence.Entity;
 import java.util.List;
 
 
@@ -22,6 +23,7 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class BmmSimpleType extends BmmModelType  {
   /**
    * 1..1

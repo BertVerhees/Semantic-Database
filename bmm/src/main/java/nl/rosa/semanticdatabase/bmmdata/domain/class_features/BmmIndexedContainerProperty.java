@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmIndexedContainerType;
 
@@ -16,6 +17,7 @@ import javax.persistence.Entity;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
+@NoArgsConstructor
 public class BmmIndexedContainerProperty extends BmmContainerProperty {
   /**
    * 1..1

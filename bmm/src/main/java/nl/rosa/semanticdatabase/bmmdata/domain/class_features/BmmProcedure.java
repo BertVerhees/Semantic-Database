@@ -4,6 +4,8 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.Entity;
+
 /**
  * Class BmmProcedure
  * A formal element with signature of the form: name ({arg:TArg}*). A procedure is
@@ -14,5 +16,6 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class BmmProcedure extends BmmRoutine {
 }

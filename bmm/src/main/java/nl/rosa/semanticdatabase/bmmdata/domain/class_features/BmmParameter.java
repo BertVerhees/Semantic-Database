@@ -5,12 +5,15 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
+import javax.persistence.Entity;
+
 /**
  * Class BmmParameter
  * A routine parameter variable.
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class BmmParameter extends BmmVariable {
   /**
    * 0..1

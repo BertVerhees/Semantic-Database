@@ -9,6 +9,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmEnumeration;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSimpleType;
 
+import javax.persistence.Entity;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class BmmModel extends BmmPackageContainer {
    /**
    * 0..1

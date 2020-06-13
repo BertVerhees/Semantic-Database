@@ -2,10 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
-
-import javax.persistence.Entity;
 
 
 /**
@@ -14,8 +11,6 @@ import javax.persistence.Entity;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Entity
-@NoArgsConstructor
 public abstract class BmmClassScoped extends BmmClassEntity {
 
   /**

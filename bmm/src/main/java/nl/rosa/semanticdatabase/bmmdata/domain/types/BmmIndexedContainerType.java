@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 
+import javax.persistence.Entity;
+
 /**
  * Class BmmIndexedContainerType
  * Meta-type of linear container type that indexes the contained items in the
@@ -16,6 +18,7 @@ import lombok.NonNull;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class BmmIndexedContainerType extends BmmContainerType {
   /**
    * 1..1

@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 
+import javax.persistence.Entity;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +32,7 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class BmmTupleType extends BmmEffectiveType  {
 
   private String baseName = "Tuple";

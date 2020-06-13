@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmGenericClass;
 
+import javax.persistence.Entity;
 import java.util.List;
 
 
@@ -33,6 +34,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
+@Entity
 public class BmmContainerType extends BmmType {
 
   /**

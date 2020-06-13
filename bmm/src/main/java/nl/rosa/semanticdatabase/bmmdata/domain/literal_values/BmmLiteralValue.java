@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
 
+import javax.persistence.Entity;
+
 /**
  * Class BmmLiteralValue
  * Meta-type for literal instance values declared in a model. Instance values may
@@ -16,6 +18,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
+@Entity
 public class BmmLiteralValue extends BmmBaseEntity {
 
   /**
