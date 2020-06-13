@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.repositories.types;
 
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmTupleType;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmTupleType;
 import org.springframework.data.repository.CrudRepository;
 
 /**

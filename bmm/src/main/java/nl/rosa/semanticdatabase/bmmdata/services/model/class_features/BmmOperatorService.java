@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.services.model.class_features;
 
-import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmOperator;
+import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmOperator;
 import nl.rosa.semanticdatabase.bmmdata.services.CrudService;
 
 /**

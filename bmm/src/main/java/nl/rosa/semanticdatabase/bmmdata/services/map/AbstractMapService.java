@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.services.map;
 
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
 
 import java.util.*;
 

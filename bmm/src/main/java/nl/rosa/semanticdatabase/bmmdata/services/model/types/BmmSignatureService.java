@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.services.model.types;
 
-import nl.rosa.semanticdatabase.bmmdata.model.types.BmmSignature;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.services.CrudService;
 
 /**

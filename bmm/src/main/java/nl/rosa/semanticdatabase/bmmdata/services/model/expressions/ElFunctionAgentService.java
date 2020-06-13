@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.services.model.expressions;
 
-import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElFunctionAgent;
+import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElFunctionAgent;
 import nl.rosa.semanticdatabase.bmmdata.services.CrudService;
 
 /**

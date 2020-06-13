@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.repositories.expressions;
 
-import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElProcedureAgent;
+import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElProcedureAgent;
 import org.springframework.data.repository.CrudRepository;
 
 /**

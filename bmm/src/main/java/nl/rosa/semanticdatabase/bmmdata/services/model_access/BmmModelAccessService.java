@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.services.model_access;
 
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmmdata.services.CrudService;
 
 import java.util.Optional;

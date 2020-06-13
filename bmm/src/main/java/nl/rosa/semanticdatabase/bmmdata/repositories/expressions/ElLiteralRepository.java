@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.repositories.expressions;
 
-import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElLiteral;
+import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElLiteral;
 import org.springframework.data.repository.CrudRepository;
 
 /**

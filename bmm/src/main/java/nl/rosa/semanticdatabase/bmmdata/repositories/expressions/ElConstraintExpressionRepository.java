@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.repositories.expressions;
 
-import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElConstraintExpression;
+import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElConstraintExpression;
 import org.springframework.data.repository.CrudRepository;
 
 /**

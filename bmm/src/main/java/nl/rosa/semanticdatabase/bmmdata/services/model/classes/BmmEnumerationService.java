@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.services.model.classes;
 
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmEnumeration;
+import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmEnumeration;
 import org.springframework.data.repository.CrudRepository;
 
 /**

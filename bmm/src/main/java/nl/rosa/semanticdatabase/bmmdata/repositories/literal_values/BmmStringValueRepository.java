@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.repositories.literal_values;
 
-import nl.rosa.semanticdatabase.bmmdata.model.literal_values.BmmStringValue;
+import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmStringValue;
 import org.springframework.data.repository.CrudRepository;
 
 /**

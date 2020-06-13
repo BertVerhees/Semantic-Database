@@ -1,1 +1,0 @@
-You find documentation about the model in the documentation-directory.

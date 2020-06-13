@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.repositories.class_features;
 
-import nl.rosa.semanticdatabase.bmmdata.model.class_features.BmmContainerProperty;
+import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmContainerProperty;
 import org.springframework.data.repository.CrudRepository;
 
 /**

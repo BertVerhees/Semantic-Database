@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.services.model.literal_values;
 
-import nl.rosa.semanticdatabase.bmmdata.model.literal_values.BmmLiteralValue;
+import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmLiteralValue;
 import nl.rosa.semanticdatabase.bmmdata.services.CrudService;
 
 /**

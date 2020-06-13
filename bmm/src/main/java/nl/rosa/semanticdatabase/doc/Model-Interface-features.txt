@@ -1,14 +1,14 @@
-package nl.rosa.semanticdatabase.bmmdata.model.class_features;
+package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmValueSetSpec;
-import nl.rosa.semanticdatabase.bmmdata.model.expressions.*;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmPackage;
-import nl.rosa.semanticdatabase.bmmdata.model.routine_implementation.BmmStatementItem;
-import nl.rosa.semanticdatabase.bmmdata.model.types.*;
+import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
+import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmValueSetSpec;
+import nl.rosa.semanticdatabase.bmmdata.domain.expressions.*;
+import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmDeclaration;
+import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
+import nl.rosa.semanticdatabase.bmmdata.domain.routine_implementation.BmmStatementItem;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.*;
 
 import javax.validation.constraints.NotNull;
 import java.util.List;

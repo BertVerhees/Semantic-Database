@@ -2,12 +2,12 @@ package nl.rosa.semanticdatabase.bmmdata.model_access;
 
 import lombok.Data;
 import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-import nl.rosa.semanticdatabase.bmmdata.model.classes.BmmClass;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmDeclaration;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmPackage;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmPackageContainer;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
+import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmDeclaration;
+import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
+import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackageContainer;
 
 import java.util.List;
 import java.util.Map;

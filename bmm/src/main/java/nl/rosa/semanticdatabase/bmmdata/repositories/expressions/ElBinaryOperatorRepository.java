@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.repositories.expressions;
 
-import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElBinaryOperator;
+import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElBinaryOperator;
 import org.springframework.data.repository.CrudRepository;
 
 /**

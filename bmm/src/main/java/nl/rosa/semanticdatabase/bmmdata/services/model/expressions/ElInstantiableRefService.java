@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.services.model.expressions;
 
-import nl.rosa.semanticdatabase.bmmdata.model.expressions.ElInstantiableRef;
+import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElInstantiableRef;
 import nl.rosa.semanticdatabase.bmmdata.services.CrudService;
 
 /**

@@ -1,8 +1,8 @@
 package nl.rosa.semanticdatabase.bmmdata.model_access;
 
 import lombok.Data;
-import nl.rosa.semanticdatabase.bmmdata.model.BmmBaseEntity;
-import nl.rosa.semanticdatabase.bmmdata.model.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
 
 import java.util.Map;
 
