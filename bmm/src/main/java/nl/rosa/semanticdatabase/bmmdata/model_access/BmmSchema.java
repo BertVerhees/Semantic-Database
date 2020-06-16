@@ -1,27 +1,30 @@
 package nl.rosa.semanticdatabase.bmmdata.model_access;
 
-import lombok.Data;
-import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackageContainer;
 
+import javax.persistence.Column;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Default created on 6-6-2020
  */
-@Data
-public class BmmSchema extends BmmBaseEntity implements BmmPackageContainer, BmmModelMetadata {
+@Getter
+@Setter
+@EqualsAndHashCode(callSuper = true)
+public class BmmSchema extends BmmPackageContainer implements BmmModelMetadata {
     /**
      * BmmModelMetadata
      */
-    String rmPublisher;
-    String rmRelease;
+    @Column(name = "rm_publisher")
+    private String rmPublisher;
+    @Column(name = "rm_release")
+    private String rmRelease;
     /**
      * BmmDeclaration
      */

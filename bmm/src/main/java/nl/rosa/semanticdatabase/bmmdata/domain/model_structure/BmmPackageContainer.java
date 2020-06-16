@@ -25,7 +25,22 @@ public abstract class BmmPackageContainer extends BmmDeclaration {
    * scope: BMM_PACKAGE_CONTAINER
    * Model element within which a referenceable element is known.
    */
-  private BmmPackageContainer scope;
+  @Override
+  public BmmPackageContainer getScope(){
+    if(super.getScope() == null){
+      throw new NullPointerException("Scope is null");
+    }
+    if(super.getScope() instanceof BmmPackageContainer) {
+      return (BmmPackageContainer) super.getScope();
+    }else{
+      throw new RuntimeException("Scope is of the type "+super.getScope().getClass().getCanonicalName()+" but should be of type BmmPackageContainer");
+    }
+  }
+
+  public void setScope(@NonNull BmmPackageContainer scope){
+    super.setScope(scope);
+  }
+
   // Functions
 
   /**

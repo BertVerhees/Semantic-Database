@@ -15,7 +15,6 @@ import java.util.Map;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name="bmm_enumeration")
 public class BmmEnumeration extends BmmSimpleClass {

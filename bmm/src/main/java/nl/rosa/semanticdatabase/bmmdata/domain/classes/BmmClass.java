@@ -35,10 +35,6 @@ import java.util.Map;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
-@Entity
-@Table(name="bmm_class")
 public abstract class BmmClass extends BmmModule {
   /**
    * 0..1
@@ -92,6 +88,7 @@ public abstract class BmmClass extends BmmModule {
    * schema.
    */
   @NonNull
+  @Transient
   private Boolean isOverride;
 
   /**
@@ -99,6 +96,9 @@ public abstract class BmmClass extends BmmModule {
    * constants: Hash<String,BMM_CONSTANT>
    * List of constants defined in this class.
    */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "constants_list")
+  private List<BmmConstant> constantsList;
+  @Transient
   private Map<String, BmmConstant> constants;
 
   /**
@@ -106,6 +106,9 @@ public abstract class BmmClass extends BmmModule {
    * functions: Hash<String,BMM_FUNCTION>
    * List of functions defined in this class.
    */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "functions_list")
+  private List<BmmFunction> functionsList;
+  @Transient
   private Map<String, BmmFunction> functions;
 
   /**
@@ -113,6 +116,9 @@ public abstract class BmmClass extends BmmModule {
    * procedures: Hash<String,BMM_PROCEDURE>
    * List of procedures defined in this class.
    */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "procedures_list")
+  private List<BmmProcedure> proceduresList;
+  @Transient
   private Map<String, BmmProcedure> procedures;
   /**
    * 0..1
@@ -121,6 +127,7 @@ public abstract class BmmClass extends BmmModule {
    * True if this class represents a type considered to be primitive in the type system, i.e. any typically built-in
    * or standard library type such as String, Date, Hash<K,V> etc.
    */
+  @Transient
   private Boolean isPrimitive;
   /**
    * 0..1
@@ -128,11 +135,13 @@ public abstract class BmmClass extends BmmModule {
    * {default = false}
    * True if this class is marked as abstract, i.e. direct instances cannot be created from its direct type.
    */
+  @Column(name = "is_abstract")
   private Boolean isAbstract;
   /**
    * 0..1
    * invariants: List<EL_ASSERTION>
    */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "invariants")
   private List<ElAssertion> invariants;
   /**
    * 0..1
@@ -140,14 +149,21 @@ public abstract class BmmClass extends BmmModule {
    * Subset of procedures that may be used to initialise a new instance of an object,
    * and whose execution will guarantee that class invariants are satisfied.
    */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "creators_list")
+  private List<BmmProcedure> creatorsList;
+  @Transient
   private Map<String, BmmProcedure> creators;
   /**
    * 0..1
    * converters: Hash<String,BMM_PROCEDURE>
    * Subset of creators that create a new instance from a single argument of another type.
    */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "convertors_list")
+  private List<BmmProcedure> convertorsList;
+  @Transient
   private Map<String, BmmProcedure> convertors;
   // Functions
+  //============================================================================================================
   /**
    * 1..1
    * is_abstract (): Boolean
