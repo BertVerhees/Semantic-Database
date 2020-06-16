@@ -1,10 +1,12 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.model_structure;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 
@@ -13,13 +15,18 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
+@Table(name="bmm_package")
 public class BmmPackage extends BmmPackageContainer {
   /**
    * 0..1
    * classes: List<BMM_CLASS>
    * Classes listed as being in this package.
    */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "bmm_package")
   private List<BmmClass> classes;
   
   /**

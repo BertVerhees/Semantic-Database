@@ -1,15 +1,13 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModule;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmModelType;
 
+import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
 
@@ -37,12 +35,17 @@ import java.util.Map;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+@Table(name="bmm_class")
 public abstract class BmmClass extends BmmModule {
   /**
    * 0..1
    * ancestors: Hash<String,BMM_MODEL_TYPE>
    * List of immediate inheritance parents.
    */
+  @Transient
   private Map<String, BmmModelType> ancestors;
 
   /**
@@ -51,6 +54,8 @@ public abstract class BmmClass extends BmmModule {
    * Package this class belongs to.
    */
   @NonNull
+  @ManyToOne
+  @JoinColumn(name = "package_id")
   private BmmPackage _package;
 
   /**
@@ -58,6 +63,7 @@ public abstract class BmmClass extends BmmModule {
    * properties: Hash<String,BMM_PROPERTY>
    * List of attributes defined in this class.
    */
+  @Transient
   private Map<String, BmmProperty> properties;
 
   /**
@@ -67,6 +73,7 @@ public abstract class BmmClass extends BmmModule {
    * Useful for UI tools to determine which original schema file to open for a given class for manual editing.
    */
   @NonNull
+  @Column(name = "source_schema_id")
   private String sourceSchemaId;
 
   /**
@@ -75,6 +82,7 @@ public abstract class BmmClass extends BmmModule {
    * List of computed references to base classes of immediate inheritance
    * descendants, derived when members of ancestors are attached at creation time.
    */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "immediate_descendants")
   private List<BmmClass> immediateDescendants;
 
   /**
