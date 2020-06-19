@@ -23,4 +23,15 @@ public class BmmBaseEntity implements Serializable {
     public Boolean isNew() {
         return this.id == null;
     }
+
+    public Boolean equals(BmmBaseEntity obj){
+        return id != null && id.equals( obj.id) && this.getClass().equals(obj.getClass());
+    }
+
+    @Override
+    public int hashCode(){
+        return 2021;
+    }
+
+
 }

@@ -1,15 +1,15 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.model_structure;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmProperty;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmEnumeration;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSimpleType;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,7 +29,23 @@ public class BmmModel extends BmmPackageContainer {
     * class_definitions: Hash<String,BMM_CLASS>
     * All classes in this model, keyed by type name.
    */
-  private Map<String,BmmClass> classDefinitions;
+   @Getter
+   @Setter
+   @ElementCollection
+   @CollectionTable(name = "bmm_model_class_definition_mapping",
+           joinColumns = {@JoinColumn(name = "class_definition_id", referencedColumnName = "id")})
+   @MapKeyColumn(name = "class_definition_name")
+   @Column(name = "class_definition")
+   private Map<String,BmmClass> classDefinitions = new HashMap<>();
+  public void addClassDefinition(String key, BmmClass value){
+    classDefinitions.put(key, value);
+  }
+  public BmmClass getClassDefinition(String key){
+    return classDefinitions.get(key);
+  }
+  public BmmClass removeClassDefinition(String key){
+    return classDefinitions.remove(key);
+  }
   /**
    * 0..1
    * used_models: List<BMM_MODEL>
@@ -37,7 +53,10 @@ public class BmmModel extends BmmPackageContainer {
    * Classes in the current model may refer to classes in a used model by specifying the other class’s scope
    * meta-attribute.
    */
-  private BmmModel usedModels;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "model", orphanRemoval = true)
+  private List<BmmModel> usedModels = new ArrayList<>();
+  @ManyToOne(fetch = FetchType.LAZY)
+  private BmmModel usedModel;
   // Functions
   /**
    * 1..1

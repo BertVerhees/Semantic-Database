@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
-import lombok.*;
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModule;
@@ -32,10 +32,8 @@ import java.util.Map;
  * data property set at creation or construction time.
  * 
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
 public abstract class BmmClass extends BmmModule {
+
   /**
    * 0..1
    * ancestors: Hash<String,BMM_MODEL_TYPE>
@@ -49,8 +47,7 @@ public abstract class BmmClass extends BmmModule {
    * package: BMM_PACKAGE
    * Package this class belongs to.
    */
-  @NonNull
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "package_id")
   private BmmPackage _package;
 
