@@ -1,9 +1,5 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSimpleType;
 
 import javax.persistence.Entity;
@@ -19,10 +15,6 @@ import javax.persistence.Entity;
  * instance of BMM_SIMPLE_TYPE or a descendant.
  * 
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@Builder
 @Entity
 public class BmmSimpleClass extends BmmClass {
 

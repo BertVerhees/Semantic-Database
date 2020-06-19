@@ -11,6 +11,7 @@ import java.util.Map;
 /**
  * Class BmmDeclaration
  */
+@MappedSuperclass
 public abstract class BmmDeclaration extends BmmBaseEntity {
   /**
    * 1..1

@@ -32,7 +32,8 @@ import java.util.Map;
  * data property set at creation or construction time.
  * 
  */
-public abstract class BmmClass extends BmmModule {
+@Entity
+public class BmmClass extends BmmModule {
 
   /**
    * 0..1

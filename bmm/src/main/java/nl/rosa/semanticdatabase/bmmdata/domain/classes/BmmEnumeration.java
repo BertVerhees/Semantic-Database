@@ -1,9 +1,11 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
-import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmLiteralValue;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.Map;
 
@@ -11,12 +13,7 @@ import java.util.Map;
 /**
  * Class BmmEnumeration
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name="bmm_enumeration")
 public class BmmEnumeration extends BmmSimpleClass {
  /**
   * 0..1

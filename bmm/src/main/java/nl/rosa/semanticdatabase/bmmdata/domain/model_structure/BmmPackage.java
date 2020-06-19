@@ -24,7 +24,7 @@ public class BmmPackage extends BmmPackageContainer {
    */
   @Getter
   @Setter
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "_package", orphanRemoval = true)
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "package_id", orphanRemoval = true)
   private Set<BmmClass> classes = new HashSet<>();
   
   /**

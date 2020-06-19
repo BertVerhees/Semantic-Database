@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
-import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmValueSetSpec;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
+import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmValueSetSpec;
 
 
 /**

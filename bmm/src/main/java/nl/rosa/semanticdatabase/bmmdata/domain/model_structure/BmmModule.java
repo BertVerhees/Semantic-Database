@@ -1,17 +1,14 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.model_structure;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
+
+import javax.persistence.MappedSuperclass;
 
 /**
  * Class BmmModule
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
+@MappedSuperclass
 public abstract class BmmModule extends BmmDeclaration{
     /**
      * 1..1

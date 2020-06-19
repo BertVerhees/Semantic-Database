@@ -1,8 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
 
@@ -14,8 +12,6 @@ import javax.persistence.Entity;
  * reference to a 'value set' within an external resource, e.g. a reference data
  * service.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
 @Entity
 public class BmmValueSetSpec extends BmmBaseEntity {
   /**

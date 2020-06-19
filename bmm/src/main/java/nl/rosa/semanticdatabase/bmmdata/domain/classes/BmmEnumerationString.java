@@ -1,9 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 import javax.persistence.Entity;
 import java.util.List;
 
@@ -11,8 +8,6 @@ import java.util.List;
  * Class BmmEnumerationString
  * String-based enumeration meta-type.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
 @Entity
 public class BmmEnumerationString extends BmmEnumeration {
   /**

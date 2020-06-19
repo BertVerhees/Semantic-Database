@@ -36,7 +36,7 @@ public class BmmModel extends BmmPackageContainer {
            joinColumns = {@JoinColumn(name = "class_definition_id", referencedColumnName = "id")})
    @MapKeyColumn(name = "class_definition_name")
    @Column(name = "class_definition")
-   private Map<String,BmmClass> classDefinitions = new HashMap<>();
+   private Map<String, BmmClass> classDefinitions = new HashMap<>();
   public void addClassDefinition(String key, BmmClass value){
     classDefinitions.put(key, value);
   }
