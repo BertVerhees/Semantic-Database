@@ -288,43 +288,43 @@ public abstract class BmmClass extends BmmModule {
    * List of attributes defined in this class.
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "propertys_list")
-  private List<BmmProperty> propertysList;
+  private List<BmmProperty> propertiesList;
   public BmmClass setPropertiesList(List<BmmProperty> propertysList) {
-    this.propertysList = propertysList;
-    propertys = propertysList.stream()
+    this.propertiesList = propertiesList;
+    properties = propertiesList.stream()
             .collect(Collectors.toMap(BmmProperty::getName, property -> property));
     return this;
   }
   public List<BmmProperty> getPropertiesList() {
-    return Collections.unmodifiableList(propertysList);
+    return Collections.unmodifiableList(propertiesList);
   }
   public BmmClass addProperty(BmmProperty property) {
-    this.propertysList.add(property);
-    this.propertys.put(property.getName(), property);
+    this.propertiesList.add(property);
+    this.properties.put(property.getName(), property);
     return this;
   }
 
-  public BmmClass addAllProperties(List<BmmProperty> propertysList) {
-    this.propertysList.addAll(propertysList);
-    propertysList.forEach(property -> this.addProperty(property));
+  public BmmClass addAllProperties(List<BmmProperty> propertiesList) {
+    this.propertiesList.addAll(propertiesList);
+    propertiesList.forEach(property -> this.addProperty(property));
     return this;
   }
 
   public BmmClass removeProperty(BmmProperty property) {
-    this.propertysList.remove(property);
-    this.propertys.remove(property.getName());
+    this.propertiesList.remove(property);
+    this.properties.remove(property.getName());
     return this;
   }
 
-  public BmmClass removeAllProperties(List<BmmProperty> propertysList) {
-    this.propertysList.removeAll(propertysList);
-    propertysList.forEach(property -> this.removeProperty(property));
+  public BmmClass removeAllProperties(List<BmmProperty> propertiesList) {
+    this.propertiesList.removeAll(propertiesList);
+    propertiesList.forEach(property -> this.removeProperty(property));
     return this;
   }
   @Transient
-  private Map<String, BmmProperty> propertys;
+  private Map<String, BmmProperty> properties;
   public Map<String,BmmProperty> getProperties() {
-    return Collections.unmodifiableMap(propertys);
+    return Collections.unmodifiableMap(properties);
   }
   /**
    * 0..1
