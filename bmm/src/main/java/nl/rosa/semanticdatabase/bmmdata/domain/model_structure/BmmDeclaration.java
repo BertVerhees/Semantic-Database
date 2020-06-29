@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * Class BmmDeclaration
  */
-@MappedSuperclass
+@DiscriminatorValue("2")
 public abstract class BmmDeclaration extends BmmBaseEntity {
   /**
    * 1..1
@@ -19,9 +19,13 @@ public abstract class BmmDeclaration extends BmmBaseEntity {
    * Name of this model element.
    */
   @Getter
-  @Setter
   @NonNull
   private String name;
+
+  public BmmDeclaration setName(String name) {
+    this.name = name;
+    return this;
+  }
 
   /**
    * 0..1
@@ -43,14 +47,20 @@ public abstract class BmmDeclaration extends BmmBaseEntity {
   @MapKeyColumn(name = "documentation_name")
   @Column(name = "documentation")
   private Map<String, Object> documentation = new HashMap<>();
-  public void addDocumentationItem(String key, Object value){
+  public BmmDeclaration addDocumentationItem(String key, Object value){
     documentation.put(key, value);
+    return this;
   }
   public Object getDocumentationItem(String key){
     return documentation.get(key);
   }
   public Object removeDocumentationItem(String key){
     return documentation.remove(key);
+  }
+
+  public BmmDeclaration setDocumentation(Map<String, Object> documentation) {
+    this.documentation = documentation;
+    return this;
   }
 
   /**
@@ -64,6 +74,12 @@ public abstract class BmmDeclaration extends BmmBaseEntity {
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "scope_id")
   private BmmDeclaration scope;
+
+  public BmmDeclaration setScope(BmmDeclaration scope) {
+    this.scope = scope;
+    return this;
+  }
+
   /**
    * 0..1
    * extensions: Hash<String, Any>
@@ -77,14 +93,20 @@ public abstract class BmmDeclaration extends BmmBaseEntity {
   @MapKeyColumn(name = "extension_name")
   @Column(name = "extensions")
   private Map<String, Object> extensions = new HashMap<>();
-  public void addExtensionsItem(String key, Object value){
+  public BmmDeclaration addExtensionsItem(String key, Object value){
     extensions.put(key, value);
+    return this;
   }
   public Object getExtensionsItem(String key){
     return extensions.get(key);
   }
   public Object deleteExtensionsItem(String key){
     return extensions.remove(key);
+  }
+
+  public BmmDeclaration setExtensions(Map<String, Object> extensions) {
+    this.extensions = extensions;
+    return this;
   }
   // Functions
 

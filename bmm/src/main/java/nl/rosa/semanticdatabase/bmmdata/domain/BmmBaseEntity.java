@@ -1,22 +1,28 @@
 package nl.rosa.semanticdatabase.bmmdata.domain;
 
 import lombok.Getter;
-import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Getter
-@Setter
-@MappedSuperclass
-public class BmmBaseEntity implements Serializable {
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+        discriminatorType = DiscriminatorType.INTEGER,
+        columnDefinition = "TINYINT(1)"
+)
+@DiscriminatorValue("1")
+public abstract class BmmBaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public BmmBaseEntity setId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public Boolean isNew() {
         return this.id == null;

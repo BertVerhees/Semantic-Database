@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
+import lombok.Getter;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
@@ -8,8 +9,11 @@ import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmModelType;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 
 /**
@@ -32,16 +36,8 @@ import java.util.Map;
  * data property set at creation or construction time.
  * 
  */
-@Entity
-public class BmmClass extends BmmModule {
-
-  /**
-   * 0..1
-   * ancestors: Hash<String,BMM_MODEL_TYPE>
-   * List of immediate inheritance parents.
-   */
-  @Transient
-  private Map<String, BmmModelType> ancestors;
+@DiscriminatorValue("4")
+public abstract class BmmClass extends BmmModule {
 
   /**
    * 1..1
@@ -50,15 +46,13 @@ public class BmmClass extends BmmModule {
    */
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "package_id")
+  @Getter
   private BmmPackage _package;
 
-  /**
-   * 0..1
-   * properties: Hash<String,BMM_PROPERTY>
-   * List of attributes defined in this class.
-   */
-  @Transient
-  private Map<String, BmmProperty> properties;
+  public BmmClass setAncestors(Map<String, BmmModelType> ancestors) {
+    this.ancestors = ancestors;
+    return this;
+  }
 
   /**
    * 1..1
@@ -70,6 +64,11 @@ public class BmmClass extends BmmModule {
   @Column(name = "source_schema_id")
   private String sourceSchemaId;
 
+  public BmmClass setSourceSchemaId(String sourceSchemaId) {
+    this.sourceSchemaId = sourceSchemaId;
+    return this;
+  }
+
   /**
    * 0..1
    * immediate_descendants: List<BMM_CLASS>
@@ -77,7 +76,91 @@ public class BmmClass extends BmmModule {
    * descendants, derived when members of ancestors are attached at creation time.
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "immediate_descendants")
-  private List<BmmClass> immediateDescendants;
+  private List<BmmClass> immediateDescendantsList = new ArrayList<>();
+
+  public BmmClass setImmediateDescendants(List<BmmClass> immediateDescendants) {
+    this.immediateDescendantsList = immediateDescendants;
+    return this;
+  }
+
+  public BmmClass addImmediateDescendant(BmmClass immediateDescendant) {
+    this.immediateDescendantsList.add(immediateDescendant);
+    return this;
+  }
+
+  public BmmClass addAllImmediateDescendants(List<BmmClass> immediateDescendants) {
+    this.immediateDescendantsList.addAll(immediateDescendants);
+    return this;
+  }
+
+  public BmmClass removeImmediateDescendant(BmmClass immediateDescendant) {
+    this.immediateDescendantsList.remove(immediateDescendant);
+    return this;
+  }
+
+  public BmmClass removeAllImmediateDescendants(List<BmmClass> immediateDescendants) {
+    this.immediateDescendantsList.removeAll(immediateDescendants);
+    return this;
+  }
+
+  /**
+   * 0..1
+   * constants: Hash<String,BMM_CONSTANT>
+   * List of constants defined in this class.
+   */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "constants_list")
+  private List<BmmConstant> constantsList;
+  public BmmClass setConstantsList(List<BmmConstant> constantsList) {
+    this.constantsList = constantsList;
+    constants = constantsList.stream()
+            .collect(Collectors.toMap(BmmConstant::getName, constant -> constant));
+    return this;
+  }
+
+  public BmmClass addConstant(BmmConstant constant) {
+    this.constantsList.add(constant);
+    this.constants.put(constant.getName(), constant);
+    return this;
+  }
+
+  public BmmClass addAllConstants(List<BmmConstant> constantsList) {
+    this.constantsList.addAll(constantsList);
+    constantsList.forEach(constant -> this.addConstant(constant));
+    return this;
+  }
+
+  public BmmClass removeConstant(BmmConstant constant) {
+    this.constantsList.remove(constant);
+    this.constants.remove(constant.getName());
+    return this;
+  }
+
+  public BmmClass removeAllConstants(List<BmmConstant> constantsList) {
+    this.constantsList.removeAll(constantsList);
+    constantsList.forEach(constant -> this.constants.remove(constant.getName()));
+    return this;
+  }
+  @Transient
+  private Map<String, BmmConstant>  constants = new HashMap<>();
+
+  //=====================================================================================================
+  /**
+   * 0..1
+   * ancestors: Hash<String,BMM_MODEL_TYPE>
+   * List of immediate inheritance parents.
+   */
+  @Transient
+  @Getter
+  private Map<String, BmmModelType> ancestors;
+
+  /**
+   * 0..1
+   * properties: Hash<String,BMM_PROPERTY>
+   * List of attributes defined in this class.
+   */
+  @Transient
+  @Getter
+  private Map<String, BmmProperty> properties;
 
   /**
    * 1..1
@@ -89,15 +172,11 @@ public class BmmClass extends BmmModule {
   @Transient
   private Boolean isOverride;
 
-  /**
-   * 0..1
-   * constants: Hash<String,BMM_CONSTANT>
-   * List of constants defined in this class.
-   */
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "constants_list")
-  private List<BmmConstant> constantsList;
-  @Transient
-  private Map<String, BmmConstant> constants;
+  public Boolean getOverride() {
+    //TODO
+    return isOverride;
+  }
+
 
   /**
    * 0..1
