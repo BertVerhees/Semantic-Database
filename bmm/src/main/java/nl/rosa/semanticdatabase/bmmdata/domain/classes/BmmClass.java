@@ -9,10 +9,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmModelType;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -78,6 +75,10 @@ public abstract class BmmClass extends BmmModule {
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "immediate_descendants")
   private List<BmmClass> immediateDescendantsList = new ArrayList<>();
 
+  public List<BmmClass> getImmediateDescendantsList() {
+    return Collections.unmodifiableList(immediateDescendantsList);
+  }
+
   public BmmClass setImmediateDescendants(List<BmmClass> immediateDescendants) {
     this.immediateDescendantsList = immediateDescendants;
     return this;
@@ -116,6 +117,9 @@ public abstract class BmmClass extends BmmModule {
             .collect(Collectors.toMap(BmmConstant::getName, constant -> constant));
     return this;
   }
+  public List<BmmConstant> getConstantsList() {
+    return Collections.unmodifiableList(constantsList);
+  }
 
   public BmmClass addConstant(BmmConstant constant) {
     this.constantsList.add(constant);
@@ -142,25 +146,276 @@ public abstract class BmmClass extends BmmModule {
   }
   @Transient
   private Map<String, BmmConstant>  constants = new HashMap<>();
+  public Map<String,BmmConstant> getConstants() {
+    return Collections.unmodifiableMap(constants);
+  }
 
-  //=====================================================================================================
+  /**
+   * 0..1
+   * functions: Hash<String,BMM_FUNCTION>
+   * List of functions defined in this class.
+   */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "functions_list")
+  private List<BmmFunction> functionsList;
+  public BmmClass setFunctionsList(List<BmmFunction> functionsList) {
+    this.functionsList = functionsList;
+    functions = functionsList.stream()
+            .collect(Collectors.toMap(BmmFunction::getName, function -> function));
+    return this;
+  }
+  public List<BmmFunction> getFunctionsList() {
+    return Collections.unmodifiableList(functionsList);
+  }
+  public BmmClass addFunction(BmmFunction function) {
+    this.functionsList.add(function);
+    this.functions.put(function.getName(), function);
+    return this;
+  }
+
+  public BmmClass addAllFunctions(List<BmmFunction> functionsList) {
+    this.functionsList.addAll(functionsList);
+    functionsList.forEach(function -> this.addFunction(function));
+    return this;
+  }
+
+  public BmmClass removeFunction(BmmFunction function) {
+    this.functionsList.remove(function);
+    this.functions.remove(function.getName());
+    return this;
+  }
+
+  public BmmClass removeAllFunctions(List<BmmFunction> functionsList) {
+    this.functionsList.removeAll(functionsList);
+    functionsList.forEach(function -> this.removeFunction(function));
+    return this;
+  }
+  @Transient
+  private Map<String, BmmFunction> functions = new HashMap<>();
+  public Map<String,BmmFunction> getFunctions() {
+    return Collections.unmodifiableMap(functions);
+  }
+  /**
+   * 0..1
+   * procedures: Hash<String,BMM_PROCEDURE>
+   * List of procedures defined in this class.
+   */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "procedures_list")
+  private List<BmmProcedure> proceduresList;
+  public BmmClass setProceduresList(List<BmmProcedure> proceduresList) {
+    this.proceduresList = proceduresList;
+    procedures = proceduresList.stream()
+            .collect(Collectors.toMap(BmmProcedure::getName, procedure -> procedure));
+    return this;
+  }
+  public List<BmmProcedure> getProceduresList() {
+    return Collections.unmodifiableList(proceduresList);
+  }
+  public BmmClass addProcedure(BmmProcedure procedure) {
+    this.proceduresList.add(procedure);
+    this.procedures.put(procedure.getName(), procedure);
+    return this;
+  }
+
+  public BmmClass addAllProcedures(List<BmmProcedure> proceduresList) {
+    this.proceduresList.addAll(proceduresList);
+    proceduresList.forEach(procedure -> this.addProcedure(procedure));
+    return this;
+  }
+
+  public BmmClass removeProcedure(BmmProcedure procedure) {
+    this.proceduresList.remove(procedure);
+    this.procedures.remove(procedure.getName());
+    return this;
+  }
+
+  public BmmClass removeAllProcedures(List<BmmProcedure> proceduresList) {
+    this.proceduresList.removeAll(proceduresList);
+    proceduresList.forEach(procedure -> this.removeProcedure(procedure));
+    return this;
+  }
+  @Transient
+  private Map<String, BmmProcedure> procedures;
+  public Map<String,BmmProcedure> getProcedures() {
+    return Collections.unmodifiableMap(procedures);
+  }
   /**
    * 0..1
    * ancestors: Hash<String,BMM_MODEL_TYPE>
    * List of immediate inheritance parents.
    */
-  @Transient
-  @Getter
-  private Map<String, BmmModelType> ancestors;
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "ancestors_list")
+  private List<BmmModelType> ancestorsList;
+  public BmmClass setAncestorsList(List<BmmModelType> ancestorsList) {
+    this.ancestorsList = ancestorsList;
+    ancestors = ancestorsList.stream()
+            .collect(Collectors.toMap(BmmModelType::typeBaseName, ancestor -> ancestor));
+    return this;
+  }
+  public List<BmmModelType> getAncestorsList() {
+    return Collections.unmodifiableList(ancestorsList);
+  }
+  public BmmClass addAncestor(BmmModelType ancestor) {
+    this.ancestorsList.add(ancestor);
+    this.ancestors.put(ancestor.typeBaseName(), ancestor);
+    return this;
+  }
 
+  public BmmClass addAllAncestors(List<BmmModelType> ancestorsList) {
+    this.ancestorsList.addAll(ancestorsList);
+    ancestorsList.forEach(ancestor -> this.addAncestor(ancestor));
+    return this;
+  }
+
+  public BmmClass removeAncestor(BmmModelType ancestor) {
+    this.ancestorsList.remove(ancestor);
+    this.ancestors.remove(ancestor.typeBaseName());
+    return this;
+  }
+
+  public BmmClass removeAllAncestors(List<BmmModelType> ancestorsList) {
+    this.ancestorsList.removeAll(ancestorsList);
+    ancestorsList.forEach(ancestor -> this.removeAncestor(ancestor));
+    return this;
+  }
+  @Transient
+  private Map<String, BmmModelType> ancestors;
+  public Map<String,BmmModelType> getAncestors() {
+    return Collections.unmodifiableMap(ancestors);
+  }
   /**
    * 0..1
    * properties: Hash<String,BMM_PROPERTY>
    * List of attributes defined in this class.
    */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "propertys_list")
+  private List<BmmProperty> propertysList;
+  public BmmClass setPropertiesList(List<BmmProperty> propertysList) {
+    this.propertysList = propertysList;
+    propertys = propertysList.stream()
+            .collect(Collectors.toMap(BmmProperty::getName, property -> property));
+    return this;
+  }
+  public List<BmmProperty> getPropertiesList() {
+    return Collections.unmodifiableList(propertysList);
+  }
+  public BmmClass addProperty(BmmProperty property) {
+    this.propertysList.add(property);
+    this.propertys.put(property.getName(), property);
+    return this;
+  }
+
+  public BmmClass addAllProperties(List<BmmProperty> propertysList) {
+    this.propertysList.addAll(propertysList);
+    propertysList.forEach(property -> this.addProperty(property));
+    return this;
+  }
+
+  public BmmClass removeProperty(BmmProperty property) {
+    this.propertysList.remove(property);
+    this.propertys.remove(property.getName());
+    return this;
+  }
+
+  public BmmClass removeAllProperties(List<BmmProperty> propertysList) {
+    this.propertysList.removeAll(propertysList);
+    propertysList.forEach(property -> this.removeProperty(property));
+    return this;
+  }
   @Transient
-  @Getter
-  private Map<String, BmmProperty> properties;
+  private Map<String, BmmProperty> propertys;
+  public Map<String,BmmProperty> getProperties() {
+    return Collections.unmodifiableMap(propertys);
+  }
+  /**
+   * 0..1
+   * creators: Hash<String,BMM_PROCEDURE>
+   * Subset of procedures that may be used to initialise a new instance of an object,
+   * and whose execution will guarantee that class invariants are satisfied.
+   */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "creators_list")
+  private List<BmmProcedure> creatorsList;
+  public BmmClass setCreatorsList(List<BmmProcedure> creatorsList) {
+    this.creatorsList = creatorsList;
+    creators = creatorsList.stream()
+            .collect(Collectors.toMap(BmmProcedure::getName, creator -> creator));
+    return this;
+  }
+  public List<BmmProcedure> getCreatorsList() {
+    return Collections.unmodifiableList(creatorsList);
+  }
+  public BmmClass addCreator(BmmProcedure creator) {
+    this.creatorsList.add(creator);
+    this.creators.put(creator.getName(), creator);
+    return this;
+  }
+
+  public BmmClass addAllCreators(List<BmmProcedure> creatorsList) {
+    this.creatorsList.addAll(creatorsList);
+    creatorsList.forEach(creator -> this.addCreator(creator));
+    return this;
+  }
+
+  public BmmClass removeCreator(BmmProcedure creator) {
+    this.creatorsList.remove(creator);
+    this.creators.remove(creator.getName());
+    return this;
+  }
+
+  public BmmClass removeAllCreators(List<BmmProcedure> creatorsList) {
+    this.creatorsList.removeAll(creatorsList);
+    creatorsList.forEach(creator -> this.removeCreator(creator));
+    return this;
+  }
+  @Transient
+  private Map<String, BmmProcedure> creators;
+  public Map<String,BmmProcedure> getCreators() {
+    return Collections.unmodifiableMap(creators);
+  }
+  /**
+   * 0..1
+   * converters: Hash<String,BMM_PROCEDURE>
+   * Subset of creators that create a new instance from a single argument of another type.
+   */
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "convertors_list")
+  private List<BmmProcedure> convertorsList;
+  public BmmClass setConvertorsList(List<BmmProcedure> convertorsList) {
+    this.convertorsList = convertorsList;
+    convertors = convertorsList.stream()
+            .collect(Collectors.toMap(BmmProcedure::getName, convertor -> convertor));
+    return this;
+  }
+  public List<BmmProcedure> getConvertorsList() {
+    return Collections.unmodifiableList(convertorsList);
+  }
+  public BmmClass addConvertor(BmmProcedure convertor) {
+    this.convertorsList.add(convertor);
+    this.convertors.put(convertor.getName(), convertor);
+    return this;
+  }
+
+  public BmmClass addAllConvertors(List<BmmProcedure> convertorsList) {
+    this.convertorsList.addAll(convertorsList);
+    convertorsList.forEach(convertor -> this.addConvertor(convertor));
+    return this;
+  }
+
+  public BmmClass removeConvertor(BmmProcedure convertor) {
+    this.convertorsList.remove(convertor);
+    this.convertors.remove(convertor.getName());
+    return this;
+  }
+
+  public BmmClass removeAllConvertors(List<BmmProcedure> convertorsList) {
+    this.convertorsList.removeAll(convertorsList);
+    convertorsList.forEach(convertor -> this.removeConvertor(convertor));
+    return this;
+  }
+  @Transient
+  private Map<String, BmmProcedure> convertors;
+  public Map<String,BmmProcedure> getConvertors() {
+    return Collections.unmodifiableMap(convertors);
+  }
+  //=====================================================================================================
 
   /**
    * 1..1
@@ -177,26 +432,6 @@ public abstract class BmmClass extends BmmModule {
     return isOverride;
   }
 
-
-  /**
-   * 0..1
-   * functions: Hash<String,BMM_FUNCTION>
-   * List of functions defined in this class.
-   */
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "functions_list")
-  private List<BmmFunction> functionsList;
-  @Transient
-  private Map<String, BmmFunction> functions;
-
-  /**
-   * 0..1
-   * procedures: Hash<String,BMM_PROCEDURE>
-   * List of procedures defined in this class.
-   */
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "procedures_list")
-  private List<BmmProcedure> proceduresList;
-  @Transient
-  private Map<String, BmmProcedure> procedures;
   /**
    * 0..1
    * is_primitive: Boolean
@@ -220,25 +455,6 @@ public abstract class BmmClass extends BmmModule {
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "invariants")
   private List<ElAssertion> invariants;
-  /**
-   * 0..1
-   * creators: Hash<String,BMM_PROCEDURE>
-   * Subset of procedures that may be used to initialise a new instance of an object,
-   * and whose execution will guarantee that class invariants are satisfied.
-   */
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "creators_list")
-  private List<BmmProcedure> creatorsList;
-  @Transient
-  private Map<String, BmmProcedure> creators;
-  /**
-   * 0..1
-   * converters: Hash<String,BMM_PROCEDURE>
-   * Subset of creators that create a new instance from a single argument of another type.
-   */
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "convertors_list")
-  private List<BmmProcedure> convertorsList;
-  @Transient
-  private Map<String, BmmProcedure> convertors;
   // Functions
   //============================================================================================================
   /**
