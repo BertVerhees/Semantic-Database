@@ -1,17 +1,19 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.model_structure;
 
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Class BmmDeclaration
  */
 @DiscriminatorValue("2")
+@Entity
 public abstract class BmmDeclaration extends BmmBaseEntity {
   /**
    * 1..1
@@ -70,7 +72,6 @@ public abstract class BmmDeclaration extends BmmBaseEntity {
    */
   @NonNull
   @Getter
-  @Setter
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "scope_id")
   private BmmDeclaration scope;
@@ -85,29 +86,39 @@ public abstract class BmmDeclaration extends BmmBaseEntity {
    * extensions: Hash<String, Any>
    * Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.
    */
-  @Getter
-  @Setter
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "expressions_list")
+  private List<Object> extensionsList;
+
+  public BmmDeclaration addExtension(String key, Object value) {
+    this.extensions.put(key, value);
+    return this;
+  }
+
+  public BmmDeclaration addAllExtensions(Map<String, Object> extensionsMap) {
+    this.extensions.putAll(extensionsMap);
+    return this;
+  }
+
+  public BmmDeclaration removeExtension(String key) {
+    this.extensions.remove(key);
+    return this;
+  }
+
+  public BmmDeclaration removeAllExtensions(Set<String> keys) {
+    keys.forEach(key -> this.removeExtension(key));
+    return this;
+  }
   @ElementCollection
   @CollectionTable(name = "bmm_declaration_extensions_mapping",
           joinColumns = {@JoinColumn(name = "extension_id", referencedColumnName = "id")})
   @MapKeyColumn(name = "extension_name")
   @Column(name = "extensions")
-  private Map<String, Object> extensions = new HashMap<>();
-  public BmmDeclaration addExtensionsItem(String key, Object value){
-    extensions.put(key, value);
-    return this;
-  }
-  public Object getExtensionsItem(String key){
-    return extensions.get(key);
-  }
-  public Object deleteExtensionsItem(String key){
-    return extensions.remove(key);
+  private Map<String, Object>  extensions = new HashMap<>();
+  public Map<String,Object> getExtensions() {
+    return Collections.unmodifiableMap(extensions);
   }
 
-  public BmmDeclaration setExtensions(Map<String, Object> extensions) {
-    this.extensions = extensions;
-    return this;
-  }
+
   // Functions
 
   /**
@@ -119,6 +130,6 @@ public abstract class BmmDeclaration extends BmmBaseEntity {
    */
   @NonNull
   public Boolean isRootScope(){
-    return null;
+    return scope.getId() == this.getId();
   }
 }

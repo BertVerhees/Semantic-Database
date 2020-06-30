@@ -5,11 +5,13 @@ import lombok.Getter;
 import lombok.NonNull;
 
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 /**
  * Class BmmModule
  */
 @DiscriminatorValue("3")
+@Entity
 public abstract class BmmModule extends BmmDeclaration{
     /**
      * 1..1

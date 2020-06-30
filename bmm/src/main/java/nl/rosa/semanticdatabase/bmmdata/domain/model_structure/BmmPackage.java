@@ -8,7 +8,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
@@ -35,7 +34,7 @@ public class BmmPackage extends BmmPackageContainer {
    * Recurse into each child only far enough to find the first level of classes.
    * @return
    */
-  public List<BmmClass> rootClasses()
+  public Set<BmmClass> rootClasses()
   {
     //TODO
     return null;

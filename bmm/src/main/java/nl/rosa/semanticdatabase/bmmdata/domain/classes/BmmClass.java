@@ -34,6 +34,7 @@ import java.util.stream.Collectors;
  * 
  */
 @DiscriminatorValue("4")
+@Entity
 public abstract class BmmClass extends BmmModule {
 
   /**
@@ -73,34 +74,34 @@ public abstract class BmmClass extends BmmModule {
    * descendants, derived when members of ancestors are attached at creation time.
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "immediate_descendants")
-  private List<BmmClass> immediateDescendantsList = new ArrayList<>();
+  private Set<BmmClass> immediateDescendantsSet = new HashSet<>();
 
-  public List<BmmClass> getImmediateDescendantsList() {
-    return Collections.unmodifiableList(immediateDescendantsList);
+  public Set<BmmClass> getImmediateDescendantsSet() {
+    return Collections.unmodifiableSet(immediateDescendantsSet);
   }
 
-  public BmmClass setImmediateDescendants(List<BmmClass> immediateDescendants) {
-    this.immediateDescendantsList = immediateDescendants;
+  public BmmClass setImmediateDescendants(Set<BmmClass> immediateDescendants) {
+    this.immediateDescendantsSet = immediateDescendants;
     return this;
   }
 
   public BmmClass addImmediateDescendant(BmmClass immediateDescendant) {
-    this.immediateDescendantsList.add(immediateDescendant);
+    this.immediateDescendantsSet.add(immediateDescendant);
     return this;
   }
 
-  public BmmClass addAllImmediateDescendants(List<BmmClass> immediateDescendants) {
-    this.immediateDescendantsList.addAll(immediateDescendants);
+  public BmmClass addAllImmediateDescendants(Set<BmmClass> immediateDescendants) {
+    this.immediateDescendantsSet.addAll(immediateDescendants);
     return this;
   }
 
   public BmmClass removeImmediateDescendant(BmmClass immediateDescendant) {
-    this.immediateDescendantsList.remove(immediateDescendant);
+    this.immediateDescendantsSet.remove(immediateDescendant);
     return this;
   }
 
-  public BmmClass removeAllImmediateDescendants(List<BmmClass> immediateDescendants) {
-    this.immediateDescendantsList.removeAll(immediateDescendants);
+  public BmmClass removeAllImmediateDescendants(Set<BmmClass> immediateDescendants) {
+    this.immediateDescendantsSet.removeAll(immediateDescendants);
     return this;
   }
 
@@ -110,38 +111,38 @@ public abstract class BmmClass extends BmmModule {
    * List of constants defined in this class.
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "constants_list")
-  private List<BmmConstant> constantsList;
-  public BmmClass setConstantsList(List<BmmConstant> constantsList) {
-    this.constantsList = constantsList;
-    constants = constantsList.stream()
+  private Set<BmmConstant> constantsSet = new HashSet<>();
+  public BmmClass setConstantsSet(Set<BmmConstant> constantsSet) {
+    this.constantsSet = constantsSet;
+    constants = constantsSet.stream()
             .collect(Collectors.toMap(BmmConstant::getName, constant -> constant));
     return this;
   }
-  public List<BmmConstant> getConstantsList() {
-    return Collections.unmodifiableList(constantsList);
+  public Set<BmmConstant> getConstantsSet() {
+    return Collections.unmodifiableSet(constantsSet);
   }
 
   public BmmClass addConstant(BmmConstant constant) {
-    this.constantsList.add(constant);
+    this.constantsSet.add(constant);
     this.constants.put(constant.getName(), constant);
     return this;
   }
 
-  public BmmClass addAllConstants(List<BmmConstant> constantsList) {
-    this.constantsList.addAll(constantsList);
-    constantsList.forEach(constant -> this.addConstant(constant));
+  public BmmClass addAllConstants(Set<BmmConstant> constantsSet) {
+    this.constantsSet.addAll(constantsSet);
+    constantsSet.forEach(constant -> this.addConstant(constant));
     return this;
   }
 
   public BmmClass removeConstant(BmmConstant constant) {
-    this.constantsList.remove(constant);
+    this.constantsSet.remove(constant);
     this.constants.remove(constant.getName());
     return this;
   }
 
-  public BmmClass removeAllConstants(List<BmmConstant> constantsList) {
-    this.constantsList.removeAll(constantsList);
-    constantsList.forEach(constant -> this.constants.remove(constant.getName()));
+  public BmmClass removeAllConstants(Set<BmmConstant> constantsSet) {
+    this.constantsSet.removeAll(constantsSet);
+    constantsSet.forEach(constant -> this.constants.remove(constant.getName()));
     return this;
   }
   @Transient
@@ -156,37 +157,37 @@ public abstract class BmmClass extends BmmModule {
    * List of functions defined in this class.
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "functions_list")
-  private List<BmmFunction> functionsList;
-  public BmmClass setFunctionsList(List<BmmFunction> functionsList) {
-    this.functionsList = functionsList;
-    functions = functionsList.stream()
+  private Set<BmmFunction> functionsSet = new HashSet<>();
+  public BmmClass setFunctionsSet(Set<BmmFunction> functionsSet) {
+    this.functionsSet = functionsSet;
+    functions = functionsSet.stream()
             .collect(Collectors.toMap(BmmFunction::getName, function -> function));
     return this;
   }
-  public List<BmmFunction> getFunctionsList() {
-    return Collections.unmodifiableList(functionsList);
+  public Set<BmmFunction> getFunctionsSet() {
+    return Collections.unmodifiableSet(functionsSet);
   }
   public BmmClass addFunction(BmmFunction function) {
-    this.functionsList.add(function);
+    this.functionsSet.add(function);
     this.functions.put(function.getName(), function);
     return this;
   }
 
-  public BmmClass addAllFunctions(List<BmmFunction> functionsList) {
-    this.functionsList.addAll(functionsList);
-    functionsList.forEach(function -> this.addFunction(function));
+  public BmmClass addAllFunctions(Set<BmmFunction> functionsSet) {
+    this.functionsSet.addAll(functionsSet);
+    functionsSet.forEach(function -> this.addFunction(function));
     return this;
   }
 
   public BmmClass removeFunction(BmmFunction function) {
-    this.functionsList.remove(function);
+    this.functionsSet.remove(function);
     this.functions.remove(function.getName());
     return this;
   }
 
-  public BmmClass removeAllFunctions(List<BmmFunction> functionsList) {
-    this.functionsList.removeAll(functionsList);
-    functionsList.forEach(function -> this.removeFunction(function));
+  public BmmClass removeAllFunctions(Set<BmmFunction> functionsSet) {
+    this.functionsSet.removeAll(functionsSet);
+    functionsSet.forEach(function -> this.removeFunction(function));
     return this;
   }
   @Transient
@@ -200,37 +201,37 @@ public abstract class BmmClass extends BmmModule {
    * List of procedures defined in this class.
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "procedures_list")
-  private List<BmmProcedure> proceduresList;
-  public BmmClass setProceduresList(List<BmmProcedure> proceduresList) {
-    this.proceduresList = proceduresList;
-    procedures = proceduresList.stream()
+  private Set<BmmProcedure> proceduresSet = new HashSet<>();
+  public BmmClass setProceduresSet(Set<BmmProcedure> proceduresSet) {
+    this.proceduresSet = proceduresSet;
+    procedures = proceduresSet.stream()
             .collect(Collectors.toMap(BmmProcedure::getName, procedure -> procedure));
     return this;
   }
-  public List<BmmProcedure> getProceduresList() {
-    return Collections.unmodifiableList(proceduresList);
+  public Set<BmmProcedure> getProceduresSet() {
+    return Collections.unmodifiableSet(proceduresSet);
   }
   public BmmClass addProcedure(BmmProcedure procedure) {
-    this.proceduresList.add(procedure);
+    this.proceduresSet.add(procedure);
     this.procedures.put(procedure.getName(), procedure);
     return this;
   }
 
-  public BmmClass addAllProcedures(List<BmmProcedure> proceduresList) {
-    this.proceduresList.addAll(proceduresList);
-    proceduresList.forEach(procedure -> this.addProcedure(procedure));
+  public BmmClass addAllProcedures(Set<BmmProcedure> proceduresSet) {
+    this.proceduresSet.addAll(proceduresSet);
+    proceduresSet.forEach(procedure -> this.addProcedure(procedure));
     return this;
   }
 
   public BmmClass removeProcedure(BmmProcedure procedure) {
-    this.proceduresList.remove(procedure);
+    this.proceduresSet.remove(procedure);
     this.procedures.remove(procedure.getName());
     return this;
   }
 
-  public BmmClass removeAllProcedures(List<BmmProcedure> proceduresList) {
-    this.proceduresList.removeAll(proceduresList);
-    proceduresList.forEach(procedure -> this.removeProcedure(procedure));
+  public BmmClass removeAllProcedures(Set<BmmProcedure> proceduresSet) {
+    this.proceduresSet.removeAll(proceduresSet);
+    proceduresSet.forEach(procedure -> this.removeProcedure(procedure));
     return this;
   }
   @Transient
@@ -244,37 +245,37 @@ public abstract class BmmClass extends BmmModule {
    * List of immediate inheritance parents.
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "ancestors_list")
-  private List<BmmModelType> ancestorsList;
-  public BmmClass setAncestorsList(List<BmmModelType> ancestorsList) {
-    this.ancestorsList = ancestorsList;
-    ancestors = ancestorsList.stream()
+  private Set<BmmModelType> ancestorsSet = new HashSet<>();
+  public BmmClass setAncestorsSet(Set<BmmModelType> ancestorsSet) {
+    this.ancestorsSet = ancestorsSet;
+    ancestors = ancestorsSet.stream()
             .collect(Collectors.toMap(BmmModelType::typeBaseName, ancestor -> ancestor));
     return this;
   }
-  public List<BmmModelType> getAncestorsList() {
-    return Collections.unmodifiableList(ancestorsList);
+  public Set<BmmModelType> getAncestorsSet() {
+    return Collections.unmodifiableSet(ancestorsSet);
   }
   public BmmClass addAncestor(BmmModelType ancestor) {
-    this.ancestorsList.add(ancestor);
+    this.ancestorsSet.add(ancestor);
     this.ancestors.put(ancestor.typeBaseName(), ancestor);
     return this;
   }
 
-  public BmmClass addAllAncestors(List<BmmModelType> ancestorsList) {
-    this.ancestorsList.addAll(ancestorsList);
-    ancestorsList.forEach(ancestor -> this.addAncestor(ancestor));
+  public BmmClass addAllAncestors(Set<BmmModelType> ancestorsSet) {
+    this.ancestorsSet.addAll(ancestorsSet);
+    ancestorsSet.forEach(ancestor -> this.addAncestor(ancestor));
     return this;
   }
 
   public BmmClass removeAncestor(BmmModelType ancestor) {
-    this.ancestorsList.remove(ancestor);
+    this.ancestorsSet.remove(ancestor);
     this.ancestors.remove(ancestor.typeBaseName());
     return this;
   }
 
-  public BmmClass removeAllAncestors(List<BmmModelType> ancestorsList) {
-    this.ancestorsList.removeAll(ancestorsList);
-    ancestorsList.forEach(ancestor -> this.removeAncestor(ancestor));
+  public BmmClass removeAllAncestors(Set<BmmModelType> ancestorsSet) {
+    this.ancestorsSet.removeAll(ancestorsSet);
+    ancestorsSet.forEach(ancestor -> this.removeAncestor(ancestor));
     return this;
   }
   @Transient
@@ -288,37 +289,37 @@ public abstract class BmmClass extends BmmModule {
    * List of attributes defined in this class.
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "propertys_list")
-  private List<BmmProperty> propertiesList;
-  public BmmClass setPropertiesList(List<BmmProperty> propertysList) {
-    this.propertiesList = propertiesList;
-    properties = propertiesList.stream()
+  private Set<BmmProperty> propertiesSet = new HashSet<>();
+  public BmmClass setPropertiesSet(Set<BmmProperty> propertysSet) {
+    this.propertiesSet = propertiesSet;
+    properties = propertiesSet.stream()
             .collect(Collectors.toMap(BmmProperty::getName, property -> property));
     return this;
   }
-  public List<BmmProperty> getPropertiesList() {
-    return Collections.unmodifiableList(propertiesList);
+  public Set<BmmProperty> getPropertiesSet() {
+    return Collections.unmodifiableSet(propertiesSet);
   }
   public BmmClass addProperty(BmmProperty property) {
-    this.propertiesList.add(property);
+    this.propertiesSet.add(property);
     this.properties.put(property.getName(), property);
     return this;
   }
 
-  public BmmClass addAllProperties(List<BmmProperty> propertiesList) {
-    this.propertiesList.addAll(propertiesList);
-    propertiesList.forEach(property -> this.addProperty(property));
+  public BmmClass addAllProperties(Set<BmmProperty> propertiesSet) {
+    this.propertiesSet.addAll(propertiesSet);
+    propertiesSet.forEach(property -> this.addProperty(property));
     return this;
   }
 
   public BmmClass removeProperty(BmmProperty property) {
-    this.propertiesList.remove(property);
+    this.propertiesSet.remove(property);
     this.properties.remove(property.getName());
     return this;
   }
 
-  public BmmClass removeAllProperties(List<BmmProperty> propertiesList) {
-    this.propertiesList.removeAll(propertiesList);
-    propertiesList.forEach(property -> this.removeProperty(property));
+  public BmmClass removeAllProperties(Set<BmmProperty> propertiesSet) {
+    this.propertiesSet.removeAll(propertiesSet);
+    propertiesSet.forEach(property -> this.removeProperty(property));
     return this;
   }
   @Transient
@@ -333,36 +334,36 @@ public abstract class BmmClass extends BmmModule {
    * and whose execution will guarantee that class invariants are satisfied.
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "creators_list")
-  private List<BmmProcedure> creatorsList;
-  public BmmClass setCreatorsList(List<BmmProcedure> creatorsList) {
-    this.creatorsList = creatorsList;
-    creators = creatorsList.stream()
+  private Set<BmmProcedure> creatorsSet = new HashSet<>();
+  public BmmClass setCreatorsList(Set<BmmProcedure> creatorsSet) {
+    this.creatorsSet = creatorsSet;
+    creators = creatorsSet.stream()
             .collect(Collectors.toMap(BmmProcedure::getName, creator -> creator));
     return this;
   }
-  public List<BmmProcedure> getCreatorsList() {
-    return Collections.unmodifiableList(creatorsList);
+  public Set<BmmProcedure> getCreatorsList() {
+    return Collections.unmodifiableSet(creatorsSet);
   }
   public BmmClass addCreator(BmmProcedure creator) {
-    this.creatorsList.add(creator);
+    this.creatorsSet.add(creator);
     this.creators.put(creator.getName(), creator);
     return this;
   }
 
   public BmmClass addAllCreators(List<BmmProcedure> creatorsList) {
-    this.creatorsList.addAll(creatorsList);
+    this.creatorsSet.addAll(creatorsList);
     creatorsList.forEach(creator -> this.addCreator(creator));
     return this;
   }
 
   public BmmClass removeCreator(BmmProcedure creator) {
-    this.creatorsList.remove(creator);
+    this.creatorsSet.remove(creator);
     this.creators.remove(creator.getName());
     return this;
   }
 
   public BmmClass removeAllCreators(List<BmmProcedure> creatorsList) {
-    this.creatorsList.removeAll(creatorsList);
+    this.creatorsSet.removeAll(creatorsList);
     creatorsList.forEach(creator -> this.removeCreator(creator));
     return this;
   }
@@ -377,36 +378,36 @@ public abstract class BmmClass extends BmmModule {
    * Subset of creators that create a new instance from a single argument of another type.
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "convertors_list")
-  private List<BmmProcedure> convertorsList;
-  public BmmClass setConvertorsList(List<BmmProcedure> convertorsList) {
-    this.convertorsList = convertorsList;
-    convertors = convertorsList.stream()
+  private Set<BmmProcedure> convertorsSet = new HashSet<>();
+  public BmmClass setConvertorsList(Set<BmmProcedure> convertorsSet) {
+    this.convertorsSet = convertorsSet;
+    convertors = convertorsSet.stream()
             .collect(Collectors.toMap(BmmProcedure::getName, convertor -> convertor));
     return this;
   }
-  public List<BmmProcedure> getConvertorsList() {
-    return Collections.unmodifiableList(convertorsList);
+  public Set<BmmProcedure> getConvertorsList() {
+    return Collections.unmodifiableSet(convertorsSet);
   }
   public BmmClass addConvertor(BmmProcedure convertor) {
-    this.convertorsList.add(convertor);
+    this.convertorsSet.add(convertor);
     this.convertors.put(convertor.getName(), convertor);
     return this;
   }
 
   public BmmClass addAllConvertors(List<BmmProcedure> convertorsList) {
-    this.convertorsList.addAll(convertorsList);
+    this.convertorsSet.addAll(convertorsList);
     convertorsList.forEach(convertor -> this.addConvertor(convertor));
     return this;
   }
 
   public BmmClass removeConvertor(BmmProcedure convertor) {
-    this.convertorsList.remove(convertor);
+    this.convertorsSet.remove(convertor);
     this.convertors.remove(convertor.getName());
     return this;
   }
 
   public BmmClass removeAllConvertors(List<BmmProcedure> convertorsList) {
-    this.convertorsList.removeAll(convertorsList);
+    this.convertorsSet.removeAll(convertorsList);
     convertorsList.forEach(convertor -> this.removeConvertor(convertor));
     return this;
   }
@@ -414,22 +415,6 @@ public abstract class BmmClass extends BmmModule {
   private Map<String, BmmProcedure> convertors;
   public Map<String,BmmProcedure> getConvertors() {
     return Collections.unmodifiableMap(convertors);
-  }
-  //=====================================================================================================
-
-  /**
-   * 1..1
-   * is_override: Boolean
-   * True if this definition overrides a class of the same name in an included
-   * schema.
-   */
-  @NonNull
-  @Transient
-  private Boolean isOverride;
-
-  public Boolean getOverride() {
-    //TODO
-    return isOverride;
   }
 
   /**
@@ -439,22 +424,51 @@ public abstract class BmmClass extends BmmModule {
    * True if this class represents a type considered to be primitive in the type system, i.e. any typically built-in
    * or standard library type such as String, Date, Hash<K,V> etc.
    */
-  @Transient
+  @Getter
+  @Column(name = "is_primitive")
   private Boolean isPrimitive;
+
+  public BmmClass setPrimitive(Boolean primitive) {
+    isPrimitive = primitive;
+    return this;
+  }
+
   /**
    * 0..1
    * is_abstract: Boolean
    * {default = false}
    * True if this class is marked as abstract, i.e. direct instances cannot be created from its direct type.
    */
+  @Getter
   @Column(name = "is_abstract")
   private Boolean isAbstract;
+
+  public BmmClass setAbstract(Boolean anAbstract) {
+    isAbstract = anAbstract;
+    return this;
+  }
   /**
    * 0..1
    * invariants: List<EL_ASSERTION>
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "invariants")
   private List<ElAssertion> invariants;
+  //=====================================================================================================
+  /**
+   * 1..1
+   * is_override: Boolean
+   * True if this definition overrides a class of the same name in an included schema.
+   */
+  @NonNull
+  @Transient
+  @Getter
+  private Boolean isOverride = false;
+
+  public BmmClass setOverride(Boolean override) {
+    isOverride = override;
+    return this;
+  }
+
   // Functions
   //============================================================================================================
   /**
