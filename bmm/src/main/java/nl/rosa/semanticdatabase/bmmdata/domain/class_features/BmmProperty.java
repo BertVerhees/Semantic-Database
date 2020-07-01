@@ -1,9 +1,14 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
+import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Class BmmProperty
@@ -14,8 +19,8 @@ import nl.rosa.semanticdatabase.base.MultiplicityInterval;
  * Invariants
  * Inv_signature_no_args: signature.arguments = Void
  */
-@Data
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public abstract class BmmProperty extends BmmClassScoped implements BmmInstantiable {
   /**
    * 0..1
@@ -66,4 +71,9 @@ public abstract class BmmProperty extends BmmClassScoped implements BmmInstantia
   public String displayName(){
     return null;
   }
+  //========== counterparts =====================================================
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "bmm_class_id")
+  private BmmClass bmmClass;
+
 }

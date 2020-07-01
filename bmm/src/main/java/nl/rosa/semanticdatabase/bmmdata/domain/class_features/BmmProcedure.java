@@ -3,8 +3,12 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Class BmmProcedure
@@ -18,4 +22,9 @@ import javax.persistence.Entity;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 public class BmmProcedure extends BmmRoutine {
+
+    //========== counterparts =====================================================
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bmm_class_id")
+    private BmmClass bmmClass;
 }

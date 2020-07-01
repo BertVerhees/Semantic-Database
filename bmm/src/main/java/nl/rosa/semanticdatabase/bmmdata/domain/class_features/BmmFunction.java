@@ -3,9 +3,13 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Class BmmFunction
@@ -21,7 +25,8 @@ import javax.persistence.Entity;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
-public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
+public class BmmFunction extends BmmRoutine {
+
   /**
    * Optional details enabling a function to be represented as an operator in a syntactic representation.
    */
@@ -54,4 +59,8 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
   public Boolean isBoolean() {
     return null;
   }
+  //========== counterparts =====================================================
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "bmm_class_id")
+  private BmmClass bmmClass;
 }

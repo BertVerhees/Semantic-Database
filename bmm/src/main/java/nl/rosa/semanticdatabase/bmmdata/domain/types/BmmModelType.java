@@ -3,6 +3,8 @@ package nl.rosa.semanticdatabase.bmmdata.domain.types;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmValueSetSpec;
 
+import javax.persistence.Entity;
+
 
 /**
  * Class BmmModelType
@@ -14,6 +16,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmValueSetSpec;
  * Result = defining_class.is_primitive.
  * 
  */
+@Entity
 public abstract class BmmModelType extends BmmEffectiveType {
   /**
    * 0..1
