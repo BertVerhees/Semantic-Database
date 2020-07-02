@@ -55,12 +55,11 @@ public class BmmFunction extends BmmRoutine {
    * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() = 'Boolean').
    * @return
    */
-  @Override
   public Boolean isBoolean() {
     return null;
   }
   //========== counterparts =====================================================
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "bmm_class_id")
+  @JoinColumn(name = "fk_bmm_class_id")
   private BmmClass bmmClass;
 }

@@ -5,13 +5,14 @@
     <packaging>pom</packaging>
     <modules>
         <module>base</module>
-        <module>grammars</module>
+        <module>bmm</module>
         <module>utils</module>
+        <!--        <module>grammars</module>-->
+<!--        <module>utils</module>-->
 <!--        <module>odin</module>-->
 <!--        <module>archetypeobjectmodel</module>-->
 <!--        <module>referencemodel</module>-->
-        <module>semanticdatabase-web</module>
-        <module>bmm</module>
+<!--        <module>semanticdatabase-web</module>-->
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

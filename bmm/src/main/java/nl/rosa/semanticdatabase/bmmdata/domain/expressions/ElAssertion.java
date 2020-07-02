@@ -40,8 +40,9 @@ public class ElAssertion extends BmmBaseEntity {
     return this;
   }
 
+  //=============  counterparts =========================================================
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "class_id")
+  @JoinColumn(name = "fk_bmm_class_id")
   @Getter
   private BmmClass bmmClass;
 

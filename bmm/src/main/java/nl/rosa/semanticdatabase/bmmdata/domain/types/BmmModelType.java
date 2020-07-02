@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmValueSetSpec;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 
 /**
@@ -39,6 +40,8 @@ public abstract class BmmModelType extends BmmEffectiveType {
    * @return
    */
   @Override
+  @NonNull
+  @MapKey
   public String typeBaseName() {
     return null;
   }
@@ -54,4 +57,9 @@ public abstract class BmmModelType extends BmmEffectiveType {
   public Boolean isPrimitive() {
     return null;
   }
+
+  //========== counterparts =====================================================
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "fk_bmm_class_id")
+  private BmmClass bmmClass;
 }

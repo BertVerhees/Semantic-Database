@@ -25,6 +25,6 @@ public class BmmProcedure extends BmmRoutine {
 
     //========== counterparts =====================================================
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bmm_class_id")
+    @JoinColumn(name = "fk_bmm_class_id")
     private BmmClass bmmClass;
 }

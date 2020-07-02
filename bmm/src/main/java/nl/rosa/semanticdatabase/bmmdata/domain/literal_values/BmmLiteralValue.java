@@ -3,11 +3,8 @@ package nl.rosa.semanticdatabase.bmmdata.domain.literal_values;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
-
-import javax.persistence.Entity;
 
 /**
  * Class BmmLiteralValue
@@ -17,8 +14,6 @@ import javax.persistence.Entity;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@Entity
 public class BmmLiteralValue extends BmmBaseEntity {
 
   /**
@@ -42,4 +37,7 @@ public class BmmLiteralValue extends BmmBaseEntity {
    * A native representation of the value, possibly derived by deserialising value_literal.
    */
   private Object value;
+
+  protected BmmLiteralValue() {
+  }
 }

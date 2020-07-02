@@ -8,6 +8,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackageContainer;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +18,7 @@ import java.util.Map;
 @Getter
 @Setter
 @EqualsAndHashCode(callSuper = true)
+@Entity
 public class BmmSchema extends BmmPackageContainer implements BmmModelMetadata {
     /**
      * BmmModelMetadata
@@ -30,10 +32,8 @@ public class BmmSchema extends BmmPackageContainer implements BmmModelMetadata {
      */
     @NonNull
     private String name;
-    private Map<String, Object> documentation;
     @NonNull
     private BmmDeclaration scope;
-    private Map<String, Object> extensions;
     // Functions;
     @Override
     public Boolean isRootScope(){
