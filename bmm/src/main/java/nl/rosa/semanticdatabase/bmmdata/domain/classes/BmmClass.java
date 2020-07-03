@@ -2,11 +2,13 @@ package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
 import lombok.Getter;
 import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModule;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmModelType;
+import nl.rosa.semanticdatabase.utils.tree.Tree;
 import org.springframework.util.ClassUtils;
 
 import javax.persistence.*;
@@ -32,10 +34,31 @@ import java.util.*;
  * (effected) is_abstract (): Boolean
  * True if this class is abstract in its model. Value provided from an underlying
  * data property set at creation or construction time.
+ *
+ * !!IMPORTANT!!
+ * BmmClass has two relations to BmmModelType
+ * 1) OneToOne because it serves as Class to give BmmModelType a Type
+ * 2) OneToMany, to define the ancestors of BmmClass (multiple inheritance is possible)
  */
 @DiscriminatorValue("4")
 @Entity
 public abstract class BmmClass extends BmmModule {
+
+    /**
+     * This Id is not generated because it comes from the parent-child relation BmmModelType, where the latter is the parent.
+     */
+    @Id
+    private Long id;
+
+    public BmmBaseEntity setId(Long id) {
+        this.id = id;
+        return this;
+    }
+    @MapsId
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bmm_model_type_id")
+    private BmmModelType bmmModelType;
+
 
     /**
      * 1..1
@@ -190,7 +213,7 @@ public abstract class BmmClass extends BmmModule {
     //======ancestors=======================================================================
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "class")
     @MapKey(name = "type_base_name")
-    private Map<String, BmmModelType> ancestors;
+    private HashMap<String, BmmModelType> ancestors;
 
     public BmmClass addAncestor(BmmModelType ancestor) {
         if (ancestors == null) {
@@ -467,8 +490,7 @@ public abstract class BmmClass extends BmmModule {
      * @return List<String>
      */
     public List<String> allAncestors() {
-        List<String> result = new ArrayList<>();
-        //recursive
+        Tree children = new Tree
         return null;
     }
 

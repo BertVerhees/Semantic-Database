@@ -5,6 +5,11 @@ import lombok.Getter;
 import javax.persistence.*;
 import java.io.Serializable;
 
+/**
+ * The Generated Id for BmmClass is not located here, but located in the class before BMMClass to make it possible
+ * that BmmClass can have a MapsId to provide BmmModelType with a good OneToOne with MapsId
+ */
+
 @Getter
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
