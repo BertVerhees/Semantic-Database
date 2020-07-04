@@ -3,6 +3,8 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
@@ -25,7 +27,8 @@ import javax.persistence.ManyToOne;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
-public class BmmFunction extends BmmRoutine {
+public class BmmFunction extends BmmRoutine implements BmmTypedFeature{
+
 
   /**
    * Optional details enabling a function to be represented as an operator in a syntactic representation.
@@ -40,14 +43,33 @@ public class BmmFunction extends BmmRoutine {
    * is_nullable: Boolean
    * {default = false}
    * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
+   * Implemented by interface BmmTypedFeature
    */
+  @NonNull
+  @Getter
   private Boolean isNullable;
+
+  public BmmFunction setIsNullable(Boolean nullable) {
+    isNullable = nullable;
+    return this;
+  }
+
+
   /**
    * 1..1
    * type: BMM_TYPE
    * Declared or inferred static type of the entity.
+   *
+   * Implemented because of implemented derived interface from BmmTyped
    */
+  @NonNull
+  @Getter
   private BmmType type;
+
+  public BmmFunction setType(BmmType type) {
+    this.type = type;
+    return this;
+  }
   /**
    * 1..1
    * is_boolean (): Boolean

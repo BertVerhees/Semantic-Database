@@ -2,8 +2,11 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,6 +25,40 @@ import javax.persistence.ManyToOne;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 public abstract class BmmProperty extends BmmClassScoped implements BmmInstantiable {
+
+  /**
+   * 0..1
+   *
+   * is_nullable: Boolean
+   * {default = false}
+   *
+   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
+   *
+   * Implemented because of implemented derived interface from BmmTyped
+   */
+  @Getter
+  protected Boolean isNullable;
+
+  public BmmTypedFeature setIsNullable (Boolean newVar){
+    isNullable = newVar;
+    return this;
+  }
+  /**
+   * 1..1
+   * type: BMM_TYPE
+   * Declared or inferred static type of the entity.
+   *
+   * Implemented because of implemented derived interface from BmmTyped
+   */
+  @NonNull
+  @Getter
+  protected BmmType type;
+
+  public BmmProperty setType(BmmType type) {
+    this.type = type;
+    return this;
+  }
+
   /**
    * 0..1
    * is_im_runtime: Boolean

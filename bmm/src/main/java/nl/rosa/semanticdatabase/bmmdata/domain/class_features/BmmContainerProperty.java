@@ -2,12 +2,8 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
-import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmContainerType;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
-import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 import javax.persistence.Entity;
 
@@ -16,9 +12,7 @@ import javax.persistence.Entity;
  * Class BmmContainerProperty
  * Meta-type of for properties of linear container type, such as List<T> etc.
  */
-@Data
 @EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
 @Entity
 public class BmmContainerProperty extends BmmProperty  {
   /**
@@ -27,22 +21,6 @@ public class BmmContainerProperty extends BmmProperty  {
    * Cardinality of this container.
    */
   private MultiplicityInterval cardinality;
-
-  /**
-   * 1..1
-   * (redefined)
-   * type: BMM_CONTAINER_TYPE
-   * Declared or inferred static type of the entity.
-   */
-  @NonNull
-  private BmmContainerType type;
-  /**
-   * 0..1
-   * is_nullable: Boolean
-   * {default = false}
-   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
-   */
-  private Boolean isNullable;
   /**
    * 1..1
    * (abstract)
@@ -57,16 +35,6 @@ public class BmmContainerProperty extends BmmProperty  {
     return null;
   }
 
-  /**
-   * This is an inheritiance anomaly, please ignore, it has to do with Java not supporting multiple inheritance and
-   * interface use for that reason
-   * @param newVar
-   */
-  @Override
-  @Deprecated
-  public void setType(BmmType newVar) {
-    type = (BmmContainerType) newVar;
-  }
   /**
    * 1..1
    * is_boolean (): Boolean

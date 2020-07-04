@@ -20,10 +20,27 @@ import javax.persistence.ManyToOne;
  * Inv_not_nullable: is_nullable = False
  * Inv_signature_no_args: signature.arguments = Void
  */
+@Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @NoArgsConstructor
-public class BmmConstant extends BmmClassScoped {
+public class BmmConstant extends BmmClassScoped implements BmmInstantiable{
+
+  /**
+   * 0..1
+   * is_nullable: Boolean
+   * {default = false}
+   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
+   * Implemented by interface BmmTypedFeature
+   */
+  @NonNull
+  @Getter
+  private Boolean isNullable;
+
+  public BmmConstant setIsNullable(Boolean nullable) {
+    isNullable = nullable;
+    return this;
+  }
 
   /**
    * 1..1
@@ -40,23 +57,11 @@ public class BmmConstant extends BmmClassScoped {
   }
 
   /**
-   * 0..1
-   * is_nullable: Boolean
-   * {default = false}
-   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
-   */
-  @Getter
-  private Boolean isNullable;
-
-  public BmmConstant setNullable(Boolean nullable) {
-    isNullable = nullable;
-    return this;
-  }
-
-  /**
    * 1..1
    * type: BMM_TYPE
    * Declared or inferred static type of the entity.
+   *
+   * Implemented because of implemented derived interface from BmmTyped
    */
   @NonNull
   @Getter

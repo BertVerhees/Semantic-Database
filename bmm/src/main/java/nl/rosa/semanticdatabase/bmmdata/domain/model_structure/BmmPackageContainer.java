@@ -49,8 +49,9 @@ public abstract class BmmPackageContainer extends BmmDeclaration {
       throw new RuntimeException("Scope is of the type "+super.getScope().getClass().getCanonicalName()+" but should be of type BmmPackageContainer");
     }
   }
-  public void setScope(@NonNull BmmPackageContainer scope){
+  public BmmPackageContainer setScope(@NonNull BmmPackageContainer scope){
     super.setScope(scope);
+    return this;
   }
 
   // Functions

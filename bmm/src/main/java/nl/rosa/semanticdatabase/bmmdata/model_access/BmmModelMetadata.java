@@ -16,7 +16,7 @@ public interface BmmModelMetadata {
      * @return
      */
     String getRmPublisher();
-    void setRmPublisher(String newVar);
+    BmmModelMetadata setRmPublisher(String newVar);
 
     /**
      * 1..1
@@ -25,5 +25,5 @@ public interface BmmModelMetadata {
      * @return
      */
     String getRmRelease();
-    void setRmRelease(String newVar);
+    BmmModelMetadata setRmRelease(String newVar);
 }

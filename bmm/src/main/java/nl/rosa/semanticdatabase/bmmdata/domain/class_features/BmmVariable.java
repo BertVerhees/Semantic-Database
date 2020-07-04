@@ -1,11 +1,9 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 /**
  * Class BmmVariable
@@ -18,6 +16,38 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
 public abstract class BmmVariable extends BmmClassEntity implements BmmInstantiable {
+
+  /**
+   * 0..1
+   * is_nullable: Boolean
+   * {default = false}
+   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
+   * Implemented by interface BmmTypedFeature
+   */
+  @NonNull
+  @Getter
+  protected Boolean isNullable;
+
+  public BmmVariable setIsNullable(Boolean nullable) {
+    isNullable = nullable;
+    return this;
+  }
+  /**
+   * 1..1
+   * type: BMM_TYPE
+   * Declared or inferred static type of the entity.
+   *
+   * Implemented because of implemented derived interface from BmmTyped
+   */
+  @NonNull
+  @Getter
+  private BmmType type;
+
+  public BmmVariable setType(BmmType type) {
+    this.type = type;
+    return this;
+  }
+
   /**
    * 1..1
    * (redefined)

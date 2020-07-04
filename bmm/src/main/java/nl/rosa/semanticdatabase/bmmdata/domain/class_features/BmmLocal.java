@@ -1,16 +1,13 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 import javax.persistence.Entity;
 
 /**
  * Class BmmLocal
  */
-@Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
 public class BmmLocal extends BmmVariable  {
@@ -21,12 +18,6 @@ public class BmmLocal extends BmmVariable  {
    * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
    */
   private Boolean isNullable;
-  /**
-   * 1..1
-   * type: BMM_TYPE
-   * Declared or inferred static type of the entity.
-   */
-  private BmmType type;
   /**
    * 1..1
    * is_boolean (): Boolean

@@ -1,11 +1,9 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
-import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmUnitaryType;
 
 import javax.persistence.Entity;
@@ -15,18 +13,10 @@ import javax.persistence.Entity;
  * Class BmmUnitaryProperty
  * Meta-type of for properties of unitary type.
  */
-@Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @NoArgsConstructor
 public class BmmUnitaryProperty extends BmmProperty  {
-  /**
-   * 0..1
-   * is_nullable: Boolean
-   * {default = false}
-   * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
-   */
-  private Boolean isNullable;
   /**
    * 1..1
    * (redefined)
@@ -35,16 +25,6 @@ public class BmmUnitaryProperty extends BmmProperty  {
    */
   @NonNull
   private BmmUnitaryType type;
-  /**
-   * This is an inheritiance anomaly, please ignore, it has to do with Java not supporting multiple inheritance and
-   * interface use for that reason
-   * @param newVar
-   */
-  @Override
-  @Deprecated
-  public void setType(BmmType newVar) {
-    this.type = (BmmUnitaryType) newVar;
-  }
   /**
    * 1..1
    * is_boolean (): Boolean

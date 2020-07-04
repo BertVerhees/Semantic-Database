@@ -8,7 +8,6 @@ import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModule;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmModelType;
-import nl.rosa.semanticdatabase.utils.tree.Tree;
 import org.springframework.util.ClassUtils;
 
 import javax.persistence.*;
@@ -213,7 +212,7 @@ public abstract class BmmClass extends BmmModule {
     //======ancestors=======================================================================
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "class")
     @MapKey(name = "type_base_name")
-    private HashMap<String, BmmModelType> ancestors;
+    private Map<String, BmmModelType> ancestors;
 
     public BmmClass addAncestor(BmmModelType ancestor) {
         if (ancestors == null) {
@@ -490,7 +489,7 @@ public abstract class BmmClass extends BmmModule {
      * @return List<String>
      */
     public List<String> allAncestors() {
-        Tree children = new Tree
+//        Tree children =
         return null;
     }
 

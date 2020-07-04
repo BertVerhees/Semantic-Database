@@ -3,8 +3,11 @@ package nl.rosa.semanticdatabase.bmmdata.domain.literal_values;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmTyped;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 /**
  * Class BmmLiteralValue
@@ -14,7 +17,36 @@ import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class BmmLiteralValue extends BmmBaseEntity {
+public class BmmLiteralValue extends BmmBaseEntity implements BmmTyped {
+
+  /**
+   * 1..1
+   * type: BMM_TYPE
+   * Declared or inferred static type of the entity.
+   *
+   * Implemented because of implemented derived interface from BmmTyped
+   */
+  @NonNull
+  @Getter
+  private BmmType type;
+
+  public BmmLiteralValue setType(BmmType type) {
+    this.type = type;
+    return this;
+  }
+
+  /**
+   * 1..1
+   * is_boolean (): Boolean
+   * Post_result: Result = type().equal( {BMM_MODEL}.boolean_type_definition())
+   * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() = 'Boolean').
+   * @return
+   */
+  @Override
+  public Boolean isBoolean() {
+    return null;
+  }
+
 
   /**
    * 0..1

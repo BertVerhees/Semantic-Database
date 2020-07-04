@@ -1,10 +1,10 @@
 package nl.rosa.semanticdatabase.bmmdata.model_access;
 
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
-import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
-import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackageContainer;
 
 import javax.persistence.Column;
@@ -16,7 +16,6 @@ import java.util.Map;
  * Default created on 6-6-2020
  */
 @Getter
-@Setter
 @EqualsAndHashCode(callSuper = true)
 @Entity
 public class BmmSchema extends BmmPackageContainer implements BmmModelMetadata {
@@ -25,23 +24,32 @@ public class BmmSchema extends BmmPackageContainer implements BmmModelMetadata {
      */
     @Column(name = "rm_publisher")
     private String rmPublisher;
+
+    @Override
+    public BmmModelMetadata setRmPublisher(String rmPublisher) {
+        this.rmPublisher = rmPublisher;
+        return this;
+    }
+
     @Column(name = "rm_release")
     private String rmRelease;
+
+    @Override
+    public BmmModelMetadata setRmRelease(String rmRelease) {
+        this.rmRelease = rmRelease;
+        return this;
+    }
+
     /**
      * BmmDeclaration
      */
     @NonNull
     private String name;
-    @NonNull
-    private BmmDeclaration scope;
     // Functions;
     @Override
     public Boolean isRootScope(){
         return scope.equals(this);
-    }/**
-     * BmmPackageContainer
-     */
-    private Map<String, BmmPackage> packages;
+    }
     /**
      * 1..1
      * bmm_version: String

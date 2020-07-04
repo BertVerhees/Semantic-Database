@@ -1,9 +1,8 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
+import lombok.Getter;
 
 import javax.persistence.Entity;
 
@@ -11,7 +10,7 @@ import javax.persistence.Entity;
  * Class BmmResult
  * Automatically declared variable representing result instance of a Function call.
  */
-@Data
+@Getter
 @EqualsAndHashCode(callSuper = true)
 @Entity
 public class BmmResult extends BmmVariable {
@@ -22,12 +21,6 @@ public class BmmResult extends BmmVariable {
    * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
    */
   private Boolean isNullable;
-  /**
-   * 1..1
-   * type: BMM_TYPE
-   * Declared or inferred static type of the entity.
-   */
-  private BmmType type;
   /**
    * 1..1
    * (redefined)

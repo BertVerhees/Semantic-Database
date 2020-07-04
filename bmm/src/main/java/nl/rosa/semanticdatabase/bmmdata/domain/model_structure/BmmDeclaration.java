@@ -130,7 +130,7 @@ public abstract class BmmDeclaration extends BmmBaseEntity {
   @Getter
   @OneToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "scope_id")
-  private BmmDeclaration scope;
+  protected BmmDeclaration scope;
 
   public BmmDeclaration setScope(BmmDeclaration scope) {
     this.scope = scope;
