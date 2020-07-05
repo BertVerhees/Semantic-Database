@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmmdata.model_access;
+package nl.rosa.semanticdatabase.bmmdata.services.model_access.data;
 
 /**
  * Default created on 6-6-2020

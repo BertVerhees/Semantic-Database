@@ -1,55 +1,35 @@
-package nl.rosa.semanticdatabase.bmmdata.model_access;
+package nl.rosa.semanticdatabase.bmmdata.services.model_access.data;
 
-import lombok.EqualsAndHashCode;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackageContainer;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import java.util.List;
-import java.util.Map;
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
+import java.util.*;
 
 /**
  * Default created on 6-6-2020
  */
+@Builder
 @Getter
-@EqualsAndHashCode(callSuper = true)
-@Entity
+@Setter
 public class BmmSchema extends BmmPackageContainer implements BmmModelMetadata {
     /**
      * BmmModelMetadata
      */
-    @Column(name = "rm_publisher")
     private String rmPublisher;
 
-    @Override
-    public BmmModelMetadata setRmPublisher(String rmPublisher) {
-        this.rmPublisher = rmPublisher;
-        return this;
-    }
-
-    @Column(name = "rm_release")
     private String rmRelease;
-
-    @Override
-    public BmmModelMetadata setRmRelease(String rmRelease) {
-        this.rmRelease = rmRelease;
-        return this;
-    }
-
     /**
      * BmmDeclaration
      */
     @NonNull
     private String name;
-    // Functions;
-    @Override
-    public Boolean isRootScope(){
-        return scope.equals(this);
-    }
     /**
      * 1..1
      * bmm_version: String
@@ -59,16 +39,49 @@ public class BmmSchema extends BmmPackageContainer implements BmmModelMetadata {
     private String bmmVersion;
     /**
      * 0..1
-     * primitive_types: List<P_BMM_CLASS>
-     * Primitive type definitions. Persisted attribute.
-     */
-    private List<BmmClass> primitiveTypes;
-    /**
-     * 0..1
      * class_definitions: List<P_BMM_CLASS>
      * Class definitions. Persisted attribute.
      */
-    private List<BmmClass> classDefinitions;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "schema")
+    private Set<BmmClass> classDefinitions;
+    public Set<BmmClass> getClassDefinitions() {
+        return Collections.unmodifiableSet(classDefinitions);
+    }
+
+    public BmmSchema setClassDefinitions(Set<BmmClass> classDefinitions) {
+        this.classDefinitions = classDefinitions;
+        return this;
+    }
+
+    public BmmSchema addClassDefinition(BmmClass classDefinitions) {
+        if(this.classDefinitions==null){
+            this.classDefinitions = new HashSet<>();
+        }
+        this.classDefinitions.add(classDefinitions);
+        return this;
+    }
+
+    public BmmSchema addClassDefinitions(Set<BmmClass> classDefinitions) {
+        if(this.classDefinitions==null){
+            classDefinitions = new HashSet<>();
+        }
+        this.classDefinitions.addAll(classDefinitions);
+        return this;
+    }
+
+    public BmmSchema removeClassDefinition(BmmClass classDefinitions) {
+        if(this.classDefinitions!=null) {
+            this.classDefinitions.remove(classDefinitions);
+        }
+        return this;
+    }
+
+    public BmmSchema removeClassDefinitions(Set<BmmClass> classDefinitions) {
+        if(this.classDefinitions!=null) {
+            this.classDefinitions.removeAll(classDefinitions);
+        }
+        return this;
+    }
     /**
      * 0..1
      * includes: Hash<String,BMM_INCLUDE_SPEC>
@@ -78,6 +91,36 @@ public class BmmSchema extends BmmPackageContainer implements BmmModelMetadata {
      * Persisted attribute.
      */
     private Map<String, BmmIncludeSpec> includes;
+
+    public BmmSchema addBmmIncludeSpec(BmmIncludeSpec includeSpec) {
+        if (includes == null) {
+            includes = new HashMap<>();
+        }
+        this.includes.put(includeSpec.getBmmId(), includeSpec);
+        return this;
+    }
+
+    public BmmSchema addBmmIncludeSpecs(Set<BmmIncludeSpec> includesSet) {
+        includesSet.forEach(include -> this.addBmmIncludeSpec(include));
+        return this;
+    }
+
+    public BmmSchema removeBmmIncludeSpec(BmmIncludeSpec includeSpec) {
+        if (includes != null) {
+            this.includes.remove(includeSpec.getBmmId());
+        }
+        return this;
+    }
+
+    public BmmSchema removeBmmIncludeSpecs(Set<BmmIncludeSpec> includesSet) {
+        includesSet.forEach(include -> this.removeBmmIncludeSpec(include));
+        return this;
+    }
+
+    public Map<String, BmmIncludeSpec> getBmmIncludeSpecs() {
+        return Collections.unmodifiableMap(includes);
+    }
+
     /**
      * 0..1
      * bmm_schema: BMM_MODEL

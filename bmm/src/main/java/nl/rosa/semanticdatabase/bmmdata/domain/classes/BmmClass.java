@@ -8,6 +8,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModule;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmModelType;
+import nl.rosa.semanticdatabase.bmmdata.services.model_access.data.BmmSchema;
 import org.springframework.util.ClassUtils;
 
 import javax.persistence.*;
@@ -394,7 +395,7 @@ public abstract class BmmClass extends BmmModule {
      * invariants: List<EL_ASSERTION>
      */
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "class")
-    private List<ElAssertion> invariants;
+    private Set<ElAssertion> invariants;
     //====== transients =================================================================
     /**
      * 1..1
@@ -578,5 +579,16 @@ public abstract class BmmClass extends BmmModule {
      */
     public List<BmmProperty> flatProperties() {
         return null;
+    }
+
+    //=============  counterparts =========================================================
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_bmm_schema_id")
+    @Getter
+    private BmmSchema bmmSchema;
+
+    public BmmClass setBmmClass(BmmSchema bmmSchema) {
+        this.bmmSchema = bmmSchema;
+        return this;
     }
 }
