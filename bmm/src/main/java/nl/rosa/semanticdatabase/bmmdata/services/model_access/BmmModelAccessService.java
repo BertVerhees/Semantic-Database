@@ -3,7 +3,6 @@ package nl.rosa.semanticdatabase.bmmdata.services.model_access;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
 
 import java.util.Optional;
-import java.util.Set;
 
 /**
  * Default created on 5-6-2020
@@ -12,9 +11,9 @@ import java.util.Set;
 public interface BmmModelAccessService {
     /**
      * Loads data from Source and creates all Objects
-     * @param schemas
+     * @param model
      */
-    void initializeWithLoadList(Set<String> schemas);
+    void initialize(String model);
 
     /**
      * 1..1

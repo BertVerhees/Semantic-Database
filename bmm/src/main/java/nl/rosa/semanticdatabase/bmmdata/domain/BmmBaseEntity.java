@@ -14,10 +14,9 @@ import java.io.Serializable;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(
-        discriminatorType = DiscriminatorType.INTEGER,
-        columnDefinition = "TINYINT(1)"
+        discriminatorType = DiscriminatorType.STRING
 )
-@DiscriminatorValue("1")
+@DiscriminatorValue("BBE")
 public abstract class BmmBaseEntity implements Serializable {
 
     @Id

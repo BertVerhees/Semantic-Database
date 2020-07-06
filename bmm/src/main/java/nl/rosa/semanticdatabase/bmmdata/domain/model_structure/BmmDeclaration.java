@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * Class BmmDeclaration
  */
-@DiscriminatorValue("2")
+@DiscriminatorValue("BBE_BD")
 @Entity
 public abstract class BmmDeclaration extends BmmBaseEntity {
   /**
@@ -23,7 +23,8 @@ public abstract class BmmDeclaration extends BmmBaseEntity {
   @Getter
   @NonNull
   @MapKey
-  private String name;
+  @Column(name = "name")
+  protected String name;
 
   public BmmDeclaration setName(String name) {
     this.name = name;

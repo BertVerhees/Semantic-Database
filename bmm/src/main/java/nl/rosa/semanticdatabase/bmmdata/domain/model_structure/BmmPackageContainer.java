@@ -5,12 +5,15 @@ import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElProcedureAgent;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Class BmmPackageContainer
  */
+@Entity
+@DiscriminatorValue("BBE_BD_BPC")
 public abstract class BmmPackageContainer extends BmmDeclaration {
 
   /**

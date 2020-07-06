@@ -20,11 +20,20 @@ public final class JSONUtils {
         }
     }
 
+    public static boolean isJSONValid(String jsonInString, Class clasz) {
+        try {
+            gson.fromJson(jsonInString, clasz);
+            return true;
+        } catch(com.google.gson.JsonSyntaxException ex) {
+            return false;
+        }
+    }
+
     public static String toJSON(Object object){
         return gson.toJson(object);
     }
 
-    public static Object fromJSON(String object){
-        return gson.fromJson(object, Object.class);
+    public static Object fromJSON(String object, Class clasz){
+        return gson.fromJson(object, clasz);
     }
 }

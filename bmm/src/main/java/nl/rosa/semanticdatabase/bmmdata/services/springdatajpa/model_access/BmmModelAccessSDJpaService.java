@@ -2,23 +2,31 @@ package nl.rosa.semanticdatabase.bmmdata.services.springdatajpa.model_access;
 
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmmdata.services.model_access.BmmModelAccessService;
+import nl.rosa.semanticdatabase.utils.json.JSONUtils;
 
 import java.util.Optional;
-import java.util.Set;
+
 
 /**
  * Default created on 5-7-2020
  */
 
 public class BmmModelAccessSDJpaService implements BmmModelAccessService {
+    BmmModel model;
     /**
      * 0..1
-     * initialise_with_load_list (a_schema_load_list: List<String>[0..1])
-     * Initialise with a specific schema load list, usually a sub-set of schemas
-     * @param schemas
+     * {"classDefinitions":{},"usedModels":[],"packages":{},"documentation":{},"extensions":{}}
+     * {"classDefinitions":{},"usedModels":[],"rmPublisher":"publisher","rmRelease":"1.2.3","packages":{},"name":"test","documentation":{},"extensions":{}}
+     * {"classDefinitions":{},"usedModels":[{"classDefinitions":{},"rmPublisher":"publisher2","rmRelease":"1.2.32","packages":{},"name":"test2","documentation":{},"extensions":{}}],
+     * "rmPublisher":"publisher","rmRelease":"1.2.3","packages":{},"name":"test","documentation":{},"extensions":{}}
+     * @param schema
      */
-    public void initializeWithLoadList(Set<String> schemas){
-
+    public void initialize(String schema){
+        if ( JSONUtils.isJSONValid(schema, BmmModel.class)){
+            model = (BmmModel) JSONUtils.fromJSON(schema, BmmModel.class);
+        }else{
+            throw new RuntimeException("Invalid BmmModel in schema.");
+        }
     }
 
     /**

@@ -6,12 +6,11 @@ import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmEnumeration;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSimpleType;
+import nl.rosa.semanticdatabase.bmmdata.services.model_access.data.BmmModelMetadata;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.validation.constraints.NotNull;
+import java.util.*;
 
 
 /**
@@ -20,10 +19,10 @@ import java.util.Map;
  *
  * Inv_top_level_scope: scope = self
  */
-@Data
 @EqualsAndHashCode(callSuper = true)
+@ToString
 @Entity
-public class BmmModel extends BmmPackageContainer {
+public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
    /**
    * 0..1
     * class_definitions: Hash<String,BMM_CLASS>
@@ -54,7 +53,45 @@ public class BmmModel extends BmmPackageContainer {
    * meta-attribute.
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "model", orphanRemoval = true)
-  private List<BmmModel> usedModels = new ArrayList<>();
+  private Set<BmmModel> usedModels;
+  public Set<BmmModel> getUsedModels() {
+    return this.usedModels;
+  }
+
+  public BmmModel setUsedModels(@NotNull Set<BmmModel> usedModels) {
+    this.usedModels = usedModels;
+    return this;
+  }
+
+  public BmmModel addUsedModel(BmmModel usedModel) {
+    if(this.usedModels==null){
+      this.usedModels = new HashSet<>();
+    }
+    this.usedModels.add(usedModel);
+    return this;
+  }
+
+  public BmmModel addUsedModels(Set<BmmModel> usedModels) {
+    if(this.usedModels==null){
+      this.usedModels = new HashSet<>();
+    }
+    this.usedModels.addAll(usedModels);
+    return this;
+  }
+
+  public BmmModel removeUsedModel(BmmModel usedModel) {
+    if(this.usedModels!=null){
+      this.usedModels.remove(usedModel);
+    }
+    return this;
+  }
+
+  public BmmModel removeUsedModels(Set<BmmModel> usedModels) {
+    if(this.usedModels!=null) {
+      this.usedModels.removeAll(usedModels);
+    }
+    return this;
+  }
   @ManyToOne(fetch = FetchType.LAZY)
   private BmmModel usedModel;
   // Functions
@@ -70,10 +107,15 @@ public class BmmModel extends BmmPackageContainer {
    * E.g. 'openehr_ehr_1.0.4'.
    * @return
    */
+  @Column(name = "model_id")
   public String modelId()
   {
-    //TODO
-    return null;
+    return new StringBuilder(rmPublisher)
+            .append("_")
+            .append(name)
+            .append("_")
+            .append(rmRelease)
+            .toString();
   }
   /**
    * 1..1
@@ -350,4 +392,22 @@ public class BmmModel extends BmmPackageContainer {
     //TODO
     return null;
   }
+
+  @Getter
+  private String rmPublisher;
+
+  public BmmModel setRmPublisher(String rmPublisher) {
+    this.rmPublisher = rmPublisher;
+    return this;
+  }
+
+  @Getter
+  private String rmRelease;
+
+  public BmmModel setRmRelease(String rmRelease) {
+    this.rmRelease = rmRelease;
+    return this;
+  }
+
+
 }

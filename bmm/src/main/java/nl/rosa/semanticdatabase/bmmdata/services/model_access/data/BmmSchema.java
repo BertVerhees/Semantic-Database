@@ -6,10 +6,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
-import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackageContainer;
 
-import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
 import java.util.*;
 
 /**
@@ -18,7 +15,7 @@ import java.util.*;
 @Builder
 @Getter
 @Setter
-public class BmmSchema extends BmmPackageContainer implements BmmModelMetadata {
+public class BmmSchema {
     /**
      * BmmModelMetadata
      */
@@ -42,7 +39,6 @@ public class BmmSchema extends BmmPackageContainer implements BmmModelMetadata {
      * class_definitions: List<P_BMM_CLASS>
      * Class definitions. Persisted attribute.
      */
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "schema")
     private Set<BmmClass> classDefinitions;
     public Set<BmmClass> getClassDefinitions() {
         return Collections.unmodifiableSet(classDefinitions);
