@@ -1,9 +1,11 @@
 package nl.rosa.semanticdatabase.bmmdata.services.springdatajpa.model_access;
 
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmmdata.services.model_access.BmmModelAccessService;
 import nl.rosa.semanticdatabase.utils.json.JSONUtils;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.Optional;
 
 
@@ -12,7 +14,7 @@ import java.util.Optional;
  */
 
 public class BmmModelAccessSDJpaService implements BmmModelAccessService {
-    BmmModel model;
+    Optional<BmmModel> model = Optional.empty();
     /**
      * 0..1
      * {"classDefinitions":{},"usedModels":[],"packages":{},"documentation":{},"extensions":{}}
@@ -21,9 +23,9 @@ public class BmmModelAccessSDJpaService implements BmmModelAccessService {
      * "rmPublisher":"publisher","rmRelease":"1.2.3","packages":{},"name":"test","documentation":{},"extensions":{}}
      * @param schema
      */
-    public void initialize(String schema){
+    public void initialize(@NonNull String schema){
         if ( JSONUtils.isJSONValid(schema, BmmModel.class)){
-            model = (BmmModel) JSONUtils.fromJSON(schema, BmmModel.class);
+            model = Optional.of((BmmModel) JSONUtils.fromJSON(schema, BmmModel.class));
         }else{
             throw new RuntimeException("Invalid BmmModel in schema.");
         }
@@ -36,8 +38,16 @@ public class BmmModelAccessSDJpaService implements BmmModelAccessService {
      * @param aModelKey
      * @return
      */
-    public Optional<BmmModel> bmmModel(String aModelKey){
-        return null;
+    public Optional<BmmModel> bmmModel(@NotEmpty String aModelKey){
+        BmmModel bmmModel = model.orElseThrow(() -> new RuntimeException("BmmModelAccessService is not initialized"));
+        if(bmmModel.modelId().equals(aModelKey)){
+            return Optional.of(bmmModel);
+        }else{
+            if(bmmModel.usedModels().isPresent()){
+                return bmmModel.usedModels().get().stream().filter(model -> model.modelId().equals(aModelKey)).findFirst();
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -50,7 +60,15 @@ public class BmmModelAccessSDJpaService implements BmmModelAccessService {
      * @return
      */
     public Boolean hasBmmModel(String aModelKey){
-        return null;
+        BmmModel bmmModel = model.orElseThrow(() -> new RuntimeException("BmmModelAccessService is not initialized"));
+        if(bmmModel.modelId().equals(aModelKey)){
+            return true;
+        }else{
+            if(bmmModel.usedModels().isPresent()){
+                return bmmModel.usedModels().get().stream().filter(model -> model.modelId().equals(aModelKey)).findFirst().isPresent();
+            }
+        }
+        return false;
     }
 
 }

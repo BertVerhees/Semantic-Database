@@ -9,6 +9,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSimpleType;
 import nl.rosa.semanticdatabase.bmmdata.services.model_access.data.BmmModelMetadata;
 
 import javax.persistence.*;
+import javax.swing.text.html.Option;
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
@@ -54,11 +55,11 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
    */
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "model", orphanRemoval = true)
   private Set<BmmModel> usedModels;
-  public Set<BmmModel> getUsedModels() {
+  private Set<BmmModel> getUsedModels() {
     return this.usedModels;
   }
 
-  public BmmModel setUsedModels(@NotNull Set<BmmModel> usedModels) {
+  private BmmModel setUsedModels(@NotNull Set<BmmModel> usedModels) {
     this.usedModels = usedModels;
     return this;
   }
@@ -91,6 +92,17 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
       this.usedModels.removeAll(usedModels);
     }
     return this;
+  }
+
+  public Optional<BmmModel> usedModel(@NonNull String key){
+    if(this.usedModels!=null) {
+      return this.usedModels.stream().filter(model -> model.modelId().equals(key)).findFirst();
+    }
+    return Optional.empty();
+  }
+
+  public Optional<Set<BmmModel>> usedModels(){
+    return Optional.ofNullable(Collections.unmodifiableSet(this.usedModels));
   }
   @ManyToOne(fetch = FetchType.LAZY)
   private BmmModel usedModel;
