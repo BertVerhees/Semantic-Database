@@ -5,6 +5,8 @@ import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 
+import javax.persistence.DiscriminatorValue;
+
 
 /**
  * Class BmmClassEntity
@@ -12,6 +14,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@DiscriminatorValue("BBE_BD_BCE")
 public abstract class BmmClassEntity extends BmmDeclaration {
 
   /**

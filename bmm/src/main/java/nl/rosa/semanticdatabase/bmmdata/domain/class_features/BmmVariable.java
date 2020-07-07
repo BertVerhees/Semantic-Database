@@ -5,6 +5,8 @@ import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
+import javax.persistence.DiscriminatorValue;
+
 /**
  * Class BmmVariable
  * A mutable entity whose scope is a routine.
@@ -15,6 +17,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
+@DiscriminatorValue("BBE_BD_BCE_BV")
 public abstract class BmmVariable extends BmmClassEntity implements BmmInstantiable {
 
   /**

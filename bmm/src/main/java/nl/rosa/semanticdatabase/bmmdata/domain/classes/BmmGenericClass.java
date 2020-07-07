@@ -4,6 +4,7 @@ import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmGenericType;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmParameterType;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +19,7 @@ import java.util.Map;
  * definition
  */
 @Entity
+@DiscriminatorValue("BBE_BD_BM_BC_BGC")
 public class BmmGenericClass extends BmmClass {
   /**
    * 1..1

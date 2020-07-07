@@ -40,7 +40,7 @@ import java.util.*;
  * 1) OneToOne because it serves as Class to give BmmModelType a Type
  * 2) OneToMany, to define the ancestors of BmmClass (multiple inheritance is possible)
  */
-@DiscriminatorValue("4")
+@DiscriminatorValue("BBE_BD_BM_BC")
 @Entity
 public abstract class BmmClass extends BmmModule {
 

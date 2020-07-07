@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 /**
  * Class BmmModule
  */
-@DiscriminatorValue("3")
+@DiscriminatorValue("BBE_BD_BM")
 @Entity
 public abstract class BmmModule extends BmmDeclaration{
     /**

@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 
@@ -14,6 +15,7 @@ import javax.persistence.Entity;
  */
 @EqualsAndHashCode(callSuper = true)
 @Entity
+@DiscriminatorValue("BBE_BD_BCE_BCS_BP_BCP")
 public class BmmContainerProperty extends BmmProperty  {
   /**
    * 0..1

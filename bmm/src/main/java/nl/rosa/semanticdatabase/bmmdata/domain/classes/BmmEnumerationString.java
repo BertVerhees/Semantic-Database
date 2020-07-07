@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  * String-based enumeration meta-type.
  */
 @Entity
+@DiscriminatorValue("BBE_BD_BM_BC_BSC_BE_BES")
 public class BmmEnumerationString extends BmmEnumeration {
   /**
    * 0..1

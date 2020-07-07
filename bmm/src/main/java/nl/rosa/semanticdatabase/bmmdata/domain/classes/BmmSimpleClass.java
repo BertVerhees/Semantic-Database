@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSimpleType;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 
@@ -16,6 +17,7 @@ import javax.persistence.Entity;
  * 
  */
 @Entity
+@DiscriminatorValue("BBE_BD_BM_BC_BSC")
 public class BmmSimpleClass extends BmmClass {
 
   /**

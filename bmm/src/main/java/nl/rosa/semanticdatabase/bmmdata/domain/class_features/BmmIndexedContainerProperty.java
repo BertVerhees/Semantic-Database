@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmIndexedContainerType;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 
@@ -18,6 +19,7 @@ import javax.persistence.Entity;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @NoArgsConstructor
+@DiscriminatorValue("BBE_BD_BCE_BCS_BP_BCP_BICP")
 public class BmmIndexedContainerProperty extends BmmContainerProperty {
   /**
    * 1..1

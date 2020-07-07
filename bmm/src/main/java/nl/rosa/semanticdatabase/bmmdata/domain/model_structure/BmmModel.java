@@ -23,6 +23,7 @@ import java.util.*;
 @EqualsAndHashCode(callSuper = true)
 @ToString
 @Entity
+@DiscriminatorValue("BBE_BD_BPC_BM")
 public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
    /**
    * 0..1

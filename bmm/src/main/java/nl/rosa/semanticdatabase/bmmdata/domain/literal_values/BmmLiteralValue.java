@@ -9,6 +9,8 @@ import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmTyped;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
+import javax.persistence.DiscriminatorValue;
+
 /**
  * Class BmmLiteralValue
  * Meta-type for literal instance values declared in a model. Instance values may
@@ -17,6 +19,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@DiscriminatorValue("BBE_BLV")
 public class BmmLiteralValue extends BmmBaseEntity implements BmmTyped {
 
   /**

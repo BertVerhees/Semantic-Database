@@ -6,6 +6,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.domain.routine_implementation.BmmStatementItem;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import java.util.List;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Entity
+@DiscriminatorValue("BBE_BD_BCE_BCS_BR")
 public abstract class BmmRoutine extends BmmClassScoped {
 
   /**

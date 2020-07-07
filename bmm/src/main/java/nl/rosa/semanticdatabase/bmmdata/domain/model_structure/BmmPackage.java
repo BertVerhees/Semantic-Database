@@ -5,6 +5,7 @@ import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 
 import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.HashSet;
@@ -15,6 +16,7 @@ import java.util.Set;
  * Class BmmPackage
  */
 @Entity
+@DiscriminatorValue("BBE_BD_BPC_BP")
 public class BmmPackage extends BmmPackageContainer {
   /**
    * 0..1

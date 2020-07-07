@@ -4,6 +4,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 /**
@@ -13,6 +14,7 @@ import javax.persistence.Entity;
 @Getter
 @EqualsAndHashCode(callSuper = true)
 @Entity
+@DiscriminatorValue("BBE_BD_BCE_BV_BR")
 public class BmmResult extends BmmVariable {
   /**
    * 0..1

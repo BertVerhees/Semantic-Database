@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 /**
@@ -10,6 +11,7 @@ import javax.persistence.Entity;
  */
 @EqualsAndHashCode(callSuper = true)
 @Entity
+@DiscriminatorValue("BBE_BD_BCE_BV_BL")
 public class BmmLocal extends BmmVariable  {
   /**
    * 0..1

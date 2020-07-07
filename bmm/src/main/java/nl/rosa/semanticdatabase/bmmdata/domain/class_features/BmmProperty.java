@@ -8,10 +8,7 @@ import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * Class BmmProperty
@@ -24,6 +21,7 @@ import javax.persistence.ManyToOne;
  */
 @EqualsAndHashCode(callSuper = true)
 @Entity
+@DiscriminatorValue("BBE_BD_BCE_BCS_BP")
 public abstract class BmmProperty extends BmmClassScoped implements BmmInstantiable {
 
   /**

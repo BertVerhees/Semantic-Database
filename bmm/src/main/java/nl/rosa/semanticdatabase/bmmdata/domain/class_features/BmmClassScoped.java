@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 
+import javax.persistence.DiscriminatorValue;
+
 
 /**
  * Class BmmClassScoped
@@ -11,6 +13,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
+@DiscriminatorValue("BBE_BD_BCE_BCS")
 public abstract class BmmClassScoped extends BmmClassEntity {
 
   /**

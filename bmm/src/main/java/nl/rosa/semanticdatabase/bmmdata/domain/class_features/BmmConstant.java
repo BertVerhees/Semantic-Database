@@ -6,10 +6,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmLiteralValue;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 
 /**
@@ -24,6 +21,7 @@ import javax.persistence.ManyToOne;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @NoArgsConstructor
+@DiscriminatorValue("BBE_BD_BCE_BCS_BC")
 public class BmmConstant extends BmmClassScoped implements BmmInstantiable{
 
   /**
