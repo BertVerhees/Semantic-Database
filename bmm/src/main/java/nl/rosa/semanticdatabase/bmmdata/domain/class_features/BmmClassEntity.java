@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 
@@ -12,9 +11,6 @@ import javax.persistence.DiscriminatorValue;
  * Class BmmClassEntity
  * Any entity declared within a class.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@DiscriminatorValue("BBE_BD_BCE")
 public abstract class BmmClassEntity extends BmmDeclaration {
 
   /**
@@ -24,7 +20,13 @@ public abstract class BmmClassEntity extends BmmDeclaration {
    * True if this feature was synthesised due to generic substitution in an inherited type, or further
    * constraining of a formal generic parameter.
    */
+  @Getter
   private Boolean isSynthesisedGeneric;
+
+  public BmmClassEntity setSynthesisedGeneric(Boolean synthesisedGeneric) {
+    isSynthesisedGeneric = synthesisedGeneric;
+    return this;
+  }
 
   /**
    * 1..1

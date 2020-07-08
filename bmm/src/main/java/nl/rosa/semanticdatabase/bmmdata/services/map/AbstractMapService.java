@@ -1,10 +1,10 @@
 package nl.rosa.semanticdatabase.bmmdata.services.map;
 
-import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 
 import java.util.*;
 
-public abstract class AbstractMapService<T extends BmmBaseEntity, ID extends Long> {
+public abstract class AbstractMapService<T extends Bmm, ID extends Long> {
 
     protected Map<Long, T> map = new HashMap<>();
 

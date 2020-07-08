@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
 
 import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 
 import javax.persistence.Entity;
 
@@ -13,7 +13,7 @@ import javax.persistence.Entity;
  * service.
  */
 @Entity
-public class BmmValueSetSpec extends BmmBaseEntity {
+public class BmmValueSetSpec extends Bmm {
   /**
    * 1..1
    * resource_id: String

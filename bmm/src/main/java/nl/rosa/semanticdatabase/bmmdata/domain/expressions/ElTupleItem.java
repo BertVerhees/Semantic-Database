@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import javax.persistence.Entity;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @DiscriminatorValue("BBE_ETI")
-public class ElTupleItem extends BmmBaseEntity {
+public class ElTupleItem extends Bmm {
 
   /**
    * 0..1

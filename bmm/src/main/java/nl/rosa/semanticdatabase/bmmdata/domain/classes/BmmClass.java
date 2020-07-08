@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
 import lombok.Getter;
 import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModule;
@@ -50,7 +50,7 @@ public abstract class BmmClass extends BmmModule {
     @Id
     private Long id;
 
-    public BmmBaseEntity setId(Long id) {
+    public Bmm setId(Long id) {
         this.id = id;
         return this;
     }

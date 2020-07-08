@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 
 import javax.persistence.*;
@@ -14,7 +14,7 @@ import javax.persistence.*;
  */
 @EqualsAndHashCode(callSuper = true)
 @Entity
-public class ElAssertion extends BmmBaseEntity {
+public class ElAssertion extends Bmm {
 
   /**
    * Optional tag, typically used to designate design intention of the assertion, e.g. "Inv_all_members_valid".

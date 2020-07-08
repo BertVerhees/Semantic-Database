@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 /**
@@ -11,7 +11,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public abstract class ElExpression extends BmmBaseEntity {
+public abstract class ElExpression extends Bmm {
     /**
      * 1..1
      * (abstract)

@@ -10,7 +10,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 
 import javax.persistence.Entity;
 
@@ -18,7 +18,7 @@ import javax.persistence.Entity;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @NoArgsConstructor
-public class BmmOperator extends BmmBaseEntity {
+public class BmmOperator extends Bmm {
 
   /**
    * 1..1

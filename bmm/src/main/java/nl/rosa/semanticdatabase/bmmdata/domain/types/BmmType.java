@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public abstract class BmmType extends BmmBaseEntity {
+public abstract class BmmType extends Bmm {
 
     /**
      * 1..1

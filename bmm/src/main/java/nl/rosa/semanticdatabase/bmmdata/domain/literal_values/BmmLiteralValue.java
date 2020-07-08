@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmTyped;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
@@ -20,7 +20,7 @@ import javax.persistence.DiscriminatorValue;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @DiscriminatorValue("BBE_BLV")
-public class BmmLiteralValue extends BmmBaseEntity implements BmmTyped {
+public class BmmLiteralValue extends Bmm implements BmmTyped {
 
   /**
    * 1..1

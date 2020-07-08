@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain;
 
 import lombok.Getter;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,19 +12,13 @@ import java.io.Serializable;
  */
 
 @Getter
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(
-        discriminatorType = DiscriminatorType.STRING
-)
-@DiscriminatorValue("BBE")
-public abstract class BmmBaseEntity implements Serializable {
+@Document(collection = "bmm")
+public abstract class Bmm implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    public BmmBaseEntity setId(Long id) {
+    public Bmm setId(String id) {
         this.id = id;
         return this;
     }
@@ -32,7 +27,7 @@ public abstract class BmmBaseEntity implements Serializable {
         return this.id == null;
     }
 
-    public Boolean equals(BmmBaseEntity obj){
+    public Boolean equals(Bmm obj){
         return id != null && id.equals( obj.id) && this.getClass().equals(obj.getClass());
     }
 

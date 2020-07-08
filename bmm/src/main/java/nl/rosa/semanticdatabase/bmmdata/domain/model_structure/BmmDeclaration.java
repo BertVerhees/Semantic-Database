@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.model_structure;
 
 import lombok.Getter;
 import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.domain.BmmBaseEntity;
+import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.utils.json.JSONUtils;
 
 import javax.persistence.*;
@@ -14,7 +14,7 @@ import java.util.*;
  */
 @DiscriminatorValue("BBE_BD")
 @Entity
-public abstract class BmmDeclaration extends BmmBaseEntity {
+public abstract class BmmDeclaration extends Bmm {
   /**
    * 1..1
    * name: String
