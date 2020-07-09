@@ -1,15 +1,21 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
+import lombok.EqualsAndHashCode;
+import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmIntegerValue;
+import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmStringValue;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Class BmmEnumerationInteger
  * Integer-based enumeration meta-type.
  */
-@Entity
-@DiscriminatorValue("BBE_BD_BM_BC_BSC_BE_BEI")
+@EqualsAndHashCode(callSuper = true)
 public class BmmEnumerationInteger extends BmmEnumeration {
   /**
    * 0..1
@@ -17,10 +23,27 @@ public class BmmEnumerationInteger extends BmmEnumeration {
    * item_values: List<BMM_INTEGER_VALUE>
    * Optional list of specific values. Must be 1:1 with item_names list.
    */
-  public List<Integer> itemValues()
-  {
-    return null;
+  private Set<BmmIntegerValue> itemValues;
+  public BmmEnumeration addItemValue(@NonNull BmmIntegerValue value){
+    if(itemValues==null){
+      itemValues = new HashSet<>();
+    }
+    itemValues.add(value);
+    return this;
   }
-
-
+  public BmmEnumeration addItemValues(Set<BmmIntegerValue> items){
+    items.forEach(this::addItemValue);
+    return this;
+  }
+  public void removeItemValue(BmmIntegerValue item){
+    if(itemValues!=null) {
+      itemValues.remove(item);
+    }
+  }
+  private void setItemValues(Set<BmmIntegerValue> items) {
+    this.itemValues = items;
+  }
+  private Set<BmmIntegerValue> getItemValues() {
+    return itemValues;
+  }
 }

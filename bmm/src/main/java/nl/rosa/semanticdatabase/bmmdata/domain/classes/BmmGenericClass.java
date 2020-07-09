@@ -1,13 +1,14 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
+import lombok.EqualsAndHashCode;
 import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmGenericType;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmParameterType;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -18,8 +19,7 @@ import java.util.Map;
  * Generate a fully open BMM_GENERIC_TYPE instance that corresponds to this class
  * definition
  */
-@Entity
-@DiscriminatorValue("BBE_BD_BM_BC_BGC")
+@EqualsAndHashCode(callSuper = true)
 public class BmmGenericClass extends BmmClass {
   /**
    * 1..1
@@ -28,6 +28,41 @@ public class BmmGenericClass extends BmmClass {
    * These are defined either directly on this class or by the inclusion of an ancestor class which is generic.
    */
   private Map<String, BmmParameterType> genericParameters;
+
+  public BmmClass putGenericParameter(@NonNull String key, @NonNull BmmParameterType value){
+    if(genericParameters==null){
+      genericParameters = new HashMap<>();
+    }
+    genericParameters.put(key,  value);
+    return this;
+  }
+  public BmmClass putGenericParameters(Map<String, BmmParameterType> items){
+    items.keySet().forEach(key -> putGenericParameter(key, items.get(key)));
+    return this;
+  }
+  public BmmParameterType getGenericParameter(String key){
+    if(genericParameters==null){
+      return null;
+    }
+    return genericParameters.get(key);
+  }
+  public void removeGenericParameter(String key){
+    if(genericParameters!=null) {
+      genericParameters.remove(key);
+    }
+  }
+  public void removeGenericParameters(Collection<String> keys){
+    keys.forEach(this::removeGenericParameter);
+  }
+  private void setGenericParameters(Map<String, BmmParameterType> parameters) {
+    this.genericParameters = parameters;
+  }
+  private Map<String,BmmParameterType> getGenericParameters() {
+    return genericParameters;
+  }
+  public Map<String,BmmParameterType> genericParameters() {
+    return Collections.unmodifiableMap(genericParameters);
+  }
 
   /**
    * 0..1
