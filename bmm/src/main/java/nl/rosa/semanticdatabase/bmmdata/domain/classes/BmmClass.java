@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
@@ -7,6 +8,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModule;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
+import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackageContainer;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmModelType;
 import nl.rosa.semanticdatabase.bmmdata.services.model_access.data.BmmSchema;
 import org.springframework.util.ClassUtils;
@@ -40,25 +42,8 @@ import java.util.*;
  * 1) OneToOne because it serves as Class to give BmmModelType a Type
  * 2) OneToMany, to define the ancestors of BmmClass (multiple inheritance is possible)
  */
-@DiscriminatorValue("BBE_BD_BM_BC")
-@Entity
+@EqualsAndHashCode(callSuper = true)
 public abstract class BmmClass extends BmmModule {
-
-    /**
-     * This Id is not generated because it comes from the parent-child relation BmmModelType, where the latter is the parent.
-     */
-    @Id
-    private Long id;
-
-    public Bmm setId(Long id) {
-        this.id = id;
-        return this;
-    }
-    @MapsId
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bmm_model_type_id")
-    private BmmModelType bmmModelType;
-
 
     /**
      * 1..1
@@ -66,11 +51,9 @@ public abstract class BmmClass extends BmmModule {
      * Package this class belongs to.
      */
     //=====bmmPackage=============================================================
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "bmm_package_id")
     @Getter
+    @NonNull
     private BmmPackage bmmPackage;
-
     public BmmClass setBmmPackage(BmmPackage bmmPackage) {
         this.bmmPackage = bmmPackage;
         return this;
@@ -84,9 +67,8 @@ public abstract class BmmClass extends BmmModule {
      */
     //======sourceSchemaId=======================================================================
     @NotEmpty
-    @Column(name = "source_schema_id")
+    @Getter
     private String sourceSchemaId;
-
     public BmmClass setSourceSchemaId(@NotEmpty String sourceSchemaId) {
         this.sourceSchemaId = sourceSchemaId;
         return this;
@@ -98,113 +80,126 @@ public abstract class BmmClass extends BmmModule {
      * List of constants defined in this class.
      */
     //======constants=======================================================================
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "class", orphanRemoval = true)
-    @MapKey(name = "name")
     private Map<String, BmmConstant> constants;
 
-    public BmmClass addConstant(BmmConstant constant) {
-        if (constants == null) {
+    public BmmClass putConstant(@NonNull String key, @NonNull BmmConstant value){
+        if(constants==null){
             constants = new HashMap<>();
         }
-        this.constants.put(constant.getName(), constant);
+        constants.put(key,  value);
         return this;
     }
-
-    public BmmClass addConstants(Set<BmmConstant> constantsSet) {
-        constantsSet.forEach(constant -> this.addConstant(constant));
+    public BmmClass putConstants(Map<String, BmmConstant> items){
+        items.keySet().forEach(key -> putConstant(key, items.get(key)));
         return this;
     }
-
-    public BmmClass removeConstant(BmmConstant constant) {
-        if (constants != null) {
-            this.constants.remove(constant.getName());
+    public BmmConstant getConstant(String key){
+        if(constants==null){
+            return null;
         }
-        return this;
+        return constants.get(key);
     }
-
-    public BmmClass removeConstants(Set<BmmConstant> constantsSet) {
-        constantsSet.forEach(constant -> this.removeConstant(constant));
-        return this;
+    public void removeConstant(String key){
+        if(constants!=null) {
+            constants.remove(key);
+        }
     }
-
-    public Map<String, BmmConstant> getConstants() {
+    public void removeConstants(Collection<String> keys){
+        keys.forEach(this::removeConstant);
+    }
+    private void setConstants(Map<String, BmmConstant> constants) {
+        this.constants = constants;
+    }
+    private Map<String,BmmConstant> getConstants() {
+        return constants;
+    }
+    public Map<String,BmmConstant> constants() {
         return Collections.unmodifiableMap(constants);
     }
-
     /**
      * 0..1
      * functions: Hash<String,BMM_FUNCTION>
      * List of functions defined in this class.
      */
     //======functions=======================================================================
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "class", orphanRemoval = true)
-    @MapKey(name = "name")
     private Map<String, BmmFunction> functions;
 
-    public BmmClass addFunction(BmmFunction function) {
-        if (functions == null) {
+    public BmmClass putFunction(@NonNull String key, @NonNull BmmFunction value){
+        if(functions==null){
             functions = new HashMap<>();
         }
-        this.functions.put(function.getName(), function);
+        functions.put(key,  value);
         return this;
     }
-    public BmmClass addFunctions(Set<BmmFunction> functionsSet) {
-        functionsSet.forEach(function -> this.addFunction(function));
+    public BmmClass putFunctions(Map<String, BmmFunction> items){
+        items.keySet().forEach(key -> putFunction(key, items.get(key)));
         return this;
     }
-    public BmmClass removeFunction(BmmFunction function) {
-        if (functions == null) {
-            functions = new HashMap<>();
+    public BmmFunction getFunction(String key){
+        if(functions==null){
+            return null;
         }
-        this.functions.remove(function.getName());
-        return this;
+        return functions.get(key);
     }
-    public BmmClass removeFunctions(Set<BmmFunction> functionsSet) {
-        functionsSet.forEach(function -> this.removeFunction(function));
-        return this;
+    public void removeFunction(String key){
+        if(functions!=null) {
+            functions.remove(key);
+        }
     }
-    public Map<String, BmmFunction> getFunctions() {
+    public void removeFunctions(Collection<String> keys){
+        keys.forEach(this::removeFunction);
+    }
+    private void setFunctions(Map<String, BmmFunction> functions) {
+        this.functions = functions;
+    }
+    private Map<String,BmmFunction> getFunctions() {
+        return functions;
+    }
+    public Map<String,BmmFunction> functions() {
         return Collections.unmodifiableMap(functions);
     }
-
     /**
      * 0..1
      * procedures: Hash<String,BMM_PROCEDURE>
      * List of procedures defined in this class.
      */
     //======procedures=======================================================================
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "class", orphanRemoval = true)
-    @MapKey(name = "name")
     private Map<String, BmmProcedure> procedures;
 
-    public BmmClass addProcedure(BmmProcedure procedure) {
-        if (procedures == null) {
+    public BmmClass putProcedure(@NonNull String key, @NonNull BmmProcedure value){
+        if(procedures==null){
             procedures = new HashMap<>();
         }
-        this.procedures.put(procedure.getName(), procedure);
+        procedures.put(key,  value);
         return this;
     }
-
-    public BmmClass addProcedures(Set<BmmProcedure> proceduresSet) {
-        proceduresSet.forEach(procedure -> this.addProcedure(procedure));
+    public BmmClass putProcedures(Map<String, BmmProcedure> items){
+        items.keySet().forEach(key -> putProcedure(key, items.get(key)));
         return this;
     }
-
-    public BmmClass removeProcedure(BmmProcedure procedure) {
-        if (procedures != null) {
-            this.procedures.remove(procedure.getName());
+    public BmmProcedure getProcedure(String key){
+        if(procedures==null){
+            return null;
         }
-        return this;
+        return procedures.get(key);
     }
-
-    public BmmClass removeProcedures(Set<BmmProcedure> proceduresSet) {
-        proceduresSet.forEach(procedure -> this.removeProcedure(procedure));
-        return this;
+    public void removeProcedure(String key){
+        if(procedures!=null) {
+            procedures.remove(key);
+        }
     }
-    public Map<String, BmmProcedure> getProcedures() {
+    public void removeProcedures(Collection<String> keys){
+        keys.forEach(this::removeProcedure);
+    }
+    private void setProcedures(Map<String, BmmProcedure> procedures) {
+        this.procedures = procedures;
+    }
+    private Map<String,BmmProcedure> getProcedures() {
+        return procedures;
+    }
+    public Map<String,BmmProcedure> procedures() {
         return Collections.unmodifiableMap(procedures);
     }
-
     /**
      * 0..1
      * ancestors: Hash<String,BMM_MODEL_TYPE>

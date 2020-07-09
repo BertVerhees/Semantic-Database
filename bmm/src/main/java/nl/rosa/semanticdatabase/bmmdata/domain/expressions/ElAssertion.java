@@ -15,14 +15,13 @@ import javax.persistence.*;
  * Optionally tagged Boolean-returning expression.
  */
 @EqualsAndHashCode(callSuper = true)
-@Getter
 public class ElAssertion extends Bmm {
 
   /**
    * Optional tag, typically used to designate design intention of the assertion, e.g. "Inv_all_members_valid".
    */
+  @Getter
   private String tag;
-
   public ElAssertion setTag(String tag) {
     this.tag = tag;
     return this;
@@ -31,20 +30,10 @@ public class ElAssertion extends Bmm {
   /**
    * The expression of this assertion.
    */
+  @Getter
   private ElExpression expression;
-
   public ElAssertion setExpression(ElExpression expression) {
     this.expression = expression;
     return this;
   }
-  //=============  counterparts =========================================================
-  //TODO
-  @Transient
-  private String bmmClassName;
-
-  public ElAssertion setBmmClass(String bmmClassName) {
-    this.bmmClassName = bmmClassName;
-    return this;
-  }
-
 }

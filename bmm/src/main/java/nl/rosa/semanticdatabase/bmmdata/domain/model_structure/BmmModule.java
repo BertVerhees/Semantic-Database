@@ -12,7 +12,6 @@ import javax.persistence.Entity;
  * Class BmmModule
  */
 @EqualsAndHashCode(callSuper = true)
-@Getter
 public abstract class BmmModule extends BmmDeclaration{
     /**
      * 1..1
@@ -21,6 +20,7 @@ public abstract class BmmModule extends BmmDeclaration{
      * Model within which module is defined.
      */
     @NonNull
+    @Getter
     private BmmModel scope;
 
     public BmmModule setScope(BmmModel scope) {

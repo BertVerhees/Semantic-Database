@@ -109,7 +109,7 @@ public abstract class BmmDeclaration extends Bmm {
       return value;
     }
   }
-  public Object removeExtension(String key){
+  public void removeExtension(String key){
     if(extensions!=null) {
       extensions.remove(key);
     }

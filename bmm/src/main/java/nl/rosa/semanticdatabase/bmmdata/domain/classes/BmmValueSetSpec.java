@@ -15,7 +15,6 @@ import javax.persistence.Entity;
  * service.
  */
 @EqualsAndHashCode(callSuper = true)
-@Getter
 public class BmmValueSetSpec extends Bmm {
   /**
    * 1..1
@@ -24,6 +23,7 @@ public class BmmValueSetSpec extends Bmm {
    * This is typically a URI but need not be.
    */
   @NonNull
+  @Getter
   private String resourceId;
   public BmmValueSetSpec setResourceId(String resourceId) {
     this.resourceId = resourceId;
@@ -37,6 +37,7 @@ public class BmmValueSetSpec extends Bmm {
    * values of a type. This might be a URI, but need not be.
    */
   @NonNull
+  @Getter
   private String valueSetId;
   public BmmValueSetSpec setValueSetId(String valueSetId) {
     this.valueSetId = valueSetId;

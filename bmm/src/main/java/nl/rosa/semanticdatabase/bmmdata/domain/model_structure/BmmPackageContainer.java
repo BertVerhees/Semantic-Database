@@ -3,39 +3,63 @@ package nl.rosa.semanticdatabase.bmmdata.domain.model_structure;
 
 import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElProcedureAgent;
+import nl.rosa.semanticdatabase.utils.json.JSONUtils;
+import nl.rosa.semanticdatabase.utils.map.MapUtils;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * Class BmmPackageContainer
  */
-@Entity
-@DiscriminatorValue("BBE_BD_BPC")
+@EqualsAndHashCode(callSuper = true)
 public abstract class BmmPackageContainer extends BmmDeclaration {
 
   /**
    * Child packages; keys all in upper case for guaranteed matching.
    */
-  @Getter
-  @Setter
-  @ElementCollection
-  @CollectionTable(name = "bmm_package_container_packages_mapping",
-          joinColumns = {@JoinColumn(name = "packages_id", referencedColumnName = "id")})
-  @MapKeyColumn(name = "packages_name")
-  @Column(name = "packages")
-  private Map<String, BmmPackage> packages = new HashMap<>();
-  public void addPackage(String key, BmmPackage value){
-    packages.put(key, value);
+  //========= documentation =======================================================================
+  private Map<String, BmmPackage> packages;
+
+  public BmmPackageContainer putPackage(@NonNull String key, @NonNull BmmPackage value){
+    if(packages==null){
+      packages = new HashMap<>();
+    }
+    packages.put(key,  value);
+    return this;
+  }
+  public BmmPackageContainer putPackages(Map<String, BmmPackage> items){
+    items.keySet().forEach(key -> putPackage(key, items.get(key)));
+    return this;
   }
   public BmmPackage getPackage(String key){
+    if(packages==null){
+      return null;
+    }
     return packages.get(key);
   }
-  public BmmPackage removePackage(String key){
-    return packages.remove(key);
+  public void removePackage(String key){
+    if(packages!=null) {
+      packages.remove(key);
+    }
   }
+  public void removePackages(Collection<String> keys){
+    keys.forEach(this::removePackage);
+  }
+  private void setPackages(Map<String, BmmPackage> packages) {
+    this.packages = packages;
+  }
+  private Map<String,BmmPackage> getPackages() {
+    return packages;
+  }
+  public Map<String,BmmPackage> packages() {
+    return Collections.unmodifiableMap(packages);
+  }
+  
   /**
    * 1..1
    * (redefined)

@@ -10,7 +10,6 @@ import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
  * A single tuple item, with an optional name.
  */
 @EqualsAndHashCode(callSuper = true)
-@Getter
 public class ElTupleItem extends Bmm {
 
   /**
@@ -19,6 +18,7 @@ public class ElTupleItem extends Bmm {
    * Reference to value entity. If Void, this indicates that the item in this position
    * is Void, e.g. within a routine call parameter list.
    */
+  @Getter
   private ElExpression item;
   public ElTupleItem setItem(ElExpression item) {
     this.item = item;
@@ -30,6 +30,7 @@ public class ElTupleItem extends Bmm {
    * name: String
    * Optional name of tuple item.
    */
+  @Getter
   private String name;
   public ElTupleItem setName(String name) {
     this.name = name;

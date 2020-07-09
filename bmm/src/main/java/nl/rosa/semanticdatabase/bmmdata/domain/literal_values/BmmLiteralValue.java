@@ -17,7 +17,6 @@ import javax.persistence.DiscriminatorValue;
  * be inline values of primitive nl.rosa.semanticdatabase.bmm.model.types in the usual fashion or complex objects in
  * syntax form, e.g. JSON.
  */
-@Getter
 @EqualsAndHashCode(callSuper = true)
 public class BmmLiteralValue extends Bmm implements BmmTyped {
 
@@ -29,6 +28,7 @@ public class BmmLiteralValue extends Bmm implements BmmTyped {
    * !!Implemented because of implemented derived interface from BmmTyped!!
    */
   @NonNull
+  @Getter
   private BmmType type;
   public BmmLiteralValue setType(BmmType type) {
     this.type = type;
@@ -56,6 +56,7 @@ public class BmmLiteralValue extends Bmm implements BmmTyped {
    * Value may be any of json | yawl | xml | odin | rdf or another value agreed by the user community.
    * If not set, json is assumed.
    */
+  @Getter
   private String syntax;
   /**
    * 1..1
