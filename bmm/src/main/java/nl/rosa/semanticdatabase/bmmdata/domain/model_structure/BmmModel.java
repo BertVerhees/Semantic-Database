@@ -400,7 +400,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
    * BMM_SIMPLE_TYPE instance for the Boolean type.
    * @return       undef
    */
-  public BmmSimpleType BooleanTypeDefinition()
+  public BmmSimpleType booleanTypeDefinition()
   {
     //TODO
     return null;

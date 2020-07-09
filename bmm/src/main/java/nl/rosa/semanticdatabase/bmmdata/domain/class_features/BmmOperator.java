@@ -6,18 +6,13 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
  * Definition of a symbolic operator associated with a function
  */
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 
 import javax.persistence.Entity;
 
-@Data
+@Getter
 @EqualsAndHashCode(callSuper = true)
-@Entity
-@NoArgsConstructor
 public class BmmOperator extends Bmm {
 
   /**
@@ -27,6 +22,11 @@ public class BmmOperator extends Bmm {
    */
   @NonNull
   private BmmOperatorPosition position;
+
+  public BmmOperator setPosition(BmmOperatorPosition position) {
+    this.position = position;
+    return this;
+  }
   /**
    * 1..1
    * symbols: List<String>
@@ -34,6 +34,11 @@ public class BmmOperator extends Bmm {
    */
   @NonNull
   private String symbols;
+  public BmmOperator setSymbols(String symbols) {
+    this.symbols = symbols;
+    return this;
+  }
+
   /**
    * 1..1
    * name: String
@@ -41,4 +46,9 @@ public class BmmOperator extends Bmm {
    */
   @NonNull
   private String name;
+
+  public BmmOperator setName(String name) {
+    this.name = name;
+    return this;
+  }
 }

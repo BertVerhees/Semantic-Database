@@ -3,8 +3,10 @@ package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
+import org.springframework.data.annotation.Transient;
 
 import javax.persistence.*;
 
@@ -13,14 +15,12 @@ import javax.persistence.*;
  * Optionally tagged Boolean-returning expression.
  */
 @EqualsAndHashCode(callSuper = true)
-@Entity
+@Getter
 public class ElAssertion extends Bmm {
 
   /**
    * Optional tag, typically used to designate design intention of the assertion, e.g. "Inv_all_members_valid".
    */
-  @Getter
-  @Column(name = "tag")
   private String tag;
 
   public ElAssertion setTag(String tag) {
@@ -31,23 +31,19 @@ public class ElAssertion extends Bmm {
   /**
    * The expression of this assertion.
    */
-  @Getter
-  @Column(name = "expression")
   private ElExpression expression;
 
   public ElAssertion setExpression(ElExpression expression) {
     this.expression = expression;
     return this;
   }
-
   //=============  counterparts =========================================================
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "fk_bmm_class_id")
-  @Getter
-  private BmmClass bmmClass;
+  //TODO
+  @Transient
+  private String bmmClassName;
 
-  public ElAssertion setBmmClass(BmmClass bmmClass) {
-    this.bmmClass = bmmClass;
+  public ElAssertion setBmmClass(String bmmClassName) {
+    this.bmmClassName = bmmClassName;
     return this;
   }
 

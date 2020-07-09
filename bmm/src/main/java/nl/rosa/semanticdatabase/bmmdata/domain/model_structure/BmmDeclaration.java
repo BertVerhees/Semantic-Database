@@ -1,10 +1,12 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.model_structure;
 
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.utils.json.JSONUtils;
+import nl.rosa.semanticdatabase.utils.map.MapUtils;
 
 import javax.persistence.*;
 import java.util.*;
@@ -12,8 +14,7 @@ import java.util.*;
 /**
  * Class BmmDeclaration
  */
-@DiscriminatorValue("BBE_BD")
-@Entity
+@EqualsAndHashCode(callSuper = true)
 public abstract class BmmDeclaration extends Bmm {
   /**
    * 1..1
@@ -22,8 +23,7 @@ public abstract class BmmDeclaration extends Bmm {
    */
   @Getter
   @NonNull
-  @MapKey
-  @Column(name = "name")
+  //========= name =======================================================================
   protected String name;
 
   public BmmDeclaration setName(String name) {
@@ -44,22 +44,20 @@ public abstract class BmmDeclaration extends Bmm {
    * Other keys and value types may be freely added.
    */
   //========= documentation =======================================================================
-  @ElementCollection
-  @CollectionTable(name = "bmm_declaration_documentation_mapping",
-          joinColumns = {@JoinColumn(name = "documentation_id", referencedColumnName = "id")})
-  @MapKeyColumn(name = "documentation_name")
-  @Column(name = "documentation")
-  private Map<String, String> documentation = new HashMap<>();
+  private Map<String, String> documentation;
 
-  public BmmDeclaration putDocumentationItem(String key, Object value){
-    if(value instanceof String){
-      documentation.put(key, (String) value);
-    }else{
-      documentation.put(key, JSONUtils.toJSON(value));
-    }
+  public BmmDeclaration putDocumentationItem(@NonNull String key, @NonNull Object value){
+    MapUtils.addStringObjectItemToMap(documentation, key, value);
+    return this;
+  }
+  public BmmDeclaration putDocumentationItems(Map<String, Object> items){
+    items.keySet().forEach(key -> putDocumentationItem(key, items.get(key)));
     return this;
   }
   public Object getDocumentationItem(String key){
+    if(documentation==null){
+      return null;
+    }
     String value = documentation.get(key);
     if(JSONUtils.isJSONValid(value)){
       return JSONUtils.toJSON(value);
@@ -67,40 +65,43 @@ public abstract class BmmDeclaration extends Bmm {
       return value;
     }
   }
-  public Object removeDocumentationItem(String key){
-    return documentation.remove(key);
+  public void removeDocumentationItem(String key){
+    if(documentation!=null) {
+      documentation.remove(key);
+    }
   }
-
-  public BmmDeclaration setDocumentation(Map<String, String> documentation) {
+  public void removeDocumentationItems(Collection<String> keys){
+    keys.forEach(this::removeDocumentationItem);
+  }
+  private void setDocumentation(Map<String, String> documentation) {
     this.documentation = documentation;
-    return this;
   }
-  public Map<String,String> getDocumentation() {
+  private Map<String,String> getDocumentation() {
+    return documentation;
+  }
+  public Map<String,Object> documentation() {
     return Collections.unmodifiableMap(documentation);
   }
-
   /**
    * 0..1
    * extensions: Hash<String, Any>
    * Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.
    */
   //========= extensions =======================================================================
-  @ElementCollection
-  @CollectionTable(name = "bmm_declaration_extensions_mapping",
-          joinColumns = {@JoinColumn(name = "extension_id", referencedColumnName = "id")})
-  @MapKeyColumn(name = "extension_name")
-  @Column(name = "extensions")
-  private Map<String, String>  extensions = new HashMap<>();
+  private Map<String, String> extensions;
 
-  public BmmDeclaration putExtensionsItem(String key, Object value){
-    if(value instanceof String){
-      extensions.put(key, (String) value);
-    }else{
-      extensions.put(key, JSONUtils.toJSON(value));
-    }
+  public BmmDeclaration putExtension(@NonNull String key, @NonNull Object value){
+    MapUtils.addStringObjectItemToMap(extensions, key, value);
     return this;
   }
-  public Object getExtensionsItem(String key){
+  public BmmDeclaration putExtensions(@NonNull Map<String, Object> items){
+    items.keySet().forEach(key -> putExtension(key, items.get(key)));
+    return this;
+  }
+  public Object getExtension(String key){
+    if(extensions==null){
+      return null;
+    }
     String value = extensions.get(key);
     if(JSONUtils.isJSONValid(value)){
       return JSONUtils.toJSON(value);
@@ -108,15 +109,21 @@ public abstract class BmmDeclaration extends Bmm {
       return value;
     }
   }
-  public Object removeExtensionsItem(String key){
-    return extensions.remove(key);
+  public Object removeExtension(String key){
+    if(extensions!=null) {
+      extensions.remove(key);
+    }
   }
-
-  public BmmDeclaration setExtensions(Map<String, String> extensions) {
+  public void removeExtensions(Collection<String> keys){
+    keys.forEach(this::removeExtension);
+  }
+  private void setExtensions(Map<String, String> extensions) {
     this.extensions = extensions;
-    return this;
   }
-  public Map<String,String> getExtensions() {
+  private Map<String,String> getExtensions() {
+    return extensions;
+  }
+  public Map<String,Object> extensions() {
     return Collections.unmodifiableMap(extensions);
   }
 
@@ -129,8 +136,6 @@ public abstract class BmmDeclaration extends Bmm {
   //========= scope =======================================================================
   @NonNull
   @Getter
-  @OneToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "scope_id")
   protected BmmDeclaration scope;
 
   public BmmDeclaration setScope(BmmDeclaration scope) {

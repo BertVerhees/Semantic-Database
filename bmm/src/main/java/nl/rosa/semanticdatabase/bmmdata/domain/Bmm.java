@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -13,6 +14,7 @@ import java.io.Serializable;
 
 @Getter
 @Document(collection = "bmm")
+@EqualsAndHashCode
 public abstract class Bmm implements Serializable {
 
     @Id

@@ -13,7 +13,6 @@ import javax.persistence.DiscriminatorValue;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@DiscriminatorValue("BBE_BD_BCE_BCS")
 public abstract class BmmClassScoped extends BmmClassEntity {
 
   /**

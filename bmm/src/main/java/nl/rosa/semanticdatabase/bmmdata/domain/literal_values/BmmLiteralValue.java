@@ -17,9 +17,8 @@ import javax.persistence.DiscriminatorValue;
  * be inline values of primitive nl.rosa.semanticdatabase.bmm.model.types in the usual fashion or complex objects in
  * syntax form, e.g. JSON.
  */
-@Data
+@Getter
 @EqualsAndHashCode(callSuper = true)
-@DiscriminatorValue("BBE_BLV")
 public class BmmLiteralValue extends Bmm implements BmmTyped {
 
   /**
@@ -27,12 +26,10 @@ public class BmmLiteralValue extends Bmm implements BmmTyped {
    * type: BMM_TYPE
    * Declared or inferred static type of the entity.
    *
-   * Implemented because of implemented derived interface from BmmTyped
+   * !!Implemented because of implemented derived interface from BmmTyped!!
    */
   @NonNull
-  @Getter
   private BmmType type;
-
   public BmmLiteralValue setType(BmmType type) {
     this.type = type;
     return this;
@@ -47,6 +44,7 @@ public class BmmLiteralValue extends Bmm implements BmmTyped {
    */
   @Override
   public Boolean isBoolean() {
+    //TODO
     return null;
   }
 
@@ -66,13 +64,21 @@ public class BmmLiteralValue extends Bmm implements BmmTyped {
    */
   @NonNull
   private String valueLiteral;
+  public String getValueLiteral() {
+    return value.toString();
+  }
+  public void setValueLiteral(String valueLiteral) {
+    this.valueLiteral = valueLiteral;
+  }
+
   /**
    * 0..1
    * value: Any
    * A native representation of the value, possibly derived by deserialising value_literal.
    */
   private Object value;
-
-  protected BmmLiteralValue() {
+  public BmmLiteralValue setValue(Object value) {
+    this.value = value;
+    return this;
   }
 }

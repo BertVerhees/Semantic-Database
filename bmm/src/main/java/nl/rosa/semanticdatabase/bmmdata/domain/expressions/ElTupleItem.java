@@ -1,21 +1,16 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
-
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
 
 /**
  * Class ElTupleItem
  * A single tuple item, with an optional name.
  */
-@Data
 @EqualsAndHashCode(callSuper = true)
-@Entity
-@DiscriminatorValue("BBE_ETI")
+@Getter
 public class ElTupleItem extends Bmm {
 
   /**
@@ -25,12 +20,19 @@ public class ElTupleItem extends Bmm {
    * is Void, e.g. within a routine call parameter list.
    */
   private ElExpression item;
+  public ElTupleItem setItem(ElExpression item) {
+    this.item = item;
+    return this;
+  }
 
   /**
    * 0..1
    * name: String
    * Optional name of tuple item.
    */
-
   private String name;
+  public ElTupleItem setName(String name) {
+    this.name = name;
+    return this;
+  }
 }
