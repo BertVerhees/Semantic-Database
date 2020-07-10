@@ -29,11 +29,9 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
    */
   @NonNull
   @Getter
+  @Setter
   protected Boolean isNullable;
 
-  public void setIsNullable(Boolean nullable) {
-    isNullable = nullable;
-  }
   /**
    * 1..1
    * type: BMM_TYPE
@@ -43,11 +41,8 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
    */
   @NonNull
   @Getter
+  @Setter
   private BmmType type;
-
-  public void setType(BmmType type) {
-    this.type = type;
-  }
 
   /**
    * 1..1
@@ -56,6 +51,8 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
    * Routine within which variable is defined.
    */
   @NonNull
+  @Getter
+  @Setter
   private BmmRoutine scope;
 
   /**
@@ -65,6 +62,7 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
    * Formal signature of this element, in the form 'name [arg1_name: T_arg1, …​][:T_value]'.
    * @return
    */
+  @NonNull
   public BmmSignature signature(){
     return null;
   }

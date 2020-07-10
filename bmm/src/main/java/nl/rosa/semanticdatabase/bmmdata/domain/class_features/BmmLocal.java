@@ -2,6 +2,8 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -9,9 +11,6 @@ import javax.persistence.Entity;
 /**
  * Class BmmLocal
  */
-@EqualsAndHashCode(callSuper = true)
-@Entity
-@DiscriminatorValue("BBE_BD_BCE_BV_BL")
 public class BmmLocal extends BmmVariable  {
   /**
    * 0..1
@@ -19,6 +18,8 @@ public class BmmLocal extends BmmVariable  {
    * {default = false}
    * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
    */
+  @Getter
+  @Setter
   private Boolean isNullable;
   /**
    * 1..1

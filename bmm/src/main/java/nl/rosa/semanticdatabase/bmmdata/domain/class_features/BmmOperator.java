@@ -3,9 +3,12 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
+import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 
 import javax.persistence.Entity;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -25,6 +28,7 @@ public class BmmOperator extends Bmm {
   @Getter
   @Setter
   private BmmOperatorPosition position;
+
   /**
    * 1..1
    * symbols: List<String>
@@ -34,6 +38,38 @@ public class BmmOperator extends Bmm {
   @Setter
   @Getter
   private Set<String> symbols;
+  public void addSymbol(@NonNull String value){
+    if(symbols==null){
+      symbols = new HashSet<>();
+    }
+    symbols.add(value);
+  }
+  public void addSymbols(Set<String> items){
+    items.forEach(item -> addSymbol(item));
+
+  }
+  public void removeSymbol(String item){
+    if(symbols!=null) {
+      symbols.remove(item);
+    }
+  }
+  public void removeSymbols(Collection<String> items){
+    items.forEach(this::removeSymbol);
+  }
+  void setSymbols(Set<String> items) {
+    this.symbols = items;
+  }
+  Set<String> getSymbols() {
+    return symbols;
+  }
+  public Set<String> symbols() {
+    return Collections.unmodifiableSet(symbols);
+  }
+
+  public void removeSymbols(Set<String> items) {
+    this.symbols.removeAll(items);
+  }
+
   /**
    * 1..1
    * name: String

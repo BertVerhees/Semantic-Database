@@ -58,10 +58,10 @@ public abstract class BmmDeclaration extends Bmm {
   public void removeDocumentationItems(Collection<String> keys){
     keys.forEach(this::removeDocumentationItem);
   }
-  private void setDocumentation(Map<String, Object> documentation) {
+  void setDocumentation(Map<String, Object> documentation) {
     this.documentation = documentation;
   }
-  private Map<String,Object> getDocumentation() {
+  Map<String,Object> getDocumentation() {
     return documentation;
   }
   public Map<String,Object> documentation() {
@@ -96,10 +96,10 @@ public abstract class BmmDeclaration extends Bmm {
   public void removeExtensions(Collection<String> keys){
     keys.forEach(this::removeExtension);
   }
-  private void setExtensions(Map<String, Object> extensions) {
+  void setExtensions(Map<String, Object> extensions) {
     this.extensions = extensions;
   }
-  private Map<String,Object> getExtensions() {
+  Map<String,Object> getExtensions() {
     return extensions;
   }
   public Map<String,Object> extensions() {

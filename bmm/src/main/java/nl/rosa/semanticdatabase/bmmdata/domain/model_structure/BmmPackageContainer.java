@@ -48,10 +48,10 @@ public abstract class BmmPackageContainer extends BmmDeclaration {
   public void removePackages(Collection<String> keys){
     keys.forEach(this::removePackage);
   }
-  private void setPackages(Map<String, BmmPackage> packages) {
+  void setPackages(Map<String, BmmPackage> packages) {
     this.packages = packages;
   }
-  private Map<String,BmmPackage> getPackages() {
+  Map<String,BmmPackage> getPackages() {
     return packages;
   }
   public Map<String,BmmPackage> packages() {

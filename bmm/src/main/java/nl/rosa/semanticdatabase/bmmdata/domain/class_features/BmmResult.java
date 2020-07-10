@@ -3,6 +3,8 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -11,10 +13,6 @@ import javax.persistence.Entity;
  * Class BmmResult
  * Automatically declared variable representing result instance of a Function call.
  */
-@Getter
-@EqualsAndHashCode(callSuper = true)
-@Entity
-@DiscriminatorValue("BBE_BD_BCE_BV_BR")
 public class BmmResult extends BmmVariable {
   /**
    * 0..1
@@ -22,6 +20,8 @@ public class BmmResult extends BmmVariable {
    * {default = false}
    * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
    */
+  @Getter
+  @Setter
   private Boolean isNullable;
   /**
    * 1..1
@@ -30,6 +30,9 @@ public class BmmResult extends BmmVariable {
    * {default = "Result"}
    * Name of this model element.
    */
+  @NonNull
+  @Setter
+  @Getter
   private String name;
   /**
    * 1..1

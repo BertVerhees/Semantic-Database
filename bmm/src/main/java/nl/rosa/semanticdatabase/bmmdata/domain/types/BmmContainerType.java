@@ -1,9 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmGenericClass;
 
 import javax.persistence.Entity;
@@ -43,6 +40,8 @@ public class BmmContainerType extends BmmType {
    * The type of the container. This converts to the root_type in BMM_GENERIC_TYPE.
    */
   @NonNull
+  @Getter
+  @Setter
   private BmmGenericClass containerClass;
   /**
    * 1..1
@@ -50,6 +49,8 @@ public class BmmContainerType extends BmmType {
    * The container item type.
    */
   @NonNull
+  @Getter
+  @Setter
   private BmmUnitaryType itemType;
   /**
    * 0..1
@@ -61,6 +62,8 @@ public class BmmContainerType extends BmmType {
    * and must be preserved, e.g. across sessions, serialisation, deserialisation etc. Otherwise known
    * as 'list' semantics.
    */
+  @Getter
+  @Setter
   private Boolean isOrdered = true;
   /**
    * 0..1
@@ -69,6 +72,8 @@ public class BmmContainerType extends BmmType {
    * True indicates that only unique instances of items in the container are allowed.
    * Otherwise known as 'set' semantics.
    */
+  @Getter
+  @Setter
   private Boolean isUnique = false;
 
   /**

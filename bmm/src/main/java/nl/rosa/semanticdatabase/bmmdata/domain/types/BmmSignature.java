@@ -26,9 +26,6 @@ import java.util.List;
  * Return base_name
  * 
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class BmmSignature extends BmmEffectiveType  {
   private String baseName = "Signature";
   /**

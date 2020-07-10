@@ -54,10 +54,10 @@ public class BmmGenericClass extends BmmClass {
   public void removeGenericParameters(Collection<String> keys){
     keys.forEach(this::removeGenericParameter);
   }
-  private void setGenericParameters(Map<String, BmmParameterType> parameters) {
+  void setGenericParameters(Map<String, BmmParameterType> parameters) {
     this.genericParameters = parameters;
   }
-  private Map<String,BmmParameterType> getGenericParameters() {
+  Map<String,BmmParameterType> getGenericParameters() {
     return genericParameters;
   }
   public Map<String,BmmParameterType> genericParameters() {

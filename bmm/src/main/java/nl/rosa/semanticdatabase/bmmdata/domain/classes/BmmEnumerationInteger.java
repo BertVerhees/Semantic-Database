@@ -40,7 +40,7 @@ public class BmmEnumerationInteger extends BmmEnumeration {
       itemValues.remove(item);
     }
   }
-  private void setItemValues(Set<BmmIntegerValue> items) {
+  void setItemValues(Set<BmmIntegerValue> items) {
     this.itemValues = items;
   }
   private Set<BmmIntegerValue> getItemValues() {

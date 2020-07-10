@@ -2,7 +2,9 @@ package nl.rosa.semanticdatabase.bmmdata.domain.literal_values;
 
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 
@@ -11,8 +13,6 @@ import javax.persistence.Entity;
  * Meta-type for a literal String value, for which type is fixed to the BMM_TYPE
  * representing String and value is of type String.
  */
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class BmmStringValue extends BmmLiteralValue {
   /**
    * 1..1
@@ -21,6 +21,8 @@ public class BmmStringValue extends BmmLiteralValue {
    * Native String value.
    */
   @NonNull
+  @Getter
+  @Setter
   private String value;
 
 }

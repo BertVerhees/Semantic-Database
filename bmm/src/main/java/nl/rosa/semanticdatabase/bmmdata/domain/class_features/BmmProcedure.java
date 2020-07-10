@@ -18,13 +18,5 @@ import javax.persistence.ManyToOne;
  * Invariants
  * Inv_signature_no_result: signature.result = Void
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class BmmProcedure extends BmmRoutine {
-
-    //========== counterparts =====================================================
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_bmm_class_id")
-    private BmmClass bmmClass;
 }

@@ -1,10 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
@@ -24,19 +21,23 @@ import javax.persistence.ManyToOne;
  * Inv_signature_has_result: signature.result /= Void
  * Inv_result_type: type = Result.type
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class BmmFunction extends BmmRoutine implements BmmTypedFeature{
 
 
   /**
+   * 0..1
+   * BMM_OPERATOR
    * Optional details enabling a function to be represented as an operator in a syntactic representation.
    */
+  @Getter
+  @Setter
   private BmmOperator operatorDefinition;
   /**
    * Automatically created Result variable, usable in body and post-condition.
    */
+  @NonNull
+  @Getter
+  @Setter
   private BmmResult result;
   /**
    * 0..1
@@ -47,13 +48,8 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature{
    */
   @NonNull
   @Getter
+  @Setter
   private Boolean isNullable;
-
-  public BmmFunction setIsNullable(Boolean nullable) {
-    isNullable = nullable;
-
-  }
-
 
   /**
    * 1..1
@@ -64,12 +60,9 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature{
    */
   @NonNull
   @Getter
+  @Setter
   private BmmType type;
 
-  public BmmFunction setType(BmmType type) {
-    this.type = type;
-
-  }
   /**
    * 1..1
    * is_boolean (): Boolean
@@ -77,11 +70,8 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature{
    * True if type is notionally Boolean (i.e. a BMM_SIMPLE_TYPE with type_name() = 'Boolean').
    * @return
    */
+  @NonNull
   public Boolean isBoolean() {
     return null;
   }
-  //========== counterparts =====================================================
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "fk_bmm_class_id")
-  private BmmClass bmmClass;
 }

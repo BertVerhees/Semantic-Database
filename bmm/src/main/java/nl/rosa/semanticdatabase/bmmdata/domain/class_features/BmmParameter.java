@@ -2,6 +2,9 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -10,15 +13,14 @@ import javax.persistence.Entity;
  * Class BmmParameter
  * A routine parameter variable.
  */
-@EqualsAndHashCode(callSuper = true)
-@Entity
-@DiscriminatorValue("BBE_BD_BCE_BV_BP")
 public class BmmParameter extends BmmVariable {
   /**
    * 0..1
    * direction: BMM_PARAMETER_DIRECTION
    * Optional read/write direction of the parameter. If none-supplied, the parameter is treated as in, i.e. readable.
    */
+  @Getter
+  @Setter
   private BmmParameterDirection direction;
   /**
    * 1..1
@@ -28,6 +30,7 @@ public class BmmParameter extends BmmVariable {
    * @return
    */
   @Override
+  @NonNull
   public Boolean isBoolean() {
     return null;
   }

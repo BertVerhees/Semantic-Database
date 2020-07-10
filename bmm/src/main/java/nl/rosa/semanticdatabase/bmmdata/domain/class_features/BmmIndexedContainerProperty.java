@@ -1,9 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmIndexedContainerType;
 
 import javax.persistence.DiscriminatorValue;
@@ -28,6 +25,8 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
    * Declared or inferred static type of the entity.
    */
   @NonNull
+  @Getter
+  @Setter
   private BmmIndexedContainerType type;
   /**
    * 1..1

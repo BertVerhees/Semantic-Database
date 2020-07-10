@@ -101,10 +101,10 @@ public abstract class BmmClass extends BmmModule {
     public void removeConstants(Collection<String> keys){
         keys.forEach(this::removeConstant);
     }
-    private void setConstants(Map<String, BmmConstant> constants) {
+    void setConstants(Map<String, BmmConstant> constants) {
         this.constants = constants;
     }
-    private Map<String,BmmConstant> getConstants() {
+    Map<String,BmmConstant> getConstants() {
         return constants;
     }
     public Map<String,BmmConstant> constants() {
@@ -143,10 +143,10 @@ public abstract class BmmClass extends BmmModule {
     public void removeFunctions(Collection<String> keys){
         keys.forEach(this::removeFunction);
     }
-    private void setFunctions(Map<String, BmmFunction> functions) {
+    void setFunctions(Map<String, BmmFunction> functions) {
         this.functions = functions;
     }
-    private Map<String,BmmFunction> getFunctions() {
+    Map<String,BmmFunction> getFunctions() {
         return functions;
     }
     public Map<String,BmmFunction> functions() {
@@ -185,10 +185,10 @@ public abstract class BmmClass extends BmmModule {
     public void removeProcedures(Collection<String> keys){
         keys.forEach(this::removeProcedure);
     }
-    private void setProcedures(Map<String, BmmProcedure> procedures) {
+    void setProcedures(Map<String, BmmProcedure> procedures) {
         this.procedures = procedures;
     }
-    private Map<String,BmmProcedure> getProcedures() {
+    Map<String,BmmProcedure> getProcedures() {
         return procedures;
     }
     public Map<String,BmmProcedure> procedures() {
@@ -227,7 +227,7 @@ public abstract class BmmClass extends BmmModule {
     public void removeAncestors(Collection<String> keys){
         keys.forEach(this::removeAncestor);
     }
-    private void setAncestors(Map<String, BmmModelType> ancestors) {
+    void setAncestors(Map<String, BmmModelType> ancestors) {
         this.ancestors = ancestors;
     }
     private Map<String,BmmModelType> getAncestors() {
@@ -271,10 +271,10 @@ public abstract class BmmClass extends BmmModule {
     public void removeProperties(Collection<String> keys){
         keys.forEach(this::removeProperty);
     }
-    private void setProperties(Map<String, BmmProperty> properties) {
+    void setProperties(Map<String, BmmProperty> properties) {
         this.properties = properties;
     }
-    private Map<String,BmmProperty> getProperties() {
+    Map<String,BmmProperty> getProperties() {
         return properties;
     }
     public Map<String,BmmProperty> properties() {
@@ -315,10 +315,10 @@ public abstract class BmmClass extends BmmModule {
     public void removeCreators(Collection<String> keys){
         keys.forEach(this::removeCreator);
     }
-    private void setCreators(Map<String, BmmProcedure> creators) {
+    void setCreators(Map<String, BmmProcedure> creators) {
         this.creators = creators;
     }
-    private Map<String,BmmProcedure> getCreators() {
+    Map<String,BmmProcedure> getCreators() {
         return creators;
     }
     public Map<String,BmmProcedure> creators() {
@@ -357,10 +357,10 @@ public abstract class BmmClass extends BmmModule {
     public void removeConvertors(Collection<String> keys){
         keys.forEach(this::removeConvertor);
     }
-    private void setConvertors(Map<String, BmmProcedure> convertors) {
+    void setConvertors(Map<String, BmmProcedure> convertors) {
         this.convertors = convertors;
     }
-    private Map<String,BmmProcedure> getConvertors() {
+    Map<String,BmmProcedure> getConvertors() {
         return convertors;
     }
     public Map<String,BmmProcedure> convertors() {
@@ -411,7 +411,7 @@ public abstract class BmmClass extends BmmModule {
     public void removeInvariants(Collection<ElAssertion> items){
         items.forEach(this::removeInvariant);
     }
-    private void setInvariants(Set<ElAssertion> items) {
+    void setInvariants(Set<ElAssertion> items) {
         this.invariants = items;
     }
     private Set<ElAssertion> getInvariants() {
@@ -451,7 +451,6 @@ public abstract class BmmClass extends BmmModule {
             immediateDescendants = new HashSet<>();
         }
         immediateDescendants.add(value);
-
     }
     public void addImmediateDescendants(Set<BmmClass> items){
         items.forEach(item -> addImmediateDescendant(item));
@@ -465,7 +464,7 @@ public abstract class BmmClass extends BmmModule {
     public void removeImmediateDescendants(Collection<BmmClass> items){
         items.forEach(this::removeImmediateDescendant);
     }
-    private void setImmediateDescendants(Set<BmmClass> items) {
+    void setImmediateDescendants(Set<BmmClass> items) {
         this.immediateDescendants = items;
     }
     private Set<BmmClass> getImmediateDescendants() {
@@ -475,9 +474,8 @@ public abstract class BmmClass extends BmmModule {
         return Collections.unmodifiableSet(immediateDescendants);
     }
 
-    public BmmClass removeImmediateDescendants(Set<BmmClass> immediateDescendants) {
+    public void removeImmediateDescendants(Set<BmmClass> immediateDescendants) {
         this.immediateDescendants.removeAll(immediateDescendants);
-
     }
 
 

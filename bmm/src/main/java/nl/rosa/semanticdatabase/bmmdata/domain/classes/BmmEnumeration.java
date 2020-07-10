@@ -86,7 +86,7 @@ public class BmmEnumeration extends BmmSimpleClass {
         items.forEach(this::removeItemValue);
     }
 
-    private void setItemValues(Set<BmmLiteralValue> items) {
+    void setItemValues(Set<BmmLiteralValue> items) {
         this.itemValues = items;
     }
 
