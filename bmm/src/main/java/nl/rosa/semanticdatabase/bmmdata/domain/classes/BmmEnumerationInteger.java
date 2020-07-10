@@ -24,16 +24,16 @@ public class BmmEnumerationInteger extends BmmEnumeration {
    * Optional list of specific values. Must be 1:1 with item_names list.
    */
   private Set<BmmIntegerValue> itemValues;
-  public BmmEnumeration addItemValue(@NonNull BmmIntegerValue value){
+  public void addItemValue(@NonNull BmmIntegerValue value){
     if(itemValues==null){
       itemValues = new HashSet<>();
     }
     itemValues.add(value);
-    return this;
+
   }
-  public BmmEnumeration addItemValues(Set<BmmIntegerValue> items){
+  public void addItemValues(Set<BmmIntegerValue> items){
     items.forEach(this::addItemValue);
-    return this;
+
   }
   public void removeItemValue(BmmIntegerValue item){
     if(itemValues!=null) {

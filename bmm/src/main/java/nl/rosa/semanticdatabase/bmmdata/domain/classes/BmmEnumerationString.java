@@ -24,16 +24,16 @@ public class BmmEnumerationString extends BmmEnumeration {
    * @return
    */
   private Set<BmmStringValue> itemValues;
-  public BmmEnumeration addItemValue(@NonNull BmmStringValue value){
+  public void addItemValue(@NonNull BmmStringValue value){
     if(itemValues==null){
       itemValues = new HashSet<>();
     }
     itemValues.add(value);
-    return this;
+
   }
-  public BmmEnumeration addItemValues(Set<BmmStringValue> items){
+  public void addItemValues(Set<BmmStringValue> items){
     items.forEach(this::addItemValue);
-    return this;
+
   }
   public void removeItemValue(BmmStringValue item){
     if(itemValues!=null) {

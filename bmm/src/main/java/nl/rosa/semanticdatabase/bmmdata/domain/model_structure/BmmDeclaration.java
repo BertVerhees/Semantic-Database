@@ -1,9 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.model_structure;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.utils.json.JSONUtils;
 import nl.rosa.semanticdatabase.utils.map.MapUtils;
@@ -14,22 +12,16 @@ import java.util.*;
 /**
  * Class BmmDeclaration
  */
-@EqualsAndHashCode(callSuper = true)
 public abstract class BmmDeclaration extends Bmm {
   /**
    * 1..1
    * name: String
    * Name of this model element.
    */
-  @Getter
-  @NonNull
   //========= name =======================================================================
-  protected String name;
-
-  public BmmDeclaration setName(String name) {
-    this.name = name;
-    return this;
-  }
+  @Getter
+  @Setter
+  protected @NonNull String name;
 
   /**
    * 0..1
@@ -44,26 +36,19 @@ public abstract class BmmDeclaration extends Bmm {
    * Other keys and value types may be freely added.
    */
   //========= documentation =======================================================================
-  private Map<String, String> documentation;
+  private Map<String, Object> documentation;
 
-  public BmmDeclaration putDocumentationItem(@NonNull String key, @NonNull Object value){
+  public void putDocumentationItem(@NonNull String key, @NonNull Object value){
     MapUtils.addStringObjectItemToMap(documentation, key, value);
-    return this;
   }
-  public BmmDeclaration putDocumentationItems(Map<String, Object> items){
+  public void putDocumentationItems(Map<String, Object> items){
     items.keySet().forEach(key -> putDocumentationItem(key, items.get(key)));
-    return this;
   }
   public Object getDocumentationItem(String key){
     if(documentation==null){
       return null;
     }
-    String value = documentation.get(key);
-    if(JSONUtils.isJSONValid(value)){
-      return JSONUtils.toJSON(value);
-    }else{
-      return value;
-    }
+    return documentation.get(key);
   }
   public void removeDocumentationItem(String key){
     if(documentation!=null) {
@@ -73,10 +58,10 @@ public abstract class BmmDeclaration extends Bmm {
   public void removeDocumentationItems(Collection<String> keys){
     keys.forEach(this::removeDocumentationItem);
   }
-  private void setDocumentation(Map<String, String> documentation) {
+  private void setDocumentation(Map<String, Object> documentation) {
     this.documentation = documentation;
   }
-  private Map<String,String> getDocumentation() {
+  private Map<String,Object> getDocumentation() {
     return documentation;
   }
   public Map<String,Object> documentation() {
@@ -88,26 +73,20 @@ public abstract class BmmDeclaration extends Bmm {
    * Optional meta-data of this element, as a keyed list. May be used to extend the meta-model.
    */
   //========= extensions =======================================================================
-  private Map<String, String> extensions;
+  private Map<String, Object> extensions;
 
-  public BmmDeclaration putExtension(@NonNull String key, @NonNull Object value){
+  public void putExtension(@NonNull String key, @NonNull Object value){
     MapUtils.addStringObjectItemToMap(extensions, key, value);
-    return this;
+
   }
-  public BmmDeclaration putExtensions(@NonNull Map<String, Object> items){
+  public void putExtensions(@NonNull Map<String, Object> items){
     items.keySet().forEach(key -> putExtension(key, items.get(key)));
-    return this;
   }
   public Object getExtension(String key){
     if(extensions==null){
       return null;
     }
-    String value = extensions.get(key);
-    if(JSONUtils.isJSONValid(value)){
-      return JSONUtils.toJSON(value);
-    }else{
-      return value;
-    }
+    return extensions.get(key);
   }
   public void removeExtension(String key){
     if(extensions!=null) {
@@ -117,10 +96,10 @@ public abstract class BmmDeclaration extends Bmm {
   public void removeExtensions(Collection<String> keys){
     keys.forEach(this::removeExtension);
   }
-  private void setExtensions(Map<String, String> extensions) {
+  private void setExtensions(Map<String, Object> extensions) {
     this.extensions = extensions;
   }
-  private Map<String,String> getExtensions() {
+  private Map<String,Object> getExtensions() {
     return extensions;
   }
   public Map<String,Object> extensions() {
@@ -134,14 +113,9 @@ public abstract class BmmDeclaration extends Bmm {
    * Model element within which an element is declared.
    */
   //========= scope =======================================================================
-  @NonNull
   @Getter
-  protected BmmDeclaration scope;
-
-  public BmmDeclaration setScope(BmmDeclaration scope) {
-    this.scope = scope;
-    return this;
-  }
+  @Setter
+  protected @NonNull BmmDeclaration scope;
 
   // Functions
 
@@ -152,8 +126,8 @@ public abstract class BmmDeclaration extends Bmm {
    * True if this declaration entity is the root of the declaration hierarchy.
    * @return
    */
-  @NonNull
-  public Boolean isRootScope(){
+
+  public @NonNull Boolean isRootScope(){
     return scope.getId() == this.getId();
   }
 }

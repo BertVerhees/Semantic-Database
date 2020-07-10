@@ -22,7 +22,7 @@ public class ElTupleItem extends Bmm {
   private ElExpression item;
   public ElTupleItem setItem(ElExpression item) {
     this.item = item;
-    return this;
+
   }
 
   /**
@@ -34,6 +34,6 @@ public class ElTupleItem extends Bmm {
   private String name;
   public ElTupleItem setName(String name) {
     this.name = name;
-    return this;
+
   }
 }

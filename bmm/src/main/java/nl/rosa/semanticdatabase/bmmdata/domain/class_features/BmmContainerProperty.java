@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmContainerType;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmUnitaryType;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -14,15 +15,30 @@ import javax.persistence.Entity;
  * Meta-type of for properties of linear container type, such as List<T> etc.
  */
 @EqualsAndHashCode(callSuper = true)
-@Entity
-@DiscriminatorValue("BBE_BD_BCE_BCS_BP_BCP")
 public class BmmContainerProperty extends BmmProperty  {
   /**
    * 0..1
    * cardinality: Multiplicity_interval
    * Cardinality of this container.
    */
+  @Getter
   private MultiplicityInterval cardinality;
+
+  public void setCardinality(MultiplicityInterval cardinality) {
+    this.cardinality = cardinality;
+  }
+
+  /**
+   * 1..1
+   * (redefined)
+   * type: BMM_UNITARY_TYPE
+   * Declared or inferred static type of the entity.
+   */
+  @NonNull
+  @Getter
+  @Setter
+  private BmmContainerType type;
+
   /**
    * 1..1
    * (abstract)

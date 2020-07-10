@@ -24,7 +24,7 @@ public class ElAssertion extends Bmm {
   private String tag;
   public ElAssertion setTag(String tag) {
     this.tag = tag;
-    return this;
+
   }
 
   /**
@@ -34,6 +34,6 @@ public class ElAssertion extends Bmm {
   private ElExpression expression;
   public ElAssertion setExpression(ElExpression expression) {
     this.expression = expression;
-    return this;
+
   }
 }

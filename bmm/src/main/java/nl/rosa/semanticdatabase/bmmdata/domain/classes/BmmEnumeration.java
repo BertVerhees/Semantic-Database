@@ -21,17 +21,17 @@ public class BmmEnumeration extends BmmSimpleClass {
      */
     protected Set<String> itemNames;
 
-    public BmmEnumeration addItemName(@NonNull String value) {
+    public void addItemName(@NonNull String value) {
         if (itemNames == null) {
             itemNames = new HashSet<>();
         }
         itemNames.add(value);
-        return this;
+
     }
 
-    public BmmEnumeration addtemNames(Set<String> items) {
+    public void addItemNames(Set<String> items) {
         items.forEach(item -> addItemName(item));
-        return this;
+
     }
 
     public void removeItemName(String item) {
@@ -63,17 +63,17 @@ public class BmmEnumeration extends BmmSimpleClass {
      */
     private Set<BmmLiteralValue> itemValues;
 
-    public BmmEnumeration addItemValue(@NonNull BmmLiteralValue value) {
+    public void addItemValue(@NonNull BmmLiteralValue value) {
         if (itemValues == null) {
             itemValues = new HashSet<>();
         }
         itemValues.add(value);
-        return this;
+
     }
 
-    public BmmEnumeration addtemValues(Set<BmmLiteralValue> items) {
+    public void addtemValues(Set<BmmLiteralValue> items) {
         items.forEach(item -> addItemValue(item));
-        return this;
+
     }
 
     public void removeItemValue(BmmLiteralValue item) {

@@ -16,7 +16,6 @@ import java.util.List;
  * kind, that defines the type of an attribute, or function result or argument. It
  * may include generic parameters that might or might not be bound. See subtypes.
  */
-@EqualsAndHashCode(callSuper = true)
 public abstract class BmmType extends Bmm {
 
     /**

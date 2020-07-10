@@ -51,7 +51,7 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature{
 
   public BmmFunction setIsNullable(Boolean nullable) {
     isNullable = nullable;
-    return this;
+
   }
 
 
@@ -68,7 +68,7 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature{
 
   public BmmFunction setType(BmmType type) {
     this.type = type;
-    return this;
+
   }
   /**
    * 1..1

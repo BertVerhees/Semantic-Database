@@ -4,6 +4,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
@@ -19,9 +20,6 @@ import javax.persistence.*;
  * Invariants
  * Inv_signature_no_args: signature.arguments = Void
  */
-@EqualsAndHashCode(callSuper = true)
-@Entity
-@DiscriminatorValue("BBE_BD_BCE_BCS_BP")
 public abstract class BmmProperty extends BmmClassScoped implements BmmInstantiable {
 
   /**
@@ -35,12 +33,8 @@ public abstract class BmmProperty extends BmmClassScoped implements BmmInstantia
    * Implemented because of implemented derived interface from BmmTyped
    */
   @Getter
+  @Setter
   protected Boolean isNullable;
-
-  public BmmTypedFeature setIsNullable (Boolean newVar){
-    isNullable = newVar;
-    return this;
-  }
   /**
    * 1..1
    * type: BMM_TYPE
@@ -48,14 +42,9 @@ public abstract class BmmProperty extends BmmClassScoped implements BmmInstantia
    *
    * Implemented because of implemented derived interface from BmmTyped
    */
-  @NonNull
   @Getter
+  @Setter
   protected BmmType type;
-
-  public BmmProperty setType(BmmType type) {
-    this.type = type;
-    return this;
-  }
 
   /**
    * 0..1
@@ -63,6 +52,8 @@ public abstract class BmmProperty extends BmmClassScoped implements BmmInstantia
    * {default = false}
    * True if this property is marked with info model im_runtime property.
    */
+  @Getter
+  @Setter
   private Boolean isImRuntime;
 
   /**
@@ -71,6 +62,8 @@ public abstract class BmmProperty extends BmmClassScoped implements BmmInstantia
    * {default = false}
    * True if this property was marked with info model im_infrastructure flag.
    */
+  @Getter
+  @Setter
   private Boolean isImInfrastructure;
 
   /**
@@ -81,6 +74,8 @@ public abstract class BmmProperty extends BmmClassScoped implements BmmInstantia
    * Equivalent to 'composition' in UML associations (but missing from UML properties without associations)
    * and also 'cascade-delete' semantics in ER schemas.
    */
+  @Getter
+  @Setter
   private Boolean isComposition;
 
   // Functions
@@ -106,9 +101,4 @@ public abstract class BmmProperty extends BmmClassScoped implements BmmInstantia
   public String displayName(){
     return null;
   }
-  //========== counterparts =====================================================
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "fk_bmm_class_id")
-  private BmmClass bmmClass;
-
 }

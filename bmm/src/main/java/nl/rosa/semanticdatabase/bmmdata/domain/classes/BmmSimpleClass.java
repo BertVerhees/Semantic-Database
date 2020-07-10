@@ -17,7 +17,7 @@ import javax.persistence.Entity;
  * instance of BMM_SIMPLE_TYPE or a descendant.
  * 
  */
-@EqualsAndHashCode(callSuper = true)
+
 public class BmmSimpleClass extends BmmClass {
 
   /**

@@ -23,11 +23,10 @@ public abstract class BmmClassEntity extends BmmDeclaration {
   @Getter
   private Boolean isSynthesisedGeneric;
 
-  public BmmClassEntity setSynthesisedGeneric(Boolean synthesisedGeneric) {
+  public void setSynthesisedGeneric(Boolean synthesisedGeneric) {
     isSynthesisedGeneric = synthesisedGeneric;
-    return this;
   }
-
+//===================== functions ============================================
   /**
    * 1..1
    * (abstract)

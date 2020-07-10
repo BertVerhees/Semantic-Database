@@ -17,11 +17,6 @@ import javax.persistence.*;
  * Inv_not_nullable: is_nullable = False
  * Inv_signature_no_args: signature.arguments = Void
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
-@NoArgsConstructor
-@DiscriminatorValue("BBE_BD_BCE_BCS_BC")
 public class BmmConstant extends BmmClassScoped implements BmmInstantiable{
 
   /**
@@ -33,12 +28,8 @@ public class BmmConstant extends BmmClassScoped implements BmmInstantiable{
    */
   @NonNull
   @Getter
+  @Setter
   private Boolean isNullable;
-
-  public BmmConstant setIsNullable(Boolean nullable) {
-    isNullable = nullable;
-    return this;
-  }
 
   /**
    * 1..1
@@ -47,12 +38,8 @@ public class BmmConstant extends BmmClassScoped implements BmmInstantiable{
    */
   @NonNull
   @Getter
+  @Setter
   private BmmLiteralValue value;
-
-  public BmmConstant setValue(BmmLiteralValue value) {
-    this.value = value;
-    return this;
-  }
 
   /**
    * 1..1
@@ -63,12 +50,8 @@ public class BmmConstant extends BmmClassScoped implements BmmInstantiable{
    */
   @NonNull
   @Getter
+  @Setter
   private BmmType type;
-
-  public BmmConstant setType(BmmType type) {
-    this.type = type;
-    return this;
-  }
 
   /**
    * 1..1
@@ -92,14 +75,6 @@ public class BmmConstant extends BmmClassScoped implements BmmInstantiable{
    */
   public Boolean isBoolean() {
     return null;
-  }
-
-  //======== counterparts =============================================
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "fk_bmm_class_id")
-  private BmmClass bmmClass;
-  private void setBmmClass(BmmClass bmmClass){
-    this.bmmClass = bmmClass;
   }
 
 }

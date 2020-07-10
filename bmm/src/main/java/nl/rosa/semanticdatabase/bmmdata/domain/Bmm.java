@@ -14,7 +14,6 @@ import java.io.Serializable;
  */
 
 @Getter
-@Document(collection = "bmm")
 @EqualsAndHashCode
 public abstract class Bmm implements Serializable {
 
@@ -25,12 +24,11 @@ public abstract class Bmm implements Serializable {
         return classPath;
     }
 
-    @Id
-    private String id;
+    @Transient
+    Long id;
 
-    public Bmm setId(String id) {
+    public void setId(Long id) {
         this.id = id;
-        return this;
     }
 
     public Boolean isNew() {

@@ -7,6 +7,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmEnumeration;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSimpleType;
 import nl.rosa.semanticdatabase.bmmdata.services.model_access.data.BmmModelMetadata;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import javax.swing.text.html.Option;
@@ -20,12 +21,13 @@ import java.util.*;
  *
  * Inv_top_level_scope: scope = self
  */
-@EqualsAndHashCode(callSuper = true)
-@ToString
-@Entity
-@DiscriminatorValue("BBE_BD_BPC_BM")
+@Document(collection = "bmm_model")
 public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
-   /**
+
+  @Id
+  private String id;
+
+  /**
    * 0..1
     * class_definitions: Hash<String,BMM_CLASS>
     * All classes in this model, keyed by type name.
@@ -62,7 +64,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
 
   private BmmModel setUsedModels(@NotNull Set<BmmModel> usedModels) {
     this.usedModels = usedModels;
-    return this;
+
   }
 
   public BmmModel addUsedModel(BmmModel usedModel) {
@@ -70,7 +72,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
       this.usedModels = new HashSet<>();
     }
     this.usedModels.add(usedModel);
-    return this;
+
   }
 
   public BmmModel addUsedModels(Set<BmmModel> usedModels) {
@@ -78,21 +80,21 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
       this.usedModels = new HashSet<>();
     }
     this.usedModels.addAll(usedModels);
-    return this;
+
   }
 
   public BmmModel removeUsedModel(BmmModel usedModel) {
     if(this.usedModels!=null){
       this.usedModels.remove(usedModel);
     }
-    return this;
+
   }
 
   public BmmModel removeUsedModels(Set<BmmModel> usedModels) {
     if(this.usedModels!=null) {
       this.usedModels.removeAll(usedModels);
     }
-    return this;
+
   }
 
   public Optional<BmmModel> usedModel(@NonNull String key){
@@ -411,7 +413,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
 
   public BmmModel setRmPublisher(String rmPublisher) {
     this.rmPublisher = rmPublisher;
-    return this;
+
   }
 
   @Getter
@@ -419,7 +421,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
 
   public BmmModel setRmRelease(String rmRelease) {
     this.rmRelease = rmRelease;
-    return this;
+
   }
 
 

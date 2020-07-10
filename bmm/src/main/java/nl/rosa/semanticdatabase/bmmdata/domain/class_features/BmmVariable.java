@@ -31,9 +31,8 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
   @Getter
   protected Boolean isNullable;
 
-  public BmmVariable setIsNullable(Boolean nullable) {
+  public void setIsNullable(Boolean nullable) {
     isNullable = nullable;
-    return this;
   }
   /**
    * 1..1
@@ -46,9 +45,8 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
   @Getter
   private BmmType type;
 
-  public BmmVariable setType(BmmType type) {
+  public void setType(BmmType type) {
     this.type = type;
-    return this;
   }
 
   /**

@@ -13,6 +13,7 @@ import java.util.Set;
  * Definition of a symbolic operator associated with a function
  */
 @EqualsAndHashCode(callSuper = true)
+@Builder
 public class BmmOperator extends Bmm {
 
   /**
@@ -22,24 +23,17 @@ public class BmmOperator extends Bmm {
    */
   @NonNull
   @Getter
+  @Setter
   private BmmOperatorPosition position;
-
-  public BmmOperator setPosition(BmmOperatorPosition position) {
-    this.position = position;
-    return this;
-  }
   /**
    * 1..1
    * symbols: List<String>
    * Set of String symbols that may be used to represent this operator in a textual representation of a BMM model.
    */
   @NonNull
+  @Setter
   @Getter
   private Set<String> symbols;
-  public BmmOperator setSymbols(Collection<String> symbols) {
-    this.symbols.addAll(symbols);
-  }
-
   /**
    * 1..1
    * name: String
@@ -47,10 +41,7 @@ public class BmmOperator extends Bmm {
    */
   @NonNull
   @Getter
+  @Setter
   private String name;
 
-  public BmmOperator setName(String name) {
-    this.name = name;
-    return this;
-  }
 }

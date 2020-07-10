@@ -15,6 +15,6 @@ public interface BmmTypedFeature extends BmmTyped {
    * {default = false}
    * True if this element can be null (Void) at execution time. May be interpreted as optionality in subtypes..
    */
-  BmmTypedFeature setIsNullable (Boolean newVar);
-  Boolean getIsNullable ();
+  void setIsNullable(Boolean isNullable);
+  Boolean getIsNullable();
 }

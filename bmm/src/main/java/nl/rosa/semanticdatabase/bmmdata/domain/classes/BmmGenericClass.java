@@ -29,16 +29,16 @@ public class BmmGenericClass extends BmmClass {
    */
   private Map<String, BmmParameterType> genericParameters;
 
-  public BmmClass putGenericParameter(@NonNull String key, @NonNull BmmParameterType value){
+  public void putGenericParameter(@NonNull String key, @NonNull BmmParameterType value){
     if(genericParameters==null){
       genericParameters = new HashMap<>();
     }
     genericParameters.put(key,  value);
-    return this;
+
   }
-  public BmmClass putGenericParameters(Map<String, BmmParameterType> items){
+  public void putGenericParameters(Map<String, BmmParameterType> items){
     items.keySet().forEach(key -> putGenericParameter(key, items.get(key)));
-    return this;
+
   }
   public BmmParameterType getGenericParameter(String key){
     if(genericParameters==null){
@@ -63,7 +63,7 @@ public class BmmGenericClass extends BmmClass {
   public Map<String,BmmParameterType> genericParameters() {
     return Collections.unmodifiableMap(genericParameters);
   }
-
+//====================== functions ========================================
   /**
    * 0..1
    * (redefined)

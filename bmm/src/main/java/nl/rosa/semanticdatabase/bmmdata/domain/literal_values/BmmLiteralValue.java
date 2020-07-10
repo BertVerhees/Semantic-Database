@@ -32,7 +32,7 @@ public class BmmLiteralValue extends Bmm implements BmmTyped {
   private BmmType type;
   public BmmLiteralValue setType(BmmType type) {
     this.type = type;
-    return this;
+
   }
 
   /**
@@ -80,6 +80,6 @@ public class BmmLiteralValue extends Bmm implements BmmTyped {
   private Object value;
   public BmmLiteralValue setValue(Object value) {
     this.value = value;
-    return this;
+
   }
 }

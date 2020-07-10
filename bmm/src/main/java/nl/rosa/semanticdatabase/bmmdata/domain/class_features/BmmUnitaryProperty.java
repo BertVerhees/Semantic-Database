@@ -1,8 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmUnitaryType;
 
@@ -14,10 +12,6 @@ import javax.persistence.Entity;
  * Class BmmUnitaryProperty
  * Meta-type of for properties of unitary type.
  */
-@EqualsAndHashCode(callSuper = true)
-@Entity
-@NoArgsConstructor
-@DiscriminatorValue("BBE_BD_BCE_BCS_BP_BUP")
 public class BmmUnitaryProperty extends BmmProperty  {
   /**
    * 1..1
@@ -25,8 +19,10 @@ public class BmmUnitaryProperty extends BmmProperty  {
    * type: BMM_UNITARY_TYPE
    * Declared or inferred static type of the entity.
    */
-  @NonNull
+  @Getter
+  @Setter
   private BmmUnitaryType type;
+
   /**
    * 1..1
    * is_boolean (): Boolean

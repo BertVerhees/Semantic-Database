@@ -1,9 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.model_structure;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -11,7 +9,6 @@ import javax.persistence.Entity;
 /**
  * Class BmmModule
  */
-@EqualsAndHashCode(callSuper = true)
 public abstract class BmmModule extends BmmDeclaration{
     /**
      * 1..1
@@ -19,12 +16,8 @@ public abstract class BmmModule extends BmmDeclaration{
      * scope: BMM_MODEL
      * Model within which module is defined.
      */
-    @NonNull
+    @Setter
     @Getter
+    @NonNull
     private BmmModel scope;
-
-    public BmmModule setScope(BmmModel scope) {
-        this.scope = scope;
-        return this;
-    }
 }

@@ -15,10 +15,6 @@ import java.util.List;
  * Class BmmRoutine
  * A feature defining a routine, scoped to a class.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
-@DiscriminatorValue("BBE_BD_BCE_BCS_BR")
 public abstract class BmmRoutine extends BmmClassScoped {
 
   /**

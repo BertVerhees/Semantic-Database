@@ -10,7 +10,7 @@ import java.util.Map;
  */
 
 public class MapUtils {
-    public static void addStringObjectItemToMap(Map<String, String> map, String key, Object value){
+    public static void addStringObjectItemToMap(Map<String, Object> map, String key, Object value){
         if(map==null){
             map = new HashMap<>();
         }

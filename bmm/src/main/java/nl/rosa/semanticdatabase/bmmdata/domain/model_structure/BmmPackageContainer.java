@@ -25,16 +25,14 @@ public abstract class BmmPackageContainer extends BmmDeclaration {
   //========= documentation =======================================================================
   private Map<String, BmmPackage> packages;
 
-  public BmmPackageContainer putPackage(@NonNull String key, @NonNull BmmPackage value){
+  public void putPackage(@NonNull String key, @NonNull BmmPackage value){
     if(packages==null){
       packages = new HashMap<>();
     }
     packages.put(key,  value);
-    return this;
   }
-  public BmmPackageContainer putPackages(Map<String, BmmPackage> items){
+  public void putPackages(Map<String, BmmPackage> items){
     items.keySet().forEach(key -> putPackage(key, items.get(key)));
-    return this;
   }
   public BmmPackage getPackage(String key){
     if(packages==null){
@@ -76,9 +74,8 @@ public abstract class BmmPackageContainer extends BmmDeclaration {
       throw new RuntimeException("Scope is of the type "+super.getScope().getClass().getCanonicalName()+" but should be of type BmmPackageContainer");
     }
   }
-  public BmmPackageContainer setScope(@NonNull BmmPackageContainer scope){
+  public void setScope(@NonNull BmmPackageContainer scope){
     super.setScope(scope);
-    return this;
   }
 
   // Functions

@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
@@ -42,7 +43,6 @@ import java.util.*;
  * 1) OneToOne because it serves as Class to give BmmModelType a Type
  * 2) OneToMany, to define the ancestors of BmmClass (multiple inheritance is possible)
  */
-@EqualsAndHashCode(callSuper = true)
 public abstract class BmmClass extends BmmModule {
 
     /**
@@ -52,12 +52,9 @@ public abstract class BmmClass extends BmmModule {
      */
     //=====bmmPackage=============================================================
     @Getter
+    @Setter
     @NonNull
     private BmmPackage bmmPackage;
-    public BmmClass setBmmPackage(BmmPackage bmmPackage) {
-        this.bmmPackage = bmmPackage;
-        return this;
-    }
 
     /**
      * 1..1
@@ -68,11 +65,8 @@ public abstract class BmmClass extends BmmModule {
     //======sourceSchemaId=======================================================================
     @NotEmpty
     @Getter
+    @Setter
     private String sourceSchemaId;
-    public BmmClass setSourceSchemaId(@NotEmpty String sourceSchemaId) {
-        this.sourceSchemaId = sourceSchemaId;
-        return this;
-    }
 
     /**
      * 0..1
@@ -82,16 +76,16 @@ public abstract class BmmClass extends BmmModule {
     //======constants=======================================================================
     private Map<String, BmmConstant> constants;
 
-    public BmmClass putConstant(@NonNull String key, @NonNull BmmConstant value){
+    public void putConstant(@NonNull String key, @NonNull BmmConstant value){
         if(constants==null){
             constants = new HashMap<>();
         }
         constants.put(key,  value);
-        return this;
+
     }
-    public BmmClass putConstants(Map<String, BmmConstant> items){
+    public void putConstants(Map<String, BmmConstant> items){
         items.keySet().forEach(key -> putConstant(key, items.get(key)));
-        return this;
+
     }
     public BmmConstant getConstant(String key){
         if(constants==null){
@@ -124,16 +118,16 @@ public abstract class BmmClass extends BmmModule {
     //======functions=======================================================================
     private Map<String, BmmFunction> functions;
 
-    public BmmClass putFunction(@NonNull String key, @NonNull BmmFunction value){
+    public void putFunction(@NonNull String key, @NonNull BmmFunction value){
         if(functions==null){
             functions = new HashMap<>();
         }
         functions.put(key,  value);
-        return this;
+
     }
-    public BmmClass putFunctions(Map<String, BmmFunction> items){
+    public void putFunctions(Map<String, BmmFunction> items){
         items.keySet().forEach(key -> putFunction(key, items.get(key)));
-        return this;
+
     }
     public BmmFunction getFunction(String key){
         if(functions==null){
@@ -166,16 +160,16 @@ public abstract class BmmClass extends BmmModule {
     //======procedures=======================================================================
     private Map<String, BmmProcedure> procedures;
 
-    public BmmClass putProcedure(@NonNull String key, @NonNull BmmProcedure value){
+    public void putProcedure(@NonNull String key, @NonNull BmmProcedure value){
         if(procedures==null){
             procedures = new HashMap<>();
         }
         procedures.put(key,  value);
-        return this;
+
     }
-    public BmmClass putProcedures(Map<String, BmmProcedure> items){
+    public void putProcedures(Map<String, BmmProcedure> items){
         items.keySet().forEach(key -> putProcedure(key, items.get(key)));
-        return this;
+
     }
     public BmmProcedure getProcedure(String key){
         if(procedures==null){
@@ -208,16 +202,16 @@ public abstract class BmmClass extends BmmModule {
     //======ancestors=======================================================================
     private Map<String, BmmModelType> ancestors;
 
-    public BmmClass putAncestor(@NonNull String key, @NonNull BmmModelType value){
+    public void putAncestor(@NonNull String key, @NonNull BmmModelType value){
         if(ancestors==null){
             ancestors = new HashMap<>();
         }
         ancestors.put(key,  value);
-        return this;
+
     }
-    public BmmClass putAncestors(Map<String, BmmModelType> items){
+    public void putAncestors(Map<String, BmmModelType> items){
         items.keySet().forEach(key -> putAncestor(key, items.get(key)));
-        return this;
+
     }
     public BmmModelType getAncestor(String key){
         if(ancestors==null){
@@ -252,16 +246,16 @@ public abstract class BmmClass extends BmmModule {
     //======properties=======================================================================
     private Map<String, BmmProperty> properties;
 
-    public BmmClass putProperty(@NonNull String key, @NonNull BmmProperty value){
+    public void putProperty(@NonNull String key, @NonNull BmmProperty value){
         if(properties==null){
             properties = new HashMap<>();
         }
         properties.put(key,  value);
-        return this;
+
     }
-    public BmmClass putProperties(Map<String, BmmProperty> items){
+    public void putProperties(Map<String, BmmProperty> items){
         items.keySet().forEach(key -> putProperty(key, items.get(key)));
-        return this;
+
     }
     public BmmProperty getProperty(String key){
         if(properties==null){
@@ -296,16 +290,16 @@ public abstract class BmmClass extends BmmModule {
     //======creators=======================================================================
     private Map<String, BmmProcedure> creators;
 
-    public BmmClass putCreator(@NonNull String key, @NonNull BmmProcedure value){
+    public void putCreator(@NonNull String key, @NonNull BmmProcedure value){
         if(creators==null){
             creators = new HashMap<>();
         }
         creators.put(key,  value);
-        return this;
+
     }
-    public BmmClass putCreators(Map<String, BmmProcedure> items){
+    public void putCreators(Map<String, BmmProcedure> items){
         items.keySet().forEach(key -> putCreator(key, items.get(key)));
-        return this;
+
     }
     public BmmProcedure getCreator(String key){
         if(creators==null){
@@ -338,16 +332,16 @@ public abstract class BmmClass extends BmmModule {
     //======convertor=======================================================================
     private Map<String, BmmProcedure> convertors;
 
-    public BmmClass putConvertor(@NonNull String key, @NonNull BmmProcedure value){
+    public void putConvertor(@NonNull String key, @NonNull BmmProcedure value){
         if(convertors==null){
             convertors = new HashMap<>();
         }
         convertors.put(key,  value);
-        return this;
+
     }
-    public BmmClass putConvertors(Map<String, BmmProcedure> items){
+    public void putConvertors(Map<String, BmmProcedure> items){
         items.keySet().forEach(key -> putConvertor(key, items.get(key)));
-        return this;
+
     }
     public BmmProcedure getConvertor(String key){
         if(convertors==null){
@@ -379,7 +373,6 @@ public abstract class BmmClass extends BmmModule {
      * True if this class represents a type considered to be primitive in the type system, i.e. any typically built-in
      * or standard library type such as String, Date, Hash<K,V> etc.
      */
-    private Boolean isPrimitive;
     public Boolean getIsPrimitive(){
         return ClassUtils.isPrimitiveOrWrapper(this.getClass());
     }
@@ -391,27 +384,24 @@ public abstract class BmmClass extends BmmModule {
      * True if this class is marked as abstract, i.e. direct instances cannot be created from its direct type.
      */
     @Getter
+    @Setter
     private Boolean isAbstract;
-    public BmmClass setAbstract(@NonNull Boolean anAbstract) {
-        isAbstract = anAbstract;
-        return this;
-    }
 
     /**
      * 0..1
      * invariants: List<EL_ASSERTION>
      */
     private Set<ElAssertion> invariants;
-    public BmmClass addInvariant(@NonNull ElAssertion value){
+    public void addInvariant(@NonNull ElAssertion value){
         if(invariants==null){
             invariants = new HashSet<>();
         }
         invariants.add(value);
-        return this;
+
     }
-    public BmmClass addInvariants(Set<ElAssertion> items){
+    public void addInvariants(Set<ElAssertion> items){
         items.forEach(item -> addInvariant(item));
-        return this;
+
     }
     public void removeInvariant(ElAssertion item){
         if(invariants!=null) {
@@ -439,11 +429,11 @@ public abstract class BmmClass extends BmmModule {
     @NonNull
     @Transient
     @Getter
+    @Setter
     private Boolean isOverride = false;
-
-    public BmmClass setOverride(@NotNull Boolean override) {
+    public void setOverride(@NotNull Boolean override) {
         isOverride = override;
-        return this;
+
     }
     /**
      * 0..1
@@ -456,16 +446,16 @@ public abstract class BmmClass extends BmmModule {
     //======immediateDescendants=======================================================================
     @Transient
     private Set<BmmClass> immediateDescendants;
-    public BmmClass addImmediateDescendant(@NonNull BmmClass value){
+    public void addImmediateDescendant(@NonNull BmmClass value){
         if(immediateDescendants==null){
             immediateDescendants = new HashSet<>();
         }
         immediateDescendants.add(value);
-        return this;
+
     }
-    public BmmClass addImmediateDescendants(Set<BmmClass> items){
+    public void addImmediateDescendants(Set<BmmClass> items){
         items.forEach(item -> addImmediateDescendant(item));
-        return this;
+
     }
     public void removeImmediateDescendant(BmmClass item){
         if(immediateDescendants!=null) {
@@ -487,7 +477,7 @@ public abstract class BmmClass extends BmmModule {
 
     public BmmClass removeImmediateDescendants(Set<BmmClass> immediateDescendants) {
         this.immediateDescendants.removeAll(immediateDescendants);
-        return this;
+
     }
 
 
@@ -627,6 +617,6 @@ public abstract class BmmClass extends BmmModule {
 
     public BmmClass setBmmClass(BmmSchema bmmSchema) {
         this.bmmSchema = bmmSchema;
-        return this;
+
     }
 }

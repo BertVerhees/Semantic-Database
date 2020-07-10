@@ -9,8 +9,6 @@ import lombok.EqualsAndHashCode;
  * Parent of meta-nl.rosa.semanticdatabase.bmm.model.types that may be used as the type of any instantiated object
  * that is not a container object.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
 public abstract class BmmUnitaryType extends BmmType  {
     // Functions
 
