@@ -23,7 +23,6 @@ import javax.persistence.*;
  *  * 2) ManyToOne, to define the ancestors of BmmClass (multiple inheritance is possible)
  * 
  */
-@Entity
 public abstract class BmmModelType extends BmmEffectiveType {
 
   /**
@@ -37,8 +36,6 @@ public abstract class BmmModelType extends BmmEffectiveType {
    * Defining class of this type.
    */
   @Getter
-  @OneToOne(mappedBy = "bmm_model_type", cascade = CascadeType.ALL,
-           fetch = FetchType.LAZY)
   private BmmClass baseClass;
   // Functions
 
@@ -51,7 +48,6 @@ public abstract class BmmModelType extends BmmEffectiveType {
    */
   @Override
   @NonNull
-  @MapKey
   public String typeBaseName() {
     return null;
   }
@@ -68,8 +64,4 @@ public abstract class BmmModelType extends BmmEffectiveType {
     return null;
   }
 
-  //========== counterparts =====================================================
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "fk_bmm_class_id")
-  private BmmClass bmmClass;
 }
