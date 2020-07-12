@@ -3,13 +3,13 @@ package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 
 /**
  * Class ElTupleItem
  * A single tuple item, with an optional name.
  */
-@EqualsAndHashCode(callSuper = true)
 public class ElTupleItem extends Bmm {
 
   /**
@@ -19,11 +19,8 @@ public class ElTupleItem extends Bmm {
    * is Void, e.g. within a routine call parameter list.
    */
   @Getter
+  @Setter
   private ElExpression item;
-  public ElTupleItem setItem(ElExpression item) {
-    this.item = item;
-
-  }
 
   /**
    * 0..1
@@ -31,9 +28,6 @@ public class ElTupleItem extends Bmm {
    * Optional name of tuple item.
    */
   @Getter
+  @Setter
   private String name;
-  public ElTupleItem setName(String name) {
-    this.name = name;
-
-  }
 }

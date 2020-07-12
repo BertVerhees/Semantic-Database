@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmRoutine;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -16,14 +15,15 @@ import java.util.List;
  * (struct=?, style=3), where struct is an open argument.
  * Evaluation type (i.e. type of runtime evaluated form) is BMM_SIGNATURE.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
 public abstract class ElAgent extends ElScopedRef {
   /**
    * 1..1
    * name: String
    * Name of the routine being called.
    */
+  @NonNull
+  @Getter
+  @Setter
   private String name;
 
   /**
@@ -31,6 +31,8 @@ public abstract class ElAgent extends ElScopedRef {
    * closed_args: EL_TUPLE
    * Closed arguments of a routine call as a tuple of objects.
    */
+  @Getter
+  @Setter
   private ElTuple closedArgs;
 
   /**
@@ -42,7 +44,38 @@ public abstract class ElAgent extends ElScopedRef {
    * missing arguments are inferred from the definition.
    * @param newVar the new value of openArgs
    */
-  private List<String> openArgs;
+  private Set<String> openArgs;
+  public void addOpenArg(@NonNull String value){
+    if(openArgs==null){
+      openArgs = new HashSet<>();
+    }
+    openArgs.add(value);
+  }
+  public void addOpenArgs(Set<String> openArgs){
+    openArgs.forEach(openArg -> addOpenArg(openArg));
+
+  }
+  public void removeOpenArg(String openArg){
+    if(openArgs!=null) {
+      openArgs.remove(openArg);
+    }
+  }
+  public void removeOpenArgs(Collection<String> openArgs){
+    openArgs.forEach(this::removeOpenArg);
+  }
+  public void removeOpenArgs(Set<String> openArgs) {
+    this.openArgs.removeAll(openArgs);
+  }
+  void setOpenArgs(Set<String> openArgs) {
+    this.openArgs = openArgs;
+  }
+  Set<String> getOpenArgs() {
+    return openArgs;
+  }
+  public Set<String> openArgs() {
+    return Collections.unmodifiableSet(openArgs);
+  }
+
 
   /**
    * 0..1
@@ -50,6 +83,8 @@ public abstract class ElAgent extends ElScopedRef {
    * Reference to definition of a routine for which this is an agent, if one exists.
    * @param newVar the new value of definition
    */
+  @Getter
+  @Setter
   private BmmRoutine definition;
   // Functions
   /**
@@ -60,6 +95,7 @@ public abstract class ElAgent extends ElScopedRef {
    * Eval type is the signature corresponding to the (remaining) open arguments and
    * return type, if any.
    */
+  @NonNull
   public BmmSignature evalType(){
     return null;
   }
@@ -68,6 +104,7 @@ public abstract class ElAgent extends ElScopedRef {
    * Post_result_validity: Result = open_arguments = Void
    * @return       Boolean
    */
+  @NonNull
   public Boolean isCallable(){
     return null;
   }

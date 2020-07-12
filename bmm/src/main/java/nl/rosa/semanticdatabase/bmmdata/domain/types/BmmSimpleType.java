@@ -1,8 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmSimpleClass;
 
 import javax.persistence.Entity;
@@ -21,9 +19,6 @@ import java.util.List;
  * Result is base_class.name .
  * 
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class BmmSimpleType extends BmmModelType  {
   /**
    * 1..1
@@ -32,6 +27,8 @@ public class BmmSimpleType extends BmmModelType  {
    * Defining class of this type.
    */
   @NonNull
+  @Getter
+  @Setter
   private BmmSimpleClass baseClass;
 
   /**

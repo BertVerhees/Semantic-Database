@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 import javax.persistence.Entity;
@@ -14,13 +13,15 @@ import javax.persistence.Entity;
  * which feature references are scoped; corresponds to 'self', 'this' or 'Current'
  * in various programming languages.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class ElSelfRef extends ElInstanceRef {
   /**
+   * 1..1
+   * type: BMM_TYPE
    * Type of the current scoping instance, inferred from expression context.
    */
+  @NonNull
+  @Getter
+  @Setter
   private BmmType type;
   
   /**

@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 import javax.persistence.Entity;
@@ -14,14 +13,14 @@ import javax.persistence.Entity;
  * {TypeName}.
  * May be used as a value, or as the qualifier for a function or constant access.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class ElTypeRef extends ElInstanceRef  {
   /**
    * 1..1
    * type: BMM_TYPE
    */
+  @NonNull
+  @Getter
+  @Setter
   private BmmType type;
 
   @Override

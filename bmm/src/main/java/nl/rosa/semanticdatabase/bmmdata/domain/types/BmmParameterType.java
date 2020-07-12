@@ -1,9 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.Entity;
 import java.util.List;
@@ -30,20 +28,26 @@ import java.util.List;
  *    * Inv_generic_name: name.count = 1 and name.is_upper
  * 
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class BmmParameterType extends BmmUnitaryType  {
 
   /**
+   * 1..1
+   * name: String
    * Name of the parameter, e.g. 'T' etc. The name is limited to 1 character and upper-case.
    */
+  @NonNull
+  @Getter
+  @Setter
   private String name;
   /**
+   * 0..1
+   * type_constraint: BMM_EFFECTIVE_TYPE
    * Optional conformance constraint that must be the name of a defined type.
    */
   private BmmEffectiveType typeConstraint;
   /**
+   * 0..1
+   * inheritance_precursor: BMM_PARAMETER_TYPE
    * If set, is the corresponding generic parameter definition in an ancestor class.
    */
   private BmmParameterType inheritancePrecursor;

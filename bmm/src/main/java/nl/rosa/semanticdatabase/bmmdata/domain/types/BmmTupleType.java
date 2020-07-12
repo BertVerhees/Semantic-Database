@@ -3,11 +3,12 @@ package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmConstant;
 
 import javax.persistence.Entity;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Class BmmTupleType
@@ -30,16 +31,42 @@ import java.util.Map;
  * Return base_name.
  * 
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class BmmTupleType extends BmmEffectiveType  {
 
-  private String baseName = "Tuple";
+  @Getter
+  private final String baseName = "Tuple";
   /**
-   * List of nl.rosa.semanticdatabase.bmm.model.types of the items of the tuple, keyed by purpose in the tuple.
+   * 1..1
+   * item_types: Hash<String,BMM_TYPE>
+   * List of types of the items of the tuple, keyed by purpose in the tuple.
    */
-  private Map<String,BmmType> itemTypes;
+  private Map<String,BmmType> itemTypes = new HashMap<>();
+  public void putItemType(@NonNull String key, @NonNull BmmType value){
+    itemTypes.put(key,  value);
+  }
+  public void putItemType(Map<String, BmmType> items){
+    items.keySet().forEach(key -> {
+      putItemType(key, items.get(key));
+    });
+  }
+  public BmmType getItemType(String key){
+    return itemTypes.get(key);
+  }
+  public void removeItemType(String key){
+    itemTypes.remove(key);
+  }
+  public void removeItemTypes(Collection<String> keys){
+    keys.forEach(this::removeItemType);
+  }
+  void setItemTypes(Map<String, BmmType> itemTypes) {
+    this.itemTypes = itemTypes;
+  }
+  Map<String,BmmType> getItemTypes() {
+    return itemTypes;
+  }
+  public Map<String,BmmType> itemTypes() {
+    return Collections.unmodifiableMap(itemTypes);
+  }
 
   /**
    * 1..1
@@ -67,6 +94,14 @@ public class BmmTupleType extends BmmEffectiveType  {
     return baseName;
   }
 
+  /**
+   * 1..1
+   * (effected)
+   * flattened_type_list (): List<String>
+   * Return the logical set (i.e. unique types) from the merge of flattened_type_list() called on each
+   * member of item_types.
+   * @return
+   */
   @Override
   public @NonNull List<String> flattenedTypeList() {
     return null;

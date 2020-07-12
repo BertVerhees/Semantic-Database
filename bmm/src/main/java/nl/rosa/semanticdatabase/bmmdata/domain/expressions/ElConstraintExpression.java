@@ -1,8 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 import javax.persistence.Entity;
@@ -18,8 +17,13 @@ import javax.persistence.Entity;
 @Entity
 public class ElConstraintExpression extends ElExpression {
   /**
+   * 1..1
+   * left_operand: EL_EXPRESSION
    * Left operand of constraint expression.
    */
+  @NonNull
+  @Getter
+  @Setter
   private ElExpression leftOperand;
   /**
    * 1..1
@@ -29,6 +33,9 @@ public class ElConstraintExpression extends ElExpression {
    * Invariants
    * Inv_boolean_result: is_boolean()
    */
+  @NonNull
+  @Getter
+  @Setter
   private Object constraint;
   
   @Override

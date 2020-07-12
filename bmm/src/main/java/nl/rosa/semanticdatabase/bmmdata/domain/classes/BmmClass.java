@@ -607,14 +607,4 @@ public abstract class BmmClass extends BmmModule {
         return null;
     }
 
-    //=============  counterparts =========================================================
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_bmm_schema_id")
-    @Getter
-    private BmmSchema bmmSchema;
-
-    public BmmClass setBmmClass(BmmSchema bmmSchema) {
-        this.bmmSchema = bmmSchema;
-
-    }
 }

@@ -1,8 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 import javax.persistence.Entity;
@@ -11,13 +10,15 @@ import javax.persistence.Entity;
  * Class ElUnaryOperator
  * Unary operator expression node.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class ElUnaryOperator extends ElOperator {
   /**
+   * 1..1
+   * operand: EL_EXPRESSION
    * Operand node.
    */
+  @NonNull
+  @Getter
+  @Setter
   private ElExpression operand;
   @Override
   public BmmType evalType() {

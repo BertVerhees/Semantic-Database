@@ -2,6 +2,8 @@ package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 import javax.persistence.Entity;
@@ -12,13 +14,14 @@ import javax.persistence.Entity;
  * Terminal item corresponding to a reference to a directly instantiable entity,
  * i.e. a variable, constant, or property.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class ElInstantiableRef<T> extends ElScopedRef {
   /**
+   * 0..1
+   * definition: T
    * Definition of the constant, property or variable, inferred by inspection of the current scoping instance.
    */
+  @Getter
+  @Setter
   private T definition;
 
   // Functions

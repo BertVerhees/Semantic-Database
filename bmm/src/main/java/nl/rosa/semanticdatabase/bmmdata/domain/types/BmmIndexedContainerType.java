@@ -1,9 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
+import lombok.*;
 
 import javax.persistence.Entity;
 
@@ -16,9 +14,6 @@ import javax.persistence.Entity;
  * Return full type name, e.g. HashMap<String, ELEMENT>.
  * 
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class BmmIndexedContainerType extends BmmContainerType {
   /**
    * 1..1
@@ -27,6 +22,8 @@ public class BmmIndexedContainerType extends BmmContainerType {
    * but may be a numeric type or indeed any type from which a hash value can be derived.
    */
   @NonNull
+  @Getter
+  @Setter
   private BmmSimpleType indexType;
 
   /**

@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmLiteralValue;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
@@ -13,15 +12,15 @@ import javax.persistence.Entity;
  * Literal value of any type known in the model, including primitive nl.rosa.semanticdatabase.bmm.model.types. Defined
  * via a BMM_LITERAL_VALUE.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class ElLiteral extends ElInstanceRef {
   /**
    * 1..1
    * value: BMM_LITERAL_VALUE
    * The reference item from which the value of this node can be computed.
    */
+  @Getter
+  @Setter
+  @NonNull
   private BmmLiteralValue value;
 
   /**

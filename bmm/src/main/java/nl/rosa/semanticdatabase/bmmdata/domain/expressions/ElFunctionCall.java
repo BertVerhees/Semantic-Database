@@ -1,8 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 import javax.persistence.Entity;
@@ -13,14 +11,13 @@ import javax.persistence.Entity;
  * A call made on a closed function agent, returning a result. Equivalent to an
  * 'application' of a function in Lambda calculus.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
   /**
    * ElAgentCall
    */
   @NonNull
+  @Getter
+  @Setter
   private ElAgent agent;
 //======================================================================================
 

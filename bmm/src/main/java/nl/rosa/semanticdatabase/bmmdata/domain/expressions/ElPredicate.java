@@ -1,5 +1,8 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSimpleType;
 
 /**
@@ -13,6 +16,9 @@ public abstract class ElPredicate extends ElTerminal {
    * The target instance of this predicate.
    * @param newVar the new value of operand
    */
+  @NonNull
+  @Getter
+  @Setter
   private ElInstanceRef operand;
   // Functions
   /**
@@ -24,6 +30,7 @@ public abstract class ElPredicate extends ElTerminal {
    * Invariants
    * Inv_boolean_result: is_boolean()
    */
+  @NonNull
   public BmmSimpleType evalType(){
     return null;
   }

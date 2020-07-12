@@ -15,8 +15,5 @@ import javax.persistence.Entity;
  * probably to be removed.
  * 
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class ElDefined extends ElPredicate {
 }

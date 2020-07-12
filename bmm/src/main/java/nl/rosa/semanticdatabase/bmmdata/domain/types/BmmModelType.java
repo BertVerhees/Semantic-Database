@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
 import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmValueSetSpec;
 
@@ -29,6 +30,8 @@ public abstract class BmmModelType extends BmmEffectiveType {
    * 0..1
    * value_constraint: BMM_VALUE_SET_SPEC
    */
+  @Getter
+  @Setter
   private BmmValueSetSpec valueConstraint;
   /**
    * 1..1
@@ -36,6 +39,8 @@ public abstract class BmmModelType extends BmmEffectiveType {
    * Defining class of this type.
    */
   @Getter
+  @Setter
+  @NonNull
   private BmmClass baseClass;
   // Functions
 

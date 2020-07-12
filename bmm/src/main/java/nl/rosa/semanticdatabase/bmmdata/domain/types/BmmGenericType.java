@@ -1,12 +1,11 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
+import lombok.*;
+import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmParameter;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmGenericClass;
 
 import javax.persistence.Entity;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -23,9 +22,6 @@ import java.util.List;
  * which may be open or closed.
  * 
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@Entity
 public class BmmGenericType extends BmmModelType  {
   /**
    * 1..1
@@ -34,7 +30,32 @@ public class BmmGenericType extends BmmModelType  {
    * formal generic parameter declarations, and the types may be defined types or formal parameter types.
    */
   @NonNull
-  private List<BmmUnitaryType> genericParameters;
+  private Set<BmmUnitaryType> genericParameters = new HashSet<>();
+  public void addGenericParameter(@NonNull BmmUnitaryType value){
+    genericParameters.add(value);
+  }
+  public void addGenericParameters(Set<BmmUnitaryType> items){
+    items.forEach(this::addGenericParameter);
+  }
+  public void removeGenericParameter(BmmUnitaryType item){
+    genericParameters.remove(item);
+  }
+  public void removeGenericParameters(Collection<BmmUnitaryType> items){
+    items.forEach(this::removeGenericParameter);
+  }
+  public void removeGenericParameters(Set<BmmParameter> items) {
+    this.genericParameters.removeAll(items);
+  }
+  void setGenericParameters(Set<BmmUnitaryType> items) {
+    this.genericParameters = items;
+  }
+  Set<BmmUnitaryType> getGenericParameters() {
+    return genericParameters;
+  }
+  public Set<BmmUnitaryType> genericParameters() {
+    return Collections.unmodifiableSet(genericParameters);
+  }
+
   /**
    * 1..1
    * (redefined)
@@ -42,6 +63,8 @@ public class BmmGenericType extends BmmModelType  {
    * The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.
    */
   @NonNull
+  @Getter
+  @Setter
   private BmmGenericClass baseClass;
   
   /**

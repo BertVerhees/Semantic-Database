@@ -28,10 +28,6 @@ import java.util.List;
  * True if item_type is primitive.
  * 
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
-@Entity
 public class BmmContainerType extends BmmType {
 
   /**
