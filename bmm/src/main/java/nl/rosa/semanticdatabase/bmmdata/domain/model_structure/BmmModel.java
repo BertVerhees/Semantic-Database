@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.model_structure;
 
 import lombok.*;
+import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmConstant;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmProperty;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmEnumeration;
@@ -32,23 +33,42 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     * class_definitions: Hash<String,BMM_CLASS>
     * All classes in this model, keyed by type name.
    */
-   @Getter
-   @Setter
-   @ElementCollection
-   @CollectionTable(name = "bmm_model_class_definition_mapping",
-           joinColumns = {@JoinColumn(name = "class_definition_id", referencedColumnName = "id")})
-   @MapKeyColumn(name = "class_definition_name")
-   @Column(name = "class_definition")
-   private Map<String, BmmClass> classDefinitions = new HashMap<>();
-  public void addClassDefinition(String key, BmmClass value){
-    classDefinitions.put(key, value);
+   private Map<String, BmmClass> classDefinitions;
+  public void putClassDefinition(@NonNull String key, @NonNull BmmClass value){
+    if(classDefinitions==null){
+      classDefinitions = new HashMap<>();
+    }
+    classDefinitions.put(key,  value);
+
+  }
+  public void putClassDefinitions(Map<String, BmmClass> items){
+    items.keySet().forEach(key -> putClassDefinition(key, items.get(key)));
+
   }
   public BmmClass getClassDefinition(String key){
+    if(classDefinitions==null){
+      return null;
+    }
     return classDefinitions.get(key);
   }
-  public BmmClass removeClassDefinition(String key){
-    return classDefinitions.remove(key);
+  public void removeClassDefinition(String key){
+    if(classDefinitions!=null) {
+      classDefinitions.remove(key);
+    }
   }
+  public void removeClassDefinitions(Collection<String> keys){
+    keys.forEach(this::removeClassDefinition);
+  }
+  void setClassDefinitions(Map<String, BmmClass> constants) {
+    this.classDefinitions = constants;
+  }
+  Map<String,BmmClass> getClassDefinitions() {
+    return classDefinitions;
+  }
+  public Map<String,BmmClass> classDefinitions() {
+    return Collections.unmodifiableMap(classDefinitions);
+  }
+
   /**
    * 0..1
    * used_models: List<BMM_MODEL>
@@ -56,45 +76,39 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
    * Classes in the current model may refer to classes in a used model by specifying the other class’s scope
    * meta-attribute.
    */
-  @OneToMany(cascade = CascadeType.ALL, mappedBy = "model", orphanRemoval = true)
   private Set<BmmModel> usedModels;
-  private Set<BmmModel> getUsedModels() {
+  Set<BmmModel> getUsedModels() {
     return this.usedModels;
   }
 
-  private BmmModel setUsedModels(@NotNull Set<BmmModel> usedModels) {
+  void setUsedModels(@NotNull Set<BmmModel> usedModels) {
     this.usedModels = usedModels;
-
   }
 
-  public BmmModel addUsedModel(BmmModel usedModel) {
+  public void addUsedModel(BmmModel usedModel) {
     if(this.usedModels==null){
       this.usedModels = new HashSet<>();
     }
     this.usedModels.add(usedModel);
-
   }
 
-  public BmmModel addUsedModels(Set<BmmModel> usedModels) {
+  public void addUsedModels(Set<BmmModel> usedModels) {
     if(this.usedModels==null){
       this.usedModels = new HashSet<>();
     }
     this.usedModels.addAll(usedModels);
-
   }
 
-  public BmmModel removeUsedModel(BmmModel usedModel) {
+  public void removeUsedModel(BmmModel usedModel) {
     if(this.usedModels!=null){
       this.usedModels.remove(usedModel);
     }
-
   }
 
-  public BmmModel removeUsedModels(Set<BmmModel> usedModels) {
+  public void removeUsedModels(Set<BmmModel> usedModels) {
     if(this.usedModels!=null) {
       this.usedModels.removeAll(usedModels);
     }
-
   }
 
   public Optional<BmmModel> usedModel(@NonNull String key){
@@ -105,10 +119,8 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
   }
 
   public Optional<Set<BmmModel>> usedModels(){
-    return Optional.ofNullable(Collections.unmodifiableSet(this.usedModels));
+    return Optional.of(Collections.unmodifiableSet(this.usedModels));
   }
-  @ManyToOne(fetch = FetchType.LAZY)
-  private BmmModel usedModel;
   // Functions
   /**
    * 1..1
@@ -409,20 +421,11 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
   }
 
   @Getter
+  @Setter
   private String rmPublisher;
 
-  public BmmModel setRmPublisher(String rmPublisher) {
-    this.rmPublisher = rmPublisher;
-
-  }
-
   @Getter
+  @Setter
   private String rmRelease;
-
-  public BmmModel setRmRelease(String rmRelease) {
-    this.rmRelease = rmRelease;
-
-  }
-
 
 }

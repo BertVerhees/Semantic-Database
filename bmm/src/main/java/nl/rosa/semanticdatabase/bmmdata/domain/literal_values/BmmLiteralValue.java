@@ -1,10 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.literal_values;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NonNull;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmTyped;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
@@ -17,7 +14,6 @@ import javax.persistence.DiscriminatorValue;
  * be inline values of primitive nl.rosa.semanticdatabase.bmm.model.types in the usual fashion or complex objects in
  * syntax form, e.g. JSON.
  */
-@EqualsAndHashCode(callSuper = true)
 public class BmmLiteralValue extends Bmm implements BmmTyped {
 
   /**
@@ -29,12 +25,8 @@ public class BmmLiteralValue extends Bmm implements BmmTyped {
    */
   @NonNull
   @Getter
+  @Setter
   private BmmType type;
-  public BmmLiteralValue setType(BmmType type) {
-    this.type = type;
-
-  }
-
   /**
    * 1..1
    * is_boolean (): Boolean
@@ -43,6 +35,7 @@ public class BmmLiteralValue extends Bmm implements BmmTyped {
    * @return
    */
   @Override
+  @NonNull
   public Boolean isBoolean() {
     //TODO
     return null;
@@ -57,6 +50,7 @@ public class BmmLiteralValue extends Bmm implements BmmTyped {
    * If not set, json is assumed.
    */
   @Getter
+  @Setter
   private String syntax;
   /**
    * 1..1
@@ -64,22 +58,16 @@ public class BmmLiteralValue extends Bmm implements BmmTyped {
    * A serial representation of the value.
    */
   @NonNull
+  @Getter
+  @Setter
   private String valueLiteral;
-  public String getValueLiteral() {
-    return value.toString();
-  }
-  public void setValueLiteral(String valueLiteral) {
-    this.valueLiteral = valueLiteral;
-  }
 
   /**
    * 0..1
    * value: Any
    * A native representation of the value, possibly derived by deserialising value_literal.
    */
+  @Getter
+  @Setter
   private Object value;
-  public BmmLiteralValue setValue(Object value) {
-    this.value = value;
-
-  }
 }
