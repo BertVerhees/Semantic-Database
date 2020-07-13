@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.expressions.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
-import nl.rosa.semanticdatabase.bmmdata.domain.routine_implementation.BmmStatementItem;
+import nl.rosa.semanticdatabase.bmmdata.domain.statements.BmmStatementItem;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.*;
 
 import javax.validation.constraints.NotNull;

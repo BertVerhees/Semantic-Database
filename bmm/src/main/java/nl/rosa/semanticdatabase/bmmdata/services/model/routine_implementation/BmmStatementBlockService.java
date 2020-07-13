@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.services.model.routine_implementation;
 
-import nl.rosa.semanticdatabase.bmmdata.domain.routine_implementation.BmmStatementBlock;
+import nl.rosa.semanticdatabase.bmmdata.domain.statements.BmmStatementBlock;
 import nl.rosa.semanticdatabase.bmmdata.services.CrudService;
 
 /**

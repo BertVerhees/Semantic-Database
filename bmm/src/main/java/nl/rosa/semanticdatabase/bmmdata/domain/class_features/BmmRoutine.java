@@ -2,11 +2,9 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
-import nl.rosa.semanticdatabase.bmmdata.domain.routine_implementation.BmmStatementItem;
+import nl.rosa.semanticdatabase.bmmdata.domain.statements.BmmStatementItem;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
 import java.util.*;
 
 

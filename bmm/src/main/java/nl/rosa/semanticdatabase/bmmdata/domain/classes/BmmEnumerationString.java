@@ -6,15 +6,13 @@ import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmLiteralValue;
 import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmStringValue;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import javax.management.StringValueExp;
 import java.util.*;
 
 /**
  * Class BmmEnumerationString
  * String-based enumeration meta-type.
  */
-@EqualsAndHashCode(callSuper = true)
 public class BmmEnumerationString extends BmmEnumeration {
   /**
    * 0..1
@@ -40,8 +38,11 @@ public class BmmEnumerationString extends BmmEnumeration {
       itemValues.remove(item);
     }
   }
-  void setItemValues(Set<BmmStringValue> items) {
-    this.itemValues = items;
+  void setItemValues(Set<BmmLiteralValue> items) {
+    this.itemValues = new HashSet<>();
+    items.forEach(item -> {
+      this.itemValues.add((BmmStringValue) item);
+    });
   }
   private Set<BmmStringValue> getItemValues() {
     return itemValues;
