@@ -12,48 +12,48 @@ import java.util.Set;
  * Abstract parent of multi-branch decision structures.
  */
 
-public abstract class BmmDecisionGroup implements BmmStatement{
+public abstract class BmmDecisionGroup<T extends BmmDecisionBranch> implements BmmStatement{
     /**
      * 1..1
      * branches: List<BMM_DECISION_BRANCH>
      * Decision branches.
      */
-    protected Set<BmmDecisionBranch> branches = new HashSet<>();
-    Set<? extends BmmDecisionBranch> getBranches() {
+    protected Set<T> branches = new HashSet<>();
+    Set<T> getBranches() {
         return this.branches;
     }
 
-    void setBranches(@NotNull Set<BmmDecisionBranch> branches) {
+    void setBranches(@NotNull Set<T> branches) {
         this.branches = branches;
     }
 
-    public void addBranch(BmmDecisionBranch branch) {
+    public void addBranch(T branch) {
         if(this.branches==null){
             this.branches = new HashSet<>();
         }
         this.branches.add(branch);
     }
 
-    public void addBranches(Set<? extends BmmDecisionBranch> branches) {
+    public void addBranches(Set<T> branches) {
         if(this.branches==null){
             this.branches = new HashSet<>();
         }
         this.branches.addAll(branches);
     }
 
-    public void removeBranch(BmmDecisionBranch branch) {
+    public void removeBranch(T branch) {
         if(this.branches!=null){
             this.branches.remove(branch);
         }
     }
 
-    public void removeBranches(Set<? extends BmmDecisionBranch> branches) {
+    public void removeBranches(Set<T> branches) {
         if(this.branches!=null) {
             this.branches.removeAll(branches);
         }
     }
 
-    public Set<BmmDecisionBranch> branches(){
+    public Set<T> branches(){
         return Collections.unmodifiableSet(this.branches);
     }
 }

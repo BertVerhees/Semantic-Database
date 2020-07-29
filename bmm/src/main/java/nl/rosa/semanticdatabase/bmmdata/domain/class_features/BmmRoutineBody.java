@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmmdata.domain.statements;
+package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 /**
  * Default created on 13-7-2020
