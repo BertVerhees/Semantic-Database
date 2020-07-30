@@ -40,8 +40,12 @@ public class BmmSchema {
      * Class definitions. Persisted attribute.
      */
     private Set<BmmClass> classDefinitions;
-    public Set<BmmClass> getClassDefinitions() {
-        return Collections.unmodifiableSet(classDefinitions);
+    public Optional<Set<BmmClass>> getClassDefinitions() {
+        if(classDefinitions!=null){
+            return Optional.of(Collections.unmodifiableSet(classDefinitions));
+        }else{
+            return Optional.empty();
+        }
     }
 
     public BmmSchema setClassDefinitions(Set<BmmClass> classDefinitions) {
@@ -75,6 +79,55 @@ public class BmmSchema {
     public BmmSchema removeClassDefinitions(Set<BmmClass> classDefinitions) {
         if(this.classDefinitions!=null) {
             this.classDefinitions.removeAll(classDefinitions);
+        }
+        return this;
+    }
+
+    /**
+     * 0..1
+     * primitive_types: List<P_BMM_CLASS>
+     * Primitive type definitions. Persisted attribute.
+     */
+    private Set<BmmClass> primitiveTypes;
+    public Optional<Set<BmmClass>> getPrimitiveTypes() {
+        if(primitiveTypes!=null){
+            return Optional.of(Collections.unmodifiableSet(primitiveTypes));
+        }else{
+            return Optional.empty();
+        }
+    }
+
+    public BmmSchema setPrimitiveTypes(Set<BmmClass> primitiveTypes) {
+        this.primitiveTypes = primitiveTypes;
+        return this;
+    }
+
+    public BmmSchema addPrimitiveType(BmmClass primitiveTypes) {
+        if(this.primitiveTypes==null){
+            this.primitiveTypes = new HashSet<>();
+        }
+        this.primitiveTypes.add(primitiveTypes);
+        return this;
+    }
+
+    public BmmSchema addPrimitiveTypes(Set<BmmClass> primitiveTypes) {
+        if(this.primitiveTypes==null){
+            primitiveTypes = new HashSet<>();
+        }
+        this.primitiveTypes.addAll(primitiveTypes);
+        return this;
+    }
+
+    public BmmSchema removePrimitiveType(BmmClass primitiveTypes) {
+        if(this.primitiveTypes!=null) {
+            this.primitiveTypes.remove(primitiveTypes);
+        }
+        return this;
+    }
+
+    public BmmSchema removePrimitiveTypes(Set<BmmClass> primitiveTypes) {
+        if(this.primitiveTypes!=null) {
+            this.primitiveTypes.removeAll(primitiveTypes);
         }
         return this;
     }
@@ -113,9 +166,14 @@ public class BmmSchema {
         return this;
     }
 
-    public Map<String, BmmIncludeSpec> getBmmIncludeSpecs() {
-        return Collections.unmodifiableMap(includes);
+    public Optional<Map<String, BmmIncludeSpec>> getBmmIncludeSpecs() {
+        if(includes!=null){
+            return Optional.of(Collections.unmodifiableMap(includes));
+        }else{
+            return Optional.empty();
+        }
     }
+
 
     /**
      * 0..1
@@ -178,5 +236,47 @@ public class BmmSchema {
      * schema_contributors: List<String>
      * Contributing authors of schema.
      */
-    private List<String> schemaContributors;
+    private Set<String> schemaContributors;
+    public Optional<Set<String>> getSchemaContributors() {
+        if(schemaContributors!=null){
+            return Optional.of(Collections.unmodifiableSet(schemaContributors));
+        }else{
+            return Optional.empty();
+        }
+    }
+
+    public BmmSchema setSchemaContributors(Set<String> schemaContributors) {
+        this.schemaContributors = schemaContributors;
+        return this;
+    }
+
+    public BmmSchema addSchemaContributor(String schemaContributors) {
+        if(this.schemaContributors==null){
+            this.schemaContributors = new HashSet<>();
+        }
+        this.schemaContributors.add(schemaContributors);
+        return this;
+    }
+
+    public BmmSchema addSchemaContributors(Set<String> schemaContributors) {
+        if(this.schemaContributors==null){
+            schemaContributors = new HashSet<>();
+        }
+        this.schemaContributors.addAll(schemaContributors);
+        return this;
+    }
+
+    public BmmSchema removeSchemaContributor(String schemaContributors) {
+        if(this.schemaContributors!=null) {
+            this.schemaContributors.remove(schemaContributors);
+        }
+        return this;
+    }
+
+    public BmmSchema removeSchemaContributors(Set<String> schemaContributors) {
+        if(this.schemaContributors!=null) {
+            this.schemaContributors.removeAll(schemaContributors);
+        }
+        return this;
+    }
 }

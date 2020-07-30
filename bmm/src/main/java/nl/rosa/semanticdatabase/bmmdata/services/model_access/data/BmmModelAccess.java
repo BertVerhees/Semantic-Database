@@ -3,10 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.services.model_access.data;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Default created on 5-7-2020
@@ -21,8 +18,9 @@ public class BmmModelAccess {
      */
     private Map<String, BmmModel> matchingBmmModels;
 
-    public void setMatchingBmmModels(Map<String, BmmModel> bmmModels) {
+    public BmmModelAccess setMatchingBmmModels(Map<String, BmmModel> bmmModels) {
         this.matchingBmmModels = bmmModels;
+        return this;
     }
 
     public BmmModelAccess addMatchingBmmModel(BmmModel model) {
@@ -49,8 +47,12 @@ public class BmmModelAccess {
         allModelsSet.forEach(this::removeMatchingBmmModel);
         return this;
     }
-    public Map<String, BmmModel> getMatchingBmmModels() {
-        return Collections.unmodifiableMap(matchingBmmModels);
+    public Optional<Map<String, BmmModel>> getMatchingBmmModels() {
+        if(matchingBmmModels!=null){
+            return Optional.of(Collections.unmodifiableMap(matchingBmmModels));
+        }else{
+            return Optional.empty();
+        }
     }
 
     //====== bmmModels =========================================================================
@@ -61,8 +63,9 @@ public class BmmModelAccess {
      */
     private Map<String, BmmModel> bmmModels;
 
-    public void setBmmModels(Map<String, BmmModel> bmmModels) {
+    public BmmModelAccess setBmmModels(Map<String, BmmModel> bmmModels) {
         this.bmmModels = bmmModels;
+        return this;
     }
 
     public BmmModelAccess addBmmModel(BmmModel model) {
@@ -89,8 +92,12 @@ public class BmmModelAccess {
         allModelsSet.forEach(this::removeBmmModel);
         return this;
     }
-    public Map<String, BmmModel> getBmmModels() {
-        return Collections.unmodifiableMap(bmmModels);
+    public Optional<Map<String, BmmModel>> getBmmModels() {
+        if(bmmModels!=null){
+            return Optional.of(Collections.unmodifiableMap(bmmModels));
+        }else{
+            return Optional.empty();
+        }
     }
     //=======  AllSchemas =================================================================================
     /**
@@ -100,11 +107,16 @@ public class BmmModelAccess {
      */
     private Map<String, BmmSchemaDescriptor> allSchemas;
 
-    public void setAllSchemas(Map<String, BmmSchemaDescriptor> allSchemas) {
+    public BmmModelAccess setAllSchemas(Map<String, BmmSchemaDescriptor> allSchemas) {
         this.allSchemas = allSchemas;
+        return this;
     }
-    public Map<String, BmmSchemaDescriptor> getAllSchemas() {
-        return Collections.unmodifiableMap(allSchemas);
+    public Optional<Map<String, BmmSchemaDescriptor>> getAllSchemas() {
+        if(bmmModels!=null){
+            return Optional.of(Collections.unmodifiableMap(allSchemas));
+        }else{
+            return Optional.empty();
+        }
     }
 
     public BmmModelAccess addSchema(BmmSchemaDescriptor schema) {
