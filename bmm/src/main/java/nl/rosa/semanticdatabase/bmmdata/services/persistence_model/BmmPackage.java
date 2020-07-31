@@ -13,7 +13,7 @@ import java.util.Set;
 /**
  * Class BmmPackage
  */
-public class BmmPackage extends BmmPackageContainer implements BmmModelElement{
+public class BmmPackage extends BmmPackageContainer implements BmmModelElement {
 
   @Id
   private Long id;
@@ -25,7 +25,7 @@ public class BmmPackage extends BmmPackageContainer implements BmmModelElement{
    */
   @Getter
   @Setter
-  private Set<String> classes = new HashSet<>();
+  private Set<String> classes;
   /**
    * 1..1
    * name: String
@@ -52,5 +52,24 @@ public class BmmPackage extends BmmPackageContainer implements BmmModelElement{
   @Getter
   @Setter
   private String documentation;
+
+  /**
+   * 0..1
+   * merge ( * other: P_BMM_PACKAGE[1] * )
+   * Merge packages and classes from other (from an included P_BMM_SCHEMA) into this package.
+   * @param other
+   */
+  public void merge(BmmPackage other){
+
+  }
+
+  /**
+   * 0..1
+   * create_bmm_package_definition
+   * Generate a BMM_PACKAGE_DEFINITION object and write it to bmm_package_definition.
+   */
+  public void createBmmPackageDefinition(){
+
+  }
   
 }
