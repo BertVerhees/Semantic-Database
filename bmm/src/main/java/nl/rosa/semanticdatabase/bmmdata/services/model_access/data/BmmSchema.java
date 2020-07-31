@@ -1,11 +1,9 @@
 package nl.rosa.semanticdatabase.bmmdata.services.model_access.data;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackageContainer;
 
 import java.util.*;
 
@@ -15,7 +13,8 @@ import java.util.*;
 @Builder
 @Getter
 @Setter
-public class BmmSchema {
+@NoArgsConstructor
+public class BmmSchema extends BmmPackageContainer {
     /**
      * BmmModelMetadata
      */
