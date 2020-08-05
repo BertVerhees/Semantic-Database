@@ -4,18 +4,19 @@ import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackageContainer;
-import nl.rosa.semanticdatabase.bmmdata.services.persistence_model.BmmPackage;
+import nl.rosa.semanticdatabase.bmmdata.services.persistence_model.PBmmPackage;
+import nl.rosa.semanticdatabase.bmmdata.services.persistence_model.PBmmSchema;
 
 import java.util.*;
 
 /**
  * Default created on 6-6-2020
  */
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor
 public abstract class BmmSchema extends BmmPackageContainer {
+
     /**
      * BmmModelMetadata
      */
@@ -317,7 +318,7 @@ public abstract class BmmSchema extends BmmPackageContainer {
      * Pre_other_valid: includes_to_process.has (included_schema.schema_id)
      * Merge in class and package definitions from other, except where the current schema already has a definition for the given type or package.
      */
-    public abstract void merge(nl.rosa.semanticdatabase.bmmdata.services.persistence_model.BmmSchema schema);
+    public abstract void merge(PBmmSchema schema);
 
     /**
      * 0..1
@@ -343,7 +344,7 @@ public abstract class BmmSchema extends BmmPackageContainer {
      * to a hierarchy of BMM_PACKAGE objects.
      * @return
      */
-    public BmmPackage canonicalPackages (){
+    public PBmmPackage canonicalPackages (){
         return null;
     }
 

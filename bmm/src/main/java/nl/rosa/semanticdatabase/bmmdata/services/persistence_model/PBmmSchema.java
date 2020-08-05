@@ -1,9 +1,12 @@
 package nl.rosa.semanticdatabase.bmmdata.services.persistence_model;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.services.model_access.data.BmmIncludeSpec;
+import nl.rosa.semanticdatabase.bmmdata.services.model_access.data.BmmSchema;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
@@ -11,17 +14,18 @@ import java.util.Set;
  * Default created on 31-7-2020
  */
 
-public class BmmSchema extends BmmPackageContainer implements nl.rosa.semanticdatabase.bmmdata.services.model_access.data.BmmSchema {
+public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
 
     /**
      * 1..1
      * packages: Hash<String, P_BMM_PACKAGE>
      * Package structure as a hierarchy of packages each potentially containing names of classes in that package in the original model.
-     * (********  inherits from BmmPackageContainer)
+     * (********  inherits from PBmmPackageContainer)
      */
     @Getter
     @Setter
-    private Map<String, nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage> packages;
+    @NonNull
+    private Map<String, PBmmPackage> packages = new HashMap<>();
 
     /**
      * 0..1
@@ -31,7 +35,7 @@ public class BmmSchema extends BmmPackageContainer implements nl.rosa.semanticda
      */
     @Getter
     @Setter
-    private Set<BmmClass> primitiveTypes;
+    private Set<PBmmClass> primitiveTypes;
     /**
      * 0..1
      * (redefined)
@@ -40,7 +44,7 @@ public class BmmSchema extends BmmPackageContainer implements nl.rosa.semanticda
      */
     @Getter
     @Setter
-    private Set<BmmClass> classDefinitions;
+    private Set<PBmmClass> classDefinitions;
     /**
      * 0..1
      * (redefined)
@@ -85,7 +89,7 @@ public class BmmSchema extends BmmPackageContainer implements nl.rosa.semanticda
      * Pre_other_valid: includes_to_process.has (included_schema.schema_id)
      * Implementation of merge()
      */
-    public void merge(BmmSchema schema){
+    public void merge(PBmmSchema schema){
 
     }
 
@@ -117,7 +121,7 @@ public class BmmSchema extends BmmPackageContainer implements nl.rosa.semanticda
      * to a hierarchy of BMM_PACKAGE objects.
      * @return
      */
-    public BmmPackage canonicalPackages (){
+    public PBmmPackage canonicalPackages (){
         return null;
     }
 

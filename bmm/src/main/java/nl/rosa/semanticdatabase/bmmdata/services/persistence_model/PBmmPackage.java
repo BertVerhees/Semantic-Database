@@ -3,20 +3,32 @@ package nl.rosa.semanticdatabase.bmmdata.services.persistence_model;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 
 /**
  * Class BmmPackage
  */
-public class BmmPackage extends BmmPackageContainer implements BmmModelElement {
+public class PBmmPackage implements PBmmModelElement, PBmmPackageContainer {
 
   @Id
   private Long id;
+
+/**
+ * 1..1
+ * packages: Hash<String, P_BMM_PACKAGE>
+ * Package structure as a hierarchy of packages each potentially containing names of classes in that package in the original model.
+ * (********  inherits from PBmmPackageContainer)
+ */
+  @Getter
+  @Setter
+  @NonNull
+  private Map<String, PBmmPackage> packages = new HashMap<>();
 
   /**
    * 0..1
@@ -42,12 +54,13 @@ public class BmmPackage extends BmmPackageContainer implements BmmModelElement {
    */
   @Getter
   @Setter
-  private nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage bmmPackageDefinition;
+  private BmmPackage bmmPackageDefinition;
 
   /**
    * 0..1
    * documentation: String
    * Optional documentation of this element.
+   * (********  inherits from PBmmModelElement)
    */
   @Getter
   @Setter
@@ -59,7 +72,7 @@ public class BmmPackage extends BmmPackageContainer implements BmmModelElement {
    * Merge packages and classes from other (from an included P_BMM_SCHEMA) into this package.
    * @param other
    */
-  public void merge(BmmPackage other){
+  public void merge(PBmmPackage other){
 
   }
 

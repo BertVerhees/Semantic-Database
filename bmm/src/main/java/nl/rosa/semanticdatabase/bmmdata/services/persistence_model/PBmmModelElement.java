@@ -5,7 +5,7 @@ package nl.rosa.semanticdatabase.bmmdata.services.persistence_model;
  * Persistent form of BMM_MODEL_ELEMENT.
  */
 
-public interface BmmModelElement {
+public interface PBmmModelElement {
     /**
      * 0..1
      * documentation: String
