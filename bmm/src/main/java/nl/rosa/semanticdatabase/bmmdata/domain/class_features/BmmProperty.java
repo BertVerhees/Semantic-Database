@@ -1,15 +1,10 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.base.MultiplicityInterval;
-import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
-
-import javax.persistence.*;
 
 /**
  * Class BmmProperty
@@ -20,7 +15,7 @@ import javax.persistence.*;
  * Invariants
  * Inv_signature_no_args: signature.arguments = Void
  */
-public abstract class BmmProperty extends BmmClassScoped implements BmmInstantiable {
+public abstract class BmmProperty extends BmmClassFeature implements BmmInstantiable {
 
   /**
    * 0..1

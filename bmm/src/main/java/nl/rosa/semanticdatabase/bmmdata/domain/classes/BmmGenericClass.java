@@ -21,6 +21,7 @@ import java.util.*;
  */
 @EqualsAndHashCode(callSuper = true)
 public class BmmGenericClass extends BmmClass {
+
   /**
    * 1..1
    * generic_parameters: Hash<String,BMM_PARAMETER_TYPE>
@@ -63,7 +64,8 @@ public class BmmGenericClass extends BmmClass {
   public Map<String,BmmParameterType> genericParameters() {
     return Collections.unmodifiableMap(genericParameters);
   }
-//====================== functions ========================================
+
+  //====================== functions ========================================
   /**
    * 0..1
    * (redefined)

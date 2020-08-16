@@ -1,12 +1,9 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.*;
-import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmLiteralValue;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
-
-import javax.persistence.*;
 
 
 /**
@@ -17,7 +14,7 @@ import javax.persistence.*;
  * Inv_not_nullable: is_nullable = False
  * Inv_signature_no_args: signature.arguments = Void
  */
-public class BmmConstant extends BmmClassScoped implements BmmInstantiable{
+public class BmmConstant extends BmmClassFeature implements BmmInstantiable{
 
   /**
    * 0..1

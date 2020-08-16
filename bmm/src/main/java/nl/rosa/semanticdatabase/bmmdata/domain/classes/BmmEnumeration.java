@@ -14,6 +14,7 @@ import java.util.*;
  */
 @EqualsAndHashCode(callSuper = true)
 public class BmmEnumeration extends BmmSimpleClass {
+
     /**
      * 0..1
      * item_names: List<String>
@@ -98,6 +99,7 @@ public class BmmEnumeration extends BmmSimpleClass {
         return Collections.unmodifiableSet(itemValues);
     }
 
+    //================= Functions =========================================================
     /**
      * 1..1
      * name_map (): Hash<String, String>

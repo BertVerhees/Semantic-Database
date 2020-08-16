@@ -12,7 +12,7 @@ import java.util.*;
  * Class BmmRoutine
  * A feature defining a routine, scoped to a class.
  */
-public abstract class BmmRoutine extends BmmClassScoped {
+public abstract class BmmRoutine extends BmmClassFeature {
 
   /**
    * 0..1

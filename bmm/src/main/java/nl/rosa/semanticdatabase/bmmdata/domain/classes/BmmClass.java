@@ -46,155 +46,6 @@ import java.util.*;
 public abstract class BmmClass extends BmmModule {
 
     /**
-     * 1..1
-     * package: BMM_PACKAGE
-     * Package this class belongs to.
-     */
-    //=====bmmPackage=============================================================
-    @Getter
-    @Setter
-    @NonNull
-    private BmmPackage bmmPackage;
-
-    /**
-     * 1..1
-     * source_schema_id: String
-     * Reference to original source schema defining this class.
-     * Useful for UI tools to determine which original schema file to open for a given class for manual editing.
-     */
-    //======sourceSchemaId=======================================================================
-    @NotEmpty
-    @Getter
-    @Setter
-    private String sourceSchemaId;
-
-    /**
-     * 0..1
-     * constants: Hash<String,BMM_CONSTANT>
-     * List of constants defined in this class.
-     */
-    //======constants=======================================================================
-    private Map<String, BmmConstant> constants;
-
-    public void putConstant(@NonNull String key, @NonNull BmmConstant value){
-        if(constants==null){
-            constants = new HashMap<>();
-        }
-        constants.put(key,  value);
-
-    }
-    public void putConstants(Map<String, BmmConstant> items){
-        items.keySet().forEach(key -> putConstant(key, items.get(key)));
-
-    }
-    public BmmConstant getConstant(String key){
-        if(constants==null){
-            return null;
-        }
-        return constants.get(key);
-    }
-    public void removeConstant(String key){
-        if(constants!=null) {
-            constants.remove(key);
-        }
-    }
-    public void removeConstants(Collection<String> keys){
-        keys.forEach(this::removeConstant);
-    }
-    void setConstants(Map<String, BmmConstant> constants) {
-        this.constants = constants;
-    }
-    Map<String,BmmConstant> getConstants() {
-        return constants;
-    }
-    public Map<String,BmmConstant> constants() {
-        return Collections.unmodifiableMap(constants);
-    }
-    /**
-     * 0..1
-     * functions: Hash<String,BMM_FUNCTION>
-     * List of functions defined in this class.
-     */
-    //======functions=======================================================================
-    private Map<String, BmmFunction> functions;
-
-    public void putFunction(@NonNull String key, @NonNull BmmFunction value){
-        if(functions==null){
-            functions = new HashMap<>();
-        }
-        functions.put(key,  value);
-
-    }
-    public void putFunctions(Map<String, BmmFunction> items){
-        items.keySet().forEach(key -> putFunction(key, items.get(key)));
-
-    }
-    public BmmFunction getFunction(String key){
-        if(functions==null){
-            return null;
-        }
-        return functions.get(key);
-    }
-    public void removeFunction(String key){
-        if(functions!=null) {
-            functions.remove(key);
-        }
-    }
-    public void removeFunctions(Collection<String> keys){
-        keys.forEach(this::removeFunction);
-    }
-    void setFunctions(Map<String, BmmFunction> functions) {
-        this.functions = functions;
-    }
-    Map<String,BmmFunction> getFunctions() {
-        return functions;
-    }
-    public Map<String,BmmFunction> functions() {
-        return Collections.unmodifiableMap(functions);
-    }
-    /**
-     * 0..1
-     * procedures: Hash<String,BMM_PROCEDURE>
-     * List of procedures defined in this class.
-     */
-    //======procedures=======================================================================
-    private Map<String, BmmProcedure> procedures;
-
-    public void putProcedure(@NonNull String key, @NonNull BmmProcedure value){
-        if(procedures==null){
-            procedures = new HashMap<>();
-        }
-        procedures.put(key,  value);
-
-    }
-    public void putProcedures(Map<String, BmmProcedure> items){
-        items.keySet().forEach(key -> putProcedure(key, items.get(key)));
-
-    }
-    public BmmProcedure getProcedure(String key){
-        if(procedures==null){
-            return null;
-        }
-        return procedures.get(key);
-    }
-    public void removeProcedure(String key){
-        if(procedures!=null) {
-            procedures.remove(key);
-        }
-    }
-    public void removeProcedures(Collection<String> keys){
-        keys.forEach(this::removeProcedure);
-    }
-    void setProcedures(Map<String, BmmProcedure> procedures) {
-        this.procedures = procedures;
-    }
-    Map<String,BmmProcedure> getProcedures() {
-        return procedures;
-    }
-    public Map<String,BmmProcedure> procedures() {
-        return Collections.unmodifiableMap(procedures);
-    }
-    /**
      * 0..1
      * ancestors: Hash<String,BMM_MODEL_TYPE>
      * List of immediate inheritance parents.
@@ -237,6 +88,16 @@ public abstract class BmmClass extends BmmModule {
         return Collections.unmodifiableMap(ancestors);
     }
 
+    /**
+     * 1..1
+     * package: BMM_PACKAGE
+     * Package this class belongs to.
+     */
+    //=====bmmPackage=============================================================
+    @Getter
+    @Setter
+    @NonNull
+    private BmmPackage bmmPackage;
 
     /**
      * 0..1
@@ -280,92 +141,207 @@ public abstract class BmmClass extends BmmModule {
     public Map<String,BmmProperty> properties() {
         return Collections.unmodifiableMap(properties);
     }
-    
+
+
+    /**
+     * 1..1
+     * source_schema_id: String
+     * Reference to original source schema defining this class.
+     * Useful for UI tools to determine which original schema file to open for a given class for manual editing.
+     */
+    //======sourceSchemaId=======================================================================
+    @Getter
+    @Setter
+    @NonNull
+    private String sourceSchemaId;
+
     /**
      * 0..1
-     * creators: Hash<String,BMM_PROCEDURE>
-     * Subset of procedures that may be used to initialise a new instance of an object,
-     * and whose execution will guarantee that class invariants are satisfied.
+     * immediate_descendants: List<BMM_CLASS>
+     * List of computed references to base classes of immediate inheritance
+     * descendants, derived when members of ancestors are attached at creation time.
+     * <p>
+     * Computed
      */
-    //======creators=======================================================================
-    private Map<String, BmmProcedure> creators;
-
-    public void putCreator(@NonNull String key, @NonNull BmmProcedure value){
-        if(creators==null){
-            creators = new HashMap<>();
+    //======immediateDescendants=======================================================================
+    @Transient
+    private Set<BmmClass> immediateDescendants;
+    public void addImmediateDescendant(@NonNull BmmClass value){
+        if(immediateDescendants==null){
+            immediateDescendants = new HashSet<>();
         }
-        creators.put(key,  value);
+        immediateDescendants.add(value);
+    }
+    public void addImmediateDescendants(Set<BmmClass> items){
+        items.forEach(item -> addImmediateDescendant(item));
 
     }
-    public void putCreators(Map<String, BmmProcedure> items){
-        items.keySet().forEach(key -> putCreator(key, items.get(key)));
-
-    }
-    public BmmProcedure getCreator(String key){
-        if(creators==null){
-            return null;
-        }
-        return creators.get(key);
-    }
-    public void removeCreator(String key){
-        if(creators!=null) {
-            creators.remove(key);
+    public void removeImmediateDescendant(BmmClass item){
+        if(immediateDescendants!=null) {
+            immediateDescendants.remove(item);
         }
     }
-    public void removeCreators(Collection<String> keys){
-        keys.forEach(this::removeCreator);
+    public void removeImmediateDescendants(Collection<BmmClass> items){
+        items.forEach(this::removeImmediateDescendant);
     }
-    void setCreators(Map<String, BmmProcedure> creators) {
-        this.creators = creators;
+    void setImmediateDescendants(Set<BmmClass> items) {
+        this.immediateDescendants = items;
     }
-    Map<String,BmmProcedure> getCreators() {
-        return creators;
+    private Set<BmmClass> getImmediateDescendants() {
+        return immediateDescendants;
     }
-    public Map<String,BmmProcedure> creators() {
-        return Collections.unmodifiableMap(creators);
+    public Set<BmmClass> immediateDescendants() {
+        return Collections.unmodifiableSet(immediateDescendants);
     }
+
+    public void removeImmediateDescendants(Set<BmmClass> immediateDescendants) {
+        this.immediateDescendants.removeAll(immediateDescendants);
+    }
+
+    /**
+     * 1..1
+     * is_override: Boolean
+     * True if this definition overrides a class of the same name in an included schema.
+     */
+    @NonNull
+    @Getter
+    @Setter
+    private Boolean isOverride = false;
+    public void setOverride(@NotNull Boolean override) {
+        isOverride = override;
+
+    }
+
+
     /**
      * 0..1
-     * converters: Hash<String,BMM_PROCEDURE>
-     * Subset of creators that create a new instance from a single argument of another type.
+     * constants: Hash<String,BMM_CONSTANT>
+     * List of constants defined in this class.
      */
-    //======convertor=======================================================================
-    private Map<String, BmmProcedure> convertors;
+    //======constants=======================================================================
+    private Map<String, BmmConstant> constants;
 
-    public void putConvertor(@NonNull String key, @NonNull BmmProcedure value){
-        if(convertors==null){
-            convertors = new HashMap<>();
+    public void putConstant(@NonNull String key, @NonNull BmmConstant value){
+        if(constants==null){
+            constants = new HashMap<>();
         }
-        convertors.put(key,  value);
+        constants.put(key,  value);
 
     }
-    public void putConvertors(Map<String, BmmProcedure> items){
-        items.keySet().forEach(key -> putConvertor(key, items.get(key)));
+    public void putConstants(Map<String, BmmConstant> items){
+        items.keySet().forEach(key -> putConstant(key, items.get(key)));
 
     }
-    public BmmProcedure getConvertor(String key){
-        if(convertors==null){
+    public BmmConstant getConstant(String key){
+        if(constants==null){
             return null;
         }
-        return convertors.get(key);
+        return constants.get(key);
     }
-    public void removeConvertor(String key){
-        if(convertors!=null) {
-            convertors.remove(key);
+    public void removeConstant(String key){
+        if(constants!=null) {
+            constants.remove(key);
         }
     }
-    public void removeConvertors(Collection<String> keys){
-        keys.forEach(this::removeConvertor);
+    public void removeConstants(Collection<String> keys){
+        keys.forEach(this::removeConstant);
     }
-    void setConvertors(Map<String, BmmProcedure> convertors) {
-        this.convertors = convertors;
+    void setConstants(Map<String, BmmConstant> constants) {
+        this.constants = constants;
     }
-    Map<String,BmmProcedure> getConvertors() {
-        return convertors;
+    Map<String,BmmConstant> getConstants() {
+        return constants;
     }
-    public Map<String,BmmProcedure> convertors() {
-        return Collections.unmodifiableMap(convertors);
+    public Map<String,BmmConstant> constants() {
+        return Collections.unmodifiableMap(constants);
     }
+
+    /**
+     * 0..1
+     * functions: Hash<String,BMM_FUNCTION>
+     * List of functions defined in this class.
+     */
+    //======functions=======================================================================
+    private Map<String, BmmFunction> functions;
+
+    public void putFunction(@NonNull String key, @NonNull BmmFunction value){
+        if(functions==null){
+            functions = new HashMap<>();
+        }
+        functions.put(key,  value);
+
+    }
+    public void putFunctions(Map<String, BmmFunction> items){
+        items.keySet().forEach(key -> putFunction(key, items.get(key)));
+
+    }
+    public BmmFunction getFunction(String key){
+        if(functions==null){
+            return null;
+        }
+        return functions.get(key);
+    }
+    public void removeFunction(String key){
+        if(functions!=null) {
+            functions.remove(key);
+        }
+    }
+    public void removeFunctions(Collection<String> keys){
+        keys.forEach(this::removeFunction);
+    }
+    void setFunctions(Map<String, BmmFunction> functions) {
+        this.functions = functions;
+    }
+    Map<String,BmmFunction> getFunctions() {
+        return functions;
+    }
+    public Map<String,BmmFunction> functions() {
+        return Collections.unmodifiableMap(functions);
+    }
+
+    /**
+     * 0..1
+     * procedures: Hash<String,BMM_PROCEDURE>
+     * List of procedures defined in this class.
+     */
+    //======procedures=======================================================================
+    private Map<String, BmmProcedure> procedures;
+
+    public void putProcedure(@NonNull String key, @NonNull BmmProcedure value){
+        if(procedures==null){
+            procedures = new HashMap<>();
+        }
+        procedures.put(key,  value);
+
+    }
+    public void putProcedures(Map<String, BmmProcedure> items){
+        items.keySet().forEach(key -> putProcedure(key, items.get(key)));
+
+    }
+    public BmmProcedure getProcedure(String key){
+        if(procedures==null){
+            return null;
+        }
+        return procedures.get(key);
+    }
+    public void removeProcedure(String key){
+        if(procedures!=null) {
+            procedures.remove(key);
+        }
+    }
+    public void removeProcedures(Collection<String> keys){
+        keys.forEach(this::removeProcedure);
+    }
+    void setProcedures(Map<String, BmmProcedure> procedures) {
+        this.procedures = procedures;
+    }
+    Map<String,BmmProcedure> getProcedures() {
+        return procedures;
+    }
+    public Map<String,BmmProcedure> procedures() {
+        return Collections.unmodifiableMap(procedures);
+    }
+
     /**
      * 0..1
      * is_primitive: Boolean
@@ -373,9 +349,9 @@ public abstract class BmmClass extends BmmModule {
      * True if this class represents a type considered to be primitive in the type system, i.e. any typically built-in
      * or standard library type such as String, Date, Hash<K,V> etc.
      */
-    public Boolean getIsPrimitive(){
-        return ClassUtils.isPrimitiveOrWrapper(this.getClass());
-    }
+    @Getter
+    @Setter
+    private Boolean isPrimitive;
 
     /**
      * 0..1
@@ -420,63 +396,95 @@ public abstract class BmmClass extends BmmModule {
     public Set<ElAssertion> invariants() {
         return Collections.unmodifiableSet(invariants);
     }
-    //====== transients =================================================================
-    /**
-     * 1..1
-     * is_override: Boolean
-     * True if this definition overrides a class of the same name in an included schema.
-     */
-    @NonNull
-    @Transient
-    @Getter
-    @Setter
-    private Boolean isOverride = false;
-    public void setOverride(@NotNull Boolean override) {
-        isOverride = override;
 
-    }
     /**
      * 0..1
-     * immediate_descendants: List<BMM_CLASS>
-     * List of computed references to base classes of immediate inheritance
-     * descendants, derived when members of ancestors are attached at creation time.
-     * <p>
-     * Computed
+     * creators: Hash<String,BMM_PROCEDURE>
+     * Subset of procedures that may be used to initialise a new instance of an object,
+     * and whose execution will guarantee that class invariants are satisfied.
      */
-    //======immediateDescendants=======================================================================
-    @Transient
-    private Set<BmmClass> immediateDescendants;
-    public void addImmediateDescendant(@NonNull BmmClass value){
-        if(immediateDescendants==null){
-            immediateDescendants = new HashSet<>();
+    //======creators=======================================================================
+    private Map<String, BmmProcedure> creators;
+
+    public void putCreator(@NonNull String key, @NonNull BmmProcedure value){
+        if(creators==null){
+            creators = new HashMap<>();
         }
-        immediateDescendants.add(value);
-    }
-    public void addImmediateDescendants(Set<BmmClass> items){
-        items.forEach(item -> addImmediateDescendant(item));
+        creators.put(key,  value);
 
     }
-    public void removeImmediateDescendant(BmmClass item){
-        if(immediateDescendants!=null) {
-            immediateDescendants.remove(item);
+    public void putCreators(Map<String, BmmProcedure> items){
+        items.keySet().forEach(key -> putCreator(key, items.get(key)));
+
+    }
+    public BmmProcedure getCreator(String key){
+        if(creators==null){
+            return null;
+        }
+        return creators.get(key);
+    }
+    public void removeCreator(String key){
+        if(creators!=null) {
+            creators.remove(key);
         }
     }
-    public void removeImmediateDescendants(Collection<BmmClass> items){
-        items.forEach(this::removeImmediateDescendant);
+    public void removeCreators(Collection<String> keys){
+        keys.forEach(this::removeCreator);
     }
-    void setImmediateDescendants(Set<BmmClass> items) {
-        this.immediateDescendants = items;
+    void setCreators(Map<String, BmmProcedure> creators) {
+        this.creators = creators;
     }
-    private Set<BmmClass> getImmediateDescendants() {
-        return immediateDescendants;
+    Map<String,BmmProcedure> getCreators() {
+        return creators;
     }
-    public Set<BmmClass> immediateDescendants() {
-        return Collections.unmodifiableSet(immediateDescendants);
+    public Map<String,BmmProcedure> creators() {
+        return Collections.unmodifiableMap(creators);
     }
 
-    public void removeImmediateDescendants(Set<BmmClass> immediateDescendants) {
-        this.immediateDescendants.removeAll(immediateDescendants);
+    /**
+     * 0..1
+     * converters: Hash<String,BMM_PROCEDURE>
+     * Subset of creators that create a new instance from a single argument of another type.
+     */
+    //======convertor=======================================================================
+    private Map<String, BmmProcedure> convertors;
+
+    public void putConvertor(@NonNull String key, @NonNull BmmProcedure value){
+        if(convertors==null){
+            convertors = new HashMap<>();
+        }
+        convertors.put(key,  value);
+
     }
+    public void putConvertors(Map<String, BmmProcedure> items){
+        items.keySet().forEach(key -> putConvertor(key, items.get(key)));
+
+    }
+    public BmmProcedure getConvertor(String key){
+        if(convertors==null){
+            return null;
+        }
+        return convertors.get(key);
+    }
+    public void removeConvertor(String key){
+        if(convertors!=null) {
+            convertors.remove(key);
+        }
+    }
+    public void removeConvertors(Collection<String> keys){
+        keys.forEach(this::removeConvertor);
+    }
+    void setConvertors(Map<String, BmmProcedure> convertors) {
+        this.convertors = convertors;
+    }
+    Map<String,BmmProcedure> getConvertors() {
+        return convertors;
+    }
+    public Map<String,BmmProcedure> convertors() {
+        return Collections.unmodifiableMap(convertors);
+    }
+
+
 
 
     // Functions
@@ -488,7 +496,7 @@ public abstract class BmmClass extends BmmModule {
      * If true, indicates an abstract class in a BMM model, or a type based on an abstract class,
      * i.e. a type that cannot be directly instantiated.
      */
-    public Boolean isAbstract() {
+    public @NonNull Boolean isAbstract() {
         return this.isAbstract;
     }
 
@@ -498,7 +506,7 @@ public abstract class BmmClass extends BmmModule {
      * If True, indicates that the entity in a BMM model is considered to relate to a primitive type set,
      * i.e. be a primitive type, or be a definer of one.
      */
-    public Boolean isPrimitive() {
+    public @NonNull Boolean isPrimitive() {
         return this.getIsPrimitive();
     }
 
@@ -585,7 +593,7 @@ public abstract class BmmClass extends BmmModule {
     /**
      * List of all feature definitions introduced in this class.
      */
-    public List<BmmClassScoped> features() {
+    public List<BmmClassFeature> features() {
         return null;
     }
 
@@ -593,7 +601,7 @@ public abstract class BmmClass extends BmmModule {
      * Consolidated list of all feature definitions from this class and all inheritance
      * ancestors.
      */
-    public List<BmmClassScoped> flatFeatures() {
+    public List<BmmClassFeature> flatFeatures() {
         return null;
     }
 
