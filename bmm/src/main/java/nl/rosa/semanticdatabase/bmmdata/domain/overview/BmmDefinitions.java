@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 /**
  * Default created on 4-7-2020
  * Definitions used by all BMM packages.
+ * TODO check again
  */
 
 public class BmmDefinitions extends BasicDefinitions {
@@ -20,7 +21,7 @@ public class BmmDefinitions extends BasicDefinitions {
          * 	comparison with the BMM version recorded in schema files. If no bmm_version attribute is
          * 	found, the `Assumed_bmm_version' is used.
          */
-        public static final String BMM_INTERNAL_VERSION = "2.1";
+        public static final String BMM_INTERNAL_VERSION = "3.1.0";
 
         /**
          * delimiter between class_name and qualifiying closure name, e.g. EHR-ENTRY

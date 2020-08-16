@@ -14,7 +14,9 @@ public class BmmModelAccess {
     /**
      * 0..1
      * matching_bmm_models: Hash<String,BMM_MODEL>
-     * BMM_MODELs keyed by model_id() and any shorter form used in calls to
+     * Validated models, keyed by model_id() and any shorter forms of id, with some or no versioning information.
+     * For example, the keys "openEHR_EHR_1.0.4", "openEHR_EHR_1.0", "openEHR_EHR_1", and "openEHR_EHR" will all
+     * match the "openEHR_EHR_1.0.4" model, assuming it is the most recent version available.
      */
     private Map<String, BmmModel> matchingBmmModels;
 
@@ -103,7 +105,7 @@ public class BmmModelAccess {
     /**
      * 0..1
      * all_schemas: Hash<String,BMM_SCHEMA_DESCRIPTOR>
-     * All schemas found and loaded from schema_directory. Keyed by schema_id.
+     * All schemas loaded. Keyed by schema_id.
      */
     private Map<String, BmmSchemaDescriptor> allSchemas;
 
@@ -143,6 +145,49 @@ public class BmmModelAccess {
         allSchemasSet.forEach(this::removeSchema);
         return this;
     }
+    //============== Functions ==================================================================================================
+    /**
+     * 0..1
+     * initialise_with_load_list ( * a_schema_dirs: List<String>[1], * a_schema_load_list: List<String>[0..1] * )
+     * Initialise with a specific schema load list, usually a sub-set of schemas that will be found in a specified directories a_schema_dirs.
+     */
+    public void initializeWithLoadList(Set<String> aLoadList){
 
+    }
 
+    /**
+     * 0..1
+     * reload_schemas
+     * Reload BMM schemas.
+     */
+    public void reloadSchemas(){
+
+    }
+
+    /**
+     * 1..1
+     * bmm_model ( * a_model_key: String[1] * ): BMM_MODEL
+     *
+     * Return model containing the model key which is a model_id or any shorter form e.g. model id minus the version.
+     * If a shorter key is used, the BMM_MODEL with the most recent version will be selected.
+     * Uses matching_bmm_models table to find matches if partial version information is supplied in key.
+     * @param key
+     * @return
+     */
+    public BmmModel bmmModel(String key){
+        return null;
+    }
+
+    /**
+     * 1..1
+     * has_bmm_model ( * a_model_key: String[1] * ): Boolean
+     *
+     * True if a model for a model_key is available. A model key is a model_id or any shorter form e.g. model id
+     * minus the version. If a shorter key is used, the Result s True if a BMM_MODEL with any version exists.
+     * @param key
+     * @return
+     */
+    public Boolean hasBmmModel(String key){
+        return null;
+    }
 }

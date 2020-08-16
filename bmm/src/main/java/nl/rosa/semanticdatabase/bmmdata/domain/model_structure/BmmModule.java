@@ -10,6 +10,7 @@ import javax.persistence.Entity;
  * Class BmmModule
  */
 public abstract class BmmModule extends BmmDeclaration{
+
     /**
      * 1..1
      * (redefined)

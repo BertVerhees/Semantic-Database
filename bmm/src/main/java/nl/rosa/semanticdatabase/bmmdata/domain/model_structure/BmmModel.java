@@ -25,9 +25,6 @@ import java.util.*;
 @Document(collection = "bmm_model")
 public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
 
-  @Id
-  private String id;
-
   /**
    * 0..1
     * class_definitions: Hash<String,BMM_CLASS>
@@ -121,16 +118,13 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
   public Optional<Set<BmmModel>> usedModels(){
     return Optional.of(Collections.unmodifiableSet(this.usedModels));
   }
-  // Functions
+
+  //============== Functions ============================================
   /**
    * 1..1
-   *
    * model_id (): String
-   *
    * Identifier of this model, lower-case, formed from:
-   *
    * rm_publisher '' model_name '' rm_release
-   *
    * E.g. 'openehr_ehr_1.0.4'.
    * @return
    */
@@ -144,6 +138,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
             .append(rmRelease)
             .toString();
   }
+
   /**
    * 1..1
    * class_definition (
@@ -158,6 +153,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return null;
   }
+
   /**
    * 1..1
    * type_definition (): BMM_CLASS
@@ -172,6 +168,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return null;
   }
+
   /**
    * 1..1
    *
@@ -188,6 +185,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return false;
   }
+
   /**
    * 1..1
    * has_type_definition (
@@ -203,6 +201,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return false;
   }
+
   /**
    * 1..1
    * enumeration_definition (
@@ -217,6 +216,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return null;
   }
+
   /**
    * 0..1
    * primitive_types (): List<String>
@@ -228,6 +228,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return null;
   }
+
   /**
    * 0..1
    * enumeration_types (): List<String>
@@ -239,6 +240,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return null;
   }
+
   /**
    * 1..1
    * property_definition (): BMM_PROPERTY
@@ -251,6 +253,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return null;
   }
+
   /**
    * 1..1
    * ms_conformant_property_type (
@@ -268,12 +271,13 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
    * @param        bmmPropertyName
    * @param        modelSemanticPropertyName
    */
-  public Boolean modelConformantPropertyType(
+  public Boolean msConformantPropertyType(
           @NonNull String bmmTypeName, @NonNull String bmmPropertyName, @NonNull String modelSemanticPropertyName)
   {
     //TODO
     return false;
   }
+
   /**
    * 1..1
    * property_definition_at_path (): BMM_PROPERTY
@@ -285,6 +289,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return null;
   }
+
   /**
    * 1..1
    * class_definition_at_path (
@@ -302,6 +307,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return null;
   }
+
   /**
    * 0..1
    * all_ancestor_classes (
@@ -317,6 +323,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return null;
   }
+
   /**
    * 1..1
    * is_descendant_of (
@@ -333,6 +340,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return false;
   }
+
   /**
    * 1..1
    *
@@ -361,6 +369,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     //TODO
     return false;
   }
+
   /**
    * 1..1
    * subtypes (

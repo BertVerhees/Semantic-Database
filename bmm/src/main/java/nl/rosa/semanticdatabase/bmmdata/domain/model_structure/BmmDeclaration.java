@@ -13,6 +13,7 @@ import java.util.*;
  * Class BmmDeclaration
  */
 public abstract class BmmDeclaration extends Bmm {
+
   /**
    * 1..1
    * name: String
@@ -67,6 +68,17 @@ public abstract class BmmDeclaration extends Bmm {
   public Map<String,Object> documentation() {
     return Collections.unmodifiableMap(documentation);
   }
+
+  /**
+   * 1..1
+   * scope: BMM_DECLARATION
+   * Model element within which an element is declared.
+   */
+  //========= scope =======================================================================
+  @Getter
+  @Setter
+  protected @NonNull BmmDeclaration scope;
+
   /**
    * 0..1
    * extensions: Hash<String, Any>
@@ -107,15 +119,6 @@ public abstract class BmmDeclaration extends Bmm {
   }
 
 
-  /**
-   * 1..1
-   * scope: BMM_DECLARATION
-   * Model element within which an element is declared.
-   */
-  //========= scope =======================================================================
-  @Getter
-  @Setter
-  protected @NonNull BmmDeclaration scope;
 
   // Functions
 

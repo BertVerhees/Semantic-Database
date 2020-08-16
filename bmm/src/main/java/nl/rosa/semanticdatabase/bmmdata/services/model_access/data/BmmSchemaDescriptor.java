@@ -123,4 +123,63 @@ public class BmmSchemaDescriptor {
         }
         return this;
     }
+
+    //============ functions ===============================
+
+    /**
+     * 1..1
+     * is_top_level (): Boolean
+     * True if this is a top-level schema, i.e. not included by some other schema.
+     * @return
+     */
+    public Boolean isTopLevel(){
+        return null;
+    }
+
+    /**
+     * 1..1
+     * is_bmm_compatible (): Boolean
+     * True if the BMM version found in the schema (or assumed, if none) is compatible with that in this software.
+     * @return
+     */
+    public Boolean isBmmCompatible(){
+        return null;
+    }
+
+    /**
+     * 0..1
+     * load
+     * Load schema into in-memory form, i.e. a P_BMM_SCHEMA instance, if structurally valid. If successful, p_schema will be set.
+     */
+    public void load(){
+
+    }
+
+    /**
+     * 0..1
+     * validate_merged
+     * Validate loaded schema and report errors.
+     */
+    public void validateMerged(){
+
+    }
+
+    /**
+     * 0..1
+     * validate_includes ( * all_schemas_list: List<String>[0..1] * )
+     * Validate includes list for this schema, to see if each mentioned schema exists in all_schemas list.
+     * @param schemaList
+     */
+    public void validateIncludes(List<String> schemaList){
+
+    }
+
+    /**
+     * 0..1
+     * create_model
+     * Create schema, i.e. the BMM_MODEL from one P_BMM_SCHEMA schema.
+     */
+    public void createModel(){
+
+    }
 }
