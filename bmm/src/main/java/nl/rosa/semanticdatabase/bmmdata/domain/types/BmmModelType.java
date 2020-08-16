@@ -33,6 +33,7 @@ public abstract class BmmModelType extends BmmEffectiveType {
   @Getter
   @Setter
   private BmmValueSetSpec valueConstraint;
+
   /**
    * 1..1
    * base_class: BMM_CLASS
@@ -42,7 +43,8 @@ public abstract class BmmModelType extends BmmEffectiveType {
   @Setter
   @NonNull
   private BmmClass baseClass;
-  // Functions
+
+  //===================== Functions ========================================
 
   /**
    * 1..1

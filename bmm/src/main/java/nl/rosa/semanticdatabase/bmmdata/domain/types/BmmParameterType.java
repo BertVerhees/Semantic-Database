@@ -51,31 +51,27 @@ public class BmmParameterType extends BmmUnitaryType  {
    * If set, is the corresponding generic parameter definition in an ancestor class.
    */
   private BmmParameterType inheritancePrecursor;
+
+  //========= Functions ====================================
+
   /**
-   * 1..1
+   * 0..1
    * flattened_conforms_to_type (): BMM_EFFECTIVE_TYPE
    * Result is either conforms_to_type or inheritance_precursor.flattened_conforms_to_type.
    * @return
    */
-
-  // Functions
-   public BmmEffectiveType flattenedConformsToType (){
+   public @NonNull BmmEffectiveType flattenedConformsToType (){
     return null;
   }
-  //================================================================
-  /**
-   * BmmType
-   * @return
-   */
+
   /**
    * 1..1
-   * (effected)
-   * type_name (): String
-   * Return name.
-   * @return
+   * (redefined)
+   * type_signature (): String
+   * Signature form of the open type, including constrainer type if there is one, e.g. T:Ordered.
    */
   @Override
-  public String typeName() {
+  public @NonNull String typeSignature() {
     return null;
   }
 
@@ -124,6 +120,18 @@ public class BmmParameterType extends BmmUnitaryType  {
    */
   @Override
   public @NonNull Boolean isPrimitive() {
+    return null;
+  }
+
+  /**
+   * 1..1
+   * (effected)
+   * type_name (): String
+   * Return name.
+   * @return
+   */
+  @Override
+  public @NonNull String typeName() {
     return null;
   }
 }

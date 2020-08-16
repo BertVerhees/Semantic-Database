@@ -20,6 +20,7 @@ import java.util.List;
  * 
  */
 public class BmmSimpleType extends BmmModelType  {
+
   /**
    * 1..1
    * (redefined)

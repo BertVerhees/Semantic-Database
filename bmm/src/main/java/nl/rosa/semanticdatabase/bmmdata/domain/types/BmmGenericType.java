@@ -23,6 +23,7 @@ import java.util.*;
  * 
  */
 public class BmmGenericType extends BmmModelType  {
+
   /**
    * 1..1
    * generic_parameters: List<BMM_UNITARY_TYPE>

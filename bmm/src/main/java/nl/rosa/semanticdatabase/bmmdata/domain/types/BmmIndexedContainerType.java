@@ -15,6 +15,7 @@ import javax.persistence.Entity;
  * 
  */
 public class BmmIndexedContainerType extends BmmContainerType {
+
   /**
    * 1..1
    * index_type: BMM_SIMPLE_TYPE

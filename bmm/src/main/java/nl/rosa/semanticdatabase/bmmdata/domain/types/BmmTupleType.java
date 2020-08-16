@@ -44,7 +44,7 @@ public class BmmTupleType extends BmmEffectiveType  {
   public void putItemType(@NonNull String key, @NonNull BmmType value){
     itemTypes.put(key,  value);
   }
-  public void putItemType(Map<String, BmmType> items){
+  public void putItemTypes(Map<String, BmmType> items){
     items.keySet().forEach(key -> {
       putItemType(key, items.get(key));
     });
@@ -77,7 +77,7 @@ public class BmmTupleType extends BmmEffectiveType  {
    * @return
    */
   @Override
-  public String typeBaseName() {
+  public @NonNull String typeBaseName() {
     return baseName;
   }
 

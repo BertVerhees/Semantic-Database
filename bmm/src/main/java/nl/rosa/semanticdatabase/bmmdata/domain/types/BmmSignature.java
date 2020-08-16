@@ -34,11 +34,11 @@ public class BmmSignature extends BmmEffectiveType  {
   @Getter
   @Setter
   private BmmTupleType argumentTypes;
+
   /**
    * 0..1
    * Result type of signature, if any.
   */
-
   @Getter
   @Setter
   private BmmType resultType;
@@ -56,7 +56,7 @@ public class BmmSignature extends BmmEffectiveType  {
    * @return
    */
   @Override
-  public String typeBaseName() {
+  public @NonNull String typeBaseName() {
     return null;
   }
 
@@ -107,6 +107,6 @@ public class BmmSignature extends BmmEffectiveType  {
    */
   @Override
   public @NonNull Boolean isPrimitive() {
-    return null;
+    return true;
   }
 }

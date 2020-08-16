@@ -39,6 +39,7 @@ public class BmmContainerType extends BmmType {
   @Getter
   @Setter
   private BmmGenericClass containerClass;
+
   /**
    * 1..1
    * item_type: BMM_UNITARY_TYPE
@@ -48,6 +49,7 @@ public class BmmContainerType extends BmmType {
   @Getter
   @Setter
   private BmmUnitaryType itemType;
+
   /**
    * 0..1
    * is_ordered: Boolean
@@ -61,6 +63,7 @@ public class BmmContainerType extends BmmType {
   @Getter
   @Setter
   private Boolean isOrdered = true;
+
   /**
    * 0..1
    * is_unique: Boolean
@@ -73,33 +76,74 @@ public class BmmContainerType extends BmmType {
   private Boolean isUnique = false;
 
   /**
-   * BmmType
+   * 1..1
+   * (effected)
+   * type_name (): String
+   * Return full type name, e.g. List<ELEMENT>.
    */
   @Override
   public @NonNull String typeName() {
     return null;
   }
 
+  /**
+   * 1..1
+   * (effected)
+   * flattened_type_list (): List<String>
+   * Post_result: Result = item_type.flattened_type_list
+   * Flattened list of type names of item_type, i.e. item_type.flattened_type_list().
+   * @return
+   */
   @Override
   public @NonNull List<String> flattenedTypeList() {
     return null;
   }
 
+  /**
+   * 1..1
+   * (effected)
+   * unitary_type (): BMM_UNITARY_TYPE
+   * Return item_type.
+   * @return
+   */
   @Override
   public @NonNull BmmUnitaryType unitaryType() {
     return null;
   }
 
+  /**
+   * 1..1
+   * (effected)
+   * effective_type (): BMM_EFFECTIVE_TYPE
+   * Return item_type.effective_type().
+   * @return
+   */
   @Override
   public @NonNull BmmEffectiveType effectiveType() {
     return null;
   }
 
+  /**
+   * 1..1
+   * (effected)
+   * is_abstract (): Boolean
+   * Post_is_abstract: Result = container_type.is_abstract
+   * True if the container class is abstract.
+   * @return
+   */
   @Override
   public @NonNull Boolean isAbstract() {
     return null;
   }
 
+  /**
+   * 1..1
+   * (effected)
+   * is_primitive (): Boolean
+   * Post_result: Result = item_type.is_primitive
+   * True if item_type is primitive.
+   * @return
+   */
   @Override
   public @NonNull Boolean isPrimitive() {
     return null;
