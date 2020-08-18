@@ -22,11 +22,8 @@ public class BmmContainerProperty extends BmmProperty  {
    * Cardinality of this container.
    */
   @Getter
+  @Setter
   private MultiplicityInterval cardinality;
-
-  public void setCardinality(MultiplicityInterval cardinality) {
-    this.cardinality = cardinality;
-  }
 
   /**
    * 1..1

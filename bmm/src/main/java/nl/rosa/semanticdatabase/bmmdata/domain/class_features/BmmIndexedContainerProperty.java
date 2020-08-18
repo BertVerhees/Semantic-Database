@@ -12,11 +12,7 @@ import javax.persistence.Entity;
  * Meta-type of for properties of linear container type, such as Hash<Index_type,
  * T> etc.
  */
-@Data
 @EqualsAndHashCode(callSuper = true)
-@Entity
-@NoArgsConstructor
-@DiscriminatorValue("BBE_BD_BCE_BCS_BP_BCP_BICP")
 public class BmmIndexedContainerProperty extends BmmContainerProperty {
   /**
    * 1..1
@@ -35,6 +31,7 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
    * Name of this property in form name: ContainerTypeName<IndexTypeName, …​>.
    * @return
    */
+  @Override
   public String displayName(){
     return null;
   }

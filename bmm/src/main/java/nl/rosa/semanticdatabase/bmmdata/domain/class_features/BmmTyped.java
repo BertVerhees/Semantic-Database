@@ -1,5 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
+import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 
@@ -15,8 +17,8 @@ public interface BmmTyped {
    * type: BMM_TYPE
    * Declared or inferred static type of the entity.
    */
-  void setType (BmmType newVar);
-  BmmType getType ();
+  BmmType getType();
+  void setType(BmmType type);
 
   /**
    * 1..1
@@ -26,4 +28,6 @@ public interface BmmTyped {
    * @return
    */
   Boolean isBoolean();
+
+
 }

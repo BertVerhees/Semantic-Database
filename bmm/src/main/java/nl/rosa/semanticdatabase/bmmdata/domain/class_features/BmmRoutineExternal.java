@@ -50,18 +50,23 @@ public class BmmRoutineExternal implements BmmRoutineBody{
      */
     private Map<String, String> argumentMapping;
     public void putArgumentMapping(@NonNull String key, @NonNull String value){
+        if(argumentMapping == null){
+            argumentMapping = new HashMap<>();
+        }
         argumentMapping.put(key,  value);
     }
-    public void putArgumentMappingItem(Map<String, String> items){
+    public void putArgumentMappingItems(Map<String, String> items){
         items.keySet().forEach(key -> putArgumentMapping(key, items.get(key)));
     }
     public String getArgumentMappingItem(String key){
         return argumentMapping.get(key);
     }
     public void removeArgumentMappingItem(String key){
-        argumentMapping.remove(key);
+        if(argumentMapping!=null) {
+            argumentMapping.remove(key);
+        }
     }
-    public void removeArgumentMappings(Collection<String> keys){
+    public void removeArgumentMappingItems(Collection<String> keys){
         keys.forEach(this::removeArgumentMappingItem);
     }
     void setArgumentMapping(Map<String, String> constants) {

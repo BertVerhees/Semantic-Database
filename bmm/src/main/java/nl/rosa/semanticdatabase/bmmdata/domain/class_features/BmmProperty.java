@@ -49,7 +49,7 @@ public abstract class BmmProperty extends BmmClassFeature implements BmmInstanti
    */
   @Getter
   @Setter
-  private Boolean isImRuntime;
+  private Boolean isImRuntime = false;
 
   /**
    * 0..1
@@ -59,7 +59,7 @@ public abstract class BmmProperty extends BmmClassFeature implements BmmInstanti
    */
   @Getter
   @Setter
-  private Boolean isImInfrastructure;
+  private Boolean isImInfrastructure = false;
 
   /**
    * 0..1
@@ -71,7 +71,7 @@ public abstract class BmmProperty extends BmmClassFeature implements BmmInstanti
    */
   @Getter
   @Setter
-  private Boolean isComposition;
+  private Boolean isComposition = false;
 
   // Functions
   /**

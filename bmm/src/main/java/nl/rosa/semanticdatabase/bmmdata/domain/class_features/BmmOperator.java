@@ -37,11 +37,8 @@ public class BmmOperator extends Bmm {
   @NonNull
   @Setter
   @Getter
-  private Set<String> symbols;
+  private Set<String> symbols = new HashSet<>();
   public void addSymbol(@NonNull String value){
-    if(symbols==null){
-      symbols = new HashSet<>();
-    }
     symbols.add(value);
   }
   public void addSymbols(Set<String> items){
@@ -49,9 +46,7 @@ public class BmmOperator extends Bmm {
 
   }
   public void removeSymbol(String item){
-    if(symbols!=null) {
-      symbols.remove(item);
-    }
+    symbols.remove(item);
   }
   public void removeSymbols(Collection<String> items){
     items.forEach(this::removeSymbol);

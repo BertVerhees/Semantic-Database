@@ -171,7 +171,7 @@ public abstract class BmmRoutine extends BmmClassFeature {
    */
   @Getter
   @Setter
-  private BmmStatementItem body;
+  private BmmRoutineBody body;
   // Functions
 
   /**

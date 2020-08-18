@@ -33,7 +33,7 @@ public class BmmResult extends BmmVariable {
   @NonNull
   @Setter
   @Getter
-  private String name;
+  private String name = "Result";
   /**
    * 1..1
    * is_boolean (): Boolean
