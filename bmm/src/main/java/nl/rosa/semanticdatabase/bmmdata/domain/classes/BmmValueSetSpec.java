@@ -25,10 +25,6 @@ public class BmmValueSetSpec extends Bmm {
   @NonNull
   @Getter
   private String resourceId;
-  public BmmValueSetSpec setResourceId(String resourceId) {
-    this.resourceId = resourceId;
-    return this;
-  }
 
   /**
    * 1..1
@@ -39,8 +35,4 @@ public class BmmValueSetSpec extends Bmm {
   @NonNull
   @Getter
   private String valueSetId;
-  public BmmValueSetSpec setValueSetId(String valueSetId) {
-    this.valueSetId = valueSetId;
-    return this;
-  }
 }

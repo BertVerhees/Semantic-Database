@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
+import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmIntegerValue;
 import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmLiteralValue;
 import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmStringValue;
 
@@ -13,7 +14,7 @@ import java.util.*;
  * Class BmmEnumerationString
  * String-based enumeration meta-type.
  */
-public class BmmEnumerationString extends BmmEnumeration {
+public class BmmEnumerationString extends BmmEnumeration<BmmStringValue> {
   /**
    * 0..1
    * (redefined)
@@ -22,30 +23,10 @@ public class BmmEnumerationString extends BmmEnumeration {
    * @return
    */
   private Set<BmmStringValue> itemValues;
-  public void addItemValue(@NonNull BmmStringValue value){
-    if(itemValues==null){
-      itemValues = new HashSet<>();
-    }
-    itemValues.add(value);
-
-  }
-  public void addItemValues(Set<BmmStringValue> items){
-    items.forEach(this::addItemValue);
-
-  }
-  public void removeItemValue(BmmStringValue item){
-    if(itemValues!=null) {
-      itemValues.remove(item);
-    }
-  }
-  void setItemValues(Set<BmmLiteralValue> items) {
-    this.itemValues = new HashSet<>();
-    items.forEach(item -> {
-      this.itemValues.add((BmmStringValue) item);
-    });
-  }
-  private Set<BmmStringValue> getItemValues() {
+  Set<BmmStringValue> getItemValues() {
     return itemValues;
   }
-
+  void setItemValues(Set<BmmStringValue> items) {
+    this.itemValues = items;
+  }
 }

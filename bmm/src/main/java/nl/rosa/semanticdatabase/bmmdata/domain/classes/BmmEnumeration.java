@@ -13,7 +13,7 @@ import java.util.*;
  * Class BmmEnumeration
  */
 @EqualsAndHashCode(callSuper = true)
-public class BmmEnumeration extends BmmSimpleClass {
+public class BmmEnumeration<T extends BmmLiteralValue> extends BmmSimpleClass {
 
     /**
      * 0..1
@@ -62,9 +62,9 @@ public class BmmEnumeration extends BmmSimpleClass {
      * item_values: List<BMM_LITERAL_VALUE>
      * Optional list of specific values. Must be 1:1 with item_names list.
      */
-    private Set<BmmLiteralValue> itemValues;
+    private Set<T> itemValues;
 
-    public void addItemValue(@NonNull BmmLiteralValue value) {
+    public void addItemValue(@NonNull T value) {
         if (itemValues == null) {
             itemValues = new HashSet<>();
         }
@@ -72,30 +72,30 @@ public class BmmEnumeration extends BmmSimpleClass {
 
     }
 
-    public void addtemValues(Set<BmmLiteralValue> items) {
+    public void addtemValues(Set<T> items) {
         items.forEach(item -> addItemValue(item));
 
     }
 
-    public void removeItemValue(BmmLiteralValue item) {
+    public void removeItemValue(T item) {
         if (itemValues != null) {
             itemValues.remove(item);
         }
     }
 
-    public void removeItemValues(Collection<BmmLiteralValue> items) {
+    public void removeItemValues(Collection<T> items) {
         items.forEach(this::removeItemValue);
     }
 
-    void setItemValues(Set<BmmLiteralValue> items) {
+    void setItemValues(Set<T> items) {
         this.itemValues = items;
     }
 
-    private Set<BmmLiteralValue> getItemValues() {
+    private Set<T> getItemValues() {
         return itemValues;
     }
 
-    public Set<BmmLiteralValue> itemValues() {
+    public Set<T> itemValues() {
         return Collections.unmodifiableSet(itemValues);
     }
 
