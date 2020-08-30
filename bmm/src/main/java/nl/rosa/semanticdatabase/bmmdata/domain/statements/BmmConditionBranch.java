@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElExpression;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 /**
  * Default created on 14-7-2020
@@ -19,5 +20,5 @@ public class BmmConditionBranch extends BmmDecisionBranch{
     @NonNull
     @Getter
     @Setter
-    private ElExpression test;
+    private ElExpression<BmmType> test;
 }

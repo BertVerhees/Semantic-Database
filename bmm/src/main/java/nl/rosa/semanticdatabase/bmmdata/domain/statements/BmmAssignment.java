@@ -5,6 +5,7 @@ import lombok.NonNull;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElExpression;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElInstantiableRef;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 /**
  * Default created on 13-7-2020
@@ -32,5 +33,5 @@ public class BmmAssignment implements BmmStatement{
     @NonNull
     @Getter
     @Setter
-    private ElExpression source;
+    private ElExpression<BmmType> source;
 }
