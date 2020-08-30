@@ -14,7 +14,6 @@ import javax.persistence.DiscriminatorValue;
  * Invariants
  * Inv_signature_no_args: signature.arguments = Void
  */
-@EqualsAndHashCode(callSuper = true)
 public abstract class BmmVariable extends BmmClassEntity implements BmmInstantiable {
 
   /**

@@ -16,7 +16,6 @@ import java.util.Map;
 /**
  * Class BmmPackageContainer
  */
-@EqualsAndHashCode(callSuper = true)
 public abstract class BmmPackageContainer extends BmmDeclaration {
 
   /**

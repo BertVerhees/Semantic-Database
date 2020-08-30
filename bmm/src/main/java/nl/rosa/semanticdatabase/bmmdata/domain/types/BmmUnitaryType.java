@@ -1,9 +1,5 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
 /**
  * Class BmmUnitaryType
  * Parent of meta-nl.rosa.semanticdatabase.bmm.model.types that may be used as the type of any instantiated object

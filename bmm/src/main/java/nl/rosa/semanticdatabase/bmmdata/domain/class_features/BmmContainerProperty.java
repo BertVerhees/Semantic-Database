@@ -14,7 +14,6 @@ import javax.persistence.Entity;
  * Class BmmContainerProperty
  * Meta-type of for properties of linear container type, such as List<T> etc.
  */
-@EqualsAndHashCode(callSuper = true)
 public class BmmContainerProperty extends BmmProperty  {
   /**
    * 0..1

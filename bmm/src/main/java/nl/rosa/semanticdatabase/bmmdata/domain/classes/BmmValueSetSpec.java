@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
@@ -12,7 +11,6 @@ import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
  * reference to a 'value set' within an external resource, e.g. a reference data
  * service.
  */
-@EqualsAndHashCode(callSuper = true)
 public class BmmValueSetSpec extends BmmBase {
   /**
    * 1..1

@@ -1,11 +1,5 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-
-import javax.persistence.Entity;
-
 /**
  * Class ElDefined
  * A predicate taking one external variable reference argument, that returns true

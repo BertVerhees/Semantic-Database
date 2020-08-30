@@ -1,6 +1,5 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
-import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
@@ -8,7 +7,6 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
  * Class ElExpression
  * Abstract parent of all typed expression tree items.
  */
-@EqualsAndHashCode(callSuper = true)
 public abstract class ElExpression extends BmmBase {
     /**
      * 1..1

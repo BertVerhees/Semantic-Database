@@ -1,8 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 
 /**

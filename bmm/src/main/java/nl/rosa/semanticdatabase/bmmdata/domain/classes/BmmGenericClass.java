@@ -1,13 +1,9 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
-import lombok.EqualsAndHashCode;
 import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmGenericType;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmParameterType;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
 import java.util.*;
 
 
@@ -19,7 +15,6 @@ import java.util.*;
  * Generate a fully open BMM_GENERIC_TYPE instance that corresponds to this class
  * definition
  */
-@EqualsAndHashCode(callSuper = true)
 public class BmmGenericClass extends BmmClass {
 
   /**

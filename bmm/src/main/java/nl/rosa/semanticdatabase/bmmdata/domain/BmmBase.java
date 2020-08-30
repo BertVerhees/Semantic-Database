@@ -1,6 +1,5 @@
 package nl.rosa.semanticdatabase.bmmdata.domain;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import javax.persistence.*;
@@ -12,7 +11,6 @@ import java.io.Serializable;
  */
 
 @Getter
-@EqualsAndHashCode
 public abstract class BmmBase implements Serializable {
 
     @Transient

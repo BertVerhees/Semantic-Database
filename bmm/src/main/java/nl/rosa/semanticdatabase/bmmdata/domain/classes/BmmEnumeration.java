@@ -1,18 +1,14 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
-import lombok.EqualsAndHashCode;
 import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmLiteralValue;
 
-import javax.persistence.*;
 import java.util.*;
 
 
 /**
  * Class BmmEnumeration
  */
-@EqualsAndHashCode(callSuper = true)
 public class BmmEnumeration<T extends BmmLiteralValue> extends BmmSimpleClass {
 
     /**

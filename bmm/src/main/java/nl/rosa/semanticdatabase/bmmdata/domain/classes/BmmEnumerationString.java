@@ -1,13 +1,8 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
 
-import lombok.EqualsAndHashCode;
-import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmIntegerValue;
-import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmLiteralValue;
 import nl.rosa.semanticdatabase.bmmdata.domain.literal_values.BmmStringValue;
 
-import javax.management.StringValueExp;
 import java.util.*;
 
 /**

@@ -13,7 +13,6 @@ import javax.persistence.Entity;
  * the constraint is not itself a value-returning expression.
  */
 @Data
-@EqualsAndHashCode(callSuper = true)
 @Entity
 public class ElConstraintExpression extends ElExpression {
   /**

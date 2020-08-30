@@ -1,7 +1,5 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmOperator;
 
@@ -10,8 +8,6 @@ import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmOperator;
  * Class ElOperator
  * Abstract parent of operator nl.rosa.semanticdatabase.bmm.model.types.
  */
-@Data
-@EqualsAndHashCode(callSuper = true)
 public abstract class ElOperator extends ElExpression {
   /**
    * 0..1

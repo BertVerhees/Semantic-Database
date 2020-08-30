@@ -13,8 +13,6 @@ import java.util.Set;
  * Class BmmOperator
  * Definition of a symbolic operator associated with a function
  */
-@EqualsAndHashCode(callSuper = true)
-@Builder
 public class BmmOperator extends BmmBase {
 
   /**

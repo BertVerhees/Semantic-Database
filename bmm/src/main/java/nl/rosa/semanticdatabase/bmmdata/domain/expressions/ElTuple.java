@@ -1,13 +1,9 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmLocal;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmTupleType;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
-import javax.persistence.Entity;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;

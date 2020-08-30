@@ -1,13 +1,8 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmFunction;
-
-import javax.persistence.Entity;
-
 
 /**
  * Class ElFunctionAgent

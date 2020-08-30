@@ -15,7 +15,6 @@ import java.util.Set;
  * Class BmmClassScoped
  * A class entity having a signature and a class as its scope.
  */
-@EqualsAndHashCode(callSuper = true)
 public abstract class BmmClassFeature extends BmmClassEntity {
 
   /**

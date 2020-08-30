@@ -12,7 +12,6 @@ import javax.persistence.Entity;
  * Meta-type of for properties of linear container type, such as Hash<Index_type,
  * T> etc.
  */
-@EqualsAndHashCode(callSuper = true)
 public class BmmIndexedContainerProperty extends BmmContainerProperty {
   /**
    * 1..1
