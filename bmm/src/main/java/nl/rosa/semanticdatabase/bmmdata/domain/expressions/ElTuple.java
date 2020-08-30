@@ -1,6 +1,8 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
+import lombok.Getter;
 import lombok.NonNull;
+import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmTupleType;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
@@ -56,9 +58,20 @@ public class ElTuple extends ElInstanceRef {
    * type: BMM_TUPLE_TYPE
    * Static type inferred from literal value.
    */
+  @Getter
+  @Setter
+  @NonNull
   private BmmTupleType type;
 
+  /**
+   * 1..1
+   * (effected)
+   * eval_type (): BMM_TYPE
+   * Return type.
+   * @return
+   */
   @Override
+  @NonNull
   public BmmType evalType() {
     return null;
   }

@@ -9,7 +9,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSimpleType;
  * Class ElPredicate
  * Parent type of predicate of any object reference.
  */
-public abstract class ElPredicate extends ElTerminal {
+public abstract class ElPredicate<T extends BmmSimpleType> extends ElTerminal<T> {
   /**
    * 1..1
    * operand: EL_INSTANCE_REF
@@ -31,7 +31,7 @@ public abstract class ElPredicate extends ElTerminal {
    * Inv_boolean_result: is_boolean()
    */
   @NonNull
-  public BmmSimpleType evalType(){
+  public T evalType(){
     return null;
   }
 }

@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
  * Class ElExpression
  * Abstract parent of all typed expression tree items.
  */
-public abstract class ElExpression extends BmmBase {
+public abstract class ElExpression<T extends BmmType> extends BmmBase {
     /**
      * 1..1
      * (abstract)
@@ -16,7 +16,7 @@ public abstract class ElExpression extends BmmBase {
      * Effected in descendants.
      * @return
      */
-    public abstract BmmType evalType();
+    public abstract T evalType();
     /**
      * 1..1
      * is_boolean (): Boolean

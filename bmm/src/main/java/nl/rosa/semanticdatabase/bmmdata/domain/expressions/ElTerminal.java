@@ -1,6 +1,8 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
 
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
+
 /**
  * Class ElTerminal
  * Expression terminal entity, representing one of:
@@ -10,6 +12,6 @@ package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
  * an agent, i.e. a delayed function call;
  * a function call.
  */
-public abstract class ElTerminal extends ElExpression{
+public abstract class ElTerminal<T extends BmmType> extends ElExpression<T>{
 
 }

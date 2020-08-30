@@ -11,14 +11,17 @@ import javax.persistence.Entity;
  * A call made on a closed function agent, returning a result. Equivalent to an
  * 'application' of a function in Lambda calculus.
  */
-public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
+public class ElFunctionCall extends ElScopedRef implements ElAgentCall<ElFunctionAgent> {
   /**
-   * ElAgentCall
+   * 1..1
+   * (redefined)
+   * agent: EL_FUNCTION_AGENT
+   * The function agent being called.
    */
   @NonNull
   @Getter
   @Setter
-  private ElAgent agent;
+  private ElFunctionAgent agent;
 //======================================================================================
 
   /**

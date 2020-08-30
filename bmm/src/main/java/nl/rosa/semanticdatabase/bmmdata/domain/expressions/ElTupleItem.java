@@ -4,6 +4,8 @@ package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 import lombok.Getter;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmTupleType;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 /**
  * Class ElTupleItem
@@ -19,7 +21,7 @@ public class ElTupleItem extends BmmBase {
    */
   @Getter
   @Setter
-  private ElExpression item;
+  private ElExpression<BmmTupleType> item;
 
   /**
    * 0..1

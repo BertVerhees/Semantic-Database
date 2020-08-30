@@ -12,9 +12,7 @@ import javax.persistence.Entity;
  * 'matches' operator. Does not follow the ordinary model of binary operator, since
  * the constraint is not itself a value-returning expression.
  */
-@Data
-@Entity
-public class ElConstraintExpression extends ElExpression {
+public class ElConstraintExpression extends ElExpression<BmmType> {
   /**
    * 1..1
    * left_operand: EL_EXPRESSION
@@ -23,7 +21,7 @@ public class ElConstraintExpression extends ElExpression {
   @NonNull
   @Getter
   @Setter
-  private ElExpression leftOperand;
+  private ElExpression<BmmType> leftOperand;
   /**
    * 1..1
    * constraint: Any
@@ -36,7 +34,7 @@ public class ElConstraintExpression extends ElExpression {
   @Getter
   @Setter
   private Object constraint;
-  
+
   @Override
   public BmmType evalType() {
     return null;

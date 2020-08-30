@@ -19,7 +19,7 @@ public class ElBinaryOperator extends ElOperator  {
   @NonNull
   @Getter
   @Setter
-  private ElExpression operand;
+  private ElExpression leftOperand;
   /**
    * 1..1
    * right_operand: EL_TERMINAL

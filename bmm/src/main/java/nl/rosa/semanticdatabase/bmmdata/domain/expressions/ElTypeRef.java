@@ -16,6 +16,7 @@ import javax.persistence.Entity;
 public class ElTypeRef extends ElInstanceRef  {
   /**
    * 1..1
+   * Type, directly from the name of the reference, e.g. {SOME_TYPE}.
    * type: BMM_TYPE
    */
   @NonNull
@@ -23,6 +24,13 @@ public class ElTypeRef extends ElInstanceRef  {
   @Setter
   private BmmType type;
 
+  /**
+   * 1..1
+   * (effected)
+   * eval_type (): BMM_TYPE
+   * Return type.
+   * @return
+   */
   @Override
   public BmmType evalType() {
     return null;

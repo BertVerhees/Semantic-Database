@@ -21,7 +21,7 @@ public class ElLiteral extends ElInstanceRef {
   @Getter
   @Setter
   @NonNull
-  private BmmLiteralValue value;
+  private BmmLiteralValue<BmmType, Object> value;
 
   /**
    * 1..1
