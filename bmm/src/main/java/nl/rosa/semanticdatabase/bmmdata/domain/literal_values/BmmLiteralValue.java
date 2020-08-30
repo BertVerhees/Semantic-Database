@@ -2,11 +2,9 @@ package nl.rosa.semanticdatabase.bmmdata.domain.literal_values;
 
 
 import lombok.*;
-import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmTyped;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
-
-import javax.persistence.DiscriminatorValue;
 
 /**
  * Class BmmLiteralValue
@@ -14,7 +12,7 @@ import javax.persistence.DiscriminatorValue;
  * be inline values of primitive nl.rosa.semanticdatabase.bmm.model.types in the usual fashion or complex objects in
  * syntax form, e.g. JSON.
  */
-public class BmmLiteralValue extends Bmm implements BmmTyped {
+public class BmmLiteralValue extends BmmBase implements BmmTyped {
 
   /**
    * 1..1

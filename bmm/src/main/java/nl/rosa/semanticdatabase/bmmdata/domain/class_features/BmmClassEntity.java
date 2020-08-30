@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
@@ -35,5 +36,6 @@ public abstract class BmmClassEntity extends BmmDeclaration {
    * Specific implementations in descendants.
    * @return
    */
+  @NonNull
   public abstract BmmSignature signature();
 }

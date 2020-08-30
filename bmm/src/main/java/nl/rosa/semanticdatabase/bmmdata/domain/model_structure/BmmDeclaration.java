@@ -2,17 +2,15 @@ package nl.rosa.semanticdatabase.bmmdata.domain.model_structure;
 
 
 import lombok.*;
-import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
-import nl.rosa.semanticdatabase.utils.json.JSONUtils;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
 import nl.rosa.semanticdatabase.utils.map.MapUtils;
 
-import javax.persistence.*;
 import java.util.*;
 
 /**
  * Class BmmDeclaration
  */
-public abstract class BmmDeclaration extends Bmm {
+public abstract class BmmDeclaration extends BmmBase {
 
   /**
    * 1..1

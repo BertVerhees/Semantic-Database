@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 import lombok.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
+import nl.rosa.semanticdatabase.bmmdata.domain.statements.BmmAssertion;
 import nl.rosa.semanticdatabase.bmmdata.domain.statements.BmmStatementItem;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmSignature;
 
@@ -94,36 +95,36 @@ public abstract class BmmRoutine extends BmmClassFeature {
    * 0..1
    * pre_conditions: List<EL_ASSERTION>
    */
-  private Set<ElAssertion> preConditions;
-  public void addPreCondition(@NonNull ElAssertion value){
+  private Set<BmmAssertion> preConditions;
+  public void addPreCondition(@NonNull BmmAssertion value){
     if(preConditions==null){
       preConditions = new HashSet<>();
     }
     preConditions.add(value);
   }
-  public void addPreConditions(Set<ElAssertion> items){
+  public void addPreConditions(Set<BmmAssertion> items){
     items.forEach(item -> addPreCondition(item));
 
   }
-  public void removePreCondition(ElAssertion item){
+  public void removePreCondition(BmmAssertion item){
     if(preConditions!=null) {
       preConditions.remove(item);
     }
   }
-  public void removePreConditions(Collection<ElAssertion> items){
+  public void removePreConditions(Collection<BmmAssertion> items){
     items.forEach(this::removePreCondition);
   }
-  void setPreConditions(Set<ElAssertion> items) {
+  void setPreConditions(Set<BmmAssertion> items) {
     this.preConditions = items;
   }
-  Set<ElAssertion> getPreConditions() {
+  Set<BmmAssertion> getPreConditions() {
     return preConditions;
   }
-  public Set<ElAssertion> preConditions() {
+  public Set<BmmAssertion> preConditions() {
     return Collections.unmodifiableSet(preConditions);
   }
 
-  public void removePreConditions(Set<ElAssertion> items) {
+  public void removePreConditions(Set<BmmAssertion> items) {
     this.preConditions.removeAll(items);
   }
 
@@ -131,36 +132,36 @@ public abstract class BmmRoutine extends BmmClassFeature {
    * 0..1
    * post_conditions: List<EL_ASSERTION>
    */
-  private Set<ElAssertion> postConditions;
-  public void addPostCondition(@NonNull ElAssertion value){
+  private Set<BmmAssertion> postConditions;
+  public void addPostCondition(@NonNull BmmAssertion value){
     if(postConditions==null){
       postConditions = new HashSet<>();
     }
     postConditions.add(value);
   }
-  public void addPostConditions(Set<ElAssertion> items){
+  public void addPostConditions(Set<BmmAssertion> items){
     items.forEach(item -> addPostCondition(item));
 
   }
-  public void removePostCondition(ElAssertion item){
+  public void removePostCondition(BmmAssertion item){
     if(postConditions!=null) {
       postConditions.remove(item);
     }
   }
-  public void removePostConditions(Collection<ElAssertion> items){
+  public void removePostConditions(Collection<BmmAssertion> items){
     items.forEach(this::removePostCondition);
   }
-  void setPostConditions(Set<ElAssertion> items) {
+  void setPostConditions(Set<BmmAssertion> items) {
     this.postConditions = items;
   }
-  Set<ElAssertion> getPostConditions() {
+  Set<BmmAssertion> getPostConditions() {
     return postConditions;
   }
-  public Set<ElAssertion> postConditions() {
+  public Set<BmmAssertion> postConditions() {
     return Collections.unmodifiableSet(postConditions);
   }
 
-  public void removePostConditions(Set<ElAssertion> items) {
+  public void removePostConditions(Set<BmmAssertion> items) {
     this.postConditions.removeAll(items);
   }
 

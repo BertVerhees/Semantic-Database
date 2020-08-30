@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
-import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
 
 /**
  * Default created on 18-8-2020
@@ -8,5 +8,5 @@ import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
  * TODO: define schemes; probably need to support C++/Java scheme as well as better type-based schemes.
  */
 
-public class BmmVisibility extends Bmm {
+public class BmmVisibility extends BmmBase {
 }

@@ -4,9 +4,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
-
-import javax.persistence.Entity;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
 
 /**
  * Class BmmValueSpec
@@ -15,7 +13,7 @@ import javax.persistence.Entity;
  * service.
  */
 @EqualsAndHashCode(callSuper = true)
-public class BmmValueSetSpec extends Bmm {
+public class BmmValueSetSpec extends BmmBase {
   /**
    * 1..1
    * resource_id: String

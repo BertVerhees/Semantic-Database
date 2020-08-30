@@ -3,8 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
-import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
 
 import java.util.*;
 
@@ -13,7 +12,7 @@ import java.util.*;
  * A logical group of features, with a name and set of properties that applies to the group.
  */
 
-public class BmmFeatureGroup extends Bmm {
+public class BmmFeatureGroup extends BmmBase {
 
     /**
      * 1..1
@@ -94,4 +93,13 @@ public class BmmFeatureGroup extends Bmm {
     public Set<BmmClassFeature> features() {
         return Collections.unmodifiableSet(features);
     }
+
+    /**
+     * 0..1
+     * visibility: BMM_VISIBILITY
+     * Optional visibility to apply to all features in this group.
+     */
+    @Getter
+    @Setter
+    private BmmVisibility visibility;
 }

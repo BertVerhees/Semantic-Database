@@ -1,15 +1,8 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
-import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
-import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
-import org.springframework.data.annotation.Transient;
-
-import javax.persistence.*;
 
 /**
  * Class ElAssertion

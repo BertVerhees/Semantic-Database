@@ -1,7 +1,5 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
-import lombok.NonNull;
-import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
 
 

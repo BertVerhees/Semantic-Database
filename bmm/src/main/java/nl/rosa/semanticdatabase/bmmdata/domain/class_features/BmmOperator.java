@@ -2,10 +2,8 @@ package nl.rosa.semanticdatabase.bmmdata.domain.class_features;
 
 
 import lombok.*;
-import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
-import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
 
-import javax.persistence.Entity;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -17,7 +15,7 @@ import java.util.Set;
  */
 @EqualsAndHashCode(callSuper = true)
 @Builder
-public class BmmOperator extends Bmm {
+public class BmmOperator extends BmmBase {
 
   /**
    * 1..1

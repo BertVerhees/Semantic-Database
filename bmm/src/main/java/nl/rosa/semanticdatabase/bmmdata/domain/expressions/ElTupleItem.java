@@ -1,16 +1,15 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
-import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
 
 /**
  * Class ElTupleItem
  * A single tuple item, with an optional name.
  */
-public class ElTupleItem extends Bmm {
+public class ElTupleItem extends BmmBase {
 
   /**
    * 0..1

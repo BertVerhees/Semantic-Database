@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmmdata.domain.expressions;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
 
 /**
  * Optionally tagged Boolean-returning expression.
@@ -13,7 +13,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
  * Inv_boolean_expression: expression.is_boolean()
  */
 
-public class ElBooleanExpression extends Bmm {
+public class ElBooleanExpression extends BmmBase {
     /**
      * 1..1
      * expression: EL_EXPRESSION

@@ -2,8 +2,6 @@ package nl.rosa.semanticdatabase.bmmdata.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,7 +13,7 @@ import java.io.Serializable;
 
 @Getter
 @EqualsAndHashCode
-public abstract class Bmm implements Serializable {
+public abstract class BmmBase implements Serializable {
 
     @Transient
     StringBuilder classPath;
@@ -35,7 +33,7 @@ public abstract class Bmm implements Serializable {
         return this.id == null;
     }
 
-    public Boolean equals(Bmm obj){
+    public Boolean equals(BmmBase obj){
         return id != null && id.equals( obj.id) && this.getClass().equals(obj.getClass());
     }
 

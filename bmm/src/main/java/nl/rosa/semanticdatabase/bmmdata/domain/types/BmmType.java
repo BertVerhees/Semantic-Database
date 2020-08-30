@@ -1,10 +1,7 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.types;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
+import nl.rosa.semanticdatabase.bmmdata.domain.BmmBase;
 
 import java.util.List;
 
@@ -16,7 +13,7 @@ import java.util.List;
  * kind, that defines the type of an attribute, or function result or argument. It
  * may include generic parameters that might or might not be bound. See subtypes.
  */
-public abstract class BmmType extends Bmm {
+public abstract class BmmType extends BmmBase {
 
     /**
      * 1..1

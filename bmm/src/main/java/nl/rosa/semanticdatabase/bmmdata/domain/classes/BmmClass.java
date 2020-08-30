@@ -1,21 +1,15 @@
 package nl.rosa.semanticdatabase.bmmdata.domain.classes;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import nl.rosa.semanticdatabase.bmmdata.domain.Bmm;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.*;
 import nl.rosa.semanticdatabase.bmmdata.domain.expressions.ElAssertion;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmModule;
 import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackage;
-import nl.rosa.semanticdatabase.bmmdata.domain.model_structure.BmmPackageContainer;
 import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmModelType;
-import nl.rosa.semanticdatabase.bmmdata.services.model_access.data.BmmSchema;
-import org.springframework.util.ClassUtils;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
