@@ -12,7 +12,7 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
  * be inline values of primitive nl.rosa.semanticdatabase.bmm.model.types in the usual fashion or complex objects in
  * syntax form, e.g. JSON.
  */
-public class BmmLiteralValue extends BmmBase implements BmmTyped {
+public class BmmLiteralValue<T extends BmmType, V> extends BmmBase implements BmmTyped<T> {
 
   /**
    * 1..1
@@ -24,7 +24,7 @@ public class BmmLiteralValue extends BmmBase implements BmmTyped {
   @NonNull
   @Getter
   @Setter
-  private BmmType type;
+  private T type;
   /**
    * 1..1
    * is_boolean (): Boolean
@@ -67,5 +67,5 @@ public class BmmLiteralValue extends BmmBase implements BmmTyped {
    */
   @Getter
   @Setter
-  private Object value;
+  private V value;
 }

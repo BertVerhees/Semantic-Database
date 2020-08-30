@@ -8,15 +8,15 @@ import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmType;
  * Any entity that has a declared or inferred static type, and that can therefore
  * be generate a value.
  */
-public interface BmmTyped {
+public interface BmmTyped<T extends BmmType> {
 
   /**
    * 1..1
    * type: BMM_TYPE
    * Declared or inferred static type of the entity.
    */
-  BmmType getType();
-  void setType(BmmType type);
+  T getType();
+  void setType(T type);
 
   /**
    * 1..1
