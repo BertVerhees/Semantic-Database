@@ -18,8 +18,14 @@ public abstract class BmmSchema implements BmmModelMetadata {
     /**
      * BmmModelMetadata
      */
+    @Getter
+    @Setter
+    @NonNull
     private String rmPublisher;
 
+    @Getter
+    @Setter
+    @NonNull
     private String rmRelease;
 
     /**

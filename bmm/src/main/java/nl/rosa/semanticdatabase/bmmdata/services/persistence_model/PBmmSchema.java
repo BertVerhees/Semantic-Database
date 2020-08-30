@@ -89,7 +89,7 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
      * Pre_other_valid: includes_to_process.has (included_schema.schema_id)
      * Implementation of merge()
      */
-    public void merge(PBmmSchema schema){
+    public void merge(BmmSchema schema){
 
     }
 
