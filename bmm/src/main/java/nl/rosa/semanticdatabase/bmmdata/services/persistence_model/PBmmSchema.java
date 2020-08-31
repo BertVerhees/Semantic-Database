@@ -3,18 +3,17 @@ package nl.rosa.semanticdatabase.bmmdata.services.persistence_model;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import nl.rosa.semanticdatabase.bmmdata.domain.types.BmmModelType;
 import nl.rosa.semanticdatabase.bmmdata.services.model_access.data.BmmIncludeSpec;
 import nl.rosa.semanticdatabase.bmmdata.services.model_access.data.BmmSchema;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Default created on 31-7-2020
  */
 
-public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
+public class PBmmSchema extends BmmSchema<PBmmSchema> implements PBmmPackageContainer {
 
     /**
      * 1..1
@@ -22,10 +21,33 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
      * Package structure as a hierarchy of packages each potentially containing names of classes in that package in the original model.
      * (********  inherits from PBmmPackageContainer)
      */
-    @Getter
-    @Setter
-    @NonNull
     private Map<String, PBmmPackage> packages = new HashMap<>();
+    public void putPackage(@NonNull String key, @NonNull PBmmPackage value){
+        packages.put(key,  value);
+
+    }
+    public void putPackages(Map<String, PBmmPackage> items){
+        items.keySet().forEach(key -> putPackage(key, items.get(key)));
+
+    }
+    public PBmmPackage getPackage(String key){
+        return packages.get(key);
+    }
+    public void removePackage(String key){
+        packages.remove(key);
+    }
+    public void removerPackages(Collection<String> keys){
+        keys.forEach(this::removePackage);
+    }
+    void setPackages(Map<String, PBmmPackage> ancestors) {
+        this.packages = ancestors;
+    }
+    public Map<String,PBmmPackage> getPackages() {
+        return Collections.unmodifiableMap(packages);
+    }
+    public Map<String,PBmmPackage> packages() {
+        return Collections.unmodifiableMap(packages);
+    }
 
     /**
      * 0..1
@@ -45,17 +67,6 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
     @Getter
     @Setter
     private Set<PBmmClass> classDefinitions;
-    /**
-     * 0..1
-     * (redefined)
-     * includes: Hash<String,BMM_INCLUDE_SPEC>
-     * Inclusion list, in the form of a hash of individual include specifications, each of which at least specifies
-     * the id of another schema, and may specify a namespace via which types from the included schemas are known
-     * in this schema. Persisted attribute.
-     */
-    @Getter
-    @Setter
-    private Map<String, BmmIncludeSpec> includes;
     //==============================================================================================================
     /**
      * 0..1
@@ -89,7 +100,7 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
      * Pre_other_valid: includes_to_process.has (included_schema.schema_id)
      * Implementation of merge()
      */
-    public void merge(BmmSchema schema){
+    public void merge(PBmmSchema schema){
 
     }
 

@@ -13,7 +13,7 @@ import java.util.*;
  * Default created on 6-6-2020
  */
 @NoArgsConstructor
-public abstract class BmmSchema implements BmmModelMetadata {
+public abstract class BmmSchema<T extends BmmSchema> implements BmmModelMetadata {
 
     /**
      * BmmModelMetadata
@@ -248,7 +248,7 @@ public abstract class BmmSchema implements BmmModelMetadata {
      * Pre_other_valid: includes_to_process.has (included_schema.schema_id)
      * Merge in class and package definitions from other, except where the current schema already has a definition for the given type or package.
      */
-    public abstract void merge(@NonNull BmmSchema schema);
+    public abstract void merge(@NonNull T schema);
 
     /**
      * 0..1
