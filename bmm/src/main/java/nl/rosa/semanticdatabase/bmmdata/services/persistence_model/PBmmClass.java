@@ -3,11 +3,9 @@ package nl.rosa.semanticdatabase.bmmdata.services.persistence_model;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmProperty;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Default created on 31-7-2020
@@ -71,4 +69,64 @@ public class PBmmClass implements PBmmModelElement{
     public Set<String> ancestors() {
         return Collections.unmodifiableSet(ancestors);
     }
+
+    /**
+     * 0..1
+     * properties: Hash<String,P_BMM_PROPERTY>
+     * List of attributes defined in this class. Persistent attribute.
+     */
+    private Map<String, PBmmProperty> properties;
+
+    public void putProperty(@NonNull String key, @NonNull PBmmProperty value){
+        if(properties==null){
+            properties = new HashMap<>();
+        }
+        properties.put(key,  value);
+
+    }
+    public void putProperties(Map<String, PBmmProperty> items){
+        items.keySet().forEach(key -> putProperty(key, items.get(key)));
+
+    }
+    public PBmmProperty getProperty(String key){
+        if(properties==null){
+            return null;
+        }
+        return properties.get(key);
+    }
+    public void removeProperty(String key){
+        if(properties!=null) {
+            properties.remove(key);
+        }
+    }
+    public void removeProperties(Collection<String> keys){
+        keys.forEach(this::removeProperty);
+    }
+    void setProperties(Map<String, PBmmProperty> properties) {
+        this.properties = properties;
+    }
+    Map<String,PBmmProperty> getProperties() {
+        return properties;
+    }
+    public Map<String,PBmmProperty> properties() {
+        return Collections.unmodifiableMap(properties);
+    }
+
+    /**
+     * 0..1
+     * is_abstract: Boolean
+     * True if this is an abstract type. Persisted attribute.
+     */
+    @Getter
+    @Setter
+    private Boolean isAbstract;
+
+    /**
+     * 0..1
+     * is_override: Boolean
+     * True if this class definition overrides one found in an included schema.
+     */
+    @Getter
+    @Setter
+    private Boolean isOverride;
 }
