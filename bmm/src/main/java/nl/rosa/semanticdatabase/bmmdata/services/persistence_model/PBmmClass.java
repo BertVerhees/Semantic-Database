@@ -129,4 +129,41 @@ public class PBmmClass implements PBmmModelElement{
     @Getter
     @Setter
     private Boolean isOverride;
+
+    private Map<String, PBmmGenericParameter> genericParameterdefs;
+
+    public void putGenericParameterdef(@NonNull String key, @NonNull PBmmGenericParameter value){
+        if(genericParameterdefs==null){
+            genericParameterdefs = new HashMap<>();
+        }
+        genericParameterdefs.put(key,  value);
+
+    }
+    public void putGenericParameterdefs(Map<String, PBmmGenericParameter> items){
+        items.keySet().forEach(key -> putGenericParameterdef(key, items.get(key)));
+
+    }
+    public PBmmGenericParameter getGenericParameterdef(String key){
+        if(genericParameterdefs==null){
+            return null;
+        }
+        return genericParameterdefs.get(key);
+    }
+    public void removeGenericParameterdef(String key){
+        if(properties!=null) {
+            properties.remove(key);
+        }
+    }
+    public void removeGenericParameterdefs(Collection<String> keys){
+        keys.forEach(this::removeGenericParameterdef);
+    }
+    void setGenericParameterdefs(Map<String, PBmmGenericParameter> properties) {
+        this.genericParameterdefs = properties;
+    }
+    Map<String,PBmmGenericParameter> getGenericParameterdefs() {
+        return genericParameterdefs;
+    }
+    public Map<String,PBmmGenericParameter> genericParameterdefs() {
+        return Collections.unmodifiableMap(genericParameterdefs);
+    }
 }
