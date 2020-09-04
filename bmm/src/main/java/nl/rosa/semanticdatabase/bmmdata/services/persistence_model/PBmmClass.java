@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import nl.rosa.semanticdatabase.bmmdata.domain.class_features.BmmProperty;
+import nl.rosa.semanticdatabase.bmmdata.domain.classes.BmmClass;
 
 import java.util.*;
 
@@ -165,5 +166,69 @@ public class PBmmClass implements PBmmModelElement{
     }
     public Map<String,PBmmGenericParameter> genericParameterdefs() {
         return Collections.unmodifiableMap(genericParameterdefs);
+    }
+
+    /**
+     * 1..1
+     * source_schema_id: String
+     * Reference to original source schema defining this class. Set during BMM_SCHEMA materialise.
+     * Useful for GUI tools to enable user to edit the schema file containing a given class
+     * (i.e. taking into account that a class may be in any of the schemas in a schema inclusion hierarchy).
+     */
+    @Getter
+    @Setter
+    @NonNull
+    private String sourceSchemaId;
+
+    /**
+     * 0..1
+     * bmm_class: BMM_CLASS
+     * BMM_CLASS object built by create_bmm_class_definition and populate_bmm_class_definition.
+     */
+    @Getter
+    @Setter
+    private BmmClass bmmClass;
+
+    /**
+     * 1..1
+     * uid: Integer
+     * Unique id generated for later comparison during merging, in order to detect if two classes are the same.
+     * Assigned in post-load processing.
+     */
+    @Getter
+    @Setter
+    @NonNull
+    private Integer uid;
+
+    private Set<PBmmGenericType> ancestorDefs;
+    public void addAncestorDef(@NonNull PBmmGenericType value){
+        if(ancestorDefs==null){
+            ancestorDefs = new HashSet<>();
+        }
+        ancestorDefs.add(value);
+    }
+    public void addAncestorDefs(Set<PBmmGenericType> openArgs){
+        openArgs.forEach(openArg -> addAncestorDef(openArg));
+
+    }
+    public void removeAncestorDef(PBmmGenericType openArg){
+        if(ancestorDefs!=null) {
+            ancestorDefs.remove(openArg);
+        }
+    }
+    public void removeAncestorDefs(Collection<PBmmGenericType> openArgs){
+        openArgs.forEach(this::removeAncestorDef);
+    }
+    public void removeAncestorDefs(Set<PBmmGenericType> openArgs) {
+        this.ancestorDefs.removeAll(openArgs);
+    }
+    void setAncestorDefs(Set<PBmmGenericType> openArgs) {
+        this.ancestorDefs = openArgs;
+    }
+    Set<PBmmGenericType> getAncestorDefs() {
+        return ancestorDefs;
+    }
+    public Set<PBmmGenericType> ancestorDefs() {
+        return Collections.unmodifiableSet(ancestorDefs);
     }
 }
