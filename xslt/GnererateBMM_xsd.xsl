@@ -29,36 +29,56 @@
                         /html/body[1]/div[2]/div[3]/div[1]/table[1]/tbody[1]/tr[2]/td[4]/p[1]/text())"/>
                 </xsl:element>
             </xsl:element>
-            <xsl:for-each select="/html/body[1]/div[2]/div[4]">
-                <xsl:for-each select="div[1]/div[1]">
-                    <xsl:element name="xs:annotation">
-                        <xsl:element name="xs:documentation">
-                            <xsl:value-of select="h3[1]"/>
-                        </xsl:element>
-                        <xsl:for-each select="div[1]/ul[1]/li[1]/p[1]">
-                            <xsl:element name="xs:documentation">
-                                <xsl:value-of select="h3"/>
-                            </xsl:element>
-                            <xsl:element name="xs:documentation">
-                                <xsl:value-of select="div[1]/p/text()"/>
-                            </xsl:element>
-                        </xsl:for-each>
-                    </xsl:element>
-                </xsl:for-each>
-            </xsl:for-each>
-            <xsl:for-each select="/html/body[1]/div[2]/div[5]">
+            <xsl:for-each select="/html/body[1]/div[2]/div">
                 <xsl:choose>
+                    <xsl:when test="h2[1]/a[1]/@href='#_amendment_record'">
+                    </xsl:when>
+                    <xsl:when test="h2[1]/a[1]/@href='#_acknowledgements'">
+                        <xsl:element name="xs:annotation">
+                            <xsl:element name="xs:documentation">
+                                <xsl:value-of select="'1'"/>
+                                <xsl:value-of select="h2[1]"/>
+                            </xsl:element>
+                            <xsl:for-each select="div/div">
+                                <xsl:element name="xs:documentation">
+                                    <xsl:value-of select="h3"/>
+                                </xsl:element>
+                                <xsl:for-each select="div/ul/li">
+                                    <xsl:element name="xs:documentation">
+                                        <xsl:value-of select="p/text()"/>
+                                    </xsl:element>
+                                </xsl:for-each>
+                            </xsl:for-each>
+                        </xsl:element>
+                    </xsl:when>
                     <xsl:when test="h2[1]/a[1]/@href='#_preface'">
                         <xsl:element name="xs:annotation">
                             <xsl:element name="xs:documentation">
+                                <xsl:value-of select="'2'"/>
                                 <xsl:value-of select="h2[1]"/>
                             </xsl:element>
-                            <xsl:for-each select="div[1]/div">
+                            <xsl:for-each select="div/div">
                                 <xsl:element name="xs:documentation">
                                     <xsl:value-of select="h3"/>
                                 </xsl:element>
                                 <xsl:element name="xs:documentation">
-                                    <xsl:value-of select="div[1]/p/text()"/>
+                                    <xsl:value-of select="div/p/text()"/>
+                                </xsl:element>
+                            </xsl:for-each>
+                        </xsl:element>
+                    </xsl:when>
+                    <xsl:when test="h2[1]/a[1]/@href='#_overview'">
+                        <xsl:element name="xs:annotation">
+                            <xsl:element name="xs:documentation">
+                                <xsl:value-of select="'3'"/>
+                                <xsl:value-of select="h2[1]"/>
+                            </xsl:element>
+                            <xsl:for-each select="div/div">
+                                <xsl:element name="xs:documentation">
+                                    <xsl:value-of select="h3"/>
+                                </xsl:element>
+                                <xsl:element name="xs:documentation">
+                                    <xsl:value-of select="div/p/text()"/>
                                 </xsl:element>
                             </xsl:for-each>
                         </xsl:element>
