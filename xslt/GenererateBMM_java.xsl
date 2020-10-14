@@ -5,7 +5,7 @@
     exclude-result-prefixes="xs"
     version="2.0">
     
-    <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
+    <xsl:output method="text"/>
     <xsl:template match="/">
         <xsl:element name="xs:schema" namespace="http://www.w3.org/2001/XMLSchema">
             <xsl:element name="xs:annotation">
@@ -29,8 +29,19 @@
                         /html/body[1]/div[2]/div[3]/div[1]/table[1]/tbody[1]/tr[2]/td[4]/p[1]/text())"/>
                 </xsl:element>
             </xsl:element>
+            <xsl:result-document href="src/bmm/package-info.java">
+                <xsl:value-of select="'package bmm;'"/>
+                <xsl:value-of select="'/**'"/>
+                <xsl:value-of select="concat(' *', '')"/>
+                <xsl:value-of select="concat(' *', ' Title: ', ./html/head[1]/title[1])"/>
+                <xsl:value-of select="concat(' *', '')"/>
+                <xsl:value-of select="'*/'"/>
+            </xsl:result-document>
             <xsl:for-each select="/html/body[1]/div[2]/div">
+                <xsl:variable name="tag" select="h2[1]/a[1]/@href"/>
                 <xsl:choose>
+                    <xsl:when test="$tag='#_amendment_record' or $tag='#_acknowledgements' or $tag='#_preface' or $tag='#_overview'">
+                    </xsl:when>
                     <xsl:when test="h2[1]/a[1]/@href='#_amendment_record'">
                     </xsl:when>
                     <xsl:when test="h2[1]/a[1]/@href='#_acknowledgements'">
