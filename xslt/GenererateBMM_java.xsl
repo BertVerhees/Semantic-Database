@@ -76,7 +76,6 @@
         <xsl:value-of select="do:output('/**')"/>
         <xsl:value-of select="do:commentOutput('')"/>
     </xsl:function>
-
     <xsl:function name="do:commentClose">
         <xsl:value-of select="do:commentOutput('')"/>
         <xsl:value-of select="do:output(' */')"/>
