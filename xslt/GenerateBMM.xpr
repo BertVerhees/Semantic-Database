@@ -10,7 +10,7 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>bmm.html</String>
+                                    <String>bmm_persistence.html</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
@@ -26,6 +26,21 @@
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>GenererateBMM_java.xsl</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>GnererateBMM_xsd</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>bmm.html</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
