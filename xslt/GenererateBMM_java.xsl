@@ -40,6 +40,7 @@
                             <xsl:if test="string-length($className) > 0">
                                 <xsl:element name="class">
                                     <xsl:element name="className"><xsl:value-of select="do:snakeUpperCaseToCamelCase($className, 0)"/></xsl:element>
+                                    <xsl:element name="classNameOrg"><xsl:value-of select="$className"/></xsl:element>
                                     <xsl:for-each select="tbody/tr[2]/td/div">
                                         <xsl:variable name="classComment" select="."/>
                                         <xsl:if test="string-length($classComment)>0">
@@ -55,35 +56,39 @@
                                         </xsl:element>
                                     </xsl:for-each>
                                     <xsl:for-each select="tbody/tr">
+                                        <xsl:variable name="cardinality" select="string(normalize-space(string-join(th/p)))"/>
+                                        <xsl:variable name="nameAndType" select="string(normalize-space(string-join(td[1]/p)))"/>
+                                        <xsl:variable name="description" select="string(normalize-space(string-join(td[2])))"/>
+                                        <xsl:if test="string-length(normalize-space($nameAndType))>0 and not($cardinality='Inherit')">
                                         <xsl:choose>
-                                            <xsl:when test="contains(/td[1]/p, '(')">
+                                            <xsl:when test="contains($nameAndType, '(')">
                                                 <xsl:element name="function">
                                                     <xsl:element name="cardinality">
-                                                        <xsl:value-of select="/th[1]/p[1]/strong[1]"/>
+                                                        <xsl:value-of select="$cardinality"/>
                                                     </xsl:element>
                                                     <xsl:element name="nameAndType">
-                                                        <xsl:value-of select="/td[1]/p"/>
+                                                        <xsl:value-of select="$nameAndType"/>
                                                     </xsl:element>
                                                     <xsl:element name="description">
-                                                        <xsl:value-of select="/td[2]/div"/>
+                                                        <xsl:value-of select="$description"/>
                                                     </xsl:element>
                                                 </xsl:element>
                                             </xsl:when>
                                             <xsl:otherwise>
                                                 <xsl:element name="attribute">
                                                     <xsl:element name="cardinality">
-                                                        <xsl:value-of select="/th[1]/p[1]/strong[1]"/>
+                                                        <xsl:value-of select="$cardinality"/>
                                                     </xsl:element>
                                                     <xsl:element name="nameAndType">
-                                                        <xsl:value-of select="/td[1]/p"/>
+                                                        <xsl:value-of select="$nameAndType"/>
                                                     </xsl:element>
                                                     <xsl:element name="description">
-                                                        <xsl:value-of select="/td[2]/div"/>
+                                                        <xsl:value-of select="$description"/>
                                                     </xsl:element>
                                                 </xsl:element>
                                             </xsl:otherwise>
-                                            
                                         </xsl:choose>
+                                        </xsl:if>
                                     </xsl:for-each>
 <!--                                    /html/body[1]/div[2]/div[7]/div[1]/div[2]/div[2]/table[1]/tbody[1]/tr[4]/td[1]/p[1]
                                     /html/body[1]/div[2]/div[7]/div[1]/div[2]/div[2]/table[1]/tbody[1]/tr[4]/td[2]/div[1]
