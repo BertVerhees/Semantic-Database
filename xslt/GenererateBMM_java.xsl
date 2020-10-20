@@ -7,32 +7,46 @@
     <xsl:variable name="newline" select="'&#xA;'"/>
 
     <xsl:template match="/">
-        <xsl:variable name="baseDirectory" select="'bmm'"/>
-        <xsl:result-document href="src/{$baseDirectory}/package-info.java">
-            <xsl:value-of
-                select="do:basePackageInfo(document(concat($baseDirectory, '.html')), $baseDirectory)"
-            />
-        </xsl:result-document>
-        <xsl:variable name="baseDirectory" select="'bmm_persistence'"/>
-        <xsl:result-document href="src/{$baseDirectory}/package-info.java">
-            <xsl:value-of
-                select="do:basePackageInfo(document(concat($baseDirectory, '.html')), $baseDirectory)"
-            />
-        </xsl:result-document>
         <xsl:variable name="packages">
             <xsl:element name="packages">
-                <xsl:for-each select="/html/body[1]/div[2]/div">
+                <xsl:variable name="baseDirectory1" select="'bmm'"/>
+                <xsl:element name="package">
+                    <xsl:element name="packageInfo">
+                        <xsl:copy-of
+                            select="do:basePackageInfo(document(concat($baseDirectory1, '.html')), $baseDirectory1)"
+                        />
+                    </xsl:element>
+                </xsl:element>
+                <xsl:for-each select="document(concat($baseDirectory1, '.html'))/html/body[1]/div[2]/div">
                     <xsl:call-template name="analyzeClassDocument">
                         <xsl:with-param name="context" select="."/>
-                        <xsl:with-param name="baseDirectory" select="$baseDirectory"/>
+                        <xsl:with-param name="baseDirectory" select="$baseDirectory1"/>
+                    </xsl:call-template>
+                </xsl:for-each>
+                <xsl:variable name="baseDirectory2" select="'bmm_persistence'"/>
+                <xsl:element name="package">
+                    <xsl:element name="packageInfo">
+                        <xsl:copy-of
+                            select="do:basePackageInfo(document(concat($baseDirectory2, '.html')), $baseDirectory2)"
+                        />
+                    </xsl:element>
+                </xsl:element>
+                <xsl:for-each select="document(concat($baseDirectory2, '.html'))/html/body[1]/div[2]/div">
+                    <xsl:call-template name="analyzeClassDocument">
+                        <xsl:with-param name="context" select="."/>
+                        <xsl:with-param name="baseDirectory" select="$baseDirectory2"/>
                     </xsl:call-template>
                 </xsl:for-each>
             </xsl:element>
         </xsl:variable>
-        <xsl:for-each select="$packages">
-            <xsl:message>
-                <xsl:value-of select="text()"/>
-            </xsl:message>
+        <xsl:for-each select="$packages/packages/package">
+            <xsl:variable name="pd" select="packageDirectory/text()"/>
+            <xsl:message><xsl:value-of select="$pd"/></xsl:message>
+            <xsl:if test="not(exists(concat('src/',$pd,'/package-info.java')))">
+                <xsl:result-document href="src/{$pd}/package-info.java">
+                    <xsl:copy-of select="packageInfo"/>                
+                </xsl:result-document>
+            </xsl:if>
         </xsl:for-each>
     </xsl:template>
 
@@ -43,7 +57,9 @@
             <xsl:element name="package">
                 <xsl:variable name="tag" select="string($context/h2[1]/a[1]/@href)"/>
                 <xsl:variable name="packageName" select="substring($tag, 3)"/>
+                <xsl:variable name="packageDirectory" select="concat($baseDirectory, '/', $packageName)"/>
                 <xsl:element name="packageInfo">
+                    <xsl:value-of select="do:output(concat('package ', $packageDirectory, ';'))"/>
                     <xsl:value-of select="do:commentOutput('')"/>
                     <xsl:value-of select="do:commentOutput($context/h2[1])"/>
                     <xsl:for-each select="$context/div/div">
@@ -59,7 +75,7 @@
                     </xsl:for-each>
                 </xsl:element>
                 <xsl:element name="packageDirectory">
-                    <xsl:value-of select="concat($baseDirectory, '/', $packageName)"/>
+                    <xsl:value-of select="$packageDirectory"/>
                 </xsl:element>
                 <xsl:for-each
                     select="$context/descendant-or-self::*/table[@class = 'tableblock frame-all grid-all stretch']">
