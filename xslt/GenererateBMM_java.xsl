@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
-    xmlns:do="http://whatever" exclude-result-prefixes="xs" version="2.0">
+    xmlns:do="http://whatever" exclude-result-prefixes="xs" version="2.0"
+    >
 
     <xsl:output method="text"/>
     <xsl:variable name="newline" select="'&#xA;'"/>
@@ -15,6 +16,9 @@
                         <xsl:copy-of
                             select="do:basePackageInfo(document(concat($baseDirectory1, '.html')), $baseDirectory1)"
                         />
+                    </xsl:element>
+                    <xsl:element name="packageDirectory">
+                        <xsl:value-of select="$baseDirectory1"/>
                     </xsl:element>
                 </xsl:element>
                 <xsl:for-each select="document(concat($baseDirectory1, '.html'))/html/body[1]/div[2]/div">
@@ -30,6 +34,9 @@
                             select="do:basePackageInfo(document(concat($baseDirectory2, '.html')), $baseDirectory2)"
                         />
                     </xsl:element>
+                    <xsl:element name="packageDirectory">
+                        <xsl:value-of select="$baseDirectory2"/>
+                    </xsl:element>
                 </xsl:element>
                 <xsl:for-each select="document(concat($baseDirectory2, '.html'))/html/body[1]/div[2]/div">
                     <xsl:call-template name="analyzeClassDocument">
@@ -41,8 +48,10 @@
         </xsl:variable>
         <xsl:for-each select="$packages/packages/package">
             <xsl:variable name="pd" select="packageDirectory/text()"/>
-            <xsl:message><xsl:value-of select="$pd"/></xsl:message>
-            <xsl:if test="not(exists(concat('src/',$pd,'/package-info.java')))">
+            <xsl:message><xsl:value-of select="concat('src/',$pd,'/package-info.java')"/></xsl:message>
+            <xsl:if test="not(fs:exists(fs:new(concat('src/',$pd,'/package-info.java'))))" xmlns:fs="java.io.File">
+<!--            <xsl:if test="not(doc-available(concat('src/',$pd,'/package-info.java')))">-->
+                <xsl:message><xsl:value-of select="concat('DO IT','src/',$pd,'/package-info.java')"/></xsl:message>
                 <xsl:result-document href="src/{$pd}/package-info.java">
                     <xsl:copy-of select="packageInfo"/>                
                 </xsl:result-document>
