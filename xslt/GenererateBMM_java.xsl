@@ -62,13 +62,15 @@
     <xsl:template name="analyzeClassDocument">
         <xsl:param name="context" as="node()"/>
         <xsl:param name="baseDirectory"/>
+        <xsl:variable name="tag" select="string($context/h2[1]/a[1]/@href)"/>
+        <xsl:variable name="packageName" select="substring($tag, 3)"/>
+        <xsl:if test="not($packageName='')">
         <xsl:variable name="package">
             <xsl:element name="package">
-                <xsl:variable name="tag" select="string($context/h2[1]/a[1]/@href)"/>
-                <xsl:variable name="packageName" select="substring($tag, 3)"/>
                 <xsl:variable name="packageDirectory" select="concat($baseDirectory, '/', $packageName)"/>
                 <xsl:element name="packageInfo">
                     <xsl:value-of select="do:output(concat('package ', $packageDirectory, ';'))"/>
+                    <xsl:value-of select="do:commentOpen()"/>
                     <xsl:value-of select="do:commentOutput('')"/>
                     <xsl:value-of select="do:commentOutput($context/h2[1])"/>
                     <xsl:for-each select="$context/div/div">
@@ -82,6 +84,7 @@
                             <xsl:value-of select="do:commentOutput(./div)"/>
                         </xsl:for-each>
                     </xsl:for-each>
+                    <xsl:value-of select="do:commentClose()"/>
                 </xsl:element>
                 <xsl:element name="packageDirectory">
                     <xsl:value-of select="$packageDirectory"/>
@@ -162,6 +165,7 @@
             </xsl:element>
         </xsl:variable>
         <xsl:copy-of select="$package"/>
+        </xsl:if>
     </xsl:template>
 
     <xsl:function name="do:basePackageInfo">
