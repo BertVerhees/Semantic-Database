@@ -6,6 +6,8 @@
 
     <xsl:output method="text"/>
     <xsl:variable name="newline" select="'&#xA;'"/>
+    <xsl:variable name="packageBase" select="'nl/rosa/semanticdatabase/'"/>
+    <xsl:variable name="sourceBase" select="'src/main/java/'"/>
 
     <xsl:template match="/">
         <xsl:variable name="packages">
@@ -14,7 +16,7 @@
                 <xsl:element name="package">
                     <xsl:element name="packageInfo">
                         <xsl:copy-of
-                            select="do:basePackageInfo(document(concat($baseDirectory1, '.html')), $baseDirectory1)"
+                            select="do:basePackageInfo(document(concat($baseDirectory1, '.html')), concat($packageBase,$baseDirectory1))"
                         />
                     </xsl:element>
                     <xsl:element name="packageDirectory">
@@ -31,7 +33,7 @@
                 <xsl:element name="package">
                     <xsl:element name="packageInfo">
                         <xsl:copy-of
-                            select="do:basePackageInfo(document(concat($baseDirectory2, '.html')), $baseDirectory2)"
+                            select="do:basePackageInfo(document(concat($baseDirectory2, '.html')), concat($packageBase,$baseDirectory2))"
                         />
                     </xsl:element>
                     <xsl:element name="packageDirectory">
@@ -49,14 +51,17 @@
         <xsl:for-each select="$packages/packages/package">
             <xsl:variable name="pd" select="packageDirectory/text()"/>
             <xsl:variable name="package" select="."/>
-            <xsl:result-document href="src/{$pd}/package-info.java">
+            <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/package-info.java">
                 <xsl:copy-of select="packageInfo"/>                
             </xsl:result-document>
             <xsl:for-each select="class">
-                <xsl:message><xsl:value-of select="enumeration"/></xsl:message>
-                <xsl:message><xsl:value-of select="className"/></xsl:message>
-                <xsl:result-document href="src/{$pd}/{classFileName}.java">
-                    <xsl:value-of select="do:writeInterface($package, .)"/>
+                <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/{classFileName}.java">
+                    <xsl:if test="enumeration=false()">
+                        <xsl:value-of select="do:writeInterface($package, .)"/>
+                    </xsl:if>
+                    <xsl:if test="enumeration=true()">
+                        <xsl:value-of select="do:writeEnumeration($package, .)"/>
+                    </xsl:if>
                 </xsl:result-document>    
             </xsl:for-each>
         </xsl:for-each>
@@ -65,7 +70,17 @@
     <xsl:function name="do:writeInterface">
         <xsl:param name="package" as="node()"></xsl:param>
         <xsl:param name="class" as="node()"></xsl:param>
-        <xsl:value-of select="do:output(concat('package ', $package/packageDirectory, ';'))"/>
+        <xsl:value-of select="do:output(concat('package ', replace(concat($packageBase,$package/packageDirectory),'/','.'), ';'))"/>
+        <xsl:value-of select="do:output('')"/>
+        <xsl:value-of select="do:commentOpen()"/>
+        <xsl:value-of select="do:commentOutput($class/classComment)"/>
+        <xsl:value-of select="do:commentClose()"/>
+    </xsl:function>
+
+    <xsl:function name="do:writeEnumeration">
+        <xsl:param name="package" as="node()"></xsl:param>
+        <xsl:param name="class" as="node()"></xsl:param>
+        <xsl:value-of select="do:output(concat('package ', replace(concat($packageBase,$package/packageDirectory),'/','.'), ';'))"/>
     </xsl:function>
 
     <xsl:template name="analyzeClassDocument">
@@ -238,7 +253,7 @@
 
     <xsl:function name="do:commentOutput">
         <xsl:param name="input" as="xs:string*"/>
-        <xsl:value-of select="concat(' * ', normalize-space(string-join($input)), $newline)"/>
+        <xsl:value-of select="concat(' * ', replace(normalize-space(string-join($input)),'\.',concat('.',$newline, ' *')), $newline)"/>
     </xsl:function>
 
     <xsl:function name="do:commentOpen">
