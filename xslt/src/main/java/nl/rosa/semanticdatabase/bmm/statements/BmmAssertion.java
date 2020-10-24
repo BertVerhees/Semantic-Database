@@ -8,4 +8,22 @@ package nl.rosa.semanticdatabase.bmm.statements;
  * 
 */
 public interface BmmAssertion extends BmmStatement {
+
+/**
+ * 
+ * 
+ * 
+*/
+ElBooleanExpression getExpression()
+setExpression(var ElBooleanExpression)
+
+/**
+ * 
+ * Optional tag, typically used to designate design intention of the assertion, e.g.
+ * "Inv_all_members_valid".
+ * 
+*/
+String getTag()
+setTag(var String)
+
 }

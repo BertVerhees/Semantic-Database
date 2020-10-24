@@ -6,4 +6,21 @@ package nl.rosa.semanticdatabase.bmm.types;
  * 
 */
 public interface BmmModelType extends BmmEffectiveType {
+
+/**
+ * 
+ * 
+ * 
+*/
+BmmValueSetSpec getValueConstraint()
+setValueConstraint(var BmmValueSetSpec)
+
+/**
+ * 
+ * Base class of this type.
+ * 
+*/
+BmmClass getBaseClass()
+setBaseClass(var BmmClass)
+
 }

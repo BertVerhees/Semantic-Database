@@ -83,7 +83,37 @@
                 <xsl:value-of select="do:output(concat('public interface ',$class/className, ' {'))"/>
             </xsl:otherwise>
         </xsl:choose>
+        <xsl:for-each select="$class/attribute">
+            <xsl:value-of select="do:output('')"/>
+            <xsl:value-of select="do:commentOpen()"/>
+            <xsl:value-of select="do:commentOutput(description)"/>
+            <xsl:value-of select="do:commentClose()"/>
+            <xsl:value-of select="do:output(do:createGetterDeclaration(nameAndType))"/>
+            <xsl:value-of select="do:output(do:createSetterDeclaration(nameAndType))"/>
+            <xsl:message><xsl:value-of select="."/></xsl:message>
+        </xsl:for-each>
+        <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('}')"/>
+    </xsl:function>
+    
+    <xsl:function name="do:createGetterDeclaration">
+        <xsl:param name="incomingString"></xsl:param>
+        <xsl:value-of select="concat(do:processType($incomingString),' get',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'()')"/>
+    </xsl:function>
+    
+    <xsl:function name="do:createSetterDeclaration">
+        <xsl:param name="incomingString"></xsl:param>
+        <xsl:value-of select="concat(' set',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'(var ',do:processType($incomingString),')')"/>
+    </xsl:function>
+
+    <xsl:function name="do:processVariableName">
+        <xsl:param name="incomingString"></xsl:param>
+        <xsl:value-of select="do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),1)"/>
+    </xsl:function>
+
+    <xsl:function name="do:processType">
+        <xsl:param name="incomingString"></xsl:param>
+        <xsl:value-of select="do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[2]),0)"/>
     </xsl:function>
 
     <xsl:function name="do:writeEnumeration">
@@ -129,7 +159,6 @@
                     <xsl:if test="string-length($className) > 0">
                         <xsl:variable name="class">
                             <xsl:element name="class">
-                                <xsl:message><xsl:value-of select="concat('-',$className)"/></xsl:message>
                                 <xsl:element name="abstract">
                                     <xsl:value-of select="contains(tbody/tr[1]/th[2]/p/strong,'(abstract)')"/>
                                 </xsl:element>
@@ -248,10 +277,8 @@
                         <xsl:value-of select="translate(., $upper-case, $lower-case)"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of
-                            select="translate(substring(., 1, 1), $lower-case, $upper-case)"/>
-                        <xsl:value-of select="translate(substring(., 2), $upper-case, $lower-case)"
-                        />
+                        <xsl:value-of select="translate(substring(., 1, 1), $lower-case, $upper-case)"/>
+                        <xsl:value-of select="translate(substring(., 2), $upper-case, $lower-case)"/>
                     </xsl:otherwise>
                 </xsl:choose>
             </xsl:for-each>

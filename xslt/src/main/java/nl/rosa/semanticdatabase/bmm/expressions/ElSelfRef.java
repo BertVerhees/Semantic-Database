@@ -6,4 +6,13 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public interface ElSelfRef extends ElInstanceRef {
+
+/**
+ * 
+ * Type of the current scoping instance, inferred from expression context.
+ * 
+*/
+BmmType getType()
+setType(var BmmType)
+
 }

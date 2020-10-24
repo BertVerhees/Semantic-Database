@@ -7,4 +7,5 @@ package nl.rosa.semanticdatabase.bmm.class_features;
  * 
 */
 public interface BmmInstantiable extends BmmTypedFeature {
+
 }

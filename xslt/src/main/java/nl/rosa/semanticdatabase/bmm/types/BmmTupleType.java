@@ -9,4 +9,21 @@ package nl.rosa.semanticdatabase.bmm.types;
  * 
 */
 public interface BmmTupleType extends BmmEffectiveType {
+
+/**
+ * 
+ * Base name (built-in).
+ * 
+*/
+String = "tuple" getBaseName()
+setBaseName(var String = "tuple")
+
+/**
+ * 
+ * List of types of the items of the tuple, keyed by purpose in the tuple.
+ * 
+*/
+Hash<string,bmmType> getItemTypes()
+setItemTypes(var Hash<string,bmmType>)
+
 }

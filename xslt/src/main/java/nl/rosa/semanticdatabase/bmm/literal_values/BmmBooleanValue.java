@@ -6,4 +6,13 @@ package nl.rosa.semanticdatabase.bmm.literal_values;
  * 
 */
 public interface BmmBooleanValue extends BmmPrimitiveValue {
+
+/**
+ * 
+ * Native Boolean value.
+ * 
+*/
+Boolean getValue()
+setValue(var Boolean)
+
 }

@@ -9,4 +9,38 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public interface ElAgent extends ElScopedRef {
+
+/**
+ * 
+ * Name of the routine being called.
+ * 
+*/
+String getName()
+setName(var String)
+
+/**
+ * 
+ * Closed arguments of a routine call as a tuple of objects.
+ * 
+*/
+ElTuple getClosedArgs()
+setClosedArgs(var ElTuple)
+
+/**
+ * 
+ * Optional list of names of open arguments of the call.
+ * If not provided, and the name refers to a routine with more arguments than supplied in closed_args, the missing arguments are inferred from the definition.
+ * 
+*/
+List<string> getOpenArgs()
+setOpenArgs(var List<string>)
+
+/**
+ * 
+ * Reference to definition of a routine for which this is an agent, if one exists.
+ * 
+*/
+BmmRoutine getDefinition()
+setDefinition(var BmmRoutine)
+
 }

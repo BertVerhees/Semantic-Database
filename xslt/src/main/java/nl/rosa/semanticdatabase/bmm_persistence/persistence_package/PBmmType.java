@@ -6,4 +6,13 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
  * 
 */
 public interface PBmmType {
+
+/**
+ * 
+ * Result of create_bmm_type() call.
+ * 
+*/
+BmmType getBmmType()
+setBmmType(var BmmType)
+
 }

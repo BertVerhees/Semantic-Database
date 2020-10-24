@@ -6,4 +6,13 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public interface ElScopedRef extends ElInstanceRef {
+
+/**
+ * 
+ * Reference to an owning object for this terminal element, if it is not the current scope.
+ * 
+*/
+ElInstanceRef getScope()
+setScope(var ElInstanceRef)
+
 }

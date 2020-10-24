@@ -7,4 +7,14 @@ package nl.rosa.semanticdatabase.bmm.class_features;
  * 
 */
 public interface BmmConstant extends BmmInstantiable,BmmClassFeature {
+
+/**
+ * 
+ * Generator expression for the constant value.
+ * In the degenerate case, this is just a literal value, but may also be any other expression valid in the context.
+ * 
+*/
+ElInstanceRef getGenerator()
+setGenerator(var ElInstanceRef)
+
 }

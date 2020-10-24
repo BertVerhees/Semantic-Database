@@ -1,1 +1,0 @@
-package bmm_persistence/persistence_package;

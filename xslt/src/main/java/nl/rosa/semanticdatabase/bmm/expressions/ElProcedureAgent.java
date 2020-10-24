@@ -7,4 +7,13 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public interface ElProcedureAgent extends ElAgent {
+
+/**
+ * 
+ * Reference to definition of routine for which this is a call instance.
+ * 
+*/
+BmmProcedure getDefinition()
+setDefinition(var BmmProcedure)
+
 }

@@ -7,4 +7,13 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public interface ElFunctionCall extends ElScopedRef,ElAgentCall {
+
+/**
+ * 
+ * The function agent being called.
+ * 
+*/
+ElFunctionAgent getAgent()
+setAgent(var ElFunctionAgent)
+
 }

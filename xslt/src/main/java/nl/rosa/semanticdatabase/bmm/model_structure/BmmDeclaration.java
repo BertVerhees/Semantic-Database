@@ -8,4 +8,39 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
  * 
 */
 public interface BmmDeclaration {
+
+/**
+ * 
+ * Name of this model element.
+ * 
+*/
+String getName()
+setName(var String)
+
+/**
+ * 
+ * Optional documentation of this element, as a keyed list.
+ * It is strongly recommended to use the following key /type combinations for the relevant purposes: "purpose": String "keywords": List<String> "use": String "misuse": String "references": String Other keys and value types may be freely added.
+ * 
+*/
+Hash<string, any> getDocumentation()
+setDocumentation(var Hash<string, any>)
+
+/**
+ * 
+ * Model element within which an element is declared.
+ * 
+*/
+BmmDeclaration getScope()
+setScope(var BmmDeclaration)
+
+/**
+ * 
+ * Optional meta-data of this element, as a keyed list.
+ * May be used to extend the meta-model.
+ * 
+*/
+Hash<string, any> getExtensions()
+setExtensions(var Hash<string, any>)
+
 }

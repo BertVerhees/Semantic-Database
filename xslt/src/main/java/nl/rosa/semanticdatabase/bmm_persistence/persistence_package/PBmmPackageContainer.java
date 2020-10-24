@@ -6,4 +6,13 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
  * 
 */
 public interface PBmmPackageContainer {
+
+/**
+ * 
+ * Package structure as a hierarchy of packages each potentially containing names of classes in that package in the original model.
+ * 
+*/
+Hash<string, pBmmPackage> getPackages()
+setPackages(var Hash<string, pBmmPackage>)
+
 }

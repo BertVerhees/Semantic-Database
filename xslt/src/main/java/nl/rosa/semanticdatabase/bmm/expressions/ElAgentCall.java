@@ -7,4 +7,13 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public interface ElAgentCall {
+
+/**
+ * 
+ * The agent being called.
+ * 
+*/
+ElAgent getAgent()
+setAgent(var ElAgent)
+
 }

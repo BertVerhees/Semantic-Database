@@ -7,4 +7,13 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public interface ElConditionalExpression extends ElDecisionBranch {
+
+/**
+ * 
+ * Gate expression that acts as the condition under which the target expression is returned.
+ * 
+*/
+ElSimple getCondition()
+setCondition(var ElSimple)
+
 }

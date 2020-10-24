@@ -7,4 +7,13 @@ package nl.rosa.semanticdatabase.bmm.literal_values;
  * 
 */
 public interface BmmContainerValue extends BmmLiteralValue {
+
+/**
+ * 
+ * Declared or inferred static type of the entity.
+ * 
+*/
+BmmContainerType getType()
+setType(var BmmContainerType)
+
 }

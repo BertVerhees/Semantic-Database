@@ -6,4 +6,5 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public interface ElBooleanExpression extends ElConstrained {
+
 }

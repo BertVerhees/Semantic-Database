@@ -7,4 +7,5 @@ package nl.rosa.semanticdatabase.bmm.classes;
  * 
 */
 public interface BmmSimpleClass extends BmmClass {
+
 }

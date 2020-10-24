@@ -6,4 +6,13 @@ package nl.rosa.semanticdatabase.bmm.types;
  * 
 */
 public interface BmmIndexedContainerType extends BmmContainerType {
+
+/**
+ * 
+ * Type of the element index, typically String or Integer, but may be a numeric type or indeed any type from which a hash value can be derived.
+ * 
+*/
+BmmSimpleType getIndexType()
+setIndexType(var BmmSimpleType)
+
 }

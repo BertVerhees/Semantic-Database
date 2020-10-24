@@ -7,4 +7,13 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
  * 
 */
 public interface BmmPackage extends BmmPackageContainer {
+
+/**
+ * 
+ * Classes listed as being in this package.
+ * 
+*/
+List<bmmClass> getClasses()
+setClasses(var List<bmmClass>)
+
 }

@@ -6,4 +6,5 @@ package nl.rosa.semanticdatabase.bmm.types;
  * 
 */
 public interface BmmEffectiveType extends BmmUnitaryType {
+
 }

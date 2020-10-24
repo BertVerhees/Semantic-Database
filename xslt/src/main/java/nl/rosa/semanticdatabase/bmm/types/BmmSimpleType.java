@@ -7,4 +7,13 @@ package nl.rosa.semanticdatabase.bmm.types;
  * 
 */
 public interface BmmSimpleType extends BmmModelType {
+
+/**
+ * 
+ * Defining class of this type.
+ * 
+*/
+BmmSimpleClass getBaseClass()
+setBaseClass(var BmmSimpleClass)
+
 }

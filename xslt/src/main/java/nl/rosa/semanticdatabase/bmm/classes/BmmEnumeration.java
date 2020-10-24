@@ -9,4 +9,23 @@ package nl.rosa.semanticdatabase.bmm.classes;
  * 
 */
 public interface BmmEnumeration extends BmmSimpleClass {
+
+/**
+ * 
+ * The list of names of the enumeration.
+ * If no values are supplied, the integer values 0, 1, 2, …​ are assumed.
+ * 
+*/
+List<string> getItemNames()
+setItemNames(var List<string>)
+
+/**
+ * 
+ * Optional list of specific values.
+ * Must be 1:1 with item_names list.
+ * 
+*/
+List<bmmPrimitiveValue> getItemValues()
+setItemValues(var List<bmmPrimitiveValue>)
+
 }

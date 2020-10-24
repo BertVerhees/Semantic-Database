@@ -6,4 +6,13 @@ package nl.rosa.semanticdatabase.bmm.class_features;
  * 
 */
 public interface BmmTyped {
+
+/**
+ * 
+ * Declared or inferred static type of the entity.
+ * 
+*/
+BmmType getType()
+setType(var BmmType)
+
 }

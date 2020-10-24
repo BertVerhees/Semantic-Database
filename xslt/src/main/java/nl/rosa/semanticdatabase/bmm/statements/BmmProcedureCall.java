@@ -6,4 +6,13 @@ package nl.rosa.semanticdatabase.bmm.statements;
  * 
 */
 public interface BmmProcedureCall extends ElAgentCall,BmmStatement {
+
+/**
+ * 
+ * The procedure agent being called.
+ * 
+*/
+ElProcedureAgent getAgent()
+setAgent(var ElProcedureAgent)
+
 }

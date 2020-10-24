@@ -7,4 +7,13 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public interface ElInstantiableRef<t> extends ElScopedRef {
+
+/**
+ * 
+ * Definition of the constant, property or variable, inferred by inspection of the current scoping instance.
+ * 
+*/
+T getDefinition()
+setDefinition(var T)
+
 }
