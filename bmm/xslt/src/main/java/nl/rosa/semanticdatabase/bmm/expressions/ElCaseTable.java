@@ -6,6 +6,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * Evaluated by iterating through items and for each one, comparing input to the item value_range.
  * If the input is in the range, the evaluation result of the table is that item’s result evaluation result.
  * If no member of items has a True-returning condition, the evaluation result is the result of evaluating the else expression.
- *
  * 
 */
+public interface ElCaseTable extends ElDecisionTable {
+}

@@ -75,6 +75,15 @@
         <xsl:value-of select="do:commentOpen()"/>
         <xsl:value-of select="do:commentOutput($class/classComment)"/>
         <xsl:value-of select="do:commentClose()"/>
+        <xsl:choose>
+            <xsl:when test="not(normalize-space(string-join($class/inherit,','))='')">
+                <xsl:value-of select="do:output(concat('public interface ',$class/className, ' extends ', normalize-space(string-join($class/inherit,',')), ' {'))"/>        
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="do:output(concat('public interface ',$class/className, ' {'))"/>
+            </xsl:otherwise>
+        </xsl:choose>
+        <xsl:value-of select="do:output('}')"/>
     </xsl:function>
 
     <xsl:function name="do:writeEnumeration">
@@ -116,19 +125,22 @@
                 <xsl:for-each
                     select="$context/descendant-or-self::*/table[@class = 'tableblock frame-all grid-all stretch']">
                     <xsl:variable name="className"
-                        select="normalize-space(tbody/tr[1]/th[2]/p/strong/text()[1])"/>
+                        select="normalize-space(string-join(tbody/tr[1]/th[2]/p/strong))"/>
                     <xsl:if test="string-length($className) > 0">
                         <xsl:variable name="class">
                             <xsl:element name="class">
+                                <xsl:element name="abstract">
+                                    <xsl:value-of select="contains(tbody/tr[1]/th[2]/p/strong,'(abstract)')"/>
+                                </xsl:element>
                                 <xsl:element name="enumeration">
                                     <xsl:value-of select="normalize-space(tbody/tr[1]/th[1]/p/strong/text()[1])='Enumeration'"/>
                                 </xsl:element>
                                 <xsl:element name="className">
                                     <xsl:value-of
-                                        select="do:snakeUpperCaseToCamelCase($className, 0)"/>
+                                        select="tokenize(do:snakeUpperCaseToCamelCase($className, 0),' ')[1]"/>
                                 </xsl:element>
                                 <xsl:element name="classFileName">
-                                    <xsl:value-of select="tokenize(do:snakeUpperCaseToCamelCase($className, 0), '&lt;')[1]"/>
+                                    <xsl:value-of select="tokenize(tokenize(do:snakeUpperCaseToCamelCase($className, 0),' ')[1], '&lt;')[1]"/>
                                 </xsl:element>
                                 <xsl:element name="classNameOrg">
                                     <xsl:value-of select="$className"/>
@@ -145,7 +157,7 @@
                                     <xsl:variable name="inherit" select="."/>
                                     <xsl:element name="inherit">
                                         <xsl:value-of
-                                            select="do:snakeUpperCaseToCamelCase($inherit, 0)"/>
+                                            select="do:snakeUpperCaseToCamelCase(normalize-space($inherit), 0)"/>
                                     </xsl:element>
                                 </xsl:for-each>
                                 <xsl:for-each select="tbody/tr">
@@ -253,7 +265,7 @@
 
     <xsl:function name="do:commentOutput">
         <xsl:param name="input" as="xs:string*"/>
-        <xsl:value-of select="concat(' * ', replace(normalize-space(string-join($input)),'\.',concat('.',$newline, ' *')), $newline)"/>
+        <xsl:value-of select="concat(' * ', replace(normalize-space(string-join($input)),'\. ',concat('.',$newline, ' * ')), $newline)"/>
     </xsl:function>
 
     <xsl:function name="do:commentOpen">
