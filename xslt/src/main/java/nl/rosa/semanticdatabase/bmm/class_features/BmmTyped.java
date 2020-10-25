@@ -7,12 +7,24 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public interface BmmTyped {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Declared or inferred static type of the entity.
  * 
 */
-BmmType getType()
-setType(var BmmType)
+BmmType getType();
+void setType(var BmmType);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * True if type is notionally Boolean (i.e.
+ * a BMM_SIMPLE_TYPE with type_name() = 'Boolean').
+ * is_boolean (): Boolean Post_result: Result = type().equal( {BMM_MODEL}.boolean_type_definition())
+ * 
+*/
 
 }

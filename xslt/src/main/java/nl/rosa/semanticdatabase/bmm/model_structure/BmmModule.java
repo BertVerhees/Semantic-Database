@@ -8,12 +8,16 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
 */
 public interface BmmModule extends BmmDeclaration {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Model within which module is defined.
  * 
 */
-BmmModel getScope()
-setScope(var BmmModel)
+BmmModel getScope();
+void setScope(var BmmModel);
+
+/* * FUNCTION * */
 
 }

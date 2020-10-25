@@ -7,4 +7,15 @@ package nl.rosa.semanticdatabase.bmm.types;
 */
 public interface BmmUnitaryType extends BmmType {
 
+/* * ATTRIBUTE * */
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Result = self.
+ * unitary_type (): BMM_UNITARY_TYPE
+ * 
+*/
+
 }

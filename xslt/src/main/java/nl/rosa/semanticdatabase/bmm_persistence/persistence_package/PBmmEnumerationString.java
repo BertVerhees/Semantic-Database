@@ -7,12 +7,16 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public interface PBmmEnumerationString extends PBmmEnumeration {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * BMM_CLASS object build by create_bmm_class_definition and populate_bmm_class_definition.
  * 
 */
-BmmEnumerationString getBmmClass()
-setBmmClass(var BmmEnumerationString)
+BmmEnumerationString getBmmClass();
+void setBmmClass(var BmmEnumerationString);
+
+/* * FUNCTION * */
 
 }

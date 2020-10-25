@@ -7,14 +7,16 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public interface PBmmSchema extends PBmmPackageContainer,BmmSchema {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Primitive type definitions.
  * Persisted attribute.
  * 
 */
-List<pBmmClass> getPrimitiveTypes()
-setPrimitiveTypes(var List<pBmmClass>)
+List<pBmmClass> getPrimitiveTypes();
+void setPrimitiveTypes(var List<pBmmClass>);
 
 /**
  * 
@@ -22,39 +24,55 @@ setPrimitiveTypes(var List<pBmmClass>)
  * Persisted attribute.
  * 
 */
-List<pBmmClass> getClassDefinitions()
-setClassDefinitions(var List<pBmmClass>)
+List<pBmmClass> getClassDefinitions();
+void setClassDefinitions(var List<pBmmClass>);
 
 /**
  * 
  * Implementation of validate_created()
  * 
 */
-State = stateCreated postState getValidateCreated preState()
-setValidateCreated preState(var State = stateCreated postState)
+State = stateCreated postState getValidateCreated preState();
+void setValidateCreated preState(var State = stateCreated postState);
 
 /**
  * 
  * Implementation of load_finalise()
  * 
 */
-State = stateValidatedCreated postState getLoadFinalise preState()
-setLoadFinalise preState(var State = stateValidatedCreated postState)
+State = stateValidatedCreated postState getLoadFinalise preState();
+void setLoadFinalise preState(var State = stateValidatedCreated postState);
 
 /**
  * 
  * Implementation of validate()
  * 
 */
-getValidate()
-setValidate(var )
+getValidate();
+void setValidate(var );
 
 /**
  * 
  * Implementation of create_bmm_model()
  * 
 */
-State = pBmmPackageState.stateIncludesProcessed getCreateBmmModel preState()
-setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProcessed)
+State = pBmmPackageState.stateIncludesProcessed getCreateBmmModel preState();
+void setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProcessed);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Implementation of merge()
+ * merge ( other: P_BMM_SCHEMA[1] ) Pre_state: state = State_includes_pending Pre_other_valid: includes_to_process.has (included_schema.schema_id)
+ * 
+*/
+
+/**
+ * 
+ * Package structure in which all top-level qualified package names like xx.yy.zz have been expanded out to a hierarchy of BMM_PACKAGE objects.
+ * canonical_packages (): P_BMM_PACKAGE
+ * 
+*/
 
 }

@@ -8,12 +8,16 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElAgentCall {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * The agent being called.
  * 
 */
-ElAgent getAgent()
-setAgent(var ElAgent)
+ElAgent getAgent();
+void setAgent(var ElAgent);
+
+/* * FUNCTION * */
 
 }

@@ -7,12 +7,16 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElUnaryOperator extends ElOperator {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Operand node.
  * 
 */
-ElSimple getOperand()
-setOperand(var ElSimple)
+ElSimple getOperand();
+void setOperand(var ElSimple);
+
+/* * FUNCTION * */
 
 }

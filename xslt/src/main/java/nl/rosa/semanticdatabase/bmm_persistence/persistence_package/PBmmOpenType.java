@@ -7,20 +7,24 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public interface PBmmOpenType extends PBmmBaseType {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Simple type parameter as a single letter like 'T', 'G' etc.
  * 
 */
-String getType()
-setType(var String)
+String getType();
+void setType(var String);
 
 /**
  * 
  * Result of create_bmm_type() call.
  * 
 */
-@@ getBmmType()
-setBmmType(var @@)
+@@ getBmmType();
+void setBmmType(var @@);
+
+/* * FUNCTION * */
 
 }

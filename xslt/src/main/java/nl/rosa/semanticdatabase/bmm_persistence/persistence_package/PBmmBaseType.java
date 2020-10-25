@@ -7,12 +7,16 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public interface PBmmBaseType extends PBmmType {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * 
  * 
 */
-String getValueConstraint()
-setValueConstraint(var String)
+String getValueConstraint();
+void setValueConstraint(var String);
+
+/* * FUNCTION * */
 
 }

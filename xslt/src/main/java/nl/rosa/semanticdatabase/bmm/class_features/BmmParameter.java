@@ -7,6 +7,8 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public interface BmmParameter extends BmmVariable {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Optional read/write direction of the parameter.
@@ -14,7 +16,9 @@ public interface BmmParameter extends BmmVariable {
  * readable.
  * 
 */
-BmmParameterDirection getDirection()
-setDirection(var BmmParameterDirection)
+BmmParameterDirection getDirection();
+void setDirection(var BmmParameterDirection);
+
+/* * FUNCTION * */
 
 }

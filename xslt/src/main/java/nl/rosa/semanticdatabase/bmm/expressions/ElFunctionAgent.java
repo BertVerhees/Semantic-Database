@@ -8,12 +8,16 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElFunctionAgent extends ElAgent {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Reference to definition of a routine for which this is a direct call instance, if one exists.
  * 
 */
-BmmFunction getDefinition()
-setDefinition(var BmmFunction)
+BmmFunction getDefinition();
+void setDefinition(var BmmFunction);
+
+/* * FUNCTION * */
 
 }

@@ -9,21 +9,23 @@ package nl.rosa.semanticdatabase.bmm.literal_values;
 */
 public interface BmmLiteralValue extends BmmTyped {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * A serial representation of the value.
  * 
 */
-String getValueLiteral()
-setValueLiteral(var String)
+String getValueLiteral();
+void setValueLiteral(var String);
 
 /**
  * 
  * A native representation of the value, possibly derived by deserialising value_literal.
  * 
 */
-Any getValue()
-setValue(var Any)
+Any getValue();
+void setValue(var Any);
 
 /**
  * 
@@ -32,7 +34,9 @@ setValue(var Any)
  * If not set, json is assumed.
  * 
 */
-String getSyntax()
-setSyntax(var String)
+String getSyntax();
+void setSyntax(var String);
+
+/* * FUNCTION * */
 
 }

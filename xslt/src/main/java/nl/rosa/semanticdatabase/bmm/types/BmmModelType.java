@@ -7,20 +7,38 @@ package nl.rosa.semanticdatabase.bmm.types;
 */
 public interface BmmModelType extends BmmEffectiveType {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * 
  * 
 */
-BmmValueSetSpec getValueConstraint()
-setValueConstraint(var BmmValueSetSpec)
+BmmValueSetSpec getValueConstraint();
+void setValueConstraint(var BmmValueSetSpec);
 
 /**
  * 
  * Base class of this type.
  * 
 */
-BmmClass getBaseClass()
-setBaseClass(var BmmClass)
+BmmClass getBaseClass();
+void setBaseClass(var BmmClass);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Result = base_class.name.
+ * type_base_name (): String
+ * 
+*/
+
+/**
+ * 
+ * Result = base_class.is_primitive.
+ * is_primitive (): Boolean
+ * 
+*/
 
 }

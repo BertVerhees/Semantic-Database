@@ -8,12 +8,23 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElLiteral extends ElInstanceRef {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * The reference item from which the value of this node can be computed.
  * 
 */
-BmmLiteralValue getValue()
-setValue(var BmmLiteralValue)
+BmmLiteralValue getValue();
+void setValue(var BmmLiteralValue);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Return value.type.
+ * eval_type (): BMM_TYPE
+ * 
+*/
 
 }

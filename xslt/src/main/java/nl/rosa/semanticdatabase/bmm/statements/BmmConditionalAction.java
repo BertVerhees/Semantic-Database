@@ -7,20 +7,24 @@ package nl.rosa.semanticdatabase.bmm.statements;
 */
 public interface BmmConditionalAction {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * The gate condition for the target statement.
  * 
 */
-ElBooleanExpression getCondition()
-setCondition(var ElBooleanExpression)
+ElBooleanExpression getCondition();
+void setCondition(var ElBooleanExpression);
 
 /**
  * 
  * Target statement.
  * 
 */
-BmmStatementItem getStatement()
-setStatement(var BmmStatementItem)
+BmmStatementItem getStatement();
+void setStatement(var BmmStatementItem);
+
+/* * FUNCTION * */
 
 }

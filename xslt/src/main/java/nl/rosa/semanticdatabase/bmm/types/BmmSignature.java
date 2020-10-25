@@ -8,28 +8,68 @@ package nl.rosa.semanticdatabase.bmm.types;
 */
 public interface BmmSignature extends BmmEffectiveType {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Base name (built-in).
  * 
 */
-String = "signature" getBaseName()
-setBaseName(var String = "signature")
+String = "signature" getBaseName();
+void setBaseName(var String = "signature");
 
 /**
  * 
  * Type of arguments in the signature, if any; represented as a type-tuple (list of arbitrary types).
  * 
 */
-BmmTupleType getArgumentTypes()
-setArgumentTypes(var BmmTupleType)
+BmmTupleType getArgumentTypes();
+void setArgumentTypes(var BmmTupleType);
 
 /**
  * 
  * Result type of signature, if any.
  * 
 */
-BmmType getResultType()
-setResultType(var BmmType)
+BmmType getResultType();
+void setResultType(var BmmType);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Return base_name.
+ * type_base_name (): String Post_result: Result.is_equal (base_name())
+ * 
+*/
+
+/**
+ * 
+ * Result = False.
+ * is_abstract (): Boolean
+ * 
+*/
+
+/**
+ * 
+ * Result = True.
+ * is_primitive (): Boolean
+ * 
+*/
+
+/**
+ * 
+ * Return base_name
+ * type_name (): String Post_result: Result.is_equal (base_name())
+ * 
+*/
+
+/**
+ * 
+ * Return the logical set (i.e.
+ * unique items) consisting of argument_types.flattened_type_list() and result_type.flattened_type_list().
+ * flattened_type_list (): List<String>
+ * 
+*/
 
 }

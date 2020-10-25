@@ -9,13 +9,15 @@ package nl.rosa.semanticdatabase.bmm.statements;
 */
 public interface BmmAssertion extends BmmStatement {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * 
  * 
 */
-ElBooleanExpression getExpression()
-setExpression(var ElBooleanExpression)
+ElBooleanExpression getExpression();
+void setExpression(var ElBooleanExpression);
 
 /**
  * 
@@ -23,7 +25,9 @@ setExpression(var ElBooleanExpression)
  * "Inv_all_members_valid".
  * 
 */
-String getTag()
-setTag(var String)
+String getTag();
+void setTag(var String);
+
+/* * FUNCTION * */
 
 }

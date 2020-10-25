@@ -7,12 +7,16 @@ package nl.rosa.semanticdatabase.bmm.statements;
 */
 public interface BmmActionTable extends BmmStatement {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Decision branches.
  * 
 */
-List<bmmConditionalAction> getItems()
-setItems(var List<bmmConditionalAction>)
+List<bmmConditionalAction> getItems();
+void setItems(var List<bmmConditionalAction>);
+
+/* * FUNCTION * */
 
 }

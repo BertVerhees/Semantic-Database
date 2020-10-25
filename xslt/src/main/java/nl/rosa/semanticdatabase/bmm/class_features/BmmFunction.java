@@ -8,20 +8,24 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public interface BmmFunction extends BmmTypedFeature,BmmRoutine {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Optional details enabling a function to be represented as an operator in a syntactic representation.
  * 
 */
-BmmOperator getOperatorDefinition()
-setOperatorDefinition(var BmmOperator)
+BmmOperator getOperatorDefinition();
+void setOperatorDefinition(var BmmOperator);
 
 /**
  * 
  * Automatically created Result variable, usable in body and post-condition.
  * 
 */
-BmmResult getResult()
-setResult(var BmmResult)
+BmmResult getResult();
+void setResult(var BmmResult);
+
+/* * FUNCTION * */
 
 }

@@ -7,6 +7,8 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElTupleItem {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Reference to value entity.
@@ -14,15 +16,17 @@ public interface ElTupleItem {
  * within a routine call parameter list.
  * 
 */
-ElExpression getItem()
-setItem(var ElExpression)
+ElExpression getItem();
+void setItem(var ElExpression);
 
 /**
  * 
  * Optional name of tuple item.
  * 
 */
-String getName()
-setName(var String)
+String getName();
+void setName(var String);
+
+/* * FUNCTION * */
 
 }

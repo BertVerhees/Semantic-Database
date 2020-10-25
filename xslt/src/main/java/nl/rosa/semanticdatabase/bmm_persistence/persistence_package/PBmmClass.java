@@ -7,14 +7,16 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public interface PBmmClass extends PBmmModelElement {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Name of the class.
  * Persisted attribute.
  * 
 */
-String getName()
-setName(var String)
+String getName();
+void setName(var String);
 
 /**
  * 
@@ -23,8 +25,8 @@ setName(var String)
  * Persisted attribute.
  * 
 */
-List<string> getAncestors()
-setAncestors(var List<string>)
+List<string> getAncestors();
+void setAncestors(var List<string>);
 
 /**
  * 
@@ -32,8 +34,8 @@ setAncestors(var List<string>)
  * Persistent attribute.
  * 
 */
-Hash<string,pBmmProperty> getProperties()
-setProperties(var Hash<string,pBmmProperty>)
+Hash<string,pBmmProperty> getProperties();
+void setProperties(var Hash<string,pBmmProperty>);
 
 /**
  * 
@@ -41,16 +43,16 @@ setProperties(var Hash<string,pBmmProperty>)
  * Persisted attribute.
  * 
 */
-Boolean getIsAbstract()
-setIsAbstract(var Boolean)
+Boolean getIsAbstract();
+void setIsAbstract(var Boolean);
 
 /**
  * 
  * True if this class definition overrides one found in an included schema.
  * 
 */
-Boolean getIsOverride()
-setIsOverride(var Boolean)
+Boolean getIsOverride();
+void setIsOverride(var Boolean);
 
 /**
  * 
@@ -58,8 +60,8 @@ setIsOverride(var Boolean)
  * Persisted attribute.
  * 
 */
-Hash<string,pBmmGenericParameter> getGenericParameterDefs()
-setGenericParameterDefs(var Hash<string,pBmmGenericParameter>)
+Hash<string,pBmmGenericParameter> getGenericParameterDefs();
+void setGenericParameterDefs(var Hash<string,pBmmGenericParameter>);
 
 /**
  * 
@@ -69,16 +71,16 @@ setGenericParameterDefs(var Hash<string,pBmmGenericParameter>)
  * taking into account that a class may be in any of the schemas in a schema inclusion hierarchy).
  * 
 */
-String getSourceSchemaId()
-setSourceSchemaId(var String)
+String getSourceSchemaId();
+void setSourceSchemaId(var String);
 
 /**
  * 
  * BMM_CLASS object built by create_bmm_class_definition and populate_bmm_class_definition.
  * 
 */
-BmmClass getBmmClass()
-setBmmClass(var BmmClass)
+BmmClass getBmmClass();
+void setBmmClass(var BmmClass);
 
 /**
  * 
@@ -86,8 +88,8 @@ setBmmClass(var BmmClass)
  * Assigned in post-load processing.
  * 
 */
-Integer getUid()
-setUid(var Integer)
+Integer getUid();
+void setUid(var Integer);
 
 /**
  * 
@@ -95,15 +97,31 @@ setUid(var Integer)
  * Persisted attribute.
  * 
 */
-List<pBmmGenericType> getAncestorDefs()
-setAncestorDefs(var List<pBmmGenericType>)
+List<pBmmGenericType> getAncestorDefs();
+void setAncestorDefs(var List<pBmmGenericType>);
 
 /**
  * 
  * Create bmm_class_definition.
  * 
 */
-getCreateBmmClass()
-setCreateBmmClass(var )
+getCreateBmmClass();
+void setCreateBmmClass(var );
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * True if this class is a generic class.
+ * is_generic (): Boolean Post: Result := generic_parameter_defs /= Void
+ * 
+*/
+
+/**
+ * 
+ * Add remaining model elements from Current to bmm_class_definition.
+ * populate_bmm_class ( a_bmm_schema: BMM_MODEL[1] )
+ * 
+*/
 
 }

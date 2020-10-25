@@ -8,12 +8,16 @@ package nl.rosa.semanticdatabase.bmm.statements;
 */
 public interface BmmStatementBlock extends BmmStatementItem {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Child blocks of the current block.
  * 
 */
-List<bmmStatementItem> getItems()
-setItems(var List<bmmStatementItem>)
+List<bmmStatementItem> getItems();
+void setItems(var List<bmmStatementItem>);
+
+/* * FUNCTION * */
 
 }

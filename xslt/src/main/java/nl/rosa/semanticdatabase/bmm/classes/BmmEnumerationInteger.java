@@ -7,13 +7,17 @@ package nl.rosa.semanticdatabase.bmm.classes;
 */
 public interface BmmEnumerationInteger extends BmmEnumeration {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Optional list of specific values.
  * Must be 1:1 with item_names list.
  * 
 */
-List<bmmIntegerValue> getItemValues()
-setItemValues(var List<bmmIntegerValue>)
+List<bmmIntegerValue> getItemValues();
+void setItemValues(var List<bmmIntegerValue>);
+
+/* * FUNCTION * */
 
 }

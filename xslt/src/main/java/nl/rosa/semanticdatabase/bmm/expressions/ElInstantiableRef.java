@@ -8,12 +8,25 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElInstantiableRef<t> extends ElScopedRef {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Definition of the constant, property or variable, inferred by inspection of the current scoping instance.
  * 
 */
-T getDefinition()
-setDefinition(var T)
+T getDefinition();
+void setDefinition(var T);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Type definition (i.e.
+ * BMM meta-type definition object) of the constant, property or variable, inferred by inspection of the current scoping instance.
+ * Return definition.type.
+ * eval_type (): BMM_TYPE
+ * 
+*/
 
 }

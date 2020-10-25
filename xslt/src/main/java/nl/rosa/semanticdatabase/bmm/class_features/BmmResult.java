@@ -7,12 +7,16 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public interface BmmResult extends BmmVariable {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Name of this model element.
  * 
 */
-String {default = "result"} getName()
-setName(var String {default = "result"})
+String {default = "result"} getName();
+void setName(var String {default = "result"});
+
+/* * FUNCTION * */
 
 }

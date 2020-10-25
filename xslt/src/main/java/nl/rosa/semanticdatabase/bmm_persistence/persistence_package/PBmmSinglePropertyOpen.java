@@ -7,13 +7,15 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public interface PBmmSinglePropertyOpen extends PBmmProperty {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Type definition of this property computed from type for later use in bmm_property.
  * 
 */
-PBmmOpenType getTypeRef()
-setTypeRef(var PBmmOpenType)
+PBmmOpenType getTypeRef();
+void setTypeRef(var PBmmOpenType);
 
 /**
  * 
@@ -23,15 +25,24 @@ setTypeRef(var PBmmOpenType)
  * Persisted attribute.
  * 
 */
-String getType()
-setType(var String)
+String getType();
+void setType(var String);
 
 /**
  * 
  * BMM_PROPERTY created by create_bmm_property_definition.
  * 
 */
-BmmUnitaryProperty getBmmProperty()
-setBmmProperty(var BmmUnitaryProperty)
+BmmUnitaryProperty getBmmProperty();
+void setBmmProperty(var BmmUnitaryProperty);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Generate type_ref from type and save.
+ * type_def (): P_BMM_OPEN_TYPE
+ * 
+*/
 
 }

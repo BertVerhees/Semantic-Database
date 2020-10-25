@@ -7,12 +7,23 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public interface BmmIndexedContainerProperty extends BmmContainerProperty {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Declared or inferred static type of the entity.
  * 
 */
-BmmIndexedContainerType getType()
-setType(var BmmIndexedContainerType)
+BmmIndexedContainerType getType();
+void setType(var BmmIndexedContainerType);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Name of this property in form name: ContainerTypeName<IndexTypeName, …​>.
+ * display_name (): String
+ * 
+*/
 
 }

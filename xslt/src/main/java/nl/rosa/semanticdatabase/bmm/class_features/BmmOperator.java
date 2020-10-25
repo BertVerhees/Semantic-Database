@@ -7,21 +7,23 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public interface BmmOperator {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Position of operator in syntactic representation.
  * 
 */
-BmmOperatorPosition getPosition()
-setPosition(var BmmOperatorPosition)
+BmmOperatorPosition getPosition();
+void setPosition(var BmmOperatorPosition);
 
 /**
  * 
  * Set of String symbols that may be used to represent this operator in a textual representation of a BMM model.
  * 
 */
-List<string> getSymbols()
-setSymbols(var List<string>)
+List<string> getSymbols();
+void setSymbols(var List<string>);
 
 /**
  * 
@@ -29,7 +31,9 @@ setSymbols(var List<string>)
  * 'minus' etc.
  * 
 */
-String getName()
-setName(var String)
+String getName();
+void setName(var String);
+
+/* * FUNCTION * */
 
 }

@@ -7,12 +7,16 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElCase extends ElDecisionBranch {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * 
  * 
 */
-CObject getValueConstraint()
-setValueConstraint(var CObject)
+CObject getValueConstraint();
+void setValueConstraint(var CObject);
+
+/* * FUNCTION * */
 
 }

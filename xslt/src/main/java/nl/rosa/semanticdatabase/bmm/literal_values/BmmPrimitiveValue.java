@@ -7,12 +7,16 @@ package nl.rosa.semanticdatabase.bmm.literal_values;
 */
 public interface BmmPrimitiveValue extends BmmUnitaryValue {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Declared or inferred static type of the entity.
  * 
 */
-BmmSimpleType getType()
-setType(var BmmSimpleType)
+BmmSimpleType getType();
+void setType(var BmmSimpleType);
+
+/* * FUNCTION * */
 
 }

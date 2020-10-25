@@ -7,37 +7,39 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public interface BmmRoutine extends BmmClassFeature {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Formal parameters of the routine.
  * 
 */
-List<bmmParameter> getParameters()
-setParameters(var List<bmmParameter>)
+List<bmmParameter> getParameters();
+void setParameters(var List<bmmParameter>);
 
 /**
  * 
  * Local variables of the routine.
  * 
 */
-List<bmmLocal> getLocals()
-setLocals(var List<bmmLocal>)
+List<bmmLocal> getLocals();
+void setLocals(var List<bmmLocal>);
 
 /**
  * 
  * 
  * 
 */
-List<bmmAssertion> getPreConditions()
-setPreConditions(var List<bmmAssertion>)
+List<bmmAssertion> getPreConditions();
+void setPreConditions(var List<bmmAssertion>);
 
 /**
  * 
  * 
  * 
 */
-List<bmmAssertion> getPostConditions()
-setPostConditions(var List<bmmAssertion>)
+List<bmmAssertion> getPostConditions();
+void setPostConditions(var List<bmmAssertion>);
 
 /**
  * 
@@ -45,7 +47,23 @@ setPostConditions(var List<bmmAssertion>)
  * executable program.
  * 
 */
-BmmRoutineBody getBody()
-setBody(var BmmRoutineBody)
+BmmRoutineBody getBody();
+void setBody(var BmmRoutineBody);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Return number of arguments of this routine.
+ * arity (): Integer
+ * 
+*/
+
+/**
+ * 
+ * Formal signature of this element, in the form '[arg1_name: T_arg1, …​]:T_value'.
+ * signature ()
+ * 
+*/
 
 }

@@ -7,14 +7,16 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public interface PBmmProperty extends PBmmModelElement {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Name of this property within its class.
  * Persisted attribute.
  * 
 */
-String getName()
-setName(var String)
+String getName();
+void setName(var String);
 
 /**
  * 
@@ -22,8 +24,8 @@ setName(var String)
  * Persisted attribute.
  * 
 */
-Boolean getIsMandatory()
-setIsMandatory(var Boolean)
+Boolean getIsMandatory();
+void setIsMandatory(var Boolean);
 
 /**
  * 
@@ -31,8 +33,8 @@ setIsMandatory(var Boolean)
  * Persisted Attribute.
  * 
 */
-Boolean getIsComputed()
-setIsComputed(var Boolean)
+Boolean getIsComputed();
+void setIsComputed(var Boolean);
 
 /**
  * 
@@ -40,8 +42,8 @@ setIsComputed(var Boolean)
  * Persisted attribute.
  * 
 */
-Boolean getIsImInfrastructure()
-setIsImInfrastructure(var Boolean)
+Boolean getIsImInfrastructure();
+void setIsImInfrastructure(var Boolean);
 
 /**
  * 
@@ -49,8 +51,8 @@ setIsImInfrastructure(var Boolean)
  * Persisted attribute.
  * 
 */
-Boolean getIsImRuntime()
-setIsImRuntime(var Boolean)
+Boolean getIsImRuntime();
+void setIsImRuntime(var Boolean);
 
 /**
  * 
@@ -58,15 +60,24 @@ setIsImRuntime(var Boolean)
  * Persisted attribute.
  * 
 */
-PBmmType getTypeDef()
-setTypeDef(var PBmmType)
+PBmmType getTypeDef();
+void setTypeDef(var PBmmType);
 
 /**
  * 
  * BMM_PROPERTY created by create_bmm_property_definition.
  * 
 */
-BmmProperty getBmmProperty()
-setBmmProperty(var BmmProperty)
+BmmProperty getBmmProperty();
+void setBmmProperty(var BmmProperty);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Create bmm_property_definition from P_BMM_XX parts.
+ * create_bmm_property ( a_bmm_schema: BMM_MODEL[1], a_class_def: BMM_CLASS[1] )
+ * 
+*/
 
 }

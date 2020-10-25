@@ -7,20 +7,45 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
 */
 public interface BmmPackageContainer extends BmmDeclaration {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Child packages; keys all in upper case for guaranteed matching.
  * 
 */
-Hash<string,bmmPackage> getPackages()
-setPackages(var Hash<string,bmmPackage>)
+Hash<string,bmmPackage> getPackages();
+void setPackages(var Hash<string,bmmPackage>);
 
 /**
  * 
  * Model element within which a referenceable element is known.
  * 
 */
-BmmPackageContainer getScope()
-setScope(var BmmPackageContainer)
+BmmPackageContainer getScope();
+void setScope(var BmmPackageContainer);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Package at the path a_path.
+ * package_at_path ( a_path: String[1] ): BMM_PACKAGE
+ * 
+*/
+
+/**
+ * 
+ * Recursively execute action, which is a procedure taking a BMM_PACKAGE argument, on all members of packages.
+ * do_recursive_packages ( action: EL_PROCEDURE_AGENT[1] )
+ * 
+*/
+
+/**
+ * 
+ * True if there is a package at the path a_path; paths are delimited with delimiter {BMM_DEFINITIONS}_Package_name_delimiter_.
+ * has_package_path ( a_path: String[1] ): Boolean
+ * 
+*/
 
 }

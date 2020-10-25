@@ -10,13 +10,24 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElTypeRef extends ElInstanceRef {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Type, directly from the name of the reference, e.g.
  * {SOME_TYPE}.
  * 
 */
-BmmType getType()
-setType(var BmmType)
+BmmType getType();
+void setType(var BmmType);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Return type.
+ * eval_type (): BMM_TYPE
+ * 
+*/
 
 }

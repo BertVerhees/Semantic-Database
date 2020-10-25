@@ -8,14 +8,16 @@ package nl.rosa.semanticdatabase.bmm.classes;
 */
 public interface BmmValueSetSpec {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Identifier of a resource (typically available as a service) that contains legal values of a specific type.
  * This is typically a URI but need not be.
  * 
 */
-String getResourceId()
-setResourceId(var String)
+String getResourceId();
+void setResourceId(var String);
 
 /**
  * 
@@ -23,7 +25,9 @@ setResourceId(var String)
  * This might be a URI, but need not be.
  * 
 */
-String getValueSetId()
-setValueSetId(var String)
+String getValueSetId();
+void setValueSetId(var String);
+
+/* * FUNCTION * */
 
 }

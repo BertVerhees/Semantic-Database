@@ -7,21 +7,25 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public interface PBmmGenericProperty extends PBmmProperty {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Type definition of this property, if not a simple String type reference.
  * Persistent attribute.
  * 
 */
-PBmmGenericType getTypeDef()
-setTypeDef(var PBmmGenericType)
+PBmmGenericType getTypeDef();
+void setTypeDef(var PBmmGenericType);
 
 /**
  * 
  * BMM_PROPERTY created by create_bmm_property_definition.
  * 
 */
-BmmUnitaryProperty getBmmProperty()
-setBmmProperty(var BmmUnitaryProperty)
+BmmUnitaryProperty getBmmProperty();
+void setBmmProperty(var BmmUnitaryProperty);
+
+/* * FUNCTION * */
 
 }

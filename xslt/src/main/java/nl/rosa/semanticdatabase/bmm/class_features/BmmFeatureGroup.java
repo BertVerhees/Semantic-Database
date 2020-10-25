@@ -7,13 +7,15 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public interface BmmFeatureGroup {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Name of this feature group; defaults to 'feature'.
  * 
 */
-String {default = "feature"} getName()
-setName(var String {default = "feature"})
+String {default = "feature"} getName();
+void setName(var String {default = "feature"});
 
 /**
  * 
@@ -21,23 +23,25 @@ setName(var String {default = "feature"})
  * These are understood to apply logically to all of the features contained within the group.
  * 
 */
-Hash<string, string> getProperties()
-setProperties(var Hash<string, string>)
+Hash<string, string> getProperties();
+void setProperties(var Hash<string, string>);
 
 /**
  * 
  * Set of features in this group.
  * 
 */
-List<bmmClassFeature> getFeatures()
-setFeatures(var List<bmmClassFeature>)
+List<bmmClassFeature> getFeatures();
+void setFeatures(var List<bmmClassFeature>);
 
 /**
  * 
  * Optional visibility to apply to all features in this group.
  * 
 */
-BmmVisibility getVisibility()
-setVisibility(var BmmVisibility)
+BmmVisibility getVisibility();
+void setVisibility(var BmmVisibility);
+
+/* * FUNCTION * */
 
 }

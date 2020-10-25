@@ -83,6 +83,8 @@
                 <xsl:value-of select="do:output(concat('public interface ',$class/className, ' {'))"/>
             </xsl:otherwise>
         </xsl:choose>
+        <xsl:value-of select="do:output('')"/>
+        <xsl:value-of select="do:output('/* * ATTRIBUTE * */')"/>
         <xsl:for-each select="$class/attribute">
             <xsl:value-of select="do:output('')"/>
             <xsl:value-of select="do:commentOpen()"/>
@@ -90,7 +92,15 @@
             <xsl:value-of select="do:commentClose()"/>
             <xsl:value-of select="do:output(do:createGetterDeclaration(nameAndType))"/>
             <xsl:value-of select="do:output(do:createSetterDeclaration(nameAndType))"/>
-            <xsl:message><xsl:value-of select="."/></xsl:message>
+        </xsl:for-each>
+        <xsl:value-of select="do:output('')"/>
+        <xsl:value-of select="do:output('/* * FUNCTION * */')"/>
+        <xsl:for-each select="$class/function">
+            <xsl:value-of select="do:output('')"/>
+            <xsl:value-of select="do:commentOpen()"/>
+            <xsl:value-of select="do:commentOutput(description)"/>
+            <xsl:value-of select="do:commentOutput(nameAndType)"/>
+            <xsl:value-of select="do:commentClose()"/>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('}')"/>
@@ -98,12 +108,12 @@
     
     <xsl:function name="do:createGetterDeclaration">
         <xsl:param name="incomingString"></xsl:param>
-        <xsl:value-of select="concat(do:processType($incomingString),' get',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'()')"/>
+        <xsl:value-of select="concat(do:processType($incomingString),' get',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'();')"/>
     </xsl:function>
     
     <xsl:function name="do:createSetterDeclaration">
         <xsl:param name="incomingString"></xsl:param>
-        <xsl:value-of select="concat(' set',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'(var ',do:processType($incomingString),')')"/>
+        <xsl:value-of select="concat('void set',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'(var ',do:processType($incomingString),');')"/>
     </xsl:function>
 
     <xsl:function name="do:processVariableName">
@@ -188,6 +198,10 @@
                                     <xsl:element name="inherit">
                                         <xsl:value-of
                                             select="do:snakeUpperCaseToCamelCase(normalize-space($inherit), 0)"/>
+                                    </xsl:element>
+                                    <xsl:element name="inheritOrg">
+                                        <xsl:value-of
+                                            select="normalize-space($inherit)"/>
                                     </xsl:element>
                                 </xsl:for-each>
                                 <xsl:for-each select="tbody/tr">
@@ -285,7 +299,7 @@
         </xsl:variable>
         <xsl:value-of select="$new-name"/>
     </xsl:function>
-
+   
     <xsl:function name="do:output">
         <xsl:param name="input" as="xs:string"/>
         <xsl:value-of select="concat(normalize-space(string-join($input)), $newline)"/>

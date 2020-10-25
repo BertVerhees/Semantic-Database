@@ -7,12 +7,16 @@ package nl.rosa.semanticdatabase.bmm.literal_values;
 */
 public interface BmmIntegerValue extends BmmPrimitiveValue {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Native Integer value.
  * 
 */
-Integer getValue()
-setValue(var Integer)
+Integer getValue();
+void setValue(var Integer);
+
+/* * FUNCTION * */
 
 }

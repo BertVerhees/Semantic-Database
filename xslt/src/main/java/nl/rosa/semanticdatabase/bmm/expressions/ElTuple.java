@@ -7,21 +7,32 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElTuple extends ElInstanceRef {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Items in the tuple, potentially with names.
  * Typical use is to represent an argument list to routine call.
  * 
 */
-List<elTupleItem> getItems()
-setItems(var List<elTupleItem>)
+List<elTupleItem> getItems();
+void setItems(var List<elTupleItem>);
 
 /**
  * 
  * Static type inferred from literal value.
  * 
 */
-BmmTupleType getType()
-setType(var BmmTupleType)
+BmmTupleType getType();
+void setType(var BmmTupleType);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Return type.
+ * eval_type (): BMM_TYPE
+ * 
+*/
 
 }

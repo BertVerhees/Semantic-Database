@@ -7,13 +7,15 @@ package nl.rosa.semanticdatabase.bmm.model_access_package;
 */
 public interface BmmModelMetadata {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Publisher of model expressed in the schema.
  * 
 */
-String getRmPublisher()
-setRmPublisher(var String)
+String getRmPublisher();
+void setRmPublisher(var String);
 
 /**
  * 
@@ -21,7 +23,9 @@ setRmPublisher(var String)
  * "3.1.0" .
  * 
 */
-String getRmRelease()
-setRmRelease(var String)
+String getRmRelease();
+void setRmRelease(var String);
+
+/* * FUNCTION * */
 
 }

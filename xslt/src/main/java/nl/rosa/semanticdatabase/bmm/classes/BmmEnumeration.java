@@ -10,14 +10,16 @@ package nl.rosa.semanticdatabase.bmm.classes;
 */
 public interface BmmEnumeration extends BmmSimpleClass {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * The list of names of the enumeration.
  * If no values are supplied, the integer values 0, 1, 2, …​ are assumed.
  * 
 */
-List<string> getItemNames()
-setItemNames(var List<string>)
+List<string> getItemNames();
+void setItemNames(var List<string>);
 
 /**
  * 
@@ -25,7 +27,16 @@ setItemNames(var List<string>)
  * Must be 1:1 with item_names list.
  * 
 */
-List<bmmPrimitiveValue> getItemValues()
-setItemValues(var List<bmmPrimitiveValue>)
+List<bmmPrimitiveValue> getItemValues();
+void setItemValues(var List<bmmPrimitiveValue>);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Map of item_names to item_values (stringified).
+ * name_map (): Hash<String, String>
+ * 
+*/
 
 }

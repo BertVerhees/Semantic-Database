@@ -8,20 +8,24 @@ package nl.rosa.semanticdatabase.bmm.statements;
 */
 public interface BmmAssignment extends BmmStatement {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * The target variable on the notional left-hand side of this assignment.
  * 
 */
-ElInstantiableRef getTarget()
-setTarget(var ElInstantiableRef)
+ElInstantiableRef getTarget();
+void setTarget(var ElInstantiableRef);
 
 /**
  * 
  * Source right hand side) of the assignment.
  * 
 */
-ElExpression getSource()
-setSource(var ElExpression)
+ElExpression getSource();
+void setSource(var ElExpression);
+
+/* * FUNCTION * */
 
 }

@@ -7,14 +7,16 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public interface PBmmGenericType extends PBmmBaseType {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Root type of this generic type, e.g.
  * Interval in Interval<Integer>.
  * 
 */
-String getRootType()
-setRootType(var String)
+String getRootType();
+void setRootType(var String);
 
 /**
  * 
@@ -23,8 +25,8 @@ setRootType(var String)
  * Persistent attribute.
  * 
 */
-List<pBmmType> getGenericParameterDefs()
-setGenericParameterDefs(var List<pBmmType>)
+List<pBmmType> getGenericParameterDefs();
+void setGenericParameterDefs(var List<pBmmType>);
 
 /**
  * 
@@ -33,15 +35,25 @@ setGenericParameterDefs(var List<pBmmType>)
  * Persistent attribute.
  * 
 */
-List<string> getGenericParameters()
-setGenericParameters(var List<string>)
+List<string> getGenericParameters();
+void setGenericParameters(var List<string>);
 
 /**
  * 
  * Result of create_bmm_type() call.
  * 
 */
-BmmGenericType getBmmType()
-setBmmType(var BmmGenericType)
+BmmGenericType getBmmType();
+void setBmmType(var BmmGenericType);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Generic parameters of the root_type in this type specifier.
+ * The order must match the order of the owning class’s formal generic parameter declarations
+ * generic_parameter_refs (): List<P_BMM_TYPE>
+ * 
+*/
 
 }

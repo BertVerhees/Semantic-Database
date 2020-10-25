@@ -10,21 +10,23 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElAgent extends ElScopedRef {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Name of the routine being called.
  * 
 */
-String getName()
-setName(var String)
+String getName();
+void setName(var String);
 
 /**
  * 
  * Closed arguments of a routine call as a tuple of objects.
  * 
 */
-ElTuple getClosedArgs()
-setClosedArgs(var ElTuple)
+ElTuple getClosedArgs();
+void setClosedArgs(var ElTuple);
 
 /**
  * 
@@ -32,15 +34,31 @@ setClosedArgs(var ElTuple)
  * If not provided, and the name refers to a routine with more arguments than supplied in closed_args, the missing arguments are inferred from the definition.
  * 
 */
-List<string> getOpenArgs()
-setOpenArgs(var List<string>)
+List<string> getOpenArgs();
+void setOpenArgs(var List<string>);
 
 /**
  * 
  * Reference to definition of a routine for which this is an agent, if one exists.
  * 
 */
-BmmRoutine getDefinition()
-setDefinition(var BmmRoutine)
+BmmRoutine getDefinition();
+void setDefinition(var BmmRoutine);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Eval type is the signature corresponding to the (remaining) open arguments and return type, if any.
+ * eval_type (): BMM_SIGNATURE Post_result: Result = definition.signature
+ * 
+*/
+
+/**
+ * 
+ * True if there are no open arguments.
+ * is_callable (): Boolean Post_result_validity: Result = open_arguments = Void
+ * 
+*/
 
 }

@@ -7,20 +7,24 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElDecisionTable extends ElExpression {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Result expression of the chain if no member of items succeeds in evaluation.
  * 
 */
-ElExpression getElse()
-setElse(var ElExpression)
+ElExpression getElse();
+void setElse(var ElExpression);
 
 /**
  * 
  * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
  * 
 */
-List<elDecisionBranch> getItems()
-setItems(var List<elDecisionBranch>)
+List<elDecisionBranch> getItems();
+void setItems(var List<elDecisionBranch>);
+
+/* * FUNCTION * */
 
 }

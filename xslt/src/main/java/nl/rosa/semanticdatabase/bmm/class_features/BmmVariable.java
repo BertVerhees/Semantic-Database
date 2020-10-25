@@ -7,12 +7,23 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public interface BmmVariable extends BmmInstantiable,BmmClassEntity {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Routine within which variable is defined.
  * 
 */
-BmmRoutine getScope()
-setScope(var BmmRoutine)
+BmmRoutine getScope();
+void setScope(var BmmRoutine);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Formal signature of this element, in the form 'name [arg1_name: T_arg1, …​][:T_value]'.
+ * signature ()
+ * 
+*/
 
 }

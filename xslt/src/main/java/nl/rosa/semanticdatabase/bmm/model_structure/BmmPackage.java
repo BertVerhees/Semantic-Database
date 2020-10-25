@@ -8,12 +8,31 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
 */
 public interface BmmPackage extends BmmPackageContainer {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Classes listed as being in this package.
  * 
 */
-List<bmmClass> getClasses()
-setClasses(var List<bmmClass>)
+List<bmmClass> getClasses();
+void setClasses(var List<bmmClass>);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Obtain the set of top-level classes in this package, either from this package itself or by recursing into the structure until classes are obtained from child packages.
+ * Recurse into each child only far enough to find the first level of classes.
+ * root_classes (): List<BMM_CLASS>
+ * 
+*/
+
+/**
+ * 
+ * Full path of this package back to root package.
+ * path (): String
+ * 
+*/
 
 }

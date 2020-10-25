@@ -7,6 +7,8 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public interface PBmmContainerType extends PBmmType {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * The type of the container.
@@ -14,8 +16,8 @@ public interface PBmmContainerType extends PBmmType {
  * Persisted attribute.
  * 
 */
-String getContainerType()
-setContainerType(var String)
+String getContainerType();
+void setContainerType(var String);
 
 /**
  * 
@@ -23,8 +25,8 @@ setContainerType(var String)
  * Persisted attribute.
  * 
 */
-PBmmBaseType getTypeDef()
-setTypeDef(var PBmmBaseType)
+PBmmBaseType getTypeDef();
+void setTypeDef(var PBmmBaseType);
 
 /**
  * 
@@ -32,15 +34,25 @@ setTypeDef(var PBmmBaseType)
  * Persisted attribute.
  * 
 */
-String getType()
-setType(var String)
+String getType();
+void setType(var String);
 
 /**
  * 
  * Result of create_bmm_type() call.
  * 
 */
-BmmContainerType getBmmType()
-setBmmType(var BmmContainerType)
+BmmContainerType getBmmType();
+void setBmmType(var BmmContainerType);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * The target type; this converts to the first parameter in generic_parameters in BMM_GENERIC_TYPE.
+ * Persisted attribute.
+ * type_ref (): P_BMM_BASE_TYPE
+ * 
+*/
 
 }

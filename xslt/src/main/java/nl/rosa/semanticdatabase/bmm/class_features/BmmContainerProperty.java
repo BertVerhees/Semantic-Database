@@ -7,20 +7,31 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public interface BmmContainerProperty extends BmmProperty {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Cardinality of this container.
  * 
 */
-MultiplicityInterval getCardinality()
-setCardinality(var MultiplicityInterval)
+MultiplicityInterval getCardinality();
+void setCardinality(var MultiplicityInterval);
 
 /**
  * 
  * Declared or inferred static type of the entity.
  * 
 */
-BmmContainerType getType()
-setType(var BmmContainerType)
+BmmContainerType getType();
+void setType(var BmmContainerType);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Name of this property in form name: ContainerTypeName<>.
+ * display_name (): String
+ * 
+*/
 
 }

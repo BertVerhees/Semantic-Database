@@ -8,12 +8,23 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElFunctionCall extends ElScopedRef,ElAgentCall {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * The function agent being called.
  * 
 */
-ElFunctionAgent getAgent()
-setAgent(var ElFunctionAgent)
+ElFunctionAgent getAgent();
+void setAgent(var ElFunctionAgent);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Return agent.definition.type.
+ * eval_type (): BMM_TYPE
+ * 
+*/
 
 }

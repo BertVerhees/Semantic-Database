@@ -10,20 +10,24 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElCaseTable extends ElDecisionTable {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Input value that is compared against each items[i].value_range to determine the overall result.
  * 
 */
-ElSimple getInput()
-setInput(var ElSimple)
+ElSimple getInput();
+void setInput(var ElSimple);
 
 /**
  * 
  * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
  * 
 */
-List<elCase> getItems()
-setItems(var List<elCase>)
+List<elCase> getItems();
+void setItems(var List<elCase>);
+
+/* * FUNCTION * */
 
 }

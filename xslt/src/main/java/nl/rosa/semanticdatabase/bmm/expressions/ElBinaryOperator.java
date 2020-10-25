@@ -7,20 +7,24 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElBinaryOperator extends ElOperator {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Left operand node.
  * 
 */
-ElSimple getLeftOperand()
-setLeftOperand(var ElSimple)
+ElSimple getLeftOperand();
+void setLeftOperand(var ElSimple);
 
 /**
  * 
  * Right operand node.
  * 
 */
-ElTerminal getRightOperand()
-setRightOperand(var ElTerminal)
+ElTerminal getRightOperand();
+void setRightOperand(var ElTerminal);
+
+/* * FUNCTION * */
 
 }

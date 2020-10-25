@@ -7,14 +7,16 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public interface PBmmPackage extends PBmmPackageContainer,PBmmModelElement {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Name of the package from schema; this name may be qualified if it is a top-level package within the schema, or unqualified.
  * Persistent attribute.
  * 
 */
-String getName()
-setName(var String)
+String getName();
+void setName(var String);
 
 /**
  * 
@@ -22,23 +24,32 @@ setName(var String)
  * Persistent attribute.
  * 
 */
-List<string> getClasses()
-setClasses(var List<string>)
+List<string> getClasses();
+void setClasses(var List<string>);
 
 /**
  * 
  * BMM_PACKAGE created by create_bmm_package_definition.
  * 
 */
-BmmPackage getBmmPackageDefinition()
-setBmmPackageDefinition(var BmmPackage)
+BmmPackage getBmmPackageDefinition();
+void setBmmPackageDefinition(var BmmPackage);
 
 /**
  * 
  * Generate a BMM_PACKAGE_DEFINITION object and write it to bmm_package_definition.
  * 
 */
-getCreateBmmPackageDefinition()
-setCreateBmmPackageDefinition(var )
+getCreateBmmPackageDefinition();
+void setCreateBmmPackageDefinition(var );
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Merge packages and classes from other (from an included P_BMM_SCHEMA) into this package.
+ * merge ( other: P_BMM_PACKAGE[1] )
+ * 
+*/
 
 }

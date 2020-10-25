@@ -9,13 +9,15 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
 */
 public interface BmmDeclaration {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Name of this model element.
  * 
 */
-String getName()
-setName(var String)
+String getName();
+void setName(var String);
 
 /**
  * 
@@ -23,16 +25,16 @@ setName(var String)
  * It is strongly recommended to use the following key /type combinations for the relevant purposes: "purpose": String "keywords": List<String> "use": String "misuse": String "references": String Other keys and value types may be freely added.
  * 
 */
-Hash<string, any> getDocumentation()
-setDocumentation(var Hash<string, any>)
+Hash<string, any> getDocumentation();
+void setDocumentation(var Hash<string, any>);
 
 /**
  * 
  * Model element within which an element is declared.
  * 
 */
-BmmDeclaration getScope()
-setScope(var BmmDeclaration)
+BmmDeclaration getScope();
+void setScope(var BmmDeclaration);
 
 /**
  * 
@@ -40,7 +42,16 @@ setScope(var BmmDeclaration)
  * May be used to extend the meta-model.
  * 
 */
-Hash<string, any> getExtensions()
-setExtensions(var Hash<string, any>)
+Hash<string, any> getExtensions();
+void setExtensions(var Hash<string, any>);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * True if this declaration entity is the root of the declaration hierarchy.
+ * is_root_scope (): Boolean Post_result: Result = (scope = self)
+ * 
+*/
 
 }

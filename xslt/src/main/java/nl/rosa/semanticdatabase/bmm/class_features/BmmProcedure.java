@@ -8,4 +8,8 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public interface BmmProcedure extends BmmRoutine {
 
+/* * ATTRIBUTE * */
+
+/* * FUNCTION * */
+
 }

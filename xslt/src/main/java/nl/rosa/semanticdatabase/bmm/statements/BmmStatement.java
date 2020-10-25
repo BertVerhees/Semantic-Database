@@ -7,4 +7,8 @@ package nl.rosa.semanticdatabase.bmm.statements;
 */
 public interface BmmStatement extends BmmStatementItem {
 
+/* * ATTRIBUTE * */
+
+/* * FUNCTION * */
+
 }

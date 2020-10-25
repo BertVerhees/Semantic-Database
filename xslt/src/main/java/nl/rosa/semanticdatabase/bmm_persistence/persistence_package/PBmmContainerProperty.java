@@ -7,14 +7,16 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public interface PBmmContainerProperty extends PBmmProperty {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Cardinality of this property in its class.
  * Persistent attribute.
  * 
 */
-Interval<integer> getCardinality()
-setCardinality(var Interval<integer>)
+Interval<integer> getCardinality();
+void setCardinality(var Interval<integer>);
 
 /**
  * 
@@ -22,15 +24,24 @@ setCardinality(var Interval<integer>)
  * Persistent attribute.
  * 
 */
-PBmmContainerType getTypeDef()
-setTypeDef(var PBmmContainerType)
+PBmmContainerType getTypeDef();
+void setTypeDef(var PBmmContainerType);
 
 /**
  * 
  * BMM_PROPERTY created by create_bmm_property.
  * 
 */
-BmmContainerProperty getBmmProperty()
-setBmmProperty(var BmmContainerProperty)
+BmmContainerProperty getBmmProperty();
+void setBmmProperty(var BmmContainerProperty);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Create bmm_property_definition.
+ * create_bmm_property ( a_bmm_schema: BMM_MODEL[1], a_class_def: BMM_CLASS[1] )
+ * 
+*/
 
 }

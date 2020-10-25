@@ -7,12 +7,23 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public interface ElPredicate extends ElTerminal {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * The target instance of this predicate.
  * 
 */
-ElInstanceRef getOperand()
-setOperand(var ElInstanceRef)
+ElInstanceRef getOperand();
+void setOperand(var ElInstanceRef);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Return {BMM_MODEL}.boolean_type_definition().
+ * eval_type (): BMM_SIMPLE_TYPE
+ * 
+*/
 
 }

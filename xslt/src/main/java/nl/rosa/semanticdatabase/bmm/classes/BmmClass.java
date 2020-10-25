@@ -12,29 +12,31 @@ package nl.rosa.semanticdatabase.bmm.classes;
 */
 public interface BmmClass extends BmmModule {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * List of immediate inheritance parents.
  * 
 */
-Hash<string,bmmModelType> getAncestors()
-setAncestors(var Hash<string,bmmModelType>)
+Hash<string,bmmModelType> getAncestors();
+void setAncestors(var Hash<string,bmmModelType>);
 
 /**
  * 
  * Package this class belongs to.
  * 
 */
-BmmPackage getPackage()
-setPackage(var BmmPackage)
+BmmPackage getPackage();
+void setPackage(var BmmPackage);
 
 /**
  * 
  * List of attributes defined in this class.
  * 
 */
-Hash<string,bmmProperty> getProperties()
-setProperties(var Hash<string,bmmProperty>)
+Hash<string,bmmProperty> getProperties();
+void setProperties(var Hash<string,bmmProperty>);
 
 /**
  * 
@@ -42,48 +44,48 @@ setProperties(var Hash<string,bmmProperty>)
  * Useful for UI tools to determine which original schema file to open for a given class for manual editing.
  * 
 */
-String getSourceSchemaId()
-setSourceSchemaId(var String)
+String getSourceSchemaId();
+void setSourceSchemaId(var String);
 
 /**
  * 
  * List of computed references to base classes of immediate inheritance descendants, derived when members of ancestors are attached at creation time.
  * 
 */
-List<bmmClass> getImmediateDescendants()
-setImmediateDescendants(var List<bmmClass>)
+List<bmmClass> getImmediateDescendants();
+void setImmediateDescendants(var List<bmmClass>);
 
 /**
  * 
  * True if this definition overrides a class of the same name in an included schema.
  * 
 */
-Boolean getIsOverride()
-setIsOverride(var Boolean)
+Boolean getIsOverride();
+void setIsOverride(var Boolean);
 
 /**
  * 
  * List of constants defined in this class.
  * 
 */
-Hash<string,bmmConstant> getConstants()
-setConstants(var Hash<string,bmmConstant>)
+Hash<string,bmmConstant> getConstants();
+void setConstants(var Hash<string,bmmConstant>);
 
 /**
  * 
  * List of functions defined in this class.
  * 
 */
-Hash<string,bmmFunction> getFunctions()
-setFunctions(var Hash<string,bmmFunction>)
+Hash<string,bmmFunction> getFunctions();
+void setFunctions(var Hash<string,bmmFunction>);
 
 /**
  * 
  * List of procedures defined in this class.
  * 
 */
-Hash<string,bmmProcedure> getProcedures()
-setProcedures(var Hash<string,bmmProcedure>)
+Hash<string,bmmProcedure> getProcedures();
+void setProcedures(var Hash<string,bmmProcedure>);
 
 /**
  * 
@@ -91,8 +93,8 @@ setProcedures(var Hash<string,bmmProcedure>)
  * any typically built-in or standard library type such as String, Date, Hash<K,V> etc.
  * 
 */
-Boolean {default = false} getIsPrimitive()
-setIsPrimitive(var Boolean {default = false})
+Boolean {default = false} getIsPrimitive();
+void setIsPrimitive(var Boolean {default = false});
 
 /**
  * 
@@ -100,39 +102,137 @@ setIsPrimitive(var Boolean {default = false})
  * direct instances cannot be created from its direct type.
  * 
 */
-Boolean {default = false} getIsAbstract()
-setIsAbstract(var Boolean {default = false})
+Boolean {default = false} getIsAbstract();
+void setIsAbstract(var Boolean {default = false});
 
 /**
  * 
  * 
  * 
 */
-List<bmmAssertion> getInvariants()
-setInvariants(var List<bmmAssertion>)
+List<bmmAssertion> getInvariants();
+void setInvariants(var List<bmmAssertion>);
 
 /**
  * 
  * Subset of procedures that may be used to initialise a new instance of an object, and whose execution will guarantee that class invariants are satisfied.
  * 
 */
-Hash<string,bmmProcedure> getCreators()
-setCreators(var Hash<string,bmmProcedure>)
+Hash<string,bmmProcedure> getCreators();
+void setCreators(var Hash<string,bmmProcedure>);
 
 /**
  * 
  * Subset of creators that create a new instance from a single argument of another type.
  * 
 */
-Hash<string,bmmProcedure> getConverters()
-setConverters(var Hash<string,bmmProcedure>)
+Hash<string,bmmProcedure> getConverters();
+void setConverters(var Hash<string,bmmProcedure>);
 
 /**
  * 
  * List of feature groups in this class.
  * 
 */
-List<bmmFeatureGroup> getFeatureGroups()
-setFeatureGroups(var List<bmmFeatureGroup>)
+List<bmmFeatureGroup> getFeatureGroups();
+void setFeatureGroups(var List<bmmFeatureGroup>);
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Generate a type object that represents the type for which this class is the definer.
+ * type (): BMM_MODEL_TYPE
+ * 
+*/
+
+/**
+ * 
+ * List of all inheritance parent class names, recursively.
+ * all_ancestors (): List<String>
+ * 
+*/
+
+/**
+ * 
+ * Compute all descendants by following immediate_descendants.
+ * all_descendants (): List<String>
+ * 
+*/
+
+/**
+ * 
+ * List of names of immediate supplier classes, including concrete generic parameters, concrete descendants of abstract statically defined types, and inherited suppliers.
+ * (Where generics are unconstrained, no class name is added, since logically it would be Any and this can always be assumed anyway).
+ * This list includes primitive types.
+ * suppliers (): List<String>
+ * 
+*/
+
+/**
+ * 
+ * Same as suppliers minus primitive types, as defined in input schema.
+ * suppliers_non_primitive (): List<String>
+ * 
+*/
+
+/**
+ * 
+ * List of names of all classes in full supplier closure, including concrete generic parameters; (where generics are unconstrained, no class name is added, since logically it would be Any and this can always be assumed anyway).
+ * This list includes primitive types.
+ * supplier_closure (): List<String>
+ * 
+*/
+
+/**
+ * 
+ * Fully qualified package name, of form: package.package.
+ * package_path (): String
+ * 
+*/
+
+/**
+ * 
+ * Fully qualified class name, of form: package.package.CLASS with package path in lower-case and class in original case.
+ * class_path (): String
+ * 
+*/
+
+/**
+ * 
+ * True if this class is designated a primitive type within the overall type system of the schema.
+ * Set from schema.
+ * is_primitive (): Boolean
+ * 
+*/
+
+/**
+ * 
+ * True if this class is abstract in its model.
+ * Value provided from an underlying data property set at creation or construction time.
+ * is_abstract (): Boolean
+ * 
+*/
+
+/**
+ * 
+ * List of all feature definitions introduced in this class.
+ * features (): List<BMM_CLASS_FEATURE>
+ * 
+*/
+
+/**
+ * 
+ * Consolidated list of all feature definitions from this class and all inheritance ancestors.
+ * flat_features (): List<BMM_CLASS_FEATURE>
+ * 
+*/
+
+/**
+ * 
+ * List of all properties due to current and ancestor classes, keyed by property name.
+ * flat_properties (): List<BMM_PROPERTY>
+ * 
+*/
 
 }

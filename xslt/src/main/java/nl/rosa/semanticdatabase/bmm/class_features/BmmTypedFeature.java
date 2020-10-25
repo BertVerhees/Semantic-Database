@@ -8,13 +8,17 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public interface BmmTypedFeature extends BmmTyped {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * True if this element can be null (Void) at execution time.
  * May be interpreted as optionality in subtypes..
  * 
 */
-Boolean {default = false} getIsNullable()
-setIsNullable(var Boolean {default = false})
+Boolean {default = false} getIsNullable();
+void setIsNullable(var Boolean {default = false});
+
+/* * FUNCTION * */
 
 }

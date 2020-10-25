@@ -7,13 +7,17 @@ package nl.rosa.semanticdatabase.bmm.model_access_package;
 */
 public interface BmmIncludeSpec {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * Full identifier of the included schema, e.g.
  * "openehr_primitive_types_1.0.2".
  * 
 */
-String getId()
-setId(var String)
+String getId();
+void setId(var String);
+
+/* * FUNCTION * */
 
 }

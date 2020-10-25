@@ -7,22 +7,24 @@ package nl.rosa.semanticdatabase.bmm.types;
 */
 public interface BmmContainerType extends BmmType {
 
+/* * ATTRIBUTE * */
+
 /**
  * 
  * The type of the container.
  * This converts to the root_type in BMM_GENERIC_TYPE.
  * 
 */
-BmmGenericClass getContainerClass()
-setContainerClass(var BmmGenericClass)
+BmmGenericClass getContainerClass();
+void setContainerClass(var BmmGenericClass);
 
 /**
  * 
  * The container item type.
  * 
 */
-BmmUnitaryType getItemType()
-setItemType(var BmmUnitaryType)
+BmmUnitaryType getItemType();
+void setItemType(var BmmUnitaryType);
 
 /**
  * 
@@ -31,8 +33,8 @@ setItemType(var BmmUnitaryType)
  * Otherwise known as 'list' semantics.
  * 
 */
-Boolean {default = true} getIsOrdered()
-setIsOrdered(var Boolean {default = true})
+Boolean {default = true} getIsOrdered();
+void setIsOrdered(var Boolean {default = true});
 
 /**
  * 
@@ -40,7 +42,53 @@ setIsOrdered(var Boolean {default = true})
  * Otherwise known as 'set' semantics.
  * 
 */
-Boolean {default = false} getIsUnique()
-setIsUnique(var Boolean {default = false})
+Boolean {default = false} getIsUnique();
+void setIsUnique(var Boolean {default = false});
+
+/* * FUNCTION * */
+
+/**
+ * 
+ * Return full type name, e.g.
+ * List<ELEMENT>.
+ * type_name (): String
+ * 
+*/
+
+/**
+ * 
+ * True if the container class is abstract.
+ * is_abstract (): Boolean Post_is_abstract: Result = container_type.is_abstract
+ * 
+*/
+
+/**
+ * 
+ * Flattened list of type names of item_type, i.e.
+ * item_type.flattened_type_list().
+ * flattened_type_list (): List<String> Post_result: Result = item_type.flattened_type_list
+ * 
+*/
+
+/**
+ * 
+ * Return item_type.
+ * unitary_type (): BMM_UNITARY_TYPE
+ * 
+*/
+
+/**
+ * 
+ * True if item_type is primitive.
+ * is_primitive (): Boolean Post_result: Result = item_type.is_primitive
+ * 
+*/
+
+/**
+ * 
+ * Return item_type.effective_type().
+ * effective_type (): BMM_EFFECTIVE_TYPE
+ * 
+*/
 
 }
