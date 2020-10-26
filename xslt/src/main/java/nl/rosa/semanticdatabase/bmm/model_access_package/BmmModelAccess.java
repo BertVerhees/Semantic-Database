@@ -43,14 +43,6 @@ void setBmmModels(var Hash<string,bmmModel>);
 Hash<string,bmmModel> getMatchingBmmModels();
 void setMatchingBmmModels(var Hash<string,bmmModel>);
 
-/**
- * 
- * Reload BMM schemas.
- * 
-*/
-getReloadSchemas();
-void setReloadSchemas(var );
-
 /* * FUNCTION * */
 
 /**
@@ -64,6 +56,13 @@ void setReloadSchemas(var );
  * 
  * Load all schemas found in a specified directories a_schema_dirs.
  * initialise_all ( a_schema_dirs: List<String>[1] )
+ * 
+*/
+
+/**
+ * 
+ * Reload BMM schemas.
+ * reload_schemas
  * 
 */
 

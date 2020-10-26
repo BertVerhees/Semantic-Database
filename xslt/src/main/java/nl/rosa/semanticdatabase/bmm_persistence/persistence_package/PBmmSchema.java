@@ -45,14 +45,6 @@ void setLoadFinalise preState(var State = stateValidatedCreated postState);
 
 /**
  * 
- * Implementation of validate()
- * 
-*/
-getValidate();
-void setValidate(var );
-
-/**
- * 
  * Implementation of create_bmm_model()
  * 
 */
@@ -65,6 +57,13 @@ void setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProces
  * 
  * Implementation of merge()
  * merge ( other: P_BMM_SCHEMA[1] ) Pre_state: state = State_includes_pending Pre_other_valid: includes_to_process.has (included_schema.schema_id)
+ * 
+*/
+
+/**
+ * 
+ * Implementation of validate()
+ * validate
  * 
 */
 

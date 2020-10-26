@@ -90,8 +90,8 @@
             <xsl:value-of select="do:commentOpen()"/>
             <xsl:value-of select="do:commentOutput(description)"/>
             <xsl:value-of select="do:commentClose()"/>
-            <xsl:value-of select="do:output(do:createGetterDeclaration(nameAndType))"/>
-            <xsl:value-of select="do:output(do:createSetterDeclaration(nameAndType))"/>
+            <xsl:value-of select="do:output(do:createGetterDeclaration($class,nameAndType))"/>
+            <xsl:value-of select="do:output(do:createSetterDeclaration($class,nameAndType))"/>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('/* * FUNCTION * */')"/>
@@ -106,14 +106,33 @@
         <xsl:value-of select="do:output('}')"/>
     </xsl:function>
     
-    <xsl:function name="do:createGetterDeclaration">
+    <xsl:function name="do:createFunctionDeclaration">
+        <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
-        <xsl:value-of select="concat(do:processType($incomingString),' get',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'();')"/>
+    </xsl:function>
+    
+    <xsl:function name="do:findClass">
+        <xsl:param name="context" as="node()"/>
+        <xsl:param name="class"></xsl:param>
+        <xsl:for-each select="$context/packages/package">
+            <xsl:for-each select="class">
+                <xsl:if test="classNameOrg=$class">
+                    <xsl:value-of select="."/>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:for-each>
+    </xsl:function>
+    
+    <xsl:function name="do:createGetterDeclaration">
+        <xsl:param name="context" as="node()"/>
+        <xsl:param name="incomingString"></xsl:param>
+        <xsl:value-of select="concat(do:processType($context, $incomingString),' get',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'();')"/>
     </xsl:function>
     
     <xsl:function name="do:createSetterDeclaration">
+        <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
-        <xsl:value-of select="concat('void set',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'(var ',do:processType($incomingString),');')"/>
+        <xsl:value-of select="concat('void set',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'(var ',do:processType($context, $incomingString),');')"/>
     </xsl:function>
 
     <xsl:function name="do:processVariableName">
@@ -122,8 +141,22 @@
     </xsl:function>
 
     <xsl:function name="do:processType">
+        <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
-        <xsl:value-of select="do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[2]),0)"/>
+        <xsl:variable name="result">
+            <xsl:choose>
+                <xsl:when test="do:findClass($context, normalize-space(tokenize($incomingString,':')[2]))">
+                    <xsl:value-of select="$context/className"/>
+                </xsl:when>
+                <xsl:when test="count(tokenize($incomingString,':'))>1">
+                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[2]),0)"/>            
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="'void'"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:value-of select="$result"/>        
     </xsl:function>
 
     <xsl:function name="do:writeEnumeration">
@@ -214,7 +247,8 @@
                                     <xsl:if
                                         test="string-length(normalize-space($nameAndType)) > 0 and not($cardinality = 'Inherit')">
                                         <xsl:choose>
-                                            <xsl:when test="contains($nameAndType, '(')">
+                                            <!-- when there is a void function, there is no : in the signature and no (), that is why the double check -->
+                                            <xsl:when test="contains($nameAndType, '(') or not(contains($nameAndType, ':'))">
                                                 <xsl:element name="function">
                                                   <xsl:element name="cardinality">
                                                   <xsl:value-of select="$cardinality"/>

@@ -51,33 +51,6 @@ void setMetaData(var Hash<string, string>);
 List<string> getIncludes();
 void setIncludes(var List<string>);
 
-/**
- * 
- * Load schema into in-memory form, i.e.
- * a P_BMM_SCHEMA instance, if structurally valid.
- * If successful, p_schema will be set.
- * 
-*/
-getLoad();
-void setLoad(var );
-
-/**
- * 
- * Validate loaded schema and report errors.
- * 
-*/
-getValidateMerged();
-void setValidateMerged(var );
-
-/**
- * 
- * Create schema, i.e.
- * the BMM_MODEL from one P_BMM_SCHEMA schema.
- * 
-*/
-getCreateModel();
-void setCreateModel(var );
-
 /* * FUNCTION * */
 
 /**
@@ -97,8 +70,32 @@ void setCreateModel(var );
 
 /**
  * 
+ * Load schema into in-memory form, i.e.
+ * a P_BMM_SCHEMA instance, if structurally valid.
+ * If successful, p_schema will be set.
+ * load
+ * 
+*/
+
+/**
+ * 
+ * Validate loaded schema and report errors.
+ * validate_merged
+ * 
+*/
+
+/**
+ * 
  * Validate includes list for this schema, to see if each mentioned schema exists in all_schemas list.
  * validate_includes ( all_schemas_list: List<String>[0..1] )
+ * 
+*/
+
+/**
+ * 
+ * Create schema, i.e.
+ * the BMM_MODEL from one P_BMM_SCHEMA schema.
+ * create_model
  * 
 */
 

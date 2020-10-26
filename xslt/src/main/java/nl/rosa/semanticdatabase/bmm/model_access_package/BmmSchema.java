@@ -121,14 +121,6 @@ void setLoadFinalise preState(var State = stateValidatedCreated postState);
 
 /**
  * 
- * Main validation prior to generation of bmm_model.
- * 
-*/
-getValidate();
-void setValidate(var );
-
-/**
- * 
  * Populate bmm_model from schema.
  * 
 */
@@ -141,6 +133,13 @@ void setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProces
  * 
  * Merge in class and package definitions from other, except where the current schema already has a definition for the given type or package.
  * merge ( other: BMM_SCHEMA[1] ) Pre_state: state = State_includes_pending Pre_other_valid: includes_to_process.has (included_schema.schema_id)
+ * 
+*/
+
+/**
+ * 
+ * Main validation prior to generation of bmm_model.
+ * validate
  * 
 */
 

@@ -100,20 +100,19 @@ void setUid(var Integer);
 List<pBmmGenericType> getAncestorDefs();
 void setAncestorDefs(var List<pBmmGenericType>);
 
-/**
- * 
- * Create bmm_class_definition.
- * 
-*/
-getCreateBmmClass();
-void setCreateBmmClass(var );
-
 /* * FUNCTION * */
 
 /**
  * 
  * True if this class is a generic class.
  * is_generic (): Boolean Post: Result := generic_parameter_defs /= Void
+ * 
+*/
+
+/**
+ * 
+ * Create bmm_class_definition.
+ * create_bmm_class
  * 
 */
 

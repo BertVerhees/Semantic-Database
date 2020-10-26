@@ -35,20 +35,19 @@ void setClasses(var List<string>);
 BmmPackage getBmmPackageDefinition();
 void setBmmPackageDefinition(var BmmPackage);
 
-/**
- * 
- * Generate a BMM_PACKAGE_DEFINITION object and write it to bmm_package_definition.
- * 
-*/
-getCreateBmmPackageDefinition();
-void setCreateBmmPackageDefinition(var );
-
 /* * FUNCTION * */
 
 /**
  * 
  * Merge packages and classes from other (from an included P_BMM_SCHEMA) into this package.
  * merge ( other: P_BMM_PACKAGE[1] )
+ * 
+*/
+
+/**
+ * 
+ * Generate a BMM_PACKAGE_DEFINITION object and write it to bmm_package_definition.
+ * create_bmm_package_definition
  * 
 */
 
