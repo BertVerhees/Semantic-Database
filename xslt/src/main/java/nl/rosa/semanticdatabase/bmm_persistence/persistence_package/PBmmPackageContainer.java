@@ -15,7 +15,7 @@ public interface PBmmPackageContainer {
  * 
 */
 Hash<string, pBmmPackage> getPackages();
-void setPackages(var Hash<string, pBmmPackage>);
+void setPackages(value Hash<string, pBmmPackage>);
 
 /* * FUNCTION * */
 

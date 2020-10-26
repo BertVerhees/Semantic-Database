@@ -18,7 +18,7 @@ public interface PBmmGenericParameter extends PBmmModelElement {
  * 
 */
 String getName();
-void setName(var String);
+void setName(value String);
 
 /**
  * 
@@ -27,7 +27,7 @@ void setName(var String);
  * 
 */
 String getConformsToType();
-void setConformsToType(var String);
+void setConformsToType(value String);
 
 /**
  * 
@@ -35,7 +35,7 @@ void setConformsToType(var String);
  * 
 */
 BmmParameterType getBmmGenericParameter();
-void setBmmGenericParameter(var BmmParameterType);
+void setBmmGenericParameter(value BmmParameterType);
 
 /* * FUNCTION * */
 
@@ -45,5 +45,6 @@ void setBmmGenericParameter(var BmmParameterType);
  * create_bmm_generic_parameter ( a_bmm_schema: BMM_MODEL[1] )
  * 
 */
+void createBmmGenericParameter ( aBmmSchema: bmmModel[1] );
 
 }

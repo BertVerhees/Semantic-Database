@@ -16,7 +16,7 @@ public interface BmmSchemaDescriptor {
  * 
 */
 BmmSchema getBmmSchema();
-void setBmmSchema(var BmmSchema);
+void setBmmSchema(value BmmSchema);
 
 /**
  * 
@@ -24,7 +24,7 @@ void setBmmSchema(var BmmSchema);
  * 
 */
 BmmModel getBmmModel();
-void setBmmModel(var BmmModel);
+void setBmmModel(value BmmModel);
 
 /**
  * 
@@ -33,7 +33,7 @@ void setBmmModel(var BmmModel);
  * 
 */
 String getSchemaId();
-void setSchemaId(var String);
+void setSchemaId(value String);
 
 /**
  * 
@@ -41,7 +41,7 @@ void setSchemaId(var String);
  * 
 */
 Hash<string, string> getMetaData();
-void setMetaData(var Hash<string, string>);
+void setMetaData(value Hash<string, string>);
 
 /**
  * 
@@ -49,7 +49,7 @@ void setMetaData(var Hash<string, string>);
  * 
 */
 List<string> getIncludes();
-void setIncludes(var List<string>);
+void setIncludes(value List<string>);
 
 /* * FUNCTION * */
 
@@ -60,6 +60,7 @@ void setIncludes(var List<string>);
  * is_top_level (): Boolean
  * 
 */
+Boolean isTopLevel ();
 
 /**
  * 
@@ -67,6 +68,7 @@ void setIncludes(var List<string>);
  * is_bmm_compatible (): Boolean
  * 
 */
+Boolean isBmmCompatible ();
 
 /**
  * 
@@ -76,6 +78,7 @@ void setIncludes(var List<string>);
  * load
  * 
 */
+void load();
 
 /**
  * 
@@ -83,6 +86,7 @@ void setIncludes(var List<string>);
  * validate_merged
  * 
 */
+void validateMerged();
 
 /**
  * 
@@ -90,6 +94,7 @@ void setIncludes(var List<string>);
  * validate_includes ( all_schemas_list: List<String>[0..1] )
  * 
 */
+void validateIncludes ( allSchemasList: list<string>[0..1] );
 
 /**
  * 
@@ -98,5 +103,6 @@ void setIncludes(var List<string>);
  * create_model
  * 
 */
+void createModel();
 
 }

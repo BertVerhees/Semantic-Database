@@ -17,7 +17,7 @@ public interface ElTupleItem {
  * 
 */
 ElExpression getItem();
-void setItem(var ElExpression);
+void setItem(value ElExpression);
 
 /**
  * 
@@ -25,7 +25,7 @@ void setItem(var ElExpression);
  * 
 */
 String getName();
-void setName(var String);
+void setName(value String);
 
 /* * FUNCTION * */
 

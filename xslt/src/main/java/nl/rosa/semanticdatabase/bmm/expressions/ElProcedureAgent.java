@@ -16,7 +16,7 @@ public interface ElProcedureAgent extends ElAgent {
  * 
 */
 BmmProcedure getDefinition();
-void setDefinition(var BmmProcedure);
+void setDefinition(value BmmProcedure);
 
 /* * FUNCTION * */
 

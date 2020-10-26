@@ -15,7 +15,7 @@ public interface BmmIndexedContainerProperty extends BmmContainerProperty {
  * 
 */
 BmmIndexedContainerType getType();
-void setType(var BmmIndexedContainerType);
+void setType(value BmmIndexedContainerType);
 
 /* * FUNCTION * */
 
@@ -25,5 +25,6 @@ void setType(var BmmIndexedContainerType);
  * display_name (): String
  * 
 */
+String displayName ();
 
 }

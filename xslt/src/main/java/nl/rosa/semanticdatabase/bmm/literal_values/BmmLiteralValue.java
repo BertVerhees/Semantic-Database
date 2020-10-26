@@ -17,7 +17,7 @@ public interface BmmLiteralValue extends BmmTyped {
  * 
 */
 String getValueLiteral();
-void setValueLiteral(var String);
+void setValueLiteral(value String);
 
 /**
  * 
@@ -25,7 +25,7 @@ void setValueLiteral(var String);
  * 
 */
 Any getValue();
-void setValue(var Any);
+void setValue(value Any);
 
 /**
  * 
@@ -35,7 +35,7 @@ void setValue(var Any);
  * 
 */
 String getSyntax();
-void setSyntax(var String);
+void setSyntax(value String);
 
 /* * FUNCTION * */
 

@@ -15,7 +15,7 @@ public interface BmmIntegerValue extends BmmPrimitiveValue {
  * 
 */
 Integer getValue();
-void setValue(var Integer);
+void setValue(value Integer);
 
 /* * FUNCTION * */
 

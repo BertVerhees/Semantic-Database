@@ -15,7 +15,7 @@ public interface BmmOperator {
  * 
 */
 BmmOperatorPosition getPosition();
-void setPosition(var BmmOperatorPosition);
+void setPosition(value BmmOperatorPosition);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setPosition(var BmmOperatorPosition);
  * 
 */
 List<string> getSymbols();
-void setSymbols(var List<string>);
+void setSymbols(value List<string>);
 
 /**
  * 
@@ -32,7 +32,7 @@ void setSymbols(var List<string>);
  * 
 */
 String getName();
-void setName(var String);
+void setName(value String);
 
 /* * FUNCTION * */
 

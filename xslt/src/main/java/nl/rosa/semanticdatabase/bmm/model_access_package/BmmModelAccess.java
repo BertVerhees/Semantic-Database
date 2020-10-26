@@ -15,7 +15,7 @@ public interface BmmModelAccess {
  * 
 */
 List<string> getSchemaDirectories();
-void setSchemaDirectories(var List<string>);
+void setSchemaDirectories(value List<string>);
 
 /**
  * 
@@ -24,7 +24,7 @@ void setSchemaDirectories(var List<string>);
  * 
 */
 Hash<string,bmmSchemaDescriptor> getAllSchemas();
-void setAllSchemas(var Hash<string,bmmSchemaDescriptor>);
+void setAllSchemas(value Hash<string,bmmSchemaDescriptor>);
 
 /**
  * 
@@ -32,7 +32,7 @@ void setAllSchemas(var Hash<string,bmmSchemaDescriptor>);
  * 
 */
 Hash<string,bmmModel> getBmmModels();
-void setBmmModels(var Hash<string,bmmModel>);
+void setBmmModels(value Hash<string,bmmModel>);
 
 /**
  * 
@@ -41,7 +41,7 @@ void setBmmModels(var Hash<string,bmmModel>);
  * 
 */
 Hash<string,bmmModel> getMatchingBmmModels();
-void setMatchingBmmModels(var Hash<string,bmmModel>);
+void setMatchingBmmModels(value Hash<string,bmmModel>);
 
 /* * FUNCTION * */
 
@@ -51,6 +51,7 @@ void setMatchingBmmModels(var Hash<string,bmmModel>);
  * initialise_with_load_list ( a_schema_dirs: List<String>[1], a_schema_load_list: List<String>[0..1] )
  * 
 */
+void initialiseWithLoadList ( aSchemaDirs: list<string>[1], aSchemaLoadList: list<string>[0..1] );
 
 /**
  * 
@@ -58,6 +59,7 @@ void setMatchingBmmModels(var Hash<string,bmmModel>);
  * initialise_all ( a_schema_dirs: List<String>[1] )
  * 
 */
+void initialiseAll ( aSchemaDirs: list<string>[1] );
 
 /**
  * 
@@ -65,6 +67,7 @@ void setMatchingBmmModels(var Hash<string,bmmModel>);
  * reload_schemas
  * 
 */
+void reloadSchemas();
 
 /**
  * 
@@ -75,6 +78,7 @@ void setMatchingBmmModels(var Hash<string,bmmModel>);
  * bmm_model ( a_model_key: String[1] ): BMM_MODEL
  * 
 */
+BmmModel bmmModel ( aModelKey: string[1]);
 
 /**
  * 
@@ -85,5 +89,6 @@ void setMatchingBmmModels(var Hash<string,bmmModel>);
  * has_bmm_model ( a_model_key: String[1] ): Boolean
  * 
 */
+Boolean hasBmmModel ( aModelKey: string[1]);
 
 }

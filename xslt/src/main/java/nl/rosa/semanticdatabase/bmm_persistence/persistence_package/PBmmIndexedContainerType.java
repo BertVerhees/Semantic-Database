@@ -15,7 +15,7 @@ public interface PBmmIndexedContainerType extends PBmmContainerType {
  * 
 */
 String getIndexType();
-void setIndexType(var String);
+void setIndexType(value String);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setIndexType(var String);
  * 
 */
 BmmIndexedContainerType getBmmType();
-void setBmmType(var BmmIndexedContainerType);
+void setBmmType(value BmmIndexedContainerType);
 
 /* * FUNCTION * */
 

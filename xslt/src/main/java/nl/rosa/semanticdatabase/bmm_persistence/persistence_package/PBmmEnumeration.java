@@ -15,7 +15,7 @@ public interface PBmmEnumeration extends PBmmClass {
  * 
 */
 List<string> getItemNames();
-void setItemNames(var List<string>);
+void setItemNames(value List<string>);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setItemNames(var List<string>);
  * 
 */
 List<any> getItemValues();
-void setItemValues(var List<any>);
+void setItemValues(value List<any>);
 
 /**
  * 
@@ -31,7 +31,7 @@ void setItemValues(var List<any>);
  * 
 */
 BmmEnumeration getBmmClass();
-void setBmmClass(var BmmEnumeration);
+void setBmmClass(value BmmEnumeration);
 
 /* * FUNCTION * */
 

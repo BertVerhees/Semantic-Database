@@ -16,7 +16,7 @@ public interface BmmFunction extends BmmTypedFeature,BmmRoutine {
  * 
 */
 BmmOperator getOperatorDefinition();
-void setOperatorDefinition(var BmmOperator);
+void setOperatorDefinition(value BmmOperator);
 
 /**
  * 
@@ -24,7 +24,7 @@ void setOperatorDefinition(var BmmOperator);
  * 
 */
 BmmResult getResult();
-void setResult(var BmmResult);
+void setResult(value BmmResult);
 
 /* * FUNCTION * */
 

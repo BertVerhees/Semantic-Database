@@ -16,7 +16,7 @@ public interface ElLiteral extends ElInstanceRef {
  * 
 */
 BmmLiteralValue getValue();
-void setValue(var BmmLiteralValue);
+void setValue(value BmmLiteralValue);
 
 /* * FUNCTION * */
 
@@ -26,5 +26,6 @@ void setValue(var BmmLiteralValue);
  * eval_type (): BMM_TYPE
  * 
 */
+BmmType evalType ();
 
 }

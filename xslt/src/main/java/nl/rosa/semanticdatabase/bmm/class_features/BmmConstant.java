@@ -17,7 +17,7 @@ public interface BmmConstant extends BmmInstantiable,BmmClassFeature {
  * 
 */
 ElInstanceRef getGenerator();
-void setGenerator(var ElInstanceRef);
+void setGenerator(value ElInstanceRef);
 
 /* * FUNCTION * */
 

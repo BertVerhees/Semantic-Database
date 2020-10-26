@@ -15,7 +15,7 @@ public interface BmmClassEntity extends BmmDeclaration {
  * 
 */
 Boolean {default = false} getIsSynthesisedGeneric();
-void setIsSynthesisedGeneric(var Boolean {default = false});
+void setIsSynthesisedGeneric(value Boolean {default = false});
 
 /* * FUNCTION * */
 
@@ -25,5 +25,6 @@ void setIsSynthesisedGeneric(var Boolean {default = false});
  * signature (): BMM_SIGNATURE
  * 
 */
+BmmSignature signature ();
 
 }

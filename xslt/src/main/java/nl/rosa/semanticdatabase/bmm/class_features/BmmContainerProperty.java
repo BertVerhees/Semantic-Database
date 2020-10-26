@@ -15,7 +15,7 @@ public interface BmmContainerProperty extends BmmProperty {
  * 
 */
 MultiplicityInterval getCardinality();
-void setCardinality(var MultiplicityInterval);
+void setCardinality(value MultiplicityInterval);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setCardinality(var MultiplicityInterval);
  * 
 */
 BmmContainerType getType();
-void setType(var BmmContainerType);
+void setType(value BmmContainerType);
 
 /* * FUNCTION * */
 
@@ -33,5 +33,6 @@ void setType(var BmmContainerType);
  * display_name (): String
  * 
 */
+String displayName ();
 
 }

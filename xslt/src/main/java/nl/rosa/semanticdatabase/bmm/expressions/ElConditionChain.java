@@ -17,7 +17,7 @@ public interface ElConditionChain extends ElDecisionTable {
  * 
 */
 List<elConditionalExpression> getItems();
-void setItems(var List<elConditionalExpression>);
+void setItems(value List<elConditionalExpression>);
 
 /* * FUNCTION * */
 

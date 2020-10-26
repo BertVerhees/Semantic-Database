@@ -16,7 +16,7 @@ public interface BmmSignature extends BmmEffectiveType {
  * 
 */
 String = "signature" getBaseName();
-void setBaseName(var String = "signature");
+void setBaseName(value String = "signature");
 
 /**
  * 
@@ -24,7 +24,7 @@ void setBaseName(var String = "signature");
  * 
 */
 BmmTupleType getArgumentTypes();
-void setArgumentTypes(var BmmTupleType);
+void setArgumentTypes(value BmmTupleType);
 
 /**
  * 
@@ -32,7 +32,7 @@ void setArgumentTypes(var BmmTupleType);
  * 
 */
 BmmType getResultType();
-void setResultType(var BmmType);
+void setResultType(value BmmType);
 
 /* * FUNCTION * */
 
@@ -42,6 +42,7 @@ void setResultType(var BmmType);
  * type_base_name (): String Post_result: Result.is_equal (base_name())
  * 
 */
+String postResult: result.isEqual (baseName()) typeBaseName ();
 
 /**
  * 
@@ -49,6 +50,7 @@ void setResultType(var BmmType);
  * is_abstract (): Boolean
  * 
 */
+Boolean isAbstract ();
 
 /**
  * 
@@ -56,6 +58,7 @@ void setResultType(var BmmType);
  * is_primitive (): Boolean
  * 
 */
+Boolean isPrimitive ();
 
 /**
  * 
@@ -63,6 +66,7 @@ void setResultType(var BmmType);
  * type_name (): String Post_result: Result.is_equal (base_name())
  * 
 */
+String postResult: result.isEqual (baseName()) typeName ();
 
 /**
  * 
@@ -71,5 +75,6 @@ void setResultType(var BmmType);
  * flattened_type_list (): List<String>
  * 
 */
+List<string> flattenedTypeList ();
 
 }

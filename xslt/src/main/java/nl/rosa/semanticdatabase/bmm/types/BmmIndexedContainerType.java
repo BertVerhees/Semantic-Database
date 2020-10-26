@@ -15,7 +15,7 @@ public interface BmmIndexedContainerType extends BmmContainerType {
  * 
 */
 BmmSimpleType getIndexType();
-void setIndexType(var BmmSimpleType);
+void setIndexType(value BmmSimpleType);
 
 /* * FUNCTION * */
 
@@ -26,5 +26,6 @@ void setIndexType(var BmmSimpleType);
  * type_name (): String
  * 
 */
+String typeName ();
 
 }

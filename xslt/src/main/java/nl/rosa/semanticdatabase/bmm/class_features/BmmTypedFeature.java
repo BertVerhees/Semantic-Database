@@ -17,7 +17,7 @@ public interface BmmTypedFeature extends BmmTyped {
  * 
 */
 Boolean {default = false} getIsNullable();
-void setIsNullable(var Boolean {default = false});
+void setIsNullable(value Boolean {default = false});
 
 /* * FUNCTION * */
 

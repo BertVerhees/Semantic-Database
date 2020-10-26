@@ -16,7 +16,7 @@ public interface PBmmPackage extends PBmmPackageContainer,PBmmModelElement {
  * 
 */
 String getName();
-void setName(var String);
+void setName(value String);
 
 /**
  * 
@@ -25,7 +25,7 @@ void setName(var String);
  * 
 */
 List<string> getClasses();
-void setClasses(var List<string>);
+void setClasses(value List<string>);
 
 /**
  * 
@@ -33,7 +33,7 @@ void setClasses(var List<string>);
  * 
 */
 BmmPackage getBmmPackageDefinition();
-void setBmmPackageDefinition(var BmmPackage);
+void setBmmPackageDefinition(value BmmPackage);
 
 /* * FUNCTION * */
 
@@ -43,6 +43,7 @@ void setBmmPackageDefinition(var BmmPackage);
  * merge ( other: P_BMM_PACKAGE[1] )
  * 
 */
+void merge ( other: pBmmPackage[1] );
 
 /**
  * 
@@ -50,5 +51,6 @@ void setBmmPackageDefinition(var BmmPackage);
  * create_bmm_package_definition
  * 
 */
+void createBmmPackageDefinition();
 
 }

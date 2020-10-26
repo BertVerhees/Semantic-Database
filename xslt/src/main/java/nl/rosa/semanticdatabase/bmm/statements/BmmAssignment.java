@@ -16,7 +16,7 @@ public interface BmmAssignment extends BmmStatement {
  * 
 */
 ElInstantiableRef getTarget();
-void setTarget(var ElInstantiableRef);
+void setTarget(value ElInstantiableRef);
 
 /**
  * 
@@ -24,7 +24,7 @@ void setTarget(var ElInstantiableRef);
  * 
 */
 ElExpression getSource();
-void setSource(var ElExpression);
+void setSource(value ElExpression);
 
 /* * FUNCTION * */
 

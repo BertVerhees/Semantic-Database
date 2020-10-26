@@ -15,7 +15,7 @@ public interface ElDecisionBranch {
  * 
 */
 ElExpression getResult();
-void setResult(var ElExpression);
+void setResult(value ElExpression);
 
 /* * FUNCTION * */
 

@@ -16,7 +16,7 @@ public interface PBmmClass extends PBmmModelElement {
  * 
 */
 String getName();
-void setName(var String);
+void setName(value String);
 
 /**
  * 
@@ -26,7 +26,7 @@ void setName(var String);
  * 
 */
 List<string> getAncestors();
-void setAncestors(var List<string>);
+void setAncestors(value List<string>);
 
 /**
  * 
@@ -35,7 +35,7 @@ void setAncestors(var List<string>);
  * 
 */
 Hash<string,pBmmProperty> getProperties();
-void setProperties(var Hash<string,pBmmProperty>);
+void setProperties(value Hash<string,pBmmProperty>);
 
 /**
  * 
@@ -44,7 +44,7 @@ void setProperties(var Hash<string,pBmmProperty>);
  * 
 */
 Boolean getIsAbstract();
-void setIsAbstract(var Boolean);
+void setIsAbstract(value Boolean);
 
 /**
  * 
@@ -52,7 +52,7 @@ void setIsAbstract(var Boolean);
  * 
 */
 Boolean getIsOverride();
-void setIsOverride(var Boolean);
+void setIsOverride(value Boolean);
 
 /**
  * 
@@ -61,7 +61,7 @@ void setIsOverride(var Boolean);
  * 
 */
 Hash<string,pBmmGenericParameter> getGenericParameterDefs();
-void setGenericParameterDefs(var Hash<string,pBmmGenericParameter>);
+void setGenericParameterDefs(value Hash<string,pBmmGenericParameter>);
 
 /**
  * 
@@ -72,7 +72,7 @@ void setGenericParameterDefs(var Hash<string,pBmmGenericParameter>);
  * 
 */
 String getSourceSchemaId();
-void setSourceSchemaId(var String);
+void setSourceSchemaId(value String);
 
 /**
  * 
@@ -80,7 +80,7 @@ void setSourceSchemaId(var String);
  * 
 */
 BmmClass getBmmClass();
-void setBmmClass(var BmmClass);
+void setBmmClass(value BmmClass);
 
 /**
  * 
@@ -89,7 +89,7 @@ void setBmmClass(var BmmClass);
  * 
 */
 Integer getUid();
-void setUid(var Integer);
+void setUid(value Integer);
 
 /**
  * 
@@ -98,7 +98,7 @@ void setUid(var Integer);
  * 
 */
 List<pBmmGenericType> getAncestorDefs();
-void setAncestorDefs(var List<pBmmGenericType>);
+void setAncestorDefs(value List<pBmmGenericType>);
 
 /* * FUNCTION * */
 
@@ -108,6 +108,7 @@ void setAncestorDefs(var List<pBmmGenericType>);
  * is_generic (): Boolean Post: Result := generic_parameter_defs /= Void
  * 
 */
+Boolean isGeneric ();
 
 /**
  * 
@@ -115,6 +116,7 @@ void setAncestorDefs(var List<pBmmGenericType>);
  * create_bmm_class
  * 
 */
+void createBmmClass();
 
 /**
  * 
@@ -122,5 +124,6 @@ void setAncestorDefs(var List<pBmmGenericType>);
  * populate_bmm_class ( a_bmm_schema: BMM_MODEL[1] )
  * 
 */
+void populateBmmClass ( aBmmSchema: bmmModel[1] );
 
 }

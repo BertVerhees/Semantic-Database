@@ -17,7 +17,7 @@ public interface BmmValueSetSpec {
  * 
 */
 String getResourceId();
-void setResourceId(var String);
+void setResourceId(value String);
 
 /**
  * 
@@ -26,7 +26,7 @@ void setResourceId(var String);
  * 
 */
 String getValueSetId();
-void setValueSetId(var String);
+void setValueSetId(value String);
 
 /* * FUNCTION * */
 

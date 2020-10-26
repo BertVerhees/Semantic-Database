@@ -15,7 +15,7 @@ public interface BmmUnitaryProperty extends BmmProperty {
  * 
 */
 BmmUnitaryType getType();
-void setType(var BmmUnitaryType);
+void setType(value BmmUnitaryType);
 
 /* * FUNCTION * */
 

@@ -15,7 +15,7 @@ public interface ElScopedRef extends ElInstanceRef {
  * 
 */
 ElInstanceRef getScope();
-void setScope(var ElInstanceRef);
+void setScope(value ElInstanceRef);
 
 /* * FUNCTION * */
 

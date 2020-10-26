@@ -17,7 +17,7 @@ public interface BmmSchema extends BmmModelMetadata {
  * 
 */
 String getBmmVersion();
-void setBmmVersion(var String);
+void setBmmVersion(value String);
 
 /**
  * 
@@ -26,7 +26,7 @@ void setBmmVersion(var String);
  * 
 */
 Hash<string,bmmIncludeSpec> getIncludes();
-void setIncludes(var Hash<string,bmmIncludeSpec>);
+void setIncludes(value Hash<string,bmmIncludeSpec>);
 
 /**
  * 
@@ -34,7 +34,7 @@ void setIncludes(var Hash<string,bmmIncludeSpec>);
  * 
 */
 BmmModel getBmmModel();
-void setBmmModel(var BmmModel);
+void setBmmModel(value BmmModel);
 
 /**
  * 
@@ -42,7 +42,7 @@ void setBmmModel(var BmmModel);
  * 
 */
 BmmSchemaState getState();
-void setState(var BmmSchemaState);
+void setState(value BmmSchemaState);
 
 /**
  * 
@@ -51,7 +51,7 @@ void setState(var BmmSchemaState);
  * 
 */
 String getModelName();
-void setModelName(var String);
+void setModelName(value String);
 
 /**
  * 
@@ -60,7 +60,7 @@ void setModelName(var String);
  * 
 */
 String getSchemaName();
-void setSchemaName(var String);
+void setSchemaName(value String);
 
 /**
  * 
@@ -68,7 +68,7 @@ void setSchemaName(var String);
  * 
 */
 String getSchemaRevision();
-void setSchemaRevision(var String);
+void setSchemaRevision(value String);
 
 /**
  * 
@@ -76,7 +76,7 @@ void setSchemaRevision(var String);
  * 
 */
 String getSchemaLifecycleState();
-void setSchemaLifecycleState(var String);
+void setSchemaLifecycleState(value String);
 
 /**
  * 
@@ -84,7 +84,7 @@ void setSchemaLifecycleState(var String);
  * 
 */
 String getSchemaAuthor();
-void setSchemaAuthor(var String);
+void setSchemaAuthor(value String);
 
 /**
  * 
@@ -92,7 +92,7 @@ void setSchemaAuthor(var String);
  * 
 */
 String getSchemaDescription();
-void setSchemaDescription(var String);
+void setSchemaDescription(value String);
 
 /**
  * 
@@ -100,7 +100,7 @@ void setSchemaDescription(var String);
  * 
 */
 List<string> getSchemaContributors();
-void setSchemaContributors(var List<string>);
+void setSchemaContributors(value List<string>);
 
 /**
  * 
@@ -108,7 +108,7 @@ void setSchemaContributors(var List<string>);
  * 
 */
 State = stateCreated postState getValidateCreated preState();
-void setValidateCreated preState(var State = stateCreated postState);
+void setValidateCreated preState(value State = stateCreated postState);
 
 /**
  * 
@@ -117,7 +117,7 @@ void setValidateCreated preState(var State = stateCreated postState);
  * 
 */
 State = stateValidatedCreated postState getLoadFinalise preState();
-void setLoadFinalise preState(var State = stateValidatedCreated postState);
+void setLoadFinalise preState(value State = stateValidatedCreated postState);
 
 /**
  * 
@@ -125,7 +125,7 @@ void setLoadFinalise preState(var State = stateValidatedCreated postState);
  * 
 */
 State = pBmmPackageState.stateIncludesProcessed getCreateBmmModel preState();
-void setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProcessed);
+void setCreateBmmModel preState(value State = pBmmPackageState.stateIncludesProcessed);
 
 /* * FUNCTION * */
 
@@ -135,6 +135,7 @@ void setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProces
  * merge ( other: BMM_SCHEMA[1] ) Pre_state: state = State_includes_pending Pre_other_valid: includes_to_process.has (included_schema.schema_id)
  * 
 */
+void merge ( other: bmmSchema[1] ) preState: state = stateIncludesPending preOtherValid: includesToProcess.has (includedSchema.schemaId);
 
 /**
  * 
@@ -142,6 +143,7 @@ void setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProces
  * validate
  * 
 */
+void validate();
 
 /**
  * 
@@ -149,6 +151,7 @@ void setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProces
  * read_to_validate (): Boolean Post_state: state = State_includes_processed
  * 
 */
+Boolean postState: state = stateIncludesProcessed readToValidate ();
 
 /**
  * 
@@ -158,5 +161,6 @@ void setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProces
  * schema_id (): String
  * 
 */
+String schemaId ();
 
 }

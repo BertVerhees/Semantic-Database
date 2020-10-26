@@ -15,7 +15,7 @@ public interface PBmmType {
  * 
 */
 BmmType getBmmType();
-void setBmmType(var BmmType);
+void setBmmType(value BmmType);
 
 /* * FUNCTION * */
 
@@ -25,6 +25,7 @@ void setBmmType(var BmmType);
  * create_bmm_type ( a_schema: BMM_MODEL[1], a_class_def: BMM_CLASS[1] )
  * 
 */
+void createBmmType ( aSchema: bmmModel[1], aClassDef: bmmClass[1] );
 
 /**
  * 
@@ -32,5 +33,6 @@ void setBmmType(var BmmType);
  * as_type_string (): String
  * 
 */
+String asTypeString ();
 
 }

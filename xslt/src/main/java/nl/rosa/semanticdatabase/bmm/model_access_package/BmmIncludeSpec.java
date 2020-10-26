@@ -16,7 +16,7 @@ public interface BmmIncludeSpec {
  * 
 */
 String getId();
-void setId(var String);
+void setId(value String);
 
 /* * FUNCTION * */
 

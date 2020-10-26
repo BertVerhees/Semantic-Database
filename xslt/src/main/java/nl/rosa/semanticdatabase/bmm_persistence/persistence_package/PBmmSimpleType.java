@@ -15,7 +15,7 @@ public interface PBmmSimpleType extends PBmmBaseType {
  * 
 */
 String getType();
-void setType(var String);
+void setType(value String);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setType(var String);
  * 
 */
 BmmSimpleType getBmmType();
-void setBmmType(var BmmSimpleType);
+void setBmmType(value BmmSimpleType);
 
 /* * FUNCTION * */
 

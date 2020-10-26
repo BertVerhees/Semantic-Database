@@ -15,7 +15,7 @@ public interface BmmDefinitions extends BasicDefinitions {
  * 
 */
 String getBmmInternalVersion();
-void setBmmInternalVersion(var String);
+void setBmmInternalVersion(value String);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setBmmInternalVersion(var String);
  * 
 */
 String = " getSchemaNameDelimiter();
-void setSchemaNameDelimiter(var String = ");
+void setSchemaNameDelimiter(value String = ");
 
 /**
  * 
@@ -31,7 +31,7 @@ void setSchemaNameDelimiter(var String = ");
  * 
 */
 String = "." getPackageNameDelimiter();
-void setPackageNameDelimiter(var String = ".");
+void setPackageNameDelimiter(value String = ".");
 
 /**
  * 
@@ -39,7 +39,7 @@ void setPackageNameDelimiter(var String = ".");
  * 
 */
 String = ".bmm" getBmmSchemaFileExtension();
-void setBmmSchemaFileExtension(var String = ".bmm");
+void setBmmSchemaFileExtension(value String = ".bmm");
 
 /**
  * 
@@ -47,7 +47,7 @@ void setBmmSchemaFileExtension(var String = ".bmm");
  * 
 */
 Character = ' getTypeDelimiter();
-void setTypeDelimiter(var Character = ');
+void setTypeDelimiter(value Character = ');
 
 /**
  * 
@@ -55,7 +55,7 @@ void setTypeDelimiter(var Character = ');
  * 
 */
 Character = '<' getGenericLeftDelimiter();
-void setGenericLeftDelimiter(var Character = '<');
+void setGenericLeftDelimiter(value Character = '<');
 
 /**
  * 
@@ -63,7 +63,7 @@ void setGenericLeftDelimiter(var Character = '<');
  * 
 */
 Character = '>' getGenericRightDelimiter();
-void setGenericRightDelimiter(var Character = '>');
+void setGenericRightDelimiter(value Character = '>');
 
 /**
  * 
@@ -71,7 +71,7 @@ void setGenericRightDelimiter(var Character = '>');
  * 
 */
 Character = ',' getGenericSeparator();
-void setGenericSeparator(var Character = ',');
+void setGenericSeparator(value Character = ',');
 
 /**
  * 
@@ -79,7 +79,7 @@ void setGenericSeparator(var Character = ',');
  * 
 */
 Character = ' getGenericConstraintDelimiter();
-void setGenericConstraintDelimiter(var Character = ');
+void setGenericConstraintDelimiter(value Character = ');
 
 /**
  * 
@@ -88,7 +88,7 @@ void setGenericConstraintDelimiter(var Character = ');
  * 
 */
 Character = '[' getTupleLeftDelim();
-void setTupleLeftDelim(var Character = '[');
+void setTupleLeftDelim(value Character = '[');
 
 /**
  * 
@@ -96,7 +96,7 @@ void setTupleLeftDelim(var Character = '[');
  * 
 */
 Character = ']' getTupleRightDelim();
-void setTupleRightDelim(var Character = ']');
+void setTupleRightDelim(value Character = ']');
 
 /**
  * 
@@ -104,7 +104,7 @@ void setTupleRightDelim(var Character = ']');
  * 
 */
 Character = ',' getTupleSeparator();
-void setTupleSeparator(var Character = ',');
+void setTupleSeparator(value Character = ',');
 
 /**
  * 
@@ -112,7 +112,7 @@ void setTupleSeparator(var Character = ',');
  * 
 */
 Character = '«' getConstraintLeftDelim();
-void setConstraintLeftDelim(var Character = '«');
+void setConstraintLeftDelim(value Character = '«');
 
 /**
  * 
@@ -120,7 +120,7 @@ void setConstraintLeftDelim(var Character = '«');
  * 
 */
 Character = '»' getConstraintRightDelim();
-void setConstraintRightDelim(var Character = '»');
+void setConstraintRightDelim(value Character = '»');
 
 /**
  * 
@@ -128,7 +128,7 @@ void setConstraintRightDelim(var Character = '»');
  * 
 */
 String = "bmmVersion" getMetadataBmmVersion();
-void setMetadataBmmVersion(var String = "bmmVersion");
+void setMetadataBmmVersion(value String = "bmmVersion");
 
 /**
  * 
@@ -136,7 +136,7 @@ void setMetadataBmmVersion(var String = "bmmVersion");
  * 
 */
 String = "schemaName" getMetadataSchemaName();
-void setMetadataSchemaName(var String = "schemaName");
+void setMetadataSchemaName(value String = "schemaName");
 
 /**
  * 
@@ -144,7 +144,7 @@ void setMetadataSchemaName(var String = "schemaName");
  * 
 */
 String = "rmPublisher" getMetadataRmPublisher();
-void setMetadataRmPublisher(var String = "rmPublisher");
+void setMetadataRmPublisher(value String = "rmPublisher");
 
 /**
  * 
@@ -152,7 +152,7 @@ void setMetadataRmPublisher(var String = "rmPublisher");
  * 
 */
 String = "rmRelease" getMetadataRmRelease();
-void setMetadataRmRelease(var String = "rmRelease");
+void setMetadataRmRelease(value String = "rmRelease");
 
 /**
  * 
@@ -160,7 +160,7 @@ void setMetadataRmRelease(var String = "rmRelease");
  * 
 */
 String = "schemaRevision" getMetadataSchemaRevision();
-void setMetadataSchemaRevision(var String = "schemaRevision");
+void setMetadataSchemaRevision(value String = "schemaRevision");
 
 /**
  * 
@@ -168,7 +168,7 @@ void setMetadataSchemaRevision(var String = "schemaRevision");
  * 
 */
 String = "schemaLifecycleState" getMetadataSchemaLifecycleState();
-void setMetadataSchemaLifecycleState(var String = "schemaLifecycleState");
+void setMetadataSchemaLifecycleState(value String = "schemaLifecycleState");
 
 /**
  * 
@@ -176,7 +176,7 @@ void setMetadataSchemaLifecycleState(var String = "schemaLifecycleState");
  * 
 */
 String = "schemaDescription" getMetadataSchemaDescription();
-void setMetadataSchemaDescription(var String = "schemaDescription");
+void setMetadataSchemaDescription(value String = "schemaDescription");
 
 /**
  * 
@@ -184,7 +184,7 @@ void setMetadataSchemaDescription(var String = "schemaDescription");
  * 
 */
 String = "schemaPath" getMetadataSchemaPath();
-void setMetadataSchemaPath(var String = "schemaPath");
+void setMetadataSchemaPath(value String = "schemaPath");
 
 /* * FUNCTION * */
 
@@ -194,6 +194,7 @@ void setMetadataSchemaPath(var String = "schemaPath");
  * Any_class (): BMM_SIMPLE_CLASS
  * 
 */
+BmmSimpleClass anyClass ();
 
 /**
  * 
@@ -201,6 +202,7 @@ void setMetadataSchemaPath(var String = "schemaPath");
  * Any_type (): BMM_SIMPLE_TYPE
  * 
 */
+BmmSimpleType anyType ();
 
 /**
  * 
@@ -209,5 +211,6 @@ void setMetadataSchemaPath(var String = "schemaPath");
  * create_schema_id ( a_model_publisher, a_schema_name, a_model_release: String[1] ): String
  * 
 */
+String createSchemaId ( aModelPublisher, aSchemaName, aModelRelease: string[1]);
 
 }

@@ -17,7 +17,7 @@ public interface BmmParameterType extends BmmUnitaryType {
  * 
 */
 String getName();
-void setName(var String);
+void setName(value String);
 
 /**
  * 
@@ -25,7 +25,7 @@ void setName(var String);
  * 
 */
 BmmEffectiveType getTypeConstraint();
-void setTypeConstraint(var BmmEffectiveType);
+void setTypeConstraint(value BmmEffectiveType);
 
 /**
  * 
@@ -33,7 +33,7 @@ void setTypeConstraint(var BmmEffectiveType);
  * 
 */
 BmmParameterType getInheritancePrecursor();
-void setInheritancePrecursor(var BmmParameterType);
+void setInheritancePrecursor(value BmmParameterType);
 
 /* * FUNCTION * */
 
@@ -43,6 +43,7 @@ void setInheritancePrecursor(var BmmParameterType);
  * flattened_conforms_to_type (): BMM_EFFECTIVE_TYPE
  * 
 */
+BmmEffectiveType flattenedConformsToType ();
 
 /**
  * 
@@ -51,6 +52,7 @@ void setInheritancePrecursor(var BmmParameterType);
  * type_signature (): String
  * 
 */
+String typeSignature ();
 
 /**
  * 
@@ -58,6 +60,7 @@ void setInheritancePrecursor(var BmmParameterType);
  * is_primitive (): Boolean
  * 
 */
+Boolean isPrimitive ();
 
 /**
  * 
@@ -65,6 +68,7 @@ void setInheritancePrecursor(var BmmParameterType);
  * is_abstract (): Boolean
  * 
 */
+Boolean isAbstract ();
 
 /**
  * 
@@ -72,6 +76,7 @@ void setInheritancePrecursor(var BmmParameterType);
  * type_name (): String
  * 
 */
+String typeName ();
 
 /**
  * 
@@ -79,6 +84,7 @@ void setInheritancePrecursor(var BmmParameterType);
  * flattened_type_list (): List<String>
  * 
 */
+List<string> flattenedTypeList ();
 
 /**
  * 
@@ -86,5 +92,6 @@ void setInheritancePrecursor(var BmmParameterType);
  * effective_type (): BMM_EFFECTIVE_TYPE
  * 
 */
+BmmEffectiveType effectiveType ();
 
 }

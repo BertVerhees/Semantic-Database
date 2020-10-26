@@ -17,7 +17,7 @@ public interface BmmGenericType extends BmmModelType {
  * 
 */
 List<bmmUnitaryType> getGenericParameters();
-void setGenericParameters(var List<bmmUnitaryType>);
+void setGenericParameters(value List<bmmUnitaryType>);
 
 /**
  * 
@@ -25,7 +25,7 @@ void setGenericParameters(var List<bmmUnitaryType>);
  * 
 */
 BmmGenericClass getBaseClass();
-void setBaseClass(var BmmGenericClass);
+void setBaseClass(value BmmGenericClass);
 
 /* * FUNCTION * */
 
@@ -36,6 +36,7 @@ void setBaseClass(var BmmGenericClass);
  * type_name (): String
  * 
 */
+String typeName ();
 
 /**
  * 
@@ -44,6 +45,7 @@ void setBaseClass(var BmmGenericClass);
  * type_signature (): String
  * 
 */
+String typeSignature ();
 
 /**
  * 
@@ -51,6 +53,7 @@ void setBaseClass(var BmmGenericClass);
  * is_abstract (): Boolean
  * 
 */
+Boolean isAbstract ();
 
 /**
  * 
@@ -58,6 +61,7 @@ void setBaseClass(var BmmGenericClass);
  * flattened_type_list (): List<String>
  * 
 */
+List<string> flattenedTypeList ();
 
 /**
  * 
@@ -65,6 +69,7 @@ void setBaseClass(var BmmGenericClass);
  * is_partially_closed (): Boolean
  * 
 */
+Boolean isPartiallyClosed ();
 
 /**
  * 
@@ -72,6 +77,7 @@ void setBaseClass(var BmmGenericClass);
  * effective_base_class (): BMM_GENERIC_CLASS
  * 
 */
+BmmGenericClass effectiveBaseClass ();
 
 /**
  * 
@@ -79,5 +85,6 @@ void setBaseClass(var BmmGenericClass);
  * is_open (): Boolean
  * 
 */
+Boolean isOpen ();
 
 }

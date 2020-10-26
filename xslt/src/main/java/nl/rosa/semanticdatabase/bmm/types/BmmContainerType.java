@@ -16,7 +16,7 @@ public interface BmmContainerType extends BmmType {
  * 
 */
 BmmGenericClass getContainerClass();
-void setContainerClass(var BmmGenericClass);
+void setContainerClass(value BmmGenericClass);
 
 /**
  * 
@@ -24,7 +24,7 @@ void setContainerClass(var BmmGenericClass);
  * 
 */
 BmmUnitaryType getItemType();
-void setItemType(var BmmUnitaryType);
+void setItemType(value BmmUnitaryType);
 
 /**
  * 
@@ -34,7 +34,7 @@ void setItemType(var BmmUnitaryType);
  * 
 */
 Boolean {default = true} getIsOrdered();
-void setIsOrdered(var Boolean {default = true});
+void setIsOrdered(value Boolean {default = true});
 
 /**
  * 
@@ -43,7 +43,7 @@ void setIsOrdered(var Boolean {default = true});
  * 
 */
 Boolean {default = false} getIsUnique();
-void setIsUnique(var Boolean {default = false});
+void setIsUnique(value Boolean {default = false});
 
 /* * FUNCTION * */
 
@@ -54,6 +54,7 @@ void setIsUnique(var Boolean {default = false});
  * type_name (): String
  * 
 */
+String typeName ();
 
 /**
  * 
@@ -61,6 +62,7 @@ void setIsUnique(var Boolean {default = false});
  * is_abstract (): Boolean Post_is_abstract: Result = container_type.is_abstract
  * 
 */
+Boolean postIsAbstract: result = containerType.isAbstract isAbstract ();
 
 /**
  * 
@@ -69,6 +71,7 @@ void setIsUnique(var Boolean {default = false});
  * flattened_type_list (): List<String> Post_result: Result = item_type.flattened_type_list
  * 
 */
+List<string> postResult: result = itemType.flattenedTypeList flattenedTypeList ();
 
 /**
  * 
@@ -76,6 +79,7 @@ void setIsUnique(var Boolean {default = false});
  * unitary_type (): BMM_UNITARY_TYPE
  * 
 */
+BmmUnitaryType unitaryType ();
 
 /**
  * 
@@ -83,6 +87,7 @@ void setIsUnique(var Boolean {default = false});
  * is_primitive (): Boolean Post_result: Result = item_type.is_primitive
  * 
 */
+Boolean postResult: result = itemType.isPrimitive isPrimitive ();
 
 /**
  * 
@@ -90,5 +95,6 @@ void setIsUnique(var Boolean {default = false});
  * effective_type (): BMM_EFFECTIVE_TYPE
  * 
 */
+BmmEffectiveType effectiveType ();
 
 }

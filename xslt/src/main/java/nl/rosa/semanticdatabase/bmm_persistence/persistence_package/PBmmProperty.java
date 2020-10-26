@@ -16,7 +16,7 @@ public interface PBmmProperty extends PBmmModelElement {
  * 
 */
 String getName();
-void setName(var String);
+void setName(value String);
 
 /**
  * 
@@ -25,7 +25,7 @@ void setName(var String);
  * 
 */
 Boolean getIsMandatory();
-void setIsMandatory(var Boolean);
+void setIsMandatory(value Boolean);
 
 /**
  * 
@@ -34,7 +34,7 @@ void setIsMandatory(var Boolean);
  * 
 */
 Boolean getIsComputed();
-void setIsComputed(var Boolean);
+void setIsComputed(value Boolean);
 
 /**
  * 
@@ -43,7 +43,7 @@ void setIsComputed(var Boolean);
  * 
 */
 Boolean getIsImInfrastructure();
-void setIsImInfrastructure(var Boolean);
+void setIsImInfrastructure(value Boolean);
 
 /**
  * 
@@ -52,7 +52,7 @@ void setIsImInfrastructure(var Boolean);
  * 
 */
 Boolean getIsImRuntime();
-void setIsImRuntime(var Boolean);
+void setIsImRuntime(value Boolean);
 
 /**
  * 
@@ -61,7 +61,7 @@ void setIsImRuntime(var Boolean);
  * 
 */
 PBmmType getTypeDef();
-void setTypeDef(var PBmmType);
+void setTypeDef(value PBmmType);
 
 /**
  * 
@@ -69,7 +69,7 @@ void setTypeDef(var PBmmType);
  * 
 */
 BmmProperty getBmmProperty();
-void setBmmProperty(var BmmProperty);
+void setBmmProperty(value BmmProperty);
 
 /* * FUNCTION * */
 
@@ -79,5 +79,6 @@ void setBmmProperty(var BmmProperty);
  * create_bmm_property ( a_bmm_schema: BMM_MODEL[1], a_class_def: BMM_CLASS[1] )
  * 
 */
+void createBmmProperty ( aBmmSchema: bmmModel[1], aClassDef: bmmClass[1] );
 
 }

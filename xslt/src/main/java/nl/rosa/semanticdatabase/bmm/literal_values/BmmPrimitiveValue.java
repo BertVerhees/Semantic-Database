@@ -15,7 +15,7 @@ public interface BmmPrimitiveValue extends BmmUnitaryValue {
  * 
 */
 BmmSimpleType getType();
-void setType(var BmmSimpleType);
+void setType(value BmmSimpleType);
 
 /* * FUNCTION * */
 

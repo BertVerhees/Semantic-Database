@@ -17,6 +17,7 @@ public interface BmmEffectiveType extends BmmUnitaryType {
  * effective_type (): BMM_EFFECTIVE_TYPE
  * 
 */
+BmmEffectiveType effectiveType ();
 
 /**
  * 
@@ -25,5 +26,6 @@ public interface BmmEffectiveType extends BmmUnitaryType {
  * type_base_name (): String
  * 
 */
+String typeBaseName ();
 
 }

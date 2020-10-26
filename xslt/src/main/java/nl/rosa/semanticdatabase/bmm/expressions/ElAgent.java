@@ -18,7 +18,7 @@ public interface ElAgent extends ElScopedRef {
  * 
 */
 String getName();
-void setName(var String);
+void setName(value String);
 
 /**
  * 
@@ -26,7 +26,7 @@ void setName(var String);
  * 
 */
 ElTuple getClosedArgs();
-void setClosedArgs(var ElTuple);
+void setClosedArgs(value ElTuple);
 
 /**
  * 
@@ -35,7 +35,7 @@ void setClosedArgs(var ElTuple);
  * 
 */
 List<string> getOpenArgs();
-void setOpenArgs(var List<string>);
+void setOpenArgs(value List<string>);
 
 /**
  * 
@@ -43,7 +43,7 @@ void setOpenArgs(var List<string>);
  * 
 */
 BmmRoutine getDefinition();
-void setDefinition(var BmmRoutine);
+void setDefinition(value BmmRoutine);
 
 /* * FUNCTION * */
 
@@ -53,6 +53,7 @@ void setDefinition(var BmmRoutine);
  * eval_type (): BMM_SIGNATURE Post_result: Result = definition.signature
  * 
 */
+BmmSignature postResult: result = definition.signature evalType ();
 
 /**
  * 
@@ -60,5 +61,6 @@ void setDefinition(var BmmRoutine);
  * is_callable (): Boolean Post_result_validity: Result = open_arguments = Void
  * 
 */
+Boolean postResultValidity: result = openArguments = void isCallable ();
 
 }

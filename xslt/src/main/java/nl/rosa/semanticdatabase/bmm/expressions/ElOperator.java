@@ -16,7 +16,7 @@ public interface ElOperator extends ElSimple {
  * 
 */
 Boolean getPrecedenceOverridden();
-void setPrecedenceOverridden(var Boolean);
+void setPrecedenceOverridden(value Boolean);
 
 /**
  * 
@@ -25,7 +25,7 @@ void setPrecedenceOverridden(var Boolean);
  * 
 */
 String getSymbol();
-void setSymbol(var String);
+void setSymbol(value String);
 
 /**
  * 
@@ -33,7 +33,7 @@ void setSymbol(var String);
  * 
 */
 BmmFunction getDefinition();
-void setDefinition(var BmmFunction);
+void setDefinition(value BmmFunction);
 
 /* * FUNCTION * */
 
@@ -43,6 +43,7 @@ void setDefinition(var BmmFunction);
  * operator_definition (): BMM_OPERATOR
  * 
 */
+BmmOperator operatorDefinition ();
 
 /**
  * 
@@ -50,5 +51,6 @@ void setDefinition(var BmmFunction);
  * equivalent_call (): EL_FUNCTION_CALL
  * 
 */
+ElFunctionCall equivalentCall ();
 
 }

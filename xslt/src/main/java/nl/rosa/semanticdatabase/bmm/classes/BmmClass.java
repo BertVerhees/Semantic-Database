@@ -20,7 +20,7 @@ public interface BmmClass extends BmmModule {
  * 
 */
 Hash<string,bmmModelType> getAncestors();
-void setAncestors(var Hash<string,bmmModelType>);
+void setAncestors(value Hash<string,bmmModelType>);
 
 /**
  * 
@@ -28,7 +28,7 @@ void setAncestors(var Hash<string,bmmModelType>);
  * 
 */
 BmmPackage getPackage();
-void setPackage(var BmmPackage);
+void setPackage(value BmmPackage);
 
 /**
  * 
@@ -36,7 +36,7 @@ void setPackage(var BmmPackage);
  * 
 */
 Hash<string,bmmProperty> getProperties();
-void setProperties(var Hash<string,bmmProperty>);
+void setProperties(value Hash<string,bmmProperty>);
 
 /**
  * 
@@ -45,7 +45,7 @@ void setProperties(var Hash<string,bmmProperty>);
  * 
 */
 String getSourceSchemaId();
-void setSourceSchemaId(var String);
+void setSourceSchemaId(value String);
 
 /**
  * 
@@ -53,7 +53,7 @@ void setSourceSchemaId(var String);
  * 
 */
 List<bmmClass> getImmediateDescendants();
-void setImmediateDescendants(var List<bmmClass>);
+void setImmediateDescendants(value List<bmmClass>);
 
 /**
  * 
@@ -61,7 +61,7 @@ void setImmediateDescendants(var List<bmmClass>);
  * 
 */
 Boolean getIsOverride();
-void setIsOverride(var Boolean);
+void setIsOverride(value Boolean);
 
 /**
  * 
@@ -69,7 +69,7 @@ void setIsOverride(var Boolean);
  * 
 */
 Hash<string,bmmConstant> getConstants();
-void setConstants(var Hash<string,bmmConstant>);
+void setConstants(value Hash<string,bmmConstant>);
 
 /**
  * 
@@ -77,7 +77,7 @@ void setConstants(var Hash<string,bmmConstant>);
  * 
 */
 Hash<string,bmmFunction> getFunctions();
-void setFunctions(var Hash<string,bmmFunction>);
+void setFunctions(value Hash<string,bmmFunction>);
 
 /**
  * 
@@ -85,7 +85,7 @@ void setFunctions(var Hash<string,bmmFunction>);
  * 
 */
 Hash<string,bmmProcedure> getProcedures();
-void setProcedures(var Hash<string,bmmProcedure>);
+void setProcedures(value Hash<string,bmmProcedure>);
 
 /**
  * 
@@ -94,7 +94,7 @@ void setProcedures(var Hash<string,bmmProcedure>);
  * 
 */
 Boolean {default = false} getIsPrimitive();
-void setIsPrimitive(var Boolean {default = false});
+void setIsPrimitive(value Boolean {default = false});
 
 /**
  * 
@@ -103,7 +103,7 @@ void setIsPrimitive(var Boolean {default = false});
  * 
 */
 Boolean {default = false} getIsAbstract();
-void setIsAbstract(var Boolean {default = false});
+void setIsAbstract(value Boolean {default = false});
 
 /**
  * 
@@ -111,7 +111,7 @@ void setIsAbstract(var Boolean {default = false});
  * 
 */
 List<bmmAssertion> getInvariants();
-void setInvariants(var List<bmmAssertion>);
+void setInvariants(value List<bmmAssertion>);
 
 /**
  * 
@@ -119,7 +119,7 @@ void setInvariants(var List<bmmAssertion>);
  * 
 */
 Hash<string,bmmProcedure> getCreators();
-void setCreators(var Hash<string,bmmProcedure>);
+void setCreators(value Hash<string,bmmProcedure>);
 
 /**
  * 
@@ -127,7 +127,7 @@ void setCreators(var Hash<string,bmmProcedure>);
  * 
 */
 Hash<string,bmmProcedure> getConverters();
-void setConverters(var Hash<string,bmmProcedure>);
+void setConverters(value Hash<string,bmmProcedure>);
 
 /**
  * 
@@ -135,7 +135,7 @@ void setConverters(var Hash<string,bmmProcedure>);
  * 
 */
 List<bmmFeatureGroup> getFeatureGroups();
-void setFeatureGroups(var List<bmmFeatureGroup>);
+void setFeatureGroups(value List<bmmFeatureGroup>);
 
 /* * FUNCTION * */
 
@@ -145,6 +145,7 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * type (): BMM_MODEL_TYPE
  * 
 */
+BmmModelType type ();
 
 /**
  * 
@@ -152,6 +153,7 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * all_ancestors (): List<String>
  * 
 */
+List<string> allAncestors ();
 
 /**
  * 
@@ -159,6 +161,7 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * all_descendants (): List<String>
  * 
 */
+List<string> allDescendants ();
 
 /**
  * 
@@ -168,6 +171,7 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * suppliers (): List<String>
  * 
 */
+List<string> suppliers ();
 
 /**
  * 
@@ -175,6 +179,7 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * suppliers_non_primitive (): List<String>
  * 
 */
+List<string> suppliersNonPrimitive ();
 
 /**
  * 
@@ -183,6 +188,7 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * supplier_closure (): List<String>
  * 
 */
+List<string> supplierClosure ();
 
 /**
  * 
@@ -190,6 +196,7 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * package_path (): String
  * 
 */
+String packagePath ();
 
 /**
  * 
@@ -197,6 +204,7 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * class_path (): String
  * 
 */
+String classPath ();
 
 /**
  * 
@@ -205,6 +213,7 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * is_primitive (): Boolean
  * 
 */
+Boolean isPrimitive ();
 
 /**
  * 
@@ -213,6 +222,7 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * is_abstract (): Boolean
  * 
 */
+Boolean isAbstract ();
 
 /**
  * 
@@ -220,6 +230,7 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * features (): List<BMM_CLASS_FEATURE>
  * 
 */
+List<bmmClassFeature> features ();
 
 /**
  * 
@@ -227,6 +238,7 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * flat_features (): List<BMM_CLASS_FEATURE>
  * 
 */
+List<bmmClassFeature> flatFeatures ();
 
 /**
  * 
@@ -234,5 +246,6 @@ void setFeatureGroups(var List<bmmFeatureGroup>);
  * flat_properties (): List<BMM_PROPERTY>
  * 
 */
+List<bmmProperty> flatProperties ();
 
 }

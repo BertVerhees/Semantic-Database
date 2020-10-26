@@ -16,7 +16,7 @@ public interface ElFunctionAgent extends ElAgent {
  * 
 */
 BmmFunction getDefinition();
-void setDefinition(var BmmFunction);
+void setDefinition(value BmmFunction);
 
 /* * FUNCTION * */
 

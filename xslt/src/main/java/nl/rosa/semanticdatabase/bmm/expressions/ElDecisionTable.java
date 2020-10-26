@@ -15,7 +15,7 @@ public interface ElDecisionTable extends ElExpression {
  * 
 */
 ElExpression getElse();
-void setElse(var ElExpression);
+void setElse(value ElExpression);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setElse(var ElExpression);
  * 
 */
 List<elDecisionBranch> getItems();
-void setItems(var List<elDecisionBranch>);
+void setItems(value List<elDecisionBranch>);
 
 /* * FUNCTION * */
 

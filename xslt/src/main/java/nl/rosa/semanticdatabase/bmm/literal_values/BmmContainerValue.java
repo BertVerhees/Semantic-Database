@@ -16,7 +16,7 @@ public interface BmmContainerValue extends BmmLiteralValue {
  * 
 */
 BmmContainerType getType();
-void setType(var BmmContainerType);
+void setType(value BmmContainerType);
 
 /* * FUNCTION * */
 

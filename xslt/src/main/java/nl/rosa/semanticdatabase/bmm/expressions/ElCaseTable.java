@@ -18,7 +18,7 @@ public interface ElCaseTable extends ElDecisionTable {
  * 
 */
 ElSimple getInput();
-void setInput(var ElSimple);
+void setInput(value ElSimple);
 
 /**
  * 
@@ -26,7 +26,7 @@ void setInput(var ElSimple);
  * 
 */
 List<elCase> getItems();
-void setItems(var List<elCase>);
+void setItems(value List<elCase>);
 
 /* * FUNCTION * */
 

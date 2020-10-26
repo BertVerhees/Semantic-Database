@@ -17,7 +17,7 @@ public interface PBmmContainerType extends PBmmType {
  * 
 */
 String getContainerType();
-void setContainerType(var String);
+void setContainerType(value String);
 
 /**
  * 
@@ -26,7 +26,7 @@ void setContainerType(var String);
  * 
 */
 PBmmBaseType getTypeDef();
-void setTypeDef(var PBmmBaseType);
+void setTypeDef(value PBmmBaseType);
 
 /**
  * 
@@ -35,7 +35,7 @@ void setTypeDef(var PBmmBaseType);
  * 
 */
 String getType();
-void setType(var String);
+void setType(value String);
 
 /**
  * 
@@ -43,7 +43,7 @@ void setType(var String);
  * 
 */
 BmmContainerType getBmmType();
-void setBmmType(var BmmContainerType);
+void setBmmType(value BmmContainerType);
 
 /* * FUNCTION * */
 
@@ -54,5 +54,6 @@ void setBmmType(var BmmContainerType);
  * type_ref (): P_BMM_BASE_TYPE
  * 
 */
+PBmmBaseType typeRef ();
 
 }

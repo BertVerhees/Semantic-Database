@@ -16,7 +16,7 @@ public interface BmmEnumerationInteger extends BmmEnumeration {
  * 
 */
 List<bmmIntegerValue> getItemValues();
-void setItemValues(var List<bmmIntegerValue>);
+void setItemValues(value List<bmmIntegerValue>);
 
 /* * FUNCTION * */
 

@@ -15,7 +15,7 @@ public interface BmmVariable extends BmmInstantiable,BmmClassEntity {
  * 
 */
 BmmRoutine getScope();
-void setScope(var BmmRoutine);
+void setScope(value BmmRoutine);
 
 /* * FUNCTION * */
 
@@ -25,5 +25,6 @@ void setScope(var BmmRoutine);
  * signature ()
  * 
 */
+void signature ();
 
 }

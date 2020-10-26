@@ -15,7 +15,7 @@ public interface BmmConditionalAction {
  * 
 */
 ElBooleanExpression getCondition();
-void setCondition(var ElBooleanExpression);
+void setCondition(value ElBooleanExpression);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setCondition(var ElBooleanExpression);
  * 
 */
 BmmStatementItem getStatement();
-void setStatement(var BmmStatementItem);
+void setStatement(value BmmStatementItem);
 
 /* * FUNCTION * */
 

@@ -16,7 +16,7 @@ public interface ElInstantiableRef<t> extends ElScopedRef {
  * 
 */
 T getDefinition();
-void setDefinition(var T);
+void setDefinition(value T);
 
 /* * FUNCTION * */
 
@@ -28,5 +28,6 @@ void setDefinition(var T);
  * eval_type (): BMM_TYPE
  * 
 */
+BmmType evalType ();
 
 }

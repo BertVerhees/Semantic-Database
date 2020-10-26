@@ -15,7 +15,7 @@ public interface ElPredicate extends ElTerminal {
  * 
 */
 ElInstanceRef getOperand();
-void setOperand(var ElInstanceRef);
+void setOperand(value ElInstanceRef);
 
 /* * FUNCTION * */
 
@@ -25,5 +25,6 @@ void setOperand(var ElInstanceRef);
  * eval_type (): BMM_SIMPLE_TYPE
  * 
 */
+BmmSimpleType evalType ();
 
 }

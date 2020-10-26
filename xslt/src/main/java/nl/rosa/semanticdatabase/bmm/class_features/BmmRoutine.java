@@ -15,7 +15,7 @@ public interface BmmRoutine extends BmmClassFeature {
  * 
 */
 List<bmmParameter> getParameters();
-void setParameters(var List<bmmParameter>);
+void setParameters(value List<bmmParameter>);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setParameters(var List<bmmParameter>);
  * 
 */
 List<bmmLocal> getLocals();
-void setLocals(var List<bmmLocal>);
+void setLocals(value List<bmmLocal>);
 
 /**
  * 
@@ -31,7 +31,7 @@ void setLocals(var List<bmmLocal>);
  * 
 */
 List<bmmAssertion> getPreConditions();
-void setPreConditions(var List<bmmAssertion>);
+void setPreConditions(value List<bmmAssertion>);
 
 /**
  * 
@@ -39,7 +39,7 @@ void setPreConditions(var List<bmmAssertion>);
  * 
 */
 List<bmmAssertion> getPostConditions();
-void setPostConditions(var List<bmmAssertion>);
+void setPostConditions(value List<bmmAssertion>);
 
 /**
  * 
@@ -48,7 +48,7 @@ void setPostConditions(var List<bmmAssertion>);
  * 
 */
 BmmRoutineBody getBody();
-void setBody(var BmmRoutineBody);
+void setBody(value BmmRoutineBody);
 
 /* * FUNCTION * */
 
@@ -58,6 +58,7 @@ void setBody(var BmmRoutineBody);
  * arity (): Integer
  * 
 */
+Integer arity ();
 
 /**
  * 
@@ -65,5 +66,6 @@ void setBody(var BmmRoutineBody);
  * signature ()
  * 
 */
+void signature ();
 
 }

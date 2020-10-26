@@ -18,6 +18,7 @@ public interface ElExpression {
  * eval_type (): BMM_TYPE
  * 
 */
+BmmType evalType ();
 
 /**
  * 
@@ -26,5 +27,6 @@ public interface ElExpression {
  * is_boolean (): Boolean Post_result: Result = eval_type().equal( {BMM_MODEL}.boolean_type_definition())
  * 
 */
+Boolean postResult: result = evalType().equal( {bmmModel}.booleanTypeDefinition()) isBoolean ();
 
 }

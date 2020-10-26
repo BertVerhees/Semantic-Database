@@ -15,7 +15,7 @@ public interface PBmmEnumerationString extends PBmmEnumeration {
  * 
 */
 BmmEnumerationString getBmmClass();
-void setBmmClass(var BmmEnumerationString);
+void setBmmClass(value BmmEnumerationString);
 
 /* * FUNCTION * */
 

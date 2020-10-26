@@ -16,7 +16,7 @@ public interface PBmmSchema extends PBmmPackageContainer,BmmSchema {
  * 
 */
 List<pBmmClass> getPrimitiveTypes();
-void setPrimitiveTypes(var List<pBmmClass>);
+void setPrimitiveTypes(value List<pBmmClass>);
 
 /**
  * 
@@ -25,7 +25,7 @@ void setPrimitiveTypes(var List<pBmmClass>);
  * 
 */
 List<pBmmClass> getClassDefinitions();
-void setClassDefinitions(var List<pBmmClass>);
+void setClassDefinitions(value List<pBmmClass>);
 
 /**
  * 
@@ -33,7 +33,7 @@ void setClassDefinitions(var List<pBmmClass>);
  * 
 */
 State = stateCreated postState getValidateCreated preState();
-void setValidateCreated preState(var State = stateCreated postState);
+void setValidateCreated preState(value State = stateCreated postState);
 
 /**
  * 
@@ -41,7 +41,7 @@ void setValidateCreated preState(var State = stateCreated postState);
  * 
 */
 State = stateValidatedCreated postState getLoadFinalise preState();
-void setLoadFinalise preState(var State = stateValidatedCreated postState);
+void setLoadFinalise preState(value State = stateValidatedCreated postState);
 
 /**
  * 
@@ -49,7 +49,7 @@ void setLoadFinalise preState(var State = stateValidatedCreated postState);
  * 
 */
 State = pBmmPackageState.stateIncludesProcessed getCreateBmmModel preState();
-void setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProcessed);
+void setCreateBmmModel preState(value State = pBmmPackageState.stateIncludesProcessed);
 
 /* * FUNCTION * */
 
@@ -59,6 +59,7 @@ void setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProces
  * merge ( other: P_BMM_SCHEMA[1] ) Pre_state: state = State_includes_pending Pre_other_valid: includes_to_process.has (included_schema.schema_id)
  * 
 */
+void merge ( other: pBmmSchema[1] ) preState: state = stateIncludesPending preOtherValid: includesToProcess.has (includedSchema.schemaId);
 
 /**
  * 
@@ -66,6 +67,7 @@ void setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProces
  * validate
  * 
 */
+void validate();
 
 /**
  * 
@@ -73,5 +75,6 @@ void setCreateBmmModel preState(var State = pBmmPackageState.stateIncludesProces
  * canonical_packages (): P_BMM_PACKAGE
  * 
 */
+PBmmPackage canonicalPackages ();
 
 }

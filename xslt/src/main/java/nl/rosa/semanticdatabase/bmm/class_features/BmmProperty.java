@@ -16,7 +16,7 @@ public interface BmmProperty extends BmmInstantiable,BmmClassFeature {
  * 
 */
 Boolean {default = false} getIsImRuntime();
-void setIsImRuntime(var Boolean {default = false});
+void setIsImRuntime(value Boolean {default = false});
 
 /**
  * 
@@ -24,7 +24,7 @@ void setIsImRuntime(var Boolean {default = false});
  * 
 */
 Boolean {default = false} getIsImInfrastructure();
-void setIsImInfrastructure(var Boolean {default = false});
+void setIsImInfrastructure(value Boolean {default = false});
 
 /**
  * 
@@ -33,7 +33,7 @@ void setIsImInfrastructure(var Boolean {default = false});
  * 
 */
 Boolean {default = false} getIsComposition();
-void setIsComposition(var Boolean {default = false});
+void setIsComposition(value Boolean {default = false});
 
 /* * FUNCTION * */
 
@@ -43,6 +43,7 @@ void setIsComposition(var Boolean {default = false});
  * existence (): Multiplicity_interval
  * 
 */
+MultiplicityInterval existence ();
 
 /**
  * 
@@ -50,5 +51,6 @@ void setIsComposition(var Boolean {default = false});
  * display_name (): String
  * 
 */
+String displayName ();
 
 }

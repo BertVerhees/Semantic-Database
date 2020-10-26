@@ -16,7 +16,7 @@ public interface PBmmGenericType extends PBmmBaseType {
  * 
 */
 String getRootType();
-void setRootType(var String);
+void setRootType(value String);
 
 /**
  * 
@@ -26,7 +26,7 @@ void setRootType(var String);
  * 
 */
 List<pBmmType> getGenericParameterDefs();
-void setGenericParameterDefs(var List<pBmmType>);
+void setGenericParameterDefs(value List<pBmmType>);
 
 /**
  * 
@@ -36,7 +36,7 @@ void setGenericParameterDefs(var List<pBmmType>);
  * 
 */
 List<string> getGenericParameters();
-void setGenericParameters(var List<string>);
+void setGenericParameters(value List<string>);
 
 /**
  * 
@@ -44,7 +44,7 @@ void setGenericParameters(var List<string>);
  * 
 */
 BmmGenericType getBmmType();
-void setBmmType(var BmmGenericType);
+void setBmmType(value BmmGenericType);
 
 /* * FUNCTION * */
 
@@ -55,5 +55,6 @@ void setBmmType(var BmmGenericType);
  * generic_parameter_refs (): List<P_BMM_TYPE>
  * 
 */
+List<pBmmType> genericParameterRefs ();
 
 }

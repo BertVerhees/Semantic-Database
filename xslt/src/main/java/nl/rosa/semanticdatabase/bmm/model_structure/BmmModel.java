@@ -15,7 +15,7 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * 
 */
 Hash<string,bmmClass> getClassDefinitions();
-void setClassDefinitions(var Hash<string,bmmClass>);
+void setClassDefinitions(value Hash<string,bmmClass>);
 
 /**
  * 
@@ -25,7 +25,7 @@ void setClassDefinitions(var Hash<string,bmmClass>);
  * 
 */
 List<bmmModel> getUsedModels();
-void setUsedModels(var List<bmmModel>);
+void setUsedModels(value List<bmmModel>);
 
 /* * FUNCTION * */
 
@@ -36,6 +36,7 @@ void setUsedModels(var List<bmmModel>);
  * model_id (): String
  * 
 */
+String modelId ();
 
 /**
  * 
@@ -43,6 +44,7 @@ void setUsedModels(var List<bmmModel>);
  * class_definition ( a_name: String[1] ): BMM_CLASS
  * 
 */
+BmmClass classDefinition ( aName: string[1]);
 
 /**
  * 
@@ -52,6 +54,7 @@ void setUsedModels(var List<bmmModel>);
  * type_definition (): BMM_CLASS
  * 
 */
+BmmClass typeDefinition ();
 
 /**
  * 
@@ -59,6 +62,7 @@ void setUsedModels(var List<bmmModel>);
  * has_class_definition ( a_class_name: String[1] ): Boolean
  * 
 */
+Boolean hasClassDefinition ( aClassName: string[1]);
 
 /**
  * 
@@ -66,6 +70,7 @@ void setUsedModels(var List<bmmModel>);
  * has_type_definition ( a_type_name: String[1] ): Boolean
  * 
 */
+Boolean hasTypeDefinition ( aTypeName: string[1]);
 
 /**
  * 
@@ -73,6 +78,7 @@ void setUsedModels(var List<bmmModel>);
  * enumeration_definition ( a_name: String[1] ): BMM_ENUMERATION
  * 
 */
+BmmEnumeration enumerationDefinition ( aName: string[1]);
 
 /**
  * 
@@ -80,6 +86,7 @@ void setUsedModels(var List<bmmModel>);
  * primitive_types (): List<String>
  * 
 */
+List<string> primitiveTypes ();
 
 /**
  * 
@@ -87,6 +94,7 @@ void setUsedModels(var List<bmmModel>);
  * enumeration_types (): List<String>
  * 
 */
+List<string> enumerationTypes ();
 
 /**
  * 
@@ -94,6 +102,7 @@ void setUsedModels(var List<bmmModel>);
  * property_definition (): BMM_PROPERTY
  * 
 */
+BmmProperty propertyDefinition ();
 
 /**
  * 
@@ -103,6 +112,7 @@ void setUsedModels(var List<bmmModel>);
  * ms_conformant_property_type ( a_bmm_type_name: String[1], a_bmm_property_name: String[1], a_ms_property_name: String[1] ): Boolean
  * 
 */
+Boolean msConformantPropertyType ( aBmmTypeName: string[1], aBmmPropertyName: string[1], aMsPropertyName: string[1]);
 
 /**
  * 
@@ -110,6 +120,7 @@ void setUsedModels(var List<bmmModel>);
  * property_definition_at_path (): BMM_PROPERTY
  * 
 */
+BmmProperty propertyDefinitionAtPath ();
 
 /**
  * 
@@ -117,6 +128,7 @@ void setUsedModels(var List<bmmModel>);
  * class_definition_at_path ( a_type_name: String[1], a_prop_path: String[1] ): BMM_CLASS
  * 
 */
+BmmClass classDefinitionAtPath ( aTypeName: string[1], aPropPath: string[1]);
 
 /**
  * 
@@ -126,6 +138,7 @@ void setUsedModels(var List<bmmModel>);
  * all_ancestor_classes ( a_class: String[1] ): List<String>
  * 
 */
+List<string> allAncestorClasses ( aClass: string[1]);
 
 /**
  * 
@@ -133,6 +146,7 @@ void setUsedModels(var List<bmmModel>);
  * is_descendant_of ( a_class_name: String[1], a_parent_class_name: String[1] ): Boolean
  * 
 */
+Boolean isDescendantOf ( aClassName: string[1], aParentClassName: string[1]);
 
 /**
  * 
@@ -142,6 +156,7 @@ void setUsedModels(var List<bmmModel>);
  * type_conforms_to ( a_desc_type: String[1], an_anc_type: String[1] ): Boolean
  * 
 */
+Boolean typeConformsTo ( aDescType: string[1], anAncType: string[1]);
 
 /**
  * 
@@ -151,6 +166,7 @@ void setUsedModels(var List<bmmModel>);
  * subtypes ( a_type: String[1] ): List<String>
  * 
 */
+List<string> subtypes ( aType: string[1]);
 
 /**
  * 
@@ -159,6 +175,7 @@ void setUsedModels(var List<bmmModel>);
  * any_class_definition (): BMM_SIMPLE_CLASS
  * 
 */
+BmmSimpleClass anyClassDefinition ();
 
 /**
  * 
@@ -166,6 +183,7 @@ void setUsedModels(var List<bmmModel>);
  * any_type_definition (): BMM_SIMPLE_TYPE
  * 
 */
+BmmSimpleType anyTypeDefinition ();
 
 /**
  * 
@@ -173,5 +191,6 @@ void setUsedModels(var List<bmmModel>);
  * boolean_type_definition (): BMM_SIMPLE_TYPE
  * 
 */
+BmmSimpleType booleanTypeDefinition ();
 
 }

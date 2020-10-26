@@ -16,7 +16,7 @@ public interface BmmGenericClass extends BmmClass {
  * 
 */
 Hash<string,bmmParameterType> getGenericParameters();
-void setGenericParameters(var Hash<string,bmmParameterType>);
+void setGenericParameters(value Hash<string,bmmParameterType>);
 
 /* * FUNCTION * */
 
@@ -26,6 +26,7 @@ void setGenericParameters(var Hash<string,bmmParameterType>);
  * suppliers (): List<String>
  * 
 */
+List<string> suppliers ();
 
 /**
  * 
@@ -33,6 +34,7 @@ void setGenericParameters(var Hash<string,bmmParameterType>);
  * type (): BMM_GENERIC_TYPE
  * 
 */
+BmmGenericType type ();
 
 /**
  * 
@@ -42,5 +44,6 @@ void setGenericParameters(var Hash<string,bmmParameterType>);
  * generic_parameter_conformance_type ( a_name: String[1] ): String
  * 
 */
+String genericParameterConformanceType ( aName: string[1]);
 
 }

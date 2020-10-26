@@ -15,7 +15,7 @@ public interface BmmModelType extends BmmEffectiveType {
  * 
 */
 BmmValueSetSpec getValueConstraint();
-void setValueConstraint(var BmmValueSetSpec);
+void setValueConstraint(value BmmValueSetSpec);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setValueConstraint(var BmmValueSetSpec);
  * 
 */
 BmmClass getBaseClass();
-void setBaseClass(var BmmClass);
+void setBaseClass(value BmmClass);
 
 /* * FUNCTION * */
 
@@ -33,6 +33,7 @@ void setBaseClass(var BmmClass);
  * type_base_name (): String
  * 
 */
+String typeBaseName ();
 
 /**
  * 
@@ -40,5 +41,6 @@ void setBaseClass(var BmmClass);
  * is_primitive (): Boolean
  * 
 */
+Boolean isPrimitive ();
 
 }

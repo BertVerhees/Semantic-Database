@@ -16,7 +16,7 @@ public interface BmmModule extends BmmDeclaration {
  * 
 */
 BmmModel getScope();
-void setScope(var BmmModel);
+void setScope(value BmmModel);
 
 /* * FUNCTION * */
 

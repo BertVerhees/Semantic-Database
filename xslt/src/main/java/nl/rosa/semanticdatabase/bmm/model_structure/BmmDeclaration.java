@@ -17,7 +17,7 @@ public interface BmmDeclaration {
  * 
 */
 String getName();
-void setName(var String);
+void setName(value String);
 
 /**
  * 
@@ -26,7 +26,7 @@ void setName(var String);
  * 
 */
 Hash<string, any> getDocumentation();
-void setDocumentation(var Hash<string, any>);
+void setDocumentation(value Hash<string, any>);
 
 /**
  * 
@@ -34,7 +34,7 @@ void setDocumentation(var Hash<string, any>);
  * 
 */
 BmmDeclaration getScope();
-void setScope(var BmmDeclaration);
+void setScope(value BmmDeclaration);
 
 /**
  * 
@@ -43,7 +43,7 @@ void setScope(var BmmDeclaration);
  * 
 */
 Hash<string, any> getExtensions();
-void setExtensions(var Hash<string, any>);
+void setExtensions(value Hash<string, any>);
 
 /* * FUNCTION * */
 
@@ -53,5 +53,6 @@ void setExtensions(var Hash<string, any>);
  * is_root_scope (): Boolean Post_result: Result = (scope = self)
  * 
 */
+Boolean postResult: result = (scope = self) isRootScope ();
 
 }

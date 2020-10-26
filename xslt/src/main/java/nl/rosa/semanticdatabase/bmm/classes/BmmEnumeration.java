@@ -19,7 +19,7 @@ public interface BmmEnumeration extends BmmSimpleClass {
  * 
 */
 List<string> getItemNames();
-void setItemNames(var List<string>);
+void setItemNames(value List<string>);
 
 /**
  * 
@@ -28,7 +28,7 @@ void setItemNames(var List<string>);
  * 
 */
 List<bmmPrimitiveValue> getItemValues();
-void setItemValues(var List<bmmPrimitiveValue>);
+void setItemValues(value List<bmmPrimitiveValue>);
 
 /* * FUNCTION * */
 
@@ -38,5 +38,6 @@ void setItemValues(var List<bmmPrimitiveValue>);
  * name_map (): Hash<String, String>
  * 
 */
+Hash<string, string> nameMap ();
 
 }

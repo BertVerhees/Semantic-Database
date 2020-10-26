@@ -15,7 +15,7 @@ public interface BmmModelMetadata {
  * 
 */
 String getRmPublisher();
-void setRmPublisher(var String);
+void setRmPublisher(value String);
 
 /**
  * 
@@ -24,7 +24,7 @@ void setRmPublisher(var String);
  * 
 */
 String getRmRelease();
-void setRmRelease(var String);
+void setRmRelease(value String);
 
 /* * FUNCTION * */
 

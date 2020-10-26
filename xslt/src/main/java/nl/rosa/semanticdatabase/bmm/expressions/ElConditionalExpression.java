@@ -16,7 +16,7 @@ public interface ElConditionalExpression extends ElDecisionBranch {
  * 
 */
 ElSimple getCondition();
-void setCondition(var ElSimple);
+void setCondition(value ElSimple);
 
 /* * FUNCTION * */
 

@@ -15,7 +15,7 @@ public interface ElBinaryOperator extends ElOperator {
  * 
 */
 ElSimple getLeftOperand();
-void setLeftOperand(var ElSimple);
+void setLeftOperand(value ElSimple);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setLeftOperand(var ElSimple);
  * 
 */
 ElTerminal getRightOperand();
-void setRightOperand(var ElTerminal);
+void setRightOperand(value ElTerminal);
 
 /* * FUNCTION * */
 

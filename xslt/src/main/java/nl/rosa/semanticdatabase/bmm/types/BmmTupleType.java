@@ -18,7 +18,7 @@ public interface BmmTupleType extends BmmEffectiveType {
  * 
 */
 String = "tuple" getBaseName();
-void setBaseName(var String = "tuple");
+void setBaseName(value String = "tuple");
 
 /**
  * 
@@ -26,7 +26,7 @@ void setBaseName(var String = "tuple");
  * 
 */
 Hash<string,bmmType> getItemTypes();
-void setItemTypes(var Hash<string,bmmType>);
+void setItemTypes(value Hash<string,bmmType>);
 
 /* * FUNCTION * */
 
@@ -36,6 +36,7 @@ void setItemTypes(var Hash<string,bmmType>);
  * type_base_name (): String Post_result: Result.is_equal (base_name())
  * 
 */
+String postResult: result.isEqual (baseName()) typeBaseName ();
 
 /**
  * 
@@ -43,6 +44,7 @@ void setItemTypes(var Hash<string,bmmType>);
  * is_primitive (): Boolean
  * 
 */
+Boolean isPrimitive ();
 
 /**
  * 
@@ -50,6 +52,7 @@ void setItemTypes(var Hash<string,bmmType>);
  * is_abstract (): Boolean
  * 
 */
+Boolean isAbstract ();
 
 /**
  * 
@@ -57,6 +60,7 @@ void setItemTypes(var Hash<string,bmmType>);
  * type_name (): String Post_result: Result.is_equal (base_name())
  * 
 */
+String postResult: result.isEqual (baseName()) typeName ();
 
 /**
  * 
@@ -65,5 +69,6 @@ void setItemTypes(var Hash<string,bmmType>);
  * flattened_type_list (): List<String>
  * 
 */
+List<string> flattenedTypeList ();
 
 }

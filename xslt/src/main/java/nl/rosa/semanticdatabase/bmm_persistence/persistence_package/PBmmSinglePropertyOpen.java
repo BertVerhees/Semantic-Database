@@ -15,7 +15,7 @@ public interface PBmmSinglePropertyOpen extends PBmmProperty {
  * 
 */
 PBmmOpenType getTypeRef();
-void setTypeRef(var PBmmOpenType);
+void setTypeRef(value PBmmOpenType);
 
 /**
  * 
@@ -26,7 +26,7 @@ void setTypeRef(var PBmmOpenType);
  * 
 */
 String getType();
-void setType(var String);
+void setType(value String);
 
 /**
  * 
@@ -34,7 +34,7 @@ void setType(var String);
  * 
 */
 BmmUnitaryProperty getBmmProperty();
-void setBmmProperty(var BmmUnitaryProperty);
+void setBmmProperty(value BmmUnitaryProperty);
 
 /* * FUNCTION * */
 
@@ -44,5 +44,6 @@ void setBmmProperty(var BmmUnitaryProperty);
  * type_def (): P_BMM_OPEN_TYPE
  * 
 */
+PBmmOpenType typeDef ();
 
 }

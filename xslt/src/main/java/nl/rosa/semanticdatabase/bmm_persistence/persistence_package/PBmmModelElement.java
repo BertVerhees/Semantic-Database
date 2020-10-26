@@ -15,7 +15,7 @@ public interface PBmmModelElement {
  * 
 */
 String getDocumentation();
-void setDocumentation(var String);
+void setDocumentation(value String);
 
 /* * FUNCTION * */
 

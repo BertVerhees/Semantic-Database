@@ -16,7 +16,7 @@ public interface BmmSimpleType extends BmmModelType {
  * 
 */
 BmmSimpleClass getBaseClass();
-void setBaseClass(var BmmSimpleClass);
+void setBaseClass(value BmmSimpleClass);
 
 /* * FUNCTION * */
 
@@ -26,6 +26,7 @@ void setBaseClass(var BmmSimpleClass);
  * type_name (): String
  * 
 */
+String typeName ();
 
 /**
  * 
@@ -33,6 +34,7 @@ void setBaseClass(var BmmSimpleClass);
  * is_abstract (): Boolean
  * 
 */
+Boolean isAbstract ();
 
 /**
  * 
@@ -40,6 +42,7 @@ void setBaseClass(var BmmSimpleClass);
  * flattened_type_list (): List<String>
  * 
 */
+List<string> flattenedTypeList ();
 
 /**
  * 
@@ -47,5 +50,6 @@ void setBaseClass(var BmmSimpleClass);
  * effective_base_class (): BMM_SIMPLE_CLASS
  * 
 */
+BmmSimpleClass effectiveBaseClass ();
 
 }

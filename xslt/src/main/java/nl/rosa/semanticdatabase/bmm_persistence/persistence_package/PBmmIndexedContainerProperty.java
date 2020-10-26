@@ -16,7 +16,7 @@ public interface PBmmIndexedContainerProperty extends PBmmContainerProperty {
  * 
 */
 PBmmIndexedContainerType getTypeDef();
-void setTypeDef(var PBmmIndexedContainerType);
+void setTypeDef(value PBmmIndexedContainerType);
 
 /**
  * 
@@ -24,7 +24,7 @@ void setTypeDef(var PBmmIndexedContainerType);
  * 
 */
 BmmIndexedContainerProperty getBmmProperty();
-void setBmmProperty(var BmmIndexedContainerProperty);
+void setBmmProperty(value BmmIndexedContainerProperty);
 
 /* * FUNCTION * */
 

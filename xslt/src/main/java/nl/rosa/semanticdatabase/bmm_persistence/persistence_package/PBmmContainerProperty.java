@@ -16,7 +16,7 @@ public interface PBmmContainerProperty extends PBmmProperty {
  * 
 */
 Interval<integer> getCardinality();
-void setCardinality(var Interval<integer>);
+void setCardinality(value Interval<integer>);
 
 /**
  * 
@@ -25,7 +25,7 @@ void setCardinality(var Interval<integer>);
  * 
 */
 PBmmContainerType getTypeDef();
-void setTypeDef(var PBmmContainerType);
+void setTypeDef(value PBmmContainerType);
 
 /**
  * 
@@ -33,7 +33,7 @@ void setTypeDef(var PBmmContainerType);
  * 
 */
 BmmContainerProperty getBmmProperty();
-void setBmmProperty(var BmmContainerProperty);
+void setBmmProperty(value BmmContainerProperty);
 
 /* * FUNCTION * */
 
@@ -43,5 +43,6 @@ void setBmmProperty(var BmmContainerProperty);
  * create_bmm_property ( a_bmm_schema: BMM_MODEL[1], a_class_def: BMM_CLASS[1] )
  * 
 */
+void createBmmProperty ( aBmmSchema: bmmModel[1], aClassDef: bmmClass[1] );
 
 }

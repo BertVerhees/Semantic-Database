@@ -16,7 +16,7 @@ public interface PBmmGenericProperty extends PBmmProperty {
  * 
 */
 PBmmGenericType getTypeDef();
-void setTypeDef(var PBmmGenericType);
+void setTypeDef(value PBmmGenericType);
 
 /**
  * 
@@ -24,7 +24,7 @@ void setTypeDef(var PBmmGenericType);
  * 
 */
 BmmUnitaryProperty getBmmProperty();
-void setBmmProperty(var BmmUnitaryProperty);
+void setBmmProperty(value BmmUnitaryProperty);
 
 /* * FUNCTION * */
 

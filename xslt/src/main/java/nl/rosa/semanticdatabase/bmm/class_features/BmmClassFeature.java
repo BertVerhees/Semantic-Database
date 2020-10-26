@@ -15,7 +15,7 @@ public interface BmmClassFeature extends BmmClassEntity {
  * 
 */
 BmmVisibility getVisibility();
-void setVisibility(var BmmVisibility);
+void setVisibility(value BmmVisibility);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setVisibility(var BmmVisibility);
  * 
 */
 List<bmmFeatureExtension> getFeatureExtensions();
-void setFeatureExtensions(var List<bmmFeatureExtension>);
+void setFeatureExtensions(value List<bmmFeatureExtension>);
 
 /**
  * 
@@ -31,7 +31,7 @@ void setFeatureExtensions(var List<bmmFeatureExtension>);
  * 
 */
 BmmFeatureGroup getGroup();
-void setGroup(var BmmFeatureGroup);
+void setGroup(value BmmFeatureGroup);
 
 /**
  * 
@@ -39,7 +39,7 @@ void setGroup(var BmmFeatureGroup);
  * 
 */
 BmmClass getScope();
-void setScope(var BmmClass);
+void setScope(value BmmClass);
 
 /* * FUNCTION * */
 

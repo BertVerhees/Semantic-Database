@@ -17,5 +17,6 @@ public interface BmmUnitaryType extends BmmType {
  * unitary_type (): BMM_UNITARY_TYPE
  * 
 */
+BmmUnitaryType unitaryType ();
 
 }

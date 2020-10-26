@@ -16,7 +16,7 @@ public interface ElTuple extends ElInstanceRef {
  * 
 */
 List<elTupleItem> getItems();
-void setItems(var List<elTupleItem>);
+void setItems(value List<elTupleItem>);
 
 /**
  * 
@@ -24,7 +24,7 @@ void setItems(var List<elTupleItem>);
  * 
 */
 BmmTupleType getType();
-void setType(var BmmTupleType);
+void setType(value BmmTupleType);
 
 /* * FUNCTION * */
 
@@ -34,5 +34,6 @@ void setType(var BmmTupleType);
  * eval_type (): BMM_TYPE
  * 
 */
+BmmType evalType ();
 
 }

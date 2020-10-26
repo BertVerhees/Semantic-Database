@@ -15,7 +15,7 @@ public interface BmmResult extends BmmVariable {
  * 
 */
 String {default = "result"} getName();
-void setName(var String {default = "result"});
+void setName(value String {default = "result"});
 
 /* * FUNCTION * */
 

@@ -15,7 +15,7 @@ public interface BmmUnitaryValue extends BmmLiteralValue {
  * 
 */
 BmmUnitaryType getType();
-void setType(var BmmUnitaryType);
+void setType(value BmmUnitaryType);
 
 /* * FUNCTION * */
 

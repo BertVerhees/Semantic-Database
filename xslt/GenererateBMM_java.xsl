@@ -101,6 +101,7 @@
             <xsl:value-of select="do:commentOutput(description)"/>
             <xsl:value-of select="do:commentOutput(nameAndType)"/>
             <xsl:value-of select="do:commentClose()"/>
+            <xsl:value-of select="do:output(do:createFunctionDeclaration($class,nameAndType))"/>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('}')"/>
@@ -109,6 +110,21 @@
     <xsl:function name="do:createFunctionDeclaration">
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
+        <xsl:variable name="icS" select="normalize-space(tokenize($incomingString,'Post:')[1])"/>
+        <xsl:variable name="name">
+            <xsl:choose>
+                <xsl:when test="not(contains(do:processFunctionName($context, $icS), '('))">
+                    <xsl:value-of select="concat(do:processFunctionName($context, $icS), '()')"/>
+                </xsl:when>
+                <xsl:when test="not(contains(do:processFunctionName($context, $icS), ')'))">
+                    <xsl:value-of select="concat(do:processFunctionName($context, $icS), ')')"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="do:processFunctionName($context, $icS)"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:value-of select="concat(do:processFunctionType($context, $icS),' ', $name, ';')"/>
     </xsl:function>
     
     <xsl:function name="do:findClass">
@@ -126,13 +142,13 @@
     <xsl:function name="do:createGetterDeclaration">
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
-        <xsl:value-of select="concat(do:processType($context, $incomingString),' get',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'();')"/>
+        <xsl:value-of select="concat(do:processAttributeType($context, $incomingString),' get',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'();')"/>
     </xsl:function>
     
     <xsl:function name="do:createSetterDeclaration">
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
-        <xsl:value-of select="concat('void set',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'(var ',do:processType($context, $incomingString),');')"/>
+        <xsl:value-of select="concat('void set',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'(value ',do:processAttributeType($context, $incomingString),');')"/>
     </xsl:function>
 
     <xsl:function name="do:processVariableName">
@@ -140,7 +156,35 @@
         <xsl:value-of select="do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),1)"/>
     </xsl:function>
 
-    <xsl:function name="do:processType">
+    <xsl:function name="do:processFunctionType">
+        <xsl:param name="context" as="node()"/>
+        <xsl:param name="incomingString"></xsl:param>
+        <xsl:variable name="result">
+            <xsl:choose>
+                <xsl:when test="do:findClass($context, normalize-space(tokenize($incomingString,'\):')[2]))">
+                    <xsl:value-of select="$context/className"/>
+                </xsl:when>
+                <xsl:when test="count(tokenize($incomingString,'\):'))>1">
+                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,'\):')[2]),0)"/>            
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="'void'"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:value-of select="$result"/>        
+    </xsl:function>
+    
+    <xsl:function name="do:processFunctionName">
+        <xsl:param name="context" as="node()"/>
+        <xsl:param name="incomingString"></xsl:param>
+        <xsl:variable name="result">
+            <xsl:value-of select="do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,'\):')[1]),1)"/>            
+        </xsl:variable>
+        <xsl:value-of select="$result"/>        
+    </xsl:function>
+    
+    <xsl:function name="do:processAttributeType">
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
         <xsl:variable name="result">

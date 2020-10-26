@@ -15,7 +15,7 @@ public interface BmmRoutineExternal extends BmmRoutineBody {
  * 
 */
 Hash<string, string> getMetaData();
-void setMetaData(var Hash<string, string>);
+void setMetaData(value Hash<string, string>);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setMetaData(var Hash<string, string>);
  * 
 */
 Hash<string, string> getArgumentMapping();
-void setArgumentMapping(var Hash<string, string>);
+void setArgumentMapping(value Hash<string, string>);
 
 /* * FUNCTION * */
 

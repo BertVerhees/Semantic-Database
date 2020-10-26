@@ -15,7 +15,7 @@ public interface BmmPackageContainer extends BmmDeclaration {
  * 
 */
 Hash<string,bmmPackage> getPackages();
-void setPackages(var Hash<string,bmmPackage>);
+void setPackages(value Hash<string,bmmPackage>);
 
 /**
  * 
@@ -23,7 +23,7 @@ void setPackages(var Hash<string,bmmPackage>);
  * 
 */
 BmmPackageContainer getScope();
-void setScope(var BmmPackageContainer);
+void setScope(value BmmPackageContainer);
 
 /* * FUNCTION * */
 
@@ -33,6 +33,7 @@ void setScope(var BmmPackageContainer);
  * package_at_path ( a_path: String[1] ): BMM_PACKAGE
  * 
 */
+BmmPackage packageAtPath ( aPath: string[1]);
 
 /**
  * 
@@ -40,6 +41,7 @@ void setScope(var BmmPackageContainer);
  * do_recursive_packages ( action: EL_PROCEDURE_AGENT[1] )
  * 
 */
+void doRecursivePackages ( action: elProcedureAgent[1] );
 
 /**
  * 
@@ -47,5 +49,6 @@ void setScope(var BmmPackageContainer);
  * has_package_path ( a_path: String[1] ): Boolean
  * 
 */
+Boolean hasPackagePath ( aPath: string[1]);
 
 }

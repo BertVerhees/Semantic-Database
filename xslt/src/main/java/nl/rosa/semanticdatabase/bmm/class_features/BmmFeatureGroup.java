@@ -15,7 +15,7 @@ public interface BmmFeatureGroup {
  * 
 */
 String {default = "feature"} getName();
-void setName(var String {default = "feature"});
+void setName(value String {default = "feature"});
 
 /**
  * 
@@ -24,7 +24,7 @@ void setName(var String {default = "feature"});
  * 
 */
 Hash<string, string> getProperties();
-void setProperties(var Hash<string, string>);
+void setProperties(value Hash<string, string>);
 
 /**
  * 
@@ -32,7 +32,7 @@ void setProperties(var Hash<string, string>);
  * 
 */
 List<bmmClassFeature> getFeatures();
-void setFeatures(var List<bmmClassFeature>);
+void setFeatures(value List<bmmClassFeature>);
 
 /**
  * 
@@ -40,7 +40,7 @@ void setFeatures(var List<bmmClassFeature>);
  * 
 */
 BmmVisibility getVisibility();
-void setVisibility(var BmmVisibility);
+void setVisibility(value BmmVisibility);
 
 /* * FUNCTION * */
 

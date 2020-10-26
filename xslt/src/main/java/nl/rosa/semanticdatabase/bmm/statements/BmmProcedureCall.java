@@ -15,7 +15,7 @@ public interface BmmProcedureCall extends ElAgentCall,BmmStatement {
  * 
 */
 ElProcedureAgent getAgent();
-void setAgent(var ElProcedureAgent);
+void setAgent(value ElProcedureAgent);
 
 /* * FUNCTION * */
 

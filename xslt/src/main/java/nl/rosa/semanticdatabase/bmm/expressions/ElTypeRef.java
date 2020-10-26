@@ -19,7 +19,7 @@ public interface ElTypeRef extends ElInstanceRef {
  * 
 */
 BmmType getType();
-void setType(var BmmType);
+void setType(value BmmType);
 
 /* * FUNCTION * */
 
@@ -29,5 +29,6 @@ void setType(var BmmType);
  * eval_type (): BMM_TYPE
  * 
 */
+BmmType evalType ();
 
 }
