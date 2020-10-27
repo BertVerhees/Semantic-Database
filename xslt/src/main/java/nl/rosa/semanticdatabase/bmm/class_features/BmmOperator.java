@@ -14,8 +14,8 @@ public interface BmmOperator {
  * Position of operator in syntactic representation.
  * 
 */
-    BmmOperatorPosition getPosition();
-    void setPosition(value BmmOperatorPosition);
+    BmmOperator getPosition();
+    void setPosition(value BmmOperator);
 
 /**
  * 

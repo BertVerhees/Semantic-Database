@@ -8,8 +8,7 @@
     <xsl:variable name="newline" select="'&#xA;'"/>
     <xsl:variable name="packageBase" select="'nl/rosa/semanticdatabase/'"/>
     <xsl:variable name="sourceBase" select="'src/main/java/'"/>
-    <xsl:variable name="root" select="/"/>
-
+    
     <xsl:template match="/">
         <xsl:variable name="packages">
             <xsl:element name="packages">
@@ -58,7 +57,7 @@
             <xsl:for-each select="class">
                 <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/{classFileName}.java">
                     <xsl:if test="enumeration=false()">
-                        <xsl:value-of select="do:writeInterface($package, .)"/>
+                        <xsl:value-of select="do:writeInterface($packages, $package, .)"/>
                     </xsl:if>
                     <xsl:if test="enumeration=true()">
                         <xsl:value-of select="do:writeEnumeration($package, .)"/>
@@ -68,7 +67,7 @@
             <xsl:for-each select="class">
                 <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/{classFileName}Impl.java">
                     <xsl:if test="enumeration=false()">
-                        <xsl:value-of select="do:writeClasses($package, .)"/>
+                        <xsl:value-of select="do:writeClasses($packages, $package, .)"/>
                     </xsl:if>
                 </xsl:result-document>    
             </xsl:for-each>
@@ -76,6 +75,7 @@
     </xsl:template>
     
     <xsl:function name="do:writeClasses">
+        <xsl:param name="root" as="node()"/>
         <xsl:param name="package" as="node()"></xsl:param>
         <xsl:param name="class" as="node()"></xsl:param>
         <xsl:value-of select="do:output(concat('package ', replace(concat($packageBase,$package/packageDirectory),'/','.'), ';'))"/>
@@ -95,7 +95,7 @@
             <xsl:value-of select="do:commentOpen()"/>
             <xsl:value-of select="do:commentOutput(description)"/>
             <xsl:value-of select="do:commentClose()"/>
-            <xsl:value-of select="do:outputSpaces(concat('    private ',do:createFieldDeclaration($class,nameAndType)))"/>
+            <xsl:value-of select="do:outputSpaces(concat('    private ',do:createFieldDeclaration($root, $class,nameAndType)))"/>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('/* * POJO * */')"/>
@@ -104,8 +104,8 @@
             <xsl:value-of select="do:commentOpen()"/>
             <xsl:value-of select="do:commentOutput(description)"/>
             <xsl:value-of select="do:commentClose()"/>
-            <xsl:value-of select="do:outputSpaces(concat('    public ',do:createGetterDeclaration($class,nameAndType)))"/>
-            <xsl:value-of select="do:outputSpaces(concat('    public ',do:createSetterDeclaration($class,nameAndType)))"/>
+            <xsl:value-of select="do:outputSpaces(concat('    public ',do:createGetterDeclaration($root, $class,nameAndType)))"/>
+            <xsl:value-of select="do:outputSpaces(concat('    public ',do:createSetterDeclaration($root, $class,nameAndType)))"/>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('/* * FUNCTION * */')"/>
@@ -115,7 +115,7 @@
             <xsl:value-of select="do:commentOutput(description)"/>
             <xsl:value-of select="do:commentOutput(nameAndType)"/>
             <xsl:value-of select="do:commentClose()"/>
-            <xsl:value-of select="do:outputSpaces(concat('    public ',do:createFunctionDeclaration($class,nameAndType)))"/>
+            <xsl:value-of select="do:outputSpaces(concat('    public ',do:createFunctionDeclaration($root, $class,nameAndType)))"/>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('}')"/>
@@ -152,6 +152,7 @@
     </xsl:function>
         
     <xsl:function name="do:writeInterface">
+        <xsl:param name="root" as="node()"/>
         <xsl:param name="package" as="node()"></xsl:param>
         <xsl:param name="class" as="node()"></xsl:param>
         <xsl:value-of select="do:output(concat('package ', replace(concat($packageBase,$package/packageDirectory),'/','.'), ';'))"/>
@@ -174,8 +175,8 @@
             <xsl:value-of select="do:commentOpen()"/>
             <xsl:value-of select="do:commentOutput(description)"/>
             <xsl:value-of select="do:commentClose()"/>
-            <xsl:value-of select="do:outputSpaces(concat('    ',do:createGetterDeclaration($class,nameAndType)))"/>
-            <xsl:value-of select="do:outputSpaces(concat('    ',do:createSetterDeclaration($class,nameAndType)))"/>
+            <xsl:value-of select="do:outputSpaces(concat('    ',do:createGetterDeclaration($root, $class, nameAndType)))"/>
+            <xsl:value-of select="do:outputSpaces(concat('    ',do:createSetterDeclaration($root, $class, nameAndType)))"/>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('/* * FUNCTION * */')"/>
@@ -185,13 +186,14 @@
             <xsl:value-of select="do:commentOutput(description)"/>
             <xsl:value-of select="do:commentOutput(nameAndType)"/>
             <xsl:value-of select="do:commentClose()"/>
-            <xsl:value-of select="do:outputSpaces(concat('    ',do:createFunctionDeclaration($class,nameAndType)))"/>
+            <xsl:value-of select="do:outputSpaces(concat('    ',do:createFunctionDeclaration($root, $class,nameAndType)))"/>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('}')"/>
     </xsl:function>
     
     <xsl:function name="do:createFunctionDeclaration">
+        <xsl:param name="root" as="node()"/>
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
         <xsl:variable name="icS" select="normalize-space(tokenize($incomingString,'Post:')[1])"/>
@@ -208,17 +210,14 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        <xsl:value-of select="concat(do:processFunctionType($context, $icS),' ', $name, ';')"/>
+        <xsl:value-of select="concat($root, do:processFunctionType($root, $context, $icS),' ', $name, ';')"/>
     </xsl:function>
     
     <xsl:function name="do:findClass">
+        <xsl:param name="root"></xsl:param>
         <xsl:param name="classToFind"></xsl:param>
-        <xsl:message><xsl:value-of select="$classToFind"/></xsl:message>
-        <xsl:message><xsl:value-of select="count($root/packages/package)"/></xsl:message>
         <xsl:for-each select="$root/packages/package">
-            <xsl:message><xsl:value-of select="./packageDirectory"/></xsl:message>
             <xsl:for-each select="class">
-                <xsl:message><xsl:value-of select="concat(.,classNameOrg)"/></xsl:message>
                 <xsl:if test="classNameOrg=$classToFind">
                     <xsl:value-of select="."/>
                 </xsl:if>
@@ -227,21 +226,24 @@
     </xsl:function>
     
     <xsl:function name="do:createFieldDeclaration">
+        <xsl:param name="root" as="node()"/>
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
-        <xsl:value-of select="concat(do:processAttributeType($context, $incomingString),' ',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),1),'();')"/>
+        <xsl:value-of select="concat(do:processAttributeType($root, $context, $incomingString),' ',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),1),'();')"/>
     </xsl:function>
     
     <xsl:function name="do:createGetterDeclaration">
+        <xsl:param name="root" as="node()"/>
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
-        <xsl:value-of select="concat(do:processAttributeType($context, $incomingString),' get',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'();')"/>
+        <xsl:value-of select="concat(do:processAttributeType($root, $context, $incomingString),' get',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'();')"/>
     </xsl:function>
     
     <xsl:function name="do:createSetterDeclaration">
+        <xsl:param name="root" as="node()"/>
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
-        <xsl:value-of select="concat('void set',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'(value ',do:processAttributeType($context, $incomingString),');')"/>
+        <xsl:value-of select="concat('void set',do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),0),'(value ',do:processAttributeType($root, $context, $incomingString),');')"/>
     </xsl:function>
 
     <xsl:function name="do:processVariableName">
@@ -250,11 +252,12 @@
     </xsl:function>
 
     <xsl:function name="do:processFunctionType">
+        <xsl:param name="root"></xsl:param>
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
         <xsl:variable name="result">
             <xsl:choose>
-                <xsl:when test="do:findClass( normalize-space(tokenize($incomingString,'\):')[2]))">
+                <xsl:when test="do:findClass($root, normalize-space(tokenize($incomingString,'\):')[2]))">
                     <xsl:value-of select="$context/className"/>
                 </xsl:when>
                 <xsl:when test="count(tokenize($incomingString,'\):'))>1">
@@ -278,11 +281,12 @@
     </xsl:function>
     
     <xsl:function name="do:processAttributeType">
+        <xsl:param name="root"></xsl:param>
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"></xsl:param>
         <xsl:variable name="result">
             <xsl:choose>
-                <xsl:when test="do:findClass(normalize-space(tokenize($incomingString,':')[2]))">
+                <xsl:when test="do:findClass($root, normalize-space(tokenize($incomingString,':')[2]))">
                     <xsl:value-of select="$context/className"/>
                 </xsl:when>
                 <xsl:when test="count(tokenize($incomingString,':'))>1">

@@ -15,8 +15,8 @@ public interface BmmIndexedContainerValue extends BmmContainerValue {
  * Declared or inferred static type of the entity.
  * 
 */
-    BmmIndexedContainerType getType();
-    void setType(value BmmIndexedContainerType);
+    BmmIndexedContainerValue getType();
+    void setType(value BmmIndexedContainerValue);
 
 /* * FUNCTION * */
 

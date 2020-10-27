@@ -15,16 +15,16 @@ public interface PBmmIndexedContainerProperty extends PBmmContainerProperty {
  * Persistent attribute.
  * 
 */
-    PBmmIndexedContainerType getTypeDef();
-    void setTypeDef(value PBmmIndexedContainerType);
+    PBmmIndexedContainerProperty getTypeDef();
+    void setTypeDef(value PBmmIndexedContainerProperty);
 
 /**
  * 
  * BMM_PROPERTY created by create_bmm_property.
  * 
 */
-    BmmIndexedContainerProperty getBmmProperty();
-    void setBmmProperty(value BmmIndexedContainerProperty);
+    PBmmIndexedContainerProperty getBmmProperty();
+    void setBmmProperty(value PBmmIndexedContainerProperty);
 
 /* * FUNCTION * */
 

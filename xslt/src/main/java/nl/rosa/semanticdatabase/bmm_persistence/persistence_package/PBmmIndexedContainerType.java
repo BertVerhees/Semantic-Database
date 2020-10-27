@@ -22,8 +22,8 @@ public interface PBmmIndexedContainerType extends PBmmContainerType {
  * Result of create_bmm_type() call.
  * 
 */
-    BmmIndexedContainerType getBmmType();
-    void setBmmType(value BmmIndexedContainerType);
+    PBmmIndexedContainerType getBmmType();
+    void setBmmType(value PBmmIndexedContainerType);
 
 /* * FUNCTION * */
 

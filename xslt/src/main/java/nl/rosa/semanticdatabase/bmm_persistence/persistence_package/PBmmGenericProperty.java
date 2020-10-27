@@ -15,16 +15,16 @@ public interface PBmmGenericProperty extends PBmmProperty {
  * Persistent attribute.
  * 
 */
-    PBmmGenericType getTypeDef();
-    void setTypeDef(value PBmmGenericType);
+    PBmmGenericProperty getTypeDef();
+    void setTypeDef(value PBmmGenericProperty);
 
 /**
  * 
  * BMM_PROPERTY created by create_bmm_property_definition.
  * 
 */
-    BmmUnitaryProperty getBmmProperty();
-    void setBmmProperty(value BmmUnitaryProperty);
+    PBmmGenericProperty getBmmProperty();
+    void setBmmProperty(value PBmmGenericProperty);
 
 /* * FUNCTION * */
 

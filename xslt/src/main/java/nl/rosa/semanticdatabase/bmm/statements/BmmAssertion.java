@@ -16,8 +16,8 @@ public interface BmmAssertion extends BmmStatement {
  * 
  * 
 */
-    ElBooleanExpression getExpression();
-    void setExpression(value ElBooleanExpression);
+    BmmAssertion getExpression();
+    void setExpression(value BmmAssertion);
 
 /**
  * 

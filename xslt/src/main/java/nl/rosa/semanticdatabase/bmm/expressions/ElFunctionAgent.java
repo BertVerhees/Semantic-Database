@@ -15,8 +15,8 @@ public interface ElFunctionAgent extends ElAgent {
  * Reference to definition of a routine for which this is a direct call instance, if one exists.
  * 
 */
-    BmmFunction getDefinition();
-    void setDefinition(value BmmFunction);
+    ElFunctionAgent getDefinition();
+    void setDefinition(value ElFunctionAgent);
 
 /* * FUNCTION * */
 

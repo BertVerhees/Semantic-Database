@@ -22,8 +22,8 @@ public interface PBmmSimpleType extends PBmmBaseType {
  * Result of create_bmm_type() call.
  * 
 */
-    BmmSimpleType getBmmType();
-    void setBmmType(value BmmSimpleType);
+    PBmmSimpleType getBmmType();
+    void setBmmType(value PBmmSimpleType);
 
 /* * FUNCTION * */
 

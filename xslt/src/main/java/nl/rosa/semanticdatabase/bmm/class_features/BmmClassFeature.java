@@ -30,8 +30,8 @@ public interface BmmClassFeature extends BmmClassEntity {
  * Group containing this feature.
  * 
 */
-    BmmFeatureGroup getGroup();
-    void setGroup(value BmmFeatureGroup);
+    BmmClassFeature getGroup();
+    void setGroup(value BmmClassFeature);
 
 /**
  * 

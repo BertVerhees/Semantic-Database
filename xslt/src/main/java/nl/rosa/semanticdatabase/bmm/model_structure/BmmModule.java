@@ -15,8 +15,8 @@ public interface BmmModule extends BmmDeclaration {
  * Model within which module is defined.
  * 
 */
-    BmmModel getScope();
-    void setScope(value BmmModel);
+    BmmModule getScope();
+    void setScope(value BmmModule);
 
 /* * FUNCTION * */
 
