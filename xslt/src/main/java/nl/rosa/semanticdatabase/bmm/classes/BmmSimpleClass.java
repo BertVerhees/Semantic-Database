@@ -19,6 +19,6 @@ public interface BmmSimpleClass extends BmmClass {
  * type (): BMM_SIMPLE_TYPE
  * 
 */
-BmmSimpleType type ();
+    BmmSimpleType type ();
 
 }

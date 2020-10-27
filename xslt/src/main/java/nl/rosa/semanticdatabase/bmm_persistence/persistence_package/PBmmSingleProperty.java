@@ -16,24 +16,24 @@ public interface PBmmSingleProperty extends PBmmProperty {
  * The resulting type is generated in type_def.
  * 
 */
-String getType();
-void setType(value String);
+    String getType();
+    void setType(value String);
 
 /**
  * 
  * Type definition of this property computed from type for later use in bmm_property.
  * 
 */
-PBmmSimpleType getTypeRef();
-void setTypeRef(value PBmmSimpleType);
+    PBmmSimpleType getTypeRef();
+    void setTypeRef(value PBmmSimpleType);
 
 /**
  * 
  * BMM_PROPERTY created by create_bmm_property_definition.
  * 
 */
-BmmUnitaryProperty getBmmProperty();
-void setBmmProperty(value BmmUnitaryProperty);
+    BmmUnitaryProperty getBmmProperty();
+    void setBmmProperty(value BmmUnitaryProperty);
 
 /* * FUNCTION * */
 
@@ -43,6 +43,6 @@ void setBmmProperty(value BmmUnitaryProperty);
  * type_def (): P_BMM_SIMPLE_TYPE
  * 
 */
-PBmmSimpleType typeDef ();
+    PBmmSimpleType typeDef ();
 
 }

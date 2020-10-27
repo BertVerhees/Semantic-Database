@@ -14,8 +14,8 @@ public interface BmmTyped {
  * Declared or inferred static type of the entity.
  * 
 */
-BmmType getType();
-void setType(value BmmType);
+    BmmType getType();
+    void setType(value BmmType);
 
 /* * FUNCTION * */
 
@@ -26,6 +26,6 @@ void setType(value BmmType);
  * is_boolean (): Boolean Post_result: Result = type().equal( {BMM_MODEL}.boolean_type_definition())
  * 
 */
-Boolean postResult: result = type().equal( {bmmModel}.booleanTypeDefinition()) isBoolean ();
+    Boolean postResult: result = type().equal( {bmmModel}.booleanTypeDefinition()) isBoolean ();
 
 }

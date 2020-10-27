@@ -14,16 +14,16 @@ public interface BmmConditionalAction {
  * The gate condition for the target statement.
  * 
 */
-ElBooleanExpression getCondition();
-void setCondition(value ElBooleanExpression);
+    ElBooleanExpression getCondition();
+    void setCondition(value ElBooleanExpression);
 
 /**
  * 
  * Target statement.
  * 
 */
-BmmStatementItem getStatement();
-void setStatement(value BmmStatementItem);
+    BmmStatementItem getStatement();
+    void setStatement(value BmmStatementItem);
 
 /* * FUNCTION * */
 

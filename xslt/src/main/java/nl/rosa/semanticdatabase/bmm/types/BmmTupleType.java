@@ -17,16 +17,16 @@ public interface BmmTupleType extends BmmEffectiveType {
  * Base name (built-in).
  * 
 */
-String = "tuple" getBaseName();
-void setBaseName(value String = "tuple");
+    String = "tuple" getBaseName();
+    void setBaseName(value String = "tuple");
 
 /**
  * 
  * List of types of the items of the tuple, keyed by purpose in the tuple.
  * 
 */
-Hash<string,bmmType> getItemTypes();
-void setItemTypes(value Hash<string,bmmType>);
+    Hash<string,bmmType> getItemTypes();
+    void setItemTypes(value Hash<string,bmmType>);
 
 /* * FUNCTION * */
 
@@ -36,7 +36,7 @@ void setItemTypes(value Hash<string,bmmType>);
  * type_base_name (): String Post_result: Result.is_equal (base_name())
  * 
 */
-String postResult: result.isEqual (baseName()) typeBaseName ();
+    String postResult: result.isEqual (baseName()) typeBaseName ();
 
 /**
  * 
@@ -44,7 +44,7 @@ String postResult: result.isEqual (baseName()) typeBaseName ();
  * is_primitive (): Boolean
  * 
 */
-Boolean isPrimitive ();
+    Boolean isPrimitive ();
 
 /**
  * 
@@ -52,7 +52,7 @@ Boolean isPrimitive ();
  * is_abstract (): Boolean
  * 
 */
-Boolean isAbstract ();
+    Boolean isAbstract ();
 
 /**
  * 
@@ -60,7 +60,7 @@ Boolean isAbstract ();
  * type_name (): String Post_result: Result.is_equal (base_name())
  * 
 */
-String postResult: result.isEqual (baseName()) typeName ();
+    String postResult: result.isEqual (baseName()) typeName ();
 
 /**
  * 
@@ -69,6 +69,6 @@ String postResult: result.isEqual (baseName()) typeName ();
  * flattened_type_list (): List<String>
  * 
 */
-List<string> flattenedTypeList ();
+    List<string> flattenedTypeList ();
 
 }

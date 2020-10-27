@@ -15,8 +15,8 @@ public interface PBmmClass extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-String getName();
-void setName(value String);
+    String getName();
+    void setName(value String);
 
 /**
  * 
@@ -25,8 +25,8 @@ void setName(value String);
  * Persisted attribute.
  * 
 */
-List<string> getAncestors();
-void setAncestors(value List<string>);
+    List<string> getAncestors();
+    void setAncestors(value List<string>);
 
 /**
  * 
@@ -34,8 +34,8 @@ void setAncestors(value List<string>);
  * Persistent attribute.
  * 
 */
-Hash<string,pBmmProperty> getProperties();
-void setProperties(value Hash<string,pBmmProperty>);
+    Hash<string,pBmmProperty> getProperties();
+    void setProperties(value Hash<string,pBmmProperty>);
 
 /**
  * 
@@ -43,16 +43,16 @@ void setProperties(value Hash<string,pBmmProperty>);
  * Persisted attribute.
  * 
 */
-Boolean getIsAbstract();
-void setIsAbstract(value Boolean);
+    Boolean getIsAbstract();
+    void setIsAbstract(value Boolean);
 
 /**
  * 
  * True if this class definition overrides one found in an included schema.
  * 
 */
-Boolean getIsOverride();
-void setIsOverride(value Boolean);
+    Boolean getIsOverride();
+    void setIsOverride(value Boolean);
 
 /**
  * 
@@ -60,8 +60,8 @@ void setIsOverride(value Boolean);
  * Persisted attribute.
  * 
 */
-Hash<string,pBmmGenericParameter> getGenericParameterDefs();
-void setGenericParameterDefs(value Hash<string,pBmmGenericParameter>);
+    Hash<string,pBmmGenericParameter> getGenericParameterDefs();
+    void setGenericParameterDefs(value Hash<string,pBmmGenericParameter>);
 
 /**
  * 
@@ -71,16 +71,16 @@ void setGenericParameterDefs(value Hash<string,pBmmGenericParameter>);
  * taking into account that a class may be in any of the schemas in a schema inclusion hierarchy).
  * 
 */
-String getSourceSchemaId();
-void setSourceSchemaId(value String);
+    String getSourceSchemaId();
+    void setSourceSchemaId(value String);
 
 /**
  * 
  * BMM_CLASS object built by create_bmm_class_definition and populate_bmm_class_definition.
  * 
 */
-BmmClass getBmmClass();
-void setBmmClass(value BmmClass);
+    BmmClass getBmmClass();
+    void setBmmClass(value BmmClass);
 
 /**
  * 
@@ -88,8 +88,8 @@ void setBmmClass(value BmmClass);
  * Assigned in post-load processing.
  * 
 */
-Integer getUid();
-void setUid(value Integer);
+    Integer getUid();
+    void setUid(value Integer);
 
 /**
  * 
@@ -97,8 +97,16 @@ void setUid(value Integer);
  * Persisted attribute.
  * 
 */
-List<pBmmGenericType> getAncestorDefs();
-void setAncestorDefs(value List<pBmmGenericType>);
+    List<pBmmGenericType> getAncestorDefs();
+    void setAncestorDefs(value List<pBmmGenericType>);
+
+/**
+ * 
+ * Create bmm_class_definition.
+ * 
+*/
+    void getCreateBmmClass();
+    void setCreateBmmClass(value void);
 
 /* * FUNCTION * */
 
@@ -108,15 +116,7 @@ void setAncestorDefs(value List<pBmmGenericType>);
  * is_generic (): Boolean Post: Result := generic_parameter_defs /= Void
  * 
 */
-Boolean isGeneric ();
-
-/**
- * 
- * Create bmm_class_definition.
- * create_bmm_class
- * 
-*/
-void createBmmClass();
+    Boolean isGeneric ();
 
 /**
  * 
@@ -124,6 +124,6 @@ void createBmmClass();
  * populate_bmm_class ( a_bmm_schema: BMM_MODEL[1] )
  * 
 */
-void populateBmmClass ( aBmmSchema: bmmModel[1] );
+    void populateBmmClass ( aBmmSchema: bmmModel[1] );
 
 }

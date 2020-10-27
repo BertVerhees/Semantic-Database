@@ -17,16 +17,16 @@ public interface ElAgent extends ElScopedRef {
  * Name of the routine being called.
  * 
 */
-String getName();
-void setName(value String);
+    String getName();
+    void setName(value String);
 
 /**
  * 
  * Closed arguments of a routine call as a tuple of objects.
  * 
 */
-ElTuple getClosedArgs();
-void setClosedArgs(value ElTuple);
+    ElTuple getClosedArgs();
+    void setClosedArgs(value ElTuple);
 
 /**
  * 
@@ -34,16 +34,16 @@ void setClosedArgs(value ElTuple);
  * If not provided, and the name refers to a routine with more arguments than supplied in closed_args, the missing arguments are inferred from the definition.
  * 
 */
-List<string> getOpenArgs();
-void setOpenArgs(value List<string>);
+    List<string> getOpenArgs();
+    void setOpenArgs(value List<string>);
 
 /**
  * 
  * Reference to definition of a routine for which this is an agent, if one exists.
  * 
 */
-BmmRoutine getDefinition();
-void setDefinition(value BmmRoutine);
+    BmmRoutine getDefinition();
+    void setDefinition(value BmmRoutine);
 
 /* * FUNCTION * */
 
@@ -53,7 +53,7 @@ void setDefinition(value BmmRoutine);
  * eval_type (): BMM_SIGNATURE Post_result: Result = definition.signature
  * 
 */
-BmmSignature postResult: result = definition.signature evalType ();
+    BmmSignature postResult: result = definition.signature evalType ();
 
 /**
  * 
@@ -61,6 +61,6 @@ BmmSignature postResult: result = definition.signature evalType ();
  * is_callable (): Boolean Post_result_validity: Result = open_arguments = Void
  * 
 */
-Boolean postResultValidity: result = openArguments = void isCallable ();
+    Boolean postResultValidity: result = openArguments = void isCallable ();
 
 }

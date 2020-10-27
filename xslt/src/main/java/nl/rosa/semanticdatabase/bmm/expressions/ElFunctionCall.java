@@ -15,8 +15,8 @@ public interface ElFunctionCall extends ElScopedRef,ElAgentCall {
  * The function agent being called.
  * 
 */
-ElFunctionAgent getAgent();
-void setAgent(value ElFunctionAgent);
+    ElFunctionAgent getAgent();
+    void setAgent(value ElFunctionAgent);
 
 /* * FUNCTION * */
 
@@ -26,6 +26,6 @@ void setAgent(value ElFunctionAgent);
  * eval_type (): BMM_TYPE
  * 
 */
-BmmType evalType ();
+    BmmType evalType ();
 
 }

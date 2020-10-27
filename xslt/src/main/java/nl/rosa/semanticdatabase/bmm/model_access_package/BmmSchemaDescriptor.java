@@ -15,16 +15,16 @@ public interface BmmSchemaDescriptor {
  * Persistent form of model.
  * 
 */
-BmmSchema getBmmSchema();
-void setBmmSchema(value BmmSchema);
+    BmmSchema getBmmSchema();
+    void setBmmSchema(value BmmSchema);
 
 /**
  * 
  * Computable form of model.
  * 
 */
-BmmModel getBmmModel();
-void setBmmModel(value BmmModel);
+    BmmModel getBmmModel();
+    void setBmmModel(value BmmModel);
 
 /**
  * 
@@ -32,24 +32,51 @@ void setBmmModel(value BmmModel);
  * openehr_rm_1.0.3, openehr_test_1.0.1, iso_13606_1_2008_2.1.2.
  * 
 */
-String getSchemaId();
-void setSchemaId(value String);
+    String getSchemaId();
+    void setSchemaId(value String);
 
 /**
  * 
  * Table of {key, value} of schema meta-data, keys are string values defined by {BMM_DEFINITIONS}.Metadata_* constants.
  * 
 */
-Hash<string, string> getMetaData();
-void setMetaData(value Hash<string, string>);
+    Hash<string, string> getMetaData();
+    void setMetaData(value Hash<string, string>);
 
 /**
  * 
  * Identifiers of schemas included by this schema.
  * 
 */
-List<string> getIncludes();
-void setIncludes(value List<string>);
+    List<string> getIncludes();
+    void setIncludes(value List<string>);
+
+/**
+ * 
+ * Load schema into in-memory form, i.e.
+ * a P_BMM_SCHEMA instance, if structurally valid.
+ * If successful, p_schema will be set.
+ * 
+*/
+    void getLoad();
+    void setLoad(value void);
+
+/**
+ * 
+ * Validate loaded schema and report errors.
+ * 
+*/
+    void getValidateMerged();
+    void setValidateMerged(value void);
+
+/**
+ * 
+ * Create schema, i.e.
+ * the BMM_MODEL from one P_BMM_SCHEMA schema.
+ * 
+*/
+    void getCreateModel();
+    void setCreateModel(value void);
 
 /* * FUNCTION * */
 
@@ -60,7 +87,7 @@ void setIncludes(value List<string>);
  * is_top_level (): Boolean
  * 
 */
-Boolean isTopLevel ();
+    Boolean isTopLevel ();
 
 /**
  * 
@@ -68,25 +95,7 @@ Boolean isTopLevel ();
  * is_bmm_compatible (): Boolean
  * 
 */
-Boolean isBmmCompatible ();
-
-/**
- * 
- * Load schema into in-memory form, i.e.
- * a P_BMM_SCHEMA instance, if structurally valid.
- * If successful, p_schema will be set.
- * load
- * 
-*/
-void load();
-
-/**
- * 
- * Validate loaded schema and report errors.
- * validate_merged
- * 
-*/
-void validateMerged();
+    Boolean isBmmCompatible ();
 
 /**
  * 
@@ -94,15 +103,6 @@ void validateMerged();
  * validate_includes ( all_schemas_list: List<String>[0..1] )
  * 
 */
-void validateIncludes ( allSchemasList: list<string>[0..1] );
-
-/**
- * 
- * Create schema, i.e.
- * the BMM_MODEL from one P_BMM_SCHEMA schema.
- * create_model
- * 
-*/
-void createModel();
+    void validateIncludes ( allSchemasList: list<string>[0..1] );
 
 }

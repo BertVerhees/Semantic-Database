@@ -16,8 +16,8 @@ public interface BmmTypedFeature extends BmmTyped {
  * May be interpreted as optionality in subtypes..
  * 
 */
-Boolean {default = false} getIsNullable();
-void setIsNullable(value Boolean {default = false});
+    Boolean {default = false} getIsNullable();
+    void setIsNullable(value Boolean {default = false});
 
 /* * FUNCTION * */
 

@@ -16,8 +16,8 @@ public interface BmmDeclaration {
  * Name of this model element.
  * 
 */
-String getName();
-void setName(value String);
+    String getName();
+    void setName(value String);
 
 /**
  * 
@@ -25,16 +25,16 @@ void setName(value String);
  * It is strongly recommended to use the following key /type combinations for the relevant purposes: "purpose": String "keywords": List<String> "use": String "misuse": String "references": String Other keys and value types may be freely added.
  * 
 */
-Hash<string, any> getDocumentation();
-void setDocumentation(value Hash<string, any>);
+    Hash<string, any> getDocumentation();
+    void setDocumentation(value Hash<string, any>);
 
 /**
  * 
  * Model element within which an element is declared.
  * 
 */
-BmmDeclaration getScope();
-void setScope(value BmmDeclaration);
+    BmmDeclaration getScope();
+    void setScope(value BmmDeclaration);
 
 /**
  * 
@@ -42,8 +42,8 @@ void setScope(value BmmDeclaration);
  * May be used to extend the meta-model.
  * 
 */
-Hash<string, any> getExtensions();
-void setExtensions(value Hash<string, any>);
+    Hash<string, any> getExtensions();
+    void setExtensions(value Hash<string, any>);
 
 /* * FUNCTION * */
 
@@ -53,6 +53,6 @@ void setExtensions(value Hash<string, any>);
  * is_root_scope (): Boolean Post_result: Result = (scope = self)
  * 
 */
-Boolean postResult: result = (scope = self) isRootScope ();
+    Boolean postResult: result = (scope = self) isRootScope ();
 
 }

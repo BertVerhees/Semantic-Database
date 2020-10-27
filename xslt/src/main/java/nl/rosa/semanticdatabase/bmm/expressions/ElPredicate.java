@@ -14,8 +14,8 @@ public interface ElPredicate extends ElTerminal {
  * The target instance of this predicate.
  * 
 */
-ElInstanceRef getOperand();
-void setOperand(value ElInstanceRef);
+    ElInstanceRef getOperand();
+    void setOperand(value ElInstanceRef);
 
 /* * FUNCTION * */
 
@@ -25,6 +25,6 @@ void setOperand(value ElInstanceRef);
  * eval_type (): BMM_SIMPLE_TYPE
  * 
 */
-BmmSimpleType evalType ();
+    BmmSimpleType evalType ();
 
 }

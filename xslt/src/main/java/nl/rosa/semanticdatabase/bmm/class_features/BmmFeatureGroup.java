@@ -14,8 +14,8 @@ public interface BmmFeatureGroup {
  * Name of this feature group; defaults to 'feature'.
  * 
 */
-String {default = "feature"} getName();
-void setName(value String {default = "feature"});
+    String {default = "feature"} getName();
+    void setName(value String {default = "feature"});
 
 /**
  * 
@@ -23,24 +23,24 @@ void setName(value String {default = "feature"});
  * These are understood to apply logically to all of the features contained within the group.
  * 
 */
-Hash<string, string> getProperties();
-void setProperties(value Hash<string, string>);
+    Hash<string, string> getProperties();
+    void setProperties(value Hash<string, string>);
 
 /**
  * 
  * Set of features in this group.
  * 
 */
-List<bmmClassFeature> getFeatures();
-void setFeatures(value List<bmmClassFeature>);
+    List<bmmClassFeature> getFeatures();
+    void setFeatures(value List<bmmClassFeature>);
 
 /**
  * 
  * Optional visibility to apply to all features in this group.
  * 
 */
-BmmVisibility getVisibility();
-void setVisibility(value BmmVisibility);
+    BmmVisibility getVisibility();
+    void setVisibility(value BmmVisibility);
 
 /* * FUNCTION * */
 

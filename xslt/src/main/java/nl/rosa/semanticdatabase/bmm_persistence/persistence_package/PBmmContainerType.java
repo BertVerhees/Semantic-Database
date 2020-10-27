@@ -16,8 +16,8 @@ public interface PBmmContainerType extends PBmmType {
  * Persisted attribute.
  * 
 */
-String getContainerType();
-void setContainerType(value String);
+    String getContainerType();
+    void setContainerType(value String);
 
 /**
  * 
@@ -25,8 +25,8 @@ void setContainerType(value String);
  * Persisted attribute.
  * 
 */
-PBmmBaseType getTypeDef();
-void setTypeDef(value PBmmBaseType);
+    PBmmBaseType getTypeDef();
+    void setTypeDef(value PBmmBaseType);
 
 /**
  * 
@@ -34,16 +34,16 @@ void setTypeDef(value PBmmBaseType);
  * Persisted attribute.
  * 
 */
-String getType();
-void setType(value String);
+    String getType();
+    void setType(value String);
 
 /**
  * 
  * Result of create_bmm_type() call.
  * 
 */
-BmmContainerType getBmmType();
-void setBmmType(value BmmContainerType);
+    BmmContainerType getBmmType();
+    void setBmmType(value BmmContainerType);
 
 /* * FUNCTION * */
 
@@ -54,6 +54,6 @@ void setBmmType(value BmmContainerType);
  * type_ref (): P_BMM_BASE_TYPE
  * 
 */
-PBmmBaseType typeRef ();
+    PBmmBaseType typeRef ();
 
 }

@@ -14,16 +14,16 @@ public interface BmmPackageContainer extends BmmDeclaration {
  * Child packages; keys all in upper case for guaranteed matching.
  * 
 */
-Hash<string,bmmPackage> getPackages();
-void setPackages(value Hash<string,bmmPackage>);
+    Hash<string,bmmPackage> getPackages();
+    void setPackages(value Hash<string,bmmPackage>);
 
 /**
  * 
  * Model element within which a referenceable element is known.
  * 
 */
-BmmPackageContainer getScope();
-void setScope(value BmmPackageContainer);
+    BmmPackageContainer getScope();
+    void setScope(value BmmPackageContainer);
 
 /* * FUNCTION * */
 
@@ -33,7 +33,7 @@ void setScope(value BmmPackageContainer);
  * package_at_path ( a_path: String[1] ): BMM_PACKAGE
  * 
 */
-BmmPackage packageAtPath ( aPath: string[1]);
+    BmmPackage packageAtPath ( aPath: string[1]);
 
 /**
  * 
@@ -41,7 +41,7 @@ BmmPackage packageAtPath ( aPath: string[1]);
  * do_recursive_packages ( action: EL_PROCEDURE_AGENT[1] )
  * 
 */
-void doRecursivePackages ( action: elProcedureAgent[1] );
+    void doRecursivePackages ( action: elProcedureAgent[1] );
 
 /**
  * 
@@ -49,6 +49,6 @@ void doRecursivePackages ( action: elProcedureAgent[1] );
  * has_package_path ( a_path: String[1] ): Boolean
  * 
 */
-Boolean hasPackagePath ( aPath: string[1]);
+    Boolean hasPackagePath ( aPath: string[1]);
 
 }

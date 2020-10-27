@@ -15,8 +15,8 @@ public interface PBmmSchema extends PBmmPackageContainer,BmmSchema {
  * Persisted attribute.
  * 
 */
-List<pBmmClass> getPrimitiveTypes();
-void setPrimitiveTypes(value List<pBmmClass>);
+    List<pBmmClass> getPrimitiveTypes();
+    void setPrimitiveTypes(value List<pBmmClass>);
 
 /**
  * 
@@ -24,32 +24,40 @@ void setPrimitiveTypes(value List<pBmmClass>);
  * Persisted attribute.
  * 
 */
-List<pBmmClass> getClassDefinitions();
-void setClassDefinitions(value List<pBmmClass>);
+    List<pBmmClass> getClassDefinitions();
+    void setClassDefinitions(value List<pBmmClass>);
 
 /**
  * 
  * Implementation of validate_created()
  * 
 */
-State = stateCreated postState getValidateCreated preState();
-void setValidateCreated preState(value State = stateCreated postState);
+    State = stateCreated postState getValidateCreated preState();
+    void setValidateCreated preState(value State = stateCreated postState);
 
 /**
  * 
  * Implementation of load_finalise()
  * 
 */
-State = stateValidatedCreated postState getLoadFinalise preState();
-void setLoadFinalise preState(value State = stateValidatedCreated postState);
+    State = stateValidatedCreated postState getLoadFinalise preState();
+    void setLoadFinalise preState(value State = stateValidatedCreated postState);
+
+/**
+ * 
+ * Implementation of validate()
+ * 
+*/
+    void getValidate();
+    void setValidate(value void);
 
 /**
  * 
  * Implementation of create_bmm_model()
  * 
 */
-State = pBmmPackageState.stateIncludesProcessed getCreateBmmModel preState();
-void setCreateBmmModel preState(value State = pBmmPackageState.stateIncludesProcessed);
+    State = pBmmPackageState.stateIncludesProcessed getCreateBmmModel preState();
+    void setCreateBmmModel preState(value State = pBmmPackageState.stateIncludesProcessed);
 
 /* * FUNCTION * */
 
@@ -59,15 +67,7 @@ void setCreateBmmModel preState(value State = pBmmPackageState.stateIncludesProc
  * merge ( other: P_BMM_SCHEMA[1] ) Pre_state: state = State_includes_pending Pre_other_valid: includes_to_process.has (included_schema.schema_id)
  * 
 */
-void merge ( other: pBmmSchema[1] ) preState: state = stateIncludesPending preOtherValid: includesToProcess.has (includedSchema.schemaId);
-
-/**
- * 
- * Implementation of validate()
- * validate
- * 
-*/
-void validate();
+    void merge ( other: pBmmSchema[1] ) preState: state = stateIncludesPending preOtherValid: includesToProcess.has (includedSchema.schemaId);
 
 /**
  * 
@@ -75,6 +75,6 @@ void validate();
  * canonical_packages (): P_BMM_PACKAGE
  * 
 */
-PBmmPackage canonicalPackages ();
+    PBmmPackage canonicalPackages ();
 
 }

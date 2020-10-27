@@ -14,8 +14,8 @@ public interface BmmActionTable extends BmmStatement {
  * Decision branches.
  * 
 */
-List<bmmConditionalAction> getItems();
-void setItems(value List<bmmConditionalAction>);
+    List<bmmConditionalAction> getItems();
+    void setItems(value List<bmmConditionalAction>);
 
 /* * FUNCTION * */
 

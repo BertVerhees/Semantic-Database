@@ -15,8 +15,8 @@ public interface BmmGenericClass extends BmmClass {
  * These are defined either directly on this class or by the inclusion of an ancestor class which is generic.
  * 
 */
-Hash<string,bmmParameterType> getGenericParameters();
-void setGenericParameters(value Hash<string,bmmParameterType>);
+    Hash<string,bmmParameterType> getGenericParameters();
+    void setGenericParameters(value Hash<string,bmmParameterType>);
 
 /* * FUNCTION * */
 
@@ -26,7 +26,7 @@ void setGenericParameters(value Hash<string,bmmParameterType>);
  * suppliers (): List<String>
  * 
 */
-List<string> suppliers ();
+    List<string> suppliers ();
 
 /**
  * 
@@ -34,7 +34,7 @@ List<string> suppliers ();
  * type (): BMM_GENERIC_TYPE
  * 
 */
-BmmGenericType type ();
+    BmmGenericType type ();
 
 /**
  * 
@@ -44,6 +44,6 @@ BmmGenericType type ();
  * generic_parameter_conformance_type ( a_name: String[1] ): String
  * 
 */
-String genericParameterConformanceType ( aName: string[1]);
+    String genericParameterConformanceType ( aName: string[1]);
 
 }

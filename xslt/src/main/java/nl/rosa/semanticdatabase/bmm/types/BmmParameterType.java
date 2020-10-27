@@ -16,24 +16,24 @@ public interface BmmParameterType extends BmmUnitaryType {
  * The name is limited to 1 character and upper-case.
  * 
 */
-String getName();
-void setName(value String);
+    String getName();
+    void setName(value String);
 
 /**
  * 
  * Optional conformance constraint that must be the name of a defined type.
  * 
 */
-BmmEffectiveType getTypeConstraint();
-void setTypeConstraint(value BmmEffectiveType);
+    BmmEffectiveType getTypeConstraint();
+    void setTypeConstraint(value BmmEffectiveType);
 
 /**
  * 
  * If set, is the corresponding generic parameter definition in an ancestor class.
  * 
 */
-BmmParameterType getInheritancePrecursor();
-void setInheritancePrecursor(value BmmParameterType);
+    BmmParameterType getInheritancePrecursor();
+    void setInheritancePrecursor(value BmmParameterType);
 
 /* * FUNCTION * */
 
@@ -43,7 +43,7 @@ void setInheritancePrecursor(value BmmParameterType);
  * flattened_conforms_to_type (): BMM_EFFECTIVE_TYPE
  * 
 */
-BmmEffectiveType flattenedConformsToType ();
+    BmmEffectiveType flattenedConformsToType ();
 
 /**
  * 
@@ -52,7 +52,7 @@ BmmEffectiveType flattenedConformsToType ();
  * type_signature (): String
  * 
 */
-String typeSignature ();
+    String typeSignature ();
 
 /**
  * 
@@ -60,7 +60,7 @@ String typeSignature ();
  * is_primitive (): Boolean
  * 
 */
-Boolean isPrimitive ();
+    Boolean isPrimitive ();
 
 /**
  * 
@@ -68,7 +68,7 @@ Boolean isPrimitive ();
  * is_abstract (): Boolean
  * 
 */
-Boolean isAbstract ();
+    Boolean isAbstract ();
 
 /**
  * 
@@ -76,7 +76,7 @@ Boolean isAbstract ();
  * type_name (): String
  * 
 */
-String typeName ();
+    String typeName ();
 
 /**
  * 
@@ -84,7 +84,7 @@ String typeName ();
  * flattened_type_list (): List<String>
  * 
 */
-List<string> flattenedTypeList ();
+    List<string> flattenedTypeList ();
 
 /**
  * 
@@ -92,6 +92,6 @@ List<string> flattenedTypeList ();
  * effective_type (): BMM_EFFECTIVE_TYPE
  * 
 */
-BmmEffectiveType effectiveType ();
+    BmmEffectiveType effectiveType ();
 
 }

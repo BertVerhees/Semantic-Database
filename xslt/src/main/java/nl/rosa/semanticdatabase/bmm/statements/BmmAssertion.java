@@ -16,8 +16,8 @@ public interface BmmAssertion extends BmmStatement {
  * 
  * 
 */
-ElBooleanExpression getExpression();
-void setExpression(value ElBooleanExpression);
+    ElBooleanExpression getExpression();
+    void setExpression(value ElBooleanExpression);
 
 /**
  * 
@@ -25,8 +25,8 @@ void setExpression(value ElBooleanExpression);
  * "Inv_all_members_valid".
  * 
 */
-String getTag();
-void setTag(value String);
+    String getTag();
+    void setTag(value String);
 
 /* * FUNCTION * */
 

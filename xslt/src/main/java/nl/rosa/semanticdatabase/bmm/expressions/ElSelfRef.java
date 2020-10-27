@@ -14,8 +14,8 @@ public interface ElSelfRef extends ElInstanceRef {
  * Type of the current scoping instance, inferred from expression context.
  * 
 */
-BmmType getType();
-void setType(value BmmType);
+    BmmType getType();
+    void setType(value BmmType);
 
 /* * FUNCTION * */
 
@@ -25,6 +25,6 @@ void setType(value BmmType);
  * eval_type (): BMM_TYPE
  * 
 */
-BmmType evalType ();
+    BmmType evalType ();
 
 }

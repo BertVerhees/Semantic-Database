@@ -15,16 +15,16 @@ public interface BmmContainerType extends BmmType {
  * This converts to the root_type in BMM_GENERIC_TYPE.
  * 
 */
-BmmGenericClass getContainerClass();
-void setContainerClass(value BmmGenericClass);
+    BmmGenericClass getContainerClass();
+    void setContainerClass(value BmmGenericClass);
 
 /**
  * 
  * The container item type.
  * 
 */
-BmmUnitaryType getItemType();
-void setItemType(value BmmUnitaryType);
+    BmmUnitaryType getItemType();
+    void setItemType(value BmmUnitaryType);
 
 /**
  * 
@@ -33,8 +33,8 @@ void setItemType(value BmmUnitaryType);
  * Otherwise known as 'list' semantics.
  * 
 */
-Boolean {default = true} getIsOrdered();
-void setIsOrdered(value Boolean {default = true});
+    Boolean {default = true} getIsOrdered();
+    void setIsOrdered(value Boolean {default = true});
 
 /**
  * 
@@ -42,8 +42,8 @@ void setIsOrdered(value Boolean {default = true});
  * Otherwise known as 'set' semantics.
  * 
 */
-Boolean {default = false} getIsUnique();
-void setIsUnique(value Boolean {default = false});
+    Boolean {default = false} getIsUnique();
+    void setIsUnique(value Boolean {default = false});
 
 /* * FUNCTION * */
 
@@ -54,7 +54,7 @@ void setIsUnique(value Boolean {default = false});
  * type_name (): String
  * 
 */
-String typeName ();
+    String typeName ();
 
 /**
  * 
@@ -62,7 +62,7 @@ String typeName ();
  * is_abstract (): Boolean Post_is_abstract: Result = container_type.is_abstract
  * 
 */
-Boolean postIsAbstract: result = containerType.isAbstract isAbstract ();
+    Boolean postIsAbstract: result = containerType.isAbstract isAbstract ();
 
 /**
  * 
@@ -71,7 +71,7 @@ Boolean postIsAbstract: result = containerType.isAbstract isAbstract ();
  * flattened_type_list (): List<String> Post_result: Result = item_type.flattened_type_list
  * 
 */
-List<string> postResult: result = itemType.flattenedTypeList flattenedTypeList ();
+    List<string> postResult: result = itemType.flattenedTypeList flattenedTypeList ();
 
 /**
  * 
@@ -79,7 +79,7 @@ List<string> postResult: result = itemType.flattenedTypeList flattenedTypeList (
  * unitary_type (): BMM_UNITARY_TYPE
  * 
 */
-BmmUnitaryType unitaryType ();
+    BmmUnitaryType unitaryType ();
 
 /**
  * 
@@ -87,7 +87,7 @@ BmmUnitaryType unitaryType ();
  * is_primitive (): Boolean Post_result: Result = item_type.is_primitive
  * 
 */
-Boolean postResult: result = itemType.isPrimitive isPrimitive ();
+    Boolean postResult: result = itemType.isPrimitive isPrimitive ();
 
 /**
  * 
@@ -95,6 +95,6 @@ Boolean postResult: result = itemType.isPrimitive isPrimitive ();
  * effective_type (): BMM_EFFECTIVE_TYPE
  * 
 */
-BmmEffectiveType effectiveType ();
+    BmmEffectiveType effectiveType ();
 
 }

@@ -15,24 +15,24 @@ public interface BmmSignature extends BmmEffectiveType {
  * Base name (built-in).
  * 
 */
-String = "signature" getBaseName();
-void setBaseName(value String = "signature");
+    String = "signature" getBaseName();
+    void setBaseName(value String = "signature");
 
 /**
  * 
  * Type of arguments in the signature, if any; represented as a type-tuple (list of arbitrary types).
  * 
 */
-BmmTupleType getArgumentTypes();
-void setArgumentTypes(value BmmTupleType);
+    BmmTupleType getArgumentTypes();
+    void setArgumentTypes(value BmmTupleType);
 
 /**
  * 
  * Result type of signature, if any.
  * 
 */
-BmmType getResultType();
-void setResultType(value BmmType);
+    BmmType getResultType();
+    void setResultType(value BmmType);
 
 /* * FUNCTION * */
 
@@ -42,7 +42,7 @@ void setResultType(value BmmType);
  * type_base_name (): String Post_result: Result.is_equal (base_name())
  * 
 */
-String postResult: result.isEqual (baseName()) typeBaseName ();
+    String postResult: result.isEqual (baseName()) typeBaseName ();
 
 /**
  * 
@@ -50,7 +50,7 @@ String postResult: result.isEqual (baseName()) typeBaseName ();
  * is_abstract (): Boolean
  * 
 */
-Boolean isAbstract ();
+    Boolean isAbstract ();
 
 /**
  * 
@@ -58,7 +58,7 @@ Boolean isAbstract ();
  * is_primitive (): Boolean
  * 
 */
-Boolean isPrimitive ();
+    Boolean isPrimitive ();
 
 /**
  * 
@@ -66,7 +66,7 @@ Boolean isPrimitive ();
  * type_name (): String Post_result: Result.is_equal (base_name())
  * 
 */
-String postResult: result.isEqual (baseName()) typeName ();
+    String postResult: result.isEqual (baseName()) typeName ();
 
 /**
  * 
@@ -75,6 +75,6 @@ String postResult: result.isEqual (baseName()) typeName ();
  * flattened_type_list (): List<String>
  * 
 */
-List<string> flattenedTypeList ();
+    List<string> flattenedTypeList ();
 
 }

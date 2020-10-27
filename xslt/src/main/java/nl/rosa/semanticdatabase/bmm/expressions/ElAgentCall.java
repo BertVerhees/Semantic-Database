@@ -15,8 +15,8 @@ public interface ElAgentCall {
  * The agent being called.
  * 
 */
-ElAgent getAgent();
-void setAgent(value ElAgent);
+    ElAgent getAgent();
+    void setAgent(value ElAgent);
 
 /* * FUNCTION * */
 

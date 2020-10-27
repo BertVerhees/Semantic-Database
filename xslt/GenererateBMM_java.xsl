@@ -67,6 +67,26 @@
         </xsl:for-each>
     </xsl:template>
     
+    <xsl:function name="do:writeEnumeration">
+        <xsl:param name="package" as="node()"></xsl:param>
+        <xsl:param name="class" as="node()"></xsl:param>
+        <xsl:value-of select="do:output(concat('package ', replace(concat($packageBase,$package/packageDirectory),'/','.'), ';'))"/>
+        <xsl:value-of select="do:output('')"/>
+        <xsl:value-of select="do:commentOpen()"/>
+        <xsl:value-of select="do:commentOutput($class/classComment)"/>
+        <xsl:value-of select="do:commentClose()"/>
+        <xsl:value-of select="do:output(concat('public enum ',$class/className, ' {'))"/>
+        <xsl:for-each select="$class/attribute">
+            <xsl:value-of select="do:output('')"/>
+            <xsl:value-of select="do:commentOpen()"/>
+            <xsl:value-of select="do:commentOutput(description)"/>
+            <xsl:value-of select="do:commentClose()"/>
+            <xsl:value-of select="do:outputSpaces(concat('    ',nameAndType,','))"/>
+        </xsl:for-each>
+        <xsl:value-of select="do:output('')"/>
+        <xsl:value-of select="do:output('}')"/>
+    </xsl:function>
+        
     <xsl:function name="do:writeInterface">
         <xsl:param name="package" as="node()"></xsl:param>
         <xsl:param name="class" as="node()"></xsl:param>
@@ -90,8 +110,8 @@
             <xsl:value-of select="do:commentOpen()"/>
             <xsl:value-of select="do:commentOutput(description)"/>
             <xsl:value-of select="do:commentClose()"/>
-            <xsl:value-of select="do:output(do:createGetterDeclaration($class,nameAndType))"/>
-            <xsl:value-of select="do:output(do:createSetterDeclaration($class,nameAndType))"/>
+            <xsl:value-of select="do:outputSpaces(concat('    ',do:createGetterDeclaration($class,nameAndType)))"/>
+            <xsl:value-of select="do:outputSpaces(concat('    ',do:createSetterDeclaration($class,nameAndType)))"/>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('/* * FUNCTION * */')"/>
@@ -101,7 +121,7 @@
             <xsl:value-of select="do:commentOutput(description)"/>
             <xsl:value-of select="do:commentOutput(nameAndType)"/>
             <xsl:value-of select="do:commentClose()"/>
-            <xsl:value-of select="do:output(do:createFunctionDeclaration($class,nameAndType))"/>
+            <xsl:value-of select="do:outputSpaces(concat('    ',do:createFunctionDeclaration($class,nameAndType)))"/>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('}')"/>
@@ -203,10 +223,9 @@
         <xsl:value-of select="$result"/>        
     </xsl:function>
 
-    <xsl:function name="do:writeEnumeration">
-        <xsl:param name="package" as="node()"></xsl:param>
-        <xsl:param name="class" as="node()"></xsl:param>
-        <xsl:value-of select="do:output(concat('package ', replace(concat($packageBase,$package/packageDirectory),'/','.'), ';'))"/>
+    <xsl:function name="do:enumItem">
+        <xsl:param name="incomingString"></xsl:param>
+        <xsl:value-of select="do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[1]),1)"/>
     </xsl:function>
 
     <xsl:template name="analyzeClassDocument">
@@ -292,6 +311,16 @@
                                         test="string-length(normalize-space($nameAndType)) > 0 and not($cardinality = 'Inherit')">
                                         <xsl:choose>
                                             <!-- when there is a void function, there is no : in the signature and no (), that is why the double check -->
+                                            <xsl:when test="not(contains($nameAndType, '(')) and not(contains($nameAndType, ':'))">
+                                                <xsl:element name="attribute">
+                                                    <xsl:element name="nameAndType">
+                                                        <xsl:value-of select="$nameAndType"/>
+                                                    </xsl:element>
+                                                    <xsl:element name="description">
+                                                        <xsl:value-of select="$description"/>
+                                                    </xsl:element>
+                                                </xsl:element>
+                                            </xsl:when>
                                             <xsl:when test="contains($nameAndType, '(') or not(contains($nameAndType, ':'))">
                                                 <xsl:element name="function">
                                                   <xsl:element name="cardinality">
@@ -308,7 +337,7 @@
                                             <xsl:otherwise>
                                                 <xsl:element name="attribute">
                                                   <xsl:element name="cardinality">
-                                                  <xsl:value-of select="$cardinality"/>
+                                                    <xsl:value-of select="$cardinality"/>
                                                   </xsl:element>
                                                   <xsl:element name="nameAndType">
                                                   <xsl:value-of select="$nameAndType"/>
@@ -381,6 +410,11 @@
     <xsl:function name="do:output">
         <xsl:param name="input" as="xs:string"/>
         <xsl:value-of select="concat(normalize-space(string-join($input)), $newline)"/>
+    </xsl:function>
+    
+    <xsl:function name="do:outputSpaces">
+        <xsl:param name="input" as="xs:string"/>
+        <xsl:value-of select="concat(string-join($input), $newline)"/>
     </xsl:function>
 
     <xsl:function name="do:commentOutput">

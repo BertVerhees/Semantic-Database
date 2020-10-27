@@ -15,8 +15,8 @@ public interface ElLiteral extends ElInstanceRef {
  * The reference item from which the value of this node can be computed.
  * 
 */
-BmmLiteralValue getValue();
-void setValue(value BmmLiteralValue);
+    BmmLiteralValue getValue();
+    void setValue(value BmmLiteralValue);
 
 /* * FUNCTION * */
 
@@ -26,6 +26,6 @@ void setValue(value BmmLiteralValue);
  * eval_type (): BMM_TYPE
  * 
 */
-BmmType evalType ();
+    BmmType evalType ();
 
 }

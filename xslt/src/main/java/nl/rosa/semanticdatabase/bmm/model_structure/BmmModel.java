@@ -14,8 +14,8 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * All classes in this model, keyed by type name.
  * 
 */
-Hash<string,bmmClass> getClassDefinitions();
-void setClassDefinitions(value Hash<string,bmmClass>);
+    Hash<string,bmmClass> getClassDefinitions();
+    void setClassDefinitions(value Hash<string,bmmClass>);
 
 /**
  * 
@@ -24,8 +24,8 @@ void setClassDefinitions(value Hash<string,bmmClass>);
  * Classes in the current model may refer to classes in a used model by specifying the other class’s scope meta-attribute.
  * 
 */
-List<bmmModel> getUsedModels();
-void setUsedModels(value List<bmmModel>);
+    List<bmmModel> getUsedModels();
+    void setUsedModels(value List<bmmModel>);
 
 /* * FUNCTION * */
 
@@ -36,7 +36,7 @@ void setUsedModels(value List<bmmModel>);
  * model_id (): String
  * 
 */
-String modelId ();
+    String modelId ();
 
 /**
  * 
@@ -44,7 +44,7 @@ String modelId ();
  * class_definition ( a_name: String[1] ): BMM_CLASS
  * 
 */
-BmmClass classDefinition ( aName: string[1]);
+    BmmClass classDefinition ( aName: string[1]);
 
 /**
  * 
@@ -54,7 +54,7 @@ BmmClass classDefinition ( aName: string[1]);
  * type_definition (): BMM_CLASS
  * 
 */
-BmmClass typeDefinition ();
+    BmmClass typeDefinition ();
 
 /**
  * 
@@ -62,7 +62,7 @@ BmmClass typeDefinition ();
  * has_class_definition ( a_class_name: String[1] ): Boolean
  * 
 */
-Boolean hasClassDefinition ( aClassName: string[1]);
+    Boolean hasClassDefinition ( aClassName: string[1]);
 
 /**
  * 
@@ -70,7 +70,7 @@ Boolean hasClassDefinition ( aClassName: string[1]);
  * has_type_definition ( a_type_name: String[1] ): Boolean
  * 
 */
-Boolean hasTypeDefinition ( aTypeName: string[1]);
+    Boolean hasTypeDefinition ( aTypeName: string[1]);
 
 /**
  * 
@@ -78,7 +78,7 @@ Boolean hasTypeDefinition ( aTypeName: string[1]);
  * enumeration_definition ( a_name: String[1] ): BMM_ENUMERATION
  * 
 */
-BmmEnumeration enumerationDefinition ( aName: string[1]);
+    BmmEnumeration enumerationDefinition ( aName: string[1]);
 
 /**
  * 
@@ -86,7 +86,7 @@ BmmEnumeration enumerationDefinition ( aName: string[1]);
  * primitive_types (): List<String>
  * 
 */
-List<string> primitiveTypes ();
+    List<string> primitiveTypes ();
 
 /**
  * 
@@ -94,7 +94,7 @@ List<string> primitiveTypes ();
  * enumeration_types (): List<String>
  * 
 */
-List<string> enumerationTypes ();
+    List<string> enumerationTypes ();
 
 /**
  * 
@@ -102,7 +102,7 @@ List<string> enumerationTypes ();
  * property_definition (): BMM_PROPERTY
  * 
 */
-BmmProperty propertyDefinition ();
+    BmmProperty propertyDefinition ();
 
 /**
  * 
@@ -112,7 +112,7 @@ BmmProperty propertyDefinition ();
  * ms_conformant_property_type ( a_bmm_type_name: String[1], a_bmm_property_name: String[1], a_ms_property_name: String[1] ): Boolean
  * 
 */
-Boolean msConformantPropertyType ( aBmmTypeName: string[1], aBmmPropertyName: string[1], aMsPropertyName: string[1]);
+    Boolean msConformantPropertyType ( aBmmTypeName: string[1], aBmmPropertyName: string[1], aMsPropertyName: string[1]);
 
 /**
  * 
@@ -120,7 +120,7 @@ Boolean msConformantPropertyType ( aBmmTypeName: string[1], aBmmPropertyName: st
  * property_definition_at_path (): BMM_PROPERTY
  * 
 */
-BmmProperty propertyDefinitionAtPath ();
+    BmmProperty propertyDefinitionAtPath ();
 
 /**
  * 
@@ -128,7 +128,7 @@ BmmProperty propertyDefinitionAtPath ();
  * class_definition_at_path ( a_type_name: String[1], a_prop_path: String[1] ): BMM_CLASS
  * 
 */
-BmmClass classDefinitionAtPath ( aTypeName: string[1], aPropPath: string[1]);
+    BmmClass classDefinitionAtPath ( aTypeName: string[1], aPropPath: string[1]);
 
 /**
  * 
@@ -138,7 +138,7 @@ BmmClass classDefinitionAtPath ( aTypeName: string[1], aPropPath: string[1]);
  * all_ancestor_classes ( a_class: String[1] ): List<String>
  * 
 */
-List<string> allAncestorClasses ( aClass: string[1]);
+    List<string> allAncestorClasses ( aClass: string[1]);
 
 /**
  * 
@@ -146,7 +146,7 @@ List<string> allAncestorClasses ( aClass: string[1]);
  * is_descendant_of ( a_class_name: String[1], a_parent_class_name: String[1] ): Boolean
  * 
 */
-Boolean isDescendantOf ( aClassName: string[1], aParentClassName: string[1]);
+    Boolean isDescendantOf ( aClassName: string[1], aParentClassName: string[1]);
 
 /**
  * 
@@ -156,7 +156,7 @@ Boolean isDescendantOf ( aClassName: string[1], aParentClassName: string[1]);
  * type_conforms_to ( a_desc_type: String[1], an_anc_type: String[1] ): Boolean
  * 
 */
-Boolean typeConformsTo ( aDescType: string[1], anAncType: string[1]);
+    Boolean typeConformsTo ( aDescType: string[1], anAncType: string[1]);
 
 /**
  * 
@@ -166,7 +166,7 @@ Boolean typeConformsTo ( aDescType: string[1], anAncType: string[1]);
  * subtypes ( a_type: String[1] ): List<String>
  * 
 */
-List<string> subtypes ( aType: string[1]);
+    List<string> subtypes ( aType: string[1]);
 
 /**
  * 
@@ -175,7 +175,7 @@ List<string> subtypes ( aType: string[1]);
  * any_class_definition (): BMM_SIMPLE_CLASS
  * 
 */
-BmmSimpleClass anyClassDefinition ();
+    BmmSimpleClass anyClassDefinition ();
 
 /**
  * 
@@ -183,7 +183,7 @@ BmmSimpleClass anyClassDefinition ();
  * any_type_definition (): BMM_SIMPLE_TYPE
  * 
 */
-BmmSimpleType anyTypeDefinition ();
+    BmmSimpleType anyTypeDefinition ();
 
 /**
  * 
@@ -191,6 +191,6 @@ BmmSimpleType anyTypeDefinition ();
  * boolean_type_definition (): BMM_SIMPLE_TYPE
  * 
 */
-BmmSimpleType booleanTypeDefinition ();
+    BmmSimpleType booleanTypeDefinition ();
 
 }

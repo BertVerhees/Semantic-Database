@@ -14,8 +14,8 @@ public interface ElUnaryOperator extends ElOperator {
  * Operand node.
  * 
 */
-ElSimple getOperand();
-void setOperand(value ElSimple);
+    ElSimple getOperand();
+    void setOperand(value ElSimple);
 
 /* * FUNCTION * */
 

@@ -19,24 +19,24 @@ public interface BmmClass extends BmmModule {
  * List of immediate inheritance parents.
  * 
 */
-Hash<string,bmmModelType> getAncestors();
-void setAncestors(value Hash<string,bmmModelType>);
+    Hash<string,bmmModelType> getAncestors();
+    void setAncestors(value Hash<string,bmmModelType>);
 
 /**
  * 
  * Package this class belongs to.
  * 
 */
-BmmPackage getPackage();
-void setPackage(value BmmPackage);
+    BmmPackage getPackage();
+    void setPackage(value BmmPackage);
 
 /**
  * 
  * List of attributes defined in this class.
  * 
 */
-Hash<string,bmmProperty> getProperties();
-void setProperties(value Hash<string,bmmProperty>);
+    Hash<string,bmmProperty> getProperties();
+    void setProperties(value Hash<string,bmmProperty>);
 
 /**
  * 
@@ -44,48 +44,48 @@ void setProperties(value Hash<string,bmmProperty>);
  * Useful for UI tools to determine which original schema file to open for a given class for manual editing.
  * 
 */
-String getSourceSchemaId();
-void setSourceSchemaId(value String);
+    String getSourceSchemaId();
+    void setSourceSchemaId(value String);
 
 /**
  * 
  * List of computed references to base classes of immediate inheritance descendants, derived when members of ancestors are attached at creation time.
  * 
 */
-List<bmmClass> getImmediateDescendants();
-void setImmediateDescendants(value List<bmmClass>);
+    List<bmmClass> getImmediateDescendants();
+    void setImmediateDescendants(value List<bmmClass>);
 
 /**
  * 
  * True if this definition overrides a class of the same name in an included schema.
  * 
 */
-Boolean getIsOverride();
-void setIsOverride(value Boolean);
+    Boolean getIsOverride();
+    void setIsOverride(value Boolean);
 
 /**
  * 
  * List of constants defined in this class.
  * 
 */
-Hash<string,bmmConstant> getConstants();
-void setConstants(value Hash<string,bmmConstant>);
+    Hash<string,bmmConstant> getConstants();
+    void setConstants(value Hash<string,bmmConstant>);
 
 /**
  * 
  * List of functions defined in this class.
  * 
 */
-Hash<string,bmmFunction> getFunctions();
-void setFunctions(value Hash<string,bmmFunction>);
+    Hash<string,bmmFunction> getFunctions();
+    void setFunctions(value Hash<string,bmmFunction>);
 
 /**
  * 
  * List of procedures defined in this class.
  * 
 */
-Hash<string,bmmProcedure> getProcedures();
-void setProcedures(value Hash<string,bmmProcedure>);
+    Hash<string,bmmProcedure> getProcedures();
+    void setProcedures(value Hash<string,bmmProcedure>);
 
 /**
  * 
@@ -93,8 +93,8 @@ void setProcedures(value Hash<string,bmmProcedure>);
  * any typically built-in or standard library type such as String, Date, Hash<K,V> etc.
  * 
 */
-Boolean {default = false} getIsPrimitive();
-void setIsPrimitive(value Boolean {default = false});
+    Boolean {default = false} getIsPrimitive();
+    void setIsPrimitive(value Boolean {default = false});
 
 /**
  * 
@@ -102,40 +102,40 @@ void setIsPrimitive(value Boolean {default = false});
  * direct instances cannot be created from its direct type.
  * 
 */
-Boolean {default = false} getIsAbstract();
-void setIsAbstract(value Boolean {default = false});
+    Boolean {default = false} getIsAbstract();
+    void setIsAbstract(value Boolean {default = false});
 
 /**
  * 
  * 
  * 
 */
-List<bmmAssertion> getInvariants();
-void setInvariants(value List<bmmAssertion>);
+    List<bmmAssertion> getInvariants();
+    void setInvariants(value List<bmmAssertion>);
 
 /**
  * 
  * Subset of procedures that may be used to initialise a new instance of an object, and whose execution will guarantee that class invariants are satisfied.
  * 
 */
-Hash<string,bmmProcedure> getCreators();
-void setCreators(value Hash<string,bmmProcedure>);
+    Hash<string,bmmProcedure> getCreators();
+    void setCreators(value Hash<string,bmmProcedure>);
 
 /**
  * 
  * Subset of creators that create a new instance from a single argument of another type.
  * 
 */
-Hash<string,bmmProcedure> getConverters();
-void setConverters(value Hash<string,bmmProcedure>);
+    Hash<string,bmmProcedure> getConverters();
+    void setConverters(value Hash<string,bmmProcedure>);
 
 /**
  * 
  * List of feature groups in this class.
  * 
 */
-List<bmmFeatureGroup> getFeatureGroups();
-void setFeatureGroups(value List<bmmFeatureGroup>);
+    List<bmmFeatureGroup> getFeatureGroups();
+    void setFeatureGroups(value List<bmmFeatureGroup>);
 
 /* * FUNCTION * */
 
@@ -145,7 +145,7 @@ void setFeatureGroups(value List<bmmFeatureGroup>);
  * type (): BMM_MODEL_TYPE
  * 
 */
-BmmModelType type ();
+    BmmModelType type ();
 
 /**
  * 
@@ -153,7 +153,7 @@ BmmModelType type ();
  * all_ancestors (): List<String>
  * 
 */
-List<string> allAncestors ();
+    List<string> allAncestors ();
 
 /**
  * 
@@ -161,7 +161,7 @@ List<string> allAncestors ();
  * all_descendants (): List<String>
  * 
 */
-List<string> allDescendants ();
+    List<string> allDescendants ();
 
 /**
  * 
@@ -171,7 +171,7 @@ List<string> allDescendants ();
  * suppliers (): List<String>
  * 
 */
-List<string> suppliers ();
+    List<string> suppliers ();
 
 /**
  * 
@@ -179,7 +179,7 @@ List<string> suppliers ();
  * suppliers_non_primitive (): List<String>
  * 
 */
-List<string> suppliersNonPrimitive ();
+    List<string> suppliersNonPrimitive ();
 
 /**
  * 
@@ -188,7 +188,7 @@ List<string> suppliersNonPrimitive ();
  * supplier_closure (): List<String>
  * 
 */
-List<string> supplierClosure ();
+    List<string> supplierClosure ();
 
 /**
  * 
@@ -196,7 +196,7 @@ List<string> supplierClosure ();
  * package_path (): String
  * 
 */
-String packagePath ();
+    String packagePath ();
 
 /**
  * 
@@ -204,7 +204,7 @@ String packagePath ();
  * class_path (): String
  * 
 */
-String classPath ();
+    String classPath ();
 
 /**
  * 
@@ -213,7 +213,7 @@ String classPath ();
  * is_primitive (): Boolean
  * 
 */
-Boolean isPrimitive ();
+    Boolean isPrimitive ();
 
 /**
  * 
@@ -222,7 +222,7 @@ Boolean isPrimitive ();
  * is_abstract (): Boolean
  * 
 */
-Boolean isAbstract ();
+    Boolean isAbstract ();
 
 /**
  * 
@@ -230,7 +230,7 @@ Boolean isAbstract ();
  * features (): List<BMM_CLASS_FEATURE>
  * 
 */
-List<bmmClassFeature> features ();
+    List<bmmClassFeature> features ();
 
 /**
  * 
@@ -238,7 +238,7 @@ List<bmmClassFeature> features ();
  * flat_features (): List<BMM_CLASS_FEATURE>
  * 
 */
-List<bmmClassFeature> flatFeatures ();
+    List<bmmClassFeature> flatFeatures ();
 
 /**
  * 
@@ -246,6 +246,6 @@ List<bmmClassFeature> flatFeatures ();
  * flat_properties (): List<BMM_PROPERTY>
  * 
 */
-List<bmmProperty> flatProperties ();
+    List<bmmProperty> flatProperties ();
 
 }

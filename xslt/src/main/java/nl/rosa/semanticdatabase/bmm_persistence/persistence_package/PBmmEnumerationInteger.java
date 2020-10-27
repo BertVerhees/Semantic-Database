@@ -14,8 +14,8 @@ public interface PBmmEnumerationInteger extends PBmmEnumeration {
  * BMM_CLASS object build by create_bmm_class_definition and populate_bmm_class_definition.
  * 
 */
-BmmEnumerationInteger getBmmClass();
-void setBmmClass(value BmmEnumerationInteger);
+    BmmEnumerationInteger getBmmClass();
+    void setBmmClass(value BmmEnumerationInteger);
 
 /* * FUNCTION * */
 

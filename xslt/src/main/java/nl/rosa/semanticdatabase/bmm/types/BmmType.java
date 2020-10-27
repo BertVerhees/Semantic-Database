@@ -21,7 +21,7 @@ public interface BmmType {
  * type_name (): String
  * 
 */
-String typeName ();
+    String typeName ();
 
 /**
  * 
@@ -31,7 +31,7 @@ String typeName ();
  * type_signature (): String
  * 
 */
-String typeSignature ();
+    String typeSignature ();
 
 /**
  * 
@@ -40,7 +40,7 @@ String typeSignature ();
  * is_abstract (): Boolean
  * 
 */
-Boolean isAbstract ();
+    Boolean isAbstract ();
 
 /**
  * 
@@ -49,7 +49,7 @@ Boolean isAbstract ();
  * is_primitive (): Boolean
  * 
 */
-Boolean isPrimitive ();
+    Boolean isPrimitive ();
 
 /**
  * 
@@ -57,7 +57,7 @@ Boolean isPrimitive ();
  * unitary_type (): BMM_UNITARY_TYPE
  * 
 */
-BmmUnitaryType unitaryType ();
+    BmmUnitaryType unitaryType ();
 
 /**
  * 
@@ -65,7 +65,7 @@ BmmUnitaryType unitaryType ();
  * effective_type (): BMM_EFFECTIVE_TYPE
  * 
 */
-BmmEffectiveType effectiveType ();
+    BmmEffectiveType effectiveType ();
 
 /**
  * 
@@ -73,6 +73,6 @@ BmmEffectiveType effectiveType ();
  * flattened_type_list (): List<String>
  * 
 */
-List<string> flattenedTypeList ();
+    List<string> flattenedTypeList ();
 
 }

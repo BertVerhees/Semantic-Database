@@ -15,16 +15,16 @@ public interface BmmFunction extends BmmTypedFeature,BmmRoutine {
  * Optional details enabling a function to be represented as an operator in a syntactic representation.
  * 
 */
-BmmOperator getOperatorDefinition();
-void setOperatorDefinition(value BmmOperator);
+    BmmOperator getOperatorDefinition();
+    void setOperatorDefinition(value BmmOperator);
 
 /**
  * 
  * Automatically created Result variable, usable in body and post-condition.
  * 
 */
-BmmResult getResult();
-void setResult(value BmmResult);
+    BmmResult getResult();
+    void setResult(value BmmResult);
 
 /* * FUNCTION * */
 

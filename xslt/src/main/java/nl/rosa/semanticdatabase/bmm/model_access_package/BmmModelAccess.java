@@ -14,8 +14,8 @@ public interface BmmModelAccess {
  * List of directories where all the schemas loaded here are found.
  * 
 */
-List<string> getSchemaDirectories();
-void setSchemaDirectories(value List<string>);
+    List<string> getSchemaDirectories();
+    void setSchemaDirectories(value List<string>);
 
 /**
  * 
@@ -23,16 +23,16 @@ void setSchemaDirectories(value List<string>);
  * Keyed by schema_id.
  * 
 */
-Hash<string,bmmSchemaDescriptor> getAllSchemas();
-void setAllSchemas(value Hash<string,bmmSchemaDescriptor>);
+    Hash<string,bmmSchemaDescriptor> getAllSchemas();
+    void setAllSchemas(value Hash<string,bmmSchemaDescriptor>);
 
 /**
  * 
  * Top-level (root) models in use, keyed by model_id.
  * 
 */
-Hash<string,bmmModel> getBmmModels();
-void setBmmModels(value Hash<string,bmmModel>);
+    Hash<string,bmmModel> getBmmModels();
+    void setBmmModels(value Hash<string,bmmModel>);
 
 /**
  * 
@@ -40,8 +40,16 @@ void setBmmModels(value Hash<string,bmmModel>);
  * For example, the keys "openEHR_EHR_1.0.4", "openEHR_EHR_1.0", "openEHR_EHR_1", and "openEHR_EHR" will all match the "openEHR_EHR_1.0.4" model, assuming it is the most recent version available.
  * 
 */
-Hash<string,bmmModel> getMatchingBmmModels();
-void setMatchingBmmModels(value Hash<string,bmmModel>);
+    Hash<string,bmmModel> getMatchingBmmModels();
+    void setMatchingBmmModels(value Hash<string,bmmModel>);
+
+/**
+ * 
+ * Reload BMM schemas.
+ * 
+*/
+    void getReloadSchemas();
+    void setReloadSchemas(value void);
 
 /* * FUNCTION * */
 
@@ -51,7 +59,7 @@ void setMatchingBmmModels(value Hash<string,bmmModel>);
  * initialise_with_load_list ( a_schema_dirs: List<String>[1], a_schema_load_list: List<String>[0..1] )
  * 
 */
-void initialiseWithLoadList ( aSchemaDirs: list<string>[1], aSchemaLoadList: list<string>[0..1] );
+    void initialiseWithLoadList ( aSchemaDirs: list<string>[1], aSchemaLoadList: list<string>[0..1] );
 
 /**
  * 
@@ -59,15 +67,7 @@ void initialiseWithLoadList ( aSchemaDirs: list<string>[1], aSchemaLoadList: lis
  * initialise_all ( a_schema_dirs: List<String>[1] )
  * 
 */
-void initialiseAll ( aSchemaDirs: list<string>[1] );
-
-/**
- * 
- * Reload BMM schemas.
- * reload_schemas
- * 
-*/
-void reloadSchemas();
+    void initialiseAll ( aSchemaDirs: list<string>[1] );
 
 /**
  * 
@@ -78,7 +78,7 @@ void reloadSchemas();
  * bmm_model ( a_model_key: String[1] ): BMM_MODEL
  * 
 */
-BmmModel bmmModel ( aModelKey: string[1]);
+    BmmModel bmmModel ( aModelKey: string[1]);
 
 /**
  * 
@@ -89,6 +89,6 @@ BmmModel bmmModel ( aModelKey: string[1]);
  * has_bmm_model ( a_model_key: String[1] ): Boolean
  * 
 */
-Boolean hasBmmModel ( aModelKey: string[1]);
+    Boolean hasBmmModel ( aModelKey: string[1]);
 
 }

@@ -14,16 +14,16 @@ public interface PBmmIndexedContainerType extends PBmmContainerType {
  * 
  * 
 */
-String getIndexType();
-void setIndexType(value String);
+    String getIndexType();
+    void setIndexType(value String);
 
 /**
  * 
  * Result of create_bmm_type() call.
  * 
 */
-BmmIndexedContainerType getBmmType();
-void setBmmType(value BmmIndexedContainerType);
+    BmmIndexedContainerType getBmmType();
+    void setBmmType(value BmmIndexedContainerType);
 
 /* * FUNCTION * */
 

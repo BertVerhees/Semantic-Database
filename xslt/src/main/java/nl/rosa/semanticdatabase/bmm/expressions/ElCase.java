@@ -14,8 +14,8 @@ public interface ElCase extends ElDecisionBranch {
  * 
  * 
 */
-CObject getValueConstraint();
-void setValueConstraint(value CObject);
+    CObject getValueConstraint();
+    void setValueConstraint(value CObject);
 
 /* * FUNCTION * */
 

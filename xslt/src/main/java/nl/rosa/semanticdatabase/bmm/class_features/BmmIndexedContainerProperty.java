@@ -14,8 +14,8 @@ public interface BmmIndexedContainerProperty extends BmmContainerProperty {
  * Declared or inferred static type of the entity.
  * 
 */
-BmmIndexedContainerType getType();
-void setType(value BmmIndexedContainerType);
+    BmmIndexedContainerType getType();
+    void setType(value BmmIndexedContainerType);
 
 /* * FUNCTION * */
 
@@ -25,6 +25,6 @@ void setType(value BmmIndexedContainerType);
  * display_name (): String
  * 
 */
-String displayName ();
+    String displayName ();
 
 }

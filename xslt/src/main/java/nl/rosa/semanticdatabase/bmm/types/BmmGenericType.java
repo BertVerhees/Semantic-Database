@@ -16,16 +16,16 @@ public interface BmmGenericType extends BmmModelType {
  * The order must match the order of the owning class’s formal generic parameter declarations, and the types may be defined types or formal parameter types.
  * 
 */
-List<bmmUnitaryType> getGenericParameters();
-void setGenericParameters(value List<bmmUnitaryType>);
+    List<bmmUnitaryType> getGenericParameters();
+    void setGenericParameters(value List<bmmUnitaryType>);
 
 /**
  * 
  * Defining generic class of this type.
  * 
 */
-BmmGenericClass getBaseClass();
-void setBaseClass(value BmmGenericClass);
+    BmmGenericClass getBaseClass();
+    void setBaseClass(value BmmGenericClass);
 
 /* * FUNCTION * */
 
@@ -36,7 +36,7 @@ void setBaseClass(value BmmGenericClass);
  * type_name (): String
  * 
 */
-String typeName ();
+    String typeName ();
 
 /**
  * 
@@ -45,7 +45,7 @@ String typeName ();
  * type_signature (): String
  * 
 */
-String typeSignature ();
+    String typeSignature ();
 
 /**
  * 
@@ -53,7 +53,7 @@ String typeSignature ();
  * is_abstract (): Boolean
  * 
 */
-Boolean isAbstract ();
+    Boolean isAbstract ();
 
 /**
  * 
@@ -61,7 +61,7 @@ Boolean isAbstract ();
  * flattened_type_list (): List<String>
  * 
 */
-List<string> flattenedTypeList ();
+    List<string> flattenedTypeList ();
 
 /**
  * 
@@ -69,7 +69,7 @@ List<string> flattenedTypeList ();
  * is_partially_closed (): Boolean
  * 
 */
-Boolean isPartiallyClosed ();
+    Boolean isPartiallyClosed ();
 
 /**
  * 
@@ -77,7 +77,7 @@ Boolean isPartiallyClosed ();
  * effective_base_class (): BMM_GENERIC_CLASS
  * 
 */
-BmmGenericClass effectiveBaseClass ();
+    BmmGenericClass effectiveBaseClass ();
 
 /**
  * 
@@ -85,6 +85,6 @@ BmmGenericClass effectiveBaseClass ();
  * is_open (): Boolean
  * 
 */
-Boolean isOpen ();
+    Boolean isOpen ();
 
 }

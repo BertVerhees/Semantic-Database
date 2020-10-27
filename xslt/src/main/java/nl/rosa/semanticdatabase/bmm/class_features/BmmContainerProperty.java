@@ -14,16 +14,16 @@ public interface BmmContainerProperty extends BmmProperty {
  * Cardinality of this container.
  * 
 */
-MultiplicityInterval getCardinality();
-void setCardinality(value MultiplicityInterval);
+    MultiplicityInterval getCardinality();
+    void setCardinality(value MultiplicityInterval);
 
 /**
  * 
  * Declared or inferred static type of the entity.
  * 
 */
-BmmContainerType getType();
-void setType(value BmmContainerType);
+    BmmContainerType getType();
+    void setType(value BmmContainerType);
 
 /* * FUNCTION * */
 
@@ -33,6 +33,6 @@ void setType(value BmmContainerType);
  * display_name (): String
  * 
 */
-String displayName ();
+    String displayName ();
 
 }

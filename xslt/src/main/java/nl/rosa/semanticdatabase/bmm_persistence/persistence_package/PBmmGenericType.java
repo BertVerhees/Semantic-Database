@@ -15,8 +15,8 @@ public interface PBmmGenericType extends PBmmBaseType {
  * Interval in Interval<Integer>.
  * 
 */
-String getRootType();
-void setRootType(value String);
+    String getRootType();
+    void setRootType(value String);
 
 /**
  * 
@@ -25,8 +25,8 @@ void setRootType(value String);
  * Persistent attribute.
  * 
 */
-List<pBmmType> getGenericParameterDefs();
-void setGenericParameterDefs(value List<pBmmType>);
+    List<pBmmType> getGenericParameterDefs();
+    void setGenericParameterDefs(value List<pBmmType>);
 
 /**
  * 
@@ -35,16 +35,16 @@ void setGenericParameterDefs(value List<pBmmType>);
  * Persistent attribute.
  * 
 */
-List<string> getGenericParameters();
-void setGenericParameters(value List<string>);
+    List<string> getGenericParameters();
+    void setGenericParameters(value List<string>);
 
 /**
  * 
  * Result of create_bmm_type() call.
  * 
 */
-BmmGenericType getBmmType();
-void setBmmType(value BmmGenericType);
+    BmmGenericType getBmmType();
+    void setBmmType(value BmmGenericType);
 
 /* * FUNCTION * */
 
@@ -55,6 +55,6 @@ void setBmmType(value BmmGenericType);
  * generic_parameter_refs (): List<P_BMM_TYPE>
  * 
 */
-List<pBmmType> genericParameterRefs ();
+    List<pBmmType> genericParameterRefs ();
 
 }
