@@ -17,16 +17,16 @@ public interface ElCaseTable extends ElDecisionTable {
  * Input value that is compared against each items[i].value_range to determine the overall result.
  * 
 */
-    ElSimple getInput();
-    void setInput(value ElSimple);
+    ElCaseTable getInput();
+    void setInput(value ElCaseTable);
 
 /**
  * 
  * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
  * 
 */
-    List<elCase> getItems();
-    void setItems(value List<elCase>);
+    ElCaseTable getItems();
+    void setItems(value ElCaseTable);
 
 /* * FUNCTION * */
 

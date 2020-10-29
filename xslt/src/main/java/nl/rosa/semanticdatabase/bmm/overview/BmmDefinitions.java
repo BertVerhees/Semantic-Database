@@ -14,72 +14,72 @@ public interface BmmDefinitions extends BasicDefinitions {
  * Current internal version of BMM meta-model, used to determine if a given schema can be processed by a given implementation of the model.
  * 
 */
-    String getBmmInternalVersion();
-    void setBmmInternalVersion(value String);
+    BmmDefinitions getBmmInternalVersion();
+    void setBmmInternalVersion(value BmmDefinitions);
 
 /**
  * 
  * Delimiter used to separate schema id from package path in a fully qualified path.
  * 
 */
-    String = " getSchemaNameDelimiter();
-    void setSchemaNameDelimiter(value String = ");
+    BmmDefinitions getSchemaNameDelimiter();
+    void setSchemaNameDelimiter(value BmmDefinitions);
 
 /**
  * 
  * Delimiter used to separate package names in a package path.
  * 
 */
-    String = "." getPackageNameDelimiter();
-    void setPackageNameDelimiter(value String = ".");
+    BmmDefinitions getPackageNameDelimiter();
+    void setPackageNameDelimiter(value BmmDefinitions);
 
 /**
  * 
  * Extension used for BMM files.
  * 
 */
-    String = ".bmm" getBmmSchemaFileExtension();
-    void setBmmSchemaFileExtension(value String = ".bmm");
+    BmmDefinitions getBmmSchemaFileExtension();
+    void setBmmSchemaFileExtension(value BmmDefinitions);
 
 /**
  * 
  * Appears between a name and a type in a declaration or type signature.
  * 
 */
-    Character = ' getTypeDelimiter();
-    void setTypeDelimiter(value Character = ');
+    BmmDefinitions getTypeDelimiter();
+    void setTypeDelimiter(value BmmDefinitions);
 
 /**
  * 
  * Left delimiter for generic class and generic type names, as used in List<T>.
  * 
 */
-    Character = '<' getGenericLeftDelimiter();
-    void setGenericLeftDelimiter(value Character = '<');
+    BmmDefinitions getGenericLeftDelimiter();
+    void setGenericLeftDelimiter(value BmmDefinitions);
 
 /**
  * 
  * Right delimiter for generic class and generic type names, as used in List<T>.
  * 
 */
-    Character = '>' getGenericRightDelimiter();
-    void setGenericRightDelimiter(value Character = '>');
+    BmmDefinitions getGenericRightDelimiter();
+    void setGenericRightDelimiter(value BmmDefinitions);
 
 /**
  * 
  * Separator used in Generic types.
  * 
 */
-    Character = ',' getGenericSeparator();
-    void setGenericSeparator(value Character = ',');
+    BmmDefinitions getGenericSeparator();
+    void setGenericSeparator(value BmmDefinitions);
 
 /**
  * 
  * Delimiter between formal type parameter and constraint type, as used in Sortable<T: Ordered>.
  * 
 */
-    Character = ' getGenericConstraintDelimiter();
-    void setGenericConstraintDelimiter(value Character = ');
+    BmmDefinitions getGenericConstraintDelimiter();
+    void setGenericConstraintDelimiter(value BmmDefinitions);
 
 /**
  * 
@@ -87,104 +87,104 @@ public interface BmmDefinitions extends BasicDefinitions {
  * Example: [Integer, String] - a tuple type; [3, "Quixote"] - a tuple.
  * 
 */
-    Character = '[' getTupleLeftDelim();
-    void setTupleLeftDelim(value Character = '[');
+    BmmDefinitions getTupleLeftDelim();
+    void setTupleLeftDelim(value BmmDefinitions);
 
 /**
  * 
  * Right delimiter of a Tuple type and also instance.
  * 
 */
-    Character = ']' getTupleRightDelim();
-    void setTupleRightDelim(value Character = ']');
+    BmmDefinitions getTupleRightDelim();
+    void setTupleRightDelim(value BmmDefinitions);
 
 /**
  * 
  * Separator used in Tuple types and instances.
  * 
 */
-    Character = ',' getTupleSeparator();
-    void setTupleSeparator(value Character = ',');
+    BmmDefinitions getTupleSeparator();
+    void setTupleSeparator(value BmmDefinitions);
 
 /**
  * 
  * Left delimiter used in serial form of instance constrained enumeration.
  * 
 */
-    Character = '«' getConstraintLeftDelim();
-    void setConstraintLeftDelim(value Character = '«');
+    BmmDefinitions getConstraintLeftDelim();
+    void setConstraintLeftDelim(value BmmDefinitions);
 
 /**
  * 
  * Right delimiter used in serial form of instance constrained enumeration.
  * 
 */
-    Character = '»' getConstraintRightDelim();
-    void setConstraintRightDelim(value Character = '»');
+    BmmDefinitions getConstraintRightDelim();
+    void setConstraintRightDelim(value BmmDefinitions);
 
 /**
  * 
  * Attribute name of logical attribute 'bmm_version' in .bmm schema file.
  * 
 */
-    String = "bmmVersion" getMetadataBmmVersion();
-    void setMetadataBmmVersion(value String = "bmmVersion");
+    BmmDefinitions getMetadataBmmVersion();
+    void setMetadataBmmVersion(value BmmDefinitions);
 
 /**
  * 
  * Attribute name of logical attribute 'schema_name' in .bmm schema file.
  * 
 */
-    String = "schemaName" getMetadataSchemaName();
-    void setMetadataSchemaName(value String = "schemaName");
+    BmmDefinitions getMetadataSchemaName();
+    void setMetadataSchemaName(value BmmDefinitions);
 
 /**
  * 
  * Attribute name of logical attribute 'rm_publisher' in .bmm schema file.
  * 
 */
-    String = "rmPublisher" getMetadataRmPublisher();
-    void setMetadataRmPublisher(value String = "rmPublisher");
+    BmmDefinitions getMetadataRmPublisher();
+    void setMetadataRmPublisher(value BmmDefinitions);
 
 /**
  * 
  * Attribute name of logical attribute 'rm_release' in .bmm schema file.
  * 
 */
-    String = "rmRelease" getMetadataRmRelease();
-    void setMetadataRmRelease(value String = "rmRelease");
+    BmmDefinitions getMetadataRmRelease();
+    void setMetadataRmRelease(value BmmDefinitions);
 
 /**
  * 
  * Attribute name of logical attribute 'schema_revision' in .bmm schema file.
  * 
 */
-    String = "schemaRevision" getMetadataSchemaRevision();
-    void setMetadataSchemaRevision(value String = "schemaRevision");
+    BmmDefinitions getMetadataSchemaRevision();
+    void setMetadataSchemaRevision(value BmmDefinitions);
 
 /**
  * 
  * Attribute name of logical attribute 'schema_lifecycle_state' in .bmm schema file.
  * 
 */
-    String = "schemaLifecycleState" getMetadataSchemaLifecycleState();
-    void setMetadataSchemaLifecycleState(value String = "schemaLifecycleState");
+    BmmDefinitions getMetadataSchemaLifecycleState();
+    void setMetadataSchemaLifecycleState(value BmmDefinitions);
 
 /**
  * 
  * Attribute name of logical attribute 'schema_description' in .bmm schema file.
  * 
 */
-    String = "schemaDescription" getMetadataSchemaDescription();
-    void setMetadataSchemaDescription(value String = "schemaDescription");
+    BmmDefinitions getMetadataSchemaDescription();
+    void setMetadataSchemaDescription(value BmmDefinitions);
 
 /**
  * 
  * Path of schema file.
  * 
 */
-    String = "schemaPath" getMetadataSchemaPath();
-    void setMetadataSchemaPath(value String = "schemaPath");
+    BmmDefinitions getMetadataSchemaPath();
+    void setMetadataSchemaPath(value BmmDefinitions);
 
 /* * FUNCTION * */
 

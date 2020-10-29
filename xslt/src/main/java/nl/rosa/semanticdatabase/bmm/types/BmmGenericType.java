@@ -16,8 +16,8 @@ public interface BmmGenericType extends BmmModelType {
  * The order must match the order of the owning class’s formal generic parameter declarations, and the types may be defined types or formal parameter types.
  * 
 */
-    List<bmmUnitaryType> getGenericParameters();
-    void setGenericParameters(value List<bmmUnitaryType>);
+    BmmGenericType getGenericParameters();
+    void setGenericParameters(value BmmGenericType);
 
 /**
  * 

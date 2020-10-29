@@ -17,8 +17,8 @@ public interface ElAgent extends ElScopedRef {
  * Name of the routine being called.
  * 
 */
-    String getName();
-    void setName(value String);
+    ElAgent getName();
+    void setName(value ElAgent);
 
 /**
  * 
@@ -34,16 +34,16 @@ public interface ElAgent extends ElScopedRef {
  * If not provided, and the name refers to a routine with more arguments than supplied in closed_args, the missing arguments are inferred from the definition.
  * 
 */
-    List<string> getOpenArgs();
-    void setOpenArgs(value List<string>);
+    ElAgent getOpenArgs();
+    void setOpenArgs(value ElAgent);
 
 /**
  * 
  * Reference to definition of a routine for which this is an agent, if one exists.
  * 
 */
-    BmmRoutine getDefinition();
-    void setDefinition(value BmmRoutine);
+    ElAgent getDefinition();
+    void setDefinition(value ElAgent);
 
 /* * FUNCTION * */
 

@@ -15,8 +15,8 @@ public interface BmmSignature extends BmmEffectiveType {
  * Base name (built-in).
  * 
 */
-    String = "signature" getBaseName();
-    void setBaseName(value String = "signature");
+    BmmSignature getBaseName();
+    void setBaseName(value BmmSignature);
 
 /**
  * 
@@ -31,8 +31,8 @@ public interface BmmSignature extends BmmEffectiveType {
  * Result type of signature, if any.
  * 
 */
-    BmmType getResultType();
-    void setResultType(value BmmType);
+    BmmSignature getResultType();
+    void setResultType(value BmmSignature);
 
 /* * FUNCTION * */
 

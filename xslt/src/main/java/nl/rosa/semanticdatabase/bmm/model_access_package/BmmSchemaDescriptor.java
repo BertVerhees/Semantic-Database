@@ -15,8 +15,8 @@ public interface BmmSchemaDescriptor {
  * Persistent form of model.
  * 
 */
-    BmmSchema getBmmSchema();
-    void setBmmSchema(value BmmSchema);
+    BmmSchemaDescriptor getBmmSchema();
+    void setBmmSchema(value BmmSchemaDescriptor);
 
 /**
  * 
@@ -32,24 +32,24 @@ public interface BmmSchemaDescriptor {
  * openehr_rm_1.0.3, openehr_test_1.0.1, iso_13606_1_2008_2.1.2.
  * 
 */
-    String getSchemaId();
-    void setSchemaId(value String);
+    BmmSchemaDescriptor getSchemaId();
+    void setSchemaId(value BmmSchemaDescriptor);
 
 /**
  * 
  * Table of {key, value} of schema meta-data, keys are string values defined by {BMM_DEFINITIONS}.Metadata_* constants.
  * 
 */
-    Hash<string, string> getMetaData();
-    void setMetaData(value Hash<string, string>);
+    BmmSchemaDescriptor getMetaData();
+    void setMetaData(value BmmSchemaDescriptor);
 
 /**
  * 
  * Identifiers of schemas included by this schema.
  * 
 */
-    List<string> getIncludes();
-    void setIncludes(value List<string>);
+    BmmSchemaDescriptor getIncludes();
+    void setIncludes(value BmmSchemaDescriptor);
 
 /**
  * 
@@ -58,16 +58,16 @@ public interface BmmSchemaDescriptor {
  * If successful, p_schema will be set.
  * 
 */
-    void getLoad();
-    void setLoad(value void);
+    BmmSchemaDescriptor getLoad();
+    void setLoad(value BmmSchemaDescriptor);
 
 /**
  * 
  * Validate loaded schema and report errors.
  * 
 */
-    void getValidateMerged();
-    void setValidateMerged(value void);
+    BmmSchemaDescriptor getValidateMerged();
+    void setValidateMerged(value BmmSchemaDescriptor);
 
 /**
  * 
@@ -75,8 +75,8 @@ public interface BmmSchemaDescriptor {
  * the BMM_MODEL from one P_BMM_SCHEMA schema.
  * 
 */
-    void getCreateModel();
-    void setCreateModel(value void);
+    BmmSchemaDescriptor getCreateModel();
+    void setCreateModel(value BmmSchemaDescriptor);
 
 /* * FUNCTION * */
 

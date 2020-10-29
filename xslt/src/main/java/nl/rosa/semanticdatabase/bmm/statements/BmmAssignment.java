@@ -15,16 +15,16 @@ public interface BmmAssignment extends BmmStatement {
  * The target variable on the notional left-hand side of this assignment.
  * 
 */
-    ElInstantiableRef getTarget();
-    void setTarget(value ElInstantiableRef);
+    BmmAssignment getTarget();
+    void setTarget(value BmmAssignment);
 
 /**
  * 
  * Source right hand side) of the assignment.
  * 
 */
-    ElExpression getSource();
-    void setSource(value ElExpression);
+    BmmAssignment getSource();
+    void setSource(value BmmAssignment);
 
 /* * FUNCTION * */
 

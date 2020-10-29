@@ -22,8 +22,8 @@ public interface BmmOperator {
  * Set of String symbols that may be used to represent this operator in a textual representation of a BMM model.
  * 
 */
-    List<string> getSymbols();
-    void setSymbols(value List<string>);
+    BmmOperator getSymbols();
+    void setSymbols(value BmmOperator);
 
 /**
  * 
@@ -31,8 +31,8 @@ public interface BmmOperator {
  * 'minus' etc.
  * 
 */
-    String getName();
-    void setName(value String);
+    BmmOperator getName();
+    void setName(value BmmOperator);
 
 /* * FUNCTION * */
 

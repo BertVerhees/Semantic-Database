@@ -19,8 +19,8 @@ public interface BmmClass extends BmmModule {
  * List of immediate inheritance parents.
  * 
 */
-    Hash<string,bmmModelType> getAncestors();
-    void setAncestors(value Hash<string,bmmModelType>);
+    BmmClass getAncestors();
+    void setAncestors(value BmmClass);
 
 /**
  * 
@@ -35,8 +35,8 @@ public interface BmmClass extends BmmModule {
  * List of attributes defined in this class.
  * 
 */
-    Hash<string,bmmProperty> getProperties();
-    void setProperties(value Hash<string,bmmProperty>);
+    BmmClass getProperties();
+    void setProperties(value BmmClass);
 
 /**
  * 
@@ -44,48 +44,48 @@ public interface BmmClass extends BmmModule {
  * Useful for UI tools to determine which original schema file to open for a given class for manual editing.
  * 
 */
-    String getSourceSchemaId();
-    void setSourceSchemaId(value String);
+    BmmClass getSourceSchemaId();
+    void setSourceSchemaId(value BmmClass);
 
 /**
  * 
  * List of computed references to base classes of immediate inheritance descendants, derived when members of ancestors are attached at creation time.
  * 
 */
-    List<bmmClass> getImmediateDescendants();
-    void setImmediateDescendants(value List<bmmClass>);
+    BmmClass getImmediateDescendants();
+    void setImmediateDescendants(value BmmClass);
 
 /**
  * 
  * True if this definition overrides a class of the same name in an included schema.
  * 
 */
-    Boolean getIsOverride();
-    void setIsOverride(value Boolean);
+    BmmClass getIsOverride();
+    void setIsOverride(value BmmClass);
 
 /**
  * 
  * List of constants defined in this class.
  * 
 */
-    Hash<string,bmmConstant> getConstants();
-    void setConstants(value Hash<string,bmmConstant>);
+    BmmClass getConstants();
+    void setConstants(value BmmClass);
 
 /**
  * 
  * List of functions defined in this class.
  * 
 */
-    Hash<string,bmmFunction> getFunctions();
-    void setFunctions(value Hash<string,bmmFunction>);
+    BmmClass getFunctions();
+    void setFunctions(value BmmClass);
 
 /**
  * 
  * List of procedures defined in this class.
  * 
 */
-    Hash<string,bmmProcedure> getProcedures();
-    void setProcedures(value Hash<string,bmmProcedure>);
+    BmmClass getProcedures();
+    void setProcedures(value BmmClass);
 
 /**
  * 
@@ -93,8 +93,8 @@ public interface BmmClass extends BmmModule {
  * any typically built-in or standard library type such as String, Date, Hash<K,V> etc.
  * 
 */
-    Boolean {default = false} getIsPrimitive();
-    void setIsPrimitive(value Boolean {default = false});
+    BmmClass getIsPrimitive();
+    void setIsPrimitive(value BmmClass);
 
 /**
  * 
@@ -102,40 +102,40 @@ public interface BmmClass extends BmmModule {
  * direct instances cannot be created from its direct type.
  * 
 */
-    Boolean {default = false} getIsAbstract();
-    void setIsAbstract(value Boolean {default = false});
+    BmmClass getIsAbstract();
+    void setIsAbstract(value BmmClass);
 
 /**
  * 
  * 
  * 
 */
-    List<bmmAssertion> getInvariants();
-    void setInvariants(value List<bmmAssertion>);
+    BmmClass getInvariants();
+    void setInvariants(value BmmClass);
 
 /**
  * 
  * Subset of procedures that may be used to initialise a new instance of an object, and whose execution will guarantee that class invariants are satisfied.
  * 
 */
-    Hash<string,bmmProcedure> getCreators();
-    void setCreators(value Hash<string,bmmProcedure>);
+    BmmClass getCreators();
+    void setCreators(value BmmClass);
 
 /**
  * 
  * Subset of creators that create a new instance from a single argument of another type.
  * 
 */
-    Hash<string,bmmProcedure> getConverters();
-    void setConverters(value Hash<string,bmmProcedure>);
+    BmmClass getConverters();
+    void setConverters(value BmmClass);
 
 /**
  * 
  * List of feature groups in this class.
  * 
 */
-    List<bmmFeatureGroup> getFeatureGroups();
-    void setFeatureGroups(value List<bmmFeatureGroup>);
+    BmmClass getFeatureGroups();
+    void setFeatureGroups(value BmmClass);
 
 /* * FUNCTION * */
 
@@ -2316,7 +2316,7 @@ bmm_persistence/persistence_packagetruefalsePBmmModelElementPBmmModelElementP_BM
  * ["GENERIC_PARENT"] = < name = <"GENERIC_PARENT"> generic_parameter_defs = < ["T"] = < name = <"T"> conforms_to_type = <"SUPPLIER"> > ["U"] = < name = <"U"> conforms_to_type = <"SUPPLIER"> > > properties = < ["property_a"] = (P_BMM_SINGLE_PROPERTY_OPEN) < name = <"property_a"> type = <"T"> > ["property_b"] = (P_BMM_SINGLE_PROPERTY_OPEN) < name = <"property_b"> type = <"U"> > > > ["SUPPLIER"] = < name = <"SUPPLIER"> is_abstract = <True> properties = < ["abstract_prop"] = (P_BMM_SINGLE_PROPERTY) < name = <"abstract_prop"> type = <"String"> > > > ["SUPPLIER_A"] = < name = <"SUPPLIER_A"> ancestors = <"SUPPLIER"> properties = < ["magnitude"] = (P_BMM_SINGLE_PROPERTY) < name = <"magnitude"> type = <"Double"> is_mandatory = <True> > ["units"] = (P_BMM_SINGLE_PROPERTY) < name = <"units"> type = <"String"> is_mandatory = <True> > > > ["SUPPLIER_B"] = < name = <"SUPPLIER_B"> ancestors = <"SUPPLIER"> properties = < ["property"] = (P_BMM_SINGLE_PROPERTY) < name = <"property"> type = <"CODE_PHRASE"> is_mandatory = <True> > ["precision"] = (P_BMM_SINGLE_PROPERTY) < name = <"precision"> type = <"Integer"> > > > ["GENERIC_CHILD_OPEN_T"] = < name = <"GENERIC_CHILD_OPEN_T"> ancestor_defs = < ["GENERIC_PARENT<T,SUPPLIER_B>"] = (P_BMM_GENERIC_TYPE) < root_type = <"GENERIC_PARENT"> generic_parameters = <"T", "SUPPLIER_B"> > > generic_parameter_defs = < ["T"] = < name = <"T"> conforms_to_type = <"SUPPLIER"> > > properties = < ["gen_child_open_t_prop"] = (P_BMM_SINGLE_PROPERTY) < name = <"gen_child_open_t_prop"> type = <"String"> > > > ["GENERIC_CHILD_OPEN_U"] = < name = <"GENERIC_CHILD_OPEN_U"> ancestor_defs = < ["GENERIC_PARENT<SUPPLIER_A,U>"] = (P_BMM_GENERIC_TYPE) < root_type = <"GENERIC_PARENT"> generic_parameters = <"SUPPLIER_A", "U"> > > generic_parameter_defs = < ["U"] = < name = <"U"> conforms_to_type = <"SUPPLIER"> > > properties = < ["gen_child_open_u_prop"] = (P_BMM_SINGLE_PROPERTY) < name = <"gen_child_open_u_prop"> type = <"String"> > > > ["GENERIC_CHILD_CLOSED"] = < name = <"GENERIC_CHILD_CLOSED"> ancestor_defs = < ["GENERIC_PARENT<SUPPLIER_A,SUPPLIER_B>"] = (P_BMM_GENERIC_TYPE) < root_type = <"GENERIC_PARENT"> generic_parameters = <"SUPPLIER_A", "SUPPLIER_B"> > > properties = < ["gen_child_closed_prop"] = (P_BMM_SINGLE_PROPERTY) < name = <"gen_child_closed_prop"> type = <"String"> > > > >
  * 
 */
-bmm_persistence/bmm_persistence_syntaxBmmModelType type ();
+bmm_persistence/bmm_persistence_syntaxBmmClass type ();
 
 /**
  * 

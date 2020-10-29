@@ -15,8 +15,8 @@ public interface ElOperator extends ElSimple {
  * If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands.
  * 
 */
-    Boolean getPrecedenceOverridden();
-    void setPrecedenceOverridden(value Boolean);
+    ElOperator getPrecedenceOverridden();
+    void setPrecedenceOverridden(value ElOperator);
 
 /**
  * 
@@ -24,8 +24,8 @@ public interface ElOperator extends ElSimple {
  * Must be a member of OPERATOR_DEF.symbols.
  * 
 */
-    String getSymbol();
-    void setSymbol(value String);
+    ElOperator getSymbol();
+    void setSymbol(value ElOperator);
 
 /**
  * 

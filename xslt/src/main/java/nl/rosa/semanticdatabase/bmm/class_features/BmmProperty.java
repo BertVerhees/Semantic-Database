@@ -15,16 +15,16 @@ public interface BmmProperty extends BmmInstantiable,BmmClassFeature {
  * True if this property is marked with info model im_runtime property.
  * 
 */
-    Boolean {default = false} getIsImRuntime();
-    void setIsImRuntime(value Boolean {default = false});
+    BmmProperty getIsImRuntime();
+    void setIsImRuntime(value BmmProperty);
 
 /**
  * 
  * True if this property was marked with info model im_infrastructure flag.
  * 
 */
-    Boolean {default = false} getIsImInfrastructure();
-    void setIsImInfrastructure(value Boolean {default = false});
+    BmmProperty getIsImInfrastructure();
+    void setIsImInfrastructure(value BmmProperty);
 
 /**
  * 
@@ -32,8 +32,8 @@ public interface BmmProperty extends BmmInstantiable,BmmClassFeature {
  * Equivalent to 'composition' in UML associations (but missing from UML properties without associations) and also 'cascade-delete' semantics in ER schemas.
  * 
 */
-    Boolean {default = false} getIsComposition();
-    void setIsComposition(value Boolean {default = false});
+    BmmProperty getIsComposition();
+    void setIsComposition(value BmmProperty);
 
 /* * FUNCTION * */
 

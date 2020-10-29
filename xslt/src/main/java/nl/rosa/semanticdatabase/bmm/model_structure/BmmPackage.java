@@ -15,8 +15,8 @@ public interface BmmPackage extends BmmPackageContainer {
  * Classes listed as being in this package.
  * 
 */
-    List<bmmClass> getClasses();
-    void setClasses(value List<bmmClass>);
+    BmmPackage getClasses();
+    void setClasses(value BmmPackage);
 
 /* * FUNCTION * */
 

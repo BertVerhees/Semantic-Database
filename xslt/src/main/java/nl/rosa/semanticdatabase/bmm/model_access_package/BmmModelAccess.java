@@ -14,8 +14,8 @@ public interface BmmModelAccess {
  * List of directories where all the schemas loaded here are found.
  * 
 */
-    List<string> getSchemaDirectories();
-    void setSchemaDirectories(value List<string>);
+    BmmModelAccess getSchemaDirectories();
+    void setSchemaDirectories(value BmmModelAccess);
 
 /**
  * 
@@ -23,16 +23,16 @@ public interface BmmModelAccess {
  * Keyed by schema_id.
  * 
 */
-    Hash<string,bmmSchemaDescriptor> getAllSchemas();
-    void setAllSchemas(value Hash<string,bmmSchemaDescriptor>);
+    BmmModelAccess getAllSchemas();
+    void setAllSchemas(value BmmModelAccess);
 
 /**
  * 
  * Top-level (root) models in use, keyed by model_id.
  * 
 */
-    Hash<string,bmmModel> getBmmModels();
-    void setBmmModels(value Hash<string,bmmModel>);
+    BmmModelAccess getBmmModels();
+    void setBmmModels(value BmmModelAccess);
 
 /**
  * 
@@ -40,16 +40,16 @@ public interface BmmModelAccess {
  * For example, the keys "openEHR_EHR_1.0.4", "openEHR_EHR_1.0", "openEHR_EHR_1", and "openEHR_EHR" will all match the "openEHR_EHR_1.0.4" model, assuming it is the most recent version available.
  * 
 */
-    Hash<string,bmmModel> getMatchingBmmModels();
-    void setMatchingBmmModels(value Hash<string,bmmModel>);
+    BmmModelAccess getMatchingBmmModels();
+    void setMatchingBmmModels(value BmmModelAccess);
 
 /**
  * 
  * Reload BMM schemas.
  * 
 */
-    void getReloadSchemas();
-    void setReloadSchemas(value void);
+    BmmModelAccess getReloadSchemas();
+    void setReloadSchemas(value BmmModelAccess);
 
 /* * FUNCTION * */
 

@@ -23,8 +23,8 @@ public interface BmmContainerType extends BmmType {
  * The container item type.
  * 
 */
-    BmmUnitaryType getItemType();
-    void setItemType(value BmmUnitaryType);
+    BmmContainerType getItemType();
+    void setItemType(value BmmContainerType);
 
 /**
  * 
@@ -33,8 +33,8 @@ public interface BmmContainerType extends BmmType {
  * Otherwise known as 'list' semantics.
  * 
 */
-    Boolean {default = true} getIsOrdered();
-    void setIsOrdered(value Boolean {default = true});
+    BmmContainerType getIsOrdered();
+    void setIsOrdered(value BmmContainerType);
 
 /**
  * 
@@ -42,8 +42,8 @@ public interface BmmContainerType extends BmmType {
  * Otherwise known as 'set' semantics.
  * 
 */
-    Boolean {default = false} getIsUnique();
-    void setIsUnique(value Boolean {default = false});
+    BmmContainerType getIsUnique();
+    void setIsUnique(value BmmContainerType);
 
 /* * FUNCTION * */
 
@@ -8763,7 +8763,7 @@ bmm_persistence/persistence_packagetruefalsePBmmModelElementPBmmModelElementP_BM
  * ["GENERIC_PARENT"] = < name = <"GENERIC_PARENT"> generic_parameter_defs = < ["T"] = < name = <"T"> conforms_to_type = <"SUPPLIER"> > ["U"] = < name = <"U"> conforms_to_type = <"SUPPLIER"> > > properties = < ["property_a"] = (P_BMM_SINGLE_PROPERTY_OPEN) < name = <"property_a"> type = <"T"> > ["property_b"] = (P_BMM_SINGLE_PROPERTY_OPEN) < name = <"property_b"> type = <"U"> > > > ["SUPPLIER"] = < name = <"SUPPLIER"> is_abstract = <True> properties = < ["abstract_prop"] = (P_BMM_SINGLE_PROPERTY) < name = <"abstract_prop"> type = <"String"> > > > ["SUPPLIER_A"] = < name = <"SUPPLIER_A"> ancestors = <"SUPPLIER"> properties = < ["magnitude"] = (P_BMM_SINGLE_PROPERTY) < name = <"magnitude"> type = <"Double"> is_mandatory = <True> > ["units"] = (P_BMM_SINGLE_PROPERTY) < name = <"units"> type = <"String"> is_mandatory = <True> > > > ["SUPPLIER_B"] = < name = <"SUPPLIER_B"> ancestors = <"SUPPLIER"> properties = < ["property"] = (P_BMM_SINGLE_PROPERTY) < name = <"property"> type = <"CODE_PHRASE"> is_mandatory = <True> > ["precision"] = (P_BMM_SINGLE_PROPERTY) < name = <"precision"> type = <"Integer"> > > > ["GENERIC_CHILD_OPEN_T"] = < name = <"GENERIC_CHILD_OPEN_T"> ancestor_defs = < ["GENERIC_PARENT<T,SUPPLIER_B>"] = (P_BMM_GENERIC_TYPE) < root_type = <"GENERIC_PARENT"> generic_parameters = <"T", "SUPPLIER_B"> > > generic_parameter_defs = < ["T"] = < name = <"T"> conforms_to_type = <"SUPPLIER"> > > properties = < ["gen_child_open_t_prop"] = (P_BMM_SINGLE_PROPERTY) < name = <"gen_child_open_t_prop"> type = <"String"> > > > ["GENERIC_CHILD_OPEN_U"] = < name = <"GENERIC_CHILD_OPEN_U"> ancestor_defs = < ["GENERIC_PARENT<SUPPLIER_A,U>"] = (P_BMM_GENERIC_TYPE) < root_type = <"GENERIC_PARENT"> generic_parameters = <"SUPPLIER_A", "U"> > > generic_parameter_defs = < ["U"] = < name = <"U"> conforms_to_type = <"SUPPLIER"> > > properties = < ["gen_child_open_u_prop"] = (P_BMM_SINGLE_PROPERTY) < name = <"gen_child_open_u_prop"> type = <"String"> > > > ["GENERIC_CHILD_CLOSED"] = < name = <"GENERIC_CHILD_CLOSED"> ancestor_defs = < ["GENERIC_PARENT<SUPPLIER_A,SUPPLIER_B>"] = (P_BMM_GENERIC_TYPE) < root_type = <"GENERIC_PARENT"> generic_parameters = <"SUPPLIER_A", "SUPPLIER_B"> > > properties = < ["gen_child_closed_prop"] = (P_BMM_SINGLE_PROPERTY) < name = <"gen_child_closed_prop"> type = <"String"> > > > >
  * 
 */
-bmm_persistence/bmm_persistence_syntaxBmmUnitaryType unitaryType ();
+bmm_persistence/bmm_persistence_syntaxBmmContainerType unitaryType ();
 
 /**
  * 
@@ -13121,6 +13121,6 @@ bmm_persistence/persistence_packagetruefalsePBmmModelElementPBmmModelElementP_BM
  * ["GENERIC_PARENT"] = < name = <"GENERIC_PARENT"> generic_parameter_defs = < ["T"] = < name = <"T"> conforms_to_type = <"SUPPLIER"> > ["U"] = < name = <"U"> conforms_to_type = <"SUPPLIER"> > > properties = < ["property_a"] = (P_BMM_SINGLE_PROPERTY_OPEN) < name = <"property_a"> type = <"T"> > ["property_b"] = (P_BMM_SINGLE_PROPERTY_OPEN) < name = <"property_b"> type = <"U"> > > > ["SUPPLIER"] = < name = <"SUPPLIER"> is_abstract = <True> properties = < ["abstract_prop"] = (P_BMM_SINGLE_PROPERTY) < name = <"abstract_prop"> type = <"String"> > > > ["SUPPLIER_A"] = < name = <"SUPPLIER_A"> ancestors = <"SUPPLIER"> properties = < ["magnitude"] = (P_BMM_SINGLE_PROPERTY) < name = <"magnitude"> type = <"Double"> is_mandatory = <True> > ["units"] = (P_BMM_SINGLE_PROPERTY) < name = <"units"> type = <"String"> is_mandatory = <True> > > > ["SUPPLIER_B"] = < name = <"SUPPLIER_B"> ancestors = <"SUPPLIER"> properties = < ["property"] = (P_BMM_SINGLE_PROPERTY) < name = <"property"> type = <"CODE_PHRASE"> is_mandatory = <True> > ["precision"] = (P_BMM_SINGLE_PROPERTY) < name = <"precision"> type = <"Integer"> > > > ["GENERIC_CHILD_OPEN_T"] = < name = <"GENERIC_CHILD_OPEN_T"> ancestor_defs = < ["GENERIC_PARENT<T,SUPPLIER_B>"] = (P_BMM_GENERIC_TYPE) < root_type = <"GENERIC_PARENT"> generic_parameters = <"T", "SUPPLIER_B"> > > generic_parameter_defs = < ["T"] = < name = <"T"> conforms_to_type = <"SUPPLIER"> > > properties = < ["gen_child_open_t_prop"] = (P_BMM_SINGLE_PROPERTY) < name = <"gen_child_open_t_prop"> type = <"String"> > > > ["GENERIC_CHILD_OPEN_U"] = < name = <"GENERIC_CHILD_OPEN_U"> ancestor_defs = < ["GENERIC_PARENT<SUPPLIER_A,U>"] = (P_BMM_GENERIC_TYPE) < root_type = <"GENERIC_PARENT"> generic_parameters = <"SUPPLIER_A", "U"> > > generic_parameter_defs = < ["U"] = < name = <"U"> conforms_to_type = <"SUPPLIER"> > > properties = < ["gen_child_open_u_prop"] = (P_BMM_SINGLE_PROPERTY) < name = <"gen_child_open_u_prop"> type = <"String"> > > > ["GENERIC_CHILD_CLOSED"] = < name = <"GENERIC_CHILD_CLOSED"> ancestor_defs = < ["GENERIC_PARENT<SUPPLIER_A,SUPPLIER_B>"] = (P_BMM_GENERIC_TYPE) < root_type = <"GENERIC_PARENT"> generic_parameters = <"SUPPLIER_A", "SUPPLIER_B"> > > properties = < ["gen_child_closed_prop"] = (P_BMM_SINGLE_PROPERTY) < name = <"gen_child_closed_prop"> type = <"String"> > > > >
  * 
 */
-bmm_persistence/bmm_persistence_syntaxBmmEffectiveType effectiveType ();
+bmm_persistence/bmm_persistence_syntaxBmmContainerType effectiveType ();
 
 }

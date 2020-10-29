@@ -16,8 +16,8 @@ public interface BmmSchema extends BmmModelMetadata {
  * Persisted attribute.
  * 
 */
-    String getBmmVersion();
-    void setBmmVersion(value String);
+    BmmSchema getBmmVersion();
+    void setBmmVersion(value BmmSchema);
 
 /**
  * 
@@ -25,8 +25,8 @@ public interface BmmSchema extends BmmModelMetadata {
  * Persisted attribute.
  * 
 */
-    Hash<string,bmmIncludeSpec> getIncludes();
-    void setIncludes(value Hash<string,bmmIncludeSpec>);
+    BmmSchema getIncludes();
+    void setIncludes(value BmmSchema);
 
 /**
  * 
@@ -50,8 +50,8 @@ public interface BmmSchema extends BmmModelMetadata {
  * Not set for sub-schemas that are not considered models on their own.
  * 
 */
-    String getModelName();
-    void setModelName(value String);
+    BmmSchema getModelName();
+    void setModelName(value BmmSchema);
 
 /**
  * 
@@ -59,56 +59,56 @@ public interface BmmSchema extends BmmModelMetadata {
  * A publisher with more than one model can have multiple schemas.
  * 
 */
-    String getSchemaName();
-    void setSchemaName(value String);
+    BmmSchema getSchemaName();
+    void setSchemaName(value BmmSchema);
 
 /**
  * 
  * Revision of schema.
  * 
 */
-    String getSchemaRevision();
-    void setSchemaRevision(value String);
+    BmmSchema getSchemaRevision();
+    void setSchemaRevision(value BmmSchema);
 
 /**
  * 
  * Schema development lifecycle state.
  * 
 */
-    String getSchemaLifecycleState();
-    void setSchemaLifecycleState(value String);
+    BmmSchema getSchemaLifecycleState();
+    void setSchemaLifecycleState(value BmmSchema);
 
 /**
  * 
  * Primary author of schema.
  * 
 */
-    String getSchemaAuthor();
-    void setSchemaAuthor(value String);
+    BmmSchema getSchemaAuthor();
+    void setSchemaAuthor(value BmmSchema);
 
 /**
  * 
  * Description of schema.
  * 
 */
-    String getSchemaDescription();
-    void setSchemaDescription(value String);
+    BmmSchema getSchemaDescription();
+    void setSchemaDescription(value BmmSchema);
 
 /**
  * 
  * Contributing authors of schema.
  * 
 */
-    List<string> getSchemaContributors();
-    void setSchemaContributors(value List<string>);
+    BmmSchema getSchemaContributors();
+    void setSchemaContributors(value BmmSchema);
 
 /**
  * 
  * Do some basic validation post initial creation check that package structure is regular: only top-level packages can have qualified names no top-level package name can be a direct parent or child of another (child package must be declared under the parent) check that all classes are mentioned in the package structure check that all models refer to valid packages
  * 
 */
-    State = stateCreated postState getValidateCreated preState();
-    void setValidateCreated preState(value State = stateCreated postState);
+    BmmSchema getValidateCreated preState();
+    void setValidateCreated preState(value BmmSchema);
 
 /**
  * 
@@ -116,24 +116,24 @@ public interface BmmSchema extends BmmModelMetadata {
  * full hierarchy with no packages with names like aa.bb.cc set up include processing list
  * 
 */
-    State = stateValidatedCreated postState getLoadFinalise preState();
-    void setLoadFinalise preState(value State = stateValidatedCreated postState);
+    BmmSchema getLoadFinalise preState();
+    void setLoadFinalise preState(value BmmSchema);
 
 /**
  * 
  * Main validation prior to generation of bmm_model.
  * 
 */
-    void getValidate();
-    void setValidate(value void);
+    BmmSchema getValidate();
+    void setValidate(value BmmSchema);
 
 /**
  * 
  * Populate bmm_model from schema.
  * 
 */
-    State = pBmmPackageState.stateIncludesProcessed getCreateBmmModel preState();
-    void setCreateBmmModel preState(value State = pBmmPackageState.stateIncludesProcessed);
+    BmmSchema getCreateBmmModel preState();
+    void setCreateBmmModel preState(value BmmSchema);
 
 /* * FUNCTION * */
 

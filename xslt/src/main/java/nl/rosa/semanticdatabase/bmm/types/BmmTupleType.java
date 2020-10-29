@@ -17,16 +17,16 @@ public interface BmmTupleType extends BmmEffectiveType {
  * Base name (built-in).
  * 
 */
-    String = "tuple" getBaseName();
-    void setBaseName(value String = "tuple");
+    BmmTupleType getBaseName();
+    void setBaseName(value BmmTupleType);
 
 /**
  * 
  * List of types of the items of the tuple, keyed by purpose in the tuple.
  * 
 */
-    Hash<string,bmmType> getItemTypes();
-    void setItemTypes(value Hash<string,bmmType>);
+    BmmTupleType getItemTypes();
+    void setItemTypes(value BmmTupleType);
 
 /* * FUNCTION * */
 

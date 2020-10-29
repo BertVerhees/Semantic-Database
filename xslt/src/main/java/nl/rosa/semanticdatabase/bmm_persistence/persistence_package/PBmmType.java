@@ -14,8 +14,8 @@ public interface PBmmType {
  * Result of create_bmm_type() call.
  * 
 */
-    BmmType getBmmType();
-    void setBmmType(value BmmType);
+    PBmmType getBmmType();
+    void setBmmType(value PBmmType);
 
 /* * FUNCTION * */
 

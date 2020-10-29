@@ -14,8 +14,8 @@ public interface BmmContainerProperty extends BmmProperty {
  * Cardinality of this container.
  * 
 */
-    MultiplicityInterval getCardinality();
-    void setCardinality(value MultiplicityInterval);
+    BmmContainerProperty getCardinality();
+    void setCardinality(value BmmContainerProperty);
 
 /**
  * 

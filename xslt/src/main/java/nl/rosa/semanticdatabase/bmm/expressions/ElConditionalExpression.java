@@ -15,8 +15,8 @@ public interface ElConditionalExpression extends ElDecisionBranch {
  * Gate expression that acts as the condition under which the target expression is returned.
  * 
 */
-    ElSimple getCondition();
-    void setCondition(value ElSimple);
+    ElConditionalExpression getCondition();
+    void setCondition(value ElConditionalExpression);
 
 /* * FUNCTION * */
 

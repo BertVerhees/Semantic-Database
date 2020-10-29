@@ -15,8 +15,8 @@ public interface PBmmSchema extends PBmmPackageContainer,BmmSchema {
  * Persisted attribute.
  * 
 */
-    List<pBmmClass> getPrimitiveTypes();
-    void setPrimitiveTypes(value List<pBmmClass>);
+    PBmmSchema getPrimitiveTypes();
+    void setPrimitiveTypes(value PBmmSchema);
 
 /**
  * 
@@ -24,40 +24,40 @@ public interface PBmmSchema extends PBmmPackageContainer,BmmSchema {
  * Persisted attribute.
  * 
 */
-    List<pBmmClass> getClassDefinitions();
-    void setClassDefinitions(value List<pBmmClass>);
+    PBmmSchema getClassDefinitions();
+    void setClassDefinitions(value PBmmSchema);
 
 /**
  * 
  * Implementation of validate_created()
  * 
 */
-    State = stateCreated postState getValidateCreated preState();
-    void setValidateCreated preState(value State = stateCreated postState);
+    PBmmSchema getValidateCreated preState();
+    void setValidateCreated preState(value PBmmSchema);
 
 /**
  * 
  * Implementation of load_finalise()
  * 
 */
-    State = stateValidatedCreated postState getLoadFinalise preState();
-    void setLoadFinalise preState(value State = stateValidatedCreated postState);
+    PBmmSchema getLoadFinalise preState();
+    void setLoadFinalise preState(value PBmmSchema);
 
 /**
  * 
  * Implementation of validate()
  * 
 */
-    void getValidate();
-    void setValidate(value void);
+    PBmmSchema getValidate();
+    void setValidate(value PBmmSchema);
 
 /**
  * 
  * Implementation of create_bmm_model()
  * 
 */
-    State = pBmmPackageState.stateIncludesProcessed getCreateBmmModel preState();
-    void setCreateBmmModel preState(value State = pBmmPackageState.stateIncludesProcessed);
+    PBmmSchema getCreateBmmModel preState();
+    void setCreateBmmModel preState(value PBmmSchema);
 
 /* * FUNCTION * */
 

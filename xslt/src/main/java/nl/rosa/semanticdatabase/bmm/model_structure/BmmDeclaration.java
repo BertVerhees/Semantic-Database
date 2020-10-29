@@ -16,8 +16,8 @@ public interface BmmDeclaration {
  * Name of this model element.
  * 
 */
-    String getName();
-    void setName(value String);
+    BmmDeclaration getName();
+    void setName(value BmmDeclaration);
 
 /**
  * 
@@ -25,8 +25,8 @@ public interface BmmDeclaration {
  * It is strongly recommended to use the following key /type combinations for the relevant purposes: "purpose": String "keywords": List<String> "use": String "misuse": String "references": String Other keys and value types may be freely added.
  * 
 */
-    Hash<string, any> getDocumentation();
-    void setDocumentation(value Hash<string, any>);
+    BmmDeclaration getDocumentation();
+    void setDocumentation(value BmmDeclaration);
 
 /**
  * 
@@ -42,8 +42,8 @@ public interface BmmDeclaration {
  * May be used to extend the meta-model.
  * 
 */
-    Hash<string, any> getExtensions();
-    void setExtensions(value Hash<string, any>);
+    BmmDeclaration getExtensions();
+    void setExtensions(value BmmDeclaration);
 
 /* * FUNCTION * */
 

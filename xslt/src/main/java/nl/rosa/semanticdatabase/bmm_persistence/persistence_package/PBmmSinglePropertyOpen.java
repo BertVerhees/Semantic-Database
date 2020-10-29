@@ -25,8 +25,8 @@ public interface PBmmSinglePropertyOpen extends PBmmProperty {
  * Persisted attribute.
  * 
 */
-    String getType();
-    void setType(value String);
+    PBmmSinglePropertyOpen getType();
+    void setType(value PBmmSinglePropertyOpen);
 
 /**
  * 

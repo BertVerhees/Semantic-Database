@@ -15,8 +15,8 @@ public interface BmmGenericClass extends BmmClass {
  * These are defined either directly on this class or by the inclusion of an ancestor class which is generic.
  * 
 */
-    Hash<string,bmmParameterType> getGenericParameters();
-    void setGenericParameters(value Hash<string,bmmParameterType>);
+    BmmGenericClass getGenericParameters();
+    void setGenericParameters(value BmmGenericClass);
 
 /* * FUNCTION * */
 

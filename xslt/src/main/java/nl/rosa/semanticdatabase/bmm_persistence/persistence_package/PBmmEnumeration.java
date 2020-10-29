@@ -14,16 +14,16 @@ public interface PBmmEnumeration extends PBmmClass {
  * 
  * 
 */
-    List<string> getItemNames();
-    void setItemNames(value List<string>);
+    PBmmEnumeration getItemNames();
+    void setItemNames(value PBmmEnumeration);
 
 /**
  * 
  * 
  * 
 */
-    List<any> getItemValues();
-    void setItemValues(value List<any>);
+    PBmmEnumeration getItemValues();
+    void setItemValues(value PBmmEnumeration);
 
 /**
  * 

@@ -16,16 +16,16 @@ public interface BmmLiteralValue extends BmmTyped {
  * A serial representation of the value.
  * 
 */
-    String getValueLiteral();
-    void setValueLiteral(value String);
+    BmmLiteralValue getValueLiteral();
+    void setValueLiteral(value BmmLiteralValue);
 
 /**
  * 
  * A native representation of the value, possibly derived by deserialising value_literal.
  * 
 */
-    Any getValue();
-    void setValue(value Any);
+    BmmLiteralValue getValue();
+    void setValue(value BmmLiteralValue);
 
 /**
  * 
@@ -34,8 +34,8 @@ public interface BmmLiteralValue extends BmmTyped {
  * If not set, json is assumed.
  * 
 */
-    String getSyntax();
-    void setSyntax(value String);
+    BmmLiteralValue getSyntax();
+    void setSyntax(value BmmLiteralValue);
 
 /* * FUNCTION * */
 

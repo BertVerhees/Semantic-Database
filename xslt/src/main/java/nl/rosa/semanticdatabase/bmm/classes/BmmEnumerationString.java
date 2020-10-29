@@ -15,8 +15,8 @@ public interface BmmEnumerationString extends BmmEnumeration {
  * Must be 1:1 with item_names list.
  * 
 */
-    List<bmmStringValue> getItemValues();
-    void setItemValues(value List<bmmStringValue>);
+    BmmEnumerationString getItemValues();
+    void setItemValues(value BmmEnumerationString);
 
 /* * FUNCTION * */
 

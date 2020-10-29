@@ -25,8 +25,8 @@ public interface BmmAssertion extends BmmStatement {
  * "Inv_all_members_valid".
  * 
 */
-    String getTag();
-    void setTag(value String);
+    BmmAssertion getTag();
+    void setTag(value BmmAssertion);
 
 /* * FUNCTION * */
 

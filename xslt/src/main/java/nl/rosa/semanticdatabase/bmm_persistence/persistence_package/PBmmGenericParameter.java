@@ -17,8 +17,8 @@ public interface PBmmGenericParameter extends PBmmModelElement {
  * Name is limited to 1 character, upper case.
  * 
 */
-    String getName();
-    void setName(value String);
+    PBmmGenericParameter getName();
+    void setName(value PBmmGenericParameter);
 
 /**
  * 
@@ -26,8 +26,8 @@ public interface PBmmGenericParameter extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-    String getConformsToType();
-    void setConformsToType(value String);
+    PBmmGenericParameter getConformsToType();
+    void setConformsToType(value PBmmGenericParameter);
 
 /**
  * 

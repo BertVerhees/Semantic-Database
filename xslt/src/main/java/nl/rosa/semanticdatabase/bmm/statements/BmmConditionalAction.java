@@ -22,8 +22,8 @@ public interface BmmConditionalAction {
  * Target statement.
  * 
 */
-    BmmStatementItem getStatement();
-    void setStatement(value BmmStatementItem);
+    BmmConditionalAction getStatement();
+    void setStatement(value BmmConditionalAction);
 
 /* * FUNCTION * */
 

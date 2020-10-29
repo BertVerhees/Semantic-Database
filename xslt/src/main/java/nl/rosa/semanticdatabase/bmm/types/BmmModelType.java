@@ -22,8 +22,8 @@ public interface BmmModelType extends BmmEffectiveType {
  * Base class of this type.
  * 
 */
-    BmmClass getBaseClass();
-    void setBaseClass(value BmmClass);
+    BmmModelType getBaseClass();
+    void setBaseClass(value BmmModelType);
 
 /* * FUNCTION * */
 

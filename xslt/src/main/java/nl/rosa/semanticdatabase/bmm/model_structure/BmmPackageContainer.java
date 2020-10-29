@@ -14,8 +14,8 @@ public interface BmmPackageContainer extends BmmDeclaration {
  * Child packages; keys all in upper case for guaranteed matching.
  * 
 */
-    Hash<string,bmmPackage> getPackages();
-    void setPackages(value Hash<string,bmmPackage>);
+    BmmPackageContainer getPackages();
+    void setPackages(value BmmPackageContainer);
 
 /**
  * 

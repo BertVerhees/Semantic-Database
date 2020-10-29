@@ -14,8 +14,8 @@ public interface BmmTyped {
  * Declared or inferred static type of the entity.
  * 
 */
-    BmmType getType();
-    void setType(value BmmType);
+    BmmTyped getType();
+    void setType(value BmmTyped);
 
 /* * FUNCTION * */
 

@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmm.class_features;
+package nl.rosa.semanticdatabase.;
 
 /**
  * 

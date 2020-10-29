@@ -15,8 +15,8 @@ public interface PBmmContainerProperty extends PBmmProperty {
  * Persistent attribute.
  * 
 */
-    Interval<integer> getCardinality();
-    void setCardinality(value Interval<integer>);
+    PBmmContainerProperty getCardinality();
+    void setCardinality(value PBmmContainerProperty);
 
 /**
  * 

@@ -14,8 +14,8 @@ public interface BmmClassEntity extends BmmDeclaration {
  * True if this feature was synthesised due to generic substitution in an inherited type, or further constraining of a formal generic parameter.
  * 
 */
-    Boolean {default = false} getIsSynthesisedGeneric();
-    void setIsSynthesisedGeneric(value Boolean {default = false});
+    BmmClassEntity getIsSynthesisedGeneric();
+    void setIsSynthesisedGeneric(value BmmClassEntity);
 
 /* * FUNCTION * */
 

@@ -14,16 +14,16 @@ public interface PBmmOpenType extends PBmmBaseType {
  * Simple type parameter as a single letter like 'T', 'G' etc.
  * 
 */
-    String getType();
-    void setType(value String);
+    PBmmOpenType getType();
+    void setType(value PBmmOpenType);
 
 /**
  * 
  * Result of create_bmm_type() call.
  * 
 */
-    @@ getBmmType();
-    void setBmmType(value @@);
+    PBmmOpenType getBmmType();
+    void setBmmType(value PBmmOpenType);
 
 /* * FUNCTION * */
 
