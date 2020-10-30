@@ -10,15 +10,6 @@ public interface BmmTypedFeature extends BmmTyped {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * True if this element can be null (Void) at execution time.
- * May be interpreted as optionality in subtypes..
- * 
-*/
-    BmmTypedFeature getIsNullable();
-    void setIsNullable(value BmmTypedFeature);
-
 /* * FUNCTION * */
 
 }

@@ -9,16 +9,6 @@ public interface BmmParameter extends BmmVariable {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * Optional read/write direction of the parameter.
- * If none-supplied, the parameter is treated as in, i.e.
- * readable.
- * 
-*/
-    BmmParameter getDirection();
-    void setDirection(value BmmParameter);
-
 /* * FUNCTION * */
 
 }

@@ -9,24 +9,6 @@ public interface ElTupleItem {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * Reference to value entity.
- * If Void, this indicates that the item in this position is Void, e.g.
- * within a routine call parameter list.
- * 
-*/
-    ElTupleItem getItem();
-    void setItem(value ElTupleItem);
-
-/**
- * 
- * Optional name of tuple item.
- * 
-*/
-    ElTupleItem getName();
-    void setName(value ElTupleItem);
-
 /* * FUNCTION * */
 
 }

@@ -9,14 +9,6 @@ public interface BmmResult extends BmmVariable {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * Name of this model element.
- * 
-*/
-    BmmResult getName();
-    void setName(value BmmResult);
-
 /* * FUNCTION * */
 
 }

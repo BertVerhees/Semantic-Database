@@ -9,14 +9,6 @@ public interface ElUnaryOperator extends ElOperator {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * Operand node.
- * 
-*/
-    ElUnaryOperator getOperand();
-    void setOperand(value ElUnaryOperator);
-
 /* * FUNCTION * */
 
 }

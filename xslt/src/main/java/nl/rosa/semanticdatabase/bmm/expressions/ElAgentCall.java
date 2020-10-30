@@ -10,14 +10,6 @@ public interface ElAgentCall {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * The agent being called.
- * 
-*/
-    ElAgentCall getAgent();
-    void setAgent(value ElAgentCall);
-
 /* * FUNCTION * */
 
 }

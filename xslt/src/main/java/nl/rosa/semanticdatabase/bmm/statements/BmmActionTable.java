@@ -9,14 +9,6 @@ public interface BmmActionTable extends BmmStatement {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * Decision branches.
- * 
-*/
-    BmmActionTable getItems();
-    void setItems(value BmmActionTable);
-
 /* * FUNCTION * */
 
 }

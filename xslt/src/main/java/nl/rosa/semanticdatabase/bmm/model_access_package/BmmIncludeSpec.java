@@ -9,15 +9,6 @@ public interface BmmIncludeSpec {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * Full identifier of the included schema, e.g.
- * "openehr_primitive_types_1.0.2".
- * 
-*/
-    BmmIncludeSpec getId();
-    void setId(value BmmIncludeSpec);
-
 /* * FUNCTION * */
 
 }

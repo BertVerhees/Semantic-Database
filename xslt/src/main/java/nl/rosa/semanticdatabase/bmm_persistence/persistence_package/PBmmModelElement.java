@@ -9,14 +9,6 @@ public interface PBmmModelElement {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * Optional documentation of this element.
- * 
-*/
-    PBmmModelElement getDocumentation();
-    void setDocumentation(value PBmmModelElement);
-
 /* * FUNCTION * */
 
 }

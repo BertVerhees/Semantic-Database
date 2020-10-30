@@ -9,23 +9,6 @@ public interface BmmModelMetadata {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * Publisher of model expressed in the schema.
- * 
-*/
-    BmmModelMetadata getRmPublisher();
-    void setRmPublisher(value BmmModelMetadata);
-
-/**
- * 
- * Release of model expressed in the schema as a 3-part numeric, e.g.
- * "3.1.0" .
- * 
-*/
-    BmmModelMetadata getRmRelease();
-    void setRmRelease(value BmmModelMetadata);
-
 /* * FUNCTION * */
 
 }

@@ -9,14 +9,6 @@ public interface BmmUnitaryValue extends BmmLiteralValue {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * Declared or inferred static type of the entity.
- * 
-*/
-    BmmUnitaryValue getType();
-    void setType(value BmmUnitaryValue);
-
 /* * FUNCTION * */
 
 }

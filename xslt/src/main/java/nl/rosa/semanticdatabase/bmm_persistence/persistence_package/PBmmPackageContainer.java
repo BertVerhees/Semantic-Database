@@ -9,14 +9,6 @@ public interface PBmmPackageContainer {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * Package structure as a hierarchy of packages each potentially containing names of classes in that package in the original model.
- * 
-*/
-    PBmmPackageContainer getPackages();
-    void setPackages(value PBmmPackageContainer);
-
 /* * FUNCTION * */
 
 }

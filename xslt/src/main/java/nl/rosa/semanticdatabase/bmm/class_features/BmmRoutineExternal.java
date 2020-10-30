@@ -9,22 +9,6 @@ public interface BmmRoutineExternal extends BmmRoutineBody {
 
 /* * ATTRIBUTE * */
 
-/**
- * 
- * External call general meta-data, including target routine name, type mapping etc.
- * 
-*/
-    BmmRoutineExternal getMetaData();
-    void setMetaData(value BmmRoutineExternal);
-
-/**
- * 
- * Optional argument-mapping meta-data.
- * 
-*/
-    BmmRoutineExternal getArgumentMapping();
-    void setArgumentMapping(value BmmRoutineExternal);
-
 /* * FUNCTION * */
 
 }
