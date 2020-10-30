@@ -449,9 +449,13 @@
                                                                     <xsl:element name="kind"><xsl:value-of select="'void-function'"/></xsl:element>
                                                                 </xsl:otherwise>
                                                             </xsl:choose>
+                                                            <xsl:element name="parameter">
+                                                                <xsl:variable name="parameterPart" select="substring-after(substring-before($nameAndType, ')'),'(')"/>
+                                                            </xsl:element>
                                                         </xsl:when>
                                                         <!-- attribute -->
                                                         <xsl:otherwise>
+                                                            <xsl:element name="name"><xsl:value-of select="normalize-space(substring-before($nameAndType,':'))"/></xsl:element>
                                                             <xsl:element name="type"><xsl:value-of select="substring-after($nameAndType,':')"/></xsl:element>
                                                             <xsl:element name="kind"><xsl:value-of select="'attribute'"/></xsl:element>
                                                         </xsl:otherwise>
