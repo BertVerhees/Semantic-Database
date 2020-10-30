@@ -412,6 +412,7 @@
                                             select="normalize-space($inherit)"/>
                                     </xsl:element>
                                 </xsl:for-each>
+                                <!-- Functions and Attributes and enum-values -->
                                 <xsl:for-each select="tbody/tr">
                                     <xsl:variable name="cardinality"
                                         select="string(normalize-space(string-join(th/p)))"/>
@@ -421,45 +422,49 @@
                                         select="string(normalize-space(string-join(td[2])))"/>
                                     <xsl:if
                                         test="string-length(normalize-space($nameAndType)) > 0 and not($cardinality = 'Inherit')">
-                                        <xsl:choose>
-                                            <!-- when there is a void function, there is no : in the signature and no (), that is why the double check -->
-                                            <xsl:when test="not(contains($nameAndType, '(')) and not(contains($nameAndType, ':'))">
-                                                <xsl:element name="attribute">
-                                                    <xsl:element name="nameAndType">
+                                        <xsl:element name="nameAndType">
+                                            <xsl:choose>
+                                                <!-- enumeration -->
+                                                <xsl:when test="$cardinality = ''">
+                                                    <xsl:element name="enumType">
                                                         <xsl:value-of select="$nameAndType"/>
                                                     </xsl:element>
-                                                    <xsl:element name="description">
-                                                        <xsl:value-of select="$description"/>
+                                                    <xsl:element name="kind"><xsl:value-of select="'enum-value'"/></xsl:element>                                           
+                                                </xsl:when>
+                                                <!-- function or attribute -->
+                                                <xsl:otherwise>
+                                                    <xsl:choose>
+                                                        <!-- function -->
+                                                        <xsl:when test="contains($nameAndType, ')')">
+                                                            <xsl:element name="name"><xsl:value-of select="normalize-space(substring-before($nameAndType,'('))"/></xsl:element>
+                                                            <xsl:choose>
+                                                                <!-- value-function -->
+                                                                <xsl:when test="contains(substring-after($nameAndType,')'), ':')">
+                                                                    <xsl:element name="type"><xsl:value-of select="do:substring-after-last($nameAndType,':')"/></xsl:element>
+                                                                    <xsl:element name="kind"><xsl:value-of select="'value-function'"/></xsl:element>
+                                                                </xsl:when>
+                                                                <!-- void function -->
+                                                                <xsl:otherwise>
+                                                                    <xsl:element name="type"><xsl:value-of select="'void'"/></xsl:element>
+                                                                    <xsl:element name="kind"><xsl:value-of select="'void-function'"/></xsl:element>
+                                                                </xsl:otherwise>
+                                                            </xsl:choose>
+                                                        </xsl:when>
+                                                        <!-- attribute -->
+                                                        <xsl:otherwise>
+                                                            <xsl:element name="type"><xsl:value-of select="substring-after($nameAndType,':')"/></xsl:element>
+                                                            <xsl:element name="kind"><xsl:value-of select="'attribute'"/></xsl:element>
+                                                        </xsl:otherwise>
+                                                    </xsl:choose>
+                                                    <xsl:element name="cardinality">
+                                                        <xsl:value-of select="$cardinality"/>
                                                     </xsl:element>
-                                                </xsl:element>
-                                            </xsl:when>
-                                            <xsl:when test="contains($nameAndType, '(') or not(contains($nameAndType, ':'))">
-                                                <xsl:element name="function">
-                                                  <xsl:element name="cardinality">
-                                                  <xsl:value-of select="$cardinality"/>
-                                                  </xsl:element>
-                                                  <xsl:element name="nameAndType">
-                                                  <xsl:value-of select="$nameAndType"/>
-                                                  </xsl:element>
-                                                  <xsl:element name="description">
-                                                  <xsl:value-of select="$description"/>
-                                                  </xsl:element>
-                                                </xsl:element>
-                                            </xsl:when>
-                                            <xsl:otherwise>
-                                                <xsl:element name="attribute">
-                                                  <xsl:element name="cardinality">
-                                                    <xsl:value-of select="$cardinality"/>
-                                                  </xsl:element>
-                                                  <xsl:element name="nameAndType">
-                                                  <xsl:value-of select="$nameAndType"/>
-                                                  </xsl:element>
-                                                  <xsl:element name="description">
-                                                  <xsl:value-of select="$description"/>
-                                                  </xsl:element>
-                                                </xsl:element>
-                                            </xsl:otherwise>
-                                        </xsl:choose>
+                                                </xsl:otherwise>
+                                            </xsl:choose>
+                                            <xsl:element name="description">
+                                                <xsl:value-of select="$description"/>
+                                            </xsl:element>
+                                        </xsl:element>
                                     </xsl:if>
                                 </xsl:for-each>
                             </xsl:element>
@@ -538,8 +543,26 @@
         <xsl:value-of select="do:output('/**')"/>
         <xsl:value-of select="do:commentOutput('')"/>
     </xsl:function>
+    
     <xsl:function name="do:commentClose">
         <xsl:value-of select="do:commentOutput('')"/>
         <xsl:value-of select="do:output(' */')"/>
     </xsl:function>
+    
+    <xsl:function name="do:substring-after-last" as="xs:string">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:param name="delim" as="xs:string"/>
+        <xsl:sequence select="
+            replace ($arg,concat('^.*',do:escape-for-regex($delim)),'')
+            "/>
+    </xsl:function>
+
+    <xsl:function name="do:escape-for-regex" as="xs:string">
+        <xsl:param name="arg" as="xs:string?"/>
+        <xsl:sequence select="
+            replace($arg,
+            '(\.|\[|\]|\\|\||\-|\^|\$|\?|\*|\+|\{|\}|\(|\))','\\$1')
+            "/>
+    </xsl:function>
+
 </xsl:stylesheet>
