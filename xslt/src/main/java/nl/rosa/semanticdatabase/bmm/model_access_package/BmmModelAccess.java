@@ -9,6 +9,82 @@ public interface BmmModelAccess {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * List of directories where all the schemas loaded here are found.
+ * 
+*/
+    BmmModelAccess getSchemaDirectories();
+    void setSchemaDirectories(BmmModelAccess value);
+
+/**
+ * 
+ * All schemas found and loaded from schema_directory.
+ * Keyed by schema_id.
+ * 
+*/
+    BmmModelAccess getAllSchemas();
+    void setAllSchemas(BmmModelAccess value);
+
+/**
+ * 
+ * Top-level (root) models in use, keyed by model_id.
+ * 
+*/
+    BmmModelAccess getBmmModels();
+    void setBmmModels(BmmModelAccess value);
+
+/**
+ * 
+ * Validated models, keyed by model_id() and any shorter forms of id, with some or no versioning information.
+ * For example, the keys "openEHR_EHR_1.0.4", "openEHR_EHR_1.0", "openEHR_EHR_1", and "openEHR_EHR" will all match the "openEHR_EHR_1.0.4" model, assuming it is the most recent version available.
+ * 
+*/
+    BmmModelAccess getMatchingBmmModels();
+    void setMatchingBmmModels(BmmModelAccess value);
+
+/**
+ * 
+ * Reload BMM schemas.
+ * 
+*/
+    BmmModelAccess get();
+    void set(BmmModelAccess value);
+
 /* * FUNCTION * */
+
+/**
+ * 
+ * Initialise with a specific schema load list, usually a sub-set of schemas that will be found in a specified directories a_schema_dirs.
+ * 
+*/
+    BmmModelAccess  initialise_with_load_list();
+
+/**
+ * 
+ * Load all schemas found in a specified directories a_schema_dirs.
+ * 
+*/
+    BmmModelAccess  initialise_all();
+
+/**
+ * 
+ * Return model containing the model key which is a model_id or any shorter form e.g.
+ * model id minus the version.
+ * If a shorter key is used, the BMM_MODEL with the most recent version will be selected.
+ * Uses matching_bmm_models table to find matches if partial version information is supplied in key.
+ * 
+*/
+    BmmModelAccess  bmm_model();
+
+/**
+ * 
+ * True if a model for a model_key is available.
+ * A model key is a model_id or any shorter form e.g.
+ * model id minus the version.
+ * If a shorter key is used, the Result s True if a BMM_MODEL with any version exists.
+ * 
+*/
+    BmmModelAccess  has_bmm_model();
 
 }

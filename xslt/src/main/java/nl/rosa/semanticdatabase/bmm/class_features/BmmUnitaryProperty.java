@@ -9,6 +9,14 @@ public interface BmmUnitaryProperty extends BmmProperty {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Declared or inferred static type of the entity.
+ * 
+*/
+    BmmUnitaryProperty getType();
+    void setType(BmmUnitaryProperty value);
+
 /* * FUNCTION * */
 
 }

@@ -11,4 +11,11 @@ public interface BmmClassEntity extends BmmDeclaration {
 
 /* * FUNCTION * */
 
+/**
+ * 
+ * Formal signature of this element, in the form: name [arg1_name: T_arg1, …​][:T_value] Specific implementations in descendants.
+ * 
+*/
+    BmmClassEntity  signature();
+
 }

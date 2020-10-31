@@ -9,6 +9,29 @@ public interface BmmContainerProperty extends BmmProperty {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Cardinality of this container.
+ * 
+*/
+    BmmContainerProperty getCardinality();
+    void setCardinality(BmmContainerProperty value);
+
+/**
+ * 
+ * Declared or inferred static type of the entity.
+ * 
+*/
+    BmmContainerProperty getType();
+    void setType(BmmContainerProperty value);
+
 /* * FUNCTION * */
+
+/**
+ * 
+ * Name of this property in form name: ContainerTypeName<>.
+ * 
+*/
+    BmmContainerProperty  display_name();
 
 }

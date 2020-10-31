@@ -12,4 +12,18 @@ public interface BmmProperty extends BmmInstantiable,BmmClassFeature {
 
 /* * FUNCTION * */
 
+/**
+ * 
+ * Interval form of 0..1, 1..1 etc, derived from is_nullable.
+ * 
+*/
+    BmmProperty  existence();
+
+/**
+ * 
+ * Name of this property to display in UI.
+ * 
+*/
+    BmmProperty  display_name();
+
 }

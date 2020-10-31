@@ -11,6 +11,14 @@ public interface ElConditionChain extends ElDecisionTable {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
+ * 
+*/
+    ElConditionChain getItems();
+    void setItems(ElConditionChain value);
+
 /* * FUNCTION * */
 
 }

@@ -9,6 +9,22 @@ public interface PBmmIndexedContainerType extends PBmmContainerType {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * 
+ * 
+*/
+    PBmmIndexedContainerType getIndexType();
+    void setIndexType(PBmmIndexedContainerType value);
+
+/**
+ * 
+ * Result of create_bmm_type() call.
+ * 
+*/
+    PBmmIndexedContainerType getBmmType();
+    void setBmmType(PBmmIndexedContainerType value);
+
 /* * FUNCTION * */
 
 }

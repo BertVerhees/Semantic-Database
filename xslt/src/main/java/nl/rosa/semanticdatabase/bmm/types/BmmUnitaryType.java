@@ -11,4 +11,11 @@ public interface BmmUnitaryType extends BmmType {
 
 /* * FUNCTION * */
 
+/**
+ * 
+ * Result = self.
+ * 
+*/
+    BmmUnitaryType  unitary_type();
+
 }

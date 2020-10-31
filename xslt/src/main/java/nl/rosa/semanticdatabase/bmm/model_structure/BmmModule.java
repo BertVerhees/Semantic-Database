@@ -10,6 +10,14 @@ public interface BmmModule extends BmmDeclaration {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Model within which module is defined.
+ * 
+*/
+    BmmModule getScope();
+    void setScope(BmmModule value);
+
 /* * FUNCTION * */
 
 }

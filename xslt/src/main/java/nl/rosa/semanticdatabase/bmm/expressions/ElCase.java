@@ -9,6 +9,14 @@ public interface ElCase extends ElDecisionBranch {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * 
+ * 
+*/
+    ElCase getValueConstraint();
+    void setValueConstraint(ElCase value);
+
 /* * FUNCTION * */
 
 }

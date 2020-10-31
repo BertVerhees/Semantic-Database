@@ -12,6 +12,53 @@ public interface ElAgent extends ElScopedRef {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Name of the routine being called.
+ * 
+*/
+    ElAgent getName();
+    void setName(ElAgent value);
+
+/**
+ * 
+ * Closed arguments of a routine call as a tuple of objects.
+ * 
+*/
+    ElAgent getClosedArgs();
+    void setClosedArgs(ElAgent value);
+
+/**
+ * 
+ * Optional list of names of open arguments of the call.
+ * If not provided, and the name refers to a routine with more arguments than supplied in closed_args, the missing arguments are inferred from the definition.
+ * 
+*/
+    ElAgent getOpenArgs();
+    void setOpenArgs(ElAgent value);
+
+/**
+ * 
+ * Reference to definition of a routine for which this is an agent, if one exists.
+ * 
+*/
+    ElAgent getDefinition();
+    void setDefinition(ElAgent value);
+
 /* * FUNCTION * */
+
+/**
+ * 
+ * Eval type is the signature corresponding to the (remaining) open arguments and return type, if any.
+ * 
+*/
+    ElAgent  eval_type();
+
+/**
+ * 
+ * True if there are no open arguments.
+ * 
+*/
+    ElAgent  is_callable();
 
 }

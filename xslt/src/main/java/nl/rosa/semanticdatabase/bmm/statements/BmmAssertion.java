@@ -11,6 +11,23 @@ public interface BmmAssertion extends BmmStatement {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * 
+ * 
+*/
+    BmmAssertion getExpression();
+    void setExpression(BmmAssertion value);
+
+/**
+ * 
+ * Optional tag, typically used to designate design intention of the assertion, e.g.
+ * "Inv_all_members_valid".
+ * 
+*/
+    BmmAssertion getTag();
+    void setTag(BmmAssertion value);
+
 /* * FUNCTION * */
 
 }

@@ -10,6 +10,14 @@ public interface ElFunctionAgent extends ElAgent {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Reference to definition of a routine for which this is a direct call instance, if one exists.
+ * 
+*/
+    ElFunctionAgent getDefinition();
+    void setDefinition(ElFunctionAgent value);
+
 /* * FUNCTION * */
 
 }

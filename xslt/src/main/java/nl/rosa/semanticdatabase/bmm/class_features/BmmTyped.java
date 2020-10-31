@@ -9,6 +9,22 @@ public interface BmmTyped {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Declared or inferred static type of the entity.
+ * 
+*/
+    BmmTyped getType();
+    void setType(BmmTyped value);
+
 /* * FUNCTION * */
+
+/**
+ * 
+ * True if type is notionally Boolean (i.e.
+ * a BMM_SIMPLE_TYPE with type_name() = 'Boolean').
+ * 
+*/
+    BmmTyped  is_boolean();
 
 }

@@ -10,6 +10,14 @@ public interface BmmContainerValue extends BmmLiteralValue {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Declared or inferred static type of the entity.
+ * 
+*/
+    BmmContainerValue getType();
+    void setType(BmmContainerValue value);
+
 /* * FUNCTION * */
 
 }

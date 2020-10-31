@@ -12,6 +12,22 @@ public interface ElTypeRef extends ElInstanceRef {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Type, directly from the name of the reference, e.g.
+ * {SOME_TYPE}.
+ * 
+*/
+    ElTypeRef getType();
+    void setType(ElTypeRef value);
+
 /* * FUNCTION * */
+
+/**
+ * 
+ * Return type.
+ * 
+*/
+    ElTypeRef  eval_type();
 
 }

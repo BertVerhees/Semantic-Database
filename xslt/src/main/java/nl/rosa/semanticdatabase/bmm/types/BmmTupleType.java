@@ -12,6 +12,50 @@ public interface BmmTupleType extends BmmEffectiveType {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * List of types of the items of the tuple, keyed by purpose in the tuple.
+ * 
+*/
+    BmmTupleType getItemTypes();
+    void setItemTypes(BmmTupleType value);
+
 /* * FUNCTION * */
+
+/**
+ * 
+ * Return base_name.
+ * 
+*/
+    BmmTupleType  type_base_name();
+
+/**
+ * 
+ * Result = True.
+ * 
+*/
+    BmmTupleType  is_primitive();
+
+/**
+ * 
+ * Result = False.
+ * 
+*/
+    BmmTupleType  is_abstract();
+
+/**
+ * 
+ * Return base_name.
+ * 
+*/
+    BmmTupleType  type_name();
+
+/**
+ * 
+ * Return the logical set (i.e.
+ * unique types) from the merge of flattened_type_list() called on each member of item_types.
+ * 
+*/
+    BmmTupleType  flattened_type_list();
 
 }

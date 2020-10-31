@@ -12,6 +12,31 @@ public interface BmmEnumeration extends BmmSimpleClass {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * The list of names of the enumeration.
+ * If no values are supplied, the integer values 0, 1, 2, …​ are assumed.
+ * 
+*/
+    BmmEnumeration getItemNames();
+    void setItemNames(BmmEnumeration value);
+
+/**
+ * 
+ * Optional list of specific values.
+ * Must be 1:1 with item_names list.
+ * 
+*/
+    BmmEnumeration getItemValues();
+    void setItemValues(BmmEnumeration value);
+
 /* * FUNCTION * */
+
+/**
+ * 
+ * Map of item_names to item_values (stringified).
+ * 
+*/
+    BmmEnumeration  name_map();
 
 }

@@ -9,6 +9,21 @@ public interface BmmVariable extends BmmInstantiable,BmmClassEntity {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Routine within which variable is defined.
+ * 
+*/
+    BmmVariable getScope();
+    void setScope(BmmVariable value);
+
 /* * FUNCTION * */
+
+/**
+ * 
+ * Formal signature of this element, in the form 'name [arg1_name: T_arg1, …​][:T_value]'.
+ * 
+*/
+    BmmVariable  signature();
 
 }

@@ -9,6 +9,14 @@ public interface PBmmBaseType extends PBmmType {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * 
+ * 
+*/
+    PBmmBaseType getValueConstraint();
+    void setValueConstraint(PBmmBaseType value);
+
 /* * FUNCTION * */
 
 }

@@ -9,6 +9,22 @@ public interface BmmConditionalAction {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * The gate condition for the target statement.
+ * 
+*/
+    BmmConditionalAction getCondition();
+    void setCondition(BmmConditionalAction value);
+
+/**
+ * 
+ * Target statement.
+ * 
+*/
+    BmmConditionalAction getStatement();
+    void setStatement(BmmConditionalAction value);
+
 /* * FUNCTION * */
 
 }

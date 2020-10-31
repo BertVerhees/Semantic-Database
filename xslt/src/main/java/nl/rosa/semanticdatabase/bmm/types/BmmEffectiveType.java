@@ -11,4 +11,19 @@ public interface BmmEffectiveType extends BmmUnitaryType {
 
 /* * FUNCTION * */
 
+/**
+ * 
+ * Result = self.
+ * 
+*/
+    BmmEffectiveType  effective_type();
+
+/**
+ * 
+ * Name of base generator type, i.e.
+ * excluding any generic parts if present.
+ * 
+*/
+    BmmEffectiveType  type_base_name();
+
 }

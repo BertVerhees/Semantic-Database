@@ -9,6 +9,22 @@ public interface BmmIndexedContainerType extends BmmContainerType {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Type of the element index, typically String or Integer, but may be a numeric type or indeed any type from which a hash value can be derived.
+ * 
+*/
+    BmmIndexedContainerType getIndexType();
+    void setIndexType(BmmIndexedContainerType value);
+
 /* * FUNCTION * */
+
+/**
+ * 
+ * Return full type name, e.g.
+ * HashMap<String, ELEMENT>.
+ * 
+*/
+    BmmIndexedContainerType  type_name();
 
 }

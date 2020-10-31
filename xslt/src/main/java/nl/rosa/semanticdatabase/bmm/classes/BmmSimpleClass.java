@@ -12,4 +12,12 @@ public interface BmmSimpleClass extends BmmClass {
 
 /* * FUNCTION * */
 
+/**
+ * 
+ * Generate a type object that represents the type of this class.
+ * Can only be an instance of BMM_SIMPLE_TYPE or a descendant.
+ * 
+*/
+    BmmSimpleClass  type();
+
 }

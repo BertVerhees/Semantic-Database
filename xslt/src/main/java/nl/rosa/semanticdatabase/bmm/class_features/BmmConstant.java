@@ -10,6 +10,15 @@ public interface BmmConstant extends BmmInstantiable,BmmClassFeature {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Generator expression for the constant value.
+ * In the degenerate case, this is just a literal value, but may also be any other expression valid in the context.
+ * 
+*/
+    BmmConstant getGenerator();
+    void setGenerator(BmmConstant value);
+
 /* * FUNCTION * */
 
 }

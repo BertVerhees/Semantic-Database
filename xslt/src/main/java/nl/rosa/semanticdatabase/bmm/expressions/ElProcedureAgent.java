@@ -10,6 +10,14 @@ public interface ElProcedureAgent extends ElAgent {
 
 /* * ATTRIBUTE * */
 
+/**
+ * 
+ * Reference to definition of routine for which this is a call instance.
+ * 
+*/
+    ElProcedureAgent getDefinition();
+    void setDefinition(ElProcedureAgent value);
+
 /* * FUNCTION * */
 
 }
