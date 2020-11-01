@@ -15,8 +15,8 @@ public interface ElProcedureAgent extends ElAgent {
  * Reference to definition of routine for which this is a call instance.
  * 
 */
-    ElProcedureAgent getDefinition();
-    void setDefinition(ElProcedureAgent value);
+    BmmProcedure getDefinition();
+    void setDefinition(BmmProcedure value);
 
 /* * FUNCTION * */
 

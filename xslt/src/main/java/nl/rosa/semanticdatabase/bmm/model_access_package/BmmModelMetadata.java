@@ -14,8 +14,8 @@ public interface BmmModelMetadata {
  * Publisher of model expressed in the schema.
  * 
 */
-    BmmModelMetadata getRmPublisher();
-    void setRmPublisher(BmmModelMetadata value);
+     getRmPublisher();
+    void setRmPublisher( value);
 
 /**
  * 
@@ -23,8 +23,8 @@ public interface BmmModelMetadata {
  * "3.1.0" .
  * 
 */
-    BmmModelMetadata getRmRelease();
-    void setRmRelease(BmmModelMetadata value);
+     getRmRelease();
+    void setRmRelease( value);
 
 /* * FUNCTION * */
 

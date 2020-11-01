@@ -14,8 +14,8 @@ public interface BmmStringValue extends BmmPrimitiveValue {
  * Native String value.
  * 
 */
-    BmmStringValue getValue();
-    void setValue(BmmStringValue value);
+     getValue();
+    void setValue( value);
 
 /* * FUNCTION * */
 

@@ -14,16 +14,16 @@ public interface ElBinaryOperator extends ElOperator {
  * Left operand node.
  * 
 */
-    ElBinaryOperator getLeftOperand();
-    void setLeftOperand(ElBinaryOperator value);
+     getLeftOperand();
+    void setLeftOperand( value);
 
 /**
  * 
  * Right operand node.
  * 
 */
-    ElBinaryOperator getRightOperand();
-    void setRightOperand(ElBinaryOperator value);
+     getRightOperand();
+    void setRightOperand( value);
 
 /* * FUNCTION * */
 

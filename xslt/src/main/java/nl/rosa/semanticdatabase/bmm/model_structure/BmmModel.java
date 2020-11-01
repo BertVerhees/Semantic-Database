@@ -14,8 +14,8 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * All classes in this model, keyed by type name.
  * 
 */
-    BmmModel getClassDefinitions();
-    void setClassDefinitions(BmmModel value);
+     getClassDefinitions();
+    void setClassDefinitions( value);
 
 /**
  * 
@@ -24,8 +24,8 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * Classes in the current model may refer to classes in a used model by specifying the other class’s scope meta-attribute.
  * 
 */
-    BmmModel getUsedModels();
-    void setUsedModels(BmmModel value);
+     getUsedModels();
+    void setUsedModels( value);
 
 /* * FUNCTION * */
 
@@ -35,14 +35,14 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * "openehr_ehr_1.0.4".
  * 
 */
-    BmmModel  model_id();
+      model_id();
 
 /**
  * 
  * Retrieve the class definition corresponding to a_type_name (which may contain a generic part).
  * 
 */
-    BmmModel  class_definition();
+      class_definition();
 
 /**
  * 
@@ -51,49 +51,49 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * if it is an effective generic name that identifies a BMM_GENERIC_CLASS_EFFECTIVE.
  * 
 */
-    BmmModel  type_definition();
+      type_definition();
 
 /**
  * 
  * True if a_class_name has a class definition in the model.
  * 
 */
-    BmmModel  has_class_definition();
+      has_class_definition();
 
 /**
  * 
  * True if a_type_name is already concretely known in the system, including if it is generic, which may be open, partially open or closed.
  * 
 */
-    BmmModel  has_type_definition();
+      has_type_definition();
 
 /**
  * 
  * Retrieve the enumeration definition corresponding to a_type_name.
  * 
 */
-    BmmModel  enumeration_definition();
+    BmmEnumeration  enumeration_definition();
 
 /**
  * 
  * List of keys in class_definitions of items marked as primitive types.
  * 
 */
-    BmmModel  primitive_types();
+      primitive_types();
 
 /**
  * 
  * List of keys in class_definitions of items that are enumeration types.
  * 
 */
-    BmmModel  enumeration_types();
+      enumeration_types();
 
 /**
  * 
  * Retrieve the property definition for a_prop_name in flattened class corresponding to a_type_name.
  * 
 */
-    BmmModel  property_definition();
+      property_definition();
 
 /**
  * 
@@ -102,21 +102,21 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * regardless of whether there is single or multiple containment.
  * 
 */
-    BmmModel  ms_conformant_property_type();
+      ms_conformant_property_type();
 
 /**
  * 
  * Retrieve the property definition for a_property_path in flattened class corresponding to a_type_name.
  * 
 */
-    BmmModel  property_definition_at_path();
+      property_definition_at_path();
 
 /**
  * 
  * Retrieve the class definition for the class that owns the terminal attribute in a_prop_path in flattened class corresponding to a_type_name.
  * 
 */
-    BmmModel  class_definition_at_path();
+      class_definition_at_path();
 
 /**
  * 
@@ -125,14 +125,14 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * Returns empty list if none.
  * 
 */
-    BmmModel  all_ancestor_classes();
+      all_ancestor_classes();
 
 /**
  * 
  * True if a_class_name is a descendant in the model of a_parent_class_name.
  * 
 */
-    BmmModel  is_descendant_of();
+      is_descendant_of();
 
 /**
  * 
@@ -141,7 +141,7 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * Conformance is found if: [base class test] types are non-generic, and either type names are identical, or else a_desc_type has an_anc_type in its ancestors; both types are generic and pass base class test; number of generic params matches, and each generic parameter type, after 'open parameter' substitution, recursively passes; type_name_conforms_to test descendant type is generic and ancestor type is not, and they pass base classes test.
  * 
 */
-    BmmModel  type_conforms_to();
+      type_conforms_to();
 
 /**
  * 
@@ -150,7 +150,7 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * Parameters a_type Name of a type.
  * 
 */
-    BmmModel  subtypes();
+      subtypes();
 
 /**
  * 
@@ -158,20 +158,20 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * This may be defined in the BMM schema, but if not, use BMM_DEFINITIONS.any_class.
  * 
 */
-    BmmModel  any_class_definition();
+    BmmSimpleClass  any_class_definition();
 
 /**
  * 
  * BMM_SIMPLE_TYPE instance for the Any type.
  * 
 */
-    BmmModel  any_type_definition();
+    BmmSimpleType  any_type_definition();
 
 /**
  * 
  * BMM_SIMPLE_TYPE instance for the Boolean type.
  * 
 */
-    BmmModel  boolean_type_definition();
+    BmmSimpleType  boolean_type_definition();
 
 }

@@ -15,8 +15,8 @@ public interface PBmmSchema extends PBmmPackageContainer,BmmSchema {
  * Persisted attribute.
  * 
 */
-    PBmmSchema getPrimitiveTypes();
-    void setPrimitiveTypes(PBmmSchema value);
+     getPrimitiveTypes();
+    void setPrimitiveTypes( value);
 
 /**
  * 
@@ -24,16 +24,16 @@ public interface PBmmSchema extends PBmmPackageContainer,BmmSchema {
  * Persisted attribute.
  * 
 */
-    PBmmSchema getClassDefinitions();
-    void setClassDefinitions(PBmmSchema value);
+     getClassDefinitions();
+    void setClassDefinitions( value);
 
 /**
  * 
  * Implementation of validate()
  * 
 */
-    PBmmSchema get();
-    void set(PBmmSchema value);
+     get();
+    void set( value);
 
 /* * FUNCTION * */
 
@@ -42,13 +42,13 @@ public interface PBmmSchema extends PBmmPackageContainer,BmmSchema {
  * Implementation of merge()
  * 
 */
-    PBmmSchema  merge();
+      merge();
 
 /**
  * 
  * Package structure in which all top-level qualified package names like xx.yy.zz have been expanded out to a hierarchy of BMM_PACKAGE objects.
  * 
 */
-    PBmmSchema  canonical_packages();
+    PBmmPackage  canonical_packages();
 
 }

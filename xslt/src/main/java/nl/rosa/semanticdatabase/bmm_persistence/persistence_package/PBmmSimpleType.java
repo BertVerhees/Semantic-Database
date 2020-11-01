@@ -14,16 +14,16 @@ public interface PBmmSimpleType extends PBmmBaseType {
  * Name of type - must be a simple class name.
  * 
 */
-    PBmmSimpleType getType();
-    void setType(PBmmSimpleType value);
+     getType();
+    void setType( value);
 
 /**
  * 
  * Result of create_bmm_type() call.
  * 
 */
-    PBmmSimpleType getBmmType();
-    void setBmmType(PBmmSimpleType value);
+    BmmSimpleType getBmmType();
+    void setBmmType(BmmSimpleType value);
 
 /* * FUNCTION * */
 

@@ -14,16 +14,16 @@ public interface BmmOperator {
  * Position of operator in syntactic representation.
  * 
 */
-    BmmOperator getPosition();
-    void setPosition(BmmOperator value);
+    BmmOperatorPosition getPosition();
+    void setPosition(BmmOperatorPosition value);
 
 /**
  * 
  * Set of String symbols that may be used to represent this operator in a textual representation of a BMM model.
  * 
 */
-    BmmOperator getSymbols();
-    void setSymbols(BmmOperator value);
+     getSymbols();
+    void setSymbols( value);
 
 /**
  * 
@@ -31,8 +31,8 @@ public interface BmmOperator {
  * 'minus' etc.
  * 
 */
-    BmmOperator getName();
-    void setName(BmmOperator value);
+     getName();
+    void setName( value);
 
 /* * FUNCTION * */
 

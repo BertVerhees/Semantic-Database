@@ -16,8 +16,8 @@ public interface PBmmContainerType extends PBmmType {
  * Persisted attribute.
  * 
 */
-    PBmmContainerType getContainerType();
-    void setContainerType(PBmmContainerType value);
+     getContainerType();
+    void setContainerType( value);
 
 /**
  * 
@@ -25,8 +25,8 @@ public interface PBmmContainerType extends PBmmType {
  * Persisted attribute.
  * 
 */
-    PBmmContainerType getTypeDef();
-    void setTypeDef(PBmmContainerType value);
+     getTypeDef();
+    void setTypeDef( value);
 
 /**
  * 
@@ -34,16 +34,16 @@ public interface PBmmContainerType extends PBmmType {
  * Persisted attribute.
  * 
 */
-    PBmmContainerType getType();
-    void setType(PBmmContainerType value);
+     getType();
+    void setType( value);
 
 /**
  * 
  * Result of create_bmm_type() call.
  * 
 */
-    PBmmContainerType getBmmType();
-    void setBmmType(PBmmContainerType value);
+    BmmContainerType getBmmType();
+    void setBmmType(BmmContainerType value);
 
 /* * FUNCTION * */
 
@@ -53,6 +53,6 @@ public interface PBmmContainerType extends PBmmType {
  * Persisted attribute.
  * 
 */
-    PBmmContainerType  type_ref();
+      type_ref();
 
 }

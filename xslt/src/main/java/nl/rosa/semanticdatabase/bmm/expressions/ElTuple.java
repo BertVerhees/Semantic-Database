@@ -15,16 +15,16 @@ public interface ElTuple extends ElInstanceRef {
  * Typical use is to represent an argument list to routine call.
  * 
 */
-    ElTuple getItems();
-    void setItems(ElTuple value);
+     getItems();
+    void setItems( value);
 
 /**
  * 
  * Static type inferred from literal value.
  * 
 */
-    ElTuple getType();
-    void setType(ElTuple value);
+    BmmTupleType getType();
+    void setType(BmmTupleType value);
 
 /* * FUNCTION * */
 
@@ -33,6 +33,6 @@ public interface ElTuple extends ElInstanceRef {
  * Return type.
  * 
 */
-    ElTuple  eval_type();
+      eval_type();
 
 }

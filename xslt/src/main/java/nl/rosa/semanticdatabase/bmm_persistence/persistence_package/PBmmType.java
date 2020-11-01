@@ -14,8 +14,8 @@ public interface PBmmType {
  * Result of create_bmm_type() call.
  * 
 */
-    PBmmType getBmmType();
-    void setBmmType(PBmmType value);
+     getBmmType();
+    void setBmmType( value);
 
 /* * FUNCTION * */
 
@@ -24,13 +24,13 @@ public interface PBmmType {
  * Create appropriate BMM_XXX object; effected in descendants.
  * 
 */
-    PBmmType  create_bmm_type();
+      create_bmm_type();
 
 /**
  * 
  * Formal name of the type for display.
  * 
 */
-    PBmmType  as_type_string();
+      as_type_string();
 
 }

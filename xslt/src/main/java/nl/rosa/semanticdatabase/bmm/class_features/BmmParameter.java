@@ -16,8 +16,8 @@ public interface BmmParameter extends BmmVariable {
  * readable.
  * 
 */
-    BmmParameter getDirection();
-    void setDirection(BmmParameter value);
+    BmmParameterDirection getDirection();
+    void setDirection(BmmParameterDirection value);
 
 /* * FUNCTION * */
 

@@ -14,8 +14,8 @@ public interface BmmModelAccess {
  * List of directories where all the schemas loaded here are found.
  * 
 */
-    BmmModelAccess getSchemaDirectories();
-    void setSchemaDirectories(BmmModelAccess value);
+     getSchemaDirectories();
+    void setSchemaDirectories( value);
 
 /**
  * 
@@ -23,16 +23,16 @@ public interface BmmModelAccess {
  * Keyed by schema_id.
  * 
 */
-    BmmModelAccess getAllSchemas();
-    void setAllSchemas(BmmModelAccess value);
+     getAllSchemas();
+    void setAllSchemas( value);
 
 /**
  * 
  * Top-level (root) models in use, keyed by model_id.
  * 
 */
-    BmmModelAccess getBmmModels();
-    void setBmmModels(BmmModelAccess value);
+     getBmmModels();
+    void setBmmModels( value);
 
 /**
  * 
@@ -40,16 +40,16 @@ public interface BmmModelAccess {
  * For example, the keys "openEHR_EHR_1.0.4", "openEHR_EHR_1.0", "openEHR_EHR_1", and "openEHR_EHR" will all match the "openEHR_EHR_1.0.4" model, assuming it is the most recent version available.
  * 
 */
-    BmmModelAccess getMatchingBmmModels();
-    void setMatchingBmmModels(BmmModelAccess value);
+     getMatchingBmmModels();
+    void setMatchingBmmModels( value);
 
 /**
  * 
  * Reload BMM schemas.
  * 
 */
-    BmmModelAccess get();
-    void set(BmmModelAccess value);
+     get();
+    void set( value);
 
 /* * FUNCTION * */
 
@@ -58,14 +58,14 @@ public interface BmmModelAccess {
  * Initialise with a specific schema load list, usually a sub-set of schemas that will be found in a specified directories a_schema_dirs.
  * 
 */
-    BmmModelAccess  initialise_with_load_list();
+      initialise_with_load_list();
 
 /**
  * 
  * Load all schemas found in a specified directories a_schema_dirs.
  * 
 */
-    BmmModelAccess  initialise_all();
+      initialise_all();
 
 /**
  * 
@@ -75,7 +75,7 @@ public interface BmmModelAccess {
  * Uses matching_bmm_models table to find matches if partial version information is supplied in key.
  * 
 */
-    BmmModelAccess  bmm_model();
+    BmmModel  bmm_model();
 
 /**
  * 
@@ -85,6 +85,6 @@ public interface BmmModelAccess {
  * If a shorter key is used, the Result s True if a BMM_MODEL with any version exists.
  * 
 */
-    BmmModelAccess  has_bmm_model();
+      has_bmm_model();
 
 }

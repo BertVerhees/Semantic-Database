@@ -15,16 +15,16 @@ public interface BmmAssignment extends BmmStatement {
  * The target variable on the notional left-hand side of this assignment.
  * 
 */
-    BmmAssignment getTarget();
-    void setTarget(BmmAssignment value);
+     getTarget();
+    void setTarget( value);
 
 /**
  * 
  * Source right hand side) of the assignment.
  * 
 */
-    BmmAssignment getSource();
-    void setSource(BmmAssignment value);
+     getSource();
+    void setSource( value);
 
 /* * FUNCTION * */
 

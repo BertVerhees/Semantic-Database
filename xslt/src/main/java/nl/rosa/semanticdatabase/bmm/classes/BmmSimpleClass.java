@@ -18,6 +18,6 @@ public interface BmmSimpleClass extends BmmClass {
  * Can only be an instance of BMM_SIMPLE_TYPE or a descendant.
  * 
 */
-    BmmSimpleClass  type();
+    BmmSimpleType  type();
 
 }

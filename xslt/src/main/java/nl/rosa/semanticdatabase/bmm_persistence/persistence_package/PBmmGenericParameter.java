@@ -17,8 +17,8 @@ public interface PBmmGenericParameter extends PBmmModelElement {
  * Name is limited to 1 character, upper case.
  * 
 */
-    PBmmGenericParameter getName();
-    void setName(PBmmGenericParameter value);
+     getName();
+    void setName( value);
 
 /**
  * 
@@ -26,16 +26,16 @@ public interface PBmmGenericParameter extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-    PBmmGenericParameter getConformsToType();
-    void setConformsToType(PBmmGenericParameter value);
+     getConformsToType();
+    void setConformsToType( value);
 
 /**
  * 
  * BMM_GENERIC_PARAMETER created by create_bmm_generic_parameter.
  * 
 */
-    PBmmGenericParameter getBmmGenericParameter();
-    void setBmmGenericParameter(PBmmGenericParameter value);
+    BmmParameterType getBmmGenericParameter();
+    void setBmmGenericParameter(BmmParameterType value);
 
 /* * FUNCTION * */
 
@@ -44,6 +44,6 @@ public interface PBmmGenericParameter extends PBmmModelElement {
  * Create bmm_generic_parameter.
  * 
 */
-    PBmmGenericParameter  create_bmm_generic_parameter();
+      create_bmm_generic_parameter();
 
 }

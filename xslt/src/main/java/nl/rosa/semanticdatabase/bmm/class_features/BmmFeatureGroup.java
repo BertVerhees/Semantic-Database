@@ -15,24 +15,24 @@ public interface BmmFeatureGroup {
  * These are understood to apply logically to all of the features contained within the group.
  * 
 */
-    BmmFeatureGroup getProperties();
-    void setProperties(BmmFeatureGroup value);
+     getProperties();
+    void setProperties( value);
 
 /**
  * 
  * Set of features in this group.
  * 
 */
-    BmmFeatureGroup getFeatures();
-    void setFeatures(BmmFeatureGroup value);
+     getFeatures();
+    void setFeatures( value);
 
 /**
  * 
  * Optional visibility to apply to all features in this group.
  * 
 */
-    BmmFeatureGroup getVisibility();
-    void setVisibility(BmmFeatureGroup value);
+     getVisibility();
+    void setVisibility( value);
 
 /* * FUNCTION * */
 

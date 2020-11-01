@@ -15,8 +15,8 @@ public interface BmmPackage extends BmmPackageContainer {
  * Classes listed as being in this package.
  * 
 */
-    BmmPackage getClasses();
-    void setClasses(BmmPackage value);
+     getClasses();
+    void setClasses( value);
 
 /* * FUNCTION * */
 
@@ -26,13 +26,13 @@ public interface BmmPackage extends BmmPackageContainer {
  * Recurse into each child only far enough to find the first level of classes.
  * 
 */
-    BmmPackage  root_classes();
+      root_classes();
 
 /**
  * 
  * Full path of this package back to root package.
  * 
 */
-    BmmPackage  path();
+      path();
 
 }

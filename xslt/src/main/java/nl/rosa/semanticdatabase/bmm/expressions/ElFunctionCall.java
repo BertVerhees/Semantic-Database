@@ -15,8 +15,8 @@ public interface ElFunctionCall extends ElScopedRef,ElAgentCall {
  * The function agent being called.
  * 
 */
-    ElFunctionCall getAgent();
-    void setAgent(ElFunctionCall value);
+    ElFunctionAgent getAgent();
+    void setAgent(ElFunctionAgent value);
 
 /* * FUNCTION * */
 
@@ -25,6 +25,6 @@ public interface ElFunctionCall extends ElScopedRef,ElAgentCall {
  * Return agent.definition.type.
  * 
 */
-    ElFunctionCall  eval_type();
+      eval_type();
 
 }

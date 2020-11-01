@@ -84,10 +84,10 @@
         <xsl:value-of select="do:commentOutput($class/classComment)"/>
         <xsl:value-of select="do:commentClose()"/>
         <xsl:value-of select="do:output(concat('public class ',$class/className, 'Impl implements ', normalize-space(string-join($class/inherit,',')),'{'))"/>
-        <xsl:element name="class">
+<!--        <xsl:element name="class">
             <xsl:copy-of select="do:getInheritedAttributes($packages, $class)"></xsl:copy-of>    
         </xsl:element>
-        
+-->        
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('/* * ATTRIBUTE * */')"/>
         <xsl:for-each select="$class/attribute">
@@ -138,20 +138,30 @@
         <xsl:value-of select="$result"/>
     </xsl:function>
     
-    <xsl:function name="do:findClass">
+    <xsl:function name="do:findOnClassList">
         <xsl:param name="packages" as="node()"></xsl:param>
         <xsl:param name="classToFind" as="xs:string"></xsl:param>
-        <xsl:variable name="result">
+        <xsl:element name="result">
+            <xsl:element name="dummy"></xsl:element>
             <xsl:for-each select="$packages/package">
                 <xsl:for-each select="class">
-                    <xsl:if test="classNameOrg=$classToFind">
-                        <xsl:value-of select="."/>
+                    <xsl:variable name="classNameOrg" select="classNameOrg" as="xs:string"/>
+                    <xsl:if test="$classNameOrg=$classToFind">
+                        <xsl:element name="class">
+                            <xsl:copy-of select="."/>
+                        </xsl:element>
                     </xsl:if>
                 </xsl:for-each>
             </xsl:for-each>
-        </xsl:variable>
-        <xsl:value-of select="do:message(concat('findClass:',$classToFind,' ',$result/className))"/>
-        <xsl:value-of select="$result"/>
+        </xsl:element>
+        <!--        <xsl:value-of select="do:message(concat('findClass:',$classToFind,' result:',result/class/className))"/>-->
+        <!--        <xsl:value-of select="result"/>-->
+    </xsl:function>
+    
+    <xsl:function name="do:findClass" as="node()">
+        <xsl:param name="packages" as="node()"></xsl:param>
+        <xsl:param name="classToFind" as="xs:string"></xsl:param>
+        <xsl:copy-of select="$packages/package/class[classNameOrg=$classToFind]"/>
     </xsl:function>
     
     
@@ -197,7 +207,7 @@
         </xsl:choose>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('/* * ATTRIBUTE * */')"/>
-        <!-- Getters and Setters mdeclarations for interface -->
+        <!-- Getters and Setters declarations for interface -->
         <xsl:for-each select="$class/functionsAndAttributesAndConstants/nameAndTypeAndKind">
             <xsl:if test="kind='attribute'">
                 <xsl:value-of select="do:output('')"/>
@@ -288,11 +298,11 @@
     <xsl:function name="do:processType">
         <xsl:param name="packages"></xsl:param>
         <xsl:param name="context" as="node()"/>
-        <xsl:param name="incomingString"></xsl:param>
+        <xsl:param name="incomingString" as="xs:string"></xsl:param>
         <xsl:variable name="result">
             <xsl:choose>
-                <xsl:when test="do:findClass($packages, $incomingString)">
-                    <xsl:value-of select="$context/className"/>
+                <xsl:when test="not($packages/package/class[classNameOrg=$incomingString]/className='')" >
+                    <xsl:value-of select="$packages/package/class[classNameOrg=$incomingString]/className"/>
                 </xsl:when>
                 <xsl:when test="count(tokenize($incomingString,':'))>1">
                     <xsl:value-of select="do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[2]),0)"/>            
@@ -429,7 +439,7 @@
                                                                     <!-- value-function -->
                                                                     <xsl:when test="contains(substring-after($nameAndType,')'), ':')">
                                                                         <xsl:value-of select="do:message(concat('            value-function:',' name: ',normalize-space(substring-before($nameAndType,'(')),' value: ',do:substring-after-last($nameAndType,':')))"/>
-                                                                        <xsl:element name="type"><xsl:value-of select="do:substring-after-last($nameAndType,':')"/></xsl:element>
+                                                                        <xsl:element name="type"><xsl:value-of select="normalize-space(do:substring-after-last($nameAndType,':'))"/></xsl:element>
                                                                         <xsl:element name="kind"><xsl:value-of select="'value-function'"/></xsl:element>
                                                                         <xsl:value-of select="do:message('            kind: value-function')"/>
                                                                     </xsl:when>

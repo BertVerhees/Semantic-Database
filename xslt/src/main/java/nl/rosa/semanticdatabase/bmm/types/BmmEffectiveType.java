@@ -16,7 +16,7 @@ public interface BmmEffectiveType extends BmmUnitaryType {
  * Result = self.
  * 
 */
-    BmmEffectiveType  effective_type();
+      effective_type();
 
 /**
  * 
@@ -24,6 +24,6 @@ public interface BmmEffectiveType extends BmmUnitaryType {
  * excluding any generic parts if present.
  * 
 */
-    BmmEffectiveType  type_base_name();
+      type_base_name();
 
 }

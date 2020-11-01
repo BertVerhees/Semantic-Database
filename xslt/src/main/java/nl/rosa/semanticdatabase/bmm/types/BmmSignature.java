@@ -15,16 +15,16 @@ public interface BmmSignature extends BmmEffectiveType {
  * Type of arguments in the signature, if any; represented as a type-tuple (list of arbitrary types).
  * 
 */
-    BmmSignature getArgumentTypes();
-    void setArgumentTypes(BmmSignature value);
+    BmmTupleType getArgumentTypes();
+    void setArgumentTypes(BmmTupleType value);
 
 /**
  * 
  * Result type of signature, if any.
  * 
 */
-    BmmSignature getResultType();
-    void setResultType(BmmSignature value);
+     getResultType();
+    void setResultType( value);
 
 /* * FUNCTION * */
 
@@ -33,28 +33,28 @@ public interface BmmSignature extends BmmEffectiveType {
  * Return base_name.
  * 
 */
-    BmmSignature  type_base_name();
+      type_base_name();
 
 /**
  * 
  * Result = False.
  * 
 */
-    BmmSignature  is_abstract();
+      is_abstract();
 
 /**
  * 
  * Result = True.
  * 
 */
-    BmmSignature  is_primitive();
+      is_primitive();
 
 /**
  * 
  * Return base_name
  * 
 */
-    BmmSignature  type_name();
+      type_name();
 
 /**
  * 
@@ -62,6 +62,6 @@ public interface BmmSignature extends BmmEffectiveType {
  * unique items) consisting of argument_types.flattened_type_list() and result_type.flattened_type_list().
  * 
 */
-    BmmSignature  flattened_type_list();
+      flattened_type_list();
 
 }

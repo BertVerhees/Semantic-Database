@@ -14,24 +14,24 @@ public interface PBmmEnumeration extends PBmmClass {
  * 
  * 
 */
-    PBmmEnumeration getItemNames();
-    void setItemNames(PBmmEnumeration value);
+     getItemNames();
+    void setItemNames( value);
 
 /**
  * 
  * 
  * 
 */
-    PBmmEnumeration getItemValues();
-    void setItemValues(PBmmEnumeration value);
+     getItemValues();
+    void setItemValues( value);
 
 /**
  * 
  * BMM_CLASS object build by create_bmm_class_definition and populate_bmm_class_definition.
  * 
 */
-    PBmmEnumeration getBmmClass();
-    void setBmmClass(PBmmEnumeration value);
+    BmmEnumeration getBmmClass();
+    void setBmmClass(BmmEnumeration value);
 
 /* * FUNCTION * */
 

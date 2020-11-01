@@ -15,8 +15,8 @@ public interface ElLiteral extends ElInstanceRef {
  * The reference item from which the value of this node can be computed.
  * 
 */
-    ElLiteral getValue();
-    void setValue(ElLiteral value);
+     getValue();
+    void setValue( value);
 
 /* * FUNCTION * */
 
@@ -25,6 +25,6 @@ public interface ElLiteral extends ElInstanceRef {
  * Return value.type.
  * 
 */
-    ElLiteral  eval_type();
+      eval_type();
 
 }

@@ -14,8 +14,8 @@ public interface ElSelfRef extends ElInstanceRef {
  * Type of the current scoping instance, inferred from expression context.
  * 
 */
-    ElSelfRef getType();
-    void setType(ElSelfRef value);
+     getType();
+    void setType( value);
 
 /* * FUNCTION * */
 
@@ -24,6 +24,6 @@ public interface ElSelfRef extends ElInstanceRef {
  * Return type.
  * 
 */
-    ElSelfRef  eval_type();
+      eval_type();
 
 }

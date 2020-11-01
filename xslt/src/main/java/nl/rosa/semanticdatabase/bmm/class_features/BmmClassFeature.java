@@ -14,32 +14,32 @@ public interface BmmClassFeature extends BmmClassEntity {
  * Visibility of this item to client entities.
  * 
 */
-    BmmClassFeature getVisibility();
-    void setVisibility(BmmClassFeature value);
+     getVisibility();
+    void setVisibility( value);
 
 /**
  * 
  * Extensions to feature-level meta-types.
  * 
 */
-    BmmClassFeature getFeatureExtensions();
-    void setFeatureExtensions(BmmClassFeature value);
+     getFeatureExtensions();
+    void setFeatureExtensions( value);
 
 /**
  * 
  * Group containing this feature.
  * 
 */
-    BmmClassFeature getGroup();
-    void setGroup(BmmClassFeature value);
+    BmmFeatureGroup getGroup();
+    void setGroup(BmmFeatureGroup value);
 
 /**
  * 
  * Class within which a referenceable element is known.
  * 
 */
-    BmmClassFeature getScope();
-    void setScope(BmmClassFeature value);
+     getScope();
+    void setScope( value);
 
 /* * FUNCTION * */
 

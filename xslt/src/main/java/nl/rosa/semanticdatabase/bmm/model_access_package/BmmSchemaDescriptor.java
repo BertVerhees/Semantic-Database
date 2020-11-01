@@ -15,16 +15,16 @@ public interface BmmSchemaDescriptor {
  * Persistent form of model.
  * 
 */
-    BmmSchemaDescriptor getBmmSchema();
-    void setBmmSchema(BmmSchemaDescriptor value);
+     getBmmSchema();
+    void setBmmSchema( value);
 
 /**
  * 
  * Computable form of model.
  * 
 */
-    BmmSchemaDescriptor getBmmModel();
-    void setBmmModel(BmmSchemaDescriptor value);
+    BmmModel getBmmModel();
+    void setBmmModel(BmmModel value);
 
 /**
  * 
@@ -32,24 +32,24 @@ public interface BmmSchemaDescriptor {
  * openehr_rm_1.0.3, openehr_test_1.0.1, iso_13606_1_2008_2.1.2.
  * 
 */
-    BmmSchemaDescriptor getSchemaId();
-    void setSchemaId(BmmSchemaDescriptor value);
+     getSchemaId();
+    void setSchemaId( value);
 
 /**
  * 
  * Table of {key, value} of schema meta-data, keys are string values defined by {BMM_DEFINITIONS}.Metadata_* constants.
  * 
 */
-    BmmSchemaDescriptor getMetaData();
-    void setMetaData(BmmSchemaDescriptor value);
+     getMetaData();
+    void setMetaData( value);
 
 /**
  * 
  * Identifiers of schemas included by this schema.
  * 
 */
-    BmmSchemaDescriptor getIncludes();
-    void setIncludes(BmmSchemaDescriptor value);
+     getIncludes();
+    void setIncludes( value);
 
 /**
  * 
@@ -58,16 +58,16 @@ public interface BmmSchemaDescriptor {
  * If successful, p_schema will be set.
  * 
 */
-    BmmSchemaDescriptor get();
-    void set(BmmSchemaDescriptor value);
+     get();
+    void set( value);
 
 /**
  * 
  * Validate loaded schema and report errors.
  * 
 */
-    BmmSchemaDescriptor get();
-    void set(BmmSchemaDescriptor value);
+     get();
+    void set( value);
 
 /**
  * 
@@ -75,8 +75,8 @@ public interface BmmSchemaDescriptor {
  * the BMM_MODEL from one P_BMM_SCHEMA schema.
  * 
 */
-    BmmSchemaDescriptor get();
-    void set(BmmSchemaDescriptor value);
+     get();
+    void set( value);
 
 /* * FUNCTION * */
 
@@ -86,20 +86,20 @@ public interface BmmSchemaDescriptor {
  * not included by some other schema.
  * 
 */
-    BmmSchemaDescriptor  is_top_level();
+      is_top_level();
 
 /**
  * 
  * True if the BMM version found in the schema (or assumed, if none) is compatible with that in this software.
  * 
 */
-    BmmSchemaDescriptor  is_bmm_compatible();
+      is_bmm_compatible();
 
 /**
  * 
  * Validate includes list for this schema, to see if each mentioned schema exists in all_schemas list.
  * 
 */
-    BmmSchemaDescriptor  validate_includes();
+      validate_includes();
 
 }

@@ -15,8 +15,8 @@ public interface PBmmPackage extends PBmmPackageContainer,PBmmModelElement {
  * Persistent attribute.
  * 
 */
-    PBmmPackage getName();
-    void setName(PBmmPackage value);
+     getName();
+    void setName( value);
 
 /**
  * 
@@ -24,24 +24,24 @@ public interface PBmmPackage extends PBmmPackageContainer,PBmmModelElement {
  * Persistent attribute.
  * 
 */
-    PBmmPackage getClasses();
-    void setClasses(PBmmPackage value);
+     getClasses();
+    void setClasses( value);
 
 /**
  * 
  * BMM_PACKAGE created by create_bmm_package_definition.
  * 
 */
-    PBmmPackage getBmmPackageDefinition();
-    void setBmmPackageDefinition(PBmmPackage value);
+    BmmPackage getBmmPackageDefinition();
+    void setBmmPackageDefinition(BmmPackage value);
 
 /**
  * 
  * Generate a BMM_PACKAGE_DEFINITION object and write it to bmm_package_definition.
  * 
 */
-    PBmmPackage get();
-    void set(PBmmPackage value);
+     get();
+    void set( value);
 
 /* * FUNCTION * */
 
@@ -50,6 +50,6 @@ public interface PBmmPackage extends PBmmPackageContainer,PBmmModelElement {
  * Merge packages and classes from other (from an included P_BMM_SCHEMA) into this package.
  * 
 */
-    PBmmPackage  merge();
+      merge();
 
 }

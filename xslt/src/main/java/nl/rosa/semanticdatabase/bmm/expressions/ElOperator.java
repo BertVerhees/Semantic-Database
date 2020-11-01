@@ -15,8 +15,8 @@ public interface ElOperator extends ElSimple {
  * If True, parentheses should be introduced around the totality of the syntax expression corresponding to this operator node and its operands.
  * 
 */
-    ElOperator getPrecedenceOverridden();
-    void setPrecedenceOverridden(ElOperator value);
+     getPrecedenceOverridden();
+    void setPrecedenceOverridden( value);
 
 /**
  * 
@@ -24,16 +24,16 @@ public interface ElOperator extends ElSimple {
  * Must be a member of OPERATOR_DEF.symbols.
  * 
 */
-    ElOperator getSymbol();
-    void setSymbol(ElOperator value);
+     getSymbol();
+    void setSymbol( value);
 
 /**
  * 
  * Function equivalent to this operator, inferred by matching operator against functions defined in interface of principal operand.
  * 
 */
-    ElOperator getDefinition();
-    void setDefinition(ElOperator value);
+    BmmFunction getDefinition();
+    void setDefinition(BmmFunction value);
 
 /* * FUNCTION * */
 
@@ -42,13 +42,13 @@ public interface ElOperator extends ElSimple {
  * Operator definition derived from definition.operator_definition().
  * 
 */
-    ElOperator  operator_definition();
+    BmmOperator  operator_definition();
 
 /**
  * 
  * Function call equivalent to this operator.
  * 
 */
-    ElOperator  equivalent_call();
+    ElFunctionCall  equivalent_call();
 
 }

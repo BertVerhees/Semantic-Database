@@ -14,8 +14,8 @@ public interface BmmProcedureCall extends ElAgentCall,BmmStatement {
  * The procedure agent being called.
  * 
 */
-    BmmProcedureCall getAgent();
-    void setAgent(BmmProcedureCall value);
+    ElProcedureAgent getAgent();
+    void setAgent(ElProcedureAgent value);
 
 /* * FUNCTION * */
 

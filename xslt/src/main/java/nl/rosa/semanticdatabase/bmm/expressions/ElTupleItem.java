@@ -16,16 +16,16 @@ public interface ElTupleItem {
  * within a routine call parameter list.
  * 
 */
-    ElTupleItem getItem();
-    void setItem(ElTupleItem value);
+     getItem();
+    void setItem( value);
 
 /**
  * 
  * Optional name of tuple item.
  * 
 */
-    ElTupleItem getName();
-    void setName(ElTupleItem value);
+     getName();
+    void setName( value);
 
 /* * FUNCTION * */
 

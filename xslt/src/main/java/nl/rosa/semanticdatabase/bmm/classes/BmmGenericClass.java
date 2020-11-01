@@ -15,8 +15,8 @@ public interface BmmGenericClass extends BmmClass {
  * These are defined either directly on this class or by the inclusion of an ancestor class which is generic.
  * 
 */
-    BmmGenericClass getGenericParameters();
-    void setGenericParameters(BmmGenericClass value);
+     getGenericParameters();
+    void setGenericParameters( value);
 
 /* * FUNCTION * */
 
@@ -25,14 +25,14 @@ public interface BmmGenericClass extends BmmClass {
  * Add suppliers from generic parameters.
  * 
 */
-    BmmGenericClass  suppliers();
+      suppliers();
 
 /**
  * 
  * Generate a fully open BMM_GENERIC_TYPE instance that corresponds to this class definition
  * 
 */
-    BmmGenericClass  type();
+    BmmGenericType  type();
 
 /**
  * 
@@ -41,6 +41,6 @@ public interface BmmGenericClass extends BmmClass {
  * For an unconstrained type T, the Result will be Any.
  * 
 */
-    BmmGenericClass  generic_parameter_conformance_type();
+      generic_parameter_conformance_type();
 
 }

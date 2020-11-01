@@ -14,8 +14,8 @@ public interface ElPredicate extends ElTerminal {
  * The target instance of this predicate.
  * 
 */
-    ElPredicate getOperand();
-    void setOperand(ElPredicate value);
+     getOperand();
+    void setOperand( value);
 
 /* * FUNCTION * */
 
@@ -24,6 +24,6 @@ public interface ElPredicate extends ElTerminal {
  * Return {BMM_MODEL}.boolean_type_definition().
  * 
 */
-    ElPredicate  eval_type();
+    BmmSimpleType  eval_type();
 
 }

@@ -14,8 +14,8 @@ public interface BmmBooleanValue extends BmmPrimitiveValue {
  * Native Boolean value.
  * 
 */
-    BmmBooleanValue getValue();
-    void setValue(BmmBooleanValue value);
+     getValue();
+    void setValue( value);
 
 /* * FUNCTION * */
 

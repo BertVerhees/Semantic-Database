@@ -14,8 +14,8 @@ public interface PBmmSinglePropertyOpen extends PBmmProperty {
  * Type definition of this property computed from type for later use in bmm_property.
  * 
 */
-    PBmmSinglePropertyOpen getTypeRef();
-    void setTypeRef(PBmmSinglePropertyOpen value);
+    PBmmOpenType getTypeRef();
+    void setTypeRef(PBmmOpenType value);
 
 /**
  * 
@@ -25,16 +25,16 @@ public interface PBmmSinglePropertyOpen extends PBmmProperty {
  * Persisted attribute.
  * 
 */
-    PBmmSinglePropertyOpen getType();
-    void setType(PBmmSinglePropertyOpen value);
+     getType();
+    void setType( value);
 
 /**
  * 
  * BMM_PROPERTY created by create_bmm_property_definition.
  * 
 */
-    PBmmSinglePropertyOpen getBmmProperty();
-    void setBmmProperty(PBmmSinglePropertyOpen value);
+    BmmUnitaryProperty getBmmProperty();
+    void setBmmProperty(BmmUnitaryProperty value);
 
 /* * FUNCTION * */
 
@@ -43,6 +43,6 @@ public interface PBmmSinglePropertyOpen extends PBmmProperty {
  * Generate type_ref from type and save.
  * 
 */
-    PBmmSinglePropertyOpen  type_def();
+    PBmmOpenType  type_def();
 
 }

@@ -14,32 +14,32 @@ public interface BmmRoutine extends BmmClassFeature {
  * Formal parameters of the routine.
  * 
 */
-    BmmRoutine getParameters();
-    void setParameters(BmmRoutine value);
+     getParameters();
+    void setParameters( value);
 
 /**
  * 
  * Local variables of the routine.
  * 
 */
-    BmmRoutine getLocals();
-    void setLocals(BmmRoutine value);
+     getLocals();
+    void setLocals( value);
 
 /**
  * 
  * 
  * 
 */
-    BmmRoutine getPreConditions();
-    void setPreConditions(BmmRoutine value);
+     getPreConditions();
+    void setPreConditions( value);
 
 /**
  * 
  * 
  * 
 */
-    BmmRoutine getPostConditions();
-    void setPostConditions(BmmRoutine value);
+     getPostConditions();
+    void setPostConditions( value);
 
 /**
  * 
@@ -47,8 +47,8 @@ public interface BmmRoutine extends BmmClassFeature {
  * executable program.
  * 
 */
-    BmmRoutine getBody();
-    void setBody(BmmRoutine value);
+     getBody();
+    void setBody( value);
 
 /* * FUNCTION * */
 
@@ -57,13 +57,13 @@ public interface BmmRoutine extends BmmClassFeature {
  * Return number of arguments of this routine.
  * 
 */
-    BmmRoutine  arity();
+      arity();
 
 /**
  * 
  * Formal signature of this element, in the form '[arg1_name: T_arg1, …​]:T_value'.
  * 
 */
-    BmmRoutine  signature();
+      signature();
 
 }

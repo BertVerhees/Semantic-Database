@@ -20,7 +20,7 @@ public interface BmmType {
  * Formal string form of the type as per UML.
  * 
 */
-    BmmType  type_name();
+      type_name();
 
 /**
  * 
@@ -29,7 +29,7 @@ public interface BmmType {
  * Defaults to the value of type_name().
  * 
 */
-    BmmType  type_signature();
+      type_signature();
 
 /**
  * 
@@ -37,7 +37,7 @@ public interface BmmType {
  * a type that cannot be directly instantiated.
  * 
 */
-    BmmType  is_abstract();
+      is_abstract();
 
 /**
  * 
@@ -45,27 +45,27 @@ public interface BmmType {
  * be a primitive type, or be a definer of one.
  * 
 */
-    BmmType  is_primitive();
+      is_primitive();
 
 /**
  * 
  * Type with any container abstracted away; may be a formal generic type.
  * 
 */
-    BmmType  unitary_type();
+      unitary_type();
 
 /**
  * 
  * Type with any container abstracted away, and any formal parameter replaced by its effective constraint type.
  * 
 */
-    BmmType  effective_type();
+      effective_type();
 
 /**
  * 
  * Completely flattened list of type names, flattening out all generic parameters.
  * 
 */
-    BmmType  flattened_type_list();
+      flattened_type_list();
 
 }

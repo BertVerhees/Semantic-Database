@@ -15,8 +15,8 @@ public interface BmmIncludeSpec {
  * "openehr_primitive_types_1.0.2".
  * 
 */
-    BmmIncludeSpec getId();
-    void setId(BmmIncludeSpec value);
+     getId();
+    void setId( value);
 
 /* * FUNCTION * */
 

@@ -18,8 +18,8 @@ public interface ElTypeRef extends ElInstanceRef {
  * {SOME_TYPE}.
  * 
 */
-    ElTypeRef getType();
-    void setType(ElTypeRef value);
+     getType();
+    void setType( value);
 
 /* * FUNCTION * */
 
@@ -28,6 +28,6 @@ public interface ElTypeRef extends ElInstanceRef {
  * Return type.
  * 
 */
-    ElTypeRef  eval_type();
+      eval_type();
 
 }

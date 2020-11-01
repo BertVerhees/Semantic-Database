@@ -15,8 +15,8 @@ public interface BmmSimpleType extends BmmModelType {
  * Defining class of this type.
  * 
 */
-    BmmSimpleType getBaseClass();
-    void setBaseClass(BmmSimpleType value);
+    BmmSimpleClass getBaseClass();
+    void setBaseClass(BmmSimpleClass value);
 
 /* * FUNCTION * */
 
@@ -25,27 +25,27 @@ public interface BmmSimpleType extends BmmModelType {
  * Result is base_class.name.
  * 
 */
-    BmmSimpleType  type_name();
+      type_name();
 
 /**
  * 
  * Result is base_class.is_abstract.
  * 
 */
-    BmmSimpleType  is_abstract();
+      is_abstract();
 
 /**
  * 
  * Result is base_class.name .
  * 
 */
-    BmmSimpleType  flattened_type_list();
+      flattened_type_list();
 
 /**
  * 
  * Main design class for this type, from which properties etc can be extracted.
  * 
 */
-    BmmSimpleType  effective_base_class();
+    BmmSimpleClass  effective_base_class();
 
 }

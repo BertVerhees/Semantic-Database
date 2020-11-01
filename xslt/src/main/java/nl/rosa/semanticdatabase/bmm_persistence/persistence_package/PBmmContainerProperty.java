@@ -15,8 +15,8 @@ public interface PBmmContainerProperty extends PBmmProperty {
  * Persistent attribute.
  * 
 */
-    PBmmContainerProperty getCardinality();
-    void setCardinality(PBmmContainerProperty value);
+     getCardinality();
+    void setCardinality( value);
 
 /**
  * 
@@ -24,16 +24,16 @@ public interface PBmmContainerProperty extends PBmmProperty {
  * Persistent attribute.
  * 
 */
-    PBmmContainerProperty getTypeDef();
-    void setTypeDef(PBmmContainerProperty value);
+    PBmmContainerType getTypeDef();
+    void setTypeDef(PBmmContainerType value);
 
 /**
  * 
  * BMM_PROPERTY created by create_bmm_property.
  * 
 */
-    PBmmContainerProperty getBmmProperty();
-    void setBmmProperty(PBmmContainerProperty value);
+    BmmContainerProperty getBmmProperty();
+    void setBmmProperty(BmmContainerProperty value);
 
 /* * FUNCTION * */
 
@@ -42,6 +42,6 @@ public interface PBmmContainerProperty extends PBmmProperty {
  * Create bmm_property_definition.
  * 
 */
-    PBmmContainerProperty  create_bmm_property();
+      create_bmm_property();
 
 }
