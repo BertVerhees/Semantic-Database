@@ -14,8 +14,8 @@ public interface PBmmSimpleType extends PBmmBaseType {
  * Name of type - must be a simple class name.
  * 
 */
-     getType();
-    void setType( value);
+    String getType();
+    void setType(String value);
 
 /**
  * 

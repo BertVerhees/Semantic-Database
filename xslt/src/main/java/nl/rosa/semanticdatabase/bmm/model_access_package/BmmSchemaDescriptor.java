@@ -15,8 +15,8 @@ public interface BmmSchemaDescriptor {
  * Persistent form of model.
  * 
 */
-     getBmmSchema();
-    void setBmmSchema( value);
+    BmmSchema getBmmSchema();
+    void setBmmSchema(BmmSchema value);
 
 /**
  * 
@@ -32,24 +32,24 @@ public interface BmmSchemaDescriptor {
  * openehr_rm_1.0.3, openehr_test_1.0.1, iso_13606_1_2008_2.1.2.
  * 
 */
-     getSchemaId();
-    void setSchemaId( value);
+    String getSchemaId();
+    void setSchemaId(String value);
 
 /**
  * 
  * Table of {key, value} of schema meta-data, keys are string values defined by {BMM_DEFINITIONS}.Metadata_* constants.
  * 
 */
-     getMetaData();
-    void setMetaData( value);
+    Map<String, String> getMetaData();
+    void setMetaData(Map<String, String> value);
 
 /**
  * 
  * Identifiers of schemas included by this schema.
  * 
 */
-     getIncludes();
-    void setIncludes( value);
+    List<String> getIncludes();
+    void setIncludes(List<String> value);
 
 /**
  * 
@@ -86,20 +86,20 @@ public interface BmmSchemaDescriptor {
  * not included by some other schema.
  * 
 */
-      is_top_level();
+    Boolean  is_top_level();
 
 /**
  * 
  * True if the BMM version found in the schema (or assumed, if none) is compatible with that in this software.
  * 
 */
-      is_bmm_compatible();
+    Boolean  is_bmm_compatible();
 
 /**
  * 
  * Validate includes list for this schema, to see if each mentioned schema exists in all_schemas list.
  * 
 */
-      validate_includes();
+    void  validate_includes();
 
 }

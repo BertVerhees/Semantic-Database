@@ -15,8 +15,8 @@ public interface BmmGenericClass extends BmmClass {
  * These are defined either directly on this class or by the inclusion of an ancestor class which is generic.
  * 
 */
-     getGenericParameters();
-    void setGenericParameters( value);
+    Map<String,BmmParameterType> getGenericParameters();
+    void setGenericParameters(Map<String,BmmParameterType> value);
 
 /* * FUNCTION * */
 
@@ -25,7 +25,7 @@ public interface BmmGenericClass extends BmmClass {
  * Add suppliers from generic parameters.
  * 
 */
-      suppliers();
+    List<String>  suppliers();
 
 /**
  * 
@@ -41,6 +41,6 @@ public interface BmmGenericClass extends BmmClass {
  * For an unconstrained type T, the Result will be Any.
  * 
 */
-      generic_parameter_conformance_type();
+    String  generic_parameter_conformance_type();
 
 }

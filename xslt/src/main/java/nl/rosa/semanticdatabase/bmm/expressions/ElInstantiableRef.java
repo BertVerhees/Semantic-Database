@@ -15,8 +15,8 @@ public interface ElInstantiableRef<t> extends ElScopedRef {
  * Definition of the constant, property or variable, inferred by inspection of the current scoping instance.
  * 
 */
-     getDefinition();
-    void setDefinition( value);
+    T getDefinition();
+    void setDefinition(T value);
 
 /* * FUNCTION * */
 
@@ -27,6 +27,6 @@ public interface ElInstantiableRef<t> extends ElScopedRef {
  * Return definition.type.
  * 
 */
-      eval_type();
+    BmmType  eval_type();
 
 }

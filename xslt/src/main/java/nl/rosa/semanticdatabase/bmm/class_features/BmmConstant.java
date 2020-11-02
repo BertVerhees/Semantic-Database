@@ -16,8 +16,8 @@ public interface BmmConstant extends BmmInstantiable,BmmClassFeature {
  * In the degenerate case, this is just a literal value, but may also be any other expression valid in the context.
  * 
 */
-     getGenerator();
-    void setGenerator( value);
+    ElInstanceRef getGenerator();
+    void setGenerator(ElInstanceRef value);
 
 /* * FUNCTION * */
 

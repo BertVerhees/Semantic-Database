@@ -19,8 +19,8 @@ public interface BmmClass extends BmmModule {
  * List of immediate inheritance parents.
  * 
 */
-     getAncestors();
-    void setAncestors( value);
+    Map<String,BmmModelType> getAncestors();
+    void setAncestors(Map<String,BmmModelType> value);
 
 /**
  * 
@@ -35,8 +35,8 @@ public interface BmmClass extends BmmModule {
  * List of attributes defined in this class.
  * 
 */
-     getProperties();
-    void setProperties( value);
+    Map<String,BmmProperty> getProperties();
+    void setProperties(Map<String,BmmProperty> value);
 
 /**
  * 
@@ -44,80 +44,80 @@ public interface BmmClass extends BmmModule {
  * Useful for UI tools to determine which original schema file to open for a given class for manual editing.
  * 
 */
-     getSourceSchemaId();
-    void setSourceSchemaId( value);
+    String getSourceSchemaId();
+    void setSourceSchemaId(String value);
 
 /**
  * 
  * List of computed references to base classes of immediate inheritance descendants, derived when members of ancestors are attached at creation time.
  * 
 */
-     getImmediateDescendants();
-    void setImmediateDescendants( value);
+    List<BmmClass> getImmediateDescendants();
+    void setImmediateDescendants(List<BmmClass> value);
 
 /**
  * 
  * True if this definition overrides a class of the same name in an included schema.
  * 
 */
-     getIsOverride();
-    void setIsOverride( value);
+    Boolean getIsOverride();
+    void setIsOverride(Boolean value);
 
 /**
  * 
  * List of constants defined in this class.
  * 
 */
-     getConstants();
-    void setConstants( value);
+    Map<String,BmmConstant> getConstants();
+    void setConstants(Map<String,BmmConstant> value);
 
 /**
  * 
  * List of functions defined in this class.
  * 
 */
-     getFunctions();
-    void setFunctions( value);
+    Map<String,BmmFunction> getFunctions();
+    void setFunctions(Map<String,BmmFunction> value);
 
 /**
  * 
  * List of procedures defined in this class.
  * 
 */
-     getProcedures();
-    void setProcedures( value);
+    Map<String,BmmProcedure> getProcedures();
+    void setProcedures(Map<String,BmmProcedure> value);
 
 /**
  * 
  * 
  * 
 */
-     getInvariants();
-    void setInvariants( value);
+    List<BmmAssertion> getInvariants();
+    void setInvariants(List<BmmAssertion> value);
 
 /**
  * 
  * Subset of procedures that may be used to initialise a new instance of an object, and whose execution will guarantee that class invariants are satisfied.
  * 
 */
-     getCreators();
-    void setCreators( value);
+    Map<String,BmmProcedure> getCreators();
+    void setCreators(Map<String,BmmProcedure> value);
 
 /**
  * 
  * Subset of creators that create a new instance from a single argument of another type.
  * 
 */
-     getConverters();
-    void setConverters( value);
+    Map<String,BmmProcedure> getConverters();
+    void setConverters(Map<String,BmmProcedure> value);
 
 /**
  * 
  * List of feature groups in this class.
  * 
 */
-     getFeatureGroups();
-    void setFeatureGroups( value);
+    List<BmmFeatureGroup> getFeatureGroups();
+    void setFeatureGroups(List<BmmFeatureGroup> value);
 
 /* * FUNCTION * */
 
@@ -126,21 +126,21 @@ public interface BmmClass extends BmmModule {
  * Generate a type object that represents the type for which this class is the definer.
  * 
 */
-      type();
+    BmmModelType  type();
 
 /**
  * 
  * List of all inheritance parent class names, recursively.
  * 
 */
-      all_ancestors();
+    List<String>  all_ancestors();
 
 /**
  * 
  * Compute all descendants by following immediate_descendants.
  * 
 */
-      all_descendants();
+    List<String>  all_descendants();
 
 /**
  * 
@@ -149,14 +149,14 @@ public interface BmmClass extends BmmModule {
  * This list includes primitive types.
  * 
 */
-      suppliers();
+    List<String>  suppliers();
 
 /**
  * 
  * Same as suppliers minus primitive types, as defined in input schema.
  * 
 */
-      suppliers_non_primitive();
+    List<String>  suppliers_non_primitive();
 
 /**
  * 
@@ -164,21 +164,21 @@ public interface BmmClass extends BmmModule {
  * This list includes primitive types.
  * 
 */
-      supplier_closure();
+    List<String>  supplier_closure();
 
 /**
  * 
  * Fully qualified package name, of form: package.package.
  * 
 */
-      package_path();
+    String  package_path();
 
 /**
  * 
  * Fully qualified class name, of form: package.package.CLASS with package path in lower-case and class in original case.
  * 
 */
-      class_path();
+    String  class_path();
 
 /**
  * 
@@ -186,7 +186,7 @@ public interface BmmClass extends BmmModule {
  * Set from schema.
  * 
 */
-      is_primitive();
+    Boolean  is_primitive();
 
 /**
  * 
@@ -194,27 +194,27 @@ public interface BmmClass extends BmmModule {
  * Value provided from an underlying data property set at creation or construction time.
  * 
 */
-      is_abstract();
+    Boolean  is_abstract();
 
 /**
  * 
  * List of all feature definitions introduced in this class.
  * 
 */
-      features();
+    List<BmmClassFeature>  features();
 
 /**
  * 
  * Consolidated list of all feature definitions from this class and all inheritance ancestors.
  * 
 */
-      flat_features();
+    List<BmmClassFeature>  flat_features();
 
 /**
  * 
  * List of all properties due to current and ancestor classes, keyed by property name.
  * 
 */
-      flat_properties();
+    List<BmmProperty>  flat_properties();
 
 }

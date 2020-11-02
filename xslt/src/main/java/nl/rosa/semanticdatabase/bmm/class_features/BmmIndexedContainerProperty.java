@@ -24,6 +24,6 @@ public interface BmmIndexedContainerProperty extends BmmContainerProperty {
  * Name of this property in form name: ContainerTypeName<IndexTypeName, …​>.
  * 
 */
-      display_name();
+    String  display_name();
 
 }

@@ -25,6 +25,6 @@ public interface ElFunctionCall extends ElScopedRef,ElAgentCall {
  * Return agent.definition.type.
  * 
 */
-      eval_type();
+    BmmType  eval_type();
 
 }

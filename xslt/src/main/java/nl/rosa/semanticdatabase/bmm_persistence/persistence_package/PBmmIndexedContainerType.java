@@ -14,8 +14,8 @@ public interface PBmmIndexedContainerType extends PBmmContainerType {
  * 
  * 
 */
-     getIndexType();
-    void setIndexType( value);
+    String getIndexType();
+    void setIndexType(String value);
 
 /**
  * 

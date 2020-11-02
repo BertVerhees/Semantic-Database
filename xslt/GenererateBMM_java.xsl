@@ -65,11 +65,11 @@
                 </xsl:result-document>    
             </xsl:for-each>
             <xsl:for-each select="class">
-                <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/{classFileName}Impl.java">
-                    <xsl:if test="enumeration=false()">
+                <xsl:if test="enumeration=false()">
+                    <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/{classFileName}Impl.java">
                         <xsl:value-of select="do:writeClasses($root/packages, $package, .)"/>
-                    </xsl:if>
-                </xsl:result-document>    
+                    </xsl:result-document>
+                </xsl:if>
             </xsl:for-each>
         </xsl:for-each>
     </xsl:template>
@@ -174,12 +174,20 @@
         <xsl:value-of select="do:commentOutput($class/classComment)"/>
         <xsl:value-of select="do:commentClose()"/>
         <xsl:value-of select="do:output(concat('public enum ',$class/className, ' {'))"/>
-        <xsl:for-each select="$class/attribute">
+        <xsl:variable name="count" select="count($class/functionsAndAttributesAndConstants/nameAndTypeAndKind)"/>
+        <xsl:for-each select="$class/functionsAndAttributesAndConstants/nameAndTypeAndKind">
             <xsl:value-of select="do:output('')"/>
             <xsl:value-of select="do:commentOpen()"/>
             <xsl:value-of select="do:commentOutput(description)"/>
             <xsl:value-of select="do:commentClose()"/>
-            <xsl:value-of select="do:outputSpaces(concat('    ',nameAndType,','))"/>
+            <xsl:choose>
+                <xsl:when test="position() &lt; $count">
+                    <xsl:value-of select="do:outputSpaces(concat('    ',enumType,','))"/>        
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="do:outputSpaces(concat('    ',enumType))"/>
+                </xsl:otherwise>
+            </xsl:choose>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('}')"/>
@@ -214,8 +222,9 @@
                 <xsl:value-of select="do:commentOpen()"/>
                 <xsl:value-of select="do:commentOutput(description)"/>
                 <xsl:value-of select="do:commentClose()"/>
-                <xsl:value-of select="do:outputSpaces(concat('    ',concat(do:processType($packages,$class,type),' get',do:snakeUpperCaseToCamelCase(name,0),'();')))"/>
-                <xsl:value-of select="do:outputSpaces(concat('    ',concat('void set',do:snakeUpperCaseToCamelCase(name,0),'(',do:processType($packages,$class,type),' value);')))"/>
+                <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages,$class,type))"/>                
+                <xsl:value-of select="do:outputSpaces(concat('    ',concat($type,' get',do:snakeUpperCaseToCamelCase(name,0),'();')))"/>
+                <xsl:value-of select="do:outputSpaces(concat('    ',concat('void set',do:snakeUpperCaseToCamelCase(name,0),'(',$type,' value);')))"/>
             </xsl:if>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
@@ -226,7 +235,15 @@
                 <xsl:value-of select="do:commentOpen()"/>
                 <xsl:value-of select="do:commentOutput(description)"/>
                 <xsl:value-of select="do:commentClose()"/>
-                <xsl:value-of select="do:outputSpaces(concat('    ',concat(do:processType($packages,$class,type),'  ',name,'();')))"/>
+                <xsl:choose>
+                    <xsl:when test="kind='void-function'">
+                        <xsl:value-of select="do:outputSpaces(concat('    ',concat('void  ',name,'();')))"/>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages,$class,type))"/>
+                        <xsl:value-of select="do:outputSpaces(concat('    ',concat($type,'  ',name,'();')))"/>
+                    </xsl:otherwise>
+                </xsl:choose>
             </xsl:if>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
@@ -299,19 +316,44 @@
         <xsl:param name="packages"></xsl:param>
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString" as="xs:string"></xsl:param>
+        <xsl:value-of select="do:message($incomingString)"/>
         <xsl:variable name="result">
             <xsl:choose>
-                <xsl:when test="not($packages/package/class[classNameOrg=$incomingString]/className='')" >
-                    <xsl:value-of select="$packages/package/class[classNameOrg=$incomingString]/className"/>
+                <xsl:when test="$packages/package/class[classNameOrgAbstractStripped=$incomingString]/className" >
+                    <xsl:value-of select="$packages/package/class[classNameOrgAbstractStripped=$incomingString]/className"/>
                 </xsl:when>
-                <xsl:when test="count(tokenize($incomingString,':'))>1">
-                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString,':')[2]),0)"/>            
+                <xsl:when test="contains($incomingString,'&lt;')">
+                    <xsl:variable name="type" >
+                        <xsl:choose>
+                            <xsl:when test="starts-with(lower-case($incomingString), 'hash')">
+                                <xsl:value-of select="'Map'"/>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:value-of select="substring-before($incomingString,'&lt;')"/>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                    </xsl:variable>
+                    <xsl:variable name="types" as="xs:string*" select="tokenize(substring-before(substring-after($incomingString,'&lt;'),'&gt;'),',')"/>
+                    <xsl:variable name="newTypes">
+                        <xsl:for-each select="$types">
+                            <xsl:variable name="testType" select="."/>
+                            <xsl:variable name="newType">
+                                <xsl:value-of select="do:processType($packages, $context, $testType)"/>
+                            </xsl:variable>
+                            <xsl:if test="position()>1">
+                                <xsl:value-of select="','"/>
+                            </xsl:if>
+                            <xsl:value-of select="$newType"/>
+                        </xsl:for-each>
+                    </xsl:variable>
+                    <xsl:value-of select="concat($type,'&lt;',$newTypes,'&gt;')"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="'void'"/>
+                    <xsl:value-of select="$incomingString"/>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
+        <xsl:value-of select="do:message($result)"/>
         <xsl:value-of select="$result"/>        
     </xsl:function>
 
@@ -378,9 +420,25 @@
                                     <xsl:value-of select="do:message(concat('    filename:',tokenize(tokenize(do:snakeUpperCaseToCamelCase($className, 0),' ')[1], '&lt;')[1]))"/>
                                     <xsl:value-of select="tokenize(tokenize(do:snakeUpperCaseToCamelCase($className, 0),' ')[1], '&lt;')[1]"/>
                                 </xsl:element>
-                                <!-- UPPERCASE_UNDERSCORE_CLASSNAME -->
+                                <!-- UPPERCASE_UNDERSCORE_CLASSNAME (abstract) -->
                                 <xsl:element name="classNameOrg">
+                                    <xsl:value-of select="do:message(concat('    classNameOrg:',$className))"/>
                                     <xsl:value-of select="$className"/>
+                                </xsl:element>
+                                <!-- UPPERCASE_UNDERSCORE_CLASSNAME -->
+                                <xsl:element name="classNameOrgAbstractStripped">
+                                    <xsl:variable name="classNameOrgAbstractStripped" as="xs:string">
+                                    <xsl:choose>
+                                        <xsl:when test="contains($className,'(')">
+                                            <xsl:value-of select="normalize-space(tokenize($className,'\(')[1])"/>
+                                        </xsl:when>
+                                        <xsl:otherwise>
+                                            <xsl:value-of select="$className"/>
+                                        </xsl:otherwise>
+                                    </xsl:choose>
+                                    </xsl:variable>
+                                    <xsl:value-of select="do:message(concat('    classNameOrgAbstractStripped:',$classNameOrgAbstractStripped))"/>
+                                    <xsl:value-of select="$classNameOrgAbstractStripped"/>
                                 </xsl:element>
                                 <!-- Class Comments -->
                                 <xsl:for-each select="tbody/tr[2]/td/div">

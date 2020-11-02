@@ -17,13 +17,13 @@ public interface BmmProperty extends BmmInstantiable,BmmClassFeature {
  * Interval form of 0..1, 1..1 etc, derived from is_nullable.
  * 
 */
-      existence();
+    Multiplicity_interval  existence();
 
 /**
  * 
  * Name of this property to display in UI.
  * 
 */
-      display_name();
+    String  display_name();
 
 }

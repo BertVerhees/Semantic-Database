@@ -15,24 +15,24 @@ public interface BmmFeatureGroup {
  * These are understood to apply logically to all of the features contained within the group.
  * 
 */
-     getProperties();
-    void setProperties( value);
+    Map<String, String> getProperties();
+    void setProperties(Map<String, String> value);
 
 /**
  * 
  * Set of features in this group.
  * 
 */
-     getFeatures();
-    void setFeatures( value);
+    List<BmmClassFeature> getFeatures();
+    void setFeatures(List<BmmClassFeature> value);
 
 /**
  * 
  * Optional visibility to apply to all features in this group.
  * 
 */
-     getVisibility();
-    void setVisibility( value);
+    BmmVisibility getVisibility();
+    void setVisibility(BmmVisibility value);
 
 /* * FUNCTION * */
 

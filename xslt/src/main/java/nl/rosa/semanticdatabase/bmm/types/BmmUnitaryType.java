@@ -16,6 +16,6 @@ public interface BmmUnitaryType extends BmmType {
  * Result = self.
  * 
 */
-      unitary_type();
+    BmmUnitaryType  unitary_type();
 
 }

@@ -14,16 +14,16 @@ public interface ElDecisionTable extends ElExpression {
  * Result expression of the chain if no member of items succeeds in evaluation.
  * 
 */
-     getElse();
-    void setElse( value);
+    ElExpression getElse();
+    void setElse(ElExpression value);
 
 /**
  * 
  * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
  * 
 */
-     getItems();
-    void setItems( value);
+    List<ElDecisionBranch> getItems();
+    void setItems(List<ElDecisionBranch> value);
 
 /* * FUNCTION * */
 

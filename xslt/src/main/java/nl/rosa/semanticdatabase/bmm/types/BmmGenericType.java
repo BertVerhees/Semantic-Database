@@ -16,8 +16,8 @@ public interface BmmGenericType extends BmmModelType {
  * The order must match the order of the owning class’s formal generic parameter declarations, and the types may be defined types or formal parameter types.
  * 
 */
-     getGenericParameters();
-    void setGenericParameters( value);
+    List<BmmUnitaryType> getGenericParameters();
+    void setGenericParameters(List<BmmUnitaryType> value);
 
 /**
  * 
@@ -35,7 +35,7 @@ public interface BmmGenericType extends BmmModelType {
  * DV_INTERVAL<T>, TABLE<List<THING>,String>.
  * 
 */
-      type_name();
+    String  type_name();
 
 /**
  * 
@@ -43,28 +43,28 @@ public interface BmmGenericType extends BmmModelType {
  * Interval<T:Ordered>.
  * 
 */
-      type_signature();
+    String  type_signature();
 
 /**
  * 
  * True if base_class.is_abstract or if any (non-open) parameter type is abstract.
  * 
 */
-      is_abstract();
+    Boolean  is_abstract();
 
 /**
  * 
  * Result is base_class.name followed by names of all generic parameter type names, which may be open or closed.
  * 
 */
-      flattened_type_list();
+    List<String>  flattened_type_list();
 
 /**
  * 
  * Returns True if there is any substituted generic parameter.
  * 
 */
-      is_partially_closed();
+    Boolean  is_partially_closed();
 
 /**
  * 
@@ -78,6 +78,6 @@ public interface BmmGenericType extends BmmModelType {
  * True if all generic parameters from ancestor generic types have been substituted in this type.
  * 
 */
-      is_open();
+    Boolean  is_open();
 
 }

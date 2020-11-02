@@ -15,8 +15,8 @@ public interface PBmmClass extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-     getName();
-    void setName( value);
+    String getName();
+    void setName(String value);
 
 /**
  * 
@@ -25,8 +25,8 @@ public interface PBmmClass extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-     getAncestors();
-    void setAncestors( value);
+    List<String> getAncestors();
+    void setAncestors(List<String> value);
 
 /**
  * 
@@ -34,8 +34,8 @@ public interface PBmmClass extends PBmmModelElement {
  * Persistent attribute.
  * 
 */
-     getProperties();
-    void setProperties( value);
+    Map<String,PBmmProperty> getProperties();
+    void setProperties(Map<String,PBmmProperty> value);
 
 /**
  * 
@@ -43,16 +43,16 @@ public interface PBmmClass extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-     getIsAbstract();
-    void setIsAbstract( value);
+    Boolean getIsAbstract();
+    void setIsAbstract(Boolean value);
 
 /**
  * 
  * True if this class definition overrides one found in an included schema.
  * 
 */
-     getIsOverride();
-    void setIsOverride( value);
+    Boolean getIsOverride();
+    void setIsOverride(Boolean value);
 
 /**
  * 
@@ -60,8 +60,8 @@ public interface PBmmClass extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-     getGenericParameterDefs();
-    void setGenericParameterDefs( value);
+    Map<String,PBmmGenericParameter> getGenericParameterDefs();
+    void setGenericParameterDefs(Map<String,PBmmGenericParameter> value);
 
 /**
  * 
@@ -71,16 +71,16 @@ public interface PBmmClass extends PBmmModelElement {
  * taking into account that a class may be in any of the schemas in a schema inclusion hierarchy).
  * 
 */
-     getSourceSchemaId();
-    void setSourceSchemaId( value);
+    String getSourceSchemaId();
+    void setSourceSchemaId(String value);
 
 /**
  * 
  * BMM_CLASS object built by create_bmm_class_definition and populate_bmm_class_definition.
  * 
 */
-     getBmmClass();
-    void setBmmClass( value);
+    BmmClass getBmmClass();
+    void setBmmClass(BmmClass value);
 
 /**
  * 
@@ -88,8 +88,8 @@ public interface PBmmClass extends PBmmModelElement {
  * Assigned in post-load processing.
  * 
 */
-     getUid();
-    void setUid( value);
+    Integer getUid();
+    void setUid(Integer value);
 
 /**
  * 
@@ -97,8 +97,8 @@ public interface PBmmClass extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-     getAncestorDefs();
-    void setAncestorDefs( value);
+    List<PBmmGenericType> getAncestorDefs();
+    void setAncestorDefs(List<PBmmGenericType> value);
 
 /**
  * 
@@ -115,13 +115,13 @@ public interface PBmmClass extends PBmmModelElement {
  * True if this class is a generic class.
  * 
 */
-      is_generic();
+    = generic_parameter_defs /= Void  is_generic();
 
 /**
  * 
  * Add remaining model elements from Current to bmm_class_definition.
  * 
 */
-      populate_bmm_class();
+    void  populate_bmm_class();
 
 }

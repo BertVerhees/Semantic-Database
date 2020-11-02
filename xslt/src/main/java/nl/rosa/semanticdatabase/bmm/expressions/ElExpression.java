@@ -17,7 +17,7 @@ public interface ElExpression {
  * Effected in descendants.
  * 
 */
-      eval_type();
+    BmmType  eval_type();
 
 /**
  * 
@@ -25,6 +25,6 @@ public interface ElExpression {
  * a BMM_SIMPLE_TYPE with type_name() = Boolean).
  * 
 */
-      is_boolean();
+    Result = eval_type().equal( {BMM_MODEL}.boolean_type_definition())  is_boolean();
 
 }

@@ -25,6 +25,6 @@ public interface BmmIndexedContainerType extends BmmContainerType {
  * HashMap<String, ELEMENT>.
  * 
 */
-      type_name();
+    String  type_name();
 
 }

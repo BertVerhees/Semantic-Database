@@ -15,8 +15,8 @@ public interface BmmStatementBlock extends BmmStatementItem {
  * Child blocks of the current block.
  * 
 */
-     getItems();
-    void setItems( value);
+    List<BmmStatementItem> getItems();
+    void setItems(List<BmmStatementItem> value);
 
 /* * FUNCTION * */
 

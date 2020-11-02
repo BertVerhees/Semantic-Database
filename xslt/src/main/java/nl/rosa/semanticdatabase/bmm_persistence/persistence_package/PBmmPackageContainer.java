@@ -14,8 +14,8 @@ public interface PBmmPackageContainer {
  * Package structure as a hierarchy of packages each potentially containing names of classes in that package in the original model.
  * 
 */
-     getPackages();
-    void setPackages( value);
+    Map<String, P_BMM_PACKAGE> getPackages();
+    void setPackages(Map<String, P_BMM_PACKAGE> value);
 
 /* * FUNCTION * */
 

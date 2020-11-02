@@ -18,8 +18,8 @@ public interface BmmEnumeration extends BmmSimpleClass {
  * If no values are supplied, the integer values 0, 1, 2, …​ are assumed.
  * 
 */
-     getItemNames();
-    void setItemNames( value);
+    List<String> getItemNames();
+    void setItemNames(List<String> value);
 
 /**
  * 
@@ -27,8 +27,8 @@ public interface BmmEnumeration extends BmmSimpleClass {
  * Must be 1:1 with item_names list.
  * 
 */
-     getItemValues();
-    void setItemValues( value);
+    List<BmmPrimitiveValue> getItemValues();
+    void setItemValues(List<BmmPrimitiveValue> value);
 
 /* * FUNCTION * */
 
@@ -37,6 +37,6 @@ public interface BmmEnumeration extends BmmSimpleClass {
  * Map of item_names to item_values (stringified).
  * 
 */
-      name_map();
+    Map<String, String>  name_map();
 
 }

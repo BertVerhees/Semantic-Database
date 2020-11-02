@@ -15,8 +15,8 @@ public interface PBmmProperty extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-     getName();
-    void setName( value);
+    String getName();
+    void setName(String value);
 
 /**
  * 
@@ -24,8 +24,8 @@ public interface PBmmProperty extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-     getIsMandatory();
-    void setIsMandatory( value);
+    Boolean getIsMandatory();
+    void setIsMandatory(Boolean value);
 
 /**
  * 
@@ -33,8 +33,8 @@ public interface PBmmProperty extends PBmmModelElement {
  * Persisted Attribute.
  * 
 */
-     getIsComputed();
-    void setIsComputed( value);
+    Boolean getIsComputed();
+    void setIsComputed(Boolean value);
 
 /**
  * 
@@ -42,8 +42,8 @@ public interface PBmmProperty extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-     getIsImInfrastructure();
-    void setIsImInfrastructure( value);
+    Boolean getIsImInfrastructure();
+    void setIsImInfrastructure(Boolean value);
 
 /**
  * 
@@ -51,8 +51,8 @@ public interface PBmmProperty extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-     getIsImRuntime();
-    void setIsImRuntime( value);
+    Boolean getIsImRuntime();
+    void setIsImRuntime(Boolean value);
 
 /**
  * 
@@ -60,16 +60,16 @@ public interface PBmmProperty extends PBmmModelElement {
  * Persisted attribute.
  * 
 */
-     getTypeDef();
-    void setTypeDef( value);
+    PBmmType getTypeDef();
+    void setTypeDef(PBmmType value);
 
 /**
  * 
  * BMM_PROPERTY created by create_bmm_property_definition.
  * 
 */
-     getBmmProperty();
-    void setBmmProperty( value);
+    BmmProperty getBmmProperty();
+    void setBmmProperty(BmmProperty value);
 
 /* * FUNCTION * */
 
@@ -78,6 +78,6 @@ public interface PBmmProperty extends PBmmModelElement {
  * Create bmm_property_definition from P_BMM_XX parts.
  * 
 */
-      create_bmm_property();
+    void  create_bmm_property();
 
 }

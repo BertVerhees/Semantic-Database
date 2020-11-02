@@ -14,8 +14,8 @@ public interface ElScopedRef extends ElInstanceRef {
  * Reference to an owning object for this terminal element, if it is not the current scope.
  * 
 */
-     getScope();
-    void setScope( value);
+    ElInstanceRef getScope();
+    void setScope(ElInstanceRef value);
 
 /* * FUNCTION * */
 

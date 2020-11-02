@@ -15,8 +15,8 @@ public interface PBmmSchema extends PBmmPackageContainer,BmmSchema {
  * Persisted attribute.
  * 
 */
-     getPrimitiveTypes();
-    void setPrimitiveTypes( value);
+    List<PBmmClass> getPrimitiveTypes();
+    void setPrimitiveTypes(List<PBmmClass> value);
 
 /**
  * 
@@ -24,8 +24,8 @@ public interface PBmmSchema extends PBmmPackageContainer,BmmSchema {
  * Persisted attribute.
  * 
 */
-     getClassDefinitions();
-    void setClassDefinitions( value);
+    List<PBmmClass> getClassDefinitions();
+    void setClassDefinitions(List<PBmmClass> value);
 
 /**
  * 
@@ -42,7 +42,7 @@ public interface PBmmSchema extends PBmmPackageContainer,BmmSchema {
  * Implementation of merge()
  * 
 */
-      merge();
+    includes_to_process.has (included_schema.schema_id)  merge();
 
 /**
  * 

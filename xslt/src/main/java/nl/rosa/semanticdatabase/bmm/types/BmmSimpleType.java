@@ -25,21 +25,21 @@ public interface BmmSimpleType extends BmmModelType {
  * Result is base_class.name.
  * 
 */
-      type_name();
+    String  type_name();
 
 /**
  * 
  * Result is base_class.is_abstract.
  * 
 */
-      is_abstract();
+    Boolean  is_abstract();
 
 /**
  * 
  * Result is base_class.name .
  * 
 */
-      flattened_type_list();
+    List<String>  flattened_type_list();
 
 /**
  * 

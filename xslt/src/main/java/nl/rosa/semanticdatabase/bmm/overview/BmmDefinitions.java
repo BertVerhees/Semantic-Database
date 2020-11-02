@@ -14,8 +14,8 @@ public interface BmmDefinitions extends BasicDefinitions {
  * Current internal version of BMM meta-model, used to determine if a given schema can be processed by a given implementation of the model.
  * 
 */
-     getBmmInternalVersion();
-    void setBmmInternalVersion( value);
+    String getBmmInternalVersion();
+    void setBmmInternalVersion(String value);
 
 /* * FUNCTION * */
 
@@ -39,6 +39,6 @@ public interface BmmDefinitions extends BasicDefinitions {
  * openehr_rm_1.0.3, openehr_test_1.0.1, iso_13606_1_2008_2.1.2.
  * 
 */
-      create_schema_id();
+    String  create_schema_id();
 
 }

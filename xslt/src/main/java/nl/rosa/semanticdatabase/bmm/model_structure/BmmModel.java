@@ -14,8 +14,8 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * All classes in this model, keyed by type name.
  * 
 */
-     getClassDefinitions();
-    void setClassDefinitions( value);
+    Map<String,BmmClass> getClassDefinitions();
+    void setClassDefinitions(Map<String,BmmClass> value);
 
 /**
  * 
@@ -24,8 +24,8 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * Classes in the current model may refer to classes in a used model by specifying the other class’s scope meta-attribute.
  * 
 */
-     getUsedModels();
-    void setUsedModels( value);
+    List<BmmModel> getUsedModels();
+    void setUsedModels(List<BmmModel> value);
 
 /* * FUNCTION * */
 
@@ -35,14 +35,14 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * "openehr_ehr_1.0.4".
  * 
 */
-      model_id();
+    String  model_id();
 
 /**
  * 
  * Retrieve the class definition corresponding to a_type_name (which may contain a generic part).
  * 
 */
-      class_definition();
+    BmmClass  class_definition();
 
 /**
  * 
@@ -51,21 +51,21 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * if it is an effective generic name that identifies a BMM_GENERIC_CLASS_EFFECTIVE.
  * 
 */
-      type_definition();
+    BmmClass  type_definition();
 
 /**
  * 
  * True if a_class_name has a class definition in the model.
  * 
 */
-      has_class_definition();
+    Boolean  has_class_definition();
 
 /**
  * 
  * True if a_type_name is already concretely known in the system, including if it is generic, which may be open, partially open or closed.
  * 
 */
-      has_type_definition();
+    Boolean  has_type_definition();
 
 /**
  * 
@@ -79,21 +79,21 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * List of keys in class_definitions of items marked as primitive types.
  * 
 */
-      primitive_types();
+    List<String>  primitive_types();
 
 /**
  * 
  * List of keys in class_definitions of items that are enumeration types.
  * 
 */
-      enumeration_types();
+    List<String>  enumeration_types();
 
 /**
  * 
  * Retrieve the property definition for a_prop_name in flattened class corresponding to a_type_name.
  * 
 */
-      property_definition();
+    BmmProperty  property_definition();
 
 /**
  * 
@@ -102,21 +102,21 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * regardless of whether there is single or multiple containment.
  * 
 */
-      ms_conformant_property_type();
+    Boolean  ms_conformant_property_type();
 
 /**
  * 
  * Retrieve the property definition for a_property_path in flattened class corresponding to a_type_name.
  * 
 */
-      property_definition_at_path();
+    BmmProperty  property_definition_at_path();
 
 /**
  * 
  * Retrieve the class definition for the class that owns the terminal attribute in a_prop_path in flattened class corresponding to a_type_name.
  * 
 */
-      class_definition_at_path();
+    BmmClass  class_definition_at_path();
 
 /**
  * 
@@ -125,14 +125,14 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * Returns empty list if none.
  * 
 */
-      all_ancestor_classes();
+    List<String>  all_ancestor_classes();
 
 /**
  * 
  * True if a_class_name is a descendant in the model of a_parent_class_name.
  * 
 */
-      is_descendant_of();
+    Boolean  is_descendant_of();
 
 /**
  * 
@@ -141,7 +141,7 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * Conformance is found if: [base class test] types are non-generic, and either type names are identical, or else a_desc_type has an_anc_type in its ancestors; both types are generic and pass base class test; number of generic params matches, and each generic parameter type, after 'open parameter' substitution, recursively passes; type_name_conforms_to test descendant type is generic and ancestor type is not, and they pass base classes test.
  * 
 */
-      type_conforms_to();
+    Boolean  type_conforms_to();
 
 /**
  * 
@@ -150,7 +150,7 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
  * Parameters a_type Name of a type.
  * 
 */
-      subtypes();
+    List<String>  subtypes();
 
 /**
  * 

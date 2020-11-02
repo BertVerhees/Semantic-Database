@@ -15,8 +15,8 @@ public interface PBmmGenericType extends PBmmBaseType {
  * Interval in Interval<Integer>.
  * 
 */
-     getRootType();
-    void setRootType( value);
+    String getRootType();
+    void setRootType(String value);
 
 /**
  * 
@@ -25,8 +25,8 @@ public interface PBmmGenericType extends PBmmBaseType {
  * Persistent attribute.
  * 
 */
-     getGenericParameterDefs();
-    void setGenericParameterDefs( value);
+    List<PBmmType> getGenericParameterDefs();
+    void setGenericParameterDefs(List<PBmmType> value);
 
 /**
  * 
@@ -35,8 +35,8 @@ public interface PBmmGenericType extends PBmmBaseType {
  * Persistent attribute.
  * 
 */
-     getGenericParameters();
-    void setGenericParameters( value);
+    List<String> getGenericParameters();
+    void setGenericParameters(List<String> value);
 
 /**
  * 
@@ -54,6 +54,6 @@ public interface PBmmGenericType extends PBmmBaseType {
  * The order must match the order of the owning class’s formal generic parameter declarations
  * 
 */
-      generic_parameter_refs();
+    List<PBmmType>  generic_parameter_refs();
 
 }

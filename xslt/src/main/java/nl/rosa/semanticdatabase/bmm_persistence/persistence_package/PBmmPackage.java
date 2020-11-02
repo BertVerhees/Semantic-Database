@@ -15,8 +15,8 @@ public interface PBmmPackage extends PBmmPackageContainer,PBmmModelElement {
  * Persistent attribute.
  * 
 */
-     getName();
-    void setName( value);
+    String getName();
+    void setName(String value);
 
 /**
  * 
@@ -24,8 +24,8 @@ public interface PBmmPackage extends PBmmPackageContainer,PBmmModelElement {
  * Persistent attribute.
  * 
 */
-     getClasses();
-    void setClasses( value);
+    List<String> getClasses();
+    void setClasses(List<String> value);
 
 /**
  * 
@@ -50,6 +50,6 @@ public interface PBmmPackage extends PBmmPackageContainer,PBmmModelElement {
  * Merge packages and classes from other (from an included P_BMM_SCHEMA) into this package.
  * 
 */
-      merge();
+    void  merge();
 
 }

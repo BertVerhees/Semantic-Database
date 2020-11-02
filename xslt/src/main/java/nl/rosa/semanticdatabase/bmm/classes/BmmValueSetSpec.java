@@ -16,8 +16,8 @@ public interface BmmValueSetSpec {
  * This is typically a URI but need not be.
  * 
 */
-     getResourceId();
-    void setResourceId( value);
+    String getResourceId();
+    void setResourceId(String value);
 
 /**
  * 
@@ -25,8 +25,8 @@ public interface BmmValueSetSpec {
  * This might be a URI, but need not be.
  * 
 */
-     getValueSetId();
-    void setValueSetId( value);
+    String getValueSetId();
+    void setValueSetId(String value);
 
 /* * FUNCTION * */
 

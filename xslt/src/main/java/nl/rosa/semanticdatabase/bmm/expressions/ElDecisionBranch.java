@@ -14,8 +14,8 @@ public interface ElDecisionBranch {
  * Result expression of conditional, if its condition evaluates to True.
  * 
 */
-     getResult();
-    void setResult( value);
+    ElExpression getResult();
+    void setResult(ElExpression value);
 
 /* * FUNCTION * */
 

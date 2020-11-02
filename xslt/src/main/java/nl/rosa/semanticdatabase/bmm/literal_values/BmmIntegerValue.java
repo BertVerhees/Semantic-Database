@@ -14,8 +14,8 @@ public interface BmmIntegerValue extends BmmPrimitiveValue {
  * Native Integer value.
  * 
 */
-     getValue();
-    void setValue( value);
+    Integer getValue();
+    void setValue(Integer value);
 
 /* * FUNCTION * */
 

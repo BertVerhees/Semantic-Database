@@ -23,8 +23,8 @@ public interface BmmSignature extends BmmEffectiveType {
  * Result type of signature, if any.
  * 
 */
-     getResultType();
-    void setResultType( value);
+    BmmType getResultType();
+    void setResultType(BmmType value);
 
 /* * FUNCTION * */
 
@@ -33,28 +33,28 @@ public interface BmmSignature extends BmmEffectiveType {
  * Return base_name.
  * 
 */
-      type_base_name();
+    Result.is_equal (base_name())  type_base_name();
 
 /**
  * 
  * Result = False.
  * 
 */
-      is_abstract();
+    Boolean  is_abstract();
 
 /**
  * 
  * Result = True.
  * 
 */
-      is_primitive();
+    Boolean  is_primitive();
 
 /**
  * 
  * Return base_name
  * 
 */
-      type_name();
+    Result.is_equal (base_name())  type_name();
 
 /**
  * 
@@ -62,6 +62,6 @@ public interface BmmSignature extends BmmEffectiveType {
  * unique items) consisting of argument_types.flattened_type_list() and result_type.flattened_type_list().
  * 
 */
-      flattened_type_list();
+    List<String>  flattened_type_list();
 
 }

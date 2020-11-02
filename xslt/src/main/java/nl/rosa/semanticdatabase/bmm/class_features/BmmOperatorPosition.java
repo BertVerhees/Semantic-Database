@@ -7,4 +7,18 @@ package nl.rosa.semanticdatabase.;
 */
 public enum BmmOperatorPosition {
 
+/**
+ * 
+ * Prefix operator position: operator comes before operand.
+ * 
+*/
+    prefix,
+
+/**
+ * 
+ * Infix operator position: operator comes between left and right operands.
+ * 
+*/
+    infix
+
 }

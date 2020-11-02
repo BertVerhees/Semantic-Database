@@ -14,8 +14,8 @@ public interface PBmmModelElement {
  * Optional documentation of this element.
  * 
 */
-     getDocumentation();
-    void setDocumentation( value);
+    String getDocumentation();
+    void setDocumentation(String value);
 
 /* * FUNCTION * */
 

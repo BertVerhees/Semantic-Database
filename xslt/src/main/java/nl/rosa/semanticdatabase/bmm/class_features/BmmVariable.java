@@ -14,8 +14,8 @@ public interface BmmVariable extends BmmInstantiable,BmmClassEntity {
  * Routine within which variable is defined.
  * 
 */
-     getScope();
-    void setScope( value);
+    BmmRoutine getScope();
+    void setScope(BmmRoutine value);
 
 /* * FUNCTION * */
 
@@ -24,6 +24,6 @@ public interface BmmVariable extends BmmInstantiable,BmmClassEntity {
  * Formal signature of this element, in the form 'name [arg1_name: T_arg1, …​][:T_value]'.
  * 
 */
-      signature();
+    void  signature();
 
 }

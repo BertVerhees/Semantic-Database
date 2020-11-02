@@ -14,8 +14,8 @@ public interface PBmmBaseType extends PBmmType {
  * 
  * 
 */
-     getValueConstraint();
-    void setValueConstraint( value);
+    String getValueConstraint();
+    void setValueConstraint(String value);
 
 /* * FUNCTION * */
 

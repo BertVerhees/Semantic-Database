@@ -14,8 +14,8 @@ public interface BmmModelAccess {
  * List of directories where all the schemas loaded here are found.
  * 
 */
-     getSchemaDirectories();
-    void setSchemaDirectories( value);
+    List<String> getSchemaDirectories();
+    void setSchemaDirectories(List<String> value);
 
 /**
  * 
@@ -23,16 +23,16 @@ public interface BmmModelAccess {
  * Keyed by schema_id.
  * 
 */
-     getAllSchemas();
-    void setAllSchemas( value);
+    Map<String,BmmSchemaDescriptor> getAllSchemas();
+    void setAllSchemas(Map<String,BmmSchemaDescriptor> value);
 
 /**
  * 
  * Top-level (root) models in use, keyed by model_id.
  * 
 */
-     getBmmModels();
-    void setBmmModels( value);
+    Map<String,BmmModel> getBmmModels();
+    void setBmmModels(Map<String,BmmModel> value);
 
 /**
  * 
@@ -40,8 +40,8 @@ public interface BmmModelAccess {
  * For example, the keys "openEHR_EHR_1.0.4", "openEHR_EHR_1.0", "openEHR_EHR_1", and "openEHR_EHR" will all match the "openEHR_EHR_1.0.4" model, assuming it is the most recent version available.
  * 
 */
-     getMatchingBmmModels();
-    void setMatchingBmmModels( value);
+    Map<String,BmmModel> getMatchingBmmModels();
+    void setMatchingBmmModels(Map<String,BmmModel> value);
 
 /**
  * 
@@ -58,14 +58,14 @@ public interface BmmModelAccess {
  * Initialise with a specific schema load list, usually a sub-set of schemas that will be found in a specified directories a_schema_dirs.
  * 
 */
-      initialise_with_load_list();
+    void  initialise_with_load_list();
 
 /**
  * 
  * Load all schemas found in a specified directories a_schema_dirs.
  * 
 */
-      initialise_all();
+    void  initialise_all();
 
 /**
  * 
@@ -85,6 +85,6 @@ public interface BmmModelAccess {
  * If a shorter key is used, the Result s True if a BMM_MODEL with any version exists.
  * 
 */
-      has_bmm_model();
+    Boolean  has_bmm_model();
 
 }

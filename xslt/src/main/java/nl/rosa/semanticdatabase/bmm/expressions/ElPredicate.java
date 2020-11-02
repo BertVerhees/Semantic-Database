@@ -14,8 +14,8 @@ public interface ElPredicate extends ElTerminal {
  * The target instance of this predicate.
  * 
 */
-     getOperand();
-    void setOperand( value);
+    ElInstanceRef getOperand();
+    void setOperand(ElInstanceRef value);
 
 /* * FUNCTION * */
 

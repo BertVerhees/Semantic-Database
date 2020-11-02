@@ -22,8 +22,8 @@ public interface BmmModelType extends BmmEffectiveType {
  * Base class of this type.
  * 
 */
-     getBaseClass();
-    void setBaseClass( value);
+    BmmClass getBaseClass();
+    void setBaseClass(BmmClass value);
 
 /* * FUNCTION * */
 
@@ -32,13 +32,13 @@ public interface BmmModelType extends BmmEffectiveType {
  * Result = base_class.name.
  * 
 */
-      type_base_name();
+    String  type_base_name();
 
 /**
  * 
  * Result = base_class.is_primitive.
  * 
 */
-      is_primitive();
+    Boolean  is_primitive();
 
 }

@@ -23,8 +23,8 @@ public interface BmmContainerType extends BmmType {
  * The container item type.
  * 
 */
-     getItemType();
-    void setItemType( value);
+    BmmUnitaryType getItemType();
+    void setItemType(BmmUnitaryType value);
 
 /* * FUNCTION * */
 
@@ -34,14 +34,14 @@ public interface BmmContainerType extends BmmType {
  * List<ELEMENT>.
  * 
 */
-      type_name();
+    String  type_name();
 
 /**
  * 
  * True if the container class is abstract.
  * 
 */
-      is_abstract();
+    Result = container_type.is_abstract  is_abstract();
 
 /**
  * 
@@ -49,27 +49,27 @@ public interface BmmContainerType extends BmmType {
  * item_type.flattened_type_list().
  * 
 */
-      flattened_type_list();
+    Result = item_type.flattened_type_list  flattened_type_list();
 
 /**
  * 
  * Return item_type.
  * 
 */
-      unitary_type();
+    BmmUnitaryType  unitary_type();
 
 /**
  * 
  * True if item_type is primitive.
  * 
 */
-      is_primitive();
+    Result = item_type.is_primitive  is_primitive();
 
 /**
  * 
  * Return item_type.effective_type().
  * 
 */
-      effective_type();
+    BmmEffectiveType  effective_type();
 
 }

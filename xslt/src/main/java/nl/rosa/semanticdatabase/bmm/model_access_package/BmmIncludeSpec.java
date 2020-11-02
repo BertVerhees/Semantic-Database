@@ -15,8 +15,8 @@ public interface BmmIncludeSpec {
  * "openehr_primitive_types_1.0.2".
  * 
 */
-     getId();
-    void setId( value);
+    String getId();
+    void setId(String value);
 
 /* * FUNCTION * */
 

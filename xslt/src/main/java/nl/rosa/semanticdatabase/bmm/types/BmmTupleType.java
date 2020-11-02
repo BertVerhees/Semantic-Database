@@ -17,8 +17,8 @@ public interface BmmTupleType extends BmmEffectiveType {
  * List of types of the items of the tuple, keyed by purpose in the tuple.
  * 
 */
-     getItemTypes();
-    void setItemTypes( value);
+    Map<String,BmmType> getItemTypes();
+    void setItemTypes(Map<String,BmmType> value);
 
 /* * FUNCTION * */
 
@@ -27,28 +27,28 @@ public interface BmmTupleType extends BmmEffectiveType {
  * Return base_name.
  * 
 */
-      type_base_name();
+    Result.is_equal (base_name())  type_base_name();
 
 /**
  * 
  * Result = True.
  * 
 */
-      is_primitive();
+    Boolean  is_primitive();
 
 /**
  * 
  * Result = False.
  * 
 */
-      is_abstract();
+    Boolean  is_abstract();
 
 /**
  * 
  * Return base_name.
  * 
 */
-      type_name();
+    Result.is_equal (base_name())  type_name();
 
 /**
  * 
@@ -56,6 +56,6 @@ public interface BmmTupleType extends BmmEffectiveType {
  * unique types) from the merge of flattened_type_list() called on each member of item_types.
  * 
 */
-      flattened_type_list();
+    List<String>  flattened_type_list();
 
 }

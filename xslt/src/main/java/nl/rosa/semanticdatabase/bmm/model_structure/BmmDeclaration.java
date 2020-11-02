@@ -16,8 +16,8 @@ public interface BmmDeclaration {
  * Name of this model element.
  * 
 */
-     getName();
-    void setName( value);
+    String getName();
+    void setName(String value);
 
 /**
  * 
@@ -25,16 +25,16 @@ public interface BmmDeclaration {
  * It is strongly recommended to use the following key /type combinations for the relevant purposes: "purpose": String "keywords": List<String> "use": String "misuse": String "references": String Other keys and value types may be freely added.
  * 
 */
-     getDocumentation();
-    void setDocumentation( value);
+    Map<String, Any> getDocumentation();
+    void setDocumentation(Map<String, Any> value);
 
 /**
  * 
  * Model element within which an element is declared.
  * 
 */
-     getScope();
-    void setScope( value);
+    BmmDeclaration getScope();
+    void setScope(BmmDeclaration value);
 
 /**
  * 
@@ -42,8 +42,8 @@ public interface BmmDeclaration {
  * May be used to extend the meta-model.
  * 
 */
-     getExtensions();
-    void setExtensions( value);
+    Map<String, Any> getExtensions();
+    void setExtensions(Map<String, Any> value);
 
 /* * FUNCTION * */
 
@@ -52,6 +52,6 @@ public interface BmmDeclaration {
  * True if this declaration entity is the root of the declaration hierarchy.
  * 
 */
-      is_root_scope();
+    Result = (scope = self)  is_root_scope();
 
 }

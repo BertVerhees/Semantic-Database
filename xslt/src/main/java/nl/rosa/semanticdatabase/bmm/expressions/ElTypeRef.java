@@ -18,8 +18,8 @@ public interface ElTypeRef extends ElInstanceRef {
  * {SOME_TYPE}.
  * 
 */
-     getType();
-    void setType( value);
+    BmmType getType();
+    void setType(BmmType value);
 
 /* * FUNCTION * */
 
@@ -28,6 +28,6 @@ public interface ElTypeRef extends ElInstanceRef {
  * Return type.
  * 
 */
-      eval_type();
+    BmmType  eval_type();
 
 }

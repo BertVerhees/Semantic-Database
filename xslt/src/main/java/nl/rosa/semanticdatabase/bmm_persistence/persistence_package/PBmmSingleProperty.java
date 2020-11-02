@@ -16,8 +16,8 @@ public interface PBmmSingleProperty extends PBmmProperty {
  * The resulting type is generated in type_def.
  * 
 */
-     getType();
-    void setType( value);
+    String getType();
+    void setType(String value);
 
 /**
  * 

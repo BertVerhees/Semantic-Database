@@ -16,8 +16,8 @@ public interface BmmSchema extends BmmModelMetadata {
  * Persisted attribute.
  * 
 */
-     getBmmVersion();
-    void setBmmVersion( value);
+    String getBmmVersion();
+    void setBmmVersion(String value);
 
 /**
  * 
@@ -25,8 +25,8 @@ public interface BmmSchema extends BmmModelMetadata {
  * Persisted attribute.
  * 
 */
-     getIncludes();
-    void setIncludes( value);
+    Map<String,BmmIncludeSpec> getIncludes();
+    void setIncludes(Map<String,BmmIncludeSpec> value);
 
 /**
  * 
@@ -50,8 +50,8 @@ public interface BmmSchema extends BmmModelMetadata {
  * Not set for sub-schemas that are not considered models on their own.
  * 
 */
-     getModelName();
-    void setModelName( value);
+    String getModelName();
+    void setModelName(String value);
 
 /**
  * 
@@ -59,48 +59,48 @@ public interface BmmSchema extends BmmModelMetadata {
  * A publisher with more than one model can have multiple schemas.
  * 
 */
-     getSchemaName();
-    void setSchemaName( value);
+    String getSchemaName();
+    void setSchemaName(String value);
 
 /**
  * 
  * Revision of schema.
  * 
 */
-     getSchemaRevision();
-    void setSchemaRevision( value);
+    String getSchemaRevision();
+    void setSchemaRevision(String value);
 
 /**
  * 
  * Schema development lifecycle state.
  * 
 */
-     getSchemaLifecycleState();
-    void setSchemaLifecycleState( value);
+    String getSchemaLifecycleState();
+    void setSchemaLifecycleState(String value);
 
 /**
  * 
  * Primary author of schema.
  * 
 */
-     getSchemaAuthor();
-    void setSchemaAuthor( value);
+    String getSchemaAuthor();
+    void setSchemaAuthor(String value);
 
 /**
  * 
  * Description of schema.
  * 
 */
-     getSchemaDescription();
-    void setSchemaDescription( value);
+    String getSchemaDescription();
+    void setSchemaDescription(String value);
 
 /**
  * 
  * Contributing authors of schema.
  * 
 */
-     getSchemaContributors();
-    void setSchemaContributors( value);
+    List<String> getSchemaContributors();
+    void setSchemaContributors(List<String> value);
 
 /**
  * 
@@ -117,14 +117,14 @@ public interface BmmSchema extends BmmModelMetadata {
  * Merge in class and package definitions from other, except where the current schema already has a definition for the given type or package.
  * 
 */
-      merge();
+    includes_to_process.has (included_schema.schema_id)  merge();
 
 /**
  * 
  * True when validation may be commenced.
  * 
 */
-      read_to_validate();
+    state = State_includes_processed  read_to_validate();
 
 /**
  * 
@@ -133,6 +133,6 @@ public interface BmmSchema extends BmmModelMetadata {
  * "openehr_rm_ehr_1.0.4".
  * 
 */
-      schema_id();
+    String  schema_id();
 
 }
