@@ -7,6 +7,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElInstantiableRef<t>Impl implements ElScopedRef{
+    //***** ElInstantiableRef<t> *****
 
 /* * ATTRIBUTE * */
 

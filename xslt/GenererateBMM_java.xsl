@@ -143,14 +143,19 @@
         <xsl:param name="package" as="node()"/>
         <xsl:param name="class" as="node()"/>
         <!-- If inherit do recursion -->
-        <xsl:value-of select="do:outputSpaces(concat('    //***** ',$class/className,' *****'))"/>
-        <xsl:variable name="inherits" as="xs:string*" select="tokenize($class/inherit,',')"/>
-        <xsl:value-of select="do:message($class/className)"/>
-        <xsl:for-each select="$inherits">
-            <xsl:if test="$packages/package/class[classNameOrgAbstractStripped = .]/className">
-                <xsl:value-of select="do:writeClassProperties($packages, $package, $packages/package/class[classNameOrgAbstractStripped = .])"/>                
-            </xsl:if>
-        </xsl:for-each>
+        <xsl:value-of select="do:message(concat('->',$class/className))"/>
+        <xsl:variable name="result">
+            <xsl:value-of select="do:outputSpaces(concat('    //***** ',$class/className,' *****'))"/>
+            <xsl:for-each select="$class/inheritOrg">
+                <xsl:value-of select="do:message(concat('\->',.,'*'))"/>
+                <xsl:value-of select="do:message(concat('\->',$packages/package/class[classNameOrgAbstractStripped = .]/className,'*'))"/>
+                <xsl:if test="$packages/package/class[normalize-space(classNameOrgAbstractStripped) = normalize-space(.)]">
+                    <xsl:value-of select="do:message(concat('->',$class/className,'->',.))"/>
+                    <xsl:value-of select="do:writeClassProperties($packages, $package, $packages/package/class[classNameOrgAbstractStripped = .])"/>                
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:value-of select="$result"/>
     </xsl:function>
 
     <xsl:function name="do:writeClasses">
@@ -388,7 +393,6 @@
         <xsl:param name="packages"/>
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString" as="xs:string"/>
-        <xsl:value-of select="do:message($incomingString)"/>
         <xsl:variable name="result">
             <xsl:choose>
                 <xsl:when
@@ -430,7 +434,6 @@
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
-        <xsl:value-of select="do:message($result)"/>
         <xsl:value-of select="$result"/>
     </xsl:function>
 

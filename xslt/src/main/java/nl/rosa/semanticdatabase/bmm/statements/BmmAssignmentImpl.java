@@ -7,6 +7,7 @@ package nl.rosa.semanticdatabase.bmm.statements;
  * 
 */
 public class BmmAssignmentImpl implements BmmStatement{
+    //***** BmmAssignment *****
 
 /* * ATTRIBUTE * */
 

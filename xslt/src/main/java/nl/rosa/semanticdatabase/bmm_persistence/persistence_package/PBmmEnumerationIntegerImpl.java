@@ -6,6 +6,7 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
  * 
 */
 public class PBmmEnumerationIntegerImpl implements PBmmEnumeration{
+    //***** PBmmEnumerationInteger *****
 
 /* * ATTRIBUTE * */
 

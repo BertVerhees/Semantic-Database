@@ -6,6 +6,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElPredicateImpl implements ElTerminal{
+    //***** ElPredicate *****
 
 /* * ATTRIBUTE * */
 

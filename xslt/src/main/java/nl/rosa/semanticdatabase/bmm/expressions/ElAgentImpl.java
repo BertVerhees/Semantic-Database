@@ -9,6 +9,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElAgentImpl implements ElScopedRef{
+    //***** ElAgent *****
 
 /* * ATTRIBUTE * */
 
