@@ -6,6 +6,14 @@ package nl.rosa.semanticdatabase.bmm.classes;
  * 
 */
 public class BmmEnumerationStringImpl implements BmmEnumeration{
+package nl.rosa.semanticdatabase.bmm.classes;
+
+/**
+ * 
+ * String-based enumeration meta-type.
+ * 
+*/
+public class BmmEnumerationStringImpl implements BmmEnumeration{
 
 /* * ATTRIBUTE * */
 

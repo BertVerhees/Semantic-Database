@@ -117,9 +117,8 @@
         <xsl:param name="classToFind" as="xs:string"/>
         <xsl:copy-of select="$packages/package/class[classNameOrgAbstractStripped = $classToFind]"/>
     </xsl:function>
-
-    <xsl:function name="do:writeClasses">
-        <xsl:param name="packages" as="node()"/>
+    
+    <xsl:function name="do:writeClassHeader">
         <xsl:param name="package" as="node()"/>
         <xsl:param name="class" as="node()"/>
         <xsl:value-of
@@ -130,6 +129,28 @@
         <xsl:value-of select="do:commentClose()"/>
         <xsl:value-of
             select="do:output(concat('public class ', $class/className, 'Impl implements ', normalize-space(string-join($class/inherit, ',')), '{'))"/>
+    </xsl:function>
+    
+    <xsl:function name="do:writeClassFooter">
+        <xsl:value-of select="do:output('')"/>
+        <xsl:value-of select="do:output('}')"/>
+    </xsl:function>
+        
+        
+    <xsl:function name="do:writeClassProperties">
+        <xsl:param name="packages" as="node()"/>
+        <xsl:param name="package" as="node()"/>
+        <xsl:param name="class" as="node()"/>
+        <!-- If inherit do recursion -->
+        <xsl:value-of select="do:outputSpaces(concat('    //***** ',$class/className,' *****'))"/>
+    </xsl:function>
+
+    <xsl:function name="do:writeClasses">
+        <xsl:param name="packages" as="node()"/>
+        <xsl:param name="package" as="node()"/>
+        <xsl:param name="class" as="node()"/>
+        <xsl:value-of select="do:writeClassHeader($package, $class)"/>
+
         <xsl:for-each select="$class/inheritOrg">
             <xsl:value-of select="do:message(concat($class/className, ' - ', .))"/>
             <xsl:variable name="classNode" select="do:findClass($packages, .)"/>
@@ -176,8 +197,8 @@
                 select="do:outputSpaces(concat('    public ', do:createFunctionDeclaration($packages, $class, nameAndType)))"
             />
         </xsl:for-each>
-        <xsl:value-of select="do:output('')"/>
-        <xsl:value-of select="do:output('}')"/>
+        
+        <xsl:value-of select="do:writeClassFooter()"/>
     </xsl:function>
 
 

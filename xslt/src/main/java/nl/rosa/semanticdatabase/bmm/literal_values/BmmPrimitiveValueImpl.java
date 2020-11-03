@@ -6,6 +6,14 @@ package nl.rosa.semanticdatabase.bmm.literal_values;
  * 
 */
 public class BmmPrimitiveValueImpl implements BmmUnitaryValue{
+package nl.rosa.semanticdatabase.bmm.literal_values;
+
+/**
+ * 
+ * Meta-type for literals whose concrete type is a primitive type.
+ * 
+*/
+public class BmmPrimitiveValueImpl implements BmmUnitaryValue{
 
 /* * ATTRIBUTE * */
 
