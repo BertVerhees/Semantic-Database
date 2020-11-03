@@ -9,6 +9,10 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElDefinedImpl implements ElPredicate{
     //***** ElDefined *****
+    //***** ElPredicate *****
+    //***** ElTerminal *****
+    //***** ElSimple *****
+    //***** ElExpression *****
 
 /* * ATTRIBUTE * */
 

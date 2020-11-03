@@ -8,6 +8,7 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public class BmmTypedFeatureImpl implements BmmTyped{
     //***** BmmTypedFeature *****
+    //***** BmmTyped *****
 
 /* * ATTRIBUTE * */
 

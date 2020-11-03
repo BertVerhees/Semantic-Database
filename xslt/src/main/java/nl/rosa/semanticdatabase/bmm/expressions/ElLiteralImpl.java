@@ -8,6 +8,10 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElLiteralImpl implements ElInstanceRef{
     //***** ElLiteral *****
+    //***** ElInstanceRef *****
+    //***** ElTerminal *****
+    //***** ElSimple *****
+    //***** ElExpression *****
 
 /* * ATTRIBUTE * */
 

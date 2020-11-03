@@ -7,6 +7,14 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public class BmmIndexedContainerPropertyImpl implements BmmContainerProperty{
     //***** BmmIndexedContainerProperty *****
+    //***** BmmContainerProperty *****
+    //***** BmmProperty *****
+    //***** BmmInstantiable *****
+    //***** BmmTypedFeature *****
+    //***** BmmTyped *****
+    //***** BmmClassFeature *****
+    //***** BmmClassEntity *****
+    //***** BmmDeclaration *****
 
 /* * ATTRIBUTE * */
 

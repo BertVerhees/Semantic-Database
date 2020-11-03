@@ -7,6 +7,7 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public class PBmmGenericParameterImpl implements PBmmModelElement{
     //***** PBmmGenericParameter *****
+    //***** PBmmModelElement *****
 
 /* * ATTRIBUTE * */
 

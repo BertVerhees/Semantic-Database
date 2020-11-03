@@ -8,6 +8,7 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
 */
 public class InternetIdImpl implements Uid{
     //***** InternetId *****
+    //***** Uid *****
 
 /* * ATTRIBUTE * */
 

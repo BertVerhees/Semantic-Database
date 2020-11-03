@@ -14,6 +14,7 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
 */
 public class TerminologyIdImpl implements ObjectId{
     //***** TerminologyId *****
+    //***** ObjectId *****
 
 /* * ATTRIBUTE * */
 

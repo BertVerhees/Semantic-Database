@@ -7,6 +7,10 @@ package nl.rosa.semanticdatabase.bmm.statements;
 */
 public class BmmProcedureCallImpl implements ElAgentCall,BmmStatement{
     //***** BmmProcedureCall *****
+    //***** ElAgentCall *****
+    //***** BmmStatement *****
+    //***** BmmStatementItem *****
+    //***** BmmRoutineBody *****
 
 /* * ATTRIBUTE * */
 

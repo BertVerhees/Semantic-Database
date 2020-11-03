@@ -7,6 +7,8 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public class PBmmContainerPropertyImpl implements PBmmProperty{
     //***** PBmmContainerProperty *****
+    //***** PBmmProperty *****
+    //***** PBmmModelElement *****
 
 /* * ATTRIBUTE * */
 

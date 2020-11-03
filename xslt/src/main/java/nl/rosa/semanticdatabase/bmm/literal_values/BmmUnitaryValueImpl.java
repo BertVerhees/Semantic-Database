@@ -7,6 +7,8 @@ package nl.rosa.semanticdatabase.bmm.literal_values;
 */
 public class BmmUnitaryValueImpl implements BmmLiteralValue{
     //***** BmmUnitaryValue *****
+    //***** BmmLiteralValue *****
+    //***** BmmTyped *****
 
 /* * ATTRIBUTE * */
 

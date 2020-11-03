@@ -8,6 +8,10 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElAttachedImpl implements ElPredicate{
     //***** ElAttached *****
+    //***** ElPredicate *****
+    //***** ElTerminal *****
+    //***** ElSimple *****
+    //***** ElExpression *****
 
 /* * ATTRIBUTE * */
 

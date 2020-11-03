@@ -147,12 +147,15 @@
         <xsl:variable name="result">
             <xsl:value-of select="do:outputSpaces(concat('    //***** ',$class/className,' *****'))"/>
             <xsl:for-each select="$class/inheritOrg">
-                <xsl:value-of select="do:message(concat('\->',.,'*'))"/>
-                <xsl:value-of select="do:message(concat('\->',$packages/package/class[classNameOrgAbstractStripped = .]/className,'*'))"/>
-                <xsl:if test="$packages/package/class[normalize-space(classNameOrgAbstractStripped) = normalize-space(.)]">
-                    <xsl:value-of select="do:message(concat('->',$class/className,'->',.))"/>
-                    <xsl:value-of select="do:writeClassProperties($packages, $package, $packages/package/class[classNameOrgAbstractStripped = .])"/>                
-                </xsl:if>
+                <xsl:variable name="inherit" select="."/>
+                <xsl:for-each select="$packages/package">
+                    <xsl:for-each select="class">
+                        <xsl:if test="classNameOrgAbstractStripped=$inherit">
+                            <xsl:value-of select="do:message(concat('->',$class/className,'->',.))"/>
+                            <xsl:value-of select="do:writeClassProperties($packages, $package, .)"/> 
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:for-each>
             </xsl:for-each>
         </xsl:variable>
         <xsl:value-of select="$result"/>
@@ -552,7 +555,7 @@
                                     </xsl:for-each>
                                     <xsl:for-each select="tbody/tr[3]/td/p/code">
                                         <!-- ClassNames from parents (evt more then one) -->
-                                        <xsl:variable name="inherit" select="."/>
+                                        <xsl:variable name="inherit" as="xs:string" select="."/>
                                         <xsl:element name="inherit">
                                             <xsl:value-of
                                                 select="do:snakeUpperCaseToCamelCase(normalize-space($inherit), 0)"

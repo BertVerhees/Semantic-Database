@@ -12,6 +12,8 @@ package nl.rosa.semanticdatabase.bmm.classes;
 */
 public class BmmClassImpl implements BmmModule{
     //***** BmmClass *****
+    //***** BmmModule *****
+    //***** BmmDeclaration *****
 
 /* * ATTRIBUTE * */
 

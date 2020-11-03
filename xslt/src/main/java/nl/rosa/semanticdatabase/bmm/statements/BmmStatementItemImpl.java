@@ -7,6 +7,7 @@ package nl.rosa.semanticdatabase.bmm.statements;
 */
 public class BmmStatementItemImpl implements BmmRoutineBody{
     //***** BmmStatementItem *****
+    //***** BmmRoutineBody *****
 
 /* * ATTRIBUTE * */
 

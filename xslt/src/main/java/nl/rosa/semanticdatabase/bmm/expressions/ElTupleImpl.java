@@ -7,6 +7,10 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElTupleImpl implements ElInstanceRef{
     //***** ElTuple *****
+    //***** ElInstanceRef *****
+    //***** ElTerminal *****
+    //***** ElSimple *****
+    //***** ElExpression *****
 
 /* * ATTRIBUTE * */
 

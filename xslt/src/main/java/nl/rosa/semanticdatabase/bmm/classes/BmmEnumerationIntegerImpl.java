@@ -7,6 +7,11 @@ package nl.rosa.semanticdatabase.bmm.classes;
 */
 public class BmmEnumerationIntegerImpl implements BmmEnumeration{
     //***** BmmEnumerationInteger *****
+    //***** BmmEnumeration *****
+    //***** BmmSimpleClass *****
+    //***** BmmClass *****
+    //***** BmmModule *****
+    //***** BmmDeclaration *****
 
 /* * ATTRIBUTE * */
 

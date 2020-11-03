@@ -7,6 +7,7 @@ package nl.rosa.semanticdatabase.bmm.types;
 */
 public class BmmContainerTypeImpl implements BmmType{
     //***** BmmContainerType *****
+    //***** BmmType *****
 
 /* * ATTRIBUTE * */
 

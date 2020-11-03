@@ -7,6 +7,9 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public class PBmmSchemaImpl implements PBmmPackageContainer,BmmSchema{
     //***** PBmmSchema *****
+    //***** PBmmPackageContainer *****
+    //***** BmmSchema *****
+    //***** BmmModelMetadata *****
 
 /* * ATTRIBUTE * */
 

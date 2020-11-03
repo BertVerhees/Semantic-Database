@@ -7,6 +7,10 @@ package nl.rosa.semanticdatabase.bmm.literal_values;
 */
 public class BmmStringValueImpl implements BmmPrimitiveValue{
     //***** BmmStringValue *****
+    //***** BmmPrimitiveValue *****
+    //***** BmmUnitaryValue *****
+    //***** BmmLiteralValue *****
+    //***** BmmTyped *****
 
 /* * ATTRIBUTE * */
 

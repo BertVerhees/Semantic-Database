@@ -10,6 +10,10 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElTypeRefImpl implements ElInstanceRef{
     //***** ElTypeRef *****
+    //***** ElInstanceRef *****
+    //***** ElTerminal *****
+    //***** ElSimple *****
+    //***** ElExpression *****
 
 /* * ATTRIBUTE * */
 

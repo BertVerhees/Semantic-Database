@@ -8,6 +8,12 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public class BmmFunctionImpl implements BmmTypedFeature,BmmRoutine{
     //***** BmmFunction *****
+    //***** BmmTypedFeature *****
+    //***** BmmTyped *****
+    //***** BmmRoutine *****
+    //***** BmmClassFeature *****
+    //***** BmmClassEntity *****
+    //***** BmmDeclaration *****
 
 /* * ATTRIBUTE * */
 

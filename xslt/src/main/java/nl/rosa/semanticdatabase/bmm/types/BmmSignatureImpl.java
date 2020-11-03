@@ -8,6 +8,9 @@ package nl.rosa.semanticdatabase.bmm.types;
 */
 public class BmmSignatureImpl implements BmmEffectiveType{
     //***** BmmSignature *****
+    //***** BmmEffectiveType *****
+    //***** BmmUnitaryType *****
+    //***** BmmType *****
 
 /* * ATTRIBUTE * */
 

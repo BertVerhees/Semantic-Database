@@ -8,6 +8,7 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
 */
 public class BmmModuleImpl implements BmmDeclaration{
     //***** BmmModule *****
+    //***** BmmDeclaration *****
 
 /* * ATTRIBUTE * */
 

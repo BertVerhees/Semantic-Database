@@ -7,6 +7,9 @@ package nl.rosa.semanticdatabase.bmm.statements;
 */
 public class BmmActionTableImpl implements BmmStatement{
     //***** BmmActionTable *****
+    //***** BmmStatement *****
+    //***** BmmStatementItem *****
+    //***** BmmRoutineBody *****
 
 /* * ATTRIBUTE * */
 

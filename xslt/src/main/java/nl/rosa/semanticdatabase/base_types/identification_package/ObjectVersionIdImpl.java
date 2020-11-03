@@ -7,6 +7,8 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
 */
 public class ObjectVersionIdImpl implements UidBasedId{
     //***** ObjectVersionId *****
+    //***** UidBasedId *****
+    //***** ObjectId *****
 
 /* * ATTRIBUTE * */
 

@@ -10,6 +10,10 @@ package nl.rosa.semanticdatabase.bmm.classes;
 */
 public class BmmEnumerationImpl implements BmmSimpleClass{
     //***** BmmEnumeration *****
+    //***** BmmSimpleClass *****
+    //***** BmmClass *****
+    //***** BmmModule *****
+    //***** BmmDeclaration *****
 
 /* * ATTRIBUTE * */
 

@@ -7,6 +7,12 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public class BmmResultImpl implements BmmVariable{
     //***** BmmResult *****
+    //***** BmmVariable *****
+    //***** BmmInstantiable *****
+    //***** BmmTypedFeature *****
+    //***** BmmTyped *****
+    //***** BmmClassEntity *****
+    //***** BmmDeclaration *****
 
 /* * ATTRIBUTE * */
 

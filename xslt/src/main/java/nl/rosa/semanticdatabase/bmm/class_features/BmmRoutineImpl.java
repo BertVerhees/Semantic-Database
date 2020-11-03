@@ -7,6 +7,9 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public class BmmRoutineImpl implements BmmClassFeature{
     //***** BmmRoutine *****
+    //***** BmmClassFeature *****
+    //***** BmmClassEntity *****
+    //***** BmmDeclaration *****
 
 /* * ATTRIBUTE * */
 

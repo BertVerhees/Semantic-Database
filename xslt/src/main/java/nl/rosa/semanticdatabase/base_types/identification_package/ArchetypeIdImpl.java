@@ -9,6 +9,7 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
 */
 public class ArchetypeIdImpl implements ObjectId{
     //***** ArchetypeId *****
+    //***** ObjectId *****
 
 /* * ATTRIBUTE * */
 

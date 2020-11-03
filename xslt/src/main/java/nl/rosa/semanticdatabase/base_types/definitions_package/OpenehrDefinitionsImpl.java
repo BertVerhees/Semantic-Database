@@ -7,6 +7,7 @@ package nl.rosa.semanticdatabase.base_types.definitions_package;
 */
 public class OpenehrDefinitionsImpl implements BasicDefinitions{
     //***** OpenehrDefinitions *****
+    //***** BasicDefinitions *****
 
 /* * ATTRIBUTE * */
 

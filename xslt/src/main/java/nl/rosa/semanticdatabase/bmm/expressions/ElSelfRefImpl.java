@@ -7,6 +7,10 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElSelfRefImpl implements ElInstanceRef{
     //***** ElSelfRef *****
+    //***** ElInstanceRef *****
+    //***** ElTerminal *****
+    //***** ElSimple *****
+    //***** ElExpression *****
 
 /* * ATTRIBUTE * */
 

@@ -7,6 +7,8 @@ package nl.rosa.semanticdatabase.bmm.literal_values;
 */
 public class BmmIntervalValueImpl implements BmmLiteralValue{
     //***** BmmIntervalValue *****
+    //***** BmmLiteralValue *****
+    //***** BmmTyped *****
 
 /* * ATTRIBUTE * */
 

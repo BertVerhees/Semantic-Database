@@ -7,6 +7,7 @@ package nl.rosa.semanticdatabase.bmm.overview;
 */
 public class BmmDefinitionsImpl implements BasicDefinitions{
     //***** BmmDefinitions *****
+    //***** BasicDefinitions *****
 
 /* * ATTRIBUTE * */
 

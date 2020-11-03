@@ -10,6 +10,11 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElAgentImpl implements ElScopedRef{
     //***** ElAgent *****
+    //***** ElScopedRef *****
+    //***** ElInstanceRef *****
+    //***** ElTerminal *****
+    //***** ElSimple *****
+    //***** ElExpression *****
 
 /* * ATTRIBUTE * */
 

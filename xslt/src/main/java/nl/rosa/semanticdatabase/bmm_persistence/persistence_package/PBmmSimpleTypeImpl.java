@@ -7,6 +7,8 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public class PBmmSimpleTypeImpl implements PBmmBaseType{
     //***** PBmmSimpleType *****
+    //***** PBmmBaseType *****
+    //***** PBmmType *****
 
 /* * ATTRIBUTE * */
 

@@ -8,6 +8,12 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public class BmmPropertyImpl implements BmmInstantiable,BmmClassFeature{
     //***** BmmProperty *****
+    //***** BmmInstantiable *****
+    //***** BmmTypedFeature *****
+    //***** BmmTyped *****
+    //***** BmmClassFeature *****
+    //***** BmmClassEntity *****
+    //***** BmmDeclaration *****
 
 /* * ATTRIBUTE * */
 

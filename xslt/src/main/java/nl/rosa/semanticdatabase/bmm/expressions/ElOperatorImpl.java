@@ -7,6 +7,8 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElOperatorImpl implements ElSimple{
     //***** ElOperator *****
+    //***** ElSimple *****
+    //***** ElExpression *****
 
 /* * ATTRIBUTE * */
 

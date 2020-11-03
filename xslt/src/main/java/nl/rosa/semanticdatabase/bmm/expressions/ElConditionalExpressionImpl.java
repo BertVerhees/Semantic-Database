@@ -8,6 +8,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElConditionalExpressionImpl implements ElDecisionBranch{
     //***** ElConditionalExpression *****
+    //***** ElDecisionBranch *****
 
 /* * ATTRIBUTE * */
 

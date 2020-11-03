@@ -7,6 +7,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElDecisionTableImpl implements ElExpression{
     //***** ElDecisionTable *****
+    //***** ElExpression *****
 
 /* * ATTRIBUTE * */
 

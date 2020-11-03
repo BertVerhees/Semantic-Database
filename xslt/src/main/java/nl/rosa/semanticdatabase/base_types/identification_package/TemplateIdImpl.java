@@ -8,6 +8,7 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
 */
 public class TemplateIdImpl implements ObjectId{
     //***** TemplateId *****
+    //***** ObjectId *****
 
 /* * ATTRIBUTE * */
 

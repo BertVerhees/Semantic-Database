@@ -7,6 +7,13 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 */
 public class BmmUnitaryPropertyImpl implements BmmProperty{
     //***** BmmUnitaryProperty *****
+    //***** BmmProperty *****
+    //***** BmmInstantiable *****
+    //***** BmmTypedFeature *****
+    //***** BmmTyped *****
+    //***** BmmClassFeature *****
+    //***** BmmClassEntity *****
+    //***** BmmDeclaration *****
 
 /* * ATTRIBUTE * */
 

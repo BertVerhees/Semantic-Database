@@ -8,6 +8,7 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
 */
 public class GenericIdImpl implements ObjectId{
     //***** GenericId *****
+    //***** ObjectId *****
 
 /* * ATTRIBUTE * */
 

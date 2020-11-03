@@ -8,6 +8,8 @@ package nl.rosa.semanticdatabase.bmm.statements;
 */
 public class BmmStatementBlockImpl implements BmmStatementItem{
     //***** BmmStatementBlock *****
+    //***** BmmStatementItem *****
+    //***** BmmRoutineBody *****
 
 /* * ATTRIBUTE * */
 

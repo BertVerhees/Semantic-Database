@@ -8,6 +8,7 @@ package nl.rosa.semanticdatabase.bmm.model_access_package;
 */
 public class BmmSchemaImpl implements BmmModelMetadata{
     //***** BmmSchema *****
+    //***** BmmModelMetadata *****
 
 /* * ATTRIBUTE * */
 

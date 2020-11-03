@@ -9,6 +9,8 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElConditionChainImpl implements ElDecisionTable{
     //***** ElConditionChain *****
+    //***** ElDecisionTable *****
+    //***** ElExpression *****
 
 /* * ATTRIBUTE * */
 

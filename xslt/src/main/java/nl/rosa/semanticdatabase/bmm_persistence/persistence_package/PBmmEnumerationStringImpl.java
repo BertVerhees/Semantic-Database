@@ -7,6 +7,9 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 */
 public class PBmmEnumerationStringImpl implements PBmmEnumeration{
     //***** PBmmEnumerationString *****
+    //***** PBmmEnumeration *****
+    //***** PBmmClass *****
+    //***** PBmmModelElement *****
 
 /* * ATTRIBUTE * */
 

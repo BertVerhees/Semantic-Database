@@ -8,6 +8,12 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElFunctionCallImpl implements ElScopedRef,ElAgentCall{
     //***** ElFunctionCall *****
+    //***** ElScopedRef *****
+    //***** ElInstanceRef *****
+    //***** ElTerminal *****
+    //***** ElSimple *****
+    //***** ElExpression *****
+    //***** ElAgentCall *****
 
 /* * ATTRIBUTE * */
 

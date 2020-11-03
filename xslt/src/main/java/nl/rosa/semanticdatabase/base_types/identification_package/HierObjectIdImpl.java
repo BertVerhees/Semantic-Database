@@ -7,6 +7,8 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
 */
 public class HierObjectIdImpl implements UidBasedId{
     //***** HierObjectId *****
+    //***** UidBasedId *****
+    //***** ObjectId *****
 
 /* * ATTRIBUTE * */
 

@@ -7,6 +7,8 @@ package nl.rosa.semanticdatabase.bmm.types;
 */
 public class BmmEffectiveTypeImpl implements BmmUnitaryType{
     //***** BmmEffectiveType *****
+    //***** BmmUnitaryType *****
+    //***** BmmType *****
 
 /* * ATTRIBUTE * */
 

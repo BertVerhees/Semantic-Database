@@ -10,6 +10,8 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 */
 public class ElCaseTableImpl implements ElDecisionTable{
     //***** ElCaseTable *****
+    //***** ElDecisionTable *****
+    //***** ElExpression *****
 
 /* * ATTRIBUTE * */
 
