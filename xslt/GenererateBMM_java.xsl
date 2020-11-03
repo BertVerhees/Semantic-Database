@@ -127,6 +127,7 @@
         <xsl:value-of select="do:commentOpen()"/>
         <xsl:value-of select="do:commentOutput($class/classComment)"/>
         <xsl:value-of select="do:commentClose()"/>
+        <xsl:variable name="inherits" select="normalize-space(string-join($class/inherit, ','))"/>
         <xsl:value-of
             select="do:output(concat('public class ', $class/className, 'Impl implements ', normalize-space(string-join($class/inherit, ',')), '{'))"/>
     </xsl:function>
@@ -143,6 +144,13 @@
         <xsl:param name="class" as="node()"/>
         <!-- If inherit do recursion -->
         <xsl:value-of select="do:outputSpaces(concat('    //***** ',$class/className,' *****'))"/>
+        <xsl:variable name="inherits" as="xs:string*" select="tokenize($class/inherit,',')"/>
+        <xsl:value-of select="do:message($class/className)"/>
+        <xsl:for-each select="$inherits">
+            <xsl:if test="$packages/package/class[classNameOrgAbstractStripped = .]/className">
+                <xsl:value-of select="do:writeClassProperties($packages, $package, $packages/package/class[classNameOrgAbstractStripped = .])"/>                
+            </xsl:if>
+        </xsl:for-each>
     </xsl:function>
 
     <xsl:function name="do:writeClasses">
@@ -150,8 +158,9 @@
         <xsl:param name="package" as="node()"/>
         <xsl:param name="class" as="node()"/>
         <xsl:value-of select="do:writeClassHeader($package, $class)"/>
+        <xsl:value-of select="do:writeClassProperties($packages, $package, $class)"/>
 
-        <xsl:for-each select="$class/inheritOrg">
+<!--        <xsl:for-each select="$class/inheritOrg">
             <xsl:value-of select="do:message(concat($class/className, ' - ', .))"/>
             <xsl:variable name="classNode" select="do:findClass($packages, .)"/>
             <xsl:if test="$classNode">
@@ -159,7 +168,7 @@
                     select="do:message(concat($class/className, ' - ', $classNode/className))"/>
             </xsl:if>
         </xsl:for-each>
-        <!--        <xsl:element name="class">
+-->        <!--        <xsl:element name="class">
             <xsl:copy-of select="do:getInheritedAttributes($packages, $class)"></xsl:copy-of>    
         </xsl:element>
 -->
@@ -544,6 +553,9 @@
                                         <xsl:element name="inherit">
                                             <xsl:value-of
                                                 select="do:snakeUpperCaseToCamelCase(normalize-space($inherit), 0)"
+                                            />
+                                            <xsl:value-of
+                                                select="do:message(concat('         inher:', do:snakeUpperCaseToCamelCase(normalize-space($inherit), 0)))"
                                             />
                                         </xsl:element>
                                         <!-- CLASS_NAMES from parents (original) -->

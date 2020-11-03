@@ -6,14 +6,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElExpressionImpl implements {
-package nl.rosa.semanticdatabase.bmm.expressions;
-
-/**
- * 
- * Abstract parent of all typed expression meta-types.
- * 
-*/
-public class ElExpressionImpl implements {
+    //***** ElExpression *****
 
 /* * ATTRIBUTE * */
 

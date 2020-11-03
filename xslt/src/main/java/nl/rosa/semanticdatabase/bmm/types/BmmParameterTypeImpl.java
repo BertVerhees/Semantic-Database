@@ -6,14 +6,7 @@ package nl.rosa.semanticdatabase.bmm.types;
  * 
 */
 public class BmmParameterTypeImpl implements BmmUnitaryType{
-package nl.rosa.semanticdatabase.bmm.types;
-
-/**
- * 
- * Definition of a generic parameter in a class definition of a generic type.
- * 
-*/
-public class BmmParameterTypeImpl implements BmmUnitaryType{
+    //***** BmmParameterType *****
 
 /* * ATTRIBUTE * */
 

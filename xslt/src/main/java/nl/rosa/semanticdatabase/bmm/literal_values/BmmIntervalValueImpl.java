@@ -6,14 +6,7 @@ package nl.rosa.semanticdatabase.bmm.literal_values;
  * 
 */
 public class BmmIntervalValueImpl implements BmmLiteralValue{
-package nl.rosa.semanticdatabase.bmm.literal_values;
-
-/**
- * 
- * Meta-type for literal intervals of type Interval<Ordered>.
- * 
-*/
-public class BmmIntervalValueImpl implements BmmLiteralValue{
+    //***** BmmIntervalValue *****
 
 /* * ATTRIBUTE * */
 
