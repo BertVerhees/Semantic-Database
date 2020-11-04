@@ -141,6 +141,7 @@
         <xsl:param name="nameAndTypeAndKind" as="node()"/>
         <xsl:param name="packages" as="node()"/>
         <xsl:param name="type" as="xs:string"></xsl:param>
+        <xsl:param name="cardinality" as="xs:string"></xsl:param>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:commentOpen()"/>
         <xsl:value-of select="do:commentOutput($nameAndTypeAndKind/description)"/>
@@ -148,9 +149,48 @@
         <xsl:variable name="type" as="xs:string"
             select="string-join(do:processType($packages, $type))"/>
         <xsl:value-of
-            select="do:outputSpaces(concat('    private ', concat($type, ' ', $nameAndTypeAndKind/name,';')))"/>
-        />
-    </xsl:function>        
+            select="do:outputSpaces(concat($cardinality,'    private ', concat($type, ' ', $nameAndTypeAndKind/name,';')))"/>
+    </xsl:function>
+    
+    <xsl:function name="do:writeClassPojos">
+        <xsl:param name="nameAndTypeAndKind" as="node()"/>
+        <xsl:param name="packages" as="node()"/>
+        <xsl:param name="type" as="xs:string"></xsl:param>
+        <xsl:value-of select="do:output('')"/>
+        <xsl:value-of select="do:commentOpen()"/>
+        <xsl:value-of select="do:commentOutput($nameAndTypeAndKind/description)"/>
+        <xsl:value-of select="do:commentClose()"/>
+        <xsl:variable name="type" as="xs:string"
+            select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
+        <xsl:choose>
+            <xsl:when test="starts-with($type,'List') or starts-with($type,'Set')">
+                
+            </xsl:when>
+            <xsl:when test="starts-with($type,'Map')">
+                <xsl:value-of select="do:writeMapPojo($nameAndTypeAndKind/type,$nameAndTypeAndKind/name,$nameAndTypeAndKind/cardinality)"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of
+                    select="do:outputSpaces(concat('    ', concat('public ',$type, ' get', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '() {')))"/>
+                <xsl:value-of
+                    select="do:outputSpaces('    }')"/>
+                <xsl:value-of
+                    select="do:outputSpaces(concat('    ', concat('public void set', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '(', $type, ' value) {')))"/>
+                <xsl:value-of
+                    select="do:outputSpaces('    }')"/>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
+    <xsl:function name="do:writeMapPojo">
+        <xsl:param name="type" as="xs:string"></xsl:param>
+        <xsl:param name="name" as="xs:string"></xsl:param>
+        <xsl:param name="cardinality" as="xs:string"></xsl:param>
+        <xsl:variable name="types" as="xs:string*"
+            select="tokenize(substring-before(substring-after($type, '&lt;'), '&gt;'), ',')"/>
+        <xsl:variable name="keyType" as="xs:string" select="normalize-space($types[1])"/>
+        <xsl:variable name="valueType" as="xs:string" select="normalize-space($types[2])"/>
+    </xsl:function>
         
     <xsl:function name="do:writeClassProperties">
         <xsl:param name="packages" as="node()"/>
@@ -165,7 +205,14 @@
             <xsl:value-of select="do:output('/* * FIELDS * */')"/>
             <xsl:for-each select="$class/functionsAndAttributesAndConstants/nameAndTypeAndKind">
                 <xsl:if test="kind = 'attribute'">
-                    <xsl:value-of select="do:writeClassAttribute(., $packages, type)"/>
+                     <xsl:value-of select="do:writeClassAttribute(., $packages, type, cardinality)"/>                            
+               </xsl:if>
+            </xsl:for-each>
+            <xsl:value-of select="do:output('')"/>
+            <xsl:value-of select="do:output('/* * POJOS * */')"/>
+            <xsl:for-each select="$class/functionsAndAttributesAndConstants/nameAndTypeAndKind">
+                <xsl:if test="kind = 'attribute'">
+                    <xsl:value-of select="do:writeClassPojos(., $packages, type)"/>
                 </xsl:if>
             </xsl:for-each>
             <xsl:for-each select="$class/inheritOrg">
@@ -775,24 +822,24 @@
                                                   <xsl:value-of
                                                   select="do:message(concat('            attribute:', ' name: ', $name, ' type: ', $type))"/>
                                                   <xsl:element name="name">
-                                                  <xsl:value-of select="$name"/>
+                                                    <xsl:value-of select="$name"/>
                                                   </xsl:element>
                                                   <xsl:element name="type">
-                                                  <xsl:value-of select="$type"/>
+                                                    <xsl:value-of select="$type"/>
                                                   </xsl:element>
                                                   <xsl:element name="kind">
-                                                  <xsl:value-of select="'attribute'"/>
+                                                    <xsl:value-of select="'attribute'"/>
                                                   </xsl:element>
-                                                  <xsl:value-of
-                                                  select="do:message('            kind: attribute')"
-                                                  />
+                                                    <xsl:value-of
+                                                        select="do:message('            kind: attribute')"
+                                                    />
                                                   </xsl:otherwise>
                                                   </xsl:choose>
                                                   </xsl:otherwise>
                                                   </xsl:choose>
                                                   <xsl:element name="cardinality">
                                                   <xsl:value-of
-                                                  select="do:message(concat('            cardinality:', $cardinality))"/>
+                                                     select="do:message(concat('            cardinality:', $cardinality))"/>
                                                   <xsl:value-of select="$cardinality"/>
                                                   </xsl:element>
                                                   </xsl:otherwise>
