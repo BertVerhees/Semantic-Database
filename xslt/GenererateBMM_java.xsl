@@ -6,7 +6,7 @@
     <xsl:output method="text"/>
     <xsl:variable name="newline" select="'&#xA;'"/>
     <xsl:variable name="packageBase" select="'nl/rosa/semanticdatabase/'"/>
-    <xsl:variable name="sourceBase" select="'xslt/generated_source/main/java/'"/>
+    <xsl:variable name="sourceBase" select="'generated_source/main/java/'"/>
 
     <xsl:template match="/">
         <xsl:variable name="root">
