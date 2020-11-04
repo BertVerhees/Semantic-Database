@@ -27,4 +27,6 @@ public interface ElDecisionTable extends ElExpression {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

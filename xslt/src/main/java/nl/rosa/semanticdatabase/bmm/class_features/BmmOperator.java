@@ -36,4 +36,6 @@ public interface BmmOperator {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

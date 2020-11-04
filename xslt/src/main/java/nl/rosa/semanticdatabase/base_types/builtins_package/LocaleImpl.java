@@ -6,7 +6,10 @@ package nl.rosa.semanticdatabase.base_types.builtins_package;
  * 
 */
 public class LocaleImpl implements {
+
     //***** Locale *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

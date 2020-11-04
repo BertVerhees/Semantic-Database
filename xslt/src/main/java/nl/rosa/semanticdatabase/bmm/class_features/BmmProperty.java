@@ -26,4 +26,28 @@ public interface BmmProperty extends BmmInstantiable,BmmClassFeature {
 */
     String  display_name();
 
+/* * CONSTANTS * */
+
+/**
+ * 
+ * True if this property is marked with info model im_runtime property.
+ * 
+*/
+    Boolean {default isImRuntime = false};
+
+/**
+ * 
+ * True if this property was marked with info model im_infrastructure flag.
+ * 
+*/
+    Boolean {default isImInfrastructure = false};
+
+/**
+ * 
+ * True if this property instance is a compositional sub-part of the owning class instance.
+ * Equivalent to 'composition' in UML associations (but missing from UML properties without associations) and also 'cascade-delete' semantics in ER schemas.
+ * 
+*/
+    Boolean {default isComposition = false};
+
 }

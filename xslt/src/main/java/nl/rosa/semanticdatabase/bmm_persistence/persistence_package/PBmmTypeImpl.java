@@ -6,8 +6,20 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
  * 
 */
 public class PBmmTypeImpl implements {
+
     //***** PBmmType *****
 
+/* * FIELDS * */
+
+/**
+ * 
+ * Result of create_bmm_type() call.
+ * 
+*/
+    private BmmType bmm_type;
+
+        />
+    
 /* * ATTRIBUTE * */
 
 /* * POJO * */

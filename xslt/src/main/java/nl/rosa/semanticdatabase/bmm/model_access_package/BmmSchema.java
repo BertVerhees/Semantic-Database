@@ -135,4 +135,28 @@ public interface BmmSchema extends BmmModelMetadata {
 */
     String  schema_id();
 
+/* * CONSTANTS * */
+
+/**
+ * 
+ * Do some basic validation post initial creation check that package structure is regular: only top-level packages can have qualified names no top-level package name can be a direct parent or child of another (child package must be declared under the parent) check that all classes are mentioned in the package structure check that all models refer to valid packages
+ * 
+*/
+    state validateCreated preState = State_created Post_state: passed implies state = State_validated_created;
+
+/**
+ * 
+ * Finalisation work: convert packages to canonical form, i.e.
+ * full hierarchy with no packages with names like aa.bb.cc set up include processing list
+ * 
+*/
+    state loadFinalise preState = State_validated_created Post_state: state = State_includes_processed or state = State_includes_pending;
+
+/**
+ * 
+ * Populate bmm_model from schema.
+ * 
+*/
+    state createBmmModel preState = P_BMM_PACKAGE_STATE.State_includes_processed;
+
 }

@@ -55,4 +55,6 @@ public interface PBmmContainerType extends PBmmType {
 */
     PBmmBaseType  type_ref();
 
+/* * CONSTANTS * */
+
 }

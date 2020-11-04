@@ -30,4 +30,6 @@ public interface ElTypeRef extends ElInstanceRef {
 */
     BmmType  eval_type();
 
+/* * CONSTANTS * */
+
 }

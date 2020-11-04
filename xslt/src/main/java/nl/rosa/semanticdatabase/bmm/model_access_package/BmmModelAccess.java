@@ -87,4 +87,6 @@ public interface BmmModelAccess {
 */
     Boolean  has_bmm_model();
 
+/* * CONSTANTS * */
+
 }

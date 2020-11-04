@@ -20,4 +20,6 @@ public interface Uid {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

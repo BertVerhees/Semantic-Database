@@ -6,8 +6,33 @@ package nl.rosa.semanticdatabase.bmm.types;
  * 
 */
 public class BmmContainerTypeImpl implements BmmType{
+
     //***** BmmContainerType *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * The type of the container.
+ * This converts to the root_type in BMM_GENERIC_TYPE.
+ * 
+*/
+    private BmmGenericClass container_class;
+
+        />
+    
+/**
+ * 
+ * The container item type.
+ * 
+*/
+    private BmmUnitaryType item_type;
+
+        />
+    
     //***** BmmType *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

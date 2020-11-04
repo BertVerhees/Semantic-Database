@@ -80,4 +80,6 @@ public interface BmmGenericType extends BmmModelType {
 */
     Boolean  is_open();
 
+/* * CONSTANTS * */
+
 }

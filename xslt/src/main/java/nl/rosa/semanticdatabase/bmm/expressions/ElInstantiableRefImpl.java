@@ -7,12 +7,48 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElInstantiableRef<t>Impl implements ElScopedRef{
+
     //***** ElInstantiableRef<t> *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * Definition of the constant, property or variable, inferred by inspection of the current scoping instance.
+ * 
+*/
+    private T definition;
+
+        />
+    
     //***** ElScopedRef *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * Reference to an owning object for this terminal element, if it is not the current scope.
+ * 
+*/
+    private ElInstanceRef scope;
+
+        />
+    
     //***** ElInstanceRef *****
+
+/* * FIELDS * */
+
     //***** ElTerminal *****
+
+/* * FIELDS * */
+
     //***** ElSimple *****
+
+/* * FIELDS * */
+
     //***** ElExpression *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

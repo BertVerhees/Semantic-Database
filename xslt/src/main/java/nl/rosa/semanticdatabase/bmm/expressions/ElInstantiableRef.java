@@ -29,4 +29,6 @@ public interface ElInstantiableRef<t> extends ElScopedRef {
 */
     BmmType  eval_type();
 
+/* * CONSTANTS * */
+
 }

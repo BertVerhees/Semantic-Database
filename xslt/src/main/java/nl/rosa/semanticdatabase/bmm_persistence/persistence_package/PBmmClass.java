@@ -124,4 +124,6 @@ public interface PBmmClass extends PBmmModelElement {
 */
     void  populate_bmm_class();
 
+/* * CONSTANTS * */
+
 }

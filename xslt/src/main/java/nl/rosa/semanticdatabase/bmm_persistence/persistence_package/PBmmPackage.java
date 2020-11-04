@@ -52,4 +52,6 @@ public interface PBmmPackage extends PBmmPackageContainer,PBmmModelElement {
 */
     void  merge();
 
+/* * CONSTANTS * */
+
 }

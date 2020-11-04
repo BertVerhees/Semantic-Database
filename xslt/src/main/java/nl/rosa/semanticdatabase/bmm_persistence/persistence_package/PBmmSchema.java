@@ -51,4 +51,27 @@ public interface PBmmSchema extends PBmmPackageContainer,BmmSchema {
 */
     PBmmPackage  canonical_packages();
 
+/* * CONSTANTS * */
+
+/**
+ * 
+ * Implementation of validate_created()
+ * 
+*/
+    state validateCreated preState = State_created Post_state: passed implies state = State_validated_created;
+
+/**
+ * 
+ * Implementation of load_finalise()
+ * 
+*/
+    state loadFinalise preState = State_validated_created Post_state: state = State_includes_processed or state = State_includes_pending;
+
+/**
+ * 
+ * Implementation of create_bmm_model()
+ * 
+*/
+    state createBmmModel preState = P_BMM_PACKAGE_STATE.State_includes_processed;
+
 }

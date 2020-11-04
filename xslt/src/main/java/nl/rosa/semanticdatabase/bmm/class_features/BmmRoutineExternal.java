@@ -27,4 +27,6 @@ public interface BmmRoutineExternal extends BmmRoutineBody {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

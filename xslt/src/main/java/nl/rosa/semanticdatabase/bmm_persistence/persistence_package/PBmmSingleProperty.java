@@ -44,4 +44,6 @@ public interface PBmmSingleProperty extends PBmmProperty {
 */
     PBmmSimpleType  type_def();
 
+/* * CONSTANTS * */
+
 }

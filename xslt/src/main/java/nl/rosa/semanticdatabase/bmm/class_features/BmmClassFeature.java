@@ -43,4 +43,6 @@ public interface BmmClassFeature extends BmmClassEntity {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

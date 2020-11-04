@@ -7,9 +7,27 @@ package nl.rosa.semanticdatabase.bmm.statements;
  * 
 */
 public class BmmStatementBlockImpl implements BmmStatementItem{
+
     //***** BmmStatementBlock *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * Child blocks of the current block.
+ * 
+*/
+    private List<BmmStatementItem> items;
+
+        />
+    
     //***** BmmStatementItem *****
+
+/* * FIELDS * */
+
     //***** BmmRoutineBody *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

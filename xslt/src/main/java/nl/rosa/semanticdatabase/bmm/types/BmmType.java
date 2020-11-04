@@ -68,4 +68,6 @@ public interface BmmType {
 */
     List<String>  flattened_type_list();
 
+/* * CONSTANTS * */
+
 }

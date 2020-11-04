@@ -19,4 +19,6 @@ public interface PBmmEnumerationInteger extends PBmmEnumeration {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

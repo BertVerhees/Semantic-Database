@@ -6,8 +6,20 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
  * 
 */
 public class PBmmModelElementImpl implements {
+
     //***** PBmmModelElement *****
 
+/* * FIELDS * */
+
+/**
+ * 
+ * Optional documentation of this element.
+ * 
+*/
+    private String documentation;
+
+        />
+    
 /* * ATTRIBUTE * */
 
 /* * POJO * */

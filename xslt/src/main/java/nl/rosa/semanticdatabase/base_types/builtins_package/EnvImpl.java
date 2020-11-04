@@ -6,7 +6,10 @@ package nl.rosa.semanticdatabase.base_types.builtins_package;
  * 
 */
 public class EnvImpl implements {
+
     //***** Env *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

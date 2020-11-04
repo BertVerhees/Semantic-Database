@@ -12,4 +12,6 @@ public interface BmmInstantiable extends BmmTypedFeature {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

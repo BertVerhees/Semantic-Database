@@ -27,4 +27,6 @@ public interface BmmTyped {
 */
     Result = type().equal( {BMM_MODEL}.boolean_type_definition())  is_boolean();
 
+/* * CONSTANTS * */
+
 }

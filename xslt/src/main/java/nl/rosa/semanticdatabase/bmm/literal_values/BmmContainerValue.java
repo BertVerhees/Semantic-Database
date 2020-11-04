@@ -20,4 +20,6 @@ public interface BmmContainerValue extends BmmLiteralValue {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

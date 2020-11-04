@@ -6,10 +6,40 @@ package nl.rosa.semanticdatabase.bmm.types;
  * 
 */
 public class BmmModelTypeImpl implements BmmEffectiveType{
+
     //***** BmmModelType *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * 
+ * 
+*/
+    private BmmValueSetSpec value_constraint;
+
+        />
+    
+/**
+ * 
+ * Base class of this type.
+ * 
+*/
+    private BmmClass base_class;
+
+        />
+    
     //***** BmmEffectiveType *****
+
+/* * FIELDS * */
+
     //***** BmmUnitaryType *****
+
+/* * FIELDS * */
+
     //***** BmmType *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

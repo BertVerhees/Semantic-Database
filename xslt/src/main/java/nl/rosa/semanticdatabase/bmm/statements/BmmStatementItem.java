@@ -11,4 +11,6 @@ public interface BmmStatementItem extends BmmRoutineBody {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

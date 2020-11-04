@@ -12,4 +12,14 @@ public interface BmmTypedFeature extends BmmTyped {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
+/**
+ * 
+ * True if this element can be null (Void) at execution time.
+ * May be interpreted as optionality in subtypes..
+ * 
+*/
+    Boolean {default isNullable = false};
+
 }

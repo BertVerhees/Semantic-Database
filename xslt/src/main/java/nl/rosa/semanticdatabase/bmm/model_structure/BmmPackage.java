@@ -35,4 +35,6 @@ public interface BmmPackage extends BmmPackageContainer {
 */
     String  path();
 
+/* * CONSTANTS * */
+
 }

@@ -10,7 +10,10 @@ package nl.rosa.semanticdatabase.bmm.types;
  * 
 */
 public class BmmTypeImpl implements {
+
     //***** BmmType *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

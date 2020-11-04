@@ -20,4 +20,6 @@ public interface BmmIndexedContainerValue extends BmmContainerValue {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

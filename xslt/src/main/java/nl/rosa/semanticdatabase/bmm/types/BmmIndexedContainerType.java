@@ -27,4 +27,6 @@ public interface BmmIndexedContainerType extends BmmContainerType {
 */
     String  type_name();
 
+/* * CONSTANTS * */
+
 }

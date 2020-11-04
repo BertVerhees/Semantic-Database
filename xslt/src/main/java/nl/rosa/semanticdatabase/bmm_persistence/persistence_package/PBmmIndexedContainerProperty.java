@@ -28,4 +28,6 @@ public interface PBmmIndexedContainerProperty extends PBmmContainerProperty {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

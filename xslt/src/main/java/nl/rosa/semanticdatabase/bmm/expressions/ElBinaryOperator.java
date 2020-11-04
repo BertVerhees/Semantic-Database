@@ -27,4 +27,6 @@ public interface ElBinaryOperator extends ElOperator {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

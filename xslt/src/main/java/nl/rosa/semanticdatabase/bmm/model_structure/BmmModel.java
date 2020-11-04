@@ -174,4 +174,6 @@ public interface BmmModel extends BmmPackageContainer,BmmModelMetadata {
 */
     BmmSimpleType  boolean_type_definition();
 
+/* * CONSTANTS * */
+
 }

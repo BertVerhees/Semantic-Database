@@ -13,4 +13,6 @@ public interface ElDefined extends ElPredicate {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

@@ -13,4 +13,6 @@ public interface ElTerminal extends ElSimple {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

@@ -7,7 +7,10 @@ package nl.rosa.semanticdatabase.bmm.class_features;
  * 
 */
 public class BmmVisibilityImpl implements {
+
     //***** BmmVisibility *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

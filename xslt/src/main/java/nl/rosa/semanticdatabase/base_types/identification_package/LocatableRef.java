@@ -36,4 +36,6 @@ public interface LocatableRef extends ObjectRef {
 */
     String  as_uri();
 
+/* * CONSTANTS * */
+
 }

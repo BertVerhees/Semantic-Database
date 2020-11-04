@@ -6,7 +6,10 @@ package nl.rosa.semanticdatabase.bmm.class_features;
  * 
 */
 public class BmmRoutineBodyImpl implements {
+
     //***** BmmRoutineBody *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

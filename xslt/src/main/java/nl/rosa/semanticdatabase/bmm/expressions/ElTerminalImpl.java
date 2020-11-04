@@ -8,9 +8,18 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElTerminalImpl implements ElSimple{
+
     //***** ElTerminal *****
+
+/* * FIELDS * */
+
     //***** ElSimple *****
+
+/* * FIELDS * */
+
     //***** ElExpression *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

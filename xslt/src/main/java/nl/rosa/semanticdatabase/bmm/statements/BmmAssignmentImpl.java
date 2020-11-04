@@ -7,10 +7,40 @@ package nl.rosa.semanticdatabase.bmm.statements;
  * 
 */
 public class BmmAssignmentImpl implements BmmStatement{
+
     //***** BmmAssignment *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * The target variable on the notional left-hand side of this assignment.
+ * 
+*/
+    private EL_INSTANTIABLE_REF target;
+
+        />
+    
+/**
+ * 
+ * Source right hand side) of the assignment.
+ * 
+*/
+    private ElExpression source;
+
+        />
+    
     //***** BmmStatement *****
+
+/* * FIELDS * */
+
     //***** BmmStatementItem *****
+
+/* * FIELDS * */
+
     //***** BmmRoutineBody *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

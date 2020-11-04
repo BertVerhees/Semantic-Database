@@ -12,4 +12,6 @@ public interface TemplateId extends ObjectId {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

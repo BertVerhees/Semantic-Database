@@ -11,4 +11,6 @@ public interface BmmIntervalValue extends BmmLiteralValue {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

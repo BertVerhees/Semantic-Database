@@ -39,4 +39,6 @@ public interface BmmLiteralValue extends BmmTyped {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

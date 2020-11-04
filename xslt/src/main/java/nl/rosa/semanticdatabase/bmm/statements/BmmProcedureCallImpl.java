@@ -6,11 +6,44 @@ package nl.rosa.semanticdatabase.bmm.statements;
  * 
 */
 public class BmmProcedureCallImpl implements ElAgentCall,BmmStatement{
+
     //***** BmmProcedureCall *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * The procedure agent being called.
+ * 
+*/
+    private ElProcedureAgent agent;
+
+        />
+    
     //***** ElAgentCall *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * The agent being called.
+ * 
+*/
+    private ElAgent agent;
+
+        />
+    
     //***** BmmStatement *****
+
+/* * FIELDS * */
+
     //***** BmmStatementItem *****
+
+/* * FIELDS * */
+
     //***** BmmRoutineBody *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

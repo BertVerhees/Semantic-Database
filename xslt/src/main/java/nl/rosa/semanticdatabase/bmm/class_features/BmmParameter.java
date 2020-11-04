@@ -21,4 +21,6 @@ public interface BmmParameter extends BmmVariable {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

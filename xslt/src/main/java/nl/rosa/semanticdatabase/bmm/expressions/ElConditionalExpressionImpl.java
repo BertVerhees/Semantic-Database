@@ -7,9 +7,33 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElConditionalExpressionImpl implements ElDecisionBranch{
+
     //***** ElConditionalExpression *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * Gate expression that acts as the condition under which the target expression is returned.
+ * 
+*/
+    private ElSimple condition;
+
+        />
+    
     //***** ElDecisionBranch *****
 
+/* * FIELDS * */
+
+/**
+ * 
+ * Result expression of conditional, if its condition evaluates to True.
+ * 
+*/
+    private ElExpression result;
+
+        />
+    
 /* * ATTRIBUTE * */
 
 /* * POJO * */

@@ -33,4 +33,6 @@ public interface PBmmType {
 */
     String  as_type_string();
 
+/* * CONSTANTS * */
+
 }

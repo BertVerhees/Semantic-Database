@@ -6,7 +6,10 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElExpressionImpl implements {
+
     //***** ElExpression *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

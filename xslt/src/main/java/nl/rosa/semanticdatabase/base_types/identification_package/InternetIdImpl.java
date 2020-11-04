@@ -7,9 +7,24 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
  * 
 */
 public class InternetIdImpl implements Uid{
+
     //***** InternetId *****
+
+/* * FIELDS * */
+
     //***** Uid *****
 
+/* * FIELDS * */
+
+/**
+ * 
+ * The value of the id.
+ * 
+*/
+    private String value;
+
+        />
+    
 /* * ATTRIBUTE * */
 
 /* * POJO * */

@@ -46,4 +46,6 @@ public interface PBmmGenericParameter extends PBmmModelElement {
 */
     void  create_bmm_generic_parameter();
 
+/* * CONSTANTS * */
+
 }

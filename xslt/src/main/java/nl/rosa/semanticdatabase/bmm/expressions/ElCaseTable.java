@@ -30,4 +30,6 @@ public interface ElCaseTable extends ElDecisionTable {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

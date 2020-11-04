@@ -11,4 +11,6 @@ public interface BmmStatement extends BmmStatementItem {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

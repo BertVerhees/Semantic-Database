@@ -28,4 +28,6 @@ public interface PBmmGenericProperty extends PBmmProperty {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

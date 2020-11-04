@@ -19,4 +19,6 @@ public interface ElDecisionBranch {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

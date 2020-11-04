@@ -19,4 +19,6 @@ public interface BmmProcedureCall extends ElAgentCall,BmmStatement {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

@@ -21,4 +21,6 @@ public interface ElConditionChain extends ElDecisionTable {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

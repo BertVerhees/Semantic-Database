@@ -26,4 +26,6 @@ public interface BmmVariable extends BmmInstantiable,BmmClassEntity {
 */
     void  signature();
 
+/* * CONSTANTS * */
+
 }

@@ -11,4 +11,6 @@ public interface ElInstanceRef extends ElTerminal {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

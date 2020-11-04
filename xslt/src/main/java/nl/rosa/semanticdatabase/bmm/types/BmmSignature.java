@@ -64,4 +64,13 @@ public interface BmmSignature extends BmmEffectiveType {
 */
     List<String>  flattened_type_list();
 
+/* * CONSTANTS * */
+
+/**
+ * 
+ * Base name (built-in).
+ * 
+*/
+    String baseName = "Signature";
+
 }

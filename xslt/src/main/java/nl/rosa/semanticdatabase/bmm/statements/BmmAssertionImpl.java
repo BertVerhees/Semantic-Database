@@ -8,10 +8,41 @@ package nl.rosa.semanticdatabase.bmm.statements;
  * 
 */
 public class BmmAssertionImpl implements BmmStatement{
+
     //***** BmmAssertion *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * 
+ * 
+*/
+    private ElBooleanExpression expression;
+
+        />
+    
+/**
+ * 
+ * Optional tag, typically used to designate design intention of the assertion, e.g.
+ * "Inv_all_members_valid".
+ * 
+*/
+    private String tag;
+
+        />
+    
     //***** BmmStatement *****
+
+/* * FIELDS * */
+
     //***** BmmStatementItem *****
+
+/* * FIELDS * */
+
     //***** BmmRoutineBody *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

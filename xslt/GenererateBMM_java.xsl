@@ -137,6 +137,20 @@
         <xsl:value-of select="do:output('}')"/>
     </xsl:function>
         
+    <xsl:function name="do:writeClassAttribute">
+        <xsl:param name="nameAndTypeAndKind" as="node()"/>
+        <xsl:param name="packages" as="node()"/>
+        <xsl:param name="type" as="xs:string"></xsl:param>
+        <xsl:value-of select="do:output('')"/>
+        <xsl:value-of select="do:commentOpen()"/>
+        <xsl:value-of select="do:commentOutput($nameAndTypeAndKind/description)"/>
+        <xsl:value-of select="do:commentClose()"/>
+        <xsl:variable name="type" as="xs:string"
+            select="string-join(do:processType($packages, $type))"/>
+        <xsl:value-of
+            select="do:outputSpaces(concat('    private ', concat($type, ' ', $nameAndTypeAndKind/name,';')))"/>
+        />
+    </xsl:function>        
         
     <xsl:function name="do:writeClassProperties">
         <xsl:param name="packages" as="node()"/>
@@ -145,13 +159,20 @@
         <!-- If inherit do recursion -->
         <xsl:value-of select="do:message(concat('->',$class/className))"/>
         <xsl:variable name="result">
+            <xsl:value-of select="do:output('')"/>
             <xsl:value-of select="do:outputSpaces(concat('    //***** ',$class/className,' *****'))"/>
+            <xsl:value-of select="do:output('')"/>
+            <xsl:value-of select="do:output('/* * FIELDS * */')"/>
+            <xsl:for-each select="$class/functionsAndAttributesAndConstants/nameAndTypeAndKind">
+                <xsl:if test="kind = 'attribute'">
+                    <xsl:value-of select="do:writeClassAttribute(., $packages, type)"/>
+                </xsl:if>
+            </xsl:for-each>
             <xsl:for-each select="$class/inheritOrg">
                 <xsl:variable name="inherit" select="."/>
                 <xsl:for-each select="$packages/package">
                     <xsl:for-each select="class">
                         <xsl:if test="classNameOrgAbstractStripped=$inherit">
-                            <xsl:value-of select="do:message(concat('->',$class/className,'->',.))"/>
                             <xsl:value-of select="do:writeClassProperties($packages, $package, .)"/> 
                         </xsl:if>
                     </xsl:for-each>
@@ -167,19 +188,6 @@
         <xsl:param name="class" as="node()"/>
         <xsl:value-of select="do:writeClassHeader($package, $class)"/>
         <xsl:value-of select="do:writeClassProperties($packages, $package, $class)"/>
-
-<!--        <xsl:for-each select="$class/inheritOrg">
-            <xsl:value-of select="do:message(concat($class/className, ' - ', .))"/>
-            <xsl:variable name="classNode" select="do:findClass($packages, .)"/>
-            <xsl:if test="$classNode">
-                <xsl:value-of
-                    select="do:message(concat($class/className, ' - ', $classNode/className))"/>
-            </xsl:if>
-        </xsl:for-each>
--->        <!--        <xsl:element name="class">
-            <xsl:copy-of select="do:getInheritedAttributes($packages, $class)"></xsl:copy-of>    
-        </xsl:element>
--->
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('/* * ATTRIBUTE * */')"/>
         <xsl:for-each select="$class/attribute">
@@ -253,7 +261,7 @@
                 <xsl:value-of select="do:commentOutput(description)"/>
                 <xsl:value-of select="do:commentClose()"/>
                 <xsl:variable name="type" as="xs:string"
-                    select="string-join(do:processType($packages, $class, type))"/>
+                    select="string-join(do:processType($packages, type))"/>
                 <xsl:value-of
                     select="do:outputSpaces(concat('    ', concat($type, ' get', do:snakeUpperCaseToCamelCase(name, 0), '();')))"/>
                 <xsl:value-of
@@ -277,12 +285,25 @@
                     </xsl:when>
                     <xsl:otherwise>
                         <xsl:variable name="type" as="xs:string"
-                            select="string-join(do:processType($packages, $class, type))"/>
+                            select="string-join(do:processType($packages, type))"/>
                         <xsl:value-of
                             select="do:outputSpaces(concat('    ', concat($type, '  ', name, '();')))"
                         />
                     </xsl:otherwise>
                 </xsl:choose>
+            </xsl:if>
+        </xsl:for-each>
+        <xsl:value-of select="do:output('')"/>
+        <xsl:value-of select="do:output('/* * CONSTANTS * */')"/>
+        <xsl:for-each select="$class/functionsAndAttributesAndConstants/nameAndTypeAndKind">
+            <xsl:if test="kind = 'constant'">
+                <xsl:value-of select="do:output('')"/>
+                <xsl:value-of select="do:commentOpen()"/>
+                <xsl:value-of select="do:commentOutput(description)"/>
+                <xsl:value-of select="do:commentClose()"/>
+                <xsl:variable name="type" as="xs:string"
+                    select="string-join(do:processType($packages, type))"/>
+                <xsl:value-of select="do:outputSpaces(concat('    ', $type,' ', do:snakeUpperCaseToCamelCase(name, 1), ' = ',value,';'))" />
             </xsl:if>
         </xsl:for-each>
         <xsl:value-of select="do:output('')"/>
@@ -347,7 +368,7 @@
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"/>
         <xsl:value-of
-            select="concat(do:processType($packages, $context, $incomingString), ' ', do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString, ':')[1]), 1), '();')"
+            select="concat(do:processType($packages, $incomingString), ' ', do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString, ':')[1]), 1), '();')"
         />
     </xsl:function>
 
@@ -394,7 +415,6 @@
 
     <xsl:function name="do:processType">
         <xsl:param name="packages"/>
-        <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString" as="xs:string"/>
         <xsl:variable name="result">
             <xsl:choose>
@@ -422,7 +442,7 @@
                             <xsl:variable name="testType" select="."/>
                             <xsl:variable name="newType">
                                 <xsl:value-of
-                                    select="do:processType($packages, $context, $testType)"/>
+                                    select="do:processType($packages, $testType)"/>
                             </xsl:variable>
                             <xsl:if test="position() > 1">
                                 <xsl:value-of select="','"/>
@@ -725,11 +745,11 @@
                                                   <xsl:variable name="name"
                                                   select="normalize-space(substring-before($nameAndType, ':'))"/>
                                                   <xsl:variable name="type"
-                                                  select="normalize-space(substring-before(normalize-space(substring-after($nameAndType, ':')), '='))"/>
+                                                      select="replace(normalize-space(substring-before(normalize-space(substring-after($nameAndType, ':')), '=')),'&#160;','')"/>
                                                   <xsl:variable name="value"
-                                                  select="normalize-space(substring-after($nameAndType, '='))"/>
+                                                      select="replace(normalize-space(substring-after($nameAndType, '=')),'&#160;','')"/>
                                                   <xsl:value-of
-                                                  select="do:message(concat('            constant:', ' name: ', $name, ' type: ', $type, '  value:', $value))"/>
+                                                  select="do:message(concat('            constant:', ' name: *', $name, '* type: *', $type, '*  value:*', $value, '*'))"/>
                                                   <xsl:element name="name">
                                                   <xsl:value-of select="$name"/>
                                                   </xsl:element>

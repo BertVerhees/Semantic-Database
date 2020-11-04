@@ -102,4 +102,6 @@ public interface BmmSchemaDescriptor {
 */
     void  validate_includes();
 
+/* * CONSTANTS * */
+
 }

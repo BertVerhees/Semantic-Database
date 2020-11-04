@@ -6,11 +6,35 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElSelfRefImpl implements ElInstanceRef{
+
     //***** ElSelfRef *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * Type of the current scoping instance, inferred from expression context.
+ * 
+*/
+    private BmmType type;
+
+        />
+    
     //***** ElInstanceRef *****
+
+/* * FIELDS * */
+
     //***** ElTerminal *****
+
+/* * FIELDS * */
+
     //***** ElSimple *****
+
+/* * FIELDS * */
+
     //***** ElExpression *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

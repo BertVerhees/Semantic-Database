@@ -20,4 +20,6 @@ public interface BmmEnumerationString extends BmmEnumeration {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

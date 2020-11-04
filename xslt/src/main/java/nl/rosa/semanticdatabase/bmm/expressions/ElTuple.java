@@ -35,4 +35,6 @@ public interface ElTuple extends ElInstanceRef {
 */
     BmmType  eval_type();
 
+/* * CONSTANTS * */
+
 }

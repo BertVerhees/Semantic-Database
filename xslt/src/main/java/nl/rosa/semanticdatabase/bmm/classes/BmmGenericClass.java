@@ -43,4 +43,6 @@ public interface BmmGenericClass extends BmmClass {
 */
     String  generic_parameter_conformance_type();
 
+/* * CONSTANTS * */
+
 }

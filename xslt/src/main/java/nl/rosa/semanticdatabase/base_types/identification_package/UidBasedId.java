@@ -34,4 +34,6 @@ public interface UidBasedId extends ObjectId {
 */
     Boolean  has_extension();
 
+/* * CONSTANTS * */
+
 }

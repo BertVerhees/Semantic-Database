@@ -9,9 +9,54 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElCaseTableImpl implements ElDecisionTable{
+
     //***** ElCaseTable *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * Input value that is compared against each items[i].value_range to determine the overall result.
+ * 
+*/
+    private ElSimple input;
+
+        />
+    
+/**
+ * 
+ * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
+ * 
+*/
+    private List<ElCase> items;
+
+        />
+    
     //***** ElDecisionTable *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * Result expression of the chain if no member of items succeeds in evaluation.
+ * 
+*/
+    private ElExpression else;
+
+        />
+    
+/**
+ * 
+ * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
+ * 
+*/
+    private List<ElDecisionBranch> items;
+
+        />
+    
     //***** ElExpression *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

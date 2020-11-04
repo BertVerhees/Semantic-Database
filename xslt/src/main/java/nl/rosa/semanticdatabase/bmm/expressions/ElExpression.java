@@ -27,4 +27,6 @@ public interface ElExpression {
 */
     Result = eval_type().equal( {BMM_MODEL}.boolean_type_definition())  is_boolean();
 
+/* * CONSTANTS * */
+
 }

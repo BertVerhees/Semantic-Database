@@ -11,4 +11,48 @@ public interface BasicDefinitions {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
+/**
+ * 
+ * Carriage return character.
+ * 
+*/
+    char cr = '\015';
+
+/**
+ * 
+ * Line feed character.
+ * 
+*/
+    char lf = '\012';
+
+/**
+ * 
+ * 
+ * 
+*/
+    String anyTypeName = "Any";
+
+/**
+ * 
+ * 
+ * 
+*/
+    String regexAnyPattern = ".*";
+
+/**
+ * 
+ * 
+ * 
+*/
+    String defaultEncoding = "UTF-8";
+
+/**
+ * 
+ * 
+ * 
+*/
+    String noneTypeName = "None";
+
 }

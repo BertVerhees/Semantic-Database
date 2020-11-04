@@ -23,4 +23,6 @@ public interface ObjectId {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

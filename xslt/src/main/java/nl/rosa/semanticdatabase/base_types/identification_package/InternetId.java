@@ -12,4 +12,6 @@ public interface InternetId extends Uid {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

@@ -54,4 +54,6 @@ public interface BmmDeclaration {
 */
     Result = (scope = self)  is_root_scope();
 
+/* * CONSTANTS * */
+
 }

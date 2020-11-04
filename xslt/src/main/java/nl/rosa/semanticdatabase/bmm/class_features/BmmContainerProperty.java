@@ -34,4 +34,6 @@ public interface BmmContainerProperty extends BmmProperty {
 */
     String  display_name();
 
+/* * CONSTANTS * */
+
 }

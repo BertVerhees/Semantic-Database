@@ -26,4 +26,6 @@ public interface BmmIndexedContainerProperty extends BmmContainerProperty {
 */
     String  display_name();
 
+/* * CONSTANTS * */
+
 }

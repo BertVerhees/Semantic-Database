@@ -7,10 +7,28 @@ package nl.rosa.semanticdatabase.bmm.class_features;
  * 
 */
 public class BmmInstantiableImpl implements BmmTypedFeature{
+
     //***** BmmInstantiable *****
+
+/* * FIELDS * */
+
     //***** BmmTypedFeature *****
+
+/* * FIELDS * */
+
     //***** BmmTyped *****
 
+/* * FIELDS * */
+
+/**
+ * 
+ * Declared or inferred static type of the entity.
+ * 
+*/
+    private BmmType type;
+
+        />
+    
 /* * ATTRIBUTE * */
 
 /* * POJO * */

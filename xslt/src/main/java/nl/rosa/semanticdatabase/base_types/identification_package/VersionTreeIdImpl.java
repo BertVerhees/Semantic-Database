@@ -7,8 +7,20 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
  * 
 */
 public class VersionTreeIdImpl implements {
+
     //***** VersionTreeId *****
 
+/* * FIELDS * */
+
+/**
+ * 
+ * String form of this identifier.
+ * 
+*/
+    private String value;
+
+        />
+    
 /* * ATTRIBUTE * */
 
 /* * POJO * */

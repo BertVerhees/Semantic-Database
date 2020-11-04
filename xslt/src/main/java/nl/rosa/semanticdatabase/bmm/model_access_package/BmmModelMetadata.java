@@ -28,4 +28,6 @@ public interface BmmModelMetadata {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

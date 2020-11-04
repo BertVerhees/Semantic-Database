@@ -6,8 +6,14 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElSimpleImpl implements ElExpression{
+
     //***** ElSimple *****
+
+/* * FIELDS * */
+
     //***** ElExpression *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

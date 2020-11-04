@@ -19,4 +19,6 @@ public interface BmmActionTable extends BmmStatement {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

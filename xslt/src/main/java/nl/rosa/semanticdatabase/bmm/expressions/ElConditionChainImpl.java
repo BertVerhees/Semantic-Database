@@ -8,9 +8,45 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElConditionChainImpl implements ElDecisionTable{
+
     //***** ElConditionChain *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
+ * 
+*/
+    private List<ElConditionalExpression> items;
+
+        />
+    
     //***** ElDecisionTable *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * Result expression of the chain if no member of items succeeds in evaluation.
+ * 
+*/
+    private ElExpression else;
+
+        />
+    
+/**
+ * 
+ * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
+ * 
+*/
+    private List<ElDecisionBranch> items;
+
+        />
+    
     //***** ElExpression *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

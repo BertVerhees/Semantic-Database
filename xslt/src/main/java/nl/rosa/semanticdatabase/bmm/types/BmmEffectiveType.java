@@ -26,4 +26,6 @@ public interface BmmEffectiveType extends BmmUnitaryType {
 */
     String  type_base_name();
 
+/* * CONSTANTS * */
+
 }

@@ -20,4 +20,6 @@ public interface ElConditionalExpression extends ElDecisionBranch {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

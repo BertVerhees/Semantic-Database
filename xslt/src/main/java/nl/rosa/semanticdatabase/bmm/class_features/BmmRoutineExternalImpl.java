@@ -6,8 +6,32 @@ package nl.rosa.semanticdatabase.bmm.class_features;
  * 
 */
 public class BmmRoutineExternalImpl implements BmmRoutineBody{
+
     //***** BmmRoutineExternal *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * External call general meta-data, including target routine name, type mapping etc.
+ * 
+*/
+    private Map<String, String> meta_data;
+
+        />
+    
+/**
+ * 
+ * Optional argument-mapping meta-data.
+ * 
+*/
+    private Map<String, String> argument_mapping;
+
+        />
+    
     //***** BmmRoutineBody *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

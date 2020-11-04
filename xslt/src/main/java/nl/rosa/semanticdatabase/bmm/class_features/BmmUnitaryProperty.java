@@ -19,4 +19,6 @@ public interface BmmUnitaryProperty extends BmmProperty {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

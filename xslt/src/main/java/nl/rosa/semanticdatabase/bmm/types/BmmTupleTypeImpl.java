@@ -9,10 +9,31 @@ package nl.rosa.semanticdatabase.bmm.types;
  * 
 */
 public class BmmTupleTypeImpl implements BmmEffectiveType{
+
     //***** BmmTupleType *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * List of types of the items of the tuple, keyed by purpose in the tuple.
+ * 
+*/
+    private Map<String,BmmType> item_types;
+
+        />
+    
     //***** BmmEffectiveType *****
+
+/* * FIELDS * */
+
     //***** BmmUnitaryType *****
+
+/* * FIELDS * */
+
     //***** BmmType *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

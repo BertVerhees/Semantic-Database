@@ -27,4 +27,6 @@ public interface ElLiteral extends ElInstanceRef {
 */
     BmmType  eval_type();
 
+/* * CONSTANTS * */
+
 }

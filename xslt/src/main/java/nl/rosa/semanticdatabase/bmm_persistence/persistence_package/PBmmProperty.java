@@ -80,4 +80,6 @@ public interface PBmmProperty extends PBmmModelElement {
 */
     void  create_bmm_property();
 
+/* * CONSTANTS * */
+
 }

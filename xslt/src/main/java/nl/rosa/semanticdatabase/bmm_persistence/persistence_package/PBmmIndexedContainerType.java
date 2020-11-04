@@ -27,4 +27,6 @@ public interface PBmmIndexedContainerType extends PBmmContainerType {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

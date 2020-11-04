@@ -6,7 +6,10 @@ package nl.rosa.semanticdatabase.base_types.definitions_package;
  * 
 */
 public class BasicDefinitionsImpl implements {
+
     //***** BasicDefinitions *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

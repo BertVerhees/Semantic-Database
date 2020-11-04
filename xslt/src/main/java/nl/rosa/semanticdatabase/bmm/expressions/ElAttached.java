@@ -12,4 +12,6 @@ public interface ElAttached extends ElPredicate {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

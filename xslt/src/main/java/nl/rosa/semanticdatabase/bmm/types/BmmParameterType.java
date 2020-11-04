@@ -87,4 +87,6 @@ public interface BmmParameterType extends BmmUnitaryType {
 */
     BmmEffectiveType  effective_type();
 
+/* * CONSTANTS * */
+
 }

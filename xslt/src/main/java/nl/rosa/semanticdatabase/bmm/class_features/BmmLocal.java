@@ -11,4 +11,6 @@ public interface BmmLocal extends BmmVariable {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

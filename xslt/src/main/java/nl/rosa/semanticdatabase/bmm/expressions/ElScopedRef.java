@@ -19,4 +19,6 @@ public interface ElScopedRef extends ElInstanceRef {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

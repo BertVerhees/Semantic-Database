@@ -26,4 +26,6 @@ public interface ElPredicate extends ElTerminal {
 */
     BmmSimpleType  eval_type();
 
+/* * CONSTANTS * */
+
 }

@@ -35,4 +35,6 @@ public interface TerminologyId extends ObjectId {
 */
     String  version_id();
 
+/* * CONSTANTS * */
+
 }

@@ -19,4 +19,6 @@ public interface ElUnaryOperator extends ElOperator {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

@@ -30,4 +30,6 @@ public interface BmmAssertion extends BmmStatement {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

@@ -6,10 +6,22 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElInstanceRefImpl implements ElTerminal{
+
     //***** ElInstanceRef *****
+
+/* * FIELDS * */
+
     //***** ElTerminal *****
+
+/* * FIELDS * */
+
     //***** ElSimple *****
+
+/* * FIELDS * */
+
     //***** ElExpression *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

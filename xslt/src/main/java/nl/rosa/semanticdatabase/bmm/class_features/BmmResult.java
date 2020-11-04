@@ -11,4 +11,13 @@ public interface BmmResult extends BmmVariable {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
+/**
+ * 
+ * Name of this model element.
+ * 
+*/
+    String {default name = "Result"};
+
 }

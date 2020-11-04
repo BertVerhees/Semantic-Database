@@ -66,4 +66,6 @@ public interface BmmRoutine extends BmmClassFeature {
 */
     void  signature();
 
+/* * CONSTANTS * */
+
 }

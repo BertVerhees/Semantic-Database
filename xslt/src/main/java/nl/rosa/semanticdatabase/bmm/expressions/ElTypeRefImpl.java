@@ -9,11 +9,36 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElTypeRefImpl implements ElInstanceRef{
+
     //***** ElTypeRef *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * Type, directly from the name of the reference, e.g.
+ * {SOME_TYPE}.
+ * 
+*/
+    private BmmType type;
+
+        />
+    
     //***** ElInstanceRef *****
+
+/* * FIELDS * */
+
     //***** ElTerminal *****
+
+/* * FIELDS * */
+
     //***** ElSimple *****
+
+/* * FIELDS * */
+
     //***** ElExpression *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

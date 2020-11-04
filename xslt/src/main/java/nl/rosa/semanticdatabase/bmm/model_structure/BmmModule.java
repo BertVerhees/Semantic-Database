@@ -20,4 +20,6 @@ public interface BmmModule extends BmmDeclaration {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

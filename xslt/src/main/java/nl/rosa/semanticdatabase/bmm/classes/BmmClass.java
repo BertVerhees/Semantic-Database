@@ -217,4 +217,22 @@ public interface BmmClass extends BmmModule {
 */
     List<BmmProperty>  flat_properties();
 
+/* * CONSTANTS * */
+
+/**
+ * 
+ * True if this class represents a type considered to be primitive in the type system, i.e.
+ * any typically built-in or standard library type such as String, Date, Hash<K,V> etc.
+ * 
+*/
+    Boolean {default isPrimitive = false};
+
+/**
+ * 
+ * True if this class is marked as abstract, i.e.
+ * direct instances cannot be created from its direct type.
+ * 
+*/
+    Boolean {default isAbstract = false};
+
 }

@@ -7,8 +7,20 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElAgentCallImpl implements {
+
     //***** ElAgentCall *****
 
+/* * FIELDS * */
+
+/**
+ * 
+ * The agent being called.
+ * 
+*/
+    private ElAgent agent;
+
+        />
+    
 /* * ATTRIBUTE * */
 
 /* * POJO * */

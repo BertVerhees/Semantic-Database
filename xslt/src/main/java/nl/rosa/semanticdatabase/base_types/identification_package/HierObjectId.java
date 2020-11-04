@@ -11,4 +11,6 @@ public interface HierObjectId extends UidBasedId {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

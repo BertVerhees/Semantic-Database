@@ -51,4 +51,6 @@ public interface ElOperator extends ElSimple {
 */
     ElFunctionCall  equivalent_call();
 
+/* * CONSTANTS * */
+
 }

@@ -28,4 +28,6 @@ public interface BmmAssignment extends BmmStatement {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

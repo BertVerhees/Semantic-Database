@@ -27,4 +27,6 @@ public interface BmmConditionalAction {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

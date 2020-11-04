@@ -28,4 +28,6 @@ public interface BmmFunction extends BmmTypedFeature,BmmRoutine {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

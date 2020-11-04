@@ -21,4 +21,6 @@ public interface BmmConstant extends BmmInstantiable,BmmClassFeature {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

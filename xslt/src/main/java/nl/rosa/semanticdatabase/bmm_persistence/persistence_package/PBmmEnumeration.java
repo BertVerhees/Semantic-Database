@@ -35,4 +35,6 @@ public interface PBmmEnumeration extends PBmmClass {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

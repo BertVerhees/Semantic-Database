@@ -7,9 +7,24 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
  * 
 */
 public class UuidImpl implements Uid{
+
     //***** Uuid *****
+
+/* * FIELDS * */
+
     //***** Uid *****
 
+/* * FIELDS * */
+
+/**
+ * 
+ * The value of the id.
+ * 
+*/
+    private String value;
+
+        />
+    
 /* * ATTRIBUTE * */
 
 /* * POJO * */

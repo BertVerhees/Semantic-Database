@@ -7,11 +7,35 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElLiteralImpl implements ElInstanceRef{
+
     //***** ElLiteral *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * The reference item from which the value of this node can be computed.
+ * 
+*/
+    private BmmLiteralValue value;
+
+        />
+    
     //***** ElInstanceRef *****
+
+/* * FIELDS * */
+
     //***** ElTerminal *****
+
+/* * FIELDS * */
+
     //***** ElSimple *****
+
+/* * FIELDS * */
+
     //***** ElExpression *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

@@ -19,4 +19,6 @@ public interface ElCase extends ElDecisionBranch {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

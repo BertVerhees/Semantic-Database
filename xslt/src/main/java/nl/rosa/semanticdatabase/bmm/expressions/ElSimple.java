@@ -11,4 +11,6 @@ public interface ElSimple extends ElExpression {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

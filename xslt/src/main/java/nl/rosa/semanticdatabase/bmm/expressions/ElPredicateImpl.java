@@ -6,10 +6,31 @@ package nl.rosa.semanticdatabase.bmm.expressions;
  * 
 */
 public class ElPredicateImpl implements ElTerminal{
+
     //***** ElPredicate *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * The target instance of this predicate.
+ * 
+*/
+    private ElInstanceRef operand;
+
+        />
+    
     //***** ElTerminal *****
+
+/* * FIELDS * */
+
     //***** ElSimple *****
+
+/* * FIELDS * */
+
     //***** ElExpression *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

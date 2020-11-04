@@ -6,8 +6,20 @@ package nl.rosa.semanticdatabase.bmm.class_features;
  * 
 */
 public class BmmTypedImpl implements {
+
     //***** BmmTyped *****
 
+/* * FIELDS * */
+
+/**
+ * 
+ * Declared or inferred static type of the entity.
+ * 
+*/
+    private BmmType type;
+
+        />
+    
 /* * ATTRIBUTE * */
 
 /* * POJO * */

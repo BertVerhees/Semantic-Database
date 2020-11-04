@@ -61,4 +61,6 @@ public interface ElAgent extends ElScopedRef {
 */
     Result = open_arguments = Void  is_callable();
 
+/* * CONSTANTS * */
+
 }

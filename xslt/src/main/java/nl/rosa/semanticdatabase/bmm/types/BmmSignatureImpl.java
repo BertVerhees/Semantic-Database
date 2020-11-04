@@ -7,10 +7,40 @@ package nl.rosa.semanticdatabase.bmm.types;
  * 
 */
 public class BmmSignatureImpl implements BmmEffectiveType{
+
     //***** BmmSignature *****
+
+/* * FIELDS * */
+
+/**
+ * 
+ * Type of arguments in the signature, if any; represented as a type-tuple (list of arbitrary types).
+ * 
+*/
+    private BmmTupleType argument_types;
+
+        />
+    
+/**
+ * 
+ * Result type of signature, if any.
+ * 
+*/
+    private BmmType result_type;
+
+        />
+    
     //***** BmmEffectiveType *****
+
+/* * FIELDS * */
+
     //***** BmmUnitaryType *****
+
+/* * FIELDS * */
+
     //***** BmmType *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

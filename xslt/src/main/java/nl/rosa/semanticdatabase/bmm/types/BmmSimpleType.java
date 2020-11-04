@@ -48,4 +48,6 @@ public interface BmmSimpleType extends BmmModelType {
 */
     BmmSimpleClass  effective_base_class();
 
+/* * CONSTANTS * */
+
 }

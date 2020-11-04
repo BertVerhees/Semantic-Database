@@ -6,8 +6,29 @@ package nl.rosa.semanticdatabase.bmm.statements;
  * 
 */
 public class BmmConditionalActionImpl implements {
+
     //***** BmmConditionalAction *****
 
+/* * FIELDS * */
+
+/**
+ * 
+ * The gate condition for the target statement.
+ * 
+*/
+    private ElBooleanExpression condition;
+
+        />
+    
+/**
+ * 
+ * Target statement.
+ * 
+*/
+    private BmmStatementItem statement;
+
+        />
+    
 /* * ATTRIBUTE * */
 
 /* * POJO * */

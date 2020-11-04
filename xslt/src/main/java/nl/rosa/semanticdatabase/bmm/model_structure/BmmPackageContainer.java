@@ -48,4 +48,6 @@ public interface BmmPackageContainer extends BmmDeclaration {
 */
     Boolean  has_package_path();
 
+/* * CONSTANTS * */
+
 }

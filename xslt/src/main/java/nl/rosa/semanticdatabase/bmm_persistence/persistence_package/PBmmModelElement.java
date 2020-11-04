@@ -19,4 +19,6 @@ public interface PBmmModelElement {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

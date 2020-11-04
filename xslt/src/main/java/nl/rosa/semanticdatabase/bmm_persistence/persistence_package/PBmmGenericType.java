@@ -56,4 +56,6 @@ public interface PBmmGenericType extends PBmmBaseType {
 */
     List<PBmmType>  generic_parameter_refs();
 
+/* * CONSTANTS * */
+
 }

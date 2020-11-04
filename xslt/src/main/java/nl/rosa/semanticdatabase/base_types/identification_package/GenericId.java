@@ -21,4 +21,6 @@ public interface GenericId extends ObjectId {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

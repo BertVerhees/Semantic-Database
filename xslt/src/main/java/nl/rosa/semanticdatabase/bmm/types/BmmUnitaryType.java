@@ -18,4 +18,6 @@ public interface BmmUnitaryType extends BmmType {
 */
     BmmUnitaryType  unitary_type();
 
+/* * CONSTANTS * */
+
 }

@@ -36,4 +36,13 @@ public interface BmmFeatureGroup {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
+/**
+ * 
+ * Name of this feature group; defaults to 'feature'.
+ * 
+*/
+    String {default name = "feature"};
+
 }

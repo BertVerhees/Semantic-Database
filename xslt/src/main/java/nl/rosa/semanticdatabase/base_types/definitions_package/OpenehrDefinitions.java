@@ -11,4 +11,14 @@ public interface OpenehrDefinitions extends BasicDefinitions {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
+/**
+ * 
+ * Predefined terminology identifier to indicate it is local to the knowledge resource in which it occurs, e.g.
+ * an archetype
+ * 
+*/
+    String {default localTerminologyId = "local"};
+
 }

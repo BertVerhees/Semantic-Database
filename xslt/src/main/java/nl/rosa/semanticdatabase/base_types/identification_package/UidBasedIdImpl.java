@@ -6,9 +6,24 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
  * 
 */
 public class UidBasedIdImpl implements ObjectId{
+
     //***** UidBasedId *****
+
+/* * FIELDS * */
+
     //***** ObjectId *****
 
+/* * FIELDS * */
+
+/**
+ * 
+ * The value of the id in the form defined below.
+ * 
+*/
+    private String value;
+
+        />
+    
 /* * ATTRIBUTE * */
 
 /* * POJO * */

@@ -72,4 +72,23 @@ public interface BmmContainerType extends BmmType {
 */
     BmmEffectiveType  effective_type();
 
+/* * CONSTANTS * */
+
+/**
+ * 
+ * True indicates that order of the items in the container attribute is considered significant and must be preserved, e.g.
+ * across sessions, serialisation, deserialisation etc.
+ * Otherwise known as 'list' semantics.
+ * 
+*/
+    Boolean {default isOrdered = true};
+
+/**
+ * 
+ * True indicates that only unique instances of items in the container are allowed.
+ * Otherwise known as 'set' semantics.
+ * 
+*/
+    Boolean {default isUnique = false};
+
 }

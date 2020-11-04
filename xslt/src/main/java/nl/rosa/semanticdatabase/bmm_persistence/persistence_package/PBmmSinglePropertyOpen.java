@@ -45,4 +45,6 @@ public interface PBmmSinglePropertyOpen extends PBmmProperty {
 */
     PBmmOpenType  type_def();
 
+/* * CONSTANTS * */
+
 }

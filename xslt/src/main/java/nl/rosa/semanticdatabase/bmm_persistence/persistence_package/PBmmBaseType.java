@@ -19,4 +19,6 @@ public interface PBmmBaseType extends PBmmType {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

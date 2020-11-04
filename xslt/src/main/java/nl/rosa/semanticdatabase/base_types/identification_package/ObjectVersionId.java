@@ -40,4 +40,6 @@ public interface ObjectVersionId extends UidBasedId {
 */
     Boolean  is_branch();
 
+/* * CONSTANTS * */
+
 }

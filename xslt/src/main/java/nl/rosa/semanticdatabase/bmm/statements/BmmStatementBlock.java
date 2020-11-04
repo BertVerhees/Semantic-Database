@@ -20,4 +20,6 @@ public interface BmmStatementBlock extends BmmStatementItem {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

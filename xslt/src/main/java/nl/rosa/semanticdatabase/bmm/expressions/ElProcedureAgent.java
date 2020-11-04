@@ -20,4 +20,6 @@ public interface ElProcedureAgent extends ElAgent {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

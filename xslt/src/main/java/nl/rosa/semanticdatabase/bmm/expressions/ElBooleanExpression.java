@@ -11,4 +11,6 @@ public interface ElBooleanExpression extends ElConstrained {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

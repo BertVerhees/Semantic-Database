@@ -44,4 +44,6 @@ public interface PBmmContainerProperty extends PBmmProperty {
 */
     void  create_bmm_property();
 
+/* * CONSTANTS * */
+
 }

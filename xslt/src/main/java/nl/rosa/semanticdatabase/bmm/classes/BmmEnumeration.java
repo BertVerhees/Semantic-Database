@@ -39,4 +39,6 @@ public interface BmmEnumeration extends BmmSimpleClass {
 */
     Map<String, String>  name_map();
 
+/* * CONSTANTS * */
+
 }

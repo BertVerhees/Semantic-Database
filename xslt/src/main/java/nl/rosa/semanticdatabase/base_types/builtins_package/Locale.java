@@ -18,4 +18,6 @@ public interface Locale {
 */
     Terminology_code  primary_language();
 
+/* * CONSTANTS * */
+
 }

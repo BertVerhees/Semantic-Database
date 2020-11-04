@@ -6,9 +6,18 @@ package nl.rosa.semanticdatabase.bmm.statements;
  * 
 */
 public class BmmStatementImpl implements BmmStatementItem{
+
     //***** BmmStatement *****
+
+/* * FIELDS * */
+
     //***** BmmStatementItem *****
+
+/* * FIELDS * */
+
     //***** BmmRoutineBody *****
+
+/* * FIELDS * */
 
 /* * ATTRIBUTE * */
 

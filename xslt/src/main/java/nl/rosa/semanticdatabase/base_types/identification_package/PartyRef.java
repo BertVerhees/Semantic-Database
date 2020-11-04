@@ -13,4 +13,6 @@ public interface PartyRef extends ObjectRef {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

@@ -26,4 +26,6 @@ public interface ElSelfRef extends ElInstanceRef {
 */
     BmmType  eval_type();
 
+/* * CONSTANTS * */
+
 }

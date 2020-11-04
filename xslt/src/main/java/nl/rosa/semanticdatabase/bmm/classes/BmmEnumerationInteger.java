@@ -20,4 +20,6 @@ public interface BmmEnumerationInteger extends BmmEnumeration {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

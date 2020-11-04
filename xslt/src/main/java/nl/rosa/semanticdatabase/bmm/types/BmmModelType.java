@@ -41,4 +41,6 @@ public interface BmmModelType extends BmmEffectiveType {
 */
     Boolean  is_primitive();
 
+/* * CONSTANTS * */
+
 }

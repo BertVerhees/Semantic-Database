@@ -20,4 +20,6 @@ public interface BmmSimpleClass extends BmmClass {
 */
     BmmSimpleType  type();
 
+/* * CONSTANTS * */
+
 }

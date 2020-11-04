@@ -68,4 +68,6 @@ public interface ArchetypeId extends ObjectId {
 */
     String  version_id();
 
+/* * CONSTANTS * */
+
 }

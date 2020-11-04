@@ -46,4 +46,6 @@ public interface StatisticalEvaluator {
 */
     Numeric  min();
 
+/* * CONSTANTS * */
+
 }

@@ -8,9 +8,24 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
  * 
 */
 public class IsoOidImpl implements Uid{
+
     //***** IsoOid *****
+
+/* * FIELDS * */
+
     //***** Uid *****
 
+/* * FIELDS * */
+
+/**
+ * 
+ * The value of the id.
+ * 
+*/
+    private String value;
+
+        />
+    
 /* * ATTRIBUTE * */
 
 /* * POJO * */

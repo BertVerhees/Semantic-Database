@@ -19,4 +19,6 @@ public interface BmmBooleanValue extends BmmPrimitiveValue {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }

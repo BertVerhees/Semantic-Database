@@ -19,4 +19,6 @@ public interface BmmIntegerValue extends BmmPrimitiveValue {
 
 /* * FUNCTION * */
 
+/* * CONSTANTS * */
+
 }
