@@ -132,8 +132,10 @@
         <xsl:value-of select="do:commentOutput($nameAndTypeAndKind/description)"/>
         <xsl:value-of select="do:commentClose()"/>
         <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
+        <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name,1)"/>
         <xsl:choose>
-            <xsl:when test="$nameAndTypeAndKind/container and starts-with($nameAndTypeAndKind/cardinality, '1')">
+            <xsl:when test="$nameAndTypeAndKind/container=true() and starts-with($nameAndTypeAndKind/cardinality, '1')">
+                <xsl:value-of select="do:message(concat('++',$nameAndTypeAndKind/container,$nameAndTypeAndKind/cardinality,$nameAndTypeAndKind/name))"/>
                 <xsl:variable name="implementationType">
                     <xsl:choose>
                         <xsl:when test="starts-with(lower-case($nameAndTypeAndKind/type), 'list')">
@@ -147,10 +149,10 @@
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:variable>
-                <xsl:value-of select="do:outputSpaces(concat('    private ', concat($type, ' ', $nameAndTypeAndKind/name, ' = new ', $implementationType, '&lt;&gt;;')))"/>
+                <xsl:value-of select="do:outputSpaces(concat('    private ', concat($type, ' ', $name, ' = new ', $implementationType, '&lt;&gt;;')))"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="do:outputSpaces(concat('    private ', concat($type, ' ', $nameAndTypeAndKind/name, ';')))"/>
+                <xsl:value-of select="do:outputSpaces(concat('    private ', concat($type, ' ', $name, ';')))"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -165,7 +167,8 @@
         <xsl:value-of select="do:commentClose()"/>
         <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
         <xsl:choose>
-            <xsl:when test="starts-with($type, 'List') or starts-with($type, 'Set')"> </xsl:when>
+            <xsl:when test="starts-with($type, 'List') or starts-with($type, 'Set')">
+            </xsl:when>
             <xsl:when test="starts-with($type, 'Map')">
                 <xsl:value-of select="do:writeMapPojo($nameAndTypeAndKind/type, $nameAndTypeAndKind/name, $nameAndTypeAndKind/cardinality)"/>
             </xsl:when>
@@ -192,7 +195,6 @@
         <xsl:param name="package" as="node()"/>
         <xsl:param name="class" as="node()"/>
         <!-- If inherit do recursion -->
-        <xsl:value-of select="do:message(concat('->', $class/className))"/>
         <xsl:variable name="result">
             <xsl:value-of select="do:output('')"/>
             <xsl:value-of select="do:outputSpaces(concat('    //***** ', $class/className, ' *****'))"/>
@@ -460,6 +462,9 @@
                     </xsl:variable>
                     <xsl:value-of select="concat($type, '&lt;', $newTypes, '&gt;')"/>
                 </xsl:when>
+                <xsl:when test="$incomingString='Any'">
+                    <xsl:value-of select="'Object'"/>
+                </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="$incomingString"/>
                 </xsl:otherwise>
@@ -560,15 +565,16 @@
                                     </xsl:for-each>
                                     <xsl:for-each select="tbody/tr[3]/td/p/code">
                                         <!-- ClassNames from parents (evt more then one) -->
-                                        <xsl:variable name="inherit" as="xs:string" select="."/>
+                                        <xsl:variable name="inherit" as="xs:string" select="do:snakeUpperCaseToCamelCase(normalize-space(.), 0)"/>
+                                        <xsl:value-of select="do:message(concat('         inher:', $inherit))"/>
                                         <xsl:element name="inherit">
-                                            <xsl:value-of select="do:snakeUpperCaseToCamelCase(normalize-space($inherit), 0)"/>
-                                            <xsl:value-of select="do:message(concat('         inher:', do:snakeUpperCaseToCamelCase(normalize-space($inherit), 0)))"/>
+                                            <xsl:value-of select="$inherit"/>
                                         </xsl:element>
                                         <!-- CLASS_NAMES from parents (original) -->
+                                        <xsl:variable name="inheritOrg" as="xs:string" select="normalize-space(.)"/>
+                                        <xsl:value-of select="do:message(concat('         inher-org:', $inheritOrg))"/>
                                         <xsl:element name="inheritOrg">
-                                            <xsl:value-of select="do:message(concat('         inher-org:', normalize-space($inherit)))"/>
-                                            <xsl:value-of select="normalize-space($inherit)"/>
+                                            <xsl:value-of select="normalize-space($inheritOrg)"/>
                                         </xsl:element>
                                     </xsl:for-each>
                                     <!-- Functions and Attributes and enum-values -->
@@ -582,7 +588,7 @@
                                                     <xsl:choose>
                                                         <!-- enumeration -->
                                                         <xsl:when test="normalize-space($cardinality) = ''">
-                                                            <xsl:variable name="enumType" select="normalize-space($nameAndType)"/>
+                                                            <xsl:variable name="enumType" select="do:snakeUpperCaseToCamelCase(normalize-space($nameAndType),1)"/>
                                                             <xsl:variable name="kind" select="'enum-value'"/>
                                                             <xsl:element name="enumType">
                                                                 <xsl:value-of select="$enumType"/>
@@ -634,11 +640,11 @@
                                                                     <xsl:element name="kind">
                                                                         <xsl:value-of select="$kind"/>
                                                                     </xsl:element>
-                                                                    <xsl:value-of  select="do:message(concat('            kind:',$kind, ', name: ', $name, ', return-type: ', $return-type))"/>
+                                                                    <xsl:value-of  select="do:message(concat('            kind:',$kind, ', name: ', $name, ', return-type: ', $return-type,', cardinality:', $cardinality))"/>
                                                                     <!-- function parameters -->
                                                                     <xsl:element name="parameters">
                                                                         <xsl:variable name="parameterPart" select="normalize-space(substring-after(substring-before($nameAndType, ')'), '('))"/>
-                                                                        <xsl:value-of select="do:message(concat('            parameters:', $parameterPart))"/>
+                                                                        <xsl:value-of select="do:message(concat('            parameterPart:', $parameterPart))"/>
                                                                         <xsl:value-of select="$parameterPart"/>
                                                                         <xsl:for-each select="tokenize($parameterPart, ',')">
                                                                             <xsl:value-of select="do:message(concat('                parameter:', normalize-space(.)))"/>
@@ -699,8 +705,7 @@
                                                                             <xsl:variable name="type"
                                                                                 select="replace(normalize-space(substring-before(normalize-space(substring-after($nameAndType, ':')), '=')), '&#160;', '')"/>
                                                                             <xsl:variable name="value" select="replace(normalize-space(substring-after($nameAndType, '=')), '&#160;', '')"/>
-                                                                            <xsl:value-of
-                                                                                select="do:message(concat('            constant:', ' name: *', $name, '* type: *', $type, '*  value:*', $value, '*'))"/>
+                                                                            <xsl:variable name="kind" select="'constant'"/>
                                                                             <xsl:element name="name">
                                                                                 <xsl:value-of select="$name"/>
                                                                             </xsl:element>
@@ -711,16 +716,17 @@
                                                                                 <xsl:value-of select="$value"/>
                                                                             </xsl:element>
                                                                             <xsl:element name="kind">
-                                                                                <xsl:value-of select="'constant'"/>
+                                                                                <xsl:value-of select="$kind"/>
                                                                             </xsl:element>
-                                                                            <xsl:value-of select="do:message('            kind: constant')"/>
+                                                                            <xsl:value-of
+                                                                                select="do:message(concat('            ',$kind, ', name: ', $name, ' type: ', $type, '  value:', $value,', cardinality:', $cardinality))"/>
                                                                         </xsl:when>
                                                                         <!-- attribute -->
                                                                         <xsl:otherwise>
                                                                             <xsl:variable name="name" select="normalize-space(substring-before($nameAndType, ':'))"/>
                                                                             <xsl:variable name="type" select="normalize-space(substring-after($nameAndType, ':'))"/>
-                                                                            <xsl:value-of
-                                                                                select="do:message(concat('            ---attribute:', ' name: ', $name, ' type: ', $type, ' container:', starts-with(lower-case($type), 'list') or starts-with(lower-case($type), 'set') or starts-with(lower-case($type), 'map')))"/>
+                                                                            <xsl:variable name="container" select="starts-with(lower-case($type), 'list') or starts-with(lower-case($type), 'set') or starts-with(lower-case($type), 'hash')"/>
+                                                                            <xsl:variable name="kind" select="'attribute'"/>
                                                                             <xsl:element name="name">
                                                                                 <xsl:value-of select="$name"/>
                                                                             </xsl:element>
@@ -729,19 +735,19 @@
                                                                             </xsl:element>
                                                                             <xsl:element name="container">
                                                                                 <xsl:value-of
-                                                                                    select="starts-with(lower-case($type), 'list') or starts-with(lower-case($type), 'set') or starts-with(lower-case($type), 'map')"
+                                                                                    select="$container"
                                                                                 />
                                                                             </xsl:element>
                                                                             <xsl:element name="kind">
-                                                                                <xsl:value-of select="'attribute'"/>
+                                                                                <xsl:value-of select="$kind"/>
                                                                             </xsl:element>
-                                                                            <xsl:value-of select="do:message('            kind: attribute')"/>
+                                                                            <xsl:value-of
+                                                                                select="do:message(concat('            ---',$kind, ', name: ', $name, ', type: ', $type, ', container:', $container,', cardinality:', $cardinality))"/>
                                                                         </xsl:otherwise>
                                                                     </xsl:choose>
                                                                 </xsl:otherwise>
                                                             </xsl:choose>
                                                             <xsl:element name="cardinality">
-                                                                <xsl:value-of select="do:message(concat('            cardinality:', $cardinality))"/>
                                                                 <xsl:value-of select="$cardinality"/>
                                                             </xsl:element>
                                                         </xsl:otherwise>
