@@ -202,8 +202,8 @@
         <xsl:variable name="types" as="xs:string*" select="tokenize(substring-before(substring-after($type, '&lt;'), '&gt;'), ',')"/>
         <xsl:variable name="keyType" as="xs:string" select="do:processType($packages,normalize-space($types[1]))"/>
         <xsl:variable name="valueType" as="xs:string" select="do:processType($packages,normalize-space($types[2]))"/>
-        <xsl:value-of select="do:output('')"/>
-        <xsl:value-of select="do:outputSpaces(concat('    ', concat('public void put', do:snakeUpperCaseToCamelCase($name, 0), '(', $keyType, ' key, ',$valueType,' value ) {')))"/>
+        <xsl:value-of select="do:output($fourSp)"/>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public void put', do:snakeUpperCaseToCamelCase(replace(substring($name,0,string-length($name)),'ie','y'), 0), '(', $keyType, ' key, ',$valueType,' value ) {')))"/>
         <xsl:if test="not(starts-with($cardinality,'1'))">
             <xsl:value-of select="do:outputSpaces(concat($fourSp,$fourSp,'if (', $name, ' = null ) {'))"/>
             <xsl:value-of select="do:outputSpaces(concat($fourSp,$fourSp,$fourSp, $name, ' = new ',$implementationType, '&lt;&gt; ();'))"/>
@@ -211,6 +211,10 @@
         </xsl:if>
         <xsl:value-of select="do:outputSpaces(concat($fourSp,$fourSp, $name, '.put( key, value);'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp,'}'))"/>
+        <xsl:value-of select="do:output($fourSp)"/>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public void put', do:snakeUpperCaseToCamelCase($name, 0), '(', do:processType($packages, $type), ' items ) {'))"/>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp,$fourSp, 'items.keySet().forEach(key -&gt; put',do:snakeUpperCaseToCamelCase(replace(substring($name,0,string-length($name)),'ie','y'), 0),'(key, items.get(key)));'))"/>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
     </xsl:function>
 
     <xsl:function name="do:writeClassProperties">
