@@ -6,6 +6,7 @@
     <xsl:variable name="newline" select="'&#xA;'"/>
     <xsl:variable name="packageBase" select="'nl/rosa/semanticdatabase/'"/>
     <xsl:variable name="sourceBase" select="'generated_source/main/java/'"/>
+    <xsl:variable name="fourSp" select="'    '"/>
 
     <xsl:template match="/">
         <xsl:variable name="root">
@@ -124,6 +125,30 @@
         <xsl:value-of select="do:output('}')"/>
     </xsl:function>
 
+    <xsl:function name="do:writeClassImplementationType">
+        <xsl:param name="type" as="xs:string"></xsl:param>
+        <xsl:variable name="implementationType">
+            <xsl:choose>
+                <xsl:when test="starts-with(lower-case($type), 'list')">
+                    <xsl:value-of select="'ArrayList'"/>
+                </xsl:when>
+                <xsl:when test="starts-with(lower-case($type), 'set')">
+                    <xsl:value-of select="'HashSet'"/>
+                </xsl:when>
+                <xsl:when test="starts-with(lower-case($type), 'map')">
+                    <xsl:value-of select="'HashMap'"/>
+                </xsl:when>
+                <xsl:when test="starts-with(lower-case($type), 'hash')">
+                    <xsl:value-of select="'HashMap'"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="$type"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
+        <xsl:value-of select="$implementationType"/>
+    </xsl:function>
+
     <xsl:function name="do:writeClassAttribute">
         <xsl:param name="nameAndTypeAndKind" as="node()"/>
         <xsl:param name="packages" as="node()"/>
@@ -135,24 +160,11 @@
         <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name,1)"/>
         <xsl:choose>
             <xsl:when test="$nameAndTypeAndKind/container=true() and starts-with($nameAndTypeAndKind/cardinality, '1')">
-                <xsl:value-of select="do:message(concat('++',$nameAndTypeAndKind/container,$nameAndTypeAndKind/cardinality,$nameAndTypeAndKind/name))"/>
-                <xsl:variable name="implementationType">
-                    <xsl:choose>
-                        <xsl:when test="starts-with(lower-case($nameAndTypeAndKind/type), 'list')">
-                            <xsl:value-of select="'ArrayList'"/>
-                        </xsl:when>
-                        <xsl:when test="starts-with(lower-case($nameAndTypeAndKind/type), 'set')">
-                            <xsl:value-of select="'HashSet'"/>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:value-of select="'HashMap'"/>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:variable>
-                <xsl:value-of select="do:outputSpaces(concat('    private ', concat($type, ' ', $name, ' = new ', $implementationType, '&lt;&gt;;')))"/>
+                <xsl:variable name="implementationType" select="do:writeClassImplementationType($type)"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp,'private ', $type, ' ', $name, ' = new ', $implementationType, '&lt;&gt; ();'))"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="do:outputSpaces(concat('    private ', concat($type, ' ', $name, ';')))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp,'private ', $type, ' ', $name, ';'))"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -160,7 +172,7 @@
     <xsl:function name="do:writeClassPojos">
         <xsl:param name="nameAndTypeAndKind" as="node()"/>
         <xsl:param name="packages" as="node()"/>
-        <xsl:param name="type" as="xs:string"/>
+        <xsl:param name="implementationType" as="xs:string"/>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:commentOpen()"/>
         <xsl:value-of select="do:commentOutput($nameAndTypeAndKind/description)"/>
@@ -170,24 +182,35 @@
             <xsl:when test="starts-with($type, 'List') or starts-with($type, 'Set')">
             </xsl:when>
             <xsl:when test="starts-with($type, 'Map')">
-                <xsl:value-of select="do:writeMapPojo($nameAndTypeAndKind/type, $nameAndTypeAndKind/name, $nameAndTypeAndKind/cardinality)"/>
+                <xsl:value-of select="do:writeMapPojo($packages, $nameAndTypeAndKind/type, $nameAndTypeAndKind/name, $nameAndTypeAndKind/cardinality, $implementationType)"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="do:outputSpaces(concat('    ', concat('public ', $type, ' get', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '() {')))"/>
-                <xsl:value-of select="do:outputSpaces('    }')"/>
-                <xsl:value-of select="do:outputSpaces(concat('    ', concat('public void set', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '(', $type, ' value) {')))"/>
-                <xsl:value-of select="do:outputSpaces('    }')"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public ', $type, ' get', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '() {')))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp,'}'))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public void set', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '(', $type, ' value) {')))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp,'}'))"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
 
     <xsl:function name="do:writeMapPojo">
+        <xsl:param name="packages"></xsl:param>
         <xsl:param name="type" as="xs:string"/>
         <xsl:param name="name" as="xs:string"/>
         <xsl:param name="cardinality" as="xs:string"/>
+        <xsl:param name="implementationType" as="xs:string"/>
         <xsl:variable name="types" as="xs:string*" select="tokenize(substring-before(substring-after($type, '&lt;'), '&gt;'), ',')"/>
-        <xsl:variable name="keyType" as="xs:string" select="normalize-space($types[1])"/>
-        <xsl:variable name="valueType" as="xs:string" select="normalize-space($types[2])"/>
+        <xsl:variable name="keyType" as="xs:string" select="do:processType($packages,normalize-space($types[1]))"/>
+        <xsl:variable name="valueType" as="xs:string" select="do:processType($packages,normalize-space($types[2]))"/>
+        <xsl:value-of select="do:output('')"/>
+        <xsl:value-of select="do:outputSpaces(concat('    ', concat('public void put', do:snakeUpperCaseToCamelCase($name, 0), '(', $keyType, ' key, ',$valueType,' value ) {')))"/>
+        <xsl:if test="not(starts-with($cardinality,'1'))">
+            <xsl:value-of select="do:outputSpaces(concat($fourSp,$fourSp,'if (', $name, ' = null ) {'))"/>
+            <xsl:value-of select="do:outputSpaces(concat($fourSp,$fourSp,$fourSp, $name, ' = new ',$implementationType, '&lt;&gt; ();'))"/>
+            <xsl:value-of select="do:outputSpaces(concat($fourSp,$fourSp,'}'))"/>
+        </xsl:if>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp,$fourSp, $name, '.put( key, value);'))"/>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp,'}'))"/>
     </xsl:function>
 
     <xsl:function name="do:writeClassProperties">
@@ -209,7 +232,8 @@
             <xsl:value-of select="do:output('/* * POJOS * */')"/>
             <xsl:for-each select="$class/functionsAndAttributesAndConstants/nameAndTypeAndKind">
                 <xsl:if test="kind = 'attribute'">
-                    <xsl:value-of select="do:writeClassPojos(., $packages, type)"/>
+                    <xsl:variable name="implementationType" select="do:writeClassImplementationType(type)"/>
+                    <xsl:value-of select="do:writeClassPojos(., $packages, $implementationType)"/>
                 </xsl:if>
             </xsl:for-each>
             <xsl:for-each select="$class/inheritOrg">
