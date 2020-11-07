@@ -180,9 +180,7 @@
         <xsl:value-of select="do:commentClose()"/>
         <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
         <xsl:choose>
-            <xsl:when test="starts-with($type, 'Set')">
-            </xsl:when>
-            <xsl:when test="starts-with($type, 'List')">
+            <xsl:when test="starts-with($type, 'List') or starts-with($type, 'Set')">
                 <xsl:value-of select="do:writeListPojo($packages, $type, do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), $nameAndTypeAndKind/cardinality, $implementationType)"/>
             </xsl:when>
             <xsl:when test="starts-with($type, 'Map')">
