@@ -7,6 +7,14 @@
     <xsl:variable name="packageBase" select="'nl/rosa/semanticdatabase/'"/>
     <xsl:variable name="sourceBase" select="'generated_source/main/java/'"/>
     <xsl:variable name="fourSp" select="'    '"/>
+    <xsl:variable name="implements" as="xs:string*" select="
+        'BMM_MODEL_METADATA',
+        'BMM_INSTANTIABLE',
+        'BMM_TYPED_FEATURE',
+        'BMM_TYPED',
+        'EL_AGENT_CALL',
+        'P_BMM_PACKAGE_CONTAINER'
+        "/>
 
     <xsl:template match="/">
         <xsl:variable name="root">
@@ -77,9 +85,11 @@
                 </xsl:result-document>
             </xsl:for-each>-->
             <xsl:for-each select="class">
+                <xsl:variable name="includeSequence" as="xs:string*"/>
                 <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/{classFileName}.java">
                     <xsl:choose>
                         <xsl:when test="enumeration = true()">
+                            <xsl:value-of select="do:addToIncludes($root/packages,includes,'BMM_MODEL')"/>
                             <xsl:value-of select="do:writeEnumeration($root/packages, .)"/>
                         </xsl:when>
                         <xsl:otherwise>
@@ -90,7 +100,6 @@
             </xsl:for-each>
         </xsl:for-each>
     </xsl:template>
-
 
     <xsl:function name="do:getInheritedAttributes">
         <xsl:param name="packages" as="node()"/>
@@ -123,12 +132,22 @@
         <xsl:value-of select="do:commentOpen()"/>
         <xsl:value-of select="do:commentOutput($class/classComment)"/>
         <xsl:value-of select="do:commentClose()"/>
+        <xsl:variable name="inherit">
+            <xsl:choose>
+                <xsl:when test="string-length(normalize-space(string-join($class/inherit, ',')))>0">
+                    <xsl:value-of select="concat(' extends ', normalize-space(string-join($class/inherit, ',')))"/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:value-of select="''"/>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:variable>
         <xsl:choose>
             <xsl:when test="$class/abstract=true()">
-                <xsl:value-of select="do:output(concat('public abstract class ', $class/className, ' extends ', normalize-space(string-join($class/inherit, ',')), '{'))"/>                
+                <xsl:value-of select="do:output(concat('public abstract class ', $class/className, $inherit, ' {'))"/>                
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="do:output(concat('public class ', $class/className, ' extends ', normalize-space(string-join($class/inherit, ',')), '{'))"/>
+                <xsl:value-of select="do:output(concat('public class ', $class/className, $inherit, ' {'))"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -702,6 +721,8 @@
                         <xsl:if test="string-length($className) > 0">
                             <xsl:variable name="class">
                                 <xsl:element name="class">
+                                    <xsl:element name="packageDirectory"><xsl:value-of select="$packageDirectory"/></xsl:element>
+                                    <xsl:element name="includes"></xsl:element>
                                     <xsl:value-of select="do:message($className)"/>
                                     <!-- Check abstract by scanning for word abstract -->
                                     <xsl:element name="abstract">
@@ -753,18 +774,36 @@
                                         </xsl:if>
                                     </xsl:for-each>
                                     <xsl:for-each select="tbody/tr[3]/td/p/code">
-                                        <!-- ClassNames from parents (evt more then one) -->
-                                        <xsl:variable name="inherit" as="xs:string" select="do:snakeUpperCaseToCamelCase(normalize-space(.), 0)"/>
-                                        <xsl:value-of select="do:message(concat('         inher:', $inherit))"/>
-                                        <xsl:element name="inherit">
-                                            <xsl:value-of select="$inherit"/>
-                                        </xsl:element>
-                                        <!-- CLASS_NAMES from parents (original) -->
-                                        <xsl:variable name="inheritOrg" as="xs:string" select="normalize-space(.)"/>
-                                        <xsl:value-of select="do:message(concat('INHERITANCE:    ', $inheritOrg))"/>
-                                        <xsl:element name="inheritOrg">
-                                            <xsl:value-of select="normalize-space($inheritOrg)"/>
-                                        </xsl:element>
+                                        <xsl:choose>
+                                            <xsl:when test="not(do:is-value-in-sequence(normalize-space(.),$implements))">
+                                                <!-- ClassNames from parents (evt more then one) -->
+                                                <xsl:variable name="inherit" as="xs:string" select="do:snakeUpperCaseToCamelCase(normalize-space(.), 0)"/>
+                                                <xsl:value-of select="do:message(concat('         inherit:', $inherit))"/>
+                                                <xsl:element name="inherit">
+                                                    <xsl:value-of select="$inherit"/>
+                                                </xsl:element>
+                                                <!-- CLASS_NAMES from parents (original) -->
+                                                <xsl:variable name="inheritOrg" as="xs:string" select="normalize-space(.)"/>
+                                                <xsl:value-of select="do:message(concat('INHERITANCE:    ', $inheritOrg))"/>
+                                                <xsl:element name="inheritOrg">
+                                                    <xsl:value-of select="normalize-space($inheritOrg)"/>
+                                                </xsl:element>
+                                            </xsl:when>
+                                            <xsl:otherwise>
+                                                <!-- ClassNames from parents (evt more then one) -->
+                                                <xsl:variable name="implement" as="xs:string" select="do:snakeUpperCaseToCamelCase(normalize-space(.), 0)"/>
+                                                <xsl:value-of select="do:message(concat('         inplement:', $implement))"/>
+                                                <xsl:element name="inherit">
+                                                    <xsl:value-of select="$implement"/>
+                                                </xsl:element>
+                                                <!-- CLASS_NAMES from parents (original) -->
+                                                <xsl:variable name="implementOrg" as="xs:string" select="normalize-space(.)"/>
+                                                <xsl:value-of select="do:message(concat('IMPLEMENT:    ', $implementOrg))"/>
+                                                <xsl:element name="implementOrg">
+                                                    <xsl:value-of select="normalize-space($implementOrg)"/>
+                                                </xsl:element>
+                                            </xsl:otherwise>
+                                        </xsl:choose>
                                     </xsl:for-each>
                                     <!-- Functions and Attributes and enum-values -->
                                     <xsl:element name="functionsAndAttributesAndConstants">
@@ -958,6 +997,12 @@
             <xsl:copy-of select="$package"/>
         </xsl:if>
     </xsl:template>
+    
+    <xsl:function name="do:is-value-in-sequence" as="xs:boolean">
+        <xsl:param name="value" as="xs:anyAtomicType?"/>
+        <xsl:param name="seq" as="xs:anyAtomicType*"/>
+        <xsl:sequence select="$value = $seq"/>
+    </xsl:function>
 
     <xsl:function name="do:basePackageInfo">
         <xsl:param name="context" as="node()"/>
@@ -981,6 +1026,30 @@
                 ':',
                 normalize-space($context/html/body[1]/div[2]/div[3]/div[1]/table[1]/tbody[1]/tr[2]/td[4])))"
         />
+    </xsl:function>
+    
+    <xsl:function name="do:getIncludes">
+        <xsl:param name="packages"></xsl:param>
+        <xsl:param name="class" as="node()"></xsl:param>
+        <xsl:sequence>
+            <xsl:for-each select="$class/inheritOrg">
+                <xsl:value-of select="./text()"/>
+            </xsl:for-each>
+            <xsl:for-each select="$class/implmentOrg">
+                <xsl:value-of select="./text()"/>
+            </xsl:for-each>
+        </xsl:sequence>
+    </xsl:function>
+    
+    <xsl:function name="do:addToIncludes">
+        <xsl:param name="packages"></xsl:param>
+        <xsl:param name="class" as="node()"></xsl:param>
+        <xsl:param name="classNameToAdd" as="xs:string"></xsl:param>
+        <xsl:variable name="classToAdd" select="do:findClass($packages,$classNameToAdd)"/>
+        <xsl:variable name="includeToAdd" select="$classToAdd/packageDirectory"/>
+        <xsl:if test="not($class[include/text()=$includeToAdd]) and not($class/../../packageDirectory=$includeToAdd)">
+            <xsl:value-of select="$includeToAdd"/>
+        </xsl:if>
     </xsl:function>
 
     <xsl:function name="do:snakeUpperCaseToCamelCase">
