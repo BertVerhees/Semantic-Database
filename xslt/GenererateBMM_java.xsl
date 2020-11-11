@@ -84,12 +84,17 @@
                     </xsl:if>
                 </xsl:result-document>
             </xsl:for-each>-->
+            <xsl:variable name="allClasses" as="xs:string*">
+                <xsl:for-each select="class">
+                    <xsl:value-of select="classNameOrgAbstractStripped"/>
+                </xsl:for-each>
+            </xsl:variable>
             <xsl:for-each select="class">
-                <xsl:variable name="includeSequence" as="xs:string*"/>
+                <xsl:variable name="includeSequence" as="xs:string*" select="do:getIncludes($root/packages,., $allClasses)"/>
+                <xsl:value-of select="do:message(concat('PPPP',className,': ',string-join($includeSequence,',')))"/>
                 <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/{classFileName}.java">
                     <xsl:choose>
                         <xsl:when test="enumeration = true()">
-                            <xsl:value-of select="do:addToIncludes($root/packages,includes,'BMM_MODEL')"/>
                             <xsl:value-of select="do:writeEnumeration($root/packages, .)"/>
                         </xsl:when>
                         <xsl:otherwise>
@@ -1031,12 +1036,26 @@
     <xsl:function name="do:getIncludes">
         <xsl:param name="packages"></xsl:param>
         <xsl:param name="class" as="node()"></xsl:param>
+        <xsl:param name="allClasses" as="xs:string*"></xsl:param>
         <xsl:sequence>
             <xsl:for-each select="$class/inheritOrg">
                 <xsl:value-of select="./text()"/>
             </xsl:for-each>
-            <xsl:for-each select="$class/implmentOrg">
+            <xsl:for-each select="$class/implementOrg">
                 <xsl:value-of select="./text()"/>
+            </xsl:for-each>
+            <xsl:for-each select="$class/functionsAndAttributesAndConstants/nameAndTypeAndKind">
+                <xsl:if test="kind = 'attribute'">
+                    <xsl:choose>
+                        <xsl:when test="container=true()">
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:if test="do:is-value-in-sequence(type, $allClasses)">
+                                <xsl:value-of select="type"/>
+                            </xsl:if>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:if>
             </xsl:for-each>
         </xsl:sequence>
     </xsl:function>
