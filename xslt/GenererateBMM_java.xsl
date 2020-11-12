@@ -66,6 +66,13 @@
                 </xsl:for-each>
             </xsl:element>
         </xsl:variable>
+        <xsl:variable name="allClasses" as="xs:string*">
+            <xsl:for-each select="$root/packages/package">
+                <xsl:for-each select="class">
+                    <xsl:value-of select="classNameOrgAbstractStripped"/>
+                </xsl:for-each>
+            </xsl:for-each>
+        </xsl:variable>
         <xsl:for-each select="$root/packages/package">
             <xsl:variable name="pd" select="packageDirectory/text()"/>
             <xsl:variable name="package" select="."/>
@@ -84,14 +91,9 @@
                     </xsl:if>
                 </xsl:result-document>
             </xsl:for-each>-->
-            <xsl:variable name="allClasses" as="xs:string*">
-                <xsl:for-each select="class">
-                    <xsl:value-of select="classNameOrgAbstractStripped"/>
-                </xsl:for-each>
-            </xsl:variable>
             <xsl:for-each select="class">
                 <xsl:variable name="includeSequence" as="xs:string*" select="do:getIncludes($root/packages,., $allClasses)"/>
-                <xsl:value-of select="do:message(concat('PPPP',className,': ',string-join($includeSequence,',')))"/>
+                <xsl:value-of select="do:message(concat(' --- ',className,': ',string-join($includeSequence,',')))"/>
                 <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/{classFileName}.java">
                     <xsl:choose>
                         <xsl:when test="enumeration = true()">
@@ -226,7 +228,7 @@
         <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
         <xsl:value-of select="do:outputSpaces(concat('    final ', $type, ' ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' = ', $nameAndTypeAndKind/value, ';'))"/>
     </xsl:function>
-    
+    <!-- TODO PARAMETERS -->
     <xsl:function name="do:writeClassFunctions">
         <xsl:param name="nameAndTypeAndKind" as="node()"/>
         <xsl:param name="packages" as="node()"/>
@@ -867,6 +869,10 @@
                                                                         </xsl:otherwise>
                                                                     </xsl:choose>
                                                                     </xsl:variable>
+                                                                    <xsl:variable name="container" select="starts-with(lower-case($return-type), 'list') or starts-with(lower-case($return-type), 'set') or starts-with(lower-case($return-type), 'hash') or starts-with(lower-case($return-type), 'container')"/>                                                                    
+                                                                    <xsl:element name="container">
+                                                                        <xsl:value-of select="$container" />
+                                                                    </xsl:element>
                                                                     <xsl:element name="type">
                                                                         <xsl:value-of select="$return-type"/>
                                                                     </xsl:element>
@@ -920,6 +926,10 @@
                                                                                         </xsl:if>
                                                                                     </xsl:variable>
                                                                                     <xsl:value-of select="do:message(concat('                    type-cardinality:', $type-cardinality))"/>
+                                                                                    <xsl:variable name="container" select="starts-with(lower-case($type-name), 'list') or starts-with(lower-case($type-name), 'set') or starts-with(lower-case($type-name), 'hash') or starts-with(lower-case($type-name), 'container')"/>                                                                    
+                                                                                    <xsl:element name="container">
+                                                                                        <xsl:value-of select="$container" />
+                                                                                    </xsl:element>
                                                                                     <xsl:element name="type-name">
                                                                                         <xsl:value-of select="$type-name"/>
                                                                                     </xsl:element>
@@ -958,7 +968,7 @@
                                                                         <xsl:otherwise>
                                                                             <xsl:variable name="name" select="normalize-space(substring-before($nameAndType, ':'))"/>
                                                                             <xsl:variable name="type" select="normalize-space(substring-after($nameAndType, ':'))"/>
-                                                                            <xsl:variable name="container" select="starts-with(lower-case($type), 'list') or starts-with(lower-case($type), 'set') or starts-with(lower-case($type), 'hash')"/>
+                                                                            <xsl:variable name="container" select="starts-with(lower-case($type), 'list') or starts-with(lower-case($type), 'set') or starts-with(lower-case($type), 'hash') or starts-with(lower-case($type), 'container')"/>
                                                                             <xsl:variable name="kind" select="'attribute'"/>
                                                                             <xsl:element name="name">
                                                                                 <xsl:value-of select="$name"/>
@@ -1045,9 +1055,15 @@
                 <xsl:value-of select="./text()"/>
             </xsl:for-each>
             <xsl:for-each select="$class/functionsAndAttributesAndConstants/nameAndTypeAndKind">
-                <xsl:if test="kind = 'attribute'">
+                <xsl:if test="kind = 'attribute' or kind = 'void-function' or kind = 'value-function'">
                     <xsl:choose>
                         <xsl:when test="container=true()">
+                            <xsl:variable name="types" as="xs:string*" select="tokenize(substring-before(substring-after(type, '&lt;'), '&gt;'), ',')"/>
+                            <xsl:for-each select="$types">
+                                <xsl:if test="do:is-value-in-sequence(., $allClasses)">
+                                    <xsl:value-of select="."/>
+                                </xsl:if>
+                            </xsl:for-each>
                         </xsl:when>
                         <xsl:otherwise>
                             <xsl:if test="do:is-value-in-sequence(type, $allClasses)">
@@ -1055,6 +1071,27 @@
                             </xsl:if>
                         </xsl:otherwise>
                     </xsl:choose>
+                </xsl:if>
+                <xsl:if test="kind = 'void-function' or kind = 'value-function'">
+                    <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, type))"/>
+                    <xsl:for-each select="parameters/parameter">
+                        <xsl:choose>
+                            <xsl:when test="type/container=true()">
+                                <xsl:variable name="types" as="xs:string*" select="tokenize(substring-before(substring-after(type/type-name, '&lt;'), '&gt;'), ',')"/>
+                                <xsl:for-each select="$types">
+                                    <xsl:if test="do:is-value-in-sequence(., $allClasses)">
+                                        <xsl:value-of select="."/>
+                                    </xsl:if>
+                                </xsl:for-each>
+                            </xsl:when>
+                            <xsl:otherwise>
+                                <xsl:if test="do:is-value-in-sequence(type/type-name, $allClasses)">
+                                    <xsl:value-of select="type/type-name"/>
+                                </xsl:if>
+                            </xsl:otherwise>
+                        </xsl:choose>
+                        
+                    </xsl:for-each>
                 </xsl:if>
             </xsl:for-each>
         </xsl:sequence>
