@@ -22,6 +22,21 @@
     <xsl:template match="/">
         <xsl:variable name="root">
             <xsl:element name="packages">
+                <xsl:variable name="baseDirectorytest" select="'test'"/>
+                <xsl:element name="package">
+                    <xsl:element name="packageInfo">
+                        <xsl:copy-of select="do:basePackageInfo(document(concat($baseDirectorytest, '.html')), concat($packageBase, $baseDirectorytest))"/>
+                    </xsl:element>
+                    <xsl:element name="packageDirectory">
+                        <xsl:value-of select="$baseDirectorytest"/>
+                    </xsl:element>
+                </xsl:element>
+                <xsl:for-each select="document(concat($baseDirectorytest, '.html'))/html/body[1]/div[2]/div">
+                    <xsl:call-template name="analyzeClassDocument">
+                        <xsl:with-param name="context" select="."/>
+                        <xsl:with-param name="baseDirectory" select="$baseDirectorytest"/>
+                    </xsl:call-template>
+                </xsl:for-each>
                 <xsl:variable name="baseDirectory0" select="'base_types'"/>
                 <xsl:element name="package">
                     <xsl:element name="packageInfo">
@@ -266,12 +281,12 @@
         <xsl:value-of select="do:writeComment($nameAndTypeAndKind/description, $nameAndTypeAndKind/cardinality)"/>
         <xsl:choose>
             <xsl:when test="$nameAndTypeAndKind/kind = 'void-function'">
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('void  ', $nameAndTypeAndKind/name, '() {')))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public void  ', $nameAndTypeAndKind/name, '() {')))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
             </xsl:when>
             <xsl:otherwise>
                 <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public', $type, '  ', $nameAndTypeAndKind/name, '() {'))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $type, '  ', $nameAndTypeAndKind/name, '() {'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $type, '  result', ';'))"/>
                 <xsl:value-of select="do:output('')"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return  result', ';'))"/>
