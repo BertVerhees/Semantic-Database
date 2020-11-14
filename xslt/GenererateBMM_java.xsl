@@ -132,14 +132,16 @@
     <xsl:function name="do:getInheritedAttributes">
         <xsl:param name="packages" as="node()"/>
         <xsl:param name="class" as="node()"/>
+        <xsl:param name="inherits"></xsl:param>
         <xsl:variable name="result">
             <xsl:copy-of select="$class"/>
-            <xsl:for-each select="$class/inheritOrg">
+            <xsl:for-each select="$inherits">
                 <xsl:variable name="inheritedClass" as="node()" select="do:findClass($packages, .)"/>
                 <xsl:if test="$inheritedClass">
-                    <xsl:for-each select="$inheritedClass/attribute">
+                    <xsl:for-each select="$inheritedClass/functionsAndAttributesAndConstants">
                         <xsl:copy-of select="."/>
                     </xsl:for-each>
+                    <xsl:copy-of select="do:getInheritedAttributes($packages, $inheritedClass, $inheritedClass/inheritOrg)"></xsl:copy-of>
                 </xsl:if>
             </xsl:for-each>
         </xsl:variable>
@@ -187,8 +189,8 @@
         </xsl:variable>
         <xsl:variable name="implements">
             <xsl:choose>
-                <xsl:when test="string-length(normalize-space(string-join($class/implements, ','))) > 0">
-                    <xsl:value-of select="concat(' extends ', normalize-space(string-join($class/implements, ',')))"/>
+                <xsl:when test="string-length(normalize-space(string-join($class/implement, ','))) > 0">
+                    <xsl:value-of select="concat(' implements ', normalize-space(string-join($class/implement, ',')))"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="''"/>
@@ -508,6 +510,10 @@
         <xsl:param name="includeSequence" as="xs:string*"/>
         <xsl:value-of select="do:writeClassHeader($packages, $package, $class, $includeSequence)"/>
         <xsl:value-of select="do:writeClassProperties($packages, $package, $class)"/>
+        <xsl:variable name="classes" select="do:getInheritedAttributes($packages, $class, $class/implementOrg)"/>
+        <xsl:for-each select="$classes">
+            <xsl:value-of select="do:writeClassProperties($packages, ./.., .)"/>
+        </xsl:for-each>
         <xsl:value-of select="do:writeClassFooter()"/>
     </xsl:function>
 
