@@ -16,7 +16,8 @@
             'EL_AGENT_CALL',
             'P_BMM_PACKAGE_CONTAINER',
             'TEST_INTERFACE_1',
-            'TEST_CHAIN_INTERFACE_5'
+            'TEST_CHAIN_INTERFACE_5',
+            'TEST_CHAIN_INTERFACE_6'
             "/>
 
     <xsl:template match="/">
@@ -129,23 +130,19 @@
         </xsl:for-each>
     </xsl:template>
 
-    <xsl:function name="do:getInheritedAttributes">
+    <xsl:function name="do:getInterfaceInherited" as="node()*">
         <xsl:param name="packages" as="node()"/>
         <xsl:param name="class" as="node()"/>
-        <xsl:param name="inherits"></xsl:param>
-        <xsl:variable name="result">
+        <xsl:variable name="result" as="node()*">
             <xsl:copy-of select="$class"/>
-            <xsl:for-each select="$inherits">
+            <xsl:for-each select=" $class/implementOrg">
                 <xsl:variable name="inheritedClass" as="node()" select="do:findClass($packages, .)"/>
                 <xsl:if test="$inheritedClass">
-                    <xsl:for-each select="$inheritedClass/functionsAndAttributesAndConstants">
-                        <xsl:copy-of select="."/>
-                    </xsl:for-each>
-                    <xsl:copy-of select="do:getInheritedAttributes($packages, $inheritedClass, $inheritedClass/inheritOrg)"></xsl:copy-of>
+                    <xsl:copy-of select="do:getInterfaceInherited($packages, $inheritedClass)"></xsl:copy-of>
                 </xsl:if>
             </xsl:for-each>
         </xsl:variable>
-        <xsl:value-of select="$result"/>
+        <xsl:copy-of select="$result"/>
     </xsl:function>
 
     <xsl:function name="do:findClass" as="node()">
@@ -174,6 +171,9 @@
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:commentOpen()"/>
         <xsl:value-of select="do:commentOutput(concat('#Generated: ', current-dateTime()))"/>
+        <xsl:value-of select="do:commentOutput('#By: Bert Verhees')"/>
+        <xsl:value-of select="do:commentOutput('#Copyright: Bert Verhees')"/>
+        <xsl:value-of select="do:commentOutput('#License: See bottom of file')"/>
         <xsl:value-of select="do:commentOutput('')"/>
         <xsl:value-of select="do:commentOutput($class/classComment)"/>
         <xsl:value-of select="do:commentClose()"/>
@@ -210,6 +210,30 @@
     <xsl:function name="do:writeClassFooter">
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('}')"/>
+        <xsl:value-of select="do:output('')"/>
+        <xsl:value-of select="do:commentOpen()"/>
+        <xsl:value-of select="do:commentOutput('***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1')"/>
+        <xsl:value-of select="do:commentOutput('')"/>
+        <xsl:value-of select="do:commentOutput('The contents of this file are subject to the Mozilla Public License Version')"/>
+        <xsl:value-of select="do:commentOutput('1.1 (the &quot;License&quot;); you may not use this file except in compliance with the')"/>
+        <xsl:value-of select="do:commentOutput('License. You may obtain a copy of the License at http://www.mozilla.org/MPL/')"/>
+        <xsl:value-of select="do:commentOutput('')"/>        
+        <xsl:value-of select="do:commentOutput('Software distributed under the License is distributed on an &quot;AS IS&quot; basis,')"/>
+        <xsl:value-of select="do:commentOutput('WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for')"/>
+        <xsl:value-of select="do:commentOutput('the specific language governing rights and limitations under the License.')"/>
+        <xsl:value-of select="do:commentOutput('')"/>         
+        <xsl:value-of select="do:commentOutput('The Initial Developer of the Original Code is Bert Verhees.')"/>
+        <xsl:value-of select="do:commentOutput('the Initial Developer Copyright (C) 2020 the Initial Developer.')"/>
+        <xsl:value-of select="do:commentOutput('All Rights Reserved.')"/>
+        <xsl:value-of select="do:commentOutput('')"/>        
+        <xsl:value-of select="do:commentOutput('Contributor(s): Bert Verhees')"/>
+        <xsl:value-of select="do:commentOutput('')"/>        
+        <xsl:value-of select="do:commentOutput('Software distributed under the License is distributed on an &quot;AS IS&quot; basis,')"/>
+        <xsl:value-of select="do:commentOutput('WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for')"/>
+        <xsl:value-of select="do:commentOutput('the specific language governing rights and limitations under the License.')"/>
+        <xsl:value-of select="do:commentOutput('')"/>        
+        <xsl:value-of select="do:commentOutput('***** END LICENSE BLOCK *****')"/>
+        <xsl:value-of select="do:commentClose()"/>
     </xsl:function>
 
     <xsl:function name="do:writeClassImplementationType">
@@ -450,7 +474,6 @@
 
     <xsl:function name="do:writeClassProperties">
         <xsl:param name="packages" as="node()"/>
-        <xsl:param name="package" as="node()"/>
         <xsl:param name="class" as="node()"/>
         <!-- If inherit do recursion -->
         <xsl:variable name="result">
@@ -509,11 +532,12 @@
         <xsl:param name="class" as="node()"/>
         <xsl:param name="includeSequence" as="xs:string*"/>
         <xsl:value-of select="do:writeClassHeader($packages, $package, $class, $includeSequence)"/>
-        <xsl:value-of select="do:writeClassProperties($packages, $package, $class)"/>
-        <xsl:variable name="classes" select="do:getInheritedAttributes($packages, $class, $class/implementOrg)"/>
-        <xsl:for-each select="$classes">
-            <xsl:value-of select="do:writeClassProperties($packages, ./.., .)"/>
-        </xsl:for-each>
+        <xsl:variable name="classes" select="do:getInterfaceInherited($packages, $class)"/>
+        <xsl:if test="count($classes)>0">
+            <xsl:for-each select="$classes">
+                <xsl:value-of select="do:writeClassProperties($packages, .)"/>
+            </xsl:for-each>
+        </xsl:if>
         <xsl:value-of select="do:writeClassFooter()"/>
     </xsl:function>
 
