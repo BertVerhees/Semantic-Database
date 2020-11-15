@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.model_structure.BmmPackage;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -147,8 +147,7 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
  * cardinality: 0..1
  * 
 */
-    public void  merge() {
-    }
+    public abstract void  merge();
 
     //***** PBmmPackageContainer *****
 

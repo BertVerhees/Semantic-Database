@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.class_features.BmmOperator;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -104,11 +104,7 @@ public abstract class ElOperator extends ElSimple {
  * cardinality: 1..1
  * 
 */
-    public BmmOperator  operatorDefinition() {
-        BmmOperator  result;
-
-        return  result;
-    }
+    public abstract BmmOperator  operatorDefinition();
 
 /**
  * 
@@ -116,11 +112,7 @@ public abstract class ElOperator extends ElSimple {
  * cardinality: 1..1
  * 
 */
-    public ElFunctionCall  equivalentCall() {
-        ElFunctionCall  result;
-
-        return  result;
-    }
+    public abstract ElFunctionCall  equivalentCall();
 
 }
 

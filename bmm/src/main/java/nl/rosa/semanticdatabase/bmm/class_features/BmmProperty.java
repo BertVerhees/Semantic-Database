@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -23,11 +23,7 @@ public abstract class BmmProperty extends BmmClassFeature implements BmmInstanti
  * cardinality: 1..1
  * 
 */
-    public Multiplicity_interval  existence() {
-        Multiplicity_interval  result;
-
-        return  result;
-    }
+    public abstract Multiplicity_interval  existence();
 
 /**
  * 
@@ -35,11 +31,7 @@ public abstract class BmmProperty extends BmmClassFeature implements BmmInstanti
  * cardinality: 1..1
  * 
 */
-    public String  displayName() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  displayName();
 
 /*=========================================================*/
 /* * CONSTANTS * */
@@ -124,11 +116,7 @@ public abstract class BmmProperty extends BmmClassFeature implements BmmInstanti
  * cardinality: 1..1
  * 
 */
-    public Result = type().equal( {BMM_MODEL}.boolean_type_definition())  isBoolean() {
-        Result = type().equal( {BMM_MODEL}.boolean_type_definition())  result;
-
-        return  result;
-    }
+    public abstract Result = type().equal( {BMM_MODEL}.boolean_type_definition())  isBoolean();
 
 }
 

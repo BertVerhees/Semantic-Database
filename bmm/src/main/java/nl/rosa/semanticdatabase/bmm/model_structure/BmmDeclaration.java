@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -188,11 +188,7 @@ public abstract class BmmDeclaration {
  * cardinality: 1..1
  * 
 */
-    public Result = (scope = self)  isRootScope() {
-        Result = (scope = self)  result;
-
-        return  result;
-    }
+    public abstract Result = (scope = self)  isRootScope();
 
 }
 

@@ -9,7 +9,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -138,11 +138,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public String  modelId() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  modelId();
 
 /**
  * 
@@ -150,11 +146,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public BmmClass  classDefinition() {
-        BmmClass  result;
-
-        return  result;
-    }
+    public abstract BmmClass  classDefinition();
 
 /**
  * 
@@ -164,11 +156,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public BmmClass  typeDefinition() {
-        BmmClass  result;
-
-        return  result;
-    }
+    public abstract BmmClass  typeDefinition();
 
 /**
  * 
@@ -176,11 +164,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public Boolean  hasClassDefinition() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  hasClassDefinition();
 
 /**
  * 
@@ -188,11 +172,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public Boolean  hasTypeDefinition() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  hasTypeDefinition();
 
 /**
  * 
@@ -200,11 +180,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public BmmEnumeration  enumerationDefinition() {
-        BmmEnumeration  result;
-
-        return  result;
-    }
+    public abstract BmmEnumeration  enumerationDefinition();
 
 /**
  * 
@@ -212,11 +188,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 0..1
  * 
 */
-    public List<String>  primitiveTypes() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  primitiveTypes();
 
 /**
  * 
@@ -224,11 +196,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 0..1
  * 
 */
-    public List<String>  enumerationTypes() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  enumerationTypes();
 
 /**
  * 
@@ -236,11 +204,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public BmmProperty  propertyDefinition() {
-        BmmProperty  result;
-
-        return  result;
-    }
+    public abstract BmmProperty  propertyDefinition();
 
 /**
  * 
@@ -250,11 +214,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public Boolean  msConformantPropertyType() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  msConformantPropertyType();
 
 /**
  * 
@@ -262,11 +222,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public BmmProperty  propertyDefinitionAtPath() {
-        BmmProperty  result;
-
-        return  result;
-    }
+    public abstract BmmProperty  propertyDefinitionAtPath();
 
 /**
  * 
@@ -274,11 +230,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public BmmClass  classDefinitionAtPath() {
-        BmmClass  result;
-
-        return  result;
-    }
+    public abstract BmmClass  classDefinitionAtPath();
 
 /**
  * 
@@ -288,11 +240,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 0..1
  * 
 */
-    public List<String>  allAncestorClasses() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  allAncestorClasses();
 
 /**
  * 
@@ -300,11 +248,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public Boolean  isDescendantOf() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isDescendantOf();
 
 /**
  * 
@@ -314,11 +258,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public Boolean  typeConformsTo() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  typeConformsTo();
 
 /**
  * 
@@ -328,11 +268,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public List<String>  subtypes() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  subtypes();
 
 /**
  * 
@@ -341,11 +277,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public BmmSimpleClass  anyClassDefinition() {
-        BmmSimpleClass  result;
-
-        return  result;
-    }
+    public abstract BmmSimpleClass  anyClassDefinition();
 
 /**
  * 
@@ -353,11 +285,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public BmmSimpleType  anyTypeDefinition() {
-        BmmSimpleType  result;
-
-        return  result;
-    }
+    public abstract BmmSimpleType  anyTypeDefinition();
 
 /**
  * 
@@ -365,11 +293,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public BmmSimpleType  booleanTypeDefinition() {
-        BmmSimpleType  result;
-
-        return  result;
-    }
+    public abstract BmmSimpleType  booleanTypeDefinition();
 
     //***** BmmModelMetadata *****
 

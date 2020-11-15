@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmSignature;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -27,15 +27,25 @@ public abstract class BmmClassEntity extends BmmDeclaration {
     public abstract BmmSignature  signature();
 
 /*=========================================================*/
-/* * CONSTANTS * */
+/* * FIELDS & POJO's * */
 /*=========================================================*/
 
-/**
- * 
- * True if this feature was synthesised due to generic substitution in an inherited type, or further constraining of a formal generic parameter.
- * 
-*/
-    final Boolean {default isSynthesisedGeneric = false};
+    /**
+     *
+     * True if this feature was synthesised due to generic substitution in an inherited type, or further constraining of a formal generic parameter.
+     * {default = false}
+     * Cardinality: 0..1
+     */
+    private Boolean isSynthesisedGeneric = false;
+
+    public Boolean getSynthesisedGeneric() {
+        return isSynthesisedGeneric;
+    }
+
+    public void setSynthesisedGeneric(Boolean synthesisedGeneric) {
+        isSynthesisedGeneric = synthesisedGeneric;
+    }
+
 
 }
 

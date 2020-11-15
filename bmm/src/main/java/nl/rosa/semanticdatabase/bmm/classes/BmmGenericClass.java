@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmGenericType;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -84,11 +84,7 @@ public class BmmGenericClass extends BmmClass {
  * cardinality: 0..1 (redefined)
  * 
 */
-    public List<String>  suppliers() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  suppliers();
 
 /**
  * 
@@ -96,11 +92,7 @@ public class BmmGenericClass extends BmmClass {
  * cardinality: 1..1 (effected)
  * 
 */
-    public BmmGenericType  type() {
-        BmmGenericType  result;
-
-        return  result;
-    }
+    public abstract BmmGenericType  type();
 
 /**
  * 
@@ -110,11 +102,7 @@ public class BmmGenericClass extends BmmClass {
  * cardinality: 1..1
  * 
 */
-    public String  genericParameterConformanceType() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  genericParameterConformanceType();
 
 }
 

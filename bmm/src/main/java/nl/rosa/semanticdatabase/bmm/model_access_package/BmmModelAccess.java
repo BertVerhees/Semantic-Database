@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -255,8 +255,7 @@ public class BmmModelAccess {
  * cardinality: 0..1
  * 
 */
-    public void  initialiseWithLoadList() {
-    }
+    public abstract void  initialiseWithLoadList();
 
 /**
  * 
@@ -264,8 +263,7 @@ public class BmmModelAccess {
  * cardinality: 0..1
  * 
 */
-    public void  initialiseAll() {
-    }
+    public abstract void  initialiseAll();
 
 /**
  * 
@@ -276,11 +274,7 @@ public class BmmModelAccess {
  * cardinality: 1..1
  * 
 */
-    public BmmModel  bmmModel() {
-        BmmModel  result;
-
-        return  result;
-    }
+    public abstract BmmModel  bmmModel();
 
 /**
  * 
@@ -291,11 +285,7 @@ public class BmmModelAccess {
  * cardinality: 1..1
  * 
 */
-    public Boolean  hasBmmModel() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  hasBmmModel();
 
 }
 

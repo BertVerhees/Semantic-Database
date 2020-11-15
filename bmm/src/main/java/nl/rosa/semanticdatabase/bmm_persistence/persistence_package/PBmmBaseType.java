@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 

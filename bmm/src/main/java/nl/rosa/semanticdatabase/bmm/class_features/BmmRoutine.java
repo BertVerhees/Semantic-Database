@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.statements.BmmAssertion;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -228,11 +228,7 @@ public abstract class BmmRoutine extends BmmClassFeature {
  * cardinality: 1..1
  * 
 */
-    public Integer  arity() {
-        Integer  result;
-
-        return  result;
-    }
+    public abstract Integer  arity();
 
 /**
  * 
@@ -240,8 +236,7 @@ public abstract class BmmRoutine extends BmmClassFeature {
  * cardinality: 1..1 (effected)
  * 
 */
-    public void  signature() {
-    }
+    public abstract void  signature();
 
 }
 

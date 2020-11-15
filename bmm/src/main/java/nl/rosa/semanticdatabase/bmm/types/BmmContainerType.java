@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.classes.BmmGenericClass;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -84,11 +84,7 @@ public class BmmContainerType extends BmmType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public String  typeName() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  typeName();
 
 /**
  * 
@@ -96,11 +92,7 @@ public class BmmContainerType extends BmmType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Result = container_type.is_abstract  isAbstract() {
-        Result = container_type.is_abstract  result;
-
-        return  result;
-    }
+    public abstract Result = container_type.is_abstract  isAbstract();
 
 /**
  * 
@@ -109,11 +101,7 @@ public class BmmContainerType extends BmmType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Result = item_type.flattened_type_list  flattenedTypeList() {
-        Result = item_type.flattened_type_list  result;
-
-        return  result;
-    }
+    public abstract Result = item_type.flattened_type_list  flattenedTypeList();
 
 /**
  * 
@@ -121,11 +109,7 @@ public class BmmContainerType extends BmmType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public BmmUnitaryType  unitaryType() {
-        BmmUnitaryType  result;
-
-        return  result;
-    }
+    public abstract BmmUnitaryType  unitaryType();
 
 /**
  * 
@@ -133,11 +117,7 @@ public class BmmContainerType extends BmmType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Result = item_type.is_primitive  isPrimitive() {
-        Result = item_type.is_primitive  result;
-
-        return  result;
-    }
+    public abstract Result = item_type.is_primitive  isPrimitive();
 
 /**
  * 
@@ -145,11 +125,7 @@ public class BmmContainerType extends BmmType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public BmmEffectiveType  effectiveType() {
-        BmmEffectiveType  result;
-
-        return  result;
-    }
+    public abstract BmmEffectiveType  effectiveType();
 
 /*=========================================================*/
 /* * CONSTANTS * */

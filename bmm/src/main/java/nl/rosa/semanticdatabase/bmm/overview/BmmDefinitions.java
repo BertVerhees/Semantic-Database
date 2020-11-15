@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -59,11 +59,7 @@ public class BmmDefinitions extends BasicDefinitions {
  * cardinality: 1..1
  * 
 */
-    public BmmSimpleClass  anyClass() {
-        BmmSimpleClass  result;
-
-        return  result;
-    }
+    public abstract BmmSimpleClass  anyClass();
 
 /**
  * 
@@ -71,11 +67,7 @@ public class BmmDefinitions extends BasicDefinitions {
  * cardinality: 1..1
  * 
 */
-    public BmmSimpleType  anyType() {
-        BmmSimpleType  result;
-
-        return  result;
-    }
+    public abstract BmmSimpleType  anyType();
 
 /**
  * 
@@ -84,11 +76,7 @@ public class BmmDefinitions extends BasicDefinitions {
  * cardinality: 1..1
  * 
 */
-    public String  createSchemaId() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  createSchemaId();
 
 /*=========================================================*/
 /* * CONSTANTS * */

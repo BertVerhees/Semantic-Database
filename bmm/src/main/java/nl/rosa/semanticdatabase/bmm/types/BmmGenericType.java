@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.classes.BmmGenericClass;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -105,11 +105,7 @@ public class BmmGenericType extends BmmModelType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public String  typeName() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  typeName();
 
 /**
  * 
@@ -118,11 +114,7 @@ public class BmmGenericType extends BmmModelType {
  * cardinality: 1..1 (redefined)
  * 
 */
-    public String  typeSignature() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  typeSignature();
 
 /**
  * 
@@ -130,11 +122,7 @@ public class BmmGenericType extends BmmModelType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  isAbstract() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isAbstract();
 
 /**
  * 
@@ -142,11 +130,7 @@ public class BmmGenericType extends BmmModelType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public List<String>  flattenedTypeList() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  flattenedTypeList();
 
 /**
  * 
@@ -154,11 +138,7 @@ public class BmmGenericType extends BmmModelType {
  * cardinality: 1..1
  * 
 */
-    public Boolean  isPartiallyClosed() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isPartiallyClosed();
 
 /**
  * 
@@ -166,11 +146,7 @@ public class BmmGenericType extends BmmModelType {
  * cardinality: 1..1
  * 
 */
-    public BmmGenericClass  effectiveBaseClass() {
-        BmmGenericClass  result;
-
-        return  result;
-    }
+    public abstract BmmGenericClass  effectiveBaseClass();
 
 /**
  * 
@@ -178,11 +154,7 @@ public class BmmGenericType extends BmmModelType {
  * cardinality: 1..1
  * 
 */
-    public Boolean  isOpen() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isOpen();
 
 }
 

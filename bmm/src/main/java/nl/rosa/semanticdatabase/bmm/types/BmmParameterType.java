@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.types;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -102,11 +102,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * cardinality: 1..1
  * 
 */
-    public BmmEffectiveType  flattenedConformsToType() {
-        BmmEffectiveType  result;
-
-        return  result;
-    }
+    public abstract BmmEffectiveType  flattenedConformsToType();
 
 /**
  * 
@@ -115,11 +111,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * cardinality: 1..1 (redefined)
  * 
 */
-    public String  typeSignature() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  typeSignature();
 
 /**
  * 
@@ -127,11 +119,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  isPrimitive() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isPrimitive();
 
 /**
  * 
@@ -139,11 +127,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  isAbstract() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isAbstract();
 
 /**
  * 
@@ -151,11 +135,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public String  typeName() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  typeName();
 
 /**
  * 
@@ -163,11 +143,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public List<String>  flattenedTypeList() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  flattenedTypeList();
 
 /**
  * 
@@ -175,11 +151,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public BmmEffectiveType  effectiveType() {
-        BmmEffectiveType  result;
-
-        return  result;
-    }
+    public abstract BmmEffectiveType  effectiveType();
 
 }
 

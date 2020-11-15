@@ -13,7 +13,7 @@ import nl.rosa.semanticdatabase.bmm.class_features.BmmClassFeature;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -608,11 +608,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public BmmModelType  type() {
-        BmmModelType  result;
-
-        return  result;
-    }
+    public abstract BmmModelType  type();
 
 /**
  * 
@@ -620,11 +616,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public List<String>  allAncestors() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  allAncestors();
 
 /**
  * 
@@ -632,11 +624,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public List<String>  allDescendants() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  allDescendants();
 
 /**
  * 
@@ -646,11 +634,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public List<String>  suppliers() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  suppliers();
 
 /**
  * 
@@ -658,11 +642,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public List<String>  suppliersNonPrimitive() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  suppliersNonPrimitive();
 
 /**
  * 
@@ -671,11 +651,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public List<String>  supplierClosure() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  supplierClosure();
 
 /**
  * 
@@ -683,11 +659,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 1..1
  * 
 */
-    public String  packagePath() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  packagePath();
 
 /**
  * 
@@ -695,11 +667,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 1..1
  * 
 */
-    public String  classPath() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  classPath();
 
 /**
  * 
@@ -708,11 +676,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 1..1
  * 
 */
-    public Boolean  isPrimitive() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isPrimitive();
 
 /**
  * 
@@ -721,11 +685,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 1..1
  * 
 */
-    public Boolean  isAbstract() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isAbstract();
 
 /**
  * 
@@ -733,11 +693,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public List<BmmClassFeature>  features() {
-        List<BmmClassFeature>  result;
-
-        return  result;
-    }
+    public abstract List<BmmClassFeature>  features();
 
 /**
  * 
@@ -745,11 +701,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public List<BmmClassFeature>  flatFeatures() {
-        List<BmmClassFeature>  result;
-
-        return  result;
-    }
+    public abstract List<BmmClassFeature>  flatFeatures();
 
 /**
  * 
@@ -757,11 +709,7 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public List<BmmProperty>  flatProperties() {
-        List<BmmProperty>  result;
-
-        return  result;
-    }
+    public abstract List<BmmProperty>  flatProperties();
 
 /*=========================================================*/
 /* * CONSTANTS * */

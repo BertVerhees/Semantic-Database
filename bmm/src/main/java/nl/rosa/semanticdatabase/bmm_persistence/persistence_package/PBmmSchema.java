@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.model_access_package.BmmSchema;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -146,11 +146,7 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
  * cardinality: 0..1 (effected)
  * 
 */
-    public includes_to_process.has (included_schema.schema_id)  merge() {
-        includes_to_process.has (included_schema.schema_id)  result;
-
-        return  result;
-    }
+    public abstract includes_to_process.has (included_schema.schema_id)  merge();
 
 /**
  * 
@@ -158,11 +154,7 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
  * cardinality: 1..1
  * 
 */
-    public PBmmPackage  canonicalPackages() {
-        PBmmPackage  result;
-
-        return  result;
-    }
+    public abstract PBmmPackage  canonicalPackages();
 
 /*=========================================================*/
 /* * CONSTANTS * */

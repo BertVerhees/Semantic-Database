@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.types;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -75,11 +75,7 @@ public class BmmSignature extends BmmEffectiveType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Result.is_equal (base_name())  typeBaseName() {
-        Result.is_equal (base_name())  result;
-
-        return  result;
-    }
+    public abstract Result.is_equal (base_name())  typeBaseName();
 
 /**
  * 
@@ -87,11 +83,7 @@ public class BmmSignature extends BmmEffectiveType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  isAbstract() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isAbstract();
 
 /**
  * 
@@ -99,11 +91,7 @@ public class BmmSignature extends BmmEffectiveType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  isPrimitive() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isPrimitive();
 
 /**
  * 
@@ -111,11 +99,7 @@ public class BmmSignature extends BmmEffectiveType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Result.is_equal (base_name())  typeName() {
-        Result.is_equal (base_name())  result;
-
-        return  result;
-    }
+    public abstract Result.is_equal (base_name())  typeName();
 
 /**
  * 
@@ -124,11 +108,7 @@ public class BmmSignature extends BmmEffectiveType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public List<String>  flattenedTypeList() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  flattenedTypeList();
 
 /*=========================================================*/
 /* * CONSTANTS * */

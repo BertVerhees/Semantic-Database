@@ -1,9 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
 
+import java.util.*;
+
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -27,7 +29,7 @@ public class BmmTupleType extends BmmEffectiveType {
  * cardinality: 1..1
  * 
 */
-    private Map<String,BmmType> itemTypes = new HashMap<> ();
+    private Map<String,BmmType> itemTypes = new HashMap<>();
 
 /*=========================================================*/
 /* * POJOS * */
@@ -57,7 +59,7 @@ public class BmmTupleType extends BmmEffectiveType {
             itemTypes.remove(key);
         }
     }
-    public void removeItemtypes( Collection <String> keys ) {
+    public void removeItemtypes( Collection<String> keys ) {
         keys.forEach(this::removeItemtype);
     }
     Map<String,BmmType> getItemtypes() {
@@ -65,7 +67,7 @@ public class BmmTupleType extends BmmEffectiveType {
     }
     void setItemtypes(Map<String,BmmType> itemTypes) {
         if (itemTypes == null ) {
-            throw new NullPointerException(" itemTypes has cardinality NonNull, but is null")
+            throw new NullPointerException(" itemTypes has cardinality NonNull, but is null");
         }
         this.itemTypes = itemTypes;
     }
@@ -77,16 +79,15 @@ public class BmmTupleType extends BmmEffectiveType {
 /* * FUNCTIONS * */
 /*=========================================================*/
 
-/**
- * 
- * Return base_name.
- * cardinality: 1..1 (effected)
- * 
-*/
-    public Result.is_equal (base_name())  typeBaseName() {
-        Result.is_equal (base_name())  result;
-
-        return  result;
+    /**
+     *
+     * Return base_name.
+     * cardinality: 1..1 (effected)
+     *
+     */
+    @Override
+    public String typeBaseName() {
+        return null;
     }
 
 /**
@@ -95,35 +96,30 @@ public class BmmTupleType extends BmmEffectiveType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  isPrimitive() {
-        Boolean  result;
-
-        return  result;
+    public Boolean  isPrimitive(){
+        return true;
     }
 
-/**
+    @Override
+    public String typeName() {
+        return baseName;
+    }
+
+    @Override
+    public String typeSignature() {
+        return null;
+    }
+
+    /**
  * 
  * Result = False.
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  isAbstract() {
-        Boolean  result;
-
-        return  result;
+    public Boolean  isAbstract(){
+        return false;
     }
 
-/**
- * 
- * Return base_name.
- * cardinality: 1..1 (effected)
- * 
-*/
-    public Result.is_equal (base_name())  typeName() {
-        Result.is_equal (base_name())  result;
-
-        return  result;
-    }
 
 /**
  * 
@@ -132,10 +128,8 @@ public class BmmTupleType extends BmmEffectiveType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public List<String>  flattenedTypeList() {
-        List<String>  result;
-
-        return  result;
+    public List<String> flattenedTypeList(){
+        return null;
     }
 
 /*=========================================================*/

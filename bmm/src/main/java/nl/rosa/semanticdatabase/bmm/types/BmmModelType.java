@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -45,10 +45,10 @@ public abstract class BmmModelType extends BmmEffectiveType {
  * 
 */
     public BmmValueSetSpec getValueConstraint() {
-        return value_constraint;
+        return valueConstraint;
     }
     public void setValueConstraint(BmmValueSetSpec value) {
-        this.value_constraint = value_constraint;
+        this.valueConstraint = valueConstraint;
     }
 
 /**
@@ -77,11 +77,7 @@ public abstract class BmmModelType extends BmmEffectiveType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public String  typeBaseName() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  typeBaseName();
 
 /**
  * 
@@ -89,11 +85,7 @@ public abstract class BmmModelType extends BmmEffectiveType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  isPrimitive() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isPrimitive();
 
 }
 

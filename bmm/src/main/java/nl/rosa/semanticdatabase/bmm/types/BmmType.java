@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
+import java.util.List;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -26,11 +27,7 @@ public abstract class BmmType {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public String  typeName() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  typeName();
 
 /**
  * 
@@ -40,11 +37,7 @@ public abstract class BmmType {
  * cardinality: 1..1
  * 
 */
-    public String  typeSignature() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  typeSignature();
 
 /**
  * 
@@ -53,11 +46,7 @@ public abstract class BmmType {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public Boolean  isAbstract() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isAbstract();
 
 /**
  * 
@@ -66,11 +55,7 @@ public abstract class BmmType {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public Boolean  isPrimitive() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isPrimitive();
 
 /**
  * 
@@ -78,11 +63,7 @@ public abstract class BmmType {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public BmmUnitaryType  unitaryType() {
-        BmmUnitaryType  result;
-
-        return  result;
-    }
+    public abstract BmmUnitaryType  unitaryType();
 
 /**
  * 
@@ -90,11 +71,7 @@ public abstract class BmmType {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public BmmEffectiveType  effectiveType() {
-        BmmEffectiveType  result;
-
-        return  result;
-    }
+    public abstract BmmEffectiveType  effectiveType();
 
 /**
  * 
@@ -102,11 +79,7 @@ public abstract class BmmType {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public List<String>  flattenedTypeList() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String> flattenedTypeList();
 
 }
 

@@ -422,7 +422,7 @@
                 <xsl:if test="starts-with($nameAndTypeAndKind/cardinality, '1')">
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', $nameAndTypeAndKind/name, ' == null ) {'))"/>
                     <xsl:value-of
-                        select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; ', $nameAndTypeAndKind/name, ' has cardinality NonNull, but is null&quot;)'))"/>
+                        select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; ', $nameAndTypeAndKind/name, ' has cardinality NonNull, but is null&quot;);'))"/>
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
                 </xsl:if>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', $nameAndTypeAndKind/name, ' = ', $nameAndTypeAndKind/name, ';'))"/>
@@ -516,7 +516,7 @@
         <xsl:value-of select="do:outputSpaces(concat($fourSp, 'void set', $attributeNameInFunction, '(', $processedType, ' ', $name, ') {'))"/>
         <xsl:if test="starts-with($cardinality, '1')">
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', $name, ' == null ) {'))"/>
-            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; ', $name, ' has cardinality NonNull, but is null&quot;)'))"/>
+            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; ', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
         </xsl:if>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', $name, ' = ', $name, ';'))"/>
@@ -618,7 +618,7 @@
         <xsl:value-of select="do:outputSpaces(concat($fourSp, 'void set', $attributeNameInFunction, '(', $processedType, ' ', $name, ') {'))"/>
         <xsl:if test="starts-with($cardinality, '1')">
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', $name, ' == null ) {'))"/>
-            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; ', $name, ' has cardinality NonNull, but is null&quot;)'))"/>
+            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; ', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
         </xsl:if>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', $name, ' = ', $name, ';'))"/>

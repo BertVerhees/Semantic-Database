@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.classes.BmmSimpleClass;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -58,11 +58,7 @@ public class BmmSimpleType extends BmmModelType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public String  typeName() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  typeName();
 
 /**
  * 
@@ -70,11 +66,7 @@ public class BmmSimpleType extends BmmModelType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  isAbstract() {
-        Boolean  result;
-
-        return  result;
-    }
+    public abstract Boolean  isAbstract();
 
 /**
  * 
@@ -82,11 +74,7 @@ public class BmmSimpleType extends BmmModelType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public List<String>  flattenedTypeList() {
-        List<String>  result;
-
-        return  result;
-    }
+    public abstract List<String>  flattenedTypeList();
 
 /**
  * 
@@ -94,11 +82,7 @@ public class BmmSimpleType extends BmmModelType {
  * cardinality: 1..1
  * 
 */
-    public BmmSimpleClass  effectiveBaseClass() {
-        BmmSimpleClass  result;
-
-        return  result;
-    }
+    public abstract BmmSimpleClass  effectiveBaseClass();
 
 }
 

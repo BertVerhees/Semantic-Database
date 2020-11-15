@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmContainerType;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -78,11 +78,7 @@ public class BmmContainerProperty extends BmmProperty {
  * cardinality: 1..1 (redefined)
  * 
 */
-    public String  displayName() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  displayName();
 
 }
 

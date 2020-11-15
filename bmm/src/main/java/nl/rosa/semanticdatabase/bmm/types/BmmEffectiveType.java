@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.types;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -22,10 +22,8 @@ public abstract class BmmEffectiveType extends BmmUnitaryType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public BmmEffectiveType  effectiveType() {
-        BmmEffectiveType  result;
-
-        return  result;
+    public BmmEffectiveType  effectiveType(){
+        return this;
     }
 
 /**
@@ -35,11 +33,7 @@ public abstract class BmmEffectiveType extends BmmUnitaryType {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public String  typeBaseName() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  typeBaseName();
 
 }
 

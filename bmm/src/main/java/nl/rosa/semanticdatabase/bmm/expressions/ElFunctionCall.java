@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -58,11 +58,7 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
  * cardinality: 1..1 (effected)
  * 
 */
-    public BmmType  evalType() {
-        BmmType  result;
-
-        return  result;
-    }
+    public abstract BmmType  evalType();
 
     //***** ElAgentCall *****
 

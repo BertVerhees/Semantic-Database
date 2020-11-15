@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmGenericType;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -177,11 +177,7 @@ public class PBmmGenericType extends PBmmBaseType {
  * cardinality: 0..1
  * 
 */
-    public List<PBmmType>  genericParameterRefs() {
-        List<PBmmType>  result;
-
-        return  result;
-    }
+    public abstract List<PBmmType>  genericParameterRefs();
 
 }
 

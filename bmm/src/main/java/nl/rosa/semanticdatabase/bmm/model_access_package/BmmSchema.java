@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 
 /**
  * 
- * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Generated: 2020-11-15T18:16:51.043+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -368,11 +368,7 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * cardinality: 0..1 (abstract)
  * 
 */
-    public includes_to_process.has (included_schema.schema_id)  merge() {
-        includes_to_process.has (included_schema.schema_id)  result;
-
-        return  result;
-    }
+    public abstract includes_to_process.has (included_schema.schema_id)  merge();
 
 /**
  * 
@@ -380,11 +376,7 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public state = State_includes_processed  readToValidate() {
-        state = State_includes_processed  result;
-
-        return  result;
-    }
+    public abstract state = State_includes_processed  readToValidate();
 
 /**
  * 
@@ -394,11 +386,7 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public String  schemaId() {
-        String  result;
-
-        return  result;
-    }
+    public abstract String  schemaId();
 
 /*=========================================================*/
 /* * CONSTANTS * */
