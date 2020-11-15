@@ -24,11 +24,7 @@ public abstract class BmmClassEntity extends BmmDeclaration {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public BmmSignature  signature() {
-        BmmSignature  result;
-
-        return  result;
-    }
+    public abstract BmmSignature  signature();
 
 /*=========================================================*/
 /* * CONSTANTS * */
