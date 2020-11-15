@@ -1,0 +1,95 @@
+package nl.rosa.semanticdatabase.bmm.expressions;
+
+import nl.rosa.semanticdatabase.bmm.types.BmmType;
+
+/**
+ * 
+ * #Generated: 2020-11-15T17:28:03.861+01:00
+ * #Copyright: Bert Verhees
+ * #License: See bottom of file
+ * 
+ * Terminal item corresponding to a reference to a directly instantiable entity, i.e.
+ * a variable, constant, or property.
+ * 
+*/
+public class ElInstantiableRef<t> extends ElScopedRef {
+
+    //***** ElInstantiableRef<t> *****
+
+/*=========================================================*/
+/* * FIELDS * */
+/*=========================================================*/
+
+/**
+ * 
+ * Definition of the constant, property or variable, inferred by inspection of the current scoping instance.
+ * cardinality: 0..1
+ * 
+*/
+    private T definition;
+
+/*=========================================================*/
+/* * POJOS * */
+/*=========================================================*/
+
+/**
+ * 
+ * Definition of the constant, property or variable, inferred by inspection of the current scoping instance.
+ * cardinality: 0..1
+ * 
+*/
+    public T getDefinition() {
+        return definition;
+    }
+    public void setDefinition(T value) {
+        this.definition = definition;
+    }
+
+/*=========================================================*/
+/* * FUNCTIONS * */
+/*=========================================================*/
+
+/**
+ * 
+ * Type definition (i.e.
+ * BMM meta-type definition object) of the constant, property or variable, inferred by inspection of the current scoping instance.
+ * Return definition.type.
+ * cardinality: 1..1 (effected)
+ * 
+*/
+    public BmmType  evalType() {
+        BmmType  result;
+
+        return  result;
+    }
+
+}
+
+/**
+ * 
+ * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * 
+ * The contents of this file are subject to the Mozilla Public License Version
+ * 1.1 (the "License"); you may not use this file except in compliance with the
+ * License.
+ * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * 
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied.
+ * See the License for
+ * the specific language governing rights and limitations under the License.
+ * 
+ * The Initial Developer of the Original Code is Bert Verhees.
+ * the Initial Developer Copyright (C) 2020 the Initial Developer.
+ * All Rights Reserved.
+ * 
+ * Contributor(s): Bert Verhees
+ * 
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied.
+ * See the License for
+ * the specific language governing rights and limitations under the License.
+ * 
+ * ***** END LICENSE BLOCK *****
+ * 
+*/
