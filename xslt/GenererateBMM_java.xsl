@@ -366,19 +366,34 @@
         <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
         <xsl:value-of select="do:outputSpaces(concat('    final ', $type, ' ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' = ', $nameAndTypeAndKind/value, ';'))"/>
     </xsl:function>
-    <!-- TODO PARAMETERS -->
+
     <xsl:function name="do:writeClassFunctions">
         <xsl:param name="nameAndTypeAndKind" as="node()"/>
         <xsl:param name="packages" as="node()"/>
         <xsl:value-of select="do:writeComment($nameAndTypeAndKind/description, $nameAndTypeAndKind/cardinality)"/>
+        <xsl:variable name="parameters" as="xs:string*">
+            <xsl:for-each select="$nameAndTypeAndKind/parameters/parameter">
+                <xsl:variable name="par-type" as="xs:string" select="string-join(do:processType($packages, type/type-name))"/>
+                <xsl:value-of select="concat($par-type,' ',name)"/>
+            </xsl:for-each>
+        </xsl:variable>
         <xsl:choose>
             <xsl:when test="$nameAndTypeAndKind/kind = 'void-function'">
                 <xsl:choose>
-                    <xsl:when test="$nameAndTypeAndKind/abstract">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public abstract void  ', $nameAndTypeAndKind/name, '();')))"/>
+                    <xsl:when test="$nameAndTypeAndKind/abstract/text()='true'">
+                        <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public abstract void  ', $nameAndTypeAndKind/name, '(',string-join($parameters,', '),');')))"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public void  ', $nameAndTypeAndKind/name, '() {')))"/>
+                        <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public void  ', $nameAndTypeAndKind/name, '(',string-join($parameters,', '),') {')))"/>
+                        <xsl:for-each select="$nameAndTypeAndKind/parameters/parameter">
+                            <xsl:if test="starts-with(type/type-cardinality/text(),'1')">
+                                <xsl:value-of select="do:message(concat(name,type/type-cardinality))"/>
+                                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', name, ' == null ) {'))"/>
+                                <xsl:value-of
+                                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Parameter ', name, ' has cardinality NonNull, but is null&quot;);'))"/>
+                                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>                              
+                            </xsl:if>
+                        </xsl:for-each>
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
                     </xsl:otherwise>
                 </xsl:choose>
@@ -386,11 +401,20 @@
             <xsl:otherwise>
                 <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
                 <xsl:choose>
-                    <xsl:when test="$nameAndTypeAndKind/abstract">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public abstract ', $type, '  ', $nameAndTypeAndKind/name, '();'))"/>
+                    <xsl:when test="$nameAndTypeAndKind/abstract/text()='true'">
+                        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public abstract ', $type, '  ', $nameAndTypeAndKind/name, '(',string-join($parameters,', '),');'))"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $type, '  ', $nameAndTypeAndKind/name, '() {'))"/>
+                        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $type, '  ', $nameAndTypeAndKind/name, '(',string-join($parameters,', '),') {'))"/>
+                        <xsl:for-each select="$nameAndTypeAndKind/parameters/parameter">
+                            <xsl:if test="starts-with(type/type-cardinality/text(),'1')">
+                                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', name, ' == null ) {'))"/>
+                                <xsl:value-of
+                                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Parameter ', name, ' has cardinality NonNull, but is null.&quot;);'))"/>
+                                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>                              
+                            </xsl:if>
+                        </xsl:for-each>
+                        
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $type, '  result', ';'))"/>
                         <xsl:value-of select="do:output('')"/>
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return  result', ';'))"/>
@@ -400,7 +424,7 @@
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
-
+    
     <xsl:function name="do:writeClassPojos">
         <xsl:param name="nameAndTypeAndKind" as="node()"/>
         <xsl:param name="packages" as="node()"/>
@@ -1161,11 +1185,11 @@
                                                                     <xsl:choose>
                                                                         <xsl:when test="contains($cardinality,'(abstract)')">
                                                                             <xsl:value-of select="do:message(concat('    ABSTRACT        ---function:', $name))"/>
-                                                                            <xsl:element name="abstract">true()</xsl:element>
+                                                                            <xsl:element name="abstract">true</xsl:element>
                                                                         </xsl:when>
                                                                         <xsl:otherwise>
                                                                             <xsl:value-of select="do:message(concat('            ---function:', $name))"/>
-                                                                            <xsl:element name="abstract">false()</xsl:element>
+                                                                            <xsl:element name="abstract">false</xsl:element>
                                                                         </xsl:otherwise>
                                                                     </xsl:choose>
                                                                     <xsl:if test="contains($cardinality,'(abstract)')">
