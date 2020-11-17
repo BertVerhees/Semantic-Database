@@ -20,7 +20,74 @@
             'TEST_CHAIN_INTERFACE_6'
             "/>
     
+    <xsl:function name="do:proceed">
+        <xsl:param name="base" as="xs:string"></xsl:param>
+        <xsl:variable name="package">
+            <xsl:element name="package">
+                <xsl:element name="packageInfo">
+                    <xsl:copy-of select="do:basePackageInfo(document(concat($base, '.html')), concat($packageBase, $base))"/>
+                </xsl:element>
+                <xsl:element name="packageDirectory">
+                    <xsl:value-of select="$base"/>
+                </xsl:element>
+            </xsl:element>
+        </xsl:variable>
+        <xsl:for-each select="document(concat($base, '.html'))/html/body[1]/div[2]/div">
+            <xsl:call-template name="analyzeClassDocument">
+                <xsl:with-param name="context" select="."/>
+                <xsl:with-param name="baseDirectory" select="$base"/>
+            </xsl:call-template>
+        </xsl:for-each>
+        <xsl:copy-of select="$package"></xsl:copy-of>
+    </xsl:function>
+    
     <xsl:template match="/">
+        <xsl:variable name="root">
+            <xsl:element name="packages">
+                <xsl:copy-of select="do:proceed('test')"></xsl:copy-of>
+                <xsl:copy-of select="do:proceed('bmm')"></xsl:copy-of>
+                <xsl:copy-of select="do:proceed('bmm_persistence')"></xsl:copy-of>
+                <xsl:copy-of select="do:proceed('base_types')"></xsl:copy-of>
+                <xsl:copy-of select="do:proceed('aom_2')"></xsl:copy-of>
+            </xsl:element>
+        </xsl:variable>
+        <xsl:variable name="allClasses" as="xs:string*">
+            <xsl:for-each select="$root/packages/package">
+                <xsl:for-each select="class">
+                    <xsl:value-of select="classNameOrgAbstractStripped"/>
+                </xsl:for-each>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:for-each select="$root/packages/package">
+            <xsl:variable name="pd" select="packageDirectory/text()"/>
+            <xsl:variable name="package" select="."/>
+            <xsl:if test="count(class) > 0">
+                <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/package-info.java">
+                    <xsl:copy-of select="packageInfo"/>
+                </xsl:result-document>
+            </xsl:if>
+            <xsl:for-each select="class">
+                <xsl:value-of select="do:message(concat('###', ./packageDirectory, '.', ./className))"/>
+                <xsl:variable name="includeSequence" as="xs:string*" select="do:getIncludes($root/packages, ., $allClasses)"/>
+                <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/{classFileName}.java">
+                    <xsl:choose>
+                        <xsl:when test="enumeration = true()">
+                            <xsl:value-of select="do:writeEnumeration($root/packages, .)"/>
+                        </xsl:when>
+                        <xsl:when test="do:is-value-in-sequence(classNameOrgAbstractStripped, $implements)">
+                            <xsl:value-of select="do:writeInterface($root/packages, $package, ., $includeSequence)"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="do:writeClass($root/packages, $package, ., $includeSequence)"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:result-document>
+            </xsl:for-each>
+        </xsl:for-each>
+        
+    </xsl:template>
+    
+    <xsl:template match="/xxx">
         <xsl:variable name="root">
             <xsl:element name="packages">
                 <xsl:variable name="baseDirectory" select="'test'"/>
@@ -440,7 +507,15 @@
         <xsl:param name="packages" as="node()"/>
         <xsl:value-of select="do:writeComment($nameAndTypeAndKind/description, '')"/>
         <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
-        <xsl:value-of select="do:outputSpaces(concat('    final ', $type, ' ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' = ', $nameAndTypeAndKind/value, ';'))"/>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'final ', $type, ' ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' = ', $nameAndTypeAndKind/value, ';'))"/>
+    </xsl:function>
+    
+    <xsl:function name="do:writeInterfaceConstants">
+        <xsl:param name="nameAndTypeAndKind" as="node()"/>
+        <xsl:param name="packages" as="node()"/>
+        <xsl:value-of select="do:writeComment($nameAndTypeAndKind/description, '')"/>
+        <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp, $type, ' ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' = ', $nameAndTypeAndKind/value, ';'))"/>
     </xsl:function>
 
     <xsl:function name="do:writeClassFunctions">
@@ -543,16 +618,16 @@
             </xsl:when>
             <xsl:otherwise>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public ', $type, ' get', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '() {')))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return ', $nameAndTypeAndKind/name, ';'))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ';'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public void set', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '(', $type, ' value) {')))"/>
                 <xsl:if test="starts-with($nameAndTypeAndKind/cardinality, '1')">
-                    <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', $nameAndTypeAndKind/name, ' == null ) {'))"/>
+                    <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( value == null ) {'))"/>
                     <xsl:value-of
-                        select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; ', $nameAndTypeAndKind/name, ' has cardinality NonNull, but is null&quot;);'))"/>
+                        select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; Setting property:', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' failed, it has cardinality NonNull, but is null&quot;);'))"/>
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
                 </xsl:if>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', $nameAndTypeAndKind/name, ' = ', $nameAndTypeAndKind/name, ';'))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' = ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ';'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
             </xsl:otherwise>
         </xsl:choose>
@@ -879,7 +954,7 @@
                 <xsl:value-of select="do:output('/*=========================================================*/')"/>
                 <xsl:for-each select="$class/functionsAndAttributesAndConstants/nameAndTypeAndKind">
                     <xsl:if test="kind = 'constant'">
-                        <xsl:value-of select="do:writeClassConstants(., $packages)"/>
+                        <xsl:value-of select="do:writeInterfaceConstants(., $packages)"/>
                     </xsl:if>
                 </xsl:for-each>
             </xsl:if>
