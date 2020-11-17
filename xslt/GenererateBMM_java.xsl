@@ -19,70 +19,160 @@
             'TEST_CHAIN_INTERFACE_5',
             'TEST_CHAIN_INTERFACE_6'
             "/>
-
+    
     <xsl:template match="/">
         <xsl:variable name="root">
             <xsl:element name="packages">
-                <xsl:variable name="baseDirectorytest" select="'test'"/>
+                <xsl:variable name="baseDirectory" select="'test'"/>
                 <xsl:element name="package">
                     <xsl:element name="packageInfo">
-                        <xsl:copy-of select="do:basePackageInfo(document(concat($baseDirectorytest, '.html')), concat($packageBase, $baseDirectorytest))"/>
+                        <xsl:copy-of select="do:basePackageInfo(document(concat($baseDirectory, '.html')), concat($packageBase, $baseDirectory))"/>
                     </xsl:element>
                     <xsl:element name="packageDirectory">
-                        <xsl:value-of select="$baseDirectorytest"/>
+                        <xsl:value-of select="$baseDirectory"/>
                     </xsl:element>
                 </xsl:element>
-                <xsl:for-each select="document(concat($baseDirectorytest, '.html'))/html/body[1]/div[2]/div">
+                <xsl:for-each select="document(concat($baseDirectory, '.html'))/html/body[1]/div[2]/div">
                     <xsl:call-template name="analyzeClassDocument">
                         <xsl:with-param name="context" select="."/>
-                        <xsl:with-param name="baseDirectory" select="$baseDirectorytest"/>
+                        <xsl:with-param name="baseDirectory" select="$baseDirectory"/>
                     </xsl:call-template>
                 </xsl:for-each>
-                <xsl:variable name="baseDirectory0" select="'base_types'"/>
+                <xsl:variable name="baseDirectory" select="'base_types'"/>
                 <xsl:element name="package">
                     <xsl:element name="packageInfo">
-                        <xsl:copy-of select="do:basePackageInfo(document(concat($baseDirectory0, '.html')), concat($packageBase, $baseDirectory0))"/>
+                        <xsl:copy-of select="do:basePackageInfo(document(concat($baseDirectory, '.html')), concat($packageBase, $baseDirectory))"/>
                     </xsl:element>
                     <xsl:element name="packageDirectory">
-                        <xsl:value-of select="$baseDirectory0"/>
+                        <xsl:value-of select="$baseDirectory"/>
                     </xsl:element>
                 </xsl:element>
-                <xsl:for-each select="document(concat($baseDirectory0, '.html'))/html/body[1]/div[2]/div">
+                <xsl:for-each select="document(concat($baseDirectory, '.html'))/html/body[1]/div[2]/div">
                     <xsl:call-template name="analyzeClassDocument">
                         <xsl:with-param name="context" select="."/>
-                        <xsl:with-param name="baseDirectory" select="$baseDirectory0"/>
+                        <xsl:with-param name="baseDirectory" select="$baseDirectory"/>
                     </xsl:call-template>
                 </xsl:for-each>
-                <xsl:variable name="baseDirectory1" select="'bmm'"/>
+                <xsl:variable name="packageDirectory" select="'bmm'"/>
                 <xsl:element name="package">
                     <xsl:element name="packageInfo">
-                        <xsl:copy-of select="do:basePackageInfo(document(concat($baseDirectory1, '.html')), concat($packageBase, $baseDirectory1))"/>
+                        <xsl:copy-of select="do:basePackageInfo(document(concat($packageDirectory, '.html')), concat($packageBase, $packageDirectory))"/>
                     </xsl:element>
                     <xsl:element name="packageDirectory">
-                        <xsl:value-of select="$baseDirectory1"/>
+                        <xsl:value-of select="$packageDirectory"/>
                     </xsl:element>
                 </xsl:element>
-                <xsl:for-each select="document(concat($baseDirectory1, '.html'))/html/body[1]/div[2]/div">
+                <xsl:for-each select="document(concat($packageDirectory, '.html'))/html/body[1]/div[2]/div">
                     <xsl:call-template name="analyzeClassDocument">
                         <xsl:with-param name="context" select="."/>
-                        <xsl:with-param name="baseDirectory" select="$baseDirectory1"/>
+                        <xsl:with-param name="baseDirectory" select="$packageDirectory"/>
                     </xsl:call-template>
                 </xsl:for-each>
-                <xsl:variable name="baseDirectory2" select="'bmm_persistence'"/>
+                <xsl:variable name="baseDirectory" select="'bmm_persistence'"/>
                 <xsl:element name="package">
                     <xsl:element name="packageInfo">
-                        <xsl:copy-of select="do:basePackageInfo(document(concat($baseDirectory2, '.html')), concat($packageBase, $baseDirectory2))"/>
+                        <xsl:copy-of select="do:basePackageInfo(document(concat($packageDirectory, '.html')), concat($packageBase, $packageDirectory))"/>
                     </xsl:element>
                     <xsl:element name="packageDirectory">
-                        <xsl:value-of select="$baseDirectory2"/>
+                        <xsl:value-of select="$packageDirectory"/>
                     </xsl:element>
                 </xsl:element>
-                <xsl:for-each select="document(concat($baseDirectory2, '.html'))/html/body[1]/div[2]/div">
+                <xsl:for-each select="document(concat($packageDirectory, '.html'))/html/body[1]/div[2]/div">
                     <xsl:call-template name="analyzeClassDocument">
                         <xsl:with-param name="context" select="."/>
-                        <xsl:with-param name="baseDirectory" select="$baseDirectory2"/>
+                        <xsl:with-param name="baseDirectory" select="$packageDirectory"/>
                     </xsl:call-template>
                 </xsl:for-each>
+                <!--<xsl:variable name="baseDirectory" select="'aom_1.4'"/>
+                <xsl:element name="package">
+                    <xsl:element name="packageInfo">
+                        <xsl:copy-of select="do:basePackageInfo(document(concat($packageDirectory, '.html')), concat($packageBase, $packageDirectory))"/>
+                    </xsl:element>
+                    <xsl:element name="packageDirectory">
+                        <xsl:value-of select="$packageDirectory"/>
+                    </xsl:element>
+                </xsl:element>
+                <xsl:for-each select="document(concat($packageDirectory, '.html'))/html/body[1]/div[2]/div">
+                    <xsl:call-template name="analyzeClassDocument">
+                        <xsl:with-param name="context" select="."/>
+                        <xsl:with-param name="baseDirectory" select="$packageDirectory"/>
+                    </xsl:call-template>
+                </xsl:for-each>
+                <xsl:variable name="baseDirectory" select="'aom_2'"/>
+                <xsl:element name="package">
+                    <xsl:element name="packageInfo">
+                        <xsl:copy-of select="do:basePackageInfo(document(concat($packageDirectory, '.html')), concat($packageBase, $packageDirectory))"/>
+                    </xsl:element>
+                    <xsl:element name="packageDirectory">
+                        <xsl:value-of select="$packageDirectory"/>
+                    </xsl:element>
+                </xsl:element>
+                <xsl:for-each select="document(concat($packageDirectory, '.html'))/html/body[1]/div[2]/div">
+                    <xsl:call-template name="analyzeClassDocument">
+                        <xsl:with-param name="context" select="."/>
+                        <xsl:with-param name="baseDirectory" select="$packageDirectory"/>
+                    </xsl:call-template>
+                </xsl:for-each>
+                <xsl:variable name="baseDirectory" select="'aql_1.0.1'"/>
+                <xsl:element name="package">
+                    <xsl:element name="packageInfo">
+                        <xsl:copy-of select="do:basePackageInfo(document(concat($packageDirectory, '.html')), concat($packageBase, $packageDirectory))"/>
+                    </xsl:element>
+                    <xsl:element name="packageDirectory">
+                        <xsl:value-of select="$packageDirectory"/>
+                    </xsl:element>
+                </xsl:element>
+                <xsl:for-each select="document(concat($packageDirectory, '.html'))/html/body[1]/div[2]/div">
+                    <xsl:call-template name="analyzeClassDocument">
+                        <xsl:with-param name="context" select="."/>
+                        <xsl:with-param name="baseDirectory" select="$packageDirectory"/>
+                    </xsl:call-template>
+                </xsl:for-each>
+                <xsl:variable name="baseDirectory" select="'common'"/>
+                <xsl:element name="package">
+                    <xsl:element name="packageInfo">
+                        <xsl:copy-of select="do:basePackageInfo(document(concat($packageDirectory, '.html')), concat($packageBase, $packageDirectory))"/>
+                    </xsl:element>
+                    <xsl:element name="packageDirectory">
+                        <xsl:value-of select="$packageDirectory"/>
+                    </xsl:element>
+                </xsl:element>
+                <xsl:for-each select="document(concat($packageDirectory, '.html'))/html/body[1]/div[2]/div">
+                    <xsl:call-template name="analyzeClassDocument">
+                        <xsl:with-param name="context" select="."/>
+                        <xsl:with-param name="baseDirectory" select="$packageDirectory"/>
+                    </xsl:call-template>
+                </xsl:for-each>
+                <xsl:variable name="baseDirectory" select="'support'"/>
+                <xsl:element name="package">
+                    <xsl:element name="packageInfo">
+                        <xsl:copy-of select="do:basePackageInfo(document(concat($packageDirectory, '.html')), concat($packageBase, $packageDirectory))"/>
+                    </xsl:element>
+                    <xsl:element name="packageDirectory">
+                        <xsl:value-of select="$packageDirectory"/>
+                    </xsl:element>
+                </xsl:element>
+                <xsl:for-each select="document(concat($packageDirectory, '.html'))/html/body[1]/div[2]/div">
+                    <xsl:call-template name="analyzeClassDocument">
+                        <xsl:with-param name="context" select="."/>
+                        <xsl:with-param name="baseDirectory" select="$packageDirectory"/>
+                    </xsl:call-template>
+                </xsl:for-each>
+                <xsl:variable name="baseDirectory" select="'demographic'"/>
+                <xsl:element name="package">
+                    <xsl:element name="packageInfo">
+                        <xsl:copy-of select="do:basePackageInfo(document(concat($packageDirectory, '.html')), concat($packageBase, $packageDirectory))"/>
+                    </xsl:element>
+                    <xsl:element name="packageDirectory">
+                        <xsl:value-of select="$packageDirectory"/>
+                    </xsl:element>
+                </xsl:element>
+                <xsl:for-each select="document(concat($packageDirectory, '.html'))/html/body[1]/div[2]/div">
+                    <xsl:call-template name="analyzeClassDocument">
+                        <xsl:with-param name="context" select="."/>
+                        <xsl:with-param name="baseDirectory" select="$packageDirectory"/>
+                    </xsl:call-template>
+                </xsl:for-each>-->
             </xsl:element>
         </xsl:variable>
         <xsl:variable name="allClasses" as="xs:string*">
@@ -100,16 +190,6 @@
                     <xsl:copy-of select="packageInfo"/>
                 </xsl:result-document>
             </xsl:if>
-            <!--<xsl:for-each select="class">
-                <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/{classFileName}.java">
-                    <xsl:if test="enumeration = false()">
-                        <xsl:value-of select="do:writeInterface($root/packages, $package, .)"/>
-                    </xsl:if>
-                    <xsl:if test="enumeration = true()">
-                        <xsl:value-of select="do:writeEnumeration($root/packages, .)"/>
-                    </xsl:if>
-                </xsl:result-document>
-            </xsl:for-each>-->
             <xsl:for-each select="class">
                 <xsl:value-of select="do:message(concat('###', ./packageDirectory, '.', ./className))"/>
                 <xsl:variable name="includeSequence" as="xs:string*" select="do:getIncludes($root/packages, ., $allClasses)"/>
@@ -249,25 +329,23 @@
         <xsl:value-of select="do:output('}')"/>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:commentOpen()"/>
-        <xsl:value-of select="do:commentOutput('***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1')"/>
+        <xsl:value-of select="do:commentOutput('***** BEGIN LICENSE BLOCK ***** ')"/>
         <xsl:value-of select="do:commentOutput('')"/>
-        <xsl:value-of select="do:commentOutput('The contents of this file are subject to the Mozilla Public License Version')"/>
-        <xsl:value-of select="do:commentOutput('1.1 (the &quot;License&quot;); you may not use this file except in compliance with the')"/>
-        <xsl:value-of select="do:commentOutput('License. You may obtain a copy of the License at http://www.mozilla.org/MPL/')"/>
-        <xsl:value-of select="do:commentOutput('')"/>        
-        <xsl:value-of select="do:commentOutput('Software distributed under the License is distributed on an &quot;AS IS&quot; basis,')"/>
-        <xsl:value-of select="do:commentOutput('WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for')"/>
-        <xsl:value-of select="do:commentOutput('the specific language governing rights and limitations under the License.')"/>
-        <xsl:value-of select="do:commentOutput('')"/>         
-        <xsl:value-of select="do:commentOutput('The Initial Developer of the Original Code is Bert Verhees.')"/>
-        <xsl:value-of select="do:commentOutput('the Initial Developer Copyright (C) 2020 the Initial Developer.')"/>
-        <xsl:value-of select="do:commentOutput('All Rights Reserved.')"/>
-        <xsl:value-of select="do:commentOutput('')"/>        
-        <xsl:value-of select="do:commentOutput('Contributor(s): Bert Verhees')"/>
-        <xsl:value-of select="do:commentOutput('')"/>        
-        <xsl:value-of select="do:commentOutput('Software distributed under the License is distributed on an &quot;AS IS&quot; basis,')"/>
-        <xsl:value-of select="do:commentOutput('WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for')"/>
-        <xsl:value-of select="do:commentOutput('the specific language governing rights and limitations under the License.')"/>
+        <xsl:value-of select="do:commentOutput('ISC License')"/>
+        <xsl:value-of select="do:commentOutput('')"/>
+        <xsl:value-of select="do:commentOutput('Copyright (c) 2020, Bert Verhees')"/>
+        <xsl:value-of select="do:commentOutput('')"/>
+        <xsl:value-of select="do:commentOutput('Permission to use, copy, modify, and/or distribute this software for any')"/>
+        <xsl:value-of select="do:commentOutput('purpose with or without fee is hereby granted, provided that the above')"/>
+        <xsl:value-of select="do:commentOutput('copyright notice and this permission notice appear in all copies.')"/>
+        <xsl:value-of select="do:commentOutput('')"/>
+        <xsl:value-of select="do:commentOutput('THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES')"/>
+        <xsl:value-of select="do:commentOutput('WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF')"/>
+        <xsl:value-of select="do:commentOutput('MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR')"/>
+        <xsl:value-of select="do:commentOutput('ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES')"/>
+        <xsl:value-of select="do:commentOutput('WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN')"/>
+        <xsl:value-of select="do:commentOutput('ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF')"/>
+        <xsl:value-of select="do:commentOutput('OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.')"/>
         <xsl:value-of select="do:commentOutput('')"/>        
         <xsl:value-of select="do:commentOutput('***** END LICENSE BLOCK *****')"/>
         <xsl:value-of select="do:commentClose()"/>
@@ -278,25 +356,23 @@
         <xsl:value-of select="do:output('}')"/>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:commentOpen()"/>
-        <xsl:value-of select="do:commentOutput('***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1')"/>
+        <xsl:value-of select="do:commentOutput('***** BEGIN LICENSE BLOCK ***** ')"/>
         <xsl:value-of select="do:commentOutput('')"/>
-        <xsl:value-of select="do:commentOutput('The contents of this file are subject to the Mozilla Public License Version')"/>
-        <xsl:value-of select="do:commentOutput('1.1 (the &quot;License&quot;); you may not use this file except in compliance with the')"/>
-        <xsl:value-of select="do:commentOutput('License. You may obtain a copy of the License at http://www.mozilla.org/MPL/')"/>
-        <xsl:value-of select="do:commentOutput('')"/>        
-        <xsl:value-of select="do:commentOutput('Software distributed under the License is distributed on an &quot;AS IS&quot; basis,')"/>
-        <xsl:value-of select="do:commentOutput('WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for')"/>
-        <xsl:value-of select="do:commentOutput('the specific language governing rights and limitations under the License.')"/>
-        <xsl:value-of select="do:commentOutput('')"/>         
-        <xsl:value-of select="do:commentOutput('The Initial Developer of the Original Code is Bert Verhees.')"/>
-        <xsl:value-of select="do:commentOutput('the Initial Developer Copyright (C) 2020 the Initial Developer.')"/>
-        <xsl:value-of select="do:commentOutput('All Rights Reserved.')"/>
-        <xsl:value-of select="do:commentOutput('')"/>        
-        <xsl:value-of select="do:commentOutput('Contributor(s): Bert Verhees')"/>
-        <xsl:value-of select="do:commentOutput('')"/>        
-        <xsl:value-of select="do:commentOutput('Software distributed under the License is distributed on an &quot;AS IS&quot; basis,')"/>
-        <xsl:value-of select="do:commentOutput('WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for')"/>
-        <xsl:value-of select="do:commentOutput('the specific language governing rights and limitations under the License.')"/>
+        <xsl:value-of select="do:commentOutput('ISC License')"/>
+        <xsl:value-of select="do:commentOutput('')"/>
+        <xsl:value-of select="do:commentOutput('Copyright (c) 2020, Bert Verhees')"/>
+        <xsl:value-of select="do:commentOutput('')"/>
+        <xsl:value-of select="do:commentOutput('Permission to use, copy, modify, and/or distribute this software for any')"/>
+        <xsl:value-of select="do:commentOutput('purpose with or without fee is hereby granted, provided that the above')"/>
+        <xsl:value-of select="do:commentOutput('copyright notice and this permission notice appear in all copies.')"/>
+        <xsl:value-of select="do:commentOutput('')"/>
+        <xsl:value-of select="do:commentOutput('THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES')"/>
+        <xsl:value-of select="do:commentOutput('WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF')"/>
+        <xsl:value-of select="do:commentOutput('MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR')"/>
+        <xsl:value-of select="do:commentOutput('ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES')"/>
+        <xsl:value-of select="do:commentOutput('WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN')"/>
+        <xsl:value-of select="do:commentOutput('ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF')"/>
+        <xsl:value-of select="do:commentOutput('OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.')"/>
         <xsl:value-of select="do:commentOutput('')"/>        
         <xsl:value-of select="do:commentOutput('***** END LICENSE BLOCK *****')"/>
         <xsl:value-of select="do:commentClose()"/>
@@ -386,8 +462,7 @@
                     <xsl:otherwise>
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public void  ', $nameAndTypeAndKind/name, '(',string-join($parameters,', '),') {')))"/>
                         <xsl:for-each select="$nameAndTypeAndKind/parameters/parameter">
-                            <xsl:if test="starts-with(type/type-cardinality/text(),'1')">
-                                <xsl:value-of select="do:message(concat(name,type/type-cardinality))"/>
+                            <xsl:if test="starts-with(type/type-cardinality,'1')">
                                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', name, ' == null ) {'))"/>
                                 <xsl:value-of
                                     select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Parameter ', name, ' has cardinality NonNull, but is null&quot;);'))"/>
@@ -407,7 +482,7 @@
                     <xsl:otherwise>
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $type, '  ', $nameAndTypeAndKind/name, '(',string-join($parameters,', '),') {'))"/>
                         <xsl:for-each select="$nameAndTypeAndKind/parameters/parameter">
-                            <xsl:if test="starts-with(type/type-cardinality/text(),'1')">
+                            <xsl:if test="starts-with(type/type-cardinality,'1')">
                                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', name, ' == null ) {'))"/>
                                 <xsl:value-of
                                     select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Parameter ', name, ' has cardinality NonNull, but is null.&quot;);'))"/>
@@ -417,10 +492,38 @@
                         
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $type, '  result', ';'))"/>
                         <xsl:value-of select="do:output('')"/>
+                        <xsl:value-of select="do:output('')"/>
+                        <xsl:if test="starts-with($nameAndTypeAndKind/cardinality,'1')">
+                            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( result  == null ) {'))"/>
+                            <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Return-value has cardinality NonNull, but is null.&quot;);'))"/>
+                            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>                              
+                        </xsl:if>
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return  result', ';'))"/>
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
                     </xsl:otherwise>
                 </xsl:choose>
+            </xsl:otherwise>
+        </xsl:choose>
+    </xsl:function>
+    
+    <xsl:function name="do:writeInterfaceFunctions">
+        <xsl:param name="nameAndTypeAndKind" as="node()"/>
+        <xsl:param name="packages" as="node()"/>
+        <xsl:value-of select="do:writeComment($nameAndTypeAndKind/description, $nameAndTypeAndKind/cardinality)"/>
+        <xsl:variable name="parameters" as="xs:string*">
+            <xsl:for-each select="$nameAndTypeAndKind/parameters/parameter">
+                <xsl:variable name="par-type" as="xs:string" select="string-join(do:processType($packages, type/type-name))"/>
+                <xsl:value-of select="concat($par-type,' ',name)"/>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:choose>
+            <xsl:when test="$nameAndTypeAndKind/kind = 'void-function'">
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public void  ', $nameAndTypeAndKind/name, '(',string-join($parameters,', '),');')))"/>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $type, '  ', $nameAndTypeAndKind/name, '(',string-join($parameters,', '),');'))"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -765,7 +868,7 @@
                 <xsl:value-of select="do:output('/*=========================================================*/')"/>
                 <xsl:for-each select="$class/functionsAndAttributesAndConstants/nameAndTypeAndKind">
                     <xsl:if test="kind = 'void-function' or kind = 'value-function'">
-                        <xsl:value-of select="do:writeClassFunctions(., $packages)"/>
+                        <xsl:value-of select="do:writeInterfaceFunctions(., $packages)"/>
                     </xsl:if>
                 </xsl:for-each>
             </xsl:if>
