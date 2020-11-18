@@ -15,6 +15,7 @@
             'BMM_TYPED',
             'EL_AGENT_CALL',
             'P_BMM_PACKAGE_CONTAINER',
+            'AUTHORED_RESOURCE',
             'TEST_INTERFACE_1',
             'TEST_CHAIN_INTERFACE_5',
             'TEST_CHAIN_INTERFACE_6'
@@ -51,6 +52,8 @@
                 <xsl:copy-of select="do:proceed('bmm')"></xsl:copy-of>
                 <xsl:copy-of select="do:proceed('bmm_persistence')"></xsl:copy-of>
                 <xsl:copy-of select="do:proceed('base_types')"></xsl:copy-of>
+                <xsl:copy-of select="do:proceed('foundation_types')"></xsl:copy-of>
+                <xsl:copy-of select="do:proceed('resource')"></xsl:copy-of>
                 <xsl:copy-of select="do:proceed('aom_2')"></xsl:copy-of>
             </xsl:element>
         </xsl:variable>
