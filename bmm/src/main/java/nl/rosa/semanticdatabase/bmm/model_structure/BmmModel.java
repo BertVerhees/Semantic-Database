@@ -1,7 +1,9 @@
 package nl.rosa.semanticdatabase.bmm.model_structure;
 
 import nl.rosa.semanticdatabase.bmm.model_access_package.BmmModelMetadata;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.bmm.classes.BmmEnumeration;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProperty;
 import nl.rosa.semanticdatabase.bmm.classes.BmmSimpleClass;
@@ -9,7 +11,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -53,39 +55,40 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * 
 */
 
-    public void putClassdefinition(String key, BmmClass value ) {
+    public void putClassDefinition(String key, BmmClass value ) {
         if (classDefinitions == null ) {
             classDefinitions = new HashMap<> ();
         }
         classDefinitions.put( key, value);
     }
 
-    public void putClassdefinitions(Map<String,BmmClass> items ) {
+    public void putClassDefinitions(Map<String,BmmClass> items ) {
         items.keySet().forEach(key -> putClassdefinition(key, items.get(key)));
     }
 
-    public BmmClass getClassdefinition(String key ) {
+    public BmmClass getClassDefinition(String key ) {
         if (classDefinitions == null ) {
             return null;
         }
         return classDefinitions.get( key);
     }
 
-    public void removeClassdefinition(String key ) {
+    public void removeClassDefinition(String key ) {
         if (classDefinitions != null ) {
             classDefinitions.remove(key);
         }
     }
-    public void removeClassdefinitions( Collection <String> keys ) {
-        keys.forEach(this::removeClassdefinition);
+    public void removeClassDefinitions( Collection <String> keys ) {
+        keys.forEach(this::removeClassDefinition);
     }
-    Map<String,BmmClass> getClassdefinitions() {
+    public Map<String, BmmClass> getClassDefinitions() {
         return this.classDefinitions;
     }
-    void setClassdefinitions(Map<String,BmmClass> classDefinitions) {
+    public BmmModel setClassDefinitions(Map<String, BmmClass> classDefinitions) {
         this.classDefinitions = classDefinitions;
+        return this;
     }
-    public Map<String,BmmClass> classDefinitions() {
+    public Map<String, BmmClass> classDefinitions() {
         return Collections.unmodifiableMap(this.classDefinitions);
     }
 
@@ -120,8 +123,9 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     BmmModel getUsedModels() {
         return this.usedModels;
     }
-    void setUsedModels(BmmModel usedModels) {
+    public BmmModel setUsedModels(BmmModel usedModels) {
         this.usedModels = usedModels;
+        return this;
     }
     public List<BmmModel> usedModels() {
         return Collections.unmodifiableList(this.usedModels);
@@ -138,7 +142,15 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract String  modelId();
+    public String  modelId() {
+        String  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -146,7 +158,18 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract BmmClass  classDefinition();
+    public BmmClass  classDefinition(String a_name) {
+        if (a_name == null ) {
+            throw new NullPointerException("Parameter a_name has cardinality NonNull, but is null.");
+        }
+        BmmClass  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -156,7 +179,15 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract BmmClass  typeDefinition();
+    public BmmClass  typeDefinition() {
+        BmmClass  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -164,7 +195,18 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract Boolean  hasClassDefinition();
+    public Boolean  hasClassDefinition(String a_class_name) {
+        if (a_class_name == null ) {
+            throw new NullPointerException("Parameter a_class_name has cardinality NonNull, but is null.");
+        }
+        Boolean  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -172,7 +214,18 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract Boolean  hasTypeDefinition();
+    public Boolean  hasTypeDefinition(String a_type_name) {
+        if (a_type_name == null ) {
+            throw new NullPointerException("Parameter a_type_name has cardinality NonNull, but is null.");
+        }
+        Boolean  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -180,7 +233,18 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract BmmEnumeration  enumerationDefinition();
+    public BmmEnumeration  enumerationDefinition(String a_name) {
+        if (a_name == null ) {
+            throw new NullPointerException("Parameter a_name has cardinality NonNull, but is null.");
+        }
+        BmmEnumeration  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -188,7 +252,12 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 0..1
  * 
 */
-    public abstract List<String>  primitiveTypes();
+    public List<String>  primitiveTypes() {
+        List<String>  result;
+
+
+        return  result;
+    }
 
 /**
  * 
@@ -196,7 +265,12 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 0..1
  * 
 */
-    public abstract List<String>  enumerationTypes();
+    public List<String>  enumerationTypes() {
+        List<String>  result;
+
+
+        return  result;
+    }
 
 /**
  * 
@@ -204,7 +278,15 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract BmmProperty  propertyDefinition();
+    public BmmProperty  propertyDefinition() {
+        BmmProperty  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -214,7 +296,24 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract Boolean  msConformantPropertyType();
+    public Boolean  msConformantPropertyType(String a_bmm_type_name, String a_bmm_property_name, String a_ms_property_name) {
+        if (a_bmm_type_name == null ) {
+            throw new NullPointerException("Parameter a_bmm_type_name has cardinality NonNull, but is null.");
+        }
+        if (a_bmm_property_name == null ) {
+            throw new NullPointerException("Parameter a_bmm_property_name has cardinality NonNull, but is null.");
+        }
+        if (a_ms_property_name == null ) {
+            throw new NullPointerException("Parameter a_ms_property_name has cardinality NonNull, but is null.");
+        }
+        Boolean  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -222,7 +321,15 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract BmmProperty  propertyDefinitionAtPath();
+    public BmmProperty  propertyDefinitionAtPath() {
+        BmmProperty  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -230,7 +337,21 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract BmmClass  classDefinitionAtPath();
+    public BmmClass  classDefinitionAtPath(String a_type_name, String a_prop_path) {
+        if (a_type_name == null ) {
+            throw new NullPointerException("Parameter a_type_name has cardinality NonNull, but is null.");
+        }
+        if (a_prop_path == null ) {
+            throw new NullPointerException("Parameter a_prop_path has cardinality NonNull, but is null.");
+        }
+        BmmClass  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -240,7 +361,15 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 0..1
  * 
 */
-    public abstract List<String>  allAncestorClasses();
+    public List<String>  allAncestorClasses(String a_class) {
+        if (a_class == null ) {
+            throw new NullPointerException("Parameter a_class has cardinality NonNull, but is null.");
+        }
+        List<String>  result;
+
+
+        return  result;
+    }
 
 /**
  * 
@@ -248,7 +377,21 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract Boolean  isDescendantOf();
+    public Boolean  isDescendantOf(String a_class_name, String a_parent_class_name) {
+        if (a_class_name == null ) {
+            throw new NullPointerException("Parameter a_class_name has cardinality NonNull, but is null.");
+        }
+        if (a_parent_class_name == null ) {
+            throw new NullPointerException("Parameter a_parent_class_name has cardinality NonNull, but is null.");
+        }
+        Boolean  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -258,7 +401,21 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract Boolean  typeConformsTo();
+    public Boolean  typeConformsTo(String a_desc_type, String an_anc_type) {
+        if (a_desc_type == null ) {
+            throw new NullPointerException("Parameter a_desc_type has cardinality NonNull, but is null.");
+        }
+        if (an_anc_type == null ) {
+            throw new NullPointerException("Parameter an_anc_type has cardinality NonNull, but is null.");
+        }
+        Boolean  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -268,7 +425,18 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract List<String>  subtypes();
+    public List<String>  subtypes(String a_type) {
+        if (a_type == null ) {
+            throw new NullPointerException("Parameter a_type has cardinality NonNull, but is null.");
+        }
+        List<String>  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -277,7 +445,15 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract BmmSimpleClass  anyClassDefinition();
+    public BmmSimpleClass  anyClassDefinition() {
+        BmmSimpleClass  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -285,7 +461,15 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract BmmSimpleType  anyTypeDefinition();
+    public BmmSimpleType  anyTypeDefinition() {
+        BmmSimpleType  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -293,7 +477,15 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract BmmSimpleType  booleanTypeDefinition();
+    public BmmSimpleType  booleanTypeDefinition() {
+        BmmSimpleType  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
     //***** BmmModelMetadata *****
 
@@ -329,13 +521,14 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * 
 */
     public String getRmPublisher() {
-        return rm_publisher;
+        return rmPublisher;
     }
-    public void setRmPublisher(String value) {
-        if (rm_publisher == null ) {
-            throw new NullPointerException(" rm_publisher has cardinality NonNull, but is null")
+    public BmmModelMetadata setRmPublisher(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:rmPublisher failed, it has cardinality NonNull, but is null");
         }
-        this.rm_publisher = rm_publisher;
+        this.rmPublisher = rmPublisher;
+        return this;
     }
 
 /**
@@ -346,41 +539,98 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * 
 */
     public String getRmRelease() {
-        return rm_release;
+        return rmRelease;
     }
-    public void setRmRelease(String value) {
-        if (rm_release == null ) {
-            throw new NullPointerException(" rm_release has cardinality NonNull, but is null")
+    public BmmModelMetadata setRmRelease(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:rmRelease failed, it has cardinality NonNull, but is null");
         }
-        this.rm_release = rm_release;
+        this.rmRelease = rmRelease;
+        return this;
+    }
+
+    //***** BmmModel *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+    public BmmModel build() {
+        return new BmmModel(
+            classDefinitions,
+            usedModels,
+            rmPublisher,
+            rmRelease,
+            packages,
+            scope,
+            name,
+            documentation,
+            scope,
+            extensions
+        );
+    }
+
+    public BmmModel(
+            Map<String,BmmClass> classDefinitions,
+            List<BmmModel> usedModels,
+            String rmPublisher,
+            String rmRelease,
+            Map<String,BmmPackage> packages,
+            BmmPackageContainer scope,
+            String name,
+            Map<String, Any> documentation,
+            BmmDeclaration scope,
+            Map<String, Any> extensions
+    ){
+        if ( rmPublisher == null ) {
+            throw new NullPointerException("Property:rmPublisher has cardinality NonNull, but is null");
+        }
+        if ( rmRelease == null ) {
+            throw new NullPointerException("Property:rmRelease has cardinality NonNull, but is null");
+        }
+        if ( scope == null ) {
+            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+        }
+        if ( name == null ) {
+            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+        }
+        if ( scope == null ) {
+            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+        }
+        this.classDefinitions = classDefinitions;
+        this.usedModels = usedModels;
+        this.rmPublisher = rmPublisher;
+        this.rmRelease = rmRelease;
+        this.packages = packages;
+        this.scope = scope;
+        this.name = name;
+        this.documentation = documentation;
+        this.scope = scope;
+        this.extensions = extensions;
     }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

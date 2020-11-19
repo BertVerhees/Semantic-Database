@@ -1,9 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.classes;
 
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModule;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.types.BmmModelType;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProperty;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmConstant;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProcedure;
@@ -13,7 +15,7 @@ import nl.rosa.semanticdatabase.bmm.class_features.BmmClassFeature;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -174,13 +176,14 @@ public abstract class BmmClass extends BmmModule {
     public void removeAncestors( Collection <String> keys ) {
         keys.forEach(this::removeAncestor);
     }
-    Map<String,BmmModelType> getAncestors() {
+    public Map<String, BmmModelType> getAncestors() {
         return this.ancestors;
     }
-    void setAncestors(Map<String,BmmModelType> ancestors) {
+    public BmmClass setAncestors(Map<String, BmmModelType> ancestors) {
         this.ancestors = ancestors;
+        return this;
     }
-    public Map<String,BmmModelType> ancestors() {
+    public Map<String, BmmModelType> ancestors() {
         return Collections.unmodifiableMap(this.ancestors);
     }
 
@@ -193,11 +196,12 @@ public abstract class BmmClass extends BmmModule {
     public BmmPackage getPackage() {
         return package;
     }
-    public void setPackage(BmmPackage value) {
-        if (package == null ) {
-            throw new NullPointerException(" package has cardinality NonNull, but is null")
+    public BmmClass setPackage(BmmPackage value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:package failed, it has cardinality NonNull, but is null");
         }
         this.package = package;
+        return this;
     }
 
 /**
@@ -233,13 +237,14 @@ public abstract class BmmClass extends BmmModule {
     public void removeProperties( Collection <String> keys ) {
         keys.forEach(this::removeProperty);
     }
-    Map<String,BmmProperty> getProperties() {
+    public Map<String, BmmProperty> getProperties() {
         return this.properties;
     }
-    void setProperties(Map<String,BmmProperty> properties) {
+    public BmmClass setProperties(Map<String, BmmProperty> properties) {
         this.properties = properties;
+        return this;
     }
-    public Map<String,BmmProperty> properties() {
+    public Map<String, BmmProperty> properties() {
         return Collections.unmodifiableMap(this.properties);
     }
 
@@ -251,13 +256,14 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public String getSourceSchemaId() {
-        return source_schema_id;
+        return sourceSchemaId;
     }
-    public void setSourceSchemaId(String value) {
-        if (source_schema_id == null ) {
-            throw new NullPointerException(" source_schema_id has cardinality NonNull, but is null")
+    public BmmClass setSourceSchemaId(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:sourceSchemaId failed, it has cardinality NonNull, but is null");
         }
-        this.source_schema_id = source_schema_id;
+        this.sourceSchemaId = sourceSchemaId;
+        return this;
     }
 
 /**
@@ -289,8 +295,9 @@ public abstract class BmmClass extends BmmModule {
     BmmClass getImmediateDescendants() {
         return this.immediateDescendants;
     }
-    void setImmediateDescendants(BmmClass immediateDescendants) {
+    public BmmClass setImmediateDescendants(BmmClass immediateDescendants) {
         this.immediateDescendants = immediateDescendants;
+        return this;
     }
     public List<BmmClass> immediateDescendants() {
         return Collections.unmodifiableList(this.immediateDescendants);
@@ -303,13 +310,14 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public Boolean getIsOverride() {
-        return is_override;
+        return isOverride;
     }
-    public void setIsOverride(Boolean value) {
-        if (is_override == null ) {
-            throw new NullPointerException(" is_override has cardinality NonNull, but is null")
+    public BmmClass setIsOverride(Boolean value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:isOverride failed, it has cardinality NonNull, but is null");
         }
-        this.is_override = is_override;
+        this.isOverride = isOverride;
+        return this;
     }
 
 /**
@@ -345,13 +353,14 @@ public abstract class BmmClass extends BmmModule {
     public void removeConstants( Collection <String> keys ) {
         keys.forEach(this::removeConstant);
     }
-    Map<String,BmmConstant> getConstants() {
+    public Map<String, BmmConstant> getConstants() {
         return this.constants;
     }
-    void setConstants(Map<String,BmmConstant> constants) {
+    public BmmClass setConstants(Map<String, BmmConstant> constants) {
         this.constants = constants;
+        return this;
     }
-    public Map<String,BmmConstant> constants() {
+    public Map<String, BmmConstant> constants() {
         return Collections.unmodifiableMap(this.constants);
     }
 
@@ -388,13 +397,14 @@ public abstract class BmmClass extends BmmModule {
     public void removeFunctions( Collection <String> keys ) {
         keys.forEach(this::removeFunction);
     }
-    Map<String,BmmFunction> getFunctions() {
+    public Map<String, BmmFunction> getFunctions() {
         return this.functions;
     }
-    void setFunctions(Map<String,BmmFunction> functions) {
+    public BmmClass setFunctions(Map<String, BmmFunction> functions) {
         this.functions = functions;
+        return this;
     }
-    public Map<String,BmmFunction> functions() {
+    public Map<String, BmmFunction> functions() {
         return Collections.unmodifiableMap(this.functions);
     }
 
@@ -431,13 +441,14 @@ public abstract class BmmClass extends BmmModule {
     public void removeProcedures( Collection <String> keys ) {
         keys.forEach(this::removeProcedure);
     }
-    Map<String,BmmProcedure> getProcedures() {
+    public Map<String, BmmProcedure> getProcedures() {
         return this.procedures;
     }
-    void setProcedures(Map<String,BmmProcedure> procedures) {
+    public BmmClass setProcedures(Map<String, BmmProcedure> procedures) {
         this.procedures = procedures;
+        return this;
     }
-    public Map<String,BmmProcedure> procedures() {
+    public Map<String, BmmProcedure> procedures() {
         return Collections.unmodifiableMap(this.procedures);
     }
 
@@ -469,8 +480,9 @@ public abstract class BmmClass extends BmmModule {
     BmmAssertion getInvariants() {
         return this.invariants;
     }
-    void setInvariants(BmmAssertion invariants) {
+    public BmmClass setInvariants(BmmAssertion invariants) {
         this.invariants = invariants;
+        return this;
     }
     public List<BmmAssertion> invariants() {
         return Collections.unmodifiableList(this.invariants);
@@ -509,13 +521,14 @@ public abstract class BmmClass extends BmmModule {
     public void removeCreators( Collection <String> keys ) {
         keys.forEach(this::removeCreator);
     }
-    Map<String,BmmProcedure> getCreators() {
+    public Map<String, BmmProcedure> getCreators() {
         return this.creators;
     }
-    void setCreators(Map<String,BmmProcedure> creators) {
+    public BmmClass setCreators(Map<String, BmmProcedure> creators) {
         this.creators = creators;
+        return this;
     }
-    public Map<String,BmmProcedure> creators() {
+    public Map<String, BmmProcedure> creators() {
         return Collections.unmodifiableMap(this.creators);
     }
 
@@ -552,13 +565,14 @@ public abstract class BmmClass extends BmmModule {
     public void removeConverters( Collection <String> keys ) {
         keys.forEach(this::removeConverter);
     }
-    Map<String,BmmProcedure> getConverters() {
+    public Map<String, BmmProcedure> getConverters() {
         return this.converters;
     }
-    void setConverters(Map<String,BmmProcedure> converters) {
+    public BmmClass setConverters(Map<String, BmmProcedure> converters) {
         this.converters = converters;
+        return this;
     }
-    public Map<String,BmmProcedure> converters() {
+    public Map<String, BmmProcedure> converters() {
         return Collections.unmodifiableMap(this.converters);
     }
 
@@ -591,8 +605,9 @@ public abstract class BmmClass extends BmmModule {
     BmmFeatureGroup getFeatureGroups() {
         return this.featureGroups;
     }
-    void setFeatureGroups(BmmFeatureGroup featureGroups) {
+    public BmmClass setFeatureGroups(BmmFeatureGroup featureGroups) {
         this.featureGroups = featureGroups;
+        return this;
     }
     public List<BmmFeatureGroup> featureGroups() {
         return Collections.unmodifiableList(this.featureGroups);
@@ -616,7 +631,12 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public abstract List<String>  allAncestors();
+    public List<String>  allAncestors() {
+        List<String>  result;
+
+
+        return  result;
+    }
 
 /**
  * 
@@ -624,7 +644,12 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public abstract List<String>  allDescendants();
+    public List<String>  allDescendants() {
+        List<String>  result;
+
+
+        return  result;
+    }
 
 /**
  * 
@@ -634,7 +659,12 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public abstract List<String>  suppliers();
+    public List<String>  suppliers() {
+        List<String>  result;
+
+
+        return  result;
+    }
 
 /**
  * 
@@ -642,7 +672,12 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public abstract List<String>  suppliersNonPrimitive();
+    public List<String>  suppliersNonPrimitive() {
+        List<String>  result;
+
+
+        return  result;
+    }
 
 /**
  * 
@@ -651,7 +686,12 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public abstract List<String>  supplierClosure();
+    public List<String>  supplierClosure() {
+        List<String>  result;
+
+
+        return  result;
+    }
 
 /**
  * 
@@ -659,7 +699,15 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 1..1
  * 
 */
-    public abstract String  packagePath();
+    public String  packagePath() {
+        String  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -667,7 +715,15 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 1..1
  * 
 */
-    public abstract String  classPath();
+    public String  classPath() {
+        String  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -676,7 +732,15 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 1..1
  * 
 */
-    public abstract Boolean  isPrimitive();
+    public Boolean  isPrimitive() {
+        Boolean  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -685,7 +749,15 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 1..1
  * 
 */
-    public abstract Boolean  isAbstract();
+    public Boolean  isAbstract() {
+        Boolean  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -693,7 +765,12 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public abstract List<BmmClassFeature>  features();
+    public List<BmmClassFeature>  features() {
+        List<BmmClassFeature>  result;
+
+
+        return  result;
+    }
 
 /**
  * 
@@ -701,7 +778,12 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public abstract List<BmmClassFeature>  flatFeatures();
+    public List<BmmClassFeature>  flatFeatures() {
+        List<BmmClassFeature>  result;
+
+
+        return  result;
+    }
 
 /**
  * 
@@ -709,7 +791,12 @@ public abstract class BmmClass extends BmmModule {
  * cardinality: 0..1
  * 
 */
-    public abstract List<BmmProperty>  flatProperties();
+    public List<BmmProperty>  flatProperties() {
+        List<BmmProperty>  result;
+
+
+        return  result;
+    }
 
 /*=========================================================*/
 /* * CONSTANTS * */
@@ -735,28 +822,24 @@ public abstract class BmmClass extends BmmModule {
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

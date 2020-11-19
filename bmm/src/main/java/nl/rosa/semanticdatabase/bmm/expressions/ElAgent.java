@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmRoutine;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -68,11 +69,12 @@ public abstract class ElAgent extends ElScopedRef {
     public String getName() {
         return name;
     }
-    public void setName(String value) {
-        if (name == null ) {
-            throw new NullPointerException(" name has cardinality NonNull, but is null")
+    public ElAgent setName(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
         this.name = name;
+        return this;
     }
 
 /**
@@ -82,10 +84,11 @@ public abstract class ElAgent extends ElScopedRef {
  * 
 */
     public ElTuple getClosedArgs() {
-        return closed_args;
+        return closedArgs;
     }
-    public void setClosedArgs(ElTuple value) {
-        this.closed_args = closed_args;
+    public ElAgent setClosedArgs(ElTuple value) {
+        this.closedArgs = closedArgs;
+        return this;
     }
 
 /**
@@ -118,8 +121,9 @@ public abstract class ElAgent extends ElScopedRef {
     String getOpenArgs() {
         return this.openArgs;
     }
-    void setOpenArgs(String openArgs) {
+    public ElAgent setOpenArgs(String openArgs) {
         this.openArgs = openArgs;
+        return this;
     }
     public List<String> openArgs() {
         return Collections.unmodifiableList(this.openArgs);
@@ -134,8 +138,9 @@ public abstract class ElAgent extends ElScopedRef {
     public BmmRoutine getDefinition() {
         return definition;
     }
-    public void setDefinition(BmmRoutine value) {
+    public ElAgent setDefinition(BmmRoutine value) {
         this.definition = definition;
+        return this;
     }
 
 /*=========================================================*/
@@ -148,7 +153,15 @@ public abstract class ElAgent extends ElScopedRef {
  * cardinality: 1..1 (effected)
  * 
 */
-    public abstract Result = definition.signature  evalType();
+    public Result = definition.signature  evalType() {
+        Result = definition.signature  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -156,34 +169,38 @@ public abstract class ElAgent extends ElScopedRef {
  * cardinality: 1..1
  * 
 */
-    public abstract Result = open_arguments = Void  isCallable();
+    public Result = open_arguments = Void  isCallable() {
+        Result = open_arguments = Void  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

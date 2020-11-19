@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * 
  * Enumeration of parameter read/write direction values.
  * 

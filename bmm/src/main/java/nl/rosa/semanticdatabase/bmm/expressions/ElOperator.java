@@ -1,11 +1,13 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmOperator;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -58,10 +60,11 @@ public abstract class ElOperator extends ElSimple {
  * 
 */
     public Boolean getPrecedenceOverridden() {
-        return precedence_overridden;
+        return precedenceOverridden;
     }
-    public void setPrecedenceOverridden(Boolean value) {
-        this.precedence_overridden = precedence_overridden;
+    public ElOperator setPrecedenceOverridden(Boolean value) {
+        this.precedenceOverridden = precedenceOverridden;
+        return this;
     }
 
 /**
@@ -74,8 +77,9 @@ public abstract class ElOperator extends ElSimple {
     public String getSymbol() {
         return symbol;
     }
-    public void setSymbol(String value) {
+    public ElOperator setSymbol(String value) {
         this.symbol = symbol;
+        return this;
     }
 
 /**
@@ -87,11 +91,12 @@ public abstract class ElOperator extends ElSimple {
     public BmmFunction getDefinition() {
         return definition;
     }
-    public void setDefinition(BmmFunction value) {
-        if (definition == null ) {
-            throw new NullPointerException(" definition has cardinality NonNull, but is null")
+    public ElOperator setDefinition(BmmFunction value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:definition failed, it has cardinality NonNull, but is null");
         }
         this.definition = definition;
+        return this;
     }
 
 /*=========================================================*/
@@ -104,7 +109,15 @@ public abstract class ElOperator extends ElSimple {
  * cardinality: 1..1
  * 
 */
-    public abstract BmmOperator  operatorDefinition();
+    public BmmOperator  operatorDefinition() {
+        BmmOperator  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -112,34 +125,38 @@ public abstract class ElOperator extends ElSimple {
  * cardinality: 1..1
  * 
 */
-    public abstract ElFunctionCall  equivalentCall();
+    public ElFunctionCall  equivalentCall() {
+        ElFunctionCall  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

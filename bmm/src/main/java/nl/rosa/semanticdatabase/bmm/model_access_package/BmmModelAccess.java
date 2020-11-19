@@ -1,10 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.model_access_package;
 
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -94,8 +96,9 @@ public class BmmModelAccess {
     String getSchemaDirectories() {
         return this.schemaDirectories;
     }
-    void setSchemaDirectories(String schemaDirectories) {
+    public BmmModelAccess setSchemaDirectories(String schemaDirectories) {
         this.schemaDirectories = schemaDirectories;
+        return this;
     }
     public List<String> schemaDirectories() {
         return Collections.unmodifiableList(this.schemaDirectories);
@@ -109,39 +112,40 @@ public class BmmModelAccess {
  * 
 */
 
-    public void putAllschema(String key, BmmSchemaDescriptor value ) {
+    public void putAllSchema(String key, BmmSchemaDescriptor value ) {
         if (allSchemas == null ) {
             allSchemas = new HashMap<> ();
         }
         allSchemas.put( key, value);
     }
 
-    public void putAllschemas(Map<String,BmmSchemaDescriptor> items ) {
+    public void putAllSchemas(Map<String,BmmSchemaDescriptor> items ) {
         items.keySet().forEach(key -> putAllschema(key, items.get(key)));
     }
 
-    public BmmSchemaDescriptor getAllschema(String key ) {
+    public BmmSchemaDescriptor getAllSchema(String key ) {
         if (allSchemas == null ) {
             return null;
         }
         return allSchemas.get( key);
     }
 
-    public void removeAllschema(String key ) {
+    public void removeAllSchema(String key ) {
         if (allSchemas != null ) {
             allSchemas.remove(key);
         }
     }
-    public void removeAllschemas( Collection <String> keys ) {
-        keys.forEach(this::removeAllschema);
+    public void removeAllSchemas( Collection <String> keys ) {
+        keys.forEach(this::removeAllSchema);
     }
-    Map<String,BmmSchemaDescriptor> getAllschemas() {
+    public Map<String, BmmSchemaDescriptor> getAllSchemas() {
         return this.allSchemas;
     }
-    void setAllschemas(Map<String,BmmSchemaDescriptor> allSchemas) {
+    public BmmModelAccess setAllSchemas(Map<String, BmmSchemaDescriptor> allSchemas) {
         this.allSchemas = allSchemas;
+        return this;
     }
-    public Map<String,BmmSchemaDescriptor> allSchemas() {
+    public Map<String, BmmSchemaDescriptor> allSchemas() {
         return Collections.unmodifiableMap(this.allSchemas);
     }
 
@@ -152,39 +156,40 @@ public class BmmModelAccess {
  * 
 */
 
-    public void putBmmmodel(String key, BmmModel value ) {
+    public void putBmmModel(String key, BmmModel value ) {
         if (bmmModels == null ) {
             bmmModels = new HashMap<> ();
         }
         bmmModels.put( key, value);
     }
 
-    public void putBmmmodels(Map<String,BmmModel> items ) {
+    public void putBmmModels(Map<String,BmmModel> items ) {
         items.keySet().forEach(key -> putBmmmodel(key, items.get(key)));
     }
 
-    public BmmModel getBmmmodel(String key ) {
+    public BmmModel getBmmModel(String key ) {
         if (bmmModels == null ) {
             return null;
         }
         return bmmModels.get( key);
     }
 
-    public void removeBmmmodel(String key ) {
+    public void removeBmmModel(String key ) {
         if (bmmModels != null ) {
             bmmModels.remove(key);
         }
     }
-    public void removeBmmmodels( Collection <String> keys ) {
-        keys.forEach(this::removeBmmmodel);
+    public void removeBmmModels( Collection <String> keys ) {
+        keys.forEach(this::removeBmmModel);
     }
-    Map<String,BmmModel> getBmmmodels() {
+    public Map<String, BmmModel> getBmmModels() {
         return this.bmmModels;
     }
-    void setBmmmodels(Map<String,BmmModel> bmmModels) {
+    public BmmModelAccess setBmmModels(Map<String, BmmModel> bmmModels) {
         this.bmmModels = bmmModels;
+        return this;
     }
-    public Map<String,BmmModel> bmmModels() {
+    public Map<String, BmmModel> bmmModels() {
         return Collections.unmodifiableMap(this.bmmModels);
     }
 
@@ -196,39 +201,40 @@ public class BmmModelAccess {
  * 
 */
 
-    public void putMatchingbmmmodel(String key, BmmModel value ) {
+    public void putMatchingBmmModel(String key, BmmModel value ) {
         if (matchingBmmModels == null ) {
             matchingBmmModels = new HashMap<> ();
         }
         matchingBmmModels.put( key, value);
     }
 
-    public void putMatchingbmmmodels(Map<String,BmmModel> items ) {
+    public void putMatchingBmmModels(Map<String,BmmModel> items ) {
         items.keySet().forEach(key -> putMatchingbmmmodel(key, items.get(key)));
     }
 
-    public BmmModel getMatchingbmmmodel(String key ) {
+    public BmmModel getMatchingBmmModel(String key ) {
         if (matchingBmmModels == null ) {
             return null;
         }
         return matchingBmmModels.get( key);
     }
 
-    public void removeMatchingbmmmodel(String key ) {
+    public void removeMatchingBmmModel(String key ) {
         if (matchingBmmModels != null ) {
             matchingBmmModels.remove(key);
         }
     }
-    public void removeMatchingbmmmodels( Collection <String> keys ) {
-        keys.forEach(this::removeMatchingbmmmodel);
+    public void removeMatchingBmmModels( Collection <String> keys ) {
+        keys.forEach(this::removeMatchingBmmModel);
     }
-    Map<String,BmmModel> getMatchingbmmmodels() {
+    public Map<String, BmmModel> getMatchingBmmModels() {
         return this.matchingBmmModels;
     }
-    void setMatchingbmmmodels(Map<String,BmmModel> matchingBmmModels) {
+    public BmmModelAccess setMatchingBmmModels(Map<String, BmmModel> matchingBmmModels) {
         this.matchingBmmModels = matchingBmmModels;
+        return this;
     }
-    public Map<String,BmmModel> matchingBmmModels() {
+    public Map<String, BmmModel> matchingBmmModels() {
         return Collections.unmodifiableMap(this.matchingBmmModels);
     }
 
@@ -241,8 +247,9 @@ public class BmmModelAccess {
     public  get() {
         return ;
     }
-    public void set( value) {
+    public BmmModelAccess set( value) {
         this. = ;
+        return this;
     }
 
 /*=========================================================*/
@@ -255,7 +262,11 @@ public class BmmModelAccess {
  * cardinality: 0..1
  * 
 */
-    public abstract void  initialiseWithLoadList();
+    public void  initialiseWithLoadList(List<String> a_schema_dirs, List<String> a_schema_load_list) {
+        if (a_schema_dirs == null ) {
+            throw new NullPointerException("Parameter a_schema_dirs has cardinality NonNull, but is null");
+        }
+    }
 
 /**
  * 
@@ -263,7 +274,11 @@ public class BmmModelAccess {
  * cardinality: 0..1
  * 
 */
-    public abstract void  initialiseAll();
+    public void  initialiseAll(List<String> a_schema_dirs) {
+        if (a_schema_dirs == null ) {
+            throw new NullPointerException("Parameter a_schema_dirs has cardinality NonNull, but is null");
+        }
+    }
 
 /**
  * 
@@ -274,7 +289,18 @@ public class BmmModelAccess {
  * cardinality: 1..1
  * 
 */
-    public abstract BmmModel  bmmModel();
+    public BmmModel  bmmModel(String a_model_key) {
+        if (a_model_key == null ) {
+            throw new NullPointerException("Parameter a_model_key has cardinality NonNull, but is null.");
+        }
+        BmmModel  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -285,34 +311,68 @@ public class BmmModelAccess {
  * cardinality: 1..1
  * 
 */
-    public abstract Boolean  hasBmmModel();
+    public Boolean  hasBmmModel(String a_model_key) {
+        if (a_model_key == null ) {
+            throw new NullPointerException("Parameter a_model_key has cardinality NonNull, but is null.");
+        }
+        Boolean  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
+
+    //***** BmmModelAccess *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+    public BmmModelAccess build() {
+        return new BmmModelAccess(
+            schemaDirectories,
+            allSchemas,
+            bmmModels,
+            matchingBmmModels
+        );
+    }
+
+    public BmmModelAccess(
+            List<String> schemaDirectories,
+            Map<String,BmmSchemaDescriptor> allSchemas,
+            Map<String,BmmModel> bmmModels,
+            Map<String,BmmModel> matchingBmmModels
+    ){
+        this.schemaDirectories = schemaDirectories;
+        this.allSchemas = allSchemas;
+        this.bmmModels = bmmModels;
+        this.matchingBmmModels = matchingBmmModels;
+    }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

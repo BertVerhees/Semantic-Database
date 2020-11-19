@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.expressions.ElProcedureAgent;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,11 +41,12 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
     public ElProcedureAgent getAgent() {
         return agent;
     }
-    public void setAgent(ElProcedureAgent value) {
-        if (agent == null ) {
-            throw new NullPointerException(" agent has cardinality NonNull, but is null")
+    public BmmProcedureCall setAgent(ElProcedureAgent value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
         this.agent = agent;
+        return this;
     }
 
     //***** ElAgentCall *****
@@ -75,10 +76,38 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
     public ElAgent getAgent() {
         return agent;
     }
-    public void setAgent(ElAgent value) {
-        if (agent == null ) {
-            throw new NullPointerException(" agent has cardinality NonNull, but is null")
+    public ElAgentCall setAgent(ElAgent value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
+        this.agent = agent;
+        return this;
+    }
+
+    //***** BmmProcedureCall *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+    public BmmProcedureCall build() {
+        return new BmmProcedureCall(
+            agent,
+            agent
+        );
+    }
+
+    public BmmProcedureCall(
+            ElProcedureAgent agent,
+            ElAgent agent
+    ){
+        if ( agent == null ) {
+            throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
+        }
+        if ( agent == null ) {
+            throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
+        }
+        this.agent = agent;
         this.agent = agent;
     }
 
@@ -86,28 +115,24 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

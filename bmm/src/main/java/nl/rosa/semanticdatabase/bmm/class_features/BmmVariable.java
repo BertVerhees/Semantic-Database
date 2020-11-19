@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,11 +39,12 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
     public BmmRoutine getScope() {
         return scope;
     }
-    public void setScope(BmmRoutine value) {
-        if (scope == null ) {
-            throw new NullPointerException(" scope has cardinality NonNull, but is null")
+    public BmmVariable setScope(BmmRoutine value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:scope failed, it has cardinality NonNull, but is null");
         }
         this.scope = scope;
+        return this;
     }
 
 /*=========================================================*/
@@ -56,7 +57,8 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
  * cardinality: 1..1 (effected)
  * 
 */
-    public abstract void  signature();
+    public void  signature() {
+    }
 
 /*=========================================================*/
 /* * CONSTANTS * */
@@ -97,11 +99,12 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
     public BmmType getType() {
         return type;
     }
-    public void setType(BmmType value) {
-        if (type == null ) {
-            throw new NullPointerException(" type has cardinality NonNull, but is null")
+    public BmmTyped setType(BmmType value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
+        return this;
     }
 
 /*=========================================================*/
@@ -115,34 +118,38 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
  * cardinality: 1..1
  * 
 */
-    public abstract Result = type().equal( {BMM_MODEL}.boolean_type_definition())  isBoolean();
+    public Result = type().equal( {BMM_MODEL}.boolean_type_definition())  isBoolean() {
+        Result = type().equal( {BMM_MODEL}.boolean_type_definition())  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -45,34 +46,35 @@ public class BmmRoutineExternal extends BmmRoutineBody {
  * 
 */
 
-    public void putMetadata(String key, String value ) {
+    public void putMetaData(String key, String value ) {
         metaData.put( key, value);
     }
 
-    public void putMetadata(Map<String, String> items ) {
+    public void putMetaData(Map<String, String> items ) {
         items.keySet().forEach(key -> putMetadat(key, items.get(key)));
     }
 
-    public String getMetadata(String key ) {
+    public String getMetaData(String key ) {
         return metaData.get( key);
     }
 
-    public void removeMetadata(String key ) {
+    public void removeMetaData(String key ) {
         if (metaData != null ) {
             metaData.remove(key);
         }
     }
-    public void removeMetadata( Collection <String> keys ) {
-        keys.forEach(this::removeMetadata);
+    public void removeMetaData( Collection <String> keys ) {
+        keys.forEach(this::removeMetaData);
     }
-    Map<String, String> getMetadata() {
+    public Map<String, String> getMetaData() {
         return this.metaData;
     }
-    void setMetadata(Map<String, String> metaData) {
+    public BmmRoutineExternal setMetaData(Map<String, String> metaData) {
         if (metaData == null ) {
-            throw new NullPointerException(" metaData has cardinality NonNull, but is null")
+            throw new NullPointerException(" metaData has cardinality NonNull, but is null");
         }
         this.metaData = metaData;
+        return this;
     }
     public Map<String, String> metaData() {
         return Collections.unmodifiableMap(this.metaData);
@@ -85,68 +87,89 @@ public class BmmRoutineExternal extends BmmRoutineBody {
  * 
 */
 
-    public void putArgumentmapping(String key, String value ) {
+    public void putArgumentMapping(String key, String value ) {
         if (argumentMapping == null ) {
             argumentMapping = new HashMap<> ();
         }
         argumentMapping.put( key, value);
     }
 
-    public void putArgumentmapping(Map<String, String> items ) {
+    public void putArgumentMapping(Map<String, String> items ) {
         items.keySet().forEach(key -> putArgumentmappin(key, items.get(key)));
     }
 
-    public String getArgumentmapping(String key ) {
+    public String getArgumentMapping(String key ) {
         if (argumentMapping == null ) {
             return null;
         }
         return argumentMapping.get( key);
     }
 
-    public void removeArgumentmapping(String key ) {
+    public void removeArgumentMapping(String key ) {
         if (argumentMapping != null ) {
             argumentMapping.remove(key);
         }
     }
-    public void removeArgumentmapping( Collection <String> keys ) {
-        keys.forEach(this::removeArgumentmapping);
+    public void removeArgumentMapping( Collection <String> keys ) {
+        keys.forEach(this::removeArgumentMapping);
     }
-    Map<String, String> getArgumentmapping() {
+    public Map<String, String> getArgumentMapping() {
         return this.argumentMapping;
     }
-    void setArgumentmapping(Map<String, String> argumentMapping) {
+    public BmmRoutineExternal setArgumentMapping(Map<String, String> argumentMapping) {
         this.argumentMapping = argumentMapping;
+        return this;
     }
     public Map<String, String> argumentMapping() {
         return Collections.unmodifiableMap(this.argumentMapping);
+    }
+
+    //***** BmmRoutineExternal *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+    public BmmRoutineExternal build() {
+        return new BmmRoutineExternal(
+            metaData,
+            argumentMapping
+        );
+    }
+
+    public BmmRoutineExternal(
+            Map<String, String> metaData,
+            Map<String, String> argumentMapping
+    ){
+        if ( metaData == null ) {
+            throw new NullPointerException("Property:metaData has cardinality NonNull, but is null");
+        }
+        this.metaData = metaData;
+        this.argumentMapping = argumentMapping;
     }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

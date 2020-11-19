@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.model_access_package;
 
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -132,13 +133,14 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * 
 */
     public String getBmmVersion() {
-        return bmm_version;
+        return bmmVersion;
     }
-    public void setBmmVersion(String value) {
-        if (bmm_version == null ) {
-            throw new NullPointerException(" bmm_version has cardinality NonNull, but is null")
+    public BmmSchema setBmmVersion(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:bmmVersion failed, it has cardinality NonNull, but is null");
         }
-        this.bmm_version = bmm_version;
+        this.bmmVersion = bmmVersion;
+        return this;
     }
 
 /**
@@ -175,13 +177,14 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public void removeIncludes( Collection <String> keys ) {
         keys.forEach(this::removeInclude);
     }
-    Map<String,BmmIncludeSpec> getIncludes() {
+    public Map<String, BmmIncludeSpec> getIncludes() {
         return this.includes;
     }
-    void setIncludes(Map<String,BmmIncludeSpec> includes) {
+    public BmmSchema setIncludes(Map<String, BmmIncludeSpec> includes) {
         this.includes = includes;
+        return this;
     }
-    public Map<String,BmmIncludeSpec> includes() {
+    public Map<String, BmmIncludeSpec> includes() {
         return Collections.unmodifiableMap(this.includes);
     }
 
@@ -192,10 +195,11 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * 
 */
     public BmmModel getBmmModel() {
-        return bmm_model;
+        return bmmModel;
     }
-    public void setBmmModel(BmmModel value) {
-        this.bmm_model = bmm_model;
+    public BmmSchema setBmmModel(BmmModel value) {
+        this.bmmModel = bmmModel;
+        return this;
     }
 
 /**
@@ -207,11 +211,12 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public BmmSchemaState getState() {
         return state;
     }
-    public void setState(BmmSchemaState value) {
-        if (state == null ) {
-            throw new NullPointerException(" state has cardinality NonNull, but is null")
+    public BmmSchema setState(BmmSchemaState value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:state failed, it has cardinality NonNull, but is null");
         }
         this.state = state;
+        return this;
     }
 
 /**
@@ -222,10 +227,11 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * 
 */
     public String getModelName() {
-        return model_name;
+        return modelName;
     }
-    public void setModelName(String value) {
-        this.model_name = model_name;
+    public BmmSchema setModelName(String value) {
+        this.modelName = modelName;
+        return this;
     }
 
 /**
@@ -236,13 +242,14 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * 
 */
     public String getSchemaName() {
-        return schema_name;
+        return schemaName;
     }
-    public void setSchemaName(String value) {
-        if (schema_name == null ) {
-            throw new NullPointerException(" schema_name has cardinality NonNull, but is null")
+    public BmmSchema setSchemaName(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:schemaName failed, it has cardinality NonNull, but is null");
         }
-        this.schema_name = schema_name;
+        this.schemaName = schemaName;
+        return this;
     }
 
 /**
@@ -252,13 +259,14 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * 
 */
     public String getSchemaRevision() {
-        return schema_revision;
+        return schemaRevision;
     }
-    public void setSchemaRevision(String value) {
-        if (schema_revision == null ) {
-            throw new NullPointerException(" schema_revision has cardinality NonNull, but is null")
+    public BmmSchema setSchemaRevision(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:schemaRevision failed, it has cardinality NonNull, but is null");
         }
-        this.schema_revision = schema_revision;
+        this.schemaRevision = schemaRevision;
+        return this;
     }
 
 /**
@@ -268,13 +276,14 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * 
 */
     public String getSchemaLifecycleState() {
-        return schema_lifecycle_state;
+        return schemaLifecycleState;
     }
-    public void setSchemaLifecycleState(String value) {
-        if (schema_lifecycle_state == null ) {
-            throw new NullPointerException(" schema_lifecycle_state has cardinality NonNull, but is null")
+    public BmmSchema setSchemaLifecycleState(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:schemaLifecycleState failed, it has cardinality NonNull, but is null");
         }
-        this.schema_lifecycle_state = schema_lifecycle_state;
+        this.schemaLifecycleState = schemaLifecycleState;
+        return this;
     }
 
 /**
@@ -284,13 +293,14 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * 
 */
     public String getSchemaAuthor() {
-        return schema_author;
+        return schemaAuthor;
     }
-    public void setSchemaAuthor(String value) {
-        if (schema_author == null ) {
-            throw new NullPointerException(" schema_author has cardinality NonNull, but is null")
+    public BmmSchema setSchemaAuthor(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:schemaAuthor failed, it has cardinality NonNull, but is null");
         }
-        this.schema_author = schema_author;
+        this.schemaAuthor = schemaAuthor;
+        return this;
     }
 
 /**
@@ -300,13 +310,14 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * 
 */
     public String getSchemaDescription() {
-        return schema_description;
+        return schemaDescription;
     }
-    public void setSchemaDescription(String value) {
-        if (schema_description == null ) {
-            throw new NullPointerException(" schema_description has cardinality NonNull, but is null")
+    public BmmSchema setSchemaDescription(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:schemaDescription failed, it has cardinality NonNull, but is null");
         }
-        this.schema_description = schema_description;
+        this.schemaDescription = schemaDescription;
+        return this;
     }
 
 /**
@@ -338,8 +349,9 @@ public abstract class BmmSchema implements BmmModelMetadata {
     String getSchemaContributors() {
         return this.schemaContributors;
     }
-    void setSchemaContributors(String schemaContributors) {
+    public BmmSchema setSchemaContributors(String schemaContributors) {
         this.schemaContributors = schemaContributors;
+        return this;
     }
     public List<String> schemaContributors() {
         return Collections.unmodifiableList(this.schemaContributors);
@@ -354,8 +366,9 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public  get() {
         return ;
     }
-    public void set( value) {
+    public BmmSchema set( value) {
         this. = ;
+        return this;
     }
 
 /*=========================================================*/
@@ -368,7 +381,7 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * cardinality: 0..1 (abstract)
  * 
 */
-    public abstract includes_to_process.has (included_schema.schema_id)  merge();
+    public abstract includes_to_process.has (included_schema.schema_id)  merge(BmmSchema other);
 
 /**
  * 
@@ -376,7 +389,15 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract state = State_includes_processed  readToValidate();
+    public state = State_includes_processed  readToValidate() {
+        state = State_includes_processed  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -386,7 +407,15 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * cardinality: 1..1
  * 
 */
-    public abstract String  schemaId();
+    public String  schemaId() {
+        String  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /*=========================================================*/
 /* * CONSTANTS * */
@@ -448,13 +477,14 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * 
 */
     public String getRmPublisher() {
-        return rm_publisher;
+        return rmPublisher;
     }
-    public void setRmPublisher(String value) {
-        if (rm_publisher == null ) {
-            throw new NullPointerException(" rm_publisher has cardinality NonNull, but is null")
+    public BmmModelMetadata setRmPublisher(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:rmPublisher failed, it has cardinality NonNull, but is null");
         }
-        this.rm_publisher = rm_publisher;
+        this.rmPublisher = rmPublisher;
+        return this;
     }
 
 /**
@@ -465,41 +495,38 @@ public abstract class BmmSchema implements BmmModelMetadata {
  * 
 */
     public String getRmRelease() {
-        return rm_release;
+        return rmRelease;
     }
-    public void setRmRelease(String value) {
-        if (rm_release == null ) {
-            throw new NullPointerException(" rm_release has cardinality NonNull, but is null")
+    public BmmModelMetadata setRmRelease(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:rmRelease failed, it has cardinality NonNull, but is null");
         }
-        this.rm_release = rm_release;
+        this.rmRelease = rmRelease;
+        return this;
     }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

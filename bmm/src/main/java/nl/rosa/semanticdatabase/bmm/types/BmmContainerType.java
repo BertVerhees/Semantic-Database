@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
 import nl.rosa.semanticdatabase.bmm.classes.BmmGenericClass;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -48,13 +49,14 @@ public class BmmContainerType extends BmmType {
  * 
 */
     public BmmGenericClass getContainerClass() {
-        return container_class;
+        return containerClass;
     }
-    public void setContainerClass(BmmGenericClass value) {
-        if (container_class == null ) {
-            throw new NullPointerException(" container_class has cardinality NonNull, but is null")
+    public BmmContainerType setContainerClass(BmmGenericClass value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:containerClass failed, it has cardinality NonNull, but is null");
         }
-        this.container_class = container_class;
+        this.containerClass = containerClass;
+        return this;
     }
 
 /**
@@ -64,13 +66,14 @@ public class BmmContainerType extends BmmType {
  * 
 */
     public BmmUnitaryType getItemType() {
-        return item_type;
+        return itemType;
     }
-    public void setItemType(BmmUnitaryType value) {
-        if (item_type == null ) {
-            throw new NullPointerException(" item_type has cardinality NonNull, but is null")
+    public BmmContainerType setItemType(BmmUnitaryType value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:itemType failed, it has cardinality NonNull, but is null");
         }
-        this.item_type = item_type;
+        this.itemType = itemType;
+        return this;
     }
 
 /*=========================================================*/
@@ -84,7 +87,15 @@ public class BmmContainerType extends BmmType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public abstract String  typeName();
+    public String  typeName() {
+        String  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -92,7 +103,15 @@ public class BmmContainerType extends BmmType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public abstract Result = container_type.is_abstract  isAbstract();
+    public Result = container_type.is_abstract  isAbstract() {
+        Result = container_type.is_abstract  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -101,7 +120,15 @@ public class BmmContainerType extends BmmType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public abstract Result = item_type.flattened_type_list  flattenedTypeList();
+    public Result = item_type.flattened_type_list  flattenedTypeList() {
+        Result = item_type.flattened_type_list  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -109,7 +136,15 @@ public class BmmContainerType extends BmmType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public abstract BmmUnitaryType  unitaryType();
+    public BmmUnitaryType  unitaryType() {
+        BmmUnitaryType  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -117,7 +152,15 @@ public class BmmContainerType extends BmmType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public abstract Result = item_type.is_primitive  isPrimitive();
+    public Result = item_type.is_primitive  isPrimitive() {
+        Result = item_type.is_primitive  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -125,7 +168,15 @@ public class BmmContainerType extends BmmType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public abstract BmmEffectiveType  effectiveType();
+    public BmmEffectiveType  effectiveType() {
+        BmmEffectiveType  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /*=========================================================*/
 /* * CONSTANTS * */
@@ -148,32 +199,55 @@ public class BmmContainerType extends BmmType {
 */
     final Boolean {default isUnique = false};
 
+    //***** BmmContainerType *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+    public BmmContainerType build() {
+        return new BmmContainerType(
+            containerClass,
+            itemType
+        );
+    }
+
+    public BmmContainerType(
+            BmmGenericClass containerClass,
+            BmmUnitaryType itemType
+    ){
+        if ( containerClass == null ) {
+            throw new NullPointerException("Property:containerClass has cardinality NonNull, but is null");
+        }
+        if ( itemType == null ) {
+            throw new NullPointerException("Property:itemType has cardinality NonNull, but is null");
+        }
+        this.containerClass = containerClass;
+        this.itemType = itemType;
+    }
+
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

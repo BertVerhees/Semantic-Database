@@ -498,17 +498,17 @@
         <xsl:param name="implementationType" as="xs:string"/>
         <xsl:param name="class"/>
         <xsl:variable name="types" as="xs:string*" select="tokenize(substring-before(substring-after($type, '&lt;'), '&gt;'), ',')"/>
-        <xsl:variable name="processedType" as="xs:string" select="do:processType($packages, $type)"/>
         <xsl:variable name="keyType" as="xs:string" select="do:processType($packages, normalize-space($types[1]))"/>
         <xsl:variable name="valueType" as="xs:string" select="do:processType($packages, normalize-space($types[2]))"/>
-        <xsl:variable name="attributeNameInFunction" as="xs:string" select="do:snakeUpperCaseToCamelCase($name, 0)"/>
+        <xsl:variable name="processedType" as="xs:string" select="concat(substring-before($type,'&lt;'),'&lt;',$keyType,', ',$valueType,'&gt;')"/>
+        <xsl:variable name="attributeNameInFunction" as="xs:string" select="do:snakeUpperCaseToCamelCase($name, -1)"/>
         <xsl:variable name="singleAttributeNameInFunction" as="xs:string">
             <xsl:choose>
                 <xsl:when test="ends-with($name, 's')">
-                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), 0)"/>
+                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), -1)"/>
                 </xsl:when>
                 <xsl:otherwise>
-                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(replace($name, 'ie', 'y'), 0)"/>
+                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(replace($name, 'ie', 'y'), -1)"/>
                 </xsl:otherwise>
             </xsl:choose>
         </xsl:variable>
@@ -550,7 +550,7 @@
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'keys.forEach(this::remove', $singleAttributeNameInFunction, ');'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <!-- GETTER/SETTER -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, $processedType, ' get', $attributeNameInFunction, '() {'))"/>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $processedType, ' get', $attributeNameInFunction, '() {'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return this.', $name, ';'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $class/className, ' set', $attributeNameInFunction, '(', $processedType, ' ', $name, ') {'))"/>
@@ -1091,6 +1091,9 @@
                 <xsl:when test="$packages/package/class[classNameOrgAbstractStripped = $incomingString]/className">
                     <xsl:value-of select="$packages/package/class[classNameOrgAbstractStripped = $incomingString]/className"/>
                 </xsl:when>
+                <xsl:when test="$incomingString = 'Any'">
+                    <xsl:value-of select="'Object'"/>
+                </xsl:when>
                 <xsl:when test="contains($incomingString, '&lt;')">
                     <xsl:variable name="type">
                         <xsl:choose>
@@ -1117,9 +1120,6 @@
                     </xsl:variable>
                     <xsl:value-of select="concat($type, '&lt;', $newTypes, '&gt;')"/>
                 </xsl:when>
-                <xsl:when test="$incomingString = 'Any'">
-                    <xsl:value-of select="'Object'"/>
-                </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="$incomingString"/>
                 </xsl:otherwise>
@@ -1136,8 +1136,8 @@
     <xsl:template name="analyzeClassDocument">
         <xsl:param name="context" as="node()"/>
         <xsl:param name="baseDirectory"/>
-        <xsl:variable name="tag" select="string($context/h2[1]/a[1]/@href)"/>
-        <xsl:variable name="packageName" select="substring($tag, 3)"/>
+        <xsl:variable name="tag" select="substring-after(string($context/h2[1]/a[1]/@href),'#_')"/>
+        <xsl:variable name="packageName" select="$tag"/>
         <xsl:if test="not($packageName = '')">
             <xsl:variable name="package">
                 <xsl:element name="package">

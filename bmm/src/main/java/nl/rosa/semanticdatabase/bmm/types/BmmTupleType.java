@@ -1,11 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
-
-import java.util.*;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -29,7 +29,7 @@ public class BmmTupleType extends BmmEffectiveType {
  * cardinality: 1..1
  * 
 */
-    private Map<String,BmmType> itemTypes = new HashMap<>();
+    private Map<String,BmmType> itemTypes = new HashMap<> ();
 
 /*=========================================================*/
 /* * POJOS * */
@@ -42,36 +42,37 @@ public class BmmTupleType extends BmmEffectiveType {
  * 
 */
 
-    public void putItemtype(String key, BmmType value ) {
+    public void putItemType(String key, BmmType value ) {
         itemTypes.put( key, value);
     }
 
-    public void putItemtypes(Map<String,BmmType> items ) {
+    public void putItemTypes(Map<String,BmmType> items ) {
         items.keySet().forEach(key -> putItemtype(key, items.get(key)));
     }
 
-    public BmmType getItemtype(String key ) {
+    public BmmType getItemType(String key ) {
         return itemTypes.get( key);
     }
 
-    public void removeItemtype(String key ) {
+    public void removeItemType(String key ) {
         if (itemTypes != null ) {
             itemTypes.remove(key);
         }
     }
-    public void removeItemtypes( Collection<String> keys ) {
-        keys.forEach(this::removeItemtype);
+    public void removeItemTypes( Collection <String> keys ) {
+        keys.forEach(this::removeItemType);
     }
-    Map<String,BmmType> getItemtypes() {
+    public Map<String, BmmType> getItemTypes() {
         return this.itemTypes;
     }
-    void setItemtypes(Map<String,BmmType> itemTypes) {
+    public BmmTupleType setItemTypes(Map<String, BmmType> itemTypes) {
         if (itemTypes == null ) {
             throw new NullPointerException(" itemTypes has cardinality NonNull, but is null");
         }
         this.itemTypes = itemTypes;
+        return this;
     }
-    public Map<String,BmmType> itemTypes() {
+    public Map<String, BmmType> itemTypes() {
         return Collections.unmodifiableMap(this.itemTypes);
     }
 
@@ -79,15 +80,20 @@ public class BmmTupleType extends BmmEffectiveType {
 /* * FUNCTIONS * */
 /*=========================================================*/
 
-    /**
-     *
-     * Return base_name.
-     * cardinality: 1..1 (effected)
-     *
-     */
-    @Override
-    public String typeBaseName() {
-        return null;
+/**
+ * 
+ * Return base_name.
+ * cardinality: 1..1 (effected)
+ * 
+*/
+    public Result.is_equal (base_name())  typeBaseName() {
+        Result.is_equal (base_name())  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
     }
 
 /**
@@ -96,30 +102,47 @@ public class BmmTupleType extends BmmEffectiveType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  isPrimitive(){
-        return true;
+    public Boolean  isPrimitive() {
+        Boolean  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
     }
 
-    @Override
-    public String typeName() {
-        return baseName;
-    }
-
-    @Override
-    public String typeSignature() {
-        return null;
-    }
-
-    /**
+/**
  * 
  * Result = False.
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  isAbstract(){
-        return false;
+    public Boolean  isAbstract() {
+        Boolean  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
     }
 
+/**
+ * 
+ * Return base_name.
+ * cardinality: 1..1 (effected)
+ * 
+*/
+    public Result.is_equal (base_name())  typeName() {
+        Result.is_equal (base_name())  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -128,8 +151,14 @@ public class BmmTupleType extends BmmEffectiveType {
  * cardinality: 1..1 (effected)
  * 
 */
-    public List<String> flattenedTypeList(){
-        return null;
+    public List<String>  flattenedTypeList() {
+        List<String>  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
     }
 
 /*=========================================================*/
@@ -143,32 +172,49 @@ public class BmmTupleType extends BmmEffectiveType {
 */
     final String baseName = "Tuple";
 
+    //***** BmmTupleType *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+    public BmmTupleType build() {
+        return new BmmTupleType(
+            itemTypes
+        );
+    }
+
+    public BmmTupleType(
+            Map<String,BmmType> itemTypes
+    ){
+        if ( itemTypes == null ) {
+            throw new NullPointerException("Property:itemTypes has cardinality NonNull, but is null");
+        }
+        this.itemTypes = itemTypes;
+    }
+
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

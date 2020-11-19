@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.model_structure;
 
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -67,11 +68,12 @@ public abstract class BmmDeclaration {
     public String getName() {
         return name;
     }
-    public void setName(String value) {
-        if (name == null ) {
-            throw new NullPointerException(" name has cardinality NonNull, but is null")
+    public BmmDeclaration setName(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
         this.name = name;
+        return this;
     }
 
 /**
@@ -82,7 +84,7 @@ public abstract class BmmDeclaration {
  * 
 */
 
-    public void putDocumentation(String key, Object value ) {
+    public void putDocumentation(String key, Any value ) {
         if (documentation == null ) {
             documentation = new HashMap<> ();
         }
@@ -93,7 +95,7 @@ public abstract class BmmDeclaration {
         items.keySet().forEach(key -> putDocumentatio(key, items.get(key)));
     }
 
-    public Object getDocumentation(String key ) {
+    public Any getDocumentation(String key ) {
         if (documentation == null ) {
             return null;
         }
@@ -108,11 +110,12 @@ public abstract class BmmDeclaration {
     public void removeDocumentation( Collection <String> keys ) {
         keys.forEach(this::removeDocumentation);
     }
-    Map<String, Any> getDocumentation() {
+    public Map<String, Any> getDocumentation() {
         return this.documentation;
     }
-    void setDocumentation(Map<String, Any> documentation) {
+    public BmmDeclaration setDocumentation(Map<String, Any> documentation) {
         this.documentation = documentation;
+        return this;
     }
     public Map<String, Any> documentation() {
         return Collections.unmodifiableMap(this.documentation);
@@ -127,11 +130,12 @@ public abstract class BmmDeclaration {
     public BmmDeclaration getScope() {
         return scope;
     }
-    public void setScope(BmmDeclaration value) {
-        if (scope == null ) {
-            throw new NullPointerException(" scope has cardinality NonNull, but is null")
+    public BmmDeclaration setScope(BmmDeclaration value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:scope failed, it has cardinality NonNull, but is null");
         }
         this.scope = scope;
+        return this;
     }
 
 /**
@@ -142,7 +146,7 @@ public abstract class BmmDeclaration {
  * 
 */
 
-    public void putExtension(String key, Object value ) {
+    public void putExtension(String key, Any value ) {
         if (extensions == null ) {
             extensions = new HashMap<> ();
         }
@@ -153,7 +157,7 @@ public abstract class BmmDeclaration {
         items.keySet().forEach(key -> putExtension(key, items.get(key)));
     }
 
-    public Object getExtension(String key ) {
+    public Any getExtension(String key ) {
         if (extensions == null ) {
             return null;
         }
@@ -168,11 +172,12 @@ public abstract class BmmDeclaration {
     public void removeExtensions( Collection <String> keys ) {
         keys.forEach(this::removeExtension);
     }
-    Map<String, Any> getExtensions() {
+    public Map<String, Any> getExtensions() {
         return this.extensions;
     }
-    void setExtensions(Map<String, Any> extensions) {
+    public BmmDeclaration setExtensions(Map<String, Any> extensions) {
         this.extensions = extensions;
+        return this;
     }
     public Map<String, Any> extensions() {
         return Collections.unmodifiableMap(this.extensions);
@@ -188,34 +193,38 @@ public abstract class BmmDeclaration {
  * cardinality: 1..1
  * 
 */
-    public abstract Result = (scope = self)  isRootScope();
+    public Result = (scope = self)  isRootScope() {
+        Result = (scope = self)  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

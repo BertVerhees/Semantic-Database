@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -56,11 +57,12 @@ public class BmmOperator {
     public BmmOperatorPosition getPosition() {
         return position;
     }
-    public void setPosition(BmmOperatorPosition value) {
-        if (position == null ) {
-            throw new NullPointerException(" position has cardinality NonNull, but is null")
+    public BmmOperator setPosition(BmmOperatorPosition value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:position failed, it has cardinality NonNull, but is null");
         }
         this.position = position;
+        return this;
     }
 
 /**
@@ -89,11 +91,12 @@ public class BmmOperator {
     String getSymbols() {
         return this.symbols;
     }
-    void setSymbols(String symbols) {
+    public BmmOperator setSymbols(String symbols) {
         if (symbols == null ) {
-            throw new NullPointerException(" symbols has cardinality NonNull, but is null")
+            throw new NullPointerException(" symbols has cardinality NonNull, but is null");
         }
         this.symbols = symbols;
+        return this;
     }
     public List<String> symbols() {
         return Collections.unmodifiableList(this.symbols);
@@ -109,10 +112,44 @@ public class BmmOperator {
     public String getName() {
         return name;
     }
-    public void setName(String value) {
-        if (name == null ) {
-            throw new NullPointerException(" name has cardinality NonNull, but is null")
+    public BmmOperator setName(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
+        this.name = name;
+        return this;
+    }
+
+    //***** BmmOperator *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+    public BmmOperator build() {
+        return new BmmOperator(
+            position,
+            symbols,
+            name
+        );
+    }
+
+    public BmmOperator(
+            BmmOperatorPosition position,
+            List<String> symbols,
+            String name
+    ){
+        if ( position == null ) {
+            throw new NullPointerException("Property:position has cardinality NonNull, but is null");
+        }
+        if ( symbols == null ) {
+            throw new NullPointerException("Property:symbols has cardinality NonNull, but is null");
+        }
+        if ( name == null ) {
+            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+        }
+        this.position = position;
+        this.symbols = symbols;
         this.name = name;
     }
 
@@ -120,28 +157,24 @@ public class BmmOperator {
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

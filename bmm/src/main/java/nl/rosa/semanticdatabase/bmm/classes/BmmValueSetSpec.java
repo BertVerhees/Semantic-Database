@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.classes;
 
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -49,13 +50,14 @@ public class BmmValueSetSpec {
  * 
 */
     public String getResourceId() {
-        return resource_id;
+        return resourceId;
     }
-    public void setResourceId(String value) {
-        if (resource_id == null ) {
-            throw new NullPointerException(" resource_id has cardinality NonNull, but is null")
+    public BmmValueSetSpec setResourceId(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:resourceId failed, it has cardinality NonNull, but is null");
         }
-        this.resource_id = resource_id;
+        this.resourceId = resourceId;
+        return this;
     }
 
 /**
@@ -66,41 +68,65 @@ public class BmmValueSetSpec {
  * 
 */
     public String getValueSetId() {
-        return value_set_id;
+        return valueSetId;
     }
-    public void setValueSetId(String value) {
-        if (value_set_id == null ) {
-            throw new NullPointerException(" value_set_id has cardinality NonNull, but is null")
+    public BmmValueSetSpec setValueSetId(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:valueSetId failed, it has cardinality NonNull, but is null");
         }
-        this.value_set_id = value_set_id;
+        this.valueSetId = valueSetId;
+        return this;
+    }
+
+    //***** BmmValueSetSpec *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+    public BmmValueSetSpec build() {
+        return new BmmValueSetSpec(
+            resourceId,
+            valueSetId
+        );
+    }
+
+    public BmmValueSetSpec(
+            String resourceId,
+            String valueSetId
+    ){
+        if ( resourceId == null ) {
+            throw new NullPointerException("Property:resourceId has cardinality NonNull, but is null");
+        }
+        if ( valueSetId == null ) {
+            throw new NullPointerException("Property:valueSetId has cardinality NonNull, but is null");
+        }
+        this.resourceId = resourceId;
+        this.valueSetId = valueSetId;
     }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

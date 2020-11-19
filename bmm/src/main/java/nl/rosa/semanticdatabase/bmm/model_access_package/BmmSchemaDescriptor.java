@@ -1,10 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.model_access_package;
 
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-19T08:28:08.518+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -99,10 +101,11 @@ public abstract class BmmSchemaDescriptor {
  * 
 */
     public BmmSchema getBmmSchema() {
-        return bmm_schema;
+        return bmmSchema;
     }
-    public void setBmmSchema(BmmSchema value) {
-        this.bmm_schema = bmm_schema;
+    public BmmSchemaDescriptor setBmmSchema(BmmSchema value) {
+        this.bmmSchema = bmmSchema;
+        return this;
     }
 
 /**
@@ -112,10 +115,11 @@ public abstract class BmmSchemaDescriptor {
  * 
 */
     public BmmModel getBmmModel() {
-        return bmm_model;
+        return bmmModel;
     }
-    public void setBmmModel(BmmModel value) {
-        this.bmm_model = bmm_model;
+    public BmmSchemaDescriptor setBmmModel(BmmModel value) {
+        this.bmmModel = bmmModel;
+        return this;
     }
 
 /**
@@ -126,13 +130,14 @@ public abstract class BmmSchemaDescriptor {
  * 
 */
     public String getSchemaId() {
-        return schema_id;
+        return schemaId;
     }
-    public void setSchemaId(String value) {
-        if (schema_id == null ) {
-            throw new NullPointerException(" schema_id has cardinality NonNull, but is null")
+    public BmmSchemaDescriptor setSchemaId(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:schemaId failed, it has cardinality NonNull, but is null");
         }
-        this.schema_id = schema_id;
+        this.schemaId = schemaId;
+        return this;
     }
 
 /**
@@ -142,34 +147,35 @@ public abstract class BmmSchemaDescriptor {
  * 
 */
 
-    public void putMetadata(String key, String value ) {
+    public void putMetaData(String key, String value ) {
         metaData.put( key, value);
     }
 
-    public void putMetadata(Map<String, String> items ) {
+    public void putMetaData(Map<String, String> items ) {
         items.keySet().forEach(key -> putMetadat(key, items.get(key)));
     }
 
-    public String getMetadata(String key ) {
+    public String getMetaData(String key ) {
         return metaData.get( key);
     }
 
-    public void removeMetadata(String key ) {
+    public void removeMetaData(String key ) {
         if (metaData != null ) {
             metaData.remove(key);
         }
     }
-    public void removeMetadata( Collection <String> keys ) {
-        keys.forEach(this::removeMetadata);
+    public void removeMetaData( Collection <String> keys ) {
+        keys.forEach(this::removeMetaData);
     }
-    Map<String, String> getMetadata() {
+    public Map<String, String> getMetaData() {
         return this.metaData;
     }
-    void setMetadata(Map<String, String> metaData) {
+    public BmmSchemaDescriptor setMetaData(Map<String, String> metaData) {
         if (metaData == null ) {
-            throw new NullPointerException(" metaData has cardinality NonNull, but is null")
+            throw new NullPointerException(" metaData has cardinality NonNull, but is null");
         }
         this.metaData = metaData;
+        return this;
     }
     public Map<String, String> metaData() {
         return Collections.unmodifiableMap(this.metaData);
@@ -204,8 +210,9 @@ public abstract class BmmSchemaDescriptor {
     String getIncludes() {
         return this.includes;
     }
-    void setIncludes(String includes) {
+    public BmmSchemaDescriptor setIncludes(String includes) {
         this.includes = includes;
+        return this;
     }
     public List<String> includes() {
         return Collections.unmodifiableList(this.includes);
@@ -222,8 +229,9 @@ public abstract class BmmSchemaDescriptor {
     public  get() {
         return ;
     }
-    public void set( value) {
+    public BmmSchemaDescriptor set( value) {
         this. = ;
+        return this;
     }
 
 /**
@@ -235,8 +243,9 @@ public abstract class BmmSchemaDescriptor {
     public  get() {
         return ;
     }
-    public void set( value) {
+    public BmmSchemaDescriptor set( value) {
         this. = ;
+        return this;
     }
 
 /**
@@ -249,8 +258,9 @@ public abstract class BmmSchemaDescriptor {
     public  get() {
         return ;
     }
-    public void set( value) {
+    public BmmSchemaDescriptor set( value) {
         this. = ;
+        return this;
     }
 
 /*=========================================================*/
@@ -264,7 +274,15 @@ public abstract class BmmSchemaDescriptor {
  * cardinality: 1..1
  * 
 */
-    public abstract Boolean  isTopLevel();
+    public Boolean  isTopLevel() {
+        Boolean  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -272,7 +290,15 @@ public abstract class BmmSchemaDescriptor {
  * cardinality: 1..1
  * 
 */
-    public abstract Boolean  isBmmCompatible();
+    public Boolean  isBmmCompatible() {
+        Boolean  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -280,34 +306,31 @@ public abstract class BmmSchemaDescriptor {
  * cardinality: 0..1
  * 
 */
-    public abstract void  validateIncludes();
+    public void  validateIncludes(List<String> all_schemas_list) {
+    }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 
