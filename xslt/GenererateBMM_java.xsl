@@ -91,38 +91,7 @@
                 </xsl:result-document>
             </xsl:for-each>
         </xsl:for-each>
-
     </xsl:template>
-
-    <xsl:function name="do:getInterfaceInherited" as="node()*">
-        <xsl:param name="packages" as="node()"/>
-        <xsl:param name="class" as="node()"/>
-        <xsl:variable name="result" as="node()*">
-            <xsl:copy-of select="$class"/>
-            <xsl:for-each select="$class/implementOrg">
-                <xsl:variable name="inheritedClass" as="node()" select="do:findClass($packages, .)"/>
-                <xsl:if test="$inheritedClass">
-                    <xsl:copy-of select="do:getInterfaceInherited($packages, $inheritedClass)"/>
-                </xsl:if>
-            </xsl:for-each>
-        </xsl:variable>
-        <xsl:copy-of select="$result"/>
-    </xsl:function>
-
-    <xsl:function name="do:getClassInherited" as="node()*">
-        <xsl:param name="packages" as="node()"/>
-        <xsl:param name="class" as="node()"/>
-        <xsl:variable name="result" as="node()*">
-            <xsl:copy-of select="$class"/>
-            <xsl:for-each select="$class/inheritOrg">
-                <xsl:variable name="inheritedClass" as="node()" select="do:findClass($packages, .)"/>
-                <xsl:if test="$inheritedClass">
-                    <xsl:copy-of select="do:getClassInherited($packages, $inheritedClass)"/>
-                </xsl:if>
-            </xsl:for-each>
-        </xsl:variable>
-        <xsl:copy-of select="$result"/>
-    </xsl:function>
 
     <xsl:function name="do:findClass" as="node()">
         <xsl:param name="packages" as="node()"/>
@@ -825,7 +794,97 @@
         <xsl:value-of select="do:writeClassConstructorAndBuild($packages, do:getClassFieldsInheritedInterfaced($packages, $class), $class)"/>
         <xsl:value-of select="do:writeClassFooter()"/>
     </xsl:function>
+    
+    <xsl:function name="do:getInterfaced" as="node()*">
+        <xsl:param name="packages" as="node()"/>
+        <xsl:param name="class" as="node()"/>
+        <xsl:variable name="result" as="node()*">
+            <xsl:copy-of select="$class"/>
+            <xsl:for-each select="$class/implementOrg">
+                <xsl:variable name="inheritedClass" as="node()" select="do:findClass($packages, .)"/>
+                <xsl:if test="$inheritedClass">
+                    <xsl:copy-of select="do:getInterfaced($packages, $inheritedClass)"/>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:copy-of select="$result"/>
+    </xsl:function>
+    
+    <xsl:function name="do:getInterfaceInherited" as="node()*">
+        <xsl:param name="packages" as="node()"/>
+        <xsl:param name="class" as="node()"/>
+        <xsl:variable name="result" as="node()*">
+            <xsl:copy-of select="$class"/>
+            <xsl:for-each select="$class/implementOrg">
+                <xsl:variable name="inheritedClass" as="node()" select="do:findClass($packages, .)"/>
+                <xsl:if test="$inheritedClass">
+                    <xsl:copy-of select="do:getInterfaceInherited($packages, $inheritedClass)"/>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:copy-of select="$result"/>
+    </xsl:function>
+    
+    <xsl:function name="do:getClassInherited" as="node()*">
+        <xsl:param name="packages" as="node()"/>
+        <xsl:param name="class" as="node()"/>
+        <xsl:variable name="result" as="node()*">
+            <xsl:copy-of select="$class"/>
+            <xsl:for-each select="$class/inheritOrg">
+                <xsl:variable name="inheritedClass" as="node()" select="do:findClass($packages, .)"/>
+                <xsl:if test="$inheritedClass">
+                    <xsl:copy-of select="do:getClassInherited($packages, $inheritedClass)"/>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:copy-of select="$result"/>
+    </xsl:function>
 
+    <xsl:function name="do:getClassCallConstructorParametersAsStringSequence" as="xs:string*">
+        <xsl:param name="packages"/>
+        <xsl:param name="class"/>
+        <xsl:variable name="result" as="xs:string*">
+            <xsl:variable name="nameAndTypeAndKind" select="do:getClassFieldsInheritedInterfaced($packages, $class)"/>
+            <xsl:for-each select="$nameAndTypeAndKind">
+                <xsl:if test="not(name = '') and kind = 'attribute'">
+                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(name, 1)"/>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:value-of select="$result"/>
+    </xsl:function>
+
+    <xsl:function name="do:getClassAllConstructorFieldsWithoutInheritance" as="node()">
+        <xsl:param name="packages"/>
+        <xsl:param name="class"/>
+        <xsl:variable name="result" as="node()">
+            <xsl:element name="result">
+                <xsl:variable name="nameAndTypeAndKind" select="do:getClassFieldsInheritedInterfaced($packages, $class)"/>
+                <xsl:for-each select="$nameAndTypeAndKind">
+                    <xsl:if test="not(name = '') and kind = 'attribute'">
+                        <xsl:copy-of select="."/>
+                    </xsl:if>
+                </xsl:for-each>
+            </xsl:element>
+        </xsl:variable>
+        <xsl:copy-of select="$result"/>
+    </xsl:function>
+
+    <xsl:function name="do:getClassAllConstructorFields" as="node()">
+        <xsl:param name="packages"/>
+        <xsl:param name="class"/>
+        <xsl:variable name="result" as="node()">
+            <xsl:element name="result">
+                <xsl:variable name="nameAndTypeAndKind" select="do:getClassFieldsInheritedInterfaced($packages, $class)"/>
+                <xsl:for-each select="$nameAndTypeAndKind">
+                    <xsl:if test="not(name = '') and kind = 'attribute'">
+                        <xsl:copy-of select="."/>
+                    </xsl:if>
+                </xsl:for-each>
+            </xsl:element>
+        </xsl:variable>
+        <xsl:copy-of select="$result"/>
+    </xsl:function>
 
     <!-- Call constructor -->
     <!-- Write constructor -->
@@ -840,17 +899,11 @@
         <xsl:value-of select="do:output('/* * BUILD PATTERN AND CONSTRUCTOR * */')"/>
         <xsl:value-of select="do:output('/*=========================================================*/')"/>
         <xsl:value-of select="do:output('')"/>
-        <xsl:variable name="fields" as="xs:string*">
-            <xsl:for-each select="$nameAndTypeAndKind">
-                <xsl:if test="not(name = '') and kind = 'attribute'">
-                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(name, 1)"/>
-                </xsl:if>
-            </xsl:for-each>
-        </xsl:variable>
+        <xsl:variable name="fieldNameSequence" select="do:classCallConstructorParameters($packages, $class)"/>
         <xsl:choose>
             <xsl:when test="$class/abstract = true()">
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, 'protected ', $class/className, '('))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($fields, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($fieldNameSequence, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '){'))"/>
                 <xsl:for-each select="$nameAndTypeAndKind">
                     <xsl:if test="not(name = '') and starts-with(cardinality, '1')">
@@ -870,7 +923,7 @@
             <xsl:otherwise>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $class/className, ' build() {'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return new ', $class/className, '('))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($fields, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($fieldNameSequence, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, ');'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
                 <xsl:value-of select="do:output('')"/>
