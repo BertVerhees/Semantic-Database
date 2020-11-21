@@ -49,13 +49,13 @@
         <xsl:variable name="root">
             <xsl:element name="packages">
                 <xsl:copy-of select="do:proceed('test')"/>
-                <xsl:copy-of select="do:proceed('bmm')"/>
+<!--                <xsl:copy-of select="do:proceed('bmm')"/>
                 <xsl:copy-of select="do:proceed('bmm_persistence')"/>
                 <xsl:copy-of select="do:proceed('base_types')"/>
                 <xsl:copy-of select="do:proceed('foundation_types')"/>
                 <xsl:copy-of select="do:proceed('resource')"/>
                 <xsl:copy-of select="do:proceed('aom_2')"/>
-                <xsl:copy-of select="do:proceed('aom_2')"/>
+                <xsl:copy-of select="do:proceed('aom_2')"/>-->
             </xsl:element>
         </xsl:variable>
         <xsl:variable name="allClasses" as="xs:string*">
@@ -779,7 +779,7 @@
         <xsl:param name="class" as="node()"/>
         <xsl:param name="includeSequence" as="xs:string*"/>
         <xsl:value-of select="do:writeClassHeader($packages, $package, $class, $includeSequence)"/>
-        <xsl:variable name="classes" select="do:getInterfaceInherited($packages, $class)"/>
+        <xsl:variable name="classes" select="do:getClassesFromInterfaceChains($packages, $class)"/>
         <xsl:if test="count($classes) > 0">
             <xsl:for-each select="$classes">
                 <xsl:value-of select="do:writeClassProperties($packages, .)"/>
@@ -795,7 +795,7 @@
         <xsl:value-of select="do:writeClassFooter()"/>
     </xsl:function>
     
-    <xsl:function name="do:getInterfaced" as="node()*">
+    <xsl:function name="do:getClassesFromInterfaceChains" as="node()*">
         <xsl:param name="packages" as="node()"/>
         <xsl:param name="class" as="node()"/>
         <xsl:variable name="result" as="node()*">
@@ -803,14 +803,14 @@
             <xsl:for-each select="$class/implementOrg">
                 <xsl:variable name="inheritedClass" as="node()" select="do:findClass($packages, .)"/>
                 <xsl:if test="$inheritedClass">
-                    <xsl:copy-of select="do:getInterfaced($packages, $inheritedClass)"/>
+                    <xsl:copy-of select="do:getClassesFromInterfaceChains($packages, $inheritedClass)"/>
                 </xsl:if>
             </xsl:for-each>
         </xsl:variable>
         <xsl:copy-of select="$result"/>
     </xsl:function>
     
-    <xsl:function name="do:getInterfaceInherited" as="node()*">
+    <xsl:function name="do:getClassesFromInterfaceInheritedChains" as="node()*">
         <xsl:param name="packages" as="node()"/>
         <xsl:param name="class" as="node()"/>
         <xsl:variable name="result" as="node()*">
@@ -818,14 +818,20 @@
             <xsl:for-each select="$class/implementOrg">
                 <xsl:variable name="inheritedClass" as="node()" select="do:findClass($packages, .)"/>
                 <xsl:if test="$inheritedClass">
-                    <xsl:copy-of select="do:getInterfaceInherited($packages, $inheritedClass)"/>
+                    <xsl:copy-of select="do:getClassesFromInterfaceChains($packages, $inheritedClass)"/>
+                </xsl:if>
+            </xsl:for-each>
+            <xsl:for-each select="$class/inheritOrg">
+                <xsl:variable name="inheritedClass" as="node()" select="do:findClass($packages, .)"/>
+                <xsl:if test="$inheritedClass">
+                    <xsl:copy-of select="do:getClassesFromInheritedChains($packages, $inheritedClass)"/>
                 </xsl:if>
             </xsl:for-each>
         </xsl:variable>
         <xsl:copy-of select="$result"/>
     </xsl:function>
     
-    <xsl:function name="do:getClassInherited" as="node()*">
+    <xsl:function name="do:getClassesFromInheritedChains" as="node()*">
         <xsl:param name="packages" as="node()"/>
         <xsl:param name="class" as="node()"/>
         <xsl:variable name="result" as="node()*">
@@ -833,7 +839,7 @@
             <xsl:for-each select="$class/inheritOrg">
                 <xsl:variable name="inheritedClass" as="node()" select="do:findClass($packages, .)"/>
                 <xsl:if test="$inheritedClass">
-                    <xsl:copy-of select="do:getClassInherited($packages, $inheritedClass)"/>
+                    <xsl:copy-of select="do:getClassesFromInheritedChains($packages, $inheritedClass)"/>
                 </xsl:if>
             </xsl:for-each>
         </xsl:variable>
@@ -885,6 +891,39 @@
         </xsl:variable>
         <xsl:copy-of select="$result"/>
     </xsl:function>
+    
+    <xsl:function name="do:writeClassConstructor">
+        <xsl:param name="packages"></xsl:param>
+        <xsl:param name="class" as="node()"/>
+        <xsl:param name="visibilityString"></xsl:param>
+        <xsl:variable name="fieldNameSequence" as="xs:string*" select="do:getClassCallConstructorParametersAsStringSequence($packages, $class)"/>
+        <xsl:variable name="localFields" select="do:getClassAllConstructorFieldsWithoutInheritance($packages, $class)"/>
+        <xsl:variable name="inheritedFieldNameSequence">
+            <xsl:if test="$class/inheritOrg">
+                <xsl:value-of select="do:getClassCallConstructorParametersAsStringSequence($packages, do:findClass($packages, $class/inheritOrg))"/>
+            </xsl:if>
+        </xsl:variable>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp, $visibilityString,' ', $class/className, '('))"/>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($fieldNameSequence, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp, '){'))"/>
+        <xsl:if test="$class/inheritOrg">
+            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'parent(',string-join($inheritedFieldNameSequence,', '),')'))"/>
+        </xsl:if>
+        <xsl:for-each select="$localFields">
+            <xsl:if test="not(name = '') and starts-with(cardinality, '1')">
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( ', do:snakeUpperCaseToCamelCase(name, 1), ' == null ) {'))"/>
+                <xsl:value-of
+                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Property:', do:snakeUpperCaseToCamelCase(name, 1), ' has cardinality NonNull, but is null&quot;);'))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
+            </xsl:if>
+        </xsl:for-each>
+        <xsl:for-each select="$localFields">
+            <xsl:if test="not(name = '')">
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', do:snakeUpperCaseToCamelCase(name, 1), ' = ', do:snakeUpperCaseToCamelCase(name, 1), ';'))"/>
+            </xsl:if>
+        </xsl:for-each>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
+    </xsl:function>
 
     <!-- Call constructor -->
     <!-- Write constructor -->
@@ -899,12 +938,48 @@
         <xsl:value-of select="do:output('/* * BUILD PATTERN AND CONSTRUCTOR * */')"/>
         <xsl:value-of select="do:output('/*=========================================================*/')"/>
         <xsl:value-of select="do:output('')"/>
-        <xsl:variable name="fieldNameSequence" select="do:classCallConstructorParameters($packages, $class)"/>
+        <xsl:variable name="fieldNameSequence" select="do:getClassCallConstructorParametersAsStringSequence($packages, $class)"/>
+        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'protected ', $class/className, '() {}'))"/>
+        <xsl:value-of select="do:output('')"/>
         <xsl:choose>
             <xsl:when test="$class/abstract = true()">
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'protected ', $class/className, '('))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($fieldNameSequence, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
+                <xsl:value-of select="do:writeClassConstructor($packages, $class, 'protected' )"/>
+            </xsl:when>
+            <xsl:otherwise>
+<!--                proteced for function test-->
+                <xsl:value-of select="do:writeClassConstructor($packages, $class, 'protected' )"/>
+                <!-- Parameter fields for full contructor -->
+                <!-- localFields for fields not from inheritance -->                
+                <xsl:variable name="localFields" as="node()*">
+                    <xsl:for-each select="do:getClassesFromInterfaceChains($packages, $class)">
+                        <xsl:if test="not(name = '')">
+                            <xsl:copy-of select="."></xsl:copy-of>
+                            <!--<xsl:copy-of select="concat(do:processType($packages, type), ' ', do:snakeUpperCaseToCamelCase(name, 1))"/>-->
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:variable>
+                <!-- allFields, with interfaces and inheritance -->
+                <xsl:variable name="allFields" as="node()*">
+                    <xsl:for-each select="do:getClassesFromInterfaceInheritedChains($packages, $class)">
+                        <xsl:if test="not(name = '')">
+                            <xsl:copy-of select="."></xsl:copy-of>
+<!--                            <xsl:value-of select="concat(do:processType($packages, type), ' ', do:snakeUpperCaseToCamelCase(name, 1))"/>-->
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:variable>
+                <!-- only the inherited fields (for parent-call) -->
+                <xsl:variable name="inheritedFields" as="node()*">
+                    <xsl:for-each select="do:getClassesFromInterfaceInheritedChains($packages, do:findClass($packages,$class/inheritOrg))">
+                        <xsl:if test="not(name = '')">
+                            <xsl:copy-of select="."></xsl:copy-of>
+<!--                            <xsl:value-of select="concat(do:processType($packages, type), ' ', do:snakeUpperCaseToCamelCase(name, 1))"/>-->
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:variable>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $class/className, '('))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($allFields, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '){'))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'parent(',string-join($inheritedFields,', '),')'))"/>
                 <xsl:for-each select="$nameAndTypeAndKind">
                     <xsl:if test="not(name = '') and starts-with(cardinality, '1')">
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( ', do:snakeUpperCaseToCamelCase(name, 1), ' == null ) {'))"/>
@@ -919,38 +994,14 @@
                     </xsl:if>
                 </xsl:for-each>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
-            </xsl:when>
-            <xsl:otherwise>
+                
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $class/className, ' build() {'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return new ', $class/className, '('))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($fieldNameSequence, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, ');'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
                 <xsl:value-of select="do:output('')"/>
-                <xsl:variable name="fields" as="xs:string*">
-                    <xsl:for-each select="$nameAndTypeAndKind">
-                        <xsl:if test="not(name = '')">
-                            <xsl:value-of select="concat(do:processType($packages, type), ' ', do:snakeUpperCaseToCamelCase(name, 1))"/>
-                        </xsl:if>
-                    </xsl:for-each>
-                </xsl:variable>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $class/className, '('))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($fields, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, '){'))"/>
-                <xsl:for-each select="$nameAndTypeAndKind">
-                    <xsl:if test="not(name = '') and starts-with(cardinality, '1')">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( ', do:snakeUpperCaseToCamelCase(name, 1), ' == null ) {'))"/>
-                        <xsl:value-of
-                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Property:', do:snakeUpperCaseToCamelCase(name, 1), ' has cardinality NonNull, but is null&quot;);'))"/>
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
-                    </xsl:if>
-                </xsl:for-each>
-                <xsl:for-each select="$nameAndTypeAndKind">
-                    <xsl:if test="not(name = '')">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', do:snakeUpperCaseToCamelCase(name, 1), ' = ', do:snakeUpperCaseToCamelCase(name, 1), ';'))"/>
-                    </xsl:if>
-                </xsl:for-each>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
+                
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -959,10 +1010,10 @@
         <xsl:param name="packages" as="node()"/>
         <xsl:param name="class" as="node()"/>
         <xsl:variable name="fields" as="node()*">
-            <xsl:variable name="classes" select="do:getClassInherited($packages, $class)"/>
+            <xsl:variable name="classes" select="do:getClassesFromInheritedChains($packages, $class)"/>
             <xsl:if test="count($classes) > 0">
                 <xsl:for-each select="$classes">
-                    <xsl:variable name="interfaced" select="do:getInterfaceInherited($packages, .)"/>
+                    <xsl:variable name="interfaced" select="do:getClassesFromInterfaceInheritedChains($packages, .)"/>
                     <xsl:for-each select="$interfaced">
                         <xsl:if test="count(functionsAndAttributesAndConstants/nameAndTypeAndKind[kind = 'attribute']) > 0">
                             <xsl:for-each select="./functionsAndAttributesAndConstants/nameAndTypeAndKind[kind = 'attribute']">
