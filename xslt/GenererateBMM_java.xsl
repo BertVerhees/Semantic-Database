@@ -859,6 +859,59 @@
         <xsl:param name="packages" as="node()"/>
         <xsl:param name="nameAndTypeAndKind" as="node()*"/>
         <xsl:param name="class" as="node()"/>
+        <!-- LOCALFIELD only for this class and interfaces of this class (for constructor locals (except parent)) -->
+        <xsl:variable name="localFields" as="node()*">
+            <xsl:for-each select="do:getClassesFromInterfaceChains($packages, $class)">
+                <xsl:for-each select="functionsAndAttributesAndConstants/nameAndTypeAndKind">
+                    <xsl:if test="not(name = '') and kind = 'attribute'">
+                        <xsl:copy-of select="."/>
+                    </xsl:if>
+                </xsl:for-each>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:value-of select="do:message(concat('Class:', $class/className, ' LocalFields:', string-join($localFields/name, ', ')))"/>
+        <!-- ALLFIELDS, with interfaces and inheritance and interfaces of inheritance (for constructor parameters) -->
+        <xsl:variable name="allFields" as="node()*">
+            <xsl:for-each select="do:getClassesFromInheritedChains($packages, $class)">
+                <xsl:variable name="inherited">
+                    <xsl:for-each select="functionsAndAttributesAndConstants/nameAndTypeAndKind">
+                        <xsl:if test="not(name = '') and kind = 'attribute'">
+                            <xsl:copy-of select="."/>
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:variable>
+                <xsl:copy-of select="$inherited"/>
+                <xsl:for-each select="do:getClassesFromInterfaceChains($packages, .)">
+                    <xsl:for-each select="functionsAndAttributesAndConstants/nameAndTypeAndKind">
+                        <xsl:if test="not(name = '') and kind = 'attribute'">
+                            <xsl:if test="not(contains(string-join($inherited/name), name))">
+                                <xsl:copy-of select="."/>
+                            </xsl:if>
+                        </xsl:if>
+                    </xsl:for-each>
+                </xsl:for-each>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:variable name="allFieldsNameAndType" as="xs:string*">
+            <xsl:for-each select="$allFields">
+                <xsl:if test="not(name = '') and kind = 'attribute'">
+                    <xsl:value-of select="concat(type,' ',name)"/>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:value-of select="do:message(concat('Class:', $class/className, ' AllFields:', string-join($allFields/name, ', ')))"/>
+        <!-- INHERITEDFIELDS and interfaces (for parent-call) -->
+        <xsl:variable name="inheritedFields" as="node()*">
+            <xsl:for-each select="$allFields">
+                <xsl:if test="not(name = '') and kind = 'attribute'">
+                    <xsl:if test="not(contains(string-join($localFields/name), name))">
+                        <xsl:copy-of select="."/>
+                    </xsl:if>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:variable>
+        <xsl:value-of
+            select="do:message(concat('Class:', $class/className, ' InheritedFields:', string-join($inheritedFields/name, ', ')))"/>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:outputSpaces(concat('    //***** ', $class/className, ' *****'))"/>
         <xsl:value-of select="do:output('')"/>
@@ -866,60 +919,27 @@
         <xsl:value-of select="do:output('/* * BUILD PATTERN AND CONSTRUCTOR * */')"/>
         <xsl:value-of select="do:output('/*=========================================================*/')"/>
         <xsl:value-of select="do:output('')"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'protected ', $class/className, '() {}'))"/>
         <xsl:value-of select="do:output('')"/>
         <xsl:choose>
             <xsl:when test="$class/abstract = true()">
-<!--                <xsl:value-of select="do:writeClassConstructor($packages, $class, 'protected')"/>-->
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'protected ', $class/className, '('))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($allFieldsNameAndType, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, '){'))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
+                <xsl:value-of select="do:output('')"/>
             </xsl:when>
             <xsl:otherwise>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'protected ', $class/className, '() {}'))"/>
+                
+
+
                 <!--                proteced for function test-->
 <!--                <xsl:value-of select="do:writeClassConstructor($packages, $class, 'protected')"/>-->
                 <!-- Parameter fields for full contructor -->
-                <!-- LOCALFIELD only for this class and interfaces of this class (for constructor locals (except parent)) -->
-                <xsl:variable name="localFieldsClasses" as="node()*">
-                    <xsl:for-each select="do:getClassesFromInterfaceChains($packages, $class)">
-                        <xsl:if test="not(functionsAndAttributesAndConstants/nameAndTypeAndKind/name = '') and functionsAndAttributesAndConstants/nameAndTypeAndKind/kind = 'attribute'">
-                            <xsl:copy-of select="."/>
-                        </xsl:if>
-                    </xsl:for-each>
-                </xsl:variable>
-                <xsl:value-of select="do:message(concat('Class:', $class/className, ' LocalFields:', string-join($localFieldsClasses/functionsAndAttributesAndConstants/nameAndTypeAndKind/name, ', ')))"/>
-                <!-- ALLFIELDS, with interfaces and inheritance and interfaces of inheritance (for constructor parameters) -->
-                <xsl:variable name="allFieldsClasses" as="node()*">
-                    <xsl:for-each select="do:getClassesFromInheritedChains($packages, $class)">
-                        <xsl:variable name="inherited">
-                            <xsl:if test="not(functionsAndAttributesAndConstants/nameAndTypeAndKind/name = '') and functionsAndAttributesAndConstants/nameAndTypeAndKind/kind = 'attribute'">
-                                <xsl:copy-of select="."/>
-                            </xsl:if>
-                        </xsl:variable>
-                        <xsl:copy-of select="$inherited"/>
-                        <xsl:for-each select="do:getClassesFromInterfaceChains($packages, .)">
-                            <xsl:if test="not(functionsAndAttributesAndConstants/nameAndTypeAndKind/name = '') and functionsAndAttributesAndConstants/nameAndTypeAndKind/kind = 'attribute'">
-                                <xsl:if test="not(contains($inherited/functionsAndAttributesAndConstants/nameAndTypeAndKind/name, functionsAndAttributesAndConstants/nameAndTypeAndKind/name))">
-                                    <xsl:copy-of select="."/>
-                                </xsl:if>
-                            </xsl:if>
-                        </xsl:for-each>
-                    </xsl:for-each>
-                </xsl:variable>
-                <xsl:value-of select="do:message(concat('Class:', $class/className, ' AllFields:', string-join($allFieldsClasses/functionsAndAttributesAndConstants/nameAndTypeAndKind/name, ', ')))"/>
-                <!-- INHERITEDFIELDS and interfaces (for parent-call) -->
-                <xsl:variable name="inheritedFieldsClasses" as="node()*">
-                        <xsl:for-each select="$allFieldsClasses">
-                        <xsl:if test="not(functionsAndAttributesAndConstants/nameAndTypeAndKind/name = '') and functionsAndAttributesAndConstants/nameAndTypeAndKind/kind = 'attribute'">
-                            <xsl:if test="not(contains(string-join($localFieldsClasses/functionsAndAttributesAndConstants/nameAndTypeAndKind/name), functionsAndAttributesAndConstants/nameAndTypeAndKind/name))">
-                                <xsl:copy-of select="."/>
-                            </xsl:if>
-                        </xsl:if>
-                    </xsl:for-each>
-                </xsl:variable>
-                <xsl:value-of
-                    select="do:message(concat('Class:', $class/className, ' InheritedFields:', string-join($inheritedFieldsClasses/functionsAndAttributesAndConstants/nameAndTypeAndKind/name, ', ')))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $class/className, '(---'))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($allFieldsClasses/name, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $class/className, '('))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($allFields/name, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '){'))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'parent(', string-join($inheritedFieldsClasses, ', '), ')'))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'parent(', string-join($inheritedFields, ', '), ')'))"/>
                 <xsl:for-each select="$nameAndTypeAndKind">
                     <xsl:if test="not(name = '') and starts-with(cardinality, '1')">
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( ', do:snakeUpperCaseToCamelCase(name, 1), ' == null ) {'))"/>
