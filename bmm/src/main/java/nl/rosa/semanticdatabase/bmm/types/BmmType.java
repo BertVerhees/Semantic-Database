@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -89,6 +88,48 @@ public abstract class BmmType {
  * 
 */
     public abstract List<String>  flattenedTypeList();
+
+    //***** BmmType *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmType(
+            
+        ){
+    }
+
+
+    //***** BmmType *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmType that = (BmmType) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmType {" +
+            '}';
+    }
 
 }
 

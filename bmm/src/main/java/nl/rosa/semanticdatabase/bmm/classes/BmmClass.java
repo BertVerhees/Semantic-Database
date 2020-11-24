@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.bmm.classes;
 
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModule;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.types.BmmModelType;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProperty;
@@ -15,7 +14,7 @@ import nl.rosa.semanticdatabase.bmm.class_features.BmmClassFeature;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -196,12 +195,11 @@ public abstract class BmmClass extends BmmModule {
     public BmmPackage getPackage() {
         return package;
     }
-    public BmmClass setPackage(BmmPackage value) {
+    public setPackage(BmmPackage value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:package failed, it has cardinality NonNull, but is null");
         }
         this.package = package;
-        return this;
     }
 
 /**
@@ -258,12 +256,11 @@ public abstract class BmmClass extends BmmModule {
     public String getSourceSchemaId() {
         return sourceSchemaId;
     }
-    public BmmClass setSourceSchemaId(String value) {
+    public setSourceSchemaId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:sourceSchemaId failed, it has cardinality NonNull, but is null");
         }
         this.sourceSchemaId = sourceSchemaId;
-        return this;
     }
 
 /**
@@ -312,12 +309,11 @@ public abstract class BmmClass extends BmmModule {
     public Boolean getIsOverride() {
         return isOverride;
     }
-    public BmmClass setIsOverride(Boolean value) {
+    public setIsOverride(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:isOverride failed, it has cardinality NonNull, but is null");
         }
         this.isOverride = isOverride;
-        return this;
     }
 
 /**
@@ -817,6 +813,133 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     final Boolean {default isAbstract = false};
+
+    //***** BmmClass *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmClass(
+            Map<string,bmmModelType> ancestors,
+            BmmPackage package,
+            Map<string,bmmProperty> properties,
+            String sourceSchemaId,
+            List<bmmClass> immediateDescendants,
+            Boolean isOverride,
+            Map<string,bmmConstant> constants,
+            Map<string,bmmFunction> functions,
+            Map<string,bmmProcedure> procedures,
+            List<bmmAssertion> invariants,
+            Map<string,bmmProcedure> creators,
+            Map<string,bmmProcedure> converters,
+            List<bmmFeatureGroup> featureGroups,
+            BmmModel scope,
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
+            scope,
+            name,
+            documentation,
+            scope,
+            extensions
+        );
+        if ( package == null ) {
+            throw new NullPointerException("Property:package has cardinality NonNull, but is null");
+        }
+        if ( sourceSchemaId == null ) {
+            throw new NullPointerException("Property:sourceSchemaId has cardinality NonNull, but is null");
+        }
+        if ( isOverride == null ) {
+            throw new NullPointerException("Property:isOverride has cardinality NonNull, but is null");
+        }
+        this.ancestors = ancestors;
+        this.package = package;
+        this.properties = properties;
+        this.sourceSchemaId = sourceSchemaId;
+        this.immediateDescendants = immediateDescendants;
+        this.isOverride = isOverride;
+        this.constants = constants;
+        this.functions = functions;
+        this.procedures = procedures;
+        this.invariants = invariants;
+        this.creators = creators;
+        this.converters = converters;
+        this.featureGroups = featureGroups;
+    }
+
+
+    //***** BmmClass *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmClass that = (BmmClass) object;
+        return
+            java.util.Objects.equals(ancestors, that.ancestors) &&
+            java.util.Objects.equals(package, that.package) &&
+            java.util.Objects.equals(properties, that.properties) &&
+            java.util.Objects.equals(sourceSchemaId, that.sourceSchemaId) &&
+            java.util.Objects.equals(immediateDescendants, that.immediateDescendants) &&
+            java.util.Objects.equals(isOverride, that.isOverride) &&
+            java.util.Objects.equals(constants, that.constants) &&
+            java.util.Objects.equals(functions, that.functions) &&
+            java.util.Objects.equals(procedures, that.procedures) &&
+            java.util.Objects.equals(invariants, that.invariants) &&
+            java.util.Objects.equals(creators, that.creators) &&
+            java.util.Objects.equals(converters, that.converters) &&
+            java.util.Objects.equals(featureGroups, that.featureGroups);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            ancestors,
+            package,
+            properties,
+            sourceSchemaId,
+            immediateDescendants,
+            isOverride,
+            constants,
+            functions,
+            procedures,
+            invariants,
+            creators,
+            converters,
+            featureGroups
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmClass {" +
+            "ancestors='" + ancestors + '\''; +
+            "package='" + package + '\''; +
+            "properties='" + properties + '\''; +
+            "sourceSchemaId='" + sourceSchemaId + '\''; +
+            "immediateDescendants='" + immediateDescendants + '\''; +
+            "isOverride='" + isOverride + '\''; +
+            "constants='" + constants + '\''; +
+            "functions='" + functions + '\''; +
+            "procedures='" + procedures + '\''; +
+            "invariants='" + invariants + '\''; +
+            "creators='" + creators + '\''; +
+            "converters='" + converters + '\''; +
+            "featureGroups='" + featureGroups + '\''; +
+            '}';
+    }
 
 }
 

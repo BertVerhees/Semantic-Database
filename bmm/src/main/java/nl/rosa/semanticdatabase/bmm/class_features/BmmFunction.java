@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -48,9 +48,8 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
     public BmmOperator getOperatorDefinition() {
         return operatorDefinition;
     }
-    public BmmFunction setOperatorDefinition(BmmOperator value) {
+    public setOperatorDefinition(BmmOperator value) {
         this.operatorDefinition = operatorDefinition;
-        return this;
     }
 
 /**
@@ -62,12 +61,11 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
     public BmmResult getResult() {
         return result;
     }
-    public BmmFunction setResult(BmmResult value) {
+    public setResult(BmmResult value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:result failed, it has cardinality NonNull, but is null");
         }
         this.result = result;
-        return this;
     }
 
 /*=========================================================*/
@@ -109,12 +107,11 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
     public BmmType getType() {
         return type;
     }
-    public BmmTyped setType(BmmType value) {
+    public setType(BmmType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
-        return this;
     }
 
 /*=========================================================*/
@@ -144,11 +141,26 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmFunction build() {
-        return new BmmFunction(
-            operatorDefinition,
-            result,
-            type,
+
+    public BmmFunction(
+            BmmOperator operatorDefinition,
+            BmmResult result,
+            BmmType type,
+            List<bmmParameter> parameters,
+            List<bmmLocal> locals,
+            List<bmmAssertion> preConditions,
+            List<bmmAssertion> postConditions,
+            BmmRoutineBody body,
+            BmmVisibility visibility,
+            List<bmmFeatureExtension> featureExtensions,
+            BmmFeatureGroup group,
+            BmmClass scope,
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
             parameters,
             locals,
             preConditions,
@@ -163,60 +175,180 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
             scope,
             extensions
         );
-    }
-
-    public BmmFunction(
-            BmmOperator operatorDefinition,
-            BmmResult result,
-            BmmType type,
-            List<BmmParameter> parameters,
-            List<BmmLocal> locals,
-            List<BmmAssertion> preConditions,
-            List<BmmAssertion> postConditions,
-            BmmRoutineBody body,
-            BmmVisibility visibility,
-            List<BMM_FEATURE_EXTENSION> featureExtensions,
-            BmmFeatureGroup group,
-            BmmClass scope,
-            String name,
-            Map<String, Any> documentation,
-            BmmDeclaration scope,
-            Map<String, Any> extensions
-    ){
         if ( result == null ) {
             throw new NullPointerException("Property:result has cardinality NonNull, but is null");
         }
         if ( type == null ) {
             throw new NullPointerException("Property:type has cardinality NonNull, but is null");
         }
-        if ( group == null ) {
-            throw new NullPointerException("Property:group has cardinality NonNull, but is null");
-        }
-        if ( scope == null ) {
-            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
-        }
-        if ( name == null ) {
-            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
-        }
-        if ( scope == null ) {
-            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
-        }
         this.operatorDefinition = operatorDefinition;
         this.result = result;
         this.type = type;
-        this.parameters = parameters;
-        this.locals = locals;
-        this.preConditions = preConditions;
-        this.postConditions = postConditions;
-        this.body = body;
-        this.visibility = visibility;
-        this.featureExtensions = featureExtensions;
-        this.group = group;
-        this.scope = scope;
-        this.name = name;
-        this.documentation = documentation;
-        this.scope = scope;
-        this.extensions = extensions;
+    }
+
+    private BmmFunction(Builder builder) {
+        this.setOperatorDefinition( builder.operatorDefinition );
+        this.setResult( builder.result );
+        this.setType( builder.type );
+        this.setParameters( builder.parameters );
+        this.setLocals( builder.locals );
+        this.setPreConditions( builder.preConditions );
+        this.setPostConditions( builder.postConditions );
+        this.setBody( builder.body );
+        this.setVisibility( builder.visibility );
+        this.setFeatureExtensions( builder.featureExtensions );
+        this.setGroup( builder.group );
+        this.setScope( builder.scope );
+        this.setName( builder.name );
+        this.setDocumentation( builder.documentation );
+        this.setScope( builder.scope );
+        this.setExtensions( builder.extensions );
+    }
+
+    public static class Builder {
+        private BmmOperator operatorDefinition;
+        private final BmmResult result;  //required
+        private final BmmType type;  //required
+        private List<bmmParameter> parameters;
+        private List<bmmLocal> locals;
+        private List<bmmAssertion> preConditions;
+        private List<bmmAssertion> postConditions;
+        private BmmRoutineBody body;
+        private BmmVisibility visibility;
+        private List<bmmFeatureExtension> featureExtensions;
+        private final BmmFeatureGroup group;  //required
+        private final BmmClass scope;  //required
+        private final String name;  //required
+        private Map<string, any> documentation;
+        private final BmmDeclaration scope;  //required
+        private Map<string, any> extensions;
+
+        public Builder (
+            BmmResult result,
+            BmmType type,
+            BmmFeatureGroup group,
+            BmmClass scope,
+            String name,
+            BmmDeclaration scope
+        ){
+            if ( result == null ) {
+                throw new NullPointerException("Property:result has cardinality NonNull, but is null");
+            }
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            if ( group == null ) {
+                throw new NullPointerException("Property:group has cardinality NonNull, but is null");
+            }
+            if ( scope == null ) {
+                throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+            }
+            if ( name == null ) {
+                throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+            }
+            if ( scope == null ) {
+                throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+            }
+            this.result = result;
+            this.type = type;
+            this.group = group;
+            this.scope = scope;
+            this.name = name;
+            this.scope = scope;
+        }
+
+        public Builder setOperatorDefinition(BmmOperator value) {
+            this.operatorDefinition = operatorDefinition;
+            return this;
+        }
+
+        public Builder setParameters(List<bmmParameter> value) {
+            this.parameters = parameters;
+            return this;
+        }
+
+        public Builder setLocals(List<bmmLocal> value) {
+            this.locals = locals;
+            return this;
+        }
+
+        public Builder setPreConditions(List<bmmAssertion> value) {
+            this.preConditions = preConditions;
+            return this;
+        }
+
+        public Builder setPostConditions(List<bmmAssertion> value) {
+            this.postConditions = postConditions;
+            return this;
+        }
+
+        public Builder setBody(BmmRoutineBody value) {
+            this.body = body;
+            return this;
+        }
+
+        public Builder setVisibility(BmmVisibility value) {
+            this.visibility = visibility;
+            return this;
+        }
+
+        public Builder setFeatureExtensions(List<bmmFeatureExtension> value) {
+            this.featureExtensions = featureExtensions;
+            return this;
+        }
+
+        public Builder setDocumentation(Map<string, any> value) {
+            this.documentation = documentation;
+            return this;
+        }
+
+        public Builder setExtensions(Map<string, any> value) {
+            this.extensions = extensions;
+            return this;
+        }
+
+        public BmmFunction build(){
+            return new BmmFunction( this );
+        }
+    }
+
+
+    //***** BmmFunction *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmFunction that = (BmmFunction) object;
+        return
+            java.util.Objects.equals(operatorDefinition, that.operatorDefinition) &&
+            java.util.Objects.equals(result, that.result) &&
+            java.util.Objects.equals(type, that.type);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            operatorDefinition,
+            result,
+            type
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmFunction {" +
+            "operatorDefinition='" + operatorDefinition + '\''; +
+            "result='" + result + '\''; +
+            "type='" + type + '\''; +
+            '}';
     }
 
 }

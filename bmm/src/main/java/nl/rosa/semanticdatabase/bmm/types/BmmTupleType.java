@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -178,19 +177,68 @@ public class BmmTupleType extends BmmEffectiveType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmTupleType build() {
-        return new BmmTupleType(
-            itemTypes
-        );
-    }
 
     public BmmTupleType(
-            Map<String,BmmType> itemTypes
-    ){
+            Map<string,bmmType> itemTypes
+        ){
         if ( itemTypes == null ) {
             throw new NullPointerException("Property:itemTypes has cardinality NonNull, but is null");
         }
         this.itemTypes = itemTypes;
+    }
+
+    private BmmTupleType(Builder builder) {
+        this.setItemTypes( builder.itemTypes );
+    }
+
+    public static class Builder {
+        private final Map<string,bmmType> itemTypes;  //required
+
+        public Builder (
+            Map<string,bmmType> itemTypes
+        ){
+            if ( itemTypes == null ) {
+                throw new NullPointerException("Property:itemTypes has cardinality NonNull, but is null");
+            }
+            this.itemTypes = itemTypes;
+        }
+
+        public BmmTupleType build(){
+            return new BmmTupleType( this );
+        }
+    }
+
+
+    //***** BmmTupleType *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmTupleType that = (BmmTupleType) object;
+        return
+            java.util.Objects.equals(itemTypes, that.itemTypes);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            itemTypes
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmTupleType {" +
+            "itemTypes='" + itemTypes + '\''; +
+            '}';
     }
 
 }

@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.foundation_types.terminology_package;
 
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -50,12 +49,11 @@ public class TerminologyTerm extends Any {
     public TerminologyCode getConcept() {
         return concept;
     }
-    public TerminologyTerm setConcept(TerminologyCode value) {
+    public setConcept(TerminologyCode value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:concept failed, it has cardinality NonNull, but is null");
         }
         this.concept = concept;
-        return this;
     }
 
 /**
@@ -67,12 +65,11 @@ public class TerminologyTerm extends Any {
     public String getText() {
         return text;
     }
-    public TerminologyTerm setText(String value) {
+    public setText(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:text failed, it has cardinality NonNull, but is null");
         }
         this.text = text;
-        return this;
     }
 
     //***** TerminologyTerm *****
@@ -81,17 +78,11 @@ public class TerminologyTerm extends Any {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public TerminologyTerm build() {
-        return new TerminologyTerm(
-            concept,
-            text
-        );
-    }
 
     public TerminologyTerm(
             TerminologyCode concept,
             String text
-    ){
+        ){
         if ( concept == null ) {
             throw new NullPointerException("Property:concept has cardinality NonNull, but is null");
         }
@@ -100,6 +91,70 @@ public class TerminologyTerm extends Any {
         }
         this.concept = concept;
         this.text = text;
+    }
+
+    private TerminologyTerm(Builder builder) {
+        this.setConcept( builder.concept );
+        this.setText( builder.text );
+    }
+
+    public static class Builder {
+        private final TerminologyCode concept;  //required
+        private final String text;  //required
+
+        public Builder (
+            TerminologyCode concept,
+            String text
+        ){
+            if ( concept == null ) {
+                throw new NullPointerException("Property:concept has cardinality NonNull, but is null");
+            }
+            if ( text == null ) {
+                throw new NullPointerException("Property:text has cardinality NonNull, but is null");
+            }
+            this.concept = concept;
+            this.text = text;
+        }
+
+        public TerminologyTerm build(){
+            return new TerminologyTerm( this );
+        }
+    }
+
+
+    //***** TerminologyTerm *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        TerminologyTerm that = (TerminologyTerm) object;
+        return
+            java.util.Objects.equals(concept, that.concept) &&
+            java.util.Objects.equals(text, that.text);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            concept,
+            text
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "TerminologyTerm {" +
+            "concept='" + concept + '\''; +
+            "text='" + text + '\''; +
+            '}';
     }
 
 }

@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.class_features.BmmProcedure;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,9 +41,8 @@ public class ElProcedureAgent extends ElAgent {
     public BmmProcedure getDefinition() {
         return definition;
     }
-    public ElProcedureAgent setDefinition(BmmProcedure value) {
+    public setDefinition(BmmProcedure value) {
         this.definition = definition;
-        return this;
     }
 
     //***** ElProcedureAgent *****
@@ -52,34 +51,111 @@ public class ElProcedureAgent extends ElAgent {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElProcedureAgent build() {
-        return new ElProcedureAgent(
-            definition,
-            name,
-            closedArgs,
-            openArgs,
-            definition,
-            scope
-        );
-    }
 
     public ElProcedureAgent(
             BmmProcedure definition,
             String name,
             ElTuple closedArgs,
-            List<String> openArgs,
+            List<string> openArgs,
             BmmRoutine definition,
             ElInstanceRef scope
-    ){
-        if ( name == null ) {
-            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+        ){
+        super( 
+            name,
+            closedArgs,
+            openArgs,
+            scope
+        );
+        this.definition = definition;
+    }
+
+    private ElProcedureAgent(Builder builder) {
+        this.setDefinition( builder.definition );
+        this.setName( builder.name );
+        this.setClosedArgs( builder.closedArgs );
+        this.setOpenArgs( builder.openArgs );
+        this.setDefinition( builder.definition );
+        this.setScope( builder.scope );
+    }
+
+    public static class Builder {
+        private BmmProcedure definition;
+        private final String name;  //required
+        private ElTuple closedArgs;
+        private List<string> openArgs;
+        private BmmRoutine definition;
+        private ElInstanceRef scope;
+
+        public Builder (
+            String name
+        ){
+            if ( name == null ) {
+                throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+            }
+            this.name = name;
         }
-        this.definition = definition;
-        this.name = name;
-        this.closedArgs = closedArgs;
-        this.openArgs = openArgs;
-        this.definition = definition;
-        this.scope = scope;
+
+        public Builder setDefinition(BmmProcedure value) {
+            this.definition = definition;
+            return this;
+        }
+
+        public Builder setClosedArgs(ElTuple value) {
+            this.closedArgs = closedArgs;
+            return this;
+        }
+
+        public Builder setOpenArgs(List<string> value) {
+            this.openArgs = openArgs;
+            return this;
+        }
+
+        public Builder setDefinition(BmmRoutine value) {
+            this.definition = definition;
+            return this;
+        }
+
+        public Builder setScope(ElInstanceRef value) {
+            this.scope = scope;
+            return this;
+        }
+
+        public ElProcedureAgent build(){
+            return new ElProcedureAgent( this );
+        }
+    }
+
+
+    //***** ElProcedureAgent *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElProcedureAgent that = (ElProcedureAgent) object;
+        return
+            java.util.Objects.equals(definition, that.definition);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            definition
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElProcedureAgent {" +
+            "definition='" + definition + '\''; +
+            '}';
     }
 
 }

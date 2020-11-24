@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.foundation_types.functional_meta_types_2;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -18,15 +18,54 @@ public class Tuple2<a,b> extends Tuple {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public Tuple2<a,b> build() {
-        return new Tuple2<a,b>(
-            
-        );
-    }
 
     public Tuple2<a,b>(
             
-    ){
+        ){
+    }
+
+    private Tuple2<a,b>(Builder builder) {
+    }
+
+    public static class Builder {
+
+        public Builder (
+        ){
+        }
+
+        public Tuple2<a,b> build(){
+            return new Tuple2<a,b>( this );
+        }
+    }
+
+
+    //***** Tuple2<a,b> *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Tuple2<a,b> that = (Tuple2<a,b>) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "Tuple2<a,b> {" +
+            '}';
     }
 
 }

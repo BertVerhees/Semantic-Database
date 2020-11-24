@@ -1,12 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
 import nl.rosa.semanticdatabase.bmm.classes.BmmSimpleClass;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -43,12 +42,11 @@ public class BmmSimpleType extends BmmModelType {
     public BmmSimpleClass getBaseClass() {
         return baseClass;
     }
-    public BmmSimpleType setBaseClass(BmmSimpleClass value) {
+    public setBaseClass(BmmSimpleClass value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:baseClass failed, it has cardinality NonNull, but is null");
         }
         this.baseClass = baseClass;
-        return this;
     }
 
 /*=========================================================*/
@@ -125,28 +123,87 @@ public class BmmSimpleType extends BmmModelType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmSimpleType build() {
-        return new BmmSimpleType(
-            baseClass,
-            valueConstraint,
-            baseClass
-        );
-    }
 
     public BmmSimpleType(
             BmmSimpleClass baseClass,
             BmmValueSetSpec valueConstraint,
             BmmClass baseClass
-    ){
-        if ( baseClass == null ) {
-            throw new NullPointerException("Property:baseClass has cardinality NonNull, but is null");
-        }
+        ){
+        super( 
+            valueConstraint
+        );
         if ( baseClass == null ) {
             throw new NullPointerException("Property:baseClass has cardinality NonNull, but is null");
         }
         this.baseClass = baseClass;
-        this.valueConstraint = valueConstraint;
-        this.baseClass = baseClass;
+    }
+
+    private BmmSimpleType(Builder builder) {
+        this.setBaseClass( builder.baseClass );
+        this.setValueConstraint( builder.valueConstraint );
+        this.setBaseClass( builder.baseClass );
+    }
+
+    public static class Builder {
+        private final BmmSimpleClass baseClass;  //required
+        private BmmValueSetSpec valueConstraint;
+        private final BmmClass baseClass;  //required
+
+        public Builder (
+            BmmSimpleClass baseClass,
+            BmmClass baseClass
+        ){
+            if ( baseClass == null ) {
+                throw new NullPointerException("Property:baseClass has cardinality NonNull, but is null");
+            }
+            if ( baseClass == null ) {
+                throw new NullPointerException("Property:baseClass has cardinality NonNull, but is null");
+            }
+            this.baseClass = baseClass;
+            this.baseClass = baseClass;
+        }
+
+        public Builder setValueConstraint(BmmValueSetSpec value) {
+            this.valueConstraint = valueConstraint;
+            return this;
+        }
+
+        public BmmSimpleType build(){
+            return new BmmSimpleType( this );
+        }
+    }
+
+
+    //***** BmmSimpleType *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmSimpleType that = (BmmSimpleType) object;
+        return
+            java.util.Objects.equals(baseClass, that.baseClass);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            baseClass
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmSimpleType {" +
+            "baseClass='" + baseClass + '\''; +
+            '}';
     }
 
 }

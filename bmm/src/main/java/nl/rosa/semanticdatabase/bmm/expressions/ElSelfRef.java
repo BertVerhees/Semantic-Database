@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,12 +40,11 @@ public class ElSelfRef extends ElInstanceRef {
     public BmmType getType() {
         return type;
     }
-    public ElSelfRef setType(BmmType value) {
+    public setType(BmmType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
-        return this;
     }
 
 /*=========================================================*/
@@ -74,19 +73,68 @@ public class ElSelfRef extends ElInstanceRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElSelfRef build() {
-        return new ElSelfRef(
-            type
-        );
-    }
 
     public ElSelfRef(
             BmmType type
-    ){
+        ){
         if ( type == null ) {
             throw new NullPointerException("Property:type has cardinality NonNull, but is null");
         }
         this.type = type;
+    }
+
+    private ElSelfRef(Builder builder) {
+        this.setType( builder.type );
+    }
+
+    public static class Builder {
+        private final BmmType type;  //required
+
+        public Builder (
+            BmmType type
+        ){
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            this.type = type;
+        }
+
+        public ElSelfRef build(){
+            return new ElSelfRef( this );
+        }
+    }
+
+
+    //***** ElSelfRef *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElSelfRef that = (ElSelfRef) object;
+        return
+            java.util.Objects.equals(type, that.type);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            type
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElSelfRef {" +
+            "type='" + type + '\''; +
+            '}';
     }
 
 }

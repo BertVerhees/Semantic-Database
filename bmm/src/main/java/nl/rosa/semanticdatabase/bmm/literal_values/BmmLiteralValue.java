@@ -1,12 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.literal_values;
 
 import nl.rosa.semanticdatabase.bmm.class_features.BmmTyped;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -62,12 +61,11 @@ public abstract class BmmLiteralValue implements BmmTyped {
     public String getValueLiteral() {
         return valueLiteral;
     }
-    public BmmLiteralValue setValueLiteral(String value) {
+    public setValueLiteral(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:valueLiteral failed, it has cardinality NonNull, but is null");
         }
         this.valueLiteral = valueLiteral;
-        return this;
     }
 
 /**
@@ -79,9 +77,8 @@ public abstract class BmmLiteralValue implements BmmTyped {
     public Any getValue() {
         return value;
     }
-    public BmmLiteralValue setValue(Any value) {
+    public setValue(Any value) {
         this.value = value;
-        return this;
     }
 
 /**
@@ -95,9 +92,8 @@ public abstract class BmmLiteralValue implements BmmTyped {
     public String getSyntax() {
         return syntax;
     }
-    public BmmLiteralValue setSyntax(String value) {
+    public setSyntax(String value) {
         this.syntax = syntax;
-        return this;
     }
 
     //***** BmmTyped *****
@@ -127,12 +123,11 @@ public abstract class BmmLiteralValue implements BmmTyped {
     public BmmType getType() {
         return type;
     }
-    public BmmTyped setType(BmmType value) {
+    public setType(BmmType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
-        return this;
     }
 
 /*=========================================================*/
@@ -154,6 +149,73 @@ public abstract class BmmLiteralValue implements BmmTyped {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return  result;
+    }
+
+    //***** BmmLiteralValue *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmLiteralValue(
+            String valueLiteral,
+            Any value,
+            String syntax,
+            BmmType type
+        ){
+        if ( valueLiteral == null ) {
+            throw new NullPointerException("Property:valueLiteral has cardinality NonNull, but is null");
+        }
+        if ( type == null ) {
+            throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+        }
+        this.valueLiteral = valueLiteral;
+        this.value = value;
+        this.syntax = syntax;
+        this.type = type;
+    }
+
+
+    //***** BmmLiteralValue *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmLiteralValue that = (BmmLiteralValue) object;
+        return
+            java.util.Objects.equals(valueLiteral, that.valueLiteral) &&
+            java.util.Objects.equals(value, that.value) &&
+            java.util.Objects.equals(syntax, that.syntax) &&
+            java.util.Objects.equals(type, that.type);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            valueLiteral,
+            value,
+            syntax,
+            type
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmLiteralValue {" +
+            "valueLiteral='" + valueLiteral + '\''; +
+            "value='" + value + '\''; +
+            "syntax='" + syntax + '\''; +
+            "type='" + type + '\''; +
+            '}';
     }
 
 }

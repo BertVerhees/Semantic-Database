@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -42,12 +42,11 @@ public class ElLiteral extends ElInstanceRef {
     public BmmLiteralValue getValue() {
         return value;
     }
-    public ElLiteral setValue(BmmLiteralValue value) {
+    public setValue(BmmLiteralValue value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:value failed, it has cardinality NonNull, but is null");
         }
         this.value = value;
-        return this;
     }
 
 /*=========================================================*/
@@ -76,19 +75,68 @@ public class ElLiteral extends ElInstanceRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElLiteral build() {
-        return new ElLiteral(
-            value
-        );
-    }
 
     public ElLiteral(
             BmmLiteralValue value
-    ){
+        ){
         if ( value == null ) {
             throw new NullPointerException("Property:value has cardinality NonNull, but is null");
         }
         this.value = value;
+    }
+
+    private ElLiteral(Builder builder) {
+        this.setValue( builder.value );
+    }
+
+    public static class Builder {
+        private final BmmLiteralValue value;  //required
+
+        public Builder (
+            BmmLiteralValue value
+        ){
+            if ( value == null ) {
+                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+            }
+            this.value = value;
+        }
+
+        public ElLiteral build(){
+            return new ElLiteral( this );
+        }
+    }
+
+
+    //***** ElLiteral *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElLiteral that = (ElLiteral) object;
+        return
+            java.util.Objects.equals(value, that.value);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            value
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElLiteral {" +
+            "value='" + value + '\''; +
+            '}';
     }
 
 }

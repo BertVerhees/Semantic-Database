@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -12,6 +12,48 @@ package nl.rosa.semanticdatabase.bmm.class_features;
  * 
 */
 public abstract class BmmVisibility {
+
+    //***** BmmVisibility *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmVisibility(
+            
+        ){
+    }
+
+
+    //***** BmmVisibility *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmVisibility that = (BmmVisibility) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmVisibility {" +
+            '}';
+    }
 
 }
 

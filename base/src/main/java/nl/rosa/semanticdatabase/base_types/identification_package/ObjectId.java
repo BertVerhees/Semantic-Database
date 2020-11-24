@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.base_types.identification_package;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -44,12 +43,60 @@ public abstract class ObjectId {
     public String getValue() {
         return value;
     }
-    public ObjectId setValue(String value) {
+    public setValue(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:value failed, it has cardinality NonNull, but is null");
         }
         this.value = value;
-        return this;
+    }
+
+    //***** ObjectId *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected ObjectId(
+            String value
+        ){
+        if ( value == null ) {
+            throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+        }
+        this.value = value;
+    }
+
+
+    //***** ObjectId *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ObjectId that = (ObjectId) object;
+        return
+            java.util.Objects.equals(value, that.value);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            value
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "ObjectId {" +
+            "value='" + value + '\''; +
+            '}';
     }
 
 }

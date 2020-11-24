@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -20,31 +20,82 @@ public class PartyRef extends ObjectRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public PartyRef build() {
-        return new PartyRef(
+
+    public PartyRef(
+            String namespace,
+            String type,
+            ObjectId id
+        ){
+        super( 
             namespace,
             type,
             id
         );
     }
 
-    public PartyRef(
+    private PartyRef(Builder builder) {
+        this.setNamespace( builder.namespace );
+        this.setType( builder.type );
+        this.setId( builder.id );
+    }
+
+    public static class Builder {
+        private final String namespace;  //required
+        private final String type;  //required
+        private final ObjectId id;  //required
+
+        public Builder (
             String namespace,
             String type,
             ObjectId id
-    ){
-        if ( namespace == null ) {
-            throw new NullPointerException("Property:namespace has cardinality NonNull, but is null");
+        ){
+            if ( namespace == null ) {
+                throw new NullPointerException("Property:namespace has cardinality NonNull, but is null");
+            }
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            if ( id == null ) {
+                throw new NullPointerException("Property:id has cardinality NonNull, but is null");
+            }
+            this.namespace = namespace;
+            this.type = type;
+            this.id = id;
         }
-        if ( type == null ) {
-            throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+
+        public PartyRef build(){
+            return new PartyRef( this );
         }
-        if ( id == null ) {
-            throw new NullPointerException("Property:id has cardinality NonNull, but is null");
+    }
+
+
+    //***** PartyRef *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        PartyRef that = (PartyRef) object;
+        return
         }
-        this.namespace = namespace;
-        this.type = type;
-        this.id = id;
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "PartyRef {" +
+            '}';
     }
 
 }

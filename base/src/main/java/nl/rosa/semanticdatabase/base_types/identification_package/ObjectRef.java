@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.base_types.identification_package;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -72,12 +71,11 @@ public class ObjectRef {
     public String getNamespace() {
         return namespace;
     }
-    public ObjectRef setNamespace(String value) {
+    public setNamespace(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:namespace failed, it has cardinality NonNull, but is null");
         }
         this.namespace = namespace;
-        return this;
     }
 
 /**
@@ -93,12 +91,11 @@ public class ObjectRef {
     public String getType() {
         return type;
     }
-    public ObjectRef setType(String value) {
+    public setType(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
-        return this;
     }
 
 /**
@@ -110,12 +107,11 @@ public class ObjectRef {
     public ObjectId getId() {
         return id;
     }
-    public ObjectRef setId(ObjectId value) {
+    public setId(ObjectId value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:id failed, it has cardinality NonNull, but is null");
         }
         this.id = id;
-        return this;
     }
 
     //***** ObjectRef *****
@@ -124,19 +120,12 @@ public class ObjectRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ObjectRef build() {
-        return new ObjectRef(
-            namespace,
-            type,
-            id
-        );
-    }
 
     public ObjectRef(
             String namespace,
             String type,
             ObjectId id
-    ){
+        ){
         if ( namespace == null ) {
             throw new NullPointerException("Property:namespace has cardinality NonNull, but is null");
         }
@@ -149,6 +138,80 @@ public class ObjectRef {
         this.namespace = namespace;
         this.type = type;
         this.id = id;
+    }
+
+    private ObjectRef(Builder builder) {
+        this.setNamespace( builder.namespace );
+        this.setType( builder.type );
+        this.setId( builder.id );
+    }
+
+    public static class Builder {
+        private final String namespace;  //required
+        private final String type;  //required
+        private final ObjectId id;  //required
+
+        public Builder (
+            String namespace,
+            String type,
+            ObjectId id
+        ){
+            if ( namespace == null ) {
+                throw new NullPointerException("Property:namespace has cardinality NonNull, but is null");
+            }
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            if ( id == null ) {
+                throw new NullPointerException("Property:id has cardinality NonNull, but is null");
+            }
+            this.namespace = namespace;
+            this.type = type;
+            this.id = id;
+        }
+
+        public ObjectRef build(){
+            return new ObjectRef( this );
+        }
+    }
+
+
+    //***** ObjectRef *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ObjectRef that = (ObjectRef) object;
+        return
+            java.util.Objects.equals(namespace, that.namespace) &&
+            java.util.Objects.equals(type, that.type) &&
+            java.util.Objects.equals(id, that.id);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            namespace,
+            type,
+            id
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "ObjectRef {" +
+            "namespace='" + namespace + '\''; +
+            "type='" + type + '\''; +
+            "id='" + id + '\''; +
+            '}';
     }
 
 }

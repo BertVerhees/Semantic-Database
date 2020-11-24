@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.statements;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -74,16 +74,65 @@ public class BmmStatementBlock extends BmmStatementItem {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmStatementBlock build() {
-        return new BmmStatementBlock(
+
+    public BmmStatementBlock(
+            List<bmmStatementItem> items
+        ){
+        this.items = items;
+    }
+
+    private BmmStatementBlock(Builder builder) {
+        this.setItems( builder.items );
+    }
+
+    public static class Builder {
+        private List<bmmStatementItem> items;
+
+        public Builder (
+        ){
+        }
+
+        public Builder setItems(List<bmmStatementItem> value) {
+            this.items = items;
+            return this;
+        }
+
+        public BmmStatementBlock build(){
+            return new BmmStatementBlock( this );
+        }
+    }
+
+
+    //***** BmmStatementBlock *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmStatementBlock that = (BmmStatementBlock) object;
+        return
+            java.util.Objects.equals(items, that.items);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
             items
         );
     }
 
-    public BmmStatementBlock(
-            List<BmmStatementItem> items
-    ){
-        this.items = items;
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmStatementBlock {" +
+            "items='" + items + '\''; +
+            '}';
     }
 
 }

@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.class_features.BmmFunction;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,9 +41,8 @@ public class ElFunctionAgent extends ElAgent {
     public BmmFunction getDefinition() {
         return definition;
     }
-    public ElFunctionAgent setDefinition(BmmFunction value) {
+    public setDefinition(BmmFunction value) {
         this.definition = definition;
-        return this;
     }
 
     //***** ElFunctionAgent *****
@@ -52,34 +51,111 @@ public class ElFunctionAgent extends ElAgent {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElFunctionAgent build() {
-        return new ElFunctionAgent(
-            definition,
-            name,
-            closedArgs,
-            openArgs,
-            definition,
-            scope
-        );
-    }
 
     public ElFunctionAgent(
             BmmFunction definition,
             String name,
             ElTuple closedArgs,
-            List<String> openArgs,
+            List<string> openArgs,
             BmmRoutine definition,
             ElInstanceRef scope
-    ){
-        if ( name == null ) {
-            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+        ){
+        super( 
+            name,
+            closedArgs,
+            openArgs,
+            scope
+        );
+        this.definition = definition;
+    }
+
+    private ElFunctionAgent(Builder builder) {
+        this.setDefinition( builder.definition );
+        this.setName( builder.name );
+        this.setClosedArgs( builder.closedArgs );
+        this.setOpenArgs( builder.openArgs );
+        this.setDefinition( builder.definition );
+        this.setScope( builder.scope );
+    }
+
+    public static class Builder {
+        private BmmFunction definition;
+        private final String name;  //required
+        private ElTuple closedArgs;
+        private List<string> openArgs;
+        private BmmRoutine definition;
+        private ElInstanceRef scope;
+
+        public Builder (
+            String name
+        ){
+            if ( name == null ) {
+                throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+            }
+            this.name = name;
         }
-        this.definition = definition;
-        this.name = name;
-        this.closedArgs = closedArgs;
-        this.openArgs = openArgs;
-        this.definition = definition;
-        this.scope = scope;
+
+        public Builder setDefinition(BmmFunction value) {
+            this.definition = definition;
+            return this;
+        }
+
+        public Builder setClosedArgs(ElTuple value) {
+            this.closedArgs = closedArgs;
+            return this;
+        }
+
+        public Builder setOpenArgs(List<string> value) {
+            this.openArgs = openArgs;
+            return this;
+        }
+
+        public Builder setDefinition(BmmRoutine value) {
+            this.definition = definition;
+            return this;
+        }
+
+        public Builder setScope(ElInstanceRef value) {
+            this.scope = scope;
+            return this;
+        }
+
+        public ElFunctionAgent build(){
+            return new ElFunctionAgent( this );
+        }
+    }
+
+
+    //***** ElFunctionAgent *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElFunctionAgent that = (ElFunctionAgent) object;
+        return
+            java.util.Objects.equals(definition, that.definition);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            definition
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElFunctionAgent {" +
+            "definition='" + definition + '\''; +
+            '}';
     }
 
 }

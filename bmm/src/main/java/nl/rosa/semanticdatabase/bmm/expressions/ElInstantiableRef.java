@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,9 +41,8 @@ public class ElInstantiableRef<t> extends ElScopedRef {
     public T getDefinition() {
         return definition;
     }
-    public ElInstantiableRef<t> setDefinition(T value) {
+    public setDefinition(T value) {
         this.definition = definition;
-        return this;
     }
 
 /*=========================================================*/
@@ -74,19 +73,76 @@ public class ElInstantiableRef<t> extends ElScopedRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElInstantiableRef<t> build() {
-        return new ElInstantiableRef<t>(
-            definition,
-            scope
-        );
-    }
 
     public ElInstantiableRef<t>(
             T definition,
             ElInstanceRef scope
-    ){
+        ){
+        super( 
+            scope
+        );
         this.definition = definition;
-        this.scope = scope;
+    }
+
+    private ElInstantiableRef<t>(Builder builder) {
+        this.setDefinition( builder.definition );
+        this.setScope( builder.scope );
+    }
+
+    public static class Builder {
+        private T definition;
+        private ElInstanceRef scope;
+
+        public Builder (
+        ){
+        }
+
+        public Builder setDefinition(T value) {
+            this.definition = definition;
+            return this;
+        }
+
+        public Builder setScope(ElInstanceRef value) {
+            this.scope = scope;
+            return this;
+        }
+
+        public ElInstantiableRef<t> build(){
+            return new ElInstantiableRef<t>( this );
+        }
+    }
+
+
+    //***** ElInstantiableRef<t> *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElInstantiableRef<t> that = (ElInstantiableRef<t>) object;
+        return
+            java.util.Objects.equals(definition, that.definition);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            definition
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElInstantiableRef<t> {" +
+            "definition='" + definition + '\''; +
+            '}';
     }
 
 }

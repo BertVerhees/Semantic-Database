@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,12 +41,11 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
     public ElFunctionAgent getAgent() {
         return agent;
     }
-    public ElFunctionCall setAgent(ElFunctionAgent value) {
+    public setAgent(ElFunctionAgent value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
         this.agent = agent;
-        return this;
     }
 
 /*=========================================================*/
@@ -96,12 +95,11 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
     public ElAgent getAgent() {
         return agent;
     }
-    public ElAgentCall setAgent(ElAgent value) {
+    public setAgent(ElAgent value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
         this.agent = agent;
-        return this;
     }
 
     //***** ElFunctionCall *****
@@ -110,19 +108,15 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElFunctionCall build() {
-        return new ElFunctionCall(
-            agent,
-            agent,
-            scope
-        );
-    }
 
     public ElFunctionCall(
             ElFunctionAgent agent,
             ElAgent agent,
             ElInstanceRef scope
-    ){
+        ){
+        super( 
+            scope
+        );
         if ( agent == null ) {
             throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
         }
@@ -131,7 +125,77 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
         }
         this.agent = agent;
         this.agent = agent;
-        this.scope = scope;
+    }
+
+    private ElFunctionCall(Builder builder) {
+        this.setAgent( builder.agent );
+        this.setAgent( builder.agent );
+        this.setScope( builder.scope );
+    }
+
+    public static class Builder {
+        private final ElFunctionAgent agent;  //required
+        private final ElAgent agent;  //required
+        private ElInstanceRef scope;
+
+        public Builder (
+            ElFunctionAgent agent,
+            ElAgent agent
+        ){
+            if ( agent == null ) {
+                throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
+            }
+            if ( agent == null ) {
+                throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
+            }
+            this.agent = agent;
+            this.agent = agent;
+        }
+
+        public Builder setScope(ElInstanceRef value) {
+            this.scope = scope;
+            return this;
+        }
+
+        public ElFunctionCall build(){
+            return new ElFunctionCall( this );
+        }
+    }
+
+
+    //***** ElFunctionCall *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElFunctionCall that = (ElFunctionCall) object;
+        return
+            java.util.Objects.equals(agent, that.agent) &&
+            java.util.Objects.equals(agent, that.agent);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            agent,
+            agent
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElFunctionCall {" +
+            "agent='" + agent + '\''; +
+            "agent='" + agent + '\''; +
+            '}';
     }
 
 }

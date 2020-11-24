@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -57,12 +56,11 @@ public class BmmOperator {
     public BmmOperatorPosition getPosition() {
         return position;
     }
-    public BmmOperator setPosition(BmmOperatorPosition value) {
+    public setPosition(BmmOperatorPosition value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:position failed, it has cardinality NonNull, but is null");
         }
         this.position = position;
-        return this;
     }
 
 /**
@@ -112,12 +110,11 @@ public class BmmOperator {
     public String getName() {
         return name;
     }
-    public BmmOperator setName(String value) {
+    public setName(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
         this.name = name;
-        return this;
     }
 
     //***** BmmOperator *****
@@ -126,19 +123,12 @@ public class BmmOperator {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmOperator build() {
-        return new BmmOperator(
-            position,
-            symbols,
-            name
-        );
-    }
 
     public BmmOperator(
             BmmOperatorPosition position,
-            List<String> symbols,
+            List<string> symbols,
             String name
-    ){
+        ){
         if ( position == null ) {
             throw new NullPointerException("Property:position has cardinality NonNull, but is null");
         }
@@ -151,6 +141,80 @@ public class BmmOperator {
         this.position = position;
         this.symbols = symbols;
         this.name = name;
+    }
+
+    private BmmOperator(Builder builder) {
+        this.setPosition( builder.position );
+        this.setSymbols( builder.symbols );
+        this.setName( builder.name );
+    }
+
+    public static class Builder {
+        private final BmmOperatorPosition position;  //required
+        private final List<string> symbols;  //required
+        private final String name;  //required
+
+        public Builder (
+            BmmOperatorPosition position,
+            List<string> symbols,
+            String name
+        ){
+            if ( position == null ) {
+                throw new NullPointerException("Property:position has cardinality NonNull, but is null");
+            }
+            if ( symbols == null ) {
+                throw new NullPointerException("Property:symbols has cardinality NonNull, but is null");
+            }
+            if ( name == null ) {
+                throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+            }
+            this.position = position;
+            this.symbols = symbols;
+            this.name = name;
+        }
+
+        public BmmOperator build(){
+            return new BmmOperator( this );
+        }
+    }
+
+
+    //***** BmmOperator *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmOperator that = (BmmOperator) object;
+        return
+            java.util.Objects.equals(position, that.position) &&
+            java.util.Objects.equals(symbols, that.symbols) &&
+            java.util.Objects.equals(name, that.name);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            position,
+            symbols,
+            name
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmOperator {" +
+            "position='" + position + '\''; +
+            "symbols='" + symbols + '\''; +
+            "name='" + name + '\''; +
+            '}';
     }
 
 }

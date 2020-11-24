@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Numeric;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -119,15 +119,54 @@ public class StatisticalEvaluator {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public StatisticalEvaluator build() {
-        return new StatisticalEvaluator(
-            
-        );
-    }
 
     public StatisticalEvaluator(
             
-    ){
+        ){
+    }
+
+    private StatisticalEvaluator(Builder builder) {
+    }
+
+    public static class Builder {
+
+        public Builder (
+        ){
+        }
+
+        public StatisticalEvaluator build(){
+            return new StatisticalEvaluator( this );
+        }
+    }
+
+
+    //***** StatisticalEvaluator *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        StatisticalEvaluator that = (StatisticalEvaluator) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "StatisticalEvaluator {" +
+            '}';
     }
 
 }

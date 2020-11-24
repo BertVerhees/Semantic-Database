@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -68,6 +68,48 @@ public abstract class Numeric extends Any {
  * 
 */
     public abstract Numeric  negative alias "-"();
+
+    //***** Numeric *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected Numeric(
+            
+        ){
+    }
+
+
+    //***** Numeric *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Numeric that = (Numeric) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public java.lang.String toString() {
+        return
+            "Numeric {" +
+            '}';
+    }
 
 }
 

@@ -1,13 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmOperator;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -62,9 +61,8 @@ public abstract class ElOperator extends ElSimple {
     public Boolean getPrecedenceOverridden() {
         return precedenceOverridden;
     }
-    public ElOperator setPrecedenceOverridden(Boolean value) {
+    public setPrecedenceOverridden(Boolean value) {
         this.precedenceOverridden = precedenceOverridden;
-        return this;
     }
 
 /**
@@ -77,9 +75,8 @@ public abstract class ElOperator extends ElSimple {
     public String getSymbol() {
         return symbol;
     }
-    public ElOperator setSymbol(String value) {
+    public setSymbol(String value) {
         this.symbol = symbol;
-        return this;
     }
 
 /**
@@ -91,12 +88,11 @@ public abstract class ElOperator extends ElSimple {
     public BmmFunction getDefinition() {
         return definition;
     }
-    public ElOperator setDefinition(BmmFunction value) {
+    public setDefinition(BmmFunction value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:definition failed, it has cardinality NonNull, but is null");
         }
         this.definition = definition;
-        return this;
     }
 
 /*=========================================================*/
@@ -133,6 +129,65 @@ public abstract class ElOperator extends ElSimple {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return  result;
+    }
+
+    //***** ElOperator *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected ElOperator(
+            Boolean precedenceOverridden,
+            String symbol,
+            BmmFunction definition
+        ){
+        if ( definition == null ) {
+            throw new NullPointerException("Property:definition has cardinality NonNull, but is null");
+        }
+        this.precedenceOverridden = precedenceOverridden;
+        this.symbol = symbol;
+        this.definition = definition;
+    }
+
+
+    //***** ElOperator *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElOperator that = (ElOperator) object;
+        return
+            java.util.Objects.equals(precedenceOverridden, that.precedenceOverridden) &&
+            java.util.Objects.equals(symbol, that.symbol) &&
+            java.util.Objects.equals(definition, that.definition);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            precedenceOverridden,
+            symbol,
+            definition
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElOperator {" +
+            "precedenceOverridden='" + precedenceOverridden + '\''; +
+            "symbol='" + symbol + '\''; +
+            "definition='" + definition + '\''; +
+            '}';
     }
 
 }

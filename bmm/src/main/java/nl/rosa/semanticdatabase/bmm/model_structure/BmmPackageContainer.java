@@ -1,12 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.model_structure;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.expressions.ElProcedureAgent;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -94,12 +93,11 @@ public abstract class BmmPackageContainer extends BmmDeclaration {
     public BmmPackageContainer getScope() {
         return scope;
     }
-    public BmmPackageContainer setScope(BmmPackageContainer value) {
+    public setScope(BmmPackageContainer value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:scope failed, it has cardinality NonNull, but is null");
         }
         this.scope = scope;
-        return this;
     }
 
 /*=========================================================*/
@@ -151,6 +149,69 @@ public abstract class BmmPackageContainer extends BmmDeclaration {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return  result;
+    }
+
+    //***** BmmPackageContainer *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmPackageContainer(
+            Map<string,bmmPackage> packages,
+            BmmPackageContainer scope,
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
+            name,
+            documentation,
+            extensions
+        );
+        if ( scope == null ) {
+            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+        }
+        this.packages = packages;
+        this.scope = scope;
+    }
+
+
+    //***** BmmPackageContainer *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmPackageContainer that = (BmmPackageContainer) object;
+        return
+            java.util.Objects.equals(packages, that.packages) &&
+            java.util.Objects.equals(scope, that.scope);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            packages,
+            scope
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmPackageContainer {" +
+            "packages='" + packages + '\''; +
+            "scope='" + scope + '\''; +
+            '}';
     }
 
 }

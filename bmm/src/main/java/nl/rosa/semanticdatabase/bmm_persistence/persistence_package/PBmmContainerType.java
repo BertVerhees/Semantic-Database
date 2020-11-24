@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmContainerType;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -68,13 +68,13 @@ public class PBmmContainerType extends PBmmType {
  * 
 */
     public String getContainerType() {
-        return container_type;
+        return containerType;
     }
-    public void setContainerType(String value) {
-        if (container_type == null ) {
-            throw new NullPointerException(" container_type has cardinality NonNull, but is null")
+    public setContainerType(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:containerType failed, it has cardinality NonNull, but is null");
         }
-        this.container_type = container_type;
+        this.containerType = containerType;
     }
 
 /**
@@ -85,10 +85,10 @@ public class PBmmContainerType extends PBmmType {
  * 
 */
     public PBmmBaseType getTypeDef() {
-        return type_def;
+        return typeDef;
     }
-    public void setTypeDef(PBmmBaseType value) {
-        this.type_def = type_def;
+    public setTypeDef(PBmmBaseType value) {
+        this.typeDef = typeDef;
     }
 
 /**
@@ -101,7 +101,7 @@ public class PBmmContainerType extends PBmmType {
     public String getType() {
         return type;
     }
-    public void setType(String value) {
+    public setType(String value) {
         this.type = type;
     }
 
@@ -112,10 +112,10 @@ public class PBmmContainerType extends PBmmType {
  * 
 */
     public BmmContainerType getBmmType() {
-        return bmm_type;
+        return bmmType;
     }
-    public void setBmmType(BmmContainerType value) {
-        this.bmm_type = bmm_type;
+    public setBmmType(BmmContainerType value) {
+        this.bmmType = bmmType;
     }
 
 /*=========================================================*/
@@ -129,34 +129,152 @@ public class PBmmContainerType extends PBmmType {
  * cardinality: 1..1
  * 
 */
-    public abstract PBmmBaseType  typeRef();
+    public PBmmBaseType  typeRef() {
+        PBmmBaseType  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
+
+    //***** PBmmContainerType *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    public PBmmContainerType(
+            String containerType,
+            PBmmBaseType typeDef,
+            String type,
+            BmmContainerType bmmType,
+            BmmType bmmType
+        ){
+        if ( containerType == null ) {
+            throw new NullPointerException("Property:containerType has cardinality NonNull, but is null");
+        }
+        this.containerType = containerType;
+        this.typeDef = typeDef;
+        this.type = type;
+        this.bmmType = bmmType;
+    }
+
+    private PBmmContainerType(Builder builder) {
+        this.setContainerType( builder.containerType );
+        this.setTypeDef( builder.typeDef );
+        this.setType( builder.type );
+        this.setBmmType( builder.bmmType );
+        this.setBmmType( builder.bmmType );
+    }
+
+    public static class Builder {
+        private final String containerType;  //required
+        private PBmmBaseType typeDef;
+        private String type;
+        private BmmContainerType bmmType;
+        private BmmType bmmType;
+
+        public Builder (
+            String containerType
+        ){
+            if ( containerType == null ) {
+                throw new NullPointerException("Property:containerType has cardinality NonNull, but is null");
+            }
+            this.containerType = containerType;
+        }
+
+        public Builder setTypeDef(PBmmBaseType value) {
+            this.typeDef = typeDef;
+            return this;
+        }
+
+        public Builder setType(String value) {
+            this.type = type;
+            return this;
+        }
+
+        public Builder setBmmType(BmmContainerType value) {
+            this.bmmType = bmmType;
+            return this;
+        }
+
+        public Builder setBmmType(BmmType value) {
+            this.bmmType = bmmType;
+            return this;
+        }
+
+        public PBmmContainerType build(){
+            return new PBmmContainerType( this );
+        }
+    }
+
+
+    //***** PBmmContainerType *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        PBmmContainerType that = (PBmmContainerType) object;
+        return
+            java.util.Objects.equals(containerType, that.containerType) &&
+            java.util.Objects.equals(typeDef, that.typeDef) &&
+            java.util.Objects.equals(type, that.type) &&
+            java.util.Objects.equals(bmmType, that.bmmType);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            containerType,
+            typeDef,
+            type,
+            bmmType
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "PBmmContainerType {" +
+            "containerType='" + containerType + '\''; +
+            "typeDef='" + typeDef + '\''; +
+            "type='" + type + '\''; +
+            "bmmType='" + bmmType + '\''; +
+            '}';
+    }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

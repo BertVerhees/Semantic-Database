@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -88,12 +88,11 @@ public class ElTuple extends ElInstanceRef {
     public BmmTupleType getType() {
         return type;
     }
-    public ElTuple setType(BmmTupleType value) {
+    public setType(BmmTupleType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
-        return this;
     }
 
 /*=========================================================*/
@@ -122,22 +121,80 @@ public class ElTuple extends ElInstanceRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElTuple build() {
-        return new ElTuple(
-            items,
-            type
-        );
-    }
 
     public ElTuple(
-            List<ElTupleItem> items,
+            List<elTupleItem> items,
             BmmTupleType type
-    ){
+        ){
         if ( type == null ) {
             throw new NullPointerException("Property:type has cardinality NonNull, but is null");
         }
         this.items = items;
         this.type = type;
+    }
+
+    private ElTuple(Builder builder) {
+        this.setItems( builder.items );
+        this.setType( builder.type );
+    }
+
+    public static class Builder {
+        private List<elTupleItem> items;
+        private final BmmTupleType type;  //required
+
+        public Builder (
+            BmmTupleType type
+        ){
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            this.type = type;
+        }
+
+        public Builder setItems(List<elTupleItem> value) {
+            this.items = items;
+            return this;
+        }
+
+        public ElTuple build(){
+            return new ElTuple( this );
+        }
+    }
+
+
+    //***** ElTuple *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElTuple that = (ElTuple) object;
+        return
+            java.util.Objects.equals(items, that.items) &&
+            java.util.Objects.equals(type, that.type);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            items,
+            type
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElTuple {" +
+            "items='" + items + '\''; +
+            "type='" + type + '\''; +
+            '}';
     }
 
 }

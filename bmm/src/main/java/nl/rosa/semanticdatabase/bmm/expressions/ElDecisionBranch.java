@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,12 +39,60 @@ public abstract class ElDecisionBranch {
     public ElExpression getResult() {
         return result;
     }
-    public ElDecisionBranch setResult(ElExpression value) {
+    public setResult(ElExpression value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:result failed, it has cardinality NonNull, but is null");
         }
         this.result = result;
-        return this;
+    }
+
+    //***** ElDecisionBranch *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected ElDecisionBranch(
+            ElExpression result
+        ){
+        if ( result == null ) {
+            throw new NullPointerException("Property:result has cardinality NonNull, but is null");
+        }
+        this.result = result;
+    }
+
+
+    //***** ElDecisionBranch *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElDecisionBranch that = (ElDecisionBranch) object;
+        return
+            java.util.Objects.equals(result, that.result);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            result
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElDecisionBranch {" +
+            "result='" + result + '\''; +
+            '}';
     }
 
 }

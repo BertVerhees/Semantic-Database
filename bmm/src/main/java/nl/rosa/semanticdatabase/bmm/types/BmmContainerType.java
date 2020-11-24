@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
 import nl.rosa.semanticdatabase.bmm.classes.BmmGenericClass;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -51,12 +50,11 @@ public class BmmContainerType extends BmmType {
     public BmmGenericClass getContainerClass() {
         return containerClass;
     }
-    public BmmContainerType setContainerClass(BmmGenericClass value) {
+    public setContainerClass(BmmGenericClass value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:containerClass failed, it has cardinality NonNull, but is null");
         }
         this.containerClass = containerClass;
-        return this;
     }
 
 /**
@@ -68,12 +66,11 @@ public class BmmContainerType extends BmmType {
     public BmmUnitaryType getItemType() {
         return itemType;
     }
-    public BmmContainerType setItemType(BmmUnitaryType value) {
+    public setItemType(BmmUnitaryType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:itemType failed, it has cardinality NonNull, but is null");
         }
         this.itemType = itemType;
-        return this;
     }
 
 /*=========================================================*/
@@ -205,17 +202,11 @@ public class BmmContainerType extends BmmType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmContainerType build() {
-        return new BmmContainerType(
-            containerClass,
-            itemType
-        );
-    }
 
     public BmmContainerType(
             BmmGenericClass containerClass,
             BmmUnitaryType itemType
-    ){
+        ){
         if ( containerClass == null ) {
             throw new NullPointerException("Property:containerClass has cardinality NonNull, but is null");
         }
@@ -224,6 +215,70 @@ public class BmmContainerType extends BmmType {
         }
         this.containerClass = containerClass;
         this.itemType = itemType;
+    }
+
+    private BmmContainerType(Builder builder) {
+        this.setContainerClass( builder.containerClass );
+        this.setItemType( builder.itemType );
+    }
+
+    public static class Builder {
+        private final BmmGenericClass containerClass;  //required
+        private final BmmUnitaryType itemType;  //required
+
+        public Builder (
+            BmmGenericClass containerClass,
+            BmmUnitaryType itemType
+        ){
+            if ( containerClass == null ) {
+                throw new NullPointerException("Property:containerClass has cardinality NonNull, but is null");
+            }
+            if ( itemType == null ) {
+                throw new NullPointerException("Property:itemType has cardinality NonNull, but is null");
+            }
+            this.containerClass = containerClass;
+            this.itemType = itemType;
+        }
+
+        public BmmContainerType build(){
+            return new BmmContainerType( this );
+        }
+    }
+
+
+    //***** BmmContainerType *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmContainerType that = (BmmContainerType) object;
+        return
+            java.util.Objects.equals(containerClass, that.containerClass) &&
+            java.util.Objects.equals(itemType, that.itemType);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            containerClass,
+            itemType
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmContainerType {" +
+            "containerClass='" + containerClass + '\''; +
+            "itemType='" + itemType + '\''; +
+            '}';
     }
 
 }

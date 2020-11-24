@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,12 +40,69 @@ public abstract class BmmModule extends BmmDeclaration {
     public BmmModel getScope() {
         return scope;
     }
-    public BmmModule setScope(BmmModel value) {
+    public setScope(BmmModel value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:scope failed, it has cardinality NonNull, but is null");
         }
         this.scope = scope;
-        return this;
+    }
+
+    //***** BmmModule *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmModule(
+            BmmModel scope,
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
+            name,
+            documentation,
+            extensions
+        );
+        if ( scope == null ) {
+            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+        }
+        this.scope = scope;
+    }
+
+
+    //***** BmmModule *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmModule that = (BmmModule) object;
+        return
+            java.util.Objects.equals(scope, that.scope);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            scope
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmModule {" +
+            "scope='" + scope + '\''; +
+            '}';
     }
 
 }

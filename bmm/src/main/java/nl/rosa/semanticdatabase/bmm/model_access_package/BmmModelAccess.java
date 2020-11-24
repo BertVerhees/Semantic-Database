@@ -1,12 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.model_access_package;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -247,9 +246,8 @@ public class BmmModelAccess {
     public  get() {
         return ;
     }
-    public BmmModelAccess set( value) {
+    public set( value) {
         this. = ;
-        return this;
     }
 
 /*=========================================================*/
@@ -330,8 +328,85 @@ public class BmmModelAccess {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmModelAccess build() {
-        return new BmmModelAccess(
+
+    public BmmModelAccess(
+            List<string> schemaDirectories,
+            Map<string,bmmSchemaDescriptor> allSchemas,
+            Map<string,bmmModel> bmmModels,
+            Map<string,bmmModel> matchingBmmModels
+        ){
+        this.schemaDirectories = schemaDirectories;
+        this.allSchemas = allSchemas;
+        this.bmmModels = bmmModels;
+        this.matchingBmmModels = matchingBmmModels;
+    }
+
+    private BmmModelAccess(Builder builder) {
+        this.setSchemaDirectories( builder.schemaDirectories );
+        this.setAllSchemas( builder.allSchemas );
+        this.setBmmModels( builder.bmmModels );
+        this.setMatchingBmmModels( builder.matchingBmmModels );
+    }
+
+    public static class Builder {
+        private List<string> schemaDirectories;
+        private Map<string,bmmSchemaDescriptor> allSchemas;
+        private Map<string,bmmModel> bmmModels;
+        private Map<string,bmmModel> matchingBmmModels;
+
+        public Builder (
+        ){
+        }
+
+        public Builder setSchemaDirectories(List<string> value) {
+            this.schemaDirectories = schemaDirectories;
+            return this;
+        }
+
+        public Builder setAllSchemas(Map<string,bmmSchemaDescriptor> value) {
+            this.allSchemas = allSchemas;
+            return this;
+        }
+
+        public Builder setBmmModels(Map<string,bmmModel> value) {
+            this.bmmModels = bmmModels;
+            return this;
+        }
+
+        public Builder setMatchingBmmModels(Map<string,bmmModel> value) {
+            this.matchingBmmModels = matchingBmmModels;
+            return this;
+        }
+
+        public BmmModelAccess build(){
+            return new BmmModelAccess( this );
+        }
+    }
+
+
+    //***** BmmModelAccess *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmModelAccess that = (BmmModelAccess) object;
+        return
+            java.util.Objects.equals(schemaDirectories, that.schemaDirectories) &&
+            java.util.Objects.equals(allSchemas, that.allSchemas) &&
+            java.util.Objects.equals(bmmModels, that.bmmModels) &&
+            java.util.Objects.equals(matchingBmmModels, that.matchingBmmModels);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
             schemaDirectories,
             allSchemas,
             bmmModels,
@@ -339,16 +414,15 @@ public class BmmModelAccess {
         );
     }
 
-    public BmmModelAccess(
-            List<String> schemaDirectories,
-            Map<String,BmmSchemaDescriptor> allSchemas,
-            Map<String,BmmModel> bmmModels,
-            Map<String,BmmModel> matchingBmmModels
-    ){
-        this.schemaDirectories = schemaDirectories;
-        this.allSchemas = allSchemas;
-        this.bmmModels = bmmModels;
-        this.matchingBmmModels = matchingBmmModels;
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmModelAccess {" +
+            "schemaDirectories='" + schemaDirectories + '\''; +
+            "allSchemas='" + allSchemas + '\''; +
+            "bmmModels='" + bmmModels + '\''; +
+            "matchingBmmModels='" + matchingBmmModels + '\''; +
+            '}';
     }
 
 }

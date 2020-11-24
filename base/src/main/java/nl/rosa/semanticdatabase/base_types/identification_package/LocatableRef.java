@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.base_types.identification_package;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -50,9 +49,8 @@ public class LocatableRef extends ObjectRef {
     public String getPath() {
         return path;
     }
-    public LocatableRef setPath(String value) {
+    public setPath(String value) {
         this.path = path;
-        return this;
     }
 
 /**
@@ -64,12 +62,11 @@ public class LocatableRef extends ObjectRef {
     public UidBasedId getId() {
         return id;
     }
-    public LocatableRef setId(UidBasedId value) {
+    public setId(UidBasedId value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:id failed, it has cardinality NonNull, but is null");
         }
         this.id = id;
-        return this;
     }
 
 /*=========================================================*/
@@ -99,15 +96,6 @@ public class LocatableRef extends ObjectRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public LocatableRef build() {
-        return new LocatableRef(
-            path,
-            id,
-            namespace,
-            type,
-            id
-        );
-    }
 
     public LocatableRef(
             String path,
@@ -115,24 +103,101 @@ public class LocatableRef extends ObjectRef {
             String namespace,
             String type,
             ObjectId id
-    ){
-        if ( id == null ) {
-            throw new NullPointerException("Property:id has cardinality NonNull, but is null");
-        }
-        if ( namespace == null ) {
-            throw new NullPointerException("Property:namespace has cardinality NonNull, but is null");
-        }
-        if ( type == null ) {
-            throw new NullPointerException("Property:type has cardinality NonNull, but is null");
-        }
+        ){
+        super( 
+            namespace,
+            type
+        );
         if ( id == null ) {
             throw new NullPointerException("Property:id has cardinality NonNull, but is null");
         }
         this.path = path;
         this.id = id;
-        this.namespace = namespace;
-        this.type = type;
-        this.id = id;
+    }
+
+    private LocatableRef(Builder builder) {
+        this.setPath( builder.path );
+        this.setId( builder.id );
+        this.setNamespace( builder.namespace );
+        this.setType( builder.type );
+        this.setId( builder.id );
+    }
+
+    public static class Builder {
+        private String path;
+        private final UidBasedId id;  //required
+        private final String namespace;  //required
+        private final String type;  //required
+        private final ObjectId id;  //required
+
+        public Builder (
+            UidBasedId id,
+            String namespace,
+            String type,
+            ObjectId id
+        ){
+            if ( id == null ) {
+                throw new NullPointerException("Property:id has cardinality NonNull, but is null");
+            }
+            if ( namespace == null ) {
+                throw new NullPointerException("Property:namespace has cardinality NonNull, but is null");
+            }
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            if ( id == null ) {
+                throw new NullPointerException("Property:id has cardinality NonNull, but is null");
+            }
+            this.id = id;
+            this.namespace = namespace;
+            this.type = type;
+            this.id = id;
+        }
+
+        public Builder setPath(String value) {
+            this.path = path;
+            return this;
+        }
+
+        public LocatableRef build(){
+            return new LocatableRef( this );
+        }
+    }
+
+
+    //***** LocatableRef *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        LocatableRef that = (LocatableRef) object;
+        return
+            java.util.Objects.equals(path, that.path) &&
+            java.util.Objects.equals(id, that.id);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            path,
+            id
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "LocatableRef {" +
+            "path='" + path + '\''; +
+            "id='" + id + '\''; +
+            '}';
     }
 
 }

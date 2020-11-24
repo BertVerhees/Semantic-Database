@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.base_types.definitions_package;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -30,15 +30,54 @@ public class OpenehrDefinitions extends BasicDefinitions {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public OpenehrDefinitions build() {
-        return new OpenehrDefinitions(
-            
-        );
-    }
 
     public OpenehrDefinitions(
             
-    ){
+        ){
+    }
+
+    private OpenehrDefinitions(Builder builder) {
+    }
+
+    public static class Builder {
+
+        public Builder (
+        ){
+        }
+
+        public OpenehrDefinitions build(){
+            return new OpenehrDefinitions( this );
+        }
+    }
+
+
+    //***** OpenehrDefinitions *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        OpenehrDefinitions that = (OpenehrDefinitions) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "OpenehrDefinitions {" +
+            '}';
     }
 
 }

@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.foundation_types.primitive_types;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -18,15 +18,54 @@ public class Character extends Ordered {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public Character build() {
-        return new Character(
-            
-        );
-    }
 
     public Character(
             
-    ){
+        ){
+    }
+
+    private Character(Builder builder) {
+    }
+
+    public static class Builder {
+
+        public Builder (
+        ){
+        }
+
+        public Character build(){
+            return new Character( this );
+        }
+    }
+
+
+    //***** Character *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Character that = (Character) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public java.lang.String toString() {
+        return
+            "Character {" +
+            '}';
     }
 
 }

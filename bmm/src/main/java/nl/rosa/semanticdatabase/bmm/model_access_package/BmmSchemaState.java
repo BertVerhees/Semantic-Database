@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * 
  * Enumeration of processing states of a BMM_SCHEMA used by creation and validation routines in BMM_SCHEMA.
  * 

@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -52,9 +51,8 @@ public class ElTupleItem {
     public ElExpression getItem() {
         return item;
     }
-    public ElTupleItem setItem(ElExpression value) {
+    public setItem(ElExpression value) {
         this.item = item;
-        return this;
     }
 
 /**
@@ -66,9 +64,8 @@ public class ElTupleItem {
     public String getName() {
         return name;
     }
-    public ElTupleItem setName(String value) {
+    public setName(String value) {
         this.name = name;
-        return this;
     }
 
     //***** ElTupleItem *****
@@ -77,19 +74,77 @@ public class ElTupleItem {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElTupleItem build() {
-        return new ElTupleItem(
+
+    public ElTupleItem(
+            ElExpression item,
+            String name
+        ){
+        this.item = item;
+        this.name = name;
+    }
+
+    private ElTupleItem(Builder builder) {
+        this.setItem( builder.item );
+        this.setName( builder.name );
+    }
+
+    public static class Builder {
+        private ElExpression item;
+        private String name;
+
+        public Builder (
+        ){
+        }
+
+        public Builder setItem(ElExpression value) {
+            this.item = item;
+            return this;
+        }
+
+        public Builder setName(String value) {
+            this.name = name;
+            return this;
+        }
+
+        public ElTupleItem build(){
+            return new ElTupleItem( this );
+        }
+    }
+
+
+    //***** ElTupleItem *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElTupleItem that = (ElTupleItem) object;
+        return
+            java.util.Objects.equals(item, that.item) &&
+            java.util.Objects.equals(name, that.name);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
             item,
             name
         );
     }
 
-    public ElTupleItem(
-            ElExpression item,
-            String name
-    ){
-        this.item = item;
-        this.name = name;
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElTupleItem {" +
+            "item='" + item + '\''; +
+            "name='" + name + '\''; +
+            '}';
     }
 
 }

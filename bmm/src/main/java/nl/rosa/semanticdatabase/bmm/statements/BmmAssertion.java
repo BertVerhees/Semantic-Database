@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.statements;
 
 import nl.rosa.semanticdatabase.bmm.expressions.ElBooleanExpression;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -50,12 +49,11 @@ public class BmmAssertion extends BmmStatement {
     public ElBooleanExpression getExpression() {
         return expression;
     }
-    public BmmAssertion setExpression(ElBooleanExpression value) {
+    public setExpression(ElBooleanExpression value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:expression failed, it has cardinality NonNull, but is null");
         }
         this.expression = expression;
-        return this;
     }
 
 /**
@@ -68,9 +66,8 @@ public class BmmAssertion extends BmmStatement {
     public String getTag() {
         return tag;
     }
-    public BmmAssertion setTag(String value) {
+    public setTag(String value) {
         this.tag = tag;
-        return this;
     }
 
     //***** BmmAssertion *****
@@ -79,22 +76,80 @@ public class BmmAssertion extends BmmStatement {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmAssertion build() {
-        return new BmmAssertion(
-            expression,
-            tag
-        );
-    }
 
     public BmmAssertion(
             ElBooleanExpression expression,
             String tag
-    ){
+        ){
         if ( expression == null ) {
             throw new NullPointerException("Property:expression has cardinality NonNull, but is null");
         }
         this.expression = expression;
         this.tag = tag;
+    }
+
+    private BmmAssertion(Builder builder) {
+        this.setExpression( builder.expression );
+        this.setTag( builder.tag );
+    }
+
+    public static class Builder {
+        private final ElBooleanExpression expression;  //required
+        private String tag;
+
+        public Builder (
+            ElBooleanExpression expression
+        ){
+            if ( expression == null ) {
+                throw new NullPointerException("Property:expression has cardinality NonNull, but is null");
+            }
+            this.expression = expression;
+        }
+
+        public Builder setTag(String value) {
+            this.tag = tag;
+            return this;
+        }
+
+        public BmmAssertion build(){
+            return new BmmAssertion( this );
+        }
+    }
+
+
+    //***** BmmAssertion *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmAssertion that = (BmmAssertion) object;
+        return
+            java.util.Objects.equals(expression, that.expression) &&
+            java.util.Objects.equals(tag, that.tag);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            expression,
+            tag
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmAssertion {" +
+            "expression='" + expression + '\''; +
+            "tag='" + tag + '\''; +
+            '}';
     }
 
 }

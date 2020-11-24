@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,12 +40,11 @@ public class ElConditionalExpression extends ElDecisionBranch {
     public ElSimple getCondition() {
         return condition;
     }
-    public ElConditionalExpression setCondition(ElSimple value) {
+    public setCondition(ElSimple value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:condition failed, it has cardinality NonNull, but is null");
         }
         this.condition = condition;
-        return this;
     }
 
     //***** ElConditionalExpression *****
@@ -54,25 +53,79 @@ public class ElConditionalExpression extends ElDecisionBranch {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElConditionalExpression build() {
-        return new ElConditionalExpression(
-            condition,
-            result
-        );
-    }
 
     public ElConditionalExpression(
             ElSimple condition,
             ElExpression result
-    ){
+        ){
+        super( 
+            result
+        );
         if ( condition == null ) {
             throw new NullPointerException("Property:condition has cardinality NonNull, but is null");
         }
-        if ( result == null ) {
-            throw new NullPointerException("Property:result has cardinality NonNull, but is null");
-        }
         this.condition = condition;
-        this.result = result;
+    }
+
+    private ElConditionalExpression(Builder builder) {
+        this.setCondition( builder.condition );
+        this.setResult( builder.result );
+    }
+
+    public static class Builder {
+        private final ElSimple condition;  //required
+        private final ElExpression result;  //required
+
+        public Builder (
+            ElSimple condition,
+            ElExpression result
+        ){
+            if ( condition == null ) {
+                throw new NullPointerException("Property:condition has cardinality NonNull, but is null");
+            }
+            if ( result == null ) {
+                throw new NullPointerException("Property:result has cardinality NonNull, but is null");
+            }
+            this.condition = condition;
+            this.result = result;
+        }
+
+        public ElConditionalExpression build(){
+            return new ElConditionalExpression( this );
+        }
+    }
+
+
+    //***** ElConditionalExpression *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElConditionalExpression that = (ElConditionalExpression) object;
+        return
+            java.util.Objects.equals(condition, that.condition);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            condition
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElConditionalExpression {" +
+            "condition='" + condition + '\''; +
+            '}';
     }
 
 }

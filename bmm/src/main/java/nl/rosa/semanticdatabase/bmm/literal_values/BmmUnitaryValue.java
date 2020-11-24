@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmUnitaryType;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,12 +40,69 @@ public abstract class BmmUnitaryValue extends BmmLiteralValue {
     public BmmUnitaryType getType() {
         return type;
     }
-    public BmmUnitaryValue setType(BmmUnitaryType value) {
+    public setType(BmmUnitaryType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
-        return this;
+    }
+
+    //***** BmmUnitaryValue *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmUnitaryValue(
+            BmmUnitaryType type,
+            String valueLiteral,
+            Any value,
+            String syntax,
+            BmmType type
+        ){
+        super( 
+            valueLiteral,
+            value,
+            syntax
+        );
+        if ( type == null ) {
+            throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+        }
+        this.type = type;
+    }
+
+
+    //***** BmmUnitaryValue *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmUnitaryValue that = (BmmUnitaryValue) object;
+        return
+            java.util.Objects.equals(type, that.type);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            type
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmUnitaryValue {" +
+            "type='" + type + '\''; +
+            '}';
     }
 
 }

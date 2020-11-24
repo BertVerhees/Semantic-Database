@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -130,22 +129,80 @@ public class BmmRoutineExternal extends BmmRoutineBody {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmRoutineExternal build() {
-        return new BmmRoutineExternal(
-            metaData,
-            argumentMapping
-        );
-    }
 
     public BmmRoutineExternal(
-            Map<String, String> metaData,
-            Map<String, String> argumentMapping
-    ){
+            Map<string, string> metaData,
+            Map<string, string> argumentMapping
+        ){
         if ( metaData == null ) {
             throw new NullPointerException("Property:metaData has cardinality NonNull, but is null");
         }
         this.metaData = metaData;
         this.argumentMapping = argumentMapping;
+    }
+
+    private BmmRoutineExternal(Builder builder) {
+        this.setMetaData( builder.metaData );
+        this.setArgumentMapping( builder.argumentMapping );
+    }
+
+    public static class Builder {
+        private final Map<string, string> metaData;  //required
+        private Map<string, string> argumentMapping;
+
+        public Builder (
+            Map<string, string> metaData
+        ){
+            if ( metaData == null ) {
+                throw new NullPointerException("Property:metaData has cardinality NonNull, but is null");
+            }
+            this.metaData = metaData;
+        }
+
+        public Builder setArgumentMapping(Map<string, string> value) {
+            this.argumentMapping = argumentMapping;
+            return this;
+        }
+
+        public BmmRoutineExternal build(){
+            return new BmmRoutineExternal( this );
+        }
+    }
+
+
+    //***** BmmRoutineExternal *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmRoutineExternal that = (BmmRoutineExternal) object;
+        return
+            java.util.Objects.equals(metaData, that.metaData) &&
+            java.util.Objects.equals(argumentMapping, that.argumentMapping);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            metaData,
+            argumentMapping
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmRoutineExternal {" +
+            "metaData='" + metaData + '\''; +
+            "argumentMapping='" + argumentMapping + '\''; +
+            '}';
     }
 
 }

@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -13,7 +13,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
  * Interval of ordered items.
  * 
 */
-public abstract class Interval<T> extends Object {
+public abstract class Interval<t> extends Any {
 
     //***** Interval<t> *****
 
@@ -93,9 +93,8 @@ public abstract class Interval<T> extends Object {
     public T getLower() {
         return lower;
     }
-    public Interval<T> setLower(T value) {
+    public setLower(T value) {
         this.lower = lower;
-        return this;
     }
 
 /**
@@ -108,9 +107,8 @@ public abstract class Interval<T> extends Object {
     public T getUpper() {
         return upper;
     }
-    public Interval<T> setUpper(T value) {
+    public setUpper(T value) {
         this.upper = upper;
-        return this;
     }
 
 /**
@@ -125,12 +123,11 @@ public abstract class Interval<T> extends Object {
     public Boolean getLowerUnbounded() {
         return lowerUnbounded;
     }
-    public Interval<T> setLowerUnbounded(Boolean value) {
+    public setLowerUnbounded(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:lowerUnbounded failed, it has cardinality NonNull, but is null");
         }
         this.lowerUnbounded = lowerUnbounded;
-        return this;
     }
 
 /**
@@ -145,12 +142,11 @@ public abstract class Interval<T> extends Object {
     public Boolean getUpperUnbounded() {
         return upperUnbounded;
     }
-    public Interval<T> setUpperUnbounded(Boolean value) {
+    public setUpperUnbounded(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:upperUnbounded failed, it has cardinality NonNull, but is null");
         }
         this.upperUnbounded = upperUnbounded;
-        return this;
     }
 
 /**
@@ -163,12 +159,11 @@ public abstract class Interval<T> extends Object {
     public Boolean getLowerIncluded() {
         return lowerIncluded;
     }
-    public Interval<T> setLowerIncluded(Boolean value) {
+    public setLowerIncluded(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:lowerIncluded failed, it has cardinality NonNull, but is null");
         }
         this.lowerIncluded = lowerIncluded;
-        return this;
     }
 
 /**
@@ -181,12 +176,11 @@ public abstract class Interval<T> extends Object {
     public Boolean getUpperIncluded() {
         return upperIncluded;
     }
-    public Interval<T> setUpperIncluded(Boolean value) {
+    public setUpperIncluded(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:upperIncluded failed, it has cardinality NonNull, but is null");
         }
         this.upperIncluded = upperIncluded;
-        return this;
     }
 
 /*=========================================================*/
@@ -236,6 +230,89 @@ public abstract class Interval<T> extends Object {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return  result;
+    }
+
+    //***** Interval<t> *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected Interval<t>(
+            T lower,
+            T upper,
+            Boolean lowerUnbounded,
+            Boolean upperUnbounded,
+            Boolean lowerIncluded,
+            Boolean upperIncluded
+        ){
+        if ( lowerUnbounded == null ) {
+            throw new NullPointerException("Property:lowerUnbounded has cardinality NonNull, but is null");
+        }
+        if ( upperUnbounded == null ) {
+            throw new NullPointerException("Property:upperUnbounded has cardinality NonNull, but is null");
+        }
+        if ( lowerIncluded == null ) {
+            throw new NullPointerException("Property:lowerIncluded has cardinality NonNull, but is null");
+        }
+        if ( upperIncluded == null ) {
+            throw new NullPointerException("Property:upperIncluded has cardinality NonNull, but is null");
+        }
+        this.lower = lower;
+        this.upper = upper;
+        this.lowerUnbounded = lowerUnbounded;
+        this.upperUnbounded = upperUnbounded;
+        this.lowerIncluded = lowerIncluded;
+        this.upperIncluded = upperIncluded;
+    }
+
+
+    //***** Interval<t> *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Interval<t> that = (Interval<t>) object;
+        return
+            java.util.Objects.equals(lower, that.lower) &&
+            java.util.Objects.equals(upper, that.upper) &&
+            java.util.Objects.equals(lowerUnbounded, that.lowerUnbounded) &&
+            java.util.Objects.equals(upperUnbounded, that.upperUnbounded) &&
+            java.util.Objects.equals(lowerIncluded, that.lowerIncluded) &&
+            java.util.Objects.equals(upperIncluded, that.upperIncluded);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            lower,
+            upper,
+            lowerUnbounded,
+            upperUnbounded,
+            lowerIncluded,
+            upperIncluded
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "Interval<t> {" +
+            "lower='" + lower + '\''; +
+            "upper='" + upper + '\''; +
+            "lowerUnbounded='" + lowerUnbounded + '\''; +
+            "upperUnbounded='" + upperUnbounded + '\''; +
+            "lowerIncluded='" + lowerIncluded + '\''; +
+            "upperIncluded='" + upperIncluded + '\''; +
+            '}';
     }
 
 }

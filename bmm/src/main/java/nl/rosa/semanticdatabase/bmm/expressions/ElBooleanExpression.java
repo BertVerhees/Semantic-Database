@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -18,19 +18,64 @@ public class ElBooleanExpression extends ElConstrained {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElBooleanExpression build() {
-        return new ElBooleanExpression(
+
+    public ElBooleanExpression(
+            ElExpression baseExpression
+        ){
+        super( 
             baseExpression
         );
     }
 
-    public ElBooleanExpression(
+    private ElBooleanExpression(Builder builder) {
+        this.setBaseExpression( builder.baseExpression );
+    }
+
+    public static class Builder {
+        private final ElExpression baseExpression;  //required
+
+        public Builder (
             ElExpression baseExpression
-    ){
-        if ( baseExpression == null ) {
-            throw new NullPointerException("Property:baseExpression has cardinality NonNull, but is null");
+        ){
+            if ( baseExpression == null ) {
+                throw new NullPointerException("Property:baseExpression has cardinality NonNull, but is null");
+            }
+            this.baseExpression = baseExpression;
         }
-        this.baseExpression = baseExpression;
+
+        public ElBooleanExpression build(){
+            return new ElBooleanExpression( this );
+        }
+    }
+
+
+    //***** ElBooleanExpression *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElBooleanExpression that = (ElBooleanExpression) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElBooleanExpression {" +
+            '}';
     }
 
 }

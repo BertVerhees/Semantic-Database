@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -63,15 +63,54 @@ public class Hash<k,v> extends Container {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public Hash<k,v> build() {
-        return new Hash<k,v>(
-            
-        );
-    }
 
     public Hash<k,v>(
             
-    ){
+        ){
+    }
+
+    private Hash<k,v>(Builder builder) {
+    }
+
+    public static class Builder {
+
+        public Builder (
+        ){
+        }
+
+        public Hash<k,v> build(){
+            return new Hash<k,v>( this );
+        }
+    }
+
+
+    //***** Hash<k,v> *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Hash<k,v> that = (Hash<k,v>) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "Hash<k,v> {" +
+            '}';
     }
 
 }

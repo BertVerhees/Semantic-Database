@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.literal_values;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -18,8 +18,14 @@ public class BmmIntervalValue extends BmmLiteralValue {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmIntervalValue build() {
-        return new BmmIntervalValue(
+
+    public BmmIntervalValue(
+            String valueLiteral,
+            Any value,
+            String syntax,
+            BmmType type
+        ){
+        super( 
             valueLiteral,
             value,
             syntax,
@@ -27,22 +33,76 @@ public class BmmIntervalValue extends BmmLiteralValue {
         );
     }
 
-    public BmmIntervalValue(
+    private BmmIntervalValue(Builder builder) {
+        this.setValueLiteral( builder.valueLiteral );
+        this.setValue( builder.value );
+        this.setSyntax( builder.syntax );
+        this.setType( builder.type );
+    }
+
+    public static class Builder {
+        private final String valueLiteral;  //required
+        private Any value;
+        private String syntax;
+        private final BmmType type;  //required
+
+        public Builder (
             String valueLiteral,
-            Any value,
-            String syntax,
             BmmType type
-    ){
-        if ( valueLiteral == null ) {
-            throw new NullPointerException("Property:valueLiteral has cardinality NonNull, but is null");
+        ){
+            if ( valueLiteral == null ) {
+                throw new NullPointerException("Property:valueLiteral has cardinality NonNull, but is null");
+            }
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            this.valueLiteral = valueLiteral;
+            this.type = type;
         }
-        if ( type == null ) {
-            throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+
+        public Builder setValue(Any value) {
+            this.value = value;
+            return this;
         }
-        this.valueLiteral = valueLiteral;
-        this.value = value;
-        this.syntax = syntax;
-        this.type = type;
+
+        public Builder setSyntax(String value) {
+            this.syntax = syntax;
+            return this;
+        }
+
+        public BmmIntervalValue build(){
+            return new BmmIntervalValue( this );
+        }
+    }
+
+
+    //***** BmmIntervalValue *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmIntervalValue that = (BmmIntervalValue) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmIntervalValue {" +
+            '}';
     }
 
 }

@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.aom_2.constraint_model_package.CObject;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -38,12 +38,11 @@ public class ElCase extends ElDecisionBranch {
     public CObject getValueConstraint() {
         return valueConstraint;
     }
-    public ElCase setValueConstraint(CObject value) {
+    public setValueConstraint(CObject value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:valueConstraint failed, it has cardinality NonNull, but is null");
         }
         this.valueConstraint = valueConstraint;
-        return this;
     }
 
     //***** ElCase *****
@@ -52,25 +51,79 @@ public class ElCase extends ElDecisionBranch {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElCase build() {
-        return new ElCase(
-            valueConstraint,
-            result
-        );
-    }
 
     public ElCase(
             CObject valueConstraint,
             ElExpression result
-    ){
+        ){
+        super( 
+            result
+        );
         if ( valueConstraint == null ) {
             throw new NullPointerException("Property:valueConstraint has cardinality NonNull, but is null");
         }
-        if ( result == null ) {
-            throw new NullPointerException("Property:result has cardinality NonNull, but is null");
-        }
         this.valueConstraint = valueConstraint;
-        this.result = result;
+    }
+
+    private ElCase(Builder builder) {
+        this.setValueConstraint( builder.valueConstraint );
+        this.setResult( builder.result );
+    }
+
+    public static class Builder {
+        private final CObject valueConstraint;  //required
+        private final ElExpression result;  //required
+
+        public Builder (
+            CObject valueConstraint,
+            ElExpression result
+        ){
+            if ( valueConstraint == null ) {
+                throw new NullPointerException("Property:valueConstraint has cardinality NonNull, but is null");
+            }
+            if ( result == null ) {
+                throw new NullPointerException("Property:result has cardinality NonNull, but is null");
+            }
+            this.valueConstraint = valueConstraint;
+            this.result = result;
+        }
+
+        public ElCase build(){
+            return new ElCase( this );
+        }
+    }
+
+
+    //***** ElCase *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElCase that = (ElCase) object;
+        return
+            java.util.Objects.equals(valueConstraint, that.valueConstraint);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            valueConstraint
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElCase {" +
+            "valueConstraint='" + valueConstraint + '\''; +
+            '}';
     }
 
 }

@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -47,12 +47,11 @@ public class ElBinaryOperator extends ElOperator {
     public ElSimple getLeftOperand() {
         return leftOperand;
     }
-    public ElBinaryOperator setLeftOperand(ElSimple value) {
+    public setLeftOperand(ElSimple value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:leftOperand failed, it has cardinality NonNull, but is null");
         }
         this.leftOperand = leftOperand;
-        return this;
     }
 
 /**
@@ -64,12 +63,11 @@ public class ElBinaryOperator extends ElOperator {
     public ElTerminal getRightOperand() {
         return rightOperand;
     }
-    public ElBinaryOperator setRightOperand(ElTerminal value) {
+    public setRightOperand(ElTerminal value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:rightOperand failed, it has cardinality NonNull, but is null");
         }
         this.rightOperand = rightOperand;
-        return this;
     }
 
     //***** ElBinaryOperator *****
@@ -78,15 +76,6 @@ public class ElBinaryOperator extends ElOperator {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElBinaryOperator build() {
-        return new ElBinaryOperator(
-            leftOperand,
-            rightOperand,
-            precedenceOverridden,
-            symbol,
-            definition
-        );
-    }
 
     public ElBinaryOperator(
             ElSimple leftOperand,
@@ -94,21 +83,105 @@ public class ElBinaryOperator extends ElOperator {
             Boolean precedenceOverridden,
             String symbol,
             BmmFunction definition
-    ){
+        ){
+        super( 
+            precedenceOverridden,
+            symbol,
+            definition
+        );
         if ( leftOperand == null ) {
             throw new NullPointerException("Property:leftOperand has cardinality NonNull, but is null");
         }
         if ( rightOperand == null ) {
             throw new NullPointerException("Property:rightOperand has cardinality NonNull, but is null");
         }
-        if ( definition == null ) {
-            throw new NullPointerException("Property:definition has cardinality NonNull, but is null");
-        }
         this.leftOperand = leftOperand;
         this.rightOperand = rightOperand;
-        this.precedenceOverridden = precedenceOverridden;
-        this.symbol = symbol;
-        this.definition = definition;
+    }
+
+    private ElBinaryOperator(Builder builder) {
+        this.setLeftOperand( builder.leftOperand );
+        this.setRightOperand( builder.rightOperand );
+        this.setPrecedenceOverridden( builder.precedenceOverridden );
+        this.setSymbol( builder.symbol );
+        this.setDefinition( builder.definition );
+    }
+
+    public static class Builder {
+        private final ElSimple leftOperand;  //required
+        private final ElTerminal rightOperand;  //required
+        private Boolean precedenceOverridden;
+        private String symbol;
+        private final BmmFunction definition;  //required
+
+        public Builder (
+            ElSimple leftOperand,
+            ElTerminal rightOperand,
+            BmmFunction definition
+        ){
+            if ( leftOperand == null ) {
+                throw new NullPointerException("Property:leftOperand has cardinality NonNull, but is null");
+            }
+            if ( rightOperand == null ) {
+                throw new NullPointerException("Property:rightOperand has cardinality NonNull, but is null");
+            }
+            if ( definition == null ) {
+                throw new NullPointerException("Property:definition has cardinality NonNull, but is null");
+            }
+            this.leftOperand = leftOperand;
+            this.rightOperand = rightOperand;
+            this.definition = definition;
+        }
+
+        public Builder setPrecedenceOverridden(Boolean value) {
+            this.precedenceOverridden = precedenceOverridden;
+            return this;
+        }
+
+        public Builder setSymbol(String value) {
+            this.symbol = symbol;
+            return this;
+        }
+
+        public ElBinaryOperator build(){
+            return new ElBinaryOperator( this );
+        }
+    }
+
+
+    //***** ElBinaryOperator *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElBinaryOperator that = (ElBinaryOperator) object;
+        return
+            java.util.Objects.equals(leftOperand, that.leftOperand) &&
+            java.util.Objects.equals(rightOperand, that.rightOperand);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            leftOperand,
+            rightOperand
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElBinaryOperator {" +
+            "leftOperand='" + leftOperand + '\''; +
+            "rightOperand='" + rightOperand + '\''; +
+            '}';
     }
 
 }

@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmRoutine;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -69,12 +68,11 @@ public abstract class ElAgent extends ElScopedRef {
     public String getName() {
         return name;
     }
-    public ElAgent setName(String value) {
+    public setName(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
         this.name = name;
-        return this;
     }
 
 /**
@@ -86,9 +84,8 @@ public abstract class ElAgent extends ElScopedRef {
     public ElTuple getClosedArgs() {
         return closedArgs;
     }
-    public ElAgent setClosedArgs(ElTuple value) {
+    public setClosedArgs(ElTuple value) {
         this.closedArgs = closedArgs;
-        return this;
     }
 
 /**
@@ -138,9 +135,8 @@ public abstract class ElAgent extends ElScopedRef {
     public BmmRoutine getDefinition() {
         return definition;
     }
-    public ElAgent setDefinition(BmmRoutine value) {
+    public setDefinition(BmmRoutine value) {
         this.definition = definition;
-        return this;
     }
 
 /*=========================================================*/
@@ -177,6 +173,74 @@ public abstract class ElAgent extends ElScopedRef {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return  result;
+    }
+
+    //***** ElAgent *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected ElAgent(
+            String name,
+            ElTuple closedArgs,
+            List<string> openArgs,
+            BmmRoutine definition,
+            ElInstanceRef scope
+        ){
+        super( 
+            scope
+        );
+        if ( name == null ) {
+            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+        }
+        this.name = name;
+        this.closedArgs = closedArgs;
+        this.openArgs = openArgs;
+        this.definition = definition;
+    }
+
+
+    //***** ElAgent *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElAgent that = (ElAgent) object;
+        return
+            java.util.Objects.equals(name, that.name) &&
+            java.util.Objects.equals(closedArgs, that.closedArgs) &&
+            java.util.Objects.equals(openArgs, that.openArgs) &&
+            java.util.Objects.equals(definition, that.definition);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            name,
+            closedArgs,
+            openArgs,
+            definition
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElAgent {" +
+            "name='" + name + '\''; +
+            "closedArgs='" + closedArgs + '\''; +
+            "openArgs='" + openArgs + '\''; +
+            "definition='" + definition + '\''; +
+            '}';
     }
 
 }

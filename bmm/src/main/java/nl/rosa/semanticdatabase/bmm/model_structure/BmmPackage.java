@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.model_structure;
 
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -110,9 +109,17 @@ public class BmmPackage extends BmmPackageContainer {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmPackage build() {
-        return new BmmPackage(
-            classes,
+
+    public BmmPackage(
+            List<bmmClass> classes,
+            Map<string,bmmPackage> packages,
+            BmmPackageContainer scope,
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
             packages,
             scope,
             name,
@@ -120,33 +127,103 @@ public class BmmPackage extends BmmPackageContainer {
             scope,
             extensions
         );
+        this.classes = classes;
     }
 
-    public BmmPackage(
-            List<BmmClass> classes,
-            Map<String,BmmPackage> packages,
+    private BmmPackage(Builder builder) {
+        this.setClasses( builder.classes );
+        this.setPackages( builder.packages );
+        this.setScope( builder.scope );
+        this.setName( builder.name );
+        this.setDocumentation( builder.documentation );
+        this.setScope( builder.scope );
+        this.setExtensions( builder.extensions );
+    }
+
+    public static class Builder {
+        private List<bmmClass> classes;
+        private Map<string,bmmPackage> packages;
+        private final BmmPackageContainer scope;  //required
+        private final String name;  //required
+        private Map<string, any> documentation;
+        private final BmmDeclaration scope;  //required
+        private Map<string, any> extensions;
+
+        public Builder (
             BmmPackageContainer scope,
             String name,
-            Map<String, Any> documentation,
-            BmmDeclaration scope,
-            Map<String, Any> extensions
-    ){
-        if ( scope == null ) {
-            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+            BmmDeclaration scope
+        ){
+            if ( scope == null ) {
+                throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+            }
+            if ( name == null ) {
+                throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+            }
+            if ( scope == null ) {
+                throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+            }
+            this.scope = scope;
+            this.name = name;
+            this.scope = scope;
         }
-        if ( name == null ) {
-            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+
+        public Builder setClasses(List<bmmClass> value) {
+            this.classes = classes;
+            return this;
         }
-        if ( scope == null ) {
-            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+
+        public Builder setPackages(Map<string,bmmPackage> value) {
+            this.packages = packages;
+            return this;
         }
-        this.classes = classes;
-        this.packages = packages;
-        this.scope = scope;
-        this.name = name;
-        this.documentation = documentation;
-        this.scope = scope;
-        this.extensions = extensions;
+
+        public Builder setDocumentation(Map<string, any> value) {
+            this.documentation = documentation;
+            return this;
+        }
+
+        public Builder setExtensions(Map<string, any> value) {
+            this.extensions = extensions;
+            return this;
+        }
+
+        public BmmPackage build(){
+            return new BmmPackage( this );
+        }
+    }
+
+
+    //***** BmmPackage *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmPackage that = (BmmPackage) object;
+        return
+            java.util.Objects.equals(classes, that.classes);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            classes
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmPackage {" +
+            "classes='" + classes + '\''; +
+            '}';
     }
 
 }

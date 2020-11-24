@@ -1,12 +1,13 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProperty;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -97,9 +98,9 @@ public abstract class PBmmProperty extends PBmmModelElement {
     public String getName() {
         return name;
     }
-    public void setName(String value) {
-        if (name == null ) {
-            throw new NullPointerException(" name has cardinality NonNull, but is null")
+    public setName(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
         this.name = name;
     }
@@ -112,10 +113,10 @@ public abstract class PBmmProperty extends PBmmModelElement {
  * 
 */
     public Boolean getIsMandatory() {
-        return is_mandatory;
+        return isMandatory;
     }
-    public void setIsMandatory(Boolean value) {
-        this.is_mandatory = is_mandatory;
+    public setIsMandatory(Boolean value) {
+        this.isMandatory = isMandatory;
     }
 
 /**
@@ -126,10 +127,10 @@ public abstract class PBmmProperty extends PBmmModelElement {
  * 
 */
     public Boolean getIsComputed() {
-        return is_computed;
+        return isComputed;
     }
-    public void setIsComputed(Boolean value) {
-        this.is_computed = is_computed;
+    public setIsComputed(Boolean value) {
+        this.isComputed = isComputed;
     }
 
 /**
@@ -140,10 +141,10 @@ public abstract class PBmmProperty extends PBmmModelElement {
  * 
 */
     public Boolean getIsImInfrastructure() {
-        return is_im_infrastructure;
+        return isImInfrastructure;
     }
-    public void setIsImInfrastructure(Boolean value) {
-        this.is_im_infrastructure = is_im_infrastructure;
+    public setIsImInfrastructure(Boolean value) {
+        this.isImInfrastructure = isImInfrastructure;
     }
 
 /**
@@ -154,10 +155,10 @@ public abstract class PBmmProperty extends PBmmModelElement {
  * 
 */
     public Boolean getIsImRuntime() {
-        return is_im_runtime;
+        return isImRuntime;
     }
-    public void setIsImRuntime(Boolean value) {
-        this.is_im_runtime = is_im_runtime;
+    public setIsImRuntime(Boolean value) {
+        this.isImRuntime = isImRuntime;
     }
 
 /**
@@ -168,10 +169,10 @@ public abstract class PBmmProperty extends PBmmModelElement {
  * 
 */
     public PBmmType getTypeDef() {
-        return type_def;
+        return typeDef;
     }
-    public void setTypeDef(PBmmType value) {
-        this.type_def = type_def;
+    public setTypeDef(PBmmType value) {
+        this.typeDef = typeDef;
     }
 
 /**
@@ -181,10 +182,10 @@ public abstract class PBmmProperty extends PBmmModelElement {
  * 
 */
     public BmmProperty getBmmProperty() {
-        return bmm_property;
+        return bmmProperty;
     }
-    public void setBmmProperty(BmmProperty value) {
-        this.bmm_property = bmm_property;
+    public setBmmProperty(BmmProperty value) {
+        this.bmmProperty = bmmProperty;
     }
 
 /*=========================================================*/
@@ -197,34 +198,120 @@ public abstract class PBmmProperty extends PBmmModelElement {
  * cardinality: 0..1
  * 
 */
-    public abstract void  createBmmProperty();
+    public void  createBmmProperty(BmmModel a_bmm_schema, BmmClass a_class_def) {
+        if (a_bmm_schema == null ) {
+            throw new NullPointerException("Parameter a_bmm_schema has cardinality NonNull, but is null");
+        }
+        if (a_class_def == null ) {
+            throw new NullPointerException("Parameter a_class_def has cardinality NonNull, but is null");
+        }
+    }
+
+    //***** PBmmProperty *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected PBmmProperty(
+            String name,
+            Boolean isMandatory,
+            Boolean isComputed,
+            Boolean isImInfrastructure,
+            Boolean isImRuntime,
+            PBmmType typeDef,
+            BmmProperty bmmProperty,
+            String documentation
+        ){
+        super( 
+            documentation
+        );
+        if ( name == null ) {
+            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+        }
+        this.name = name;
+        this.isMandatory = isMandatory;
+        this.isComputed = isComputed;
+        this.isImInfrastructure = isImInfrastructure;
+        this.isImRuntime = isImRuntime;
+        this.typeDef = typeDef;
+        this.bmmProperty = bmmProperty;
+    }
+
+
+    //***** PBmmProperty *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        PBmmProperty that = (PBmmProperty) object;
+        return
+            java.util.Objects.equals(name, that.name) &&
+            java.util.Objects.equals(isMandatory, that.isMandatory) &&
+            java.util.Objects.equals(isComputed, that.isComputed) &&
+            java.util.Objects.equals(isImInfrastructure, that.isImInfrastructure) &&
+            java.util.Objects.equals(isImRuntime, that.isImRuntime) &&
+            java.util.Objects.equals(typeDef, that.typeDef) &&
+            java.util.Objects.equals(bmmProperty, that.bmmProperty);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            name,
+            isMandatory,
+            isComputed,
+            isImInfrastructure,
+            isImRuntime,
+            typeDef,
+            bmmProperty
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "PBmmProperty {" +
+            "name='" + name + '\''; +
+            "isMandatory='" + isMandatory + '\''; +
+            "isComputed='" + isComputed + '\''; +
+            "isImInfrastructure='" + isImInfrastructure + '\''; +
+            "isImRuntime='" + isImRuntime + '\''; +
+            "typeDef='" + typeDef + '\''; +
+            "bmmProperty='" + bmmProperty + '\''; +
+            '}';
+    }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

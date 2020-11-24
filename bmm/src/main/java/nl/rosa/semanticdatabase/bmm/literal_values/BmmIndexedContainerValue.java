@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmIndexedContainerType;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,12 +41,11 @@ public class BmmIndexedContainerValue extends BmmContainerValue {
     public BmmIndexedContainerType getType() {
         return type;
     }
-    public BmmIndexedContainerValue setType(BmmIndexedContainerType value) {
+    public setType(BmmIndexedContainerType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
-        return this;
     }
 
     //***** BmmIndexedContainerValue *****
@@ -55,16 +54,6 @@ public class BmmIndexedContainerValue extends BmmContainerValue {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmIndexedContainerValue build() {
-        return new BmmIndexedContainerValue(
-            type,
-            type,
-            valueLiteral,
-            value,
-            syntax,
-            type
-        );
-    }
 
     public BmmIndexedContainerValue(
             BmmIndexedContainerType type,
@@ -73,25 +62,105 @@ public class BmmIndexedContainerValue extends BmmContainerValue {
             Any value,
             String syntax,
             BmmType type
-    ){
-        if ( type == null ) {
-            throw new NullPointerException("Property:type has cardinality NonNull, but is null");
-        }
-        if ( type == null ) {
-            throw new NullPointerException("Property:type has cardinality NonNull, but is null");
-        }
-        if ( valueLiteral == null ) {
-            throw new NullPointerException("Property:valueLiteral has cardinality NonNull, but is null");
-        }
+        ){
+        super( 
+            valueLiteral,
+            value,
+            syntax
+        );
         if ( type == null ) {
             throw new NullPointerException("Property:type has cardinality NonNull, but is null");
         }
         this.type = type;
-        this.type = type;
-        this.valueLiteral = valueLiteral;
-        this.value = value;
-        this.syntax = syntax;
-        this.type = type;
+    }
+
+    private BmmIndexedContainerValue(Builder builder) {
+        this.setType( builder.type );
+        this.setType( builder.type );
+        this.setValueLiteral( builder.valueLiteral );
+        this.setValue( builder.value );
+        this.setSyntax( builder.syntax );
+        this.setType( builder.type );
+    }
+
+    public static class Builder {
+        private final BmmIndexedContainerType type;  //required
+        private final BmmContainerType type;  //required
+        private final String valueLiteral;  //required
+        private Any value;
+        private String syntax;
+        private final BmmType type;  //required
+
+        public Builder (
+            BmmIndexedContainerType type,
+            BmmContainerType type,
+            String valueLiteral,
+            BmmType type
+        ){
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            if ( valueLiteral == null ) {
+                throw new NullPointerException("Property:valueLiteral has cardinality NonNull, but is null");
+            }
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            this.type = type;
+            this.type = type;
+            this.valueLiteral = valueLiteral;
+            this.type = type;
+        }
+
+        public Builder setValue(Any value) {
+            this.value = value;
+            return this;
+        }
+
+        public Builder setSyntax(String value) {
+            this.syntax = syntax;
+            return this;
+        }
+
+        public BmmIndexedContainerValue build(){
+            return new BmmIndexedContainerValue( this );
+        }
+    }
+
+
+    //***** BmmIndexedContainerValue *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmIndexedContainerValue that = (BmmIndexedContainerValue) object;
+        return
+            java.util.Objects.equals(type, that.type);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            type
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmIndexedContainerValue {" +
+            "type='" + type + '\''; +
+            '}';
     }
 
 }

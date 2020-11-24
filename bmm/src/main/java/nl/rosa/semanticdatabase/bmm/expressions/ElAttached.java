@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -19,19 +19,64 @@ public class ElAttached extends ElPredicate {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElAttached build() {
-        return new ElAttached(
+
+    public ElAttached(
+            ElInstanceRef operand
+        ){
+        super( 
             operand
         );
     }
 
-    public ElAttached(
+    private ElAttached(Builder builder) {
+        this.setOperand( builder.operand );
+    }
+
+    public static class Builder {
+        private final ElInstanceRef operand;  //required
+
+        public Builder (
             ElInstanceRef operand
-    ){
-        if ( operand == null ) {
-            throw new NullPointerException("Property:operand has cardinality NonNull, but is null");
+        ){
+            if ( operand == null ) {
+                throw new NullPointerException("Property:operand has cardinality NonNull, but is null");
+            }
+            this.operand = operand;
         }
-        this.operand = operand;
+
+        public ElAttached build(){
+            return new ElAttached( this );
+        }
+    }
+
+
+    //***** ElAttached *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElAttached that = (ElAttached) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElAttached {" +
+            '}';
     }
 
 }

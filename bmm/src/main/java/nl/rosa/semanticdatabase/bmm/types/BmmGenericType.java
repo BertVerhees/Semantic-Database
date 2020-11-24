@@ -1,12 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
 import nl.rosa.semanticdatabase.bmm.classes.BmmGenericClass;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -90,12 +89,11 @@ public class BmmGenericType extends BmmModelType {
     public BmmGenericClass getBaseClass() {
         return baseClass;
     }
-    public BmmGenericType setBaseClass(BmmGenericClass value) {
+    public setBaseClass(BmmGenericClass value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:baseClass failed, it has cardinality NonNull, but is null");
         }
         this.baseClass = baseClass;
-        return this;
     }
 
 /*=========================================================*/
@@ -222,34 +220,102 @@ public class BmmGenericType extends BmmModelType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmGenericType build() {
-        return new BmmGenericType(
-            genericParameters,
-            baseClass,
-            valueConstraint,
-            baseClass
-        );
-    }
 
     public BmmGenericType(
-            List<BmmUnitaryType> genericParameters,
+            List<bmmUnitaryType> genericParameters,
             BmmGenericClass baseClass,
             BmmValueSetSpec valueConstraint,
             BmmClass baseClass
-    ){
+        ){
+        super( 
+            valueConstraint
+        );
         if ( genericParameters == null ) {
             throw new NullPointerException("Property:genericParameters has cardinality NonNull, but is null");
         }
         if ( baseClass == null ) {
             throw new NullPointerException("Property:baseClass has cardinality NonNull, but is null");
         }
-        if ( baseClass == null ) {
-            throw new NullPointerException("Property:baseClass has cardinality NonNull, but is null");
-        }
         this.genericParameters = genericParameters;
         this.baseClass = baseClass;
-        this.valueConstraint = valueConstraint;
-        this.baseClass = baseClass;
+    }
+
+    private BmmGenericType(Builder builder) {
+        this.setGenericParameters( builder.genericParameters );
+        this.setBaseClass( builder.baseClass );
+        this.setValueConstraint( builder.valueConstraint );
+        this.setBaseClass( builder.baseClass );
+    }
+
+    public static class Builder {
+        private final List<bmmUnitaryType> genericParameters;  //required
+        private final BmmGenericClass baseClass;  //required
+        private BmmValueSetSpec valueConstraint;
+        private final BmmClass baseClass;  //required
+
+        public Builder (
+            List<bmmUnitaryType> genericParameters,
+            BmmGenericClass baseClass,
+            BmmClass baseClass
+        ){
+            if ( genericParameters == null ) {
+                throw new NullPointerException("Property:genericParameters has cardinality NonNull, but is null");
+            }
+            if ( baseClass == null ) {
+                throw new NullPointerException("Property:baseClass has cardinality NonNull, but is null");
+            }
+            if ( baseClass == null ) {
+                throw new NullPointerException("Property:baseClass has cardinality NonNull, but is null");
+            }
+            this.genericParameters = genericParameters;
+            this.baseClass = baseClass;
+            this.baseClass = baseClass;
+        }
+
+        public Builder setValueConstraint(BmmValueSetSpec value) {
+            this.valueConstraint = valueConstraint;
+            return this;
+        }
+
+        public BmmGenericType build(){
+            return new BmmGenericType( this );
+        }
+    }
+
+
+    //***** BmmGenericType *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmGenericType that = (BmmGenericType) object;
+        return
+            java.util.Objects.equals(genericParameters, that.genericParameters) &&
+            java.util.Objects.equals(baseClass, that.baseClass);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            genericParameters,
+            baseClass
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmGenericType {" +
+            "genericParameters='" + genericParameters + '\''; +
+            "baseClass='" + baseClass + '\''; +
+            '}';
     }
 
 }

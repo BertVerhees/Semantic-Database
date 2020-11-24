@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -136,9 +135,8 @@ public class BmmFeatureGroup {
     public BmmVisibility getVisibility() {
         return visibility;
     }
-    public BmmFeatureGroup setVisibility(BmmVisibility value) {
+    public setVisibility(BmmVisibility value) {
         this.visibility = visibility;
-        return this;
     }
 
 /*=========================================================*/
@@ -158,25 +156,92 @@ public class BmmFeatureGroup {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmFeatureGroup build() {
-        return new BmmFeatureGroup(
-            properties,
-            features,
-            visibility
-        );
-    }
 
     public BmmFeatureGroup(
-            Map<String, String> properties,
-            List<BmmClassFeature> features,
+            Map<string, string> properties,
+            List<bmmClassFeature> features,
             BmmVisibility visibility
-    ){
+        ){
         if ( properties == null ) {
             throw new NullPointerException("Property:properties has cardinality NonNull, but is null");
         }
         this.properties = properties;
         this.features = features;
         this.visibility = visibility;
+    }
+
+    private BmmFeatureGroup(Builder builder) {
+        this.setProperties( builder.properties );
+        this.setFeatures( builder.features );
+        this.setVisibility( builder.visibility );
+    }
+
+    public static class Builder {
+        private final Map<string, string> properties;  //required
+        private List<bmmClassFeature> features;
+        private BmmVisibility visibility;
+
+        public Builder (
+            Map<string, string> properties
+        ){
+            if ( properties == null ) {
+                throw new NullPointerException("Property:properties has cardinality NonNull, but is null");
+            }
+            this.properties = properties;
+        }
+
+        public Builder setFeatures(List<bmmClassFeature> value) {
+            this.features = features;
+            return this;
+        }
+
+        public Builder setVisibility(BmmVisibility value) {
+            this.visibility = visibility;
+            return this;
+        }
+
+        public BmmFeatureGroup build(){
+            return new BmmFeatureGroup( this );
+        }
+    }
+
+
+    //***** BmmFeatureGroup *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmFeatureGroup that = (BmmFeatureGroup) object;
+        return
+            java.util.Objects.equals(properties, that.properties) &&
+            java.util.Objects.equals(features, that.features) &&
+            java.util.Objects.equals(visibility, that.visibility);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            properties,
+            features,
+            visibility
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmFeatureGroup {" +
+            "properties='" + properties + '\''; +
+            "features='" + features + '\''; +
+            "visibility='" + visibility + '\''; +
+            '}';
     }
 
 }

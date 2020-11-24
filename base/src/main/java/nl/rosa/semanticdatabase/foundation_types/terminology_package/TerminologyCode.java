@@ -1,12 +1,11 @@
 package nl.rosa.semanticdatabase.foundation_types.terminology_package;
 
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Uri;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -69,12 +68,11 @@ public class TerminologyCode extends Any {
     public String getTerminologyId() {
         return terminologyId;
     }
-    public TerminologyCode setTerminologyId(String value) {
+    public setTerminologyId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:terminologyId failed, it has cardinality NonNull, but is null");
         }
         this.terminologyId = terminologyId;
-        return this;
     }
 
 /**
@@ -86,9 +84,8 @@ public class TerminologyCode extends Any {
     public String getTerminologyVersion() {
         return terminologyVersion;
     }
-    public TerminologyCode setTerminologyVersion(String value) {
+    public setTerminologyVersion(String value) {
         this.terminologyVersion = terminologyVersion;
-        return this;
     }
 
 /**
@@ -101,12 +98,11 @@ public class TerminologyCode extends Any {
     public String getCodeString() {
         return codeString;
     }
-    public TerminologyCode setCodeString(String value) {
+    public setCodeString(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:codeString failed, it has cardinality NonNull, but is null");
         }
         this.codeString = codeString;
-        return this;
     }
 
 /**
@@ -118,9 +114,8 @@ public class TerminologyCode extends Any {
     public Uri getUri() {
         return uri;
     }
-    public TerminologyCode setUri(Uri value) {
+    public setUri(Uri value) {
         this.uri = uri;
-        return this;
     }
 
     //***** TerminologyCode *****
@@ -129,21 +124,13 @@ public class TerminologyCode extends Any {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public TerminologyCode build() {
-        return new TerminologyCode(
-            terminologyId,
-            terminologyVersion,
-            codeString,
-            uri
-        );
-    }
 
     public TerminologyCode(
             String terminologyId,
             String terminologyVersion,
             String codeString,
             Uri uri
-    ){
+        ){
         if ( terminologyId == null ) {
             throw new NullPointerException("Property:terminologyId has cardinality NonNull, but is null");
         }
@@ -154,6 +141,90 @@ public class TerminologyCode extends Any {
         this.terminologyVersion = terminologyVersion;
         this.codeString = codeString;
         this.uri = uri;
+    }
+
+    private TerminologyCode(Builder builder) {
+        this.setTerminologyId( builder.terminologyId );
+        this.setTerminologyVersion( builder.terminologyVersion );
+        this.setCodeString( builder.codeString );
+        this.setUri( builder.uri );
+    }
+
+    public static class Builder {
+        private final String terminologyId;  //required
+        private String terminologyVersion;
+        private final String codeString;  //required
+        private Uri uri;
+
+        public Builder (
+            String terminologyId,
+            String codeString
+        ){
+            if ( terminologyId == null ) {
+                throw new NullPointerException("Property:terminologyId has cardinality NonNull, but is null");
+            }
+            if ( codeString == null ) {
+                throw new NullPointerException("Property:codeString has cardinality NonNull, but is null");
+            }
+            this.terminologyId = terminologyId;
+            this.codeString = codeString;
+        }
+
+        public Builder setTerminologyVersion(String value) {
+            this.terminologyVersion = terminologyVersion;
+            return this;
+        }
+
+        public Builder setUri(Uri value) {
+            this.uri = uri;
+            return this;
+        }
+
+        public TerminologyCode build(){
+            return new TerminologyCode( this );
+        }
+    }
+
+
+    //***** TerminologyCode *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        TerminologyCode that = (TerminologyCode) object;
+        return
+            java.util.Objects.equals(terminologyId, that.terminologyId) &&
+            java.util.Objects.equals(terminologyVersion, that.terminologyVersion) &&
+            java.util.Objects.equals(codeString, that.codeString) &&
+            java.util.Objects.equals(uri, that.uri);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            terminologyId,
+            terminologyVersion,
+            codeString,
+            uri
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "TerminologyCode {" +
+            "terminologyId='" + terminologyId + '\''; +
+            "terminologyVersion='" + terminologyVersion + '\''; +
+            "codeString='" + codeString + '\''; +
+            "uri='" + uri + '\''; +
+            '}';
     }
 
 }

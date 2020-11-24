@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -47,12 +47,11 @@ public abstract class ElDecisionTable extends ElExpression {
     public ElExpression getElse() {
         return else;
     }
-    public ElDecisionTable setElse(ElExpression value) {
+    public setElse(ElExpression value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:else failed, it has cardinality NonNull, but is null");
         }
         this.else = else;
-        return this;
     }
 
 /**
@@ -90,6 +89,63 @@ public abstract class ElDecisionTable extends ElExpression {
     }
     public List<ElDecisionBranch> items() {
         return Collections.unmodifiableList(this.items);
+    }
+
+    //***** ElDecisionTable *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected ElDecisionTable(
+            ElExpression else,
+            List<elDecisionBranch> items
+        ){
+        if ( else == null ) {
+            throw new NullPointerException("Property:else has cardinality NonNull, but is null");
+        }
+        if ( items == null ) {
+            throw new NullPointerException("Property:items has cardinality NonNull, but is null");
+        }
+        this.else = else;
+        this.items = items;
+    }
+
+
+    //***** ElDecisionTable *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElDecisionTable that = (ElDecisionTable) object;
+        return
+            java.util.Objects.equals(else, that.else) &&
+            java.util.Objects.equals(items, that.items);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            else,
+            items
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElDecisionTable {" +
+            "else='" + else + '\''; +
+            "items='" + items + '\''; +
+            '}';
     }
 
 }

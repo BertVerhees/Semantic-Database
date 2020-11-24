@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.model_access_package.BmmSchema;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -79,8 +79,9 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
     PBmmClass getPrimitiveTypes() {
         return this.primitiveTypes;
     }
-    void setPrimitiveTypes(PBmmClass primitiveTypes) {
+    public PBmmSchema setPrimitiveTypes(PBmmClass primitiveTypes) {
         this.primitiveTypes = primitiveTypes;
+        return this;
     }
     public List<PBmmClass> primitiveTypes() {
         return Collections.unmodifiableList(this.primitiveTypes);
@@ -116,8 +117,9 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
     PBmmClass getClassDefinitions() {
         return this.classDefinitions;
     }
-    void setClassDefinitions(PBmmClass classDefinitions) {
+    public PBmmSchema setClassDefinitions(PBmmClass classDefinitions) {
         this.classDefinitions = classDefinitions;
+        return this;
     }
     public List<PBmmClass> classDefinitions() {
         return Collections.unmodifiableList(this.classDefinitions);
@@ -132,7 +134,7 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
     public  get() {
         return ;
     }
-    public void set( value) {
+    public set( value) {
         this. = ;
     }
 
@@ -146,7 +148,15 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
  * cardinality: 0..1 (effected)
  * 
 */
-    public abstract includes_to_process.has (included_schema.schema_id)  merge();
+    public includes_to_process.has (included_schema.schema_id)  merge(PBmmSchema other) {
+        if (other == null ) {
+            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+        }
+        includes_to_process.has (included_schema.schema_id)  result;
+
+
+        return  result;
+    }
 
 /**
  * 
@@ -154,7 +164,15 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
  * cardinality: 1..1
  * 
 */
-    public abstract PBmmPackage  canonicalPackages();
+    public PBmmPackage  canonicalPackages() {
+        PBmmPackage  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /*=========================================================*/
 /* * CONSTANTS * */
@@ -226,45 +244,255 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
     public void removePackages( Collection <String> keys ) {
         keys.forEach(this::removePackage);
     }
-    Map<String, P_BMM_PACKAGE> getPackages() {
+    public Map<String, PBmmPackage> getPackages() {
         return this.packages;
     }
-    void setPackages(Map<String, P_BMM_PACKAGE> packages) {
+    public PBmmPackageContainer setPackages(Map<String, PBmmPackage> packages) {
         if (packages == null ) {
-            throw new NullPointerException(" packages has cardinality NonNull, but is null")
+            throw new NullPointerException(" packages has cardinality NonNull, but is null");
         }
         this.packages = packages;
+        return this;
     }
-    public Map<String, P_BMM_PACKAGE> packages() {
+    public Map<String, PBmmPackage> packages() {
         return Collections.unmodifiableMap(this.packages);
+    }
+
+    //***** PBmmSchema *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    public PBmmSchema(
+            List<pBmmClass> primitiveTypes,
+            List<pBmmClass> classDefinitions,
+            Map<string, pBmmPackage> packages,
+            String bmmVersion,
+            Map<string,bmmIncludeSpec> includes,
+            BmmModel bmmModel,
+            BmmSchemaState state,
+            String modelName,
+            String schemaName,
+            String schemaRevision,
+            String schemaLifecycleState,
+            String schemaAuthor,
+            String schemaDescription,
+            List<string> schemaContributors,
+            String rmPublisher,
+            String rmRelease
+        ){
+        super( 
+            bmmVersion,
+            includes,
+            bmmModel,
+            state,
+            modelName,
+            schemaName,
+            schemaRevision,
+            schemaLifecycleState,
+            schemaAuthor,
+            schemaDescription,
+            schemaContributors,
+            rmPublisher,
+            rmRelease
+        );
+        if ( packages == null ) {
+            throw new NullPointerException("Property:packages has cardinality NonNull, but is null");
+        }
+        this.primitiveTypes = primitiveTypes;
+        this.classDefinitions = classDefinitions;
+        this.packages = packages;
+    }
+
+    private PBmmSchema(Builder builder) {
+        this.setPrimitiveTypes( builder.primitiveTypes );
+        this.setClassDefinitions( builder.classDefinitions );
+        this.setPackages( builder.packages );
+        this.setBmmVersion( builder.bmmVersion );
+        this.setIncludes( builder.includes );
+        this.setBmmModel( builder.bmmModel );
+        this.setState( builder.state );
+        this.setModelName( builder.modelName );
+        this.setSchemaName( builder.schemaName );
+        this.setSchemaRevision( builder.schemaRevision );
+        this.setSchemaLifecycleState( builder.schemaLifecycleState );
+        this.setSchemaAuthor( builder.schemaAuthor );
+        this.setSchemaDescription( builder.schemaDescription );
+        this.setSchemaContributors( builder.schemaContributors );
+        this.setRmPublisher( builder.rmPublisher );
+        this.setRmRelease( builder.rmRelease );
+    }
+
+    public static class Builder {
+        private List<pBmmClass> primitiveTypes;
+        private List<pBmmClass> classDefinitions;
+        private final Map<string, pBmmPackage> packages;  //required
+        private final String bmmVersion;  //required
+        private Map<string,bmmIncludeSpec> includes;
+        private BmmModel bmmModel;
+        private final BmmSchemaState state;  //required
+        private String modelName;
+        private final String schemaName;  //required
+        private final String schemaRevision;  //required
+        private final String schemaLifecycleState;  //required
+        private final String schemaAuthor;  //required
+        private final String schemaDescription;  //required
+        private List<string> schemaContributors;
+        private final String rmPublisher;  //required
+        private final String rmRelease;  //required
+
+        public Builder (
+            Map<string, pBmmPackage> packages,
+            String bmmVersion,
+            BmmSchemaState state,
+            String schemaName,
+            String schemaRevision,
+            String schemaLifecycleState,
+            String schemaAuthor,
+            String schemaDescription,
+            String rmPublisher,
+            String rmRelease
+        ){
+            if ( packages == null ) {
+                throw new NullPointerException("Property:packages has cardinality NonNull, but is null");
+            }
+            if ( bmmVersion == null ) {
+                throw new NullPointerException("Property:bmmVersion has cardinality NonNull, but is null");
+            }
+            if ( state == null ) {
+                throw new NullPointerException("Property:state has cardinality NonNull, but is null");
+            }
+            if ( schemaName == null ) {
+                throw new NullPointerException("Property:schemaName has cardinality NonNull, but is null");
+            }
+            if ( schemaRevision == null ) {
+                throw new NullPointerException("Property:schemaRevision has cardinality NonNull, but is null");
+            }
+            if ( schemaLifecycleState == null ) {
+                throw new NullPointerException("Property:schemaLifecycleState has cardinality NonNull, but is null");
+            }
+            if ( schemaAuthor == null ) {
+                throw new NullPointerException("Property:schemaAuthor has cardinality NonNull, but is null");
+            }
+            if ( schemaDescription == null ) {
+                throw new NullPointerException("Property:schemaDescription has cardinality NonNull, but is null");
+            }
+            if ( rmPublisher == null ) {
+                throw new NullPointerException("Property:rmPublisher has cardinality NonNull, but is null");
+            }
+            if ( rmRelease == null ) {
+                throw new NullPointerException("Property:rmRelease has cardinality NonNull, but is null");
+            }
+            this.packages = packages;
+            this.bmmVersion = bmmVersion;
+            this.state = state;
+            this.schemaName = schemaName;
+            this.schemaRevision = schemaRevision;
+            this.schemaLifecycleState = schemaLifecycleState;
+            this.schemaAuthor = schemaAuthor;
+            this.schemaDescription = schemaDescription;
+            this.rmPublisher = rmPublisher;
+            this.rmRelease = rmRelease;
+        }
+
+        public Builder setPrimitiveTypes(List<pBmmClass> value) {
+            this.primitiveTypes = primitiveTypes;
+            return this;
+        }
+
+        public Builder setClassDefinitions(List<pBmmClass> value) {
+            this.classDefinitions = classDefinitions;
+            return this;
+        }
+
+        public Builder setIncludes(Map<string,bmmIncludeSpec> value) {
+            this.includes = includes;
+            return this;
+        }
+
+        public Builder setBmmModel(BmmModel value) {
+            this.bmmModel = bmmModel;
+            return this;
+        }
+
+        public Builder setModelName(String value) {
+            this.modelName = modelName;
+            return this;
+        }
+
+        public Builder setSchemaContributors(List<string> value) {
+            this.schemaContributors = schemaContributors;
+            return this;
+        }
+
+        public PBmmSchema build(){
+            return new PBmmSchema( this );
+        }
+    }
+
+
+    //***** PBmmSchema *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        PBmmSchema that = (PBmmSchema) object;
+        return
+            java.util.Objects.equals(primitiveTypes, that.primitiveTypes) &&
+            java.util.Objects.equals(classDefinitions, that.classDefinitions) &&
+            java.util.Objects.equals(packages, that.packages);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            primitiveTypes,
+            classDefinitions,
+            packages
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "PBmmSchema {" +
+            "primitiveTypes='" + primitiveTypes + '\''; +
+            "classDefinitions='" + classDefinitions + '\''; +
+            "packages='" + packages + '\''; +
+            '}';
     }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

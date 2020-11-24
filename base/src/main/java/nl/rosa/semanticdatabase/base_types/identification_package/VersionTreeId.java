@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.base_types.identification_package;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -42,12 +41,11 @@ public class VersionTreeId {
     public String getValue() {
         return value;
     }
-    public VersionTreeId setValue(String value) {
+    public setValue(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:value failed, it has cardinality NonNull, but is null");
         }
         this.value = value;
-        return this;
     }
 
 /*=========================================================*/
@@ -125,19 +123,68 @@ public class VersionTreeId {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public VersionTreeId build() {
-        return new VersionTreeId(
-            value
-        );
-    }
 
     public VersionTreeId(
             String value
-    ){
+        ){
         if ( value == null ) {
             throw new NullPointerException("Property:value has cardinality NonNull, but is null");
         }
         this.value = value;
+    }
+
+    private VersionTreeId(Builder builder) {
+        this.setValue( builder.value );
+    }
+
+    public static class Builder {
+        private final String value;  //required
+
+        public Builder (
+            String value
+        ){
+            if ( value == null ) {
+                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+            }
+            this.value = value;
+        }
+
+        public VersionTreeId build(){
+            return new VersionTreeId( this );
+        }
+    }
+
+
+    //***** VersionTreeId *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        VersionTreeId that = (VersionTreeId) object;
+        return
+            java.util.Objects.equals(value, that.value);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            value
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "VersionTreeId {" +
+            "value='" + value + '\''; +
+            '}';
     }
 
 }

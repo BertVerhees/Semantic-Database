@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.foundation_types.terminology_package.Terminology
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,15 +39,54 @@ public class Locale {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public Locale build() {
-        return new Locale(
-            
-        );
-    }
 
     public Locale(
             
-    ){
+        ){
+    }
+
+    private Locale(Builder builder) {
+    }
+
+    public static class Builder {
+
+        public Builder (
+        ){
+        }
+
+        public Locale build(){
+            return new Locale( this );
+        }
+    }
+
+
+    //***** Locale *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Locale that = (Locale) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "Locale {" +
+            '}';
     }
 
 }

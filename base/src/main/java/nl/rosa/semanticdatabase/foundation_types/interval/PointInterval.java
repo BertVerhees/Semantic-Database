@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase..;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -54,15 +54,54 @@ public class PointInterval<t> extends Interval {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public PointInterval<t> build() {
-        return new PointInterval<t>(
-            
-        );
-    }
 
     public PointInterval<t>(
             
-    ){
+        ){
+    }
+
+    private PointInterval<t>(Builder builder) {
+    }
+
+    public static class Builder {
+
+        public Builder (
+        ){
+        }
+
+        public PointInterval<t> build(){
+            return new PointInterval<t>( this );
+        }
+    }
+
+
+    //***** PointInterval<t> *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        PointInterval<t> that = (PointInterval<t>) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "PointInterval<t> {" +
+            '}';
     }
 
 }

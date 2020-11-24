@@ -1,12 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.classes;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.types.BmmParameterType;
 import nl.rosa.semanticdatabase.bmm.types.BmmGenericType;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -136,9 +135,29 @@ public class BmmGenericClass extends BmmClass {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmGenericClass build() {
-        return new BmmGenericClass(
-            genericParameters,
+
+    public BmmGenericClass(
+            Map<string,bmmParameterType> genericParameters,
+            Map<string,bmmModelType> ancestors,
+            BmmPackage package,
+            Map<string,bmmProperty> properties,
+            String sourceSchemaId,
+            List<bmmClass> immediateDescendants,
+            Boolean isOverride,
+            Map<string,bmmConstant> constants,
+            Map<string,bmmFunction> functions,
+            Map<string,bmmProcedure> procedures,
+            List<bmmAssertion> invariants,
+            Map<string,bmmProcedure> creators,
+            Map<string,bmmProcedure> converters,
+            List<bmmFeatureGroup> featureGroups,
+            BmmModel scope,
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
             ancestors,
             package,
             properties,
@@ -158,69 +177,190 @@ public class BmmGenericClass extends BmmClass {
             scope,
             extensions
         );
-    }
-
-    public BmmGenericClass(
-            Map<String,BmmParameterType> genericParameters,
-            Map<String,BmmModelType> ancestors,
-            BmmPackage package,
-            Map<String,BmmProperty> properties,
-            String sourceSchemaId,
-            List<BmmClass> immediateDescendants,
-            Boolean isOverride,
-            Map<String,BmmConstant> constants,
-            Map<String,BmmFunction> functions,
-            Map<String,BmmProcedure> procedures,
-            List<BmmAssertion> invariants,
-            Map<String,BmmProcedure> creators,
-            Map<String,BmmProcedure> converters,
-            List<BmmFeatureGroup> featureGroups,
-            BmmModel scope,
-            String name,
-            Map<String, Any> documentation,
-            BmmDeclaration scope,
-            Map<String, Any> extensions
-    ){
         if ( genericParameters == null ) {
             throw new NullPointerException("Property:genericParameters has cardinality NonNull, but is null");
         }
-        if ( package == null ) {
-            throw new NullPointerException("Property:package has cardinality NonNull, but is null");
-        }
-        if ( sourceSchemaId == null ) {
-            throw new NullPointerException("Property:sourceSchemaId has cardinality NonNull, but is null");
-        }
-        if ( isOverride == null ) {
-            throw new NullPointerException("Property:isOverride has cardinality NonNull, but is null");
-        }
-        if ( scope == null ) {
-            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
-        }
-        if ( name == null ) {
-            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
-        }
-        if ( scope == null ) {
-            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
-        }
         this.genericParameters = genericParameters;
-        this.ancestors = ancestors;
-        this.package = package;
-        this.properties = properties;
-        this.sourceSchemaId = sourceSchemaId;
-        this.immediateDescendants = immediateDescendants;
-        this.isOverride = isOverride;
-        this.constants = constants;
-        this.functions = functions;
-        this.procedures = procedures;
-        this.invariants = invariants;
-        this.creators = creators;
-        this.converters = converters;
-        this.featureGroups = featureGroups;
-        this.scope = scope;
-        this.name = name;
-        this.documentation = documentation;
-        this.scope = scope;
-        this.extensions = extensions;
+    }
+
+    private BmmGenericClass(Builder builder) {
+        this.setGenericParameters( builder.genericParameters );
+        this.setAncestors( builder.ancestors );
+        this.setPackage( builder.package );
+        this.setProperties( builder.properties );
+        this.setSourceSchemaId( builder.sourceSchemaId );
+        this.setImmediateDescendants( builder.immediateDescendants );
+        this.setIsOverride( builder.isOverride );
+        this.setConstants( builder.constants );
+        this.setFunctions( builder.functions );
+        this.setProcedures( builder.procedures );
+        this.setInvariants( builder.invariants );
+        this.setCreators( builder.creators );
+        this.setConverters( builder.converters );
+        this.setFeatureGroups( builder.featureGroups );
+        this.setScope( builder.scope );
+        this.setName( builder.name );
+        this.setDocumentation( builder.documentation );
+        this.setScope( builder.scope );
+        this.setExtensions( builder.extensions );
+    }
+
+    public static class Builder {
+        private final Map<string,bmmParameterType> genericParameters;  //required
+        private Map<string,bmmModelType> ancestors;
+        private final BmmPackage package;  //required
+        private Map<string,bmmProperty> properties;
+        private final String sourceSchemaId;  //required
+        private List<bmmClass> immediateDescendants;
+        private final Boolean isOverride;  //required
+        private Map<string,bmmConstant> constants;
+        private Map<string,bmmFunction> functions;
+        private Map<string,bmmProcedure> procedures;
+        private List<bmmAssertion> invariants;
+        private Map<string,bmmProcedure> creators;
+        private Map<string,bmmProcedure> converters;
+        private List<bmmFeatureGroup> featureGroups;
+        private final BmmModel scope;  //required
+        private final String name;  //required
+        private Map<string, any> documentation;
+        private final BmmDeclaration scope;  //required
+        private Map<string, any> extensions;
+
+        public Builder (
+            Map<string,bmmParameterType> genericParameters,
+            BmmPackage package,
+            String sourceSchemaId,
+            Boolean isOverride,
+            BmmModel scope,
+            String name,
+            BmmDeclaration scope
+        ){
+            if ( genericParameters == null ) {
+                throw new NullPointerException("Property:genericParameters has cardinality NonNull, but is null");
+            }
+            if ( package == null ) {
+                throw new NullPointerException("Property:package has cardinality NonNull, but is null");
+            }
+            if ( sourceSchemaId == null ) {
+                throw new NullPointerException("Property:sourceSchemaId has cardinality NonNull, but is null");
+            }
+            if ( isOverride == null ) {
+                throw new NullPointerException("Property:isOverride has cardinality NonNull, but is null");
+            }
+            if ( scope == null ) {
+                throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+            }
+            if ( name == null ) {
+                throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+            }
+            if ( scope == null ) {
+                throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+            }
+            this.genericParameters = genericParameters;
+            this.package = package;
+            this.sourceSchemaId = sourceSchemaId;
+            this.isOverride = isOverride;
+            this.scope = scope;
+            this.name = name;
+            this.scope = scope;
+        }
+
+        public Builder setAncestors(Map<string,bmmModelType> value) {
+            this.ancestors = ancestors;
+            return this;
+        }
+
+        public Builder setProperties(Map<string,bmmProperty> value) {
+            this.properties = properties;
+            return this;
+        }
+
+        public Builder setImmediateDescendants(List<bmmClass> value) {
+            this.immediateDescendants = immediateDescendants;
+            return this;
+        }
+
+        public Builder setConstants(Map<string,bmmConstant> value) {
+            this.constants = constants;
+            return this;
+        }
+
+        public Builder setFunctions(Map<string,bmmFunction> value) {
+            this.functions = functions;
+            return this;
+        }
+
+        public Builder setProcedures(Map<string,bmmProcedure> value) {
+            this.procedures = procedures;
+            return this;
+        }
+
+        public Builder setInvariants(List<bmmAssertion> value) {
+            this.invariants = invariants;
+            return this;
+        }
+
+        public Builder setCreators(Map<string,bmmProcedure> value) {
+            this.creators = creators;
+            return this;
+        }
+
+        public Builder setConverters(Map<string,bmmProcedure> value) {
+            this.converters = converters;
+            return this;
+        }
+
+        public Builder setFeatureGroups(List<bmmFeatureGroup> value) {
+            this.featureGroups = featureGroups;
+            return this;
+        }
+
+        public Builder setDocumentation(Map<string, any> value) {
+            this.documentation = documentation;
+            return this;
+        }
+
+        public Builder setExtensions(Map<string, any> value) {
+            this.extensions = extensions;
+            return this;
+        }
+
+        public BmmGenericClass build(){
+            return new BmmGenericClass( this );
+        }
+    }
+
+
+    //***** BmmGenericClass *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmGenericClass that = (BmmGenericClass) object;
+        return
+            java.util.Objects.equals(genericParameters, that.genericParameters);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            genericParameters
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmGenericClass {" +
+            "genericParameters='" + genericParameters + '\''; +
+            '}';
     }
 
 }

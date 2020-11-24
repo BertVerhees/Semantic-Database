@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -61,12 +60,11 @@ public class BmmParameterType extends BmmUnitaryType {
     public String getName() {
         return name;
     }
-    public BmmParameterType setName(String value) {
+    public setName(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
         this.name = name;
-        return this;
     }
 
 /**
@@ -78,9 +76,8 @@ public class BmmParameterType extends BmmUnitaryType {
     public BmmEffectiveType getTypeConstraint() {
         return typeConstraint;
     }
-    public BmmParameterType setTypeConstraint(BmmEffectiveType value) {
+    public setTypeConstraint(BmmEffectiveType value) {
         this.typeConstraint = typeConstraint;
-        return this;
     }
 
 /**
@@ -92,9 +89,8 @@ public class BmmParameterType extends BmmUnitaryType {
     public BmmParameterType getInheritancePrecursor() {
         return inheritancePrecursor;
     }
-    public BmmParameterType setInheritancePrecursor(BmmParameterType value) {
+    public setInheritancePrecursor(BmmParameterType value) {
         this.inheritancePrecursor = inheritancePrecursor;
-        return this;
     }
 
 /*=========================================================*/
@@ -220,25 +216,92 @@ public class BmmParameterType extends BmmUnitaryType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmParameterType build() {
-        return new BmmParameterType(
-            name,
-            typeConstraint,
-            inheritancePrecursor
-        );
-    }
 
     public BmmParameterType(
             String name,
             BmmEffectiveType typeConstraint,
             BmmParameterType inheritancePrecursor
-    ){
+        ){
         if ( name == null ) {
             throw new NullPointerException("Property:name has cardinality NonNull, but is null");
         }
         this.name = name;
         this.typeConstraint = typeConstraint;
         this.inheritancePrecursor = inheritancePrecursor;
+    }
+
+    private BmmParameterType(Builder builder) {
+        this.setName( builder.name );
+        this.setTypeConstraint( builder.typeConstraint );
+        this.setInheritancePrecursor( builder.inheritancePrecursor );
+    }
+
+    public static class Builder {
+        private final String name;  //required
+        private BmmEffectiveType typeConstraint;
+        private BmmParameterType inheritancePrecursor;
+
+        public Builder (
+            String name
+        ){
+            if ( name == null ) {
+                throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+            }
+            this.name = name;
+        }
+
+        public Builder setTypeConstraint(BmmEffectiveType value) {
+            this.typeConstraint = typeConstraint;
+            return this;
+        }
+
+        public Builder setInheritancePrecursor(BmmParameterType value) {
+            this.inheritancePrecursor = inheritancePrecursor;
+            return this;
+        }
+
+        public BmmParameterType build(){
+            return new BmmParameterType( this );
+        }
+    }
+
+
+    //***** BmmParameterType *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmParameterType that = (BmmParameterType) object;
+        return
+            java.util.Objects.equals(name, that.name) &&
+            java.util.Objects.equals(typeConstraint, that.typeConstraint) &&
+            java.util.Objects.equals(inheritancePrecursor, that.inheritancePrecursor);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            name,
+            typeConstraint,
+            inheritancePrecursor
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmParameterType {" +
+            "name='" + name + '\''; +
+            "typeConstraint='" + typeConstraint + '\''; +
+            "inheritancePrecursor='" + inheritancePrecursor + '\''; +
+            '}';
     }
 
 }

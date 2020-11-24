@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.expressions.ElProcedureAgent;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,12 +41,11 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
     public ElProcedureAgent getAgent() {
         return agent;
     }
-    public BmmProcedureCall setAgent(ElProcedureAgent value) {
+    public setAgent(ElProcedureAgent value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
         this.agent = agent;
-        return this;
     }
 
     //***** ElAgentCall *****
@@ -76,12 +75,11 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
     public ElAgent getAgent() {
         return agent;
     }
-    public ElAgentCall setAgent(ElAgent value) {
+    public setAgent(ElAgent value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
         this.agent = agent;
-        return this;
     }
 
     //***** BmmProcedureCall *****
@@ -90,25 +88,83 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmProcedureCall build() {
-        return new BmmProcedureCall(
+
+    public BmmProcedureCall(
+            ElProcedureAgent agent,
+            ElAgent agent
+        ){
+        if ( agent == null ) {
+            throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
+        }
+        if ( agent == null ) {
+            throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
+        }
+        this.agent = agent;
+        this.agent = agent;
+    }
+
+    private BmmProcedureCall(Builder builder) {
+        this.setAgent( builder.agent );
+        this.setAgent( builder.agent );
+    }
+
+    public static class Builder {
+        private final ElProcedureAgent agent;  //required
+        private final ElAgent agent;  //required
+
+        public Builder (
+            ElProcedureAgent agent,
+            ElAgent agent
+        ){
+            if ( agent == null ) {
+                throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
+            }
+            if ( agent == null ) {
+                throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
+            }
+            this.agent = agent;
+            this.agent = agent;
+        }
+
+        public BmmProcedureCall build(){
+            return new BmmProcedureCall( this );
+        }
+    }
+
+
+    //***** BmmProcedureCall *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmProcedureCall that = (BmmProcedureCall) object;
+        return
+            java.util.Objects.equals(agent, that.agent) &&
+            java.util.Objects.equals(agent, that.agent);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
             agent,
             agent
         );
     }
 
-    public BmmProcedureCall(
-            ElProcedureAgent agent,
-            ElAgent agent
-    ){
-        if ( agent == null ) {
-            throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
-        }
-        if ( agent == null ) {
-            throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
-        }
-        this.agent = agent;
-        this.agent = agent;
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmProcedureCall {" +
+            "agent='" + agent + '\''; +
+            "agent='" + agent + '\''; +
+            '}';
     }
 
 }

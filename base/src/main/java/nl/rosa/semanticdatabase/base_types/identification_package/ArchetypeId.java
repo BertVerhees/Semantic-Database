@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.base_types.identification_package;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -143,19 +142,64 @@ public class ArchetypeId extends ObjectId {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ArchetypeId build() {
-        return new ArchetypeId(
+
+    public ArchetypeId(
+            String value
+        ){
+        super( 
             value
         );
     }
 
-    public ArchetypeId(
+    private ArchetypeId(Builder builder) {
+        this.setValue( builder.value );
+    }
+
+    public static class Builder {
+        private final String value;  //required
+
+        public Builder (
             String value
-    ){
-        if ( value == null ) {
-            throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+        ){
+            if ( value == null ) {
+                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+            }
+            this.value = value;
         }
-        this.value = value;
+
+        public ArchetypeId build(){
+            return new ArchetypeId( this );
+        }
+    }
+
+
+    //***** ArchetypeId *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ArchetypeId that = (ArchetypeId) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "ArchetypeId {" +
+            '}';
     }
 
 }

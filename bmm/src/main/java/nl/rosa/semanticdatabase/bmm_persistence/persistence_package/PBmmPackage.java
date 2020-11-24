@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.model_structure.BmmPackage;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -67,9 +67,9 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
     public String getName() {
         return name;
     }
-    public void setName(String value) {
-        if (name == null ) {
-            throw new NullPointerException(" name has cardinality NonNull, but is null")
+    public setName(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
         this.name = name;
     }
@@ -104,8 +104,9 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
     String getClasses() {
         return this.classes;
     }
-    void setClasses(String classes) {
+    public PBmmPackage setClasses(String classes) {
         this.classes = classes;
+        return this;
     }
     public List<String> classes() {
         return Collections.unmodifiableList(this.classes);
@@ -118,10 +119,10 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
  * 
 */
     public BmmPackage getBmmPackageDefinition() {
-        return bmm_package_definition;
+        return bmmPackageDefinition;
     }
-    public void setBmmPackageDefinition(BmmPackage value) {
-        this.bmm_package_definition = bmm_package_definition;
+    public setBmmPackageDefinition(BmmPackage value) {
+        this.bmmPackageDefinition = bmmPackageDefinition;
     }
 
 /**
@@ -133,7 +134,7 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
     public  get() {
         return ;
     }
-    public void set( value) {
+    public set( value) {
         this. = ;
     }
 
@@ -147,7 +148,11 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
  * cardinality: 0..1
  * 
 */
-    public abstract void  merge();
+    public void  merge(PBmmPackage other) {
+        if (other == null ) {
+            throw new NullPointerException("Parameter other has cardinality NonNull, but is null");
+        }
+    }
 
     //***** PBmmPackageContainer *****
 
@@ -194,45 +199,162 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
     public void removePackages( Collection <String> keys ) {
         keys.forEach(this::removePackage);
     }
-    Map<String, P_BMM_PACKAGE> getPackages() {
+    public Map<String, PBmmPackage> getPackages() {
         return this.packages;
     }
-    void setPackages(Map<String, P_BMM_PACKAGE> packages) {
+    public PBmmPackageContainer setPackages(Map<String, PBmmPackage> packages) {
         if (packages == null ) {
-            throw new NullPointerException(" packages has cardinality NonNull, but is null")
+            throw new NullPointerException(" packages has cardinality NonNull, but is null");
         }
         this.packages = packages;
+        return this;
     }
-    public Map<String, P_BMM_PACKAGE> packages() {
+    public Map<String, PBmmPackage> packages() {
         return Collections.unmodifiableMap(this.packages);
+    }
+
+    //***** PBmmPackage *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    public PBmmPackage(
+            String name,
+            List<string> classes,
+            BmmPackage bmmPackageDefinition,
+            Map<string, pBmmPackage> packages,
+            String documentation
+        ){
+        super( 
+            documentation
+        );
+        if ( name == null ) {
+            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+        }
+        if ( packages == null ) {
+            throw new NullPointerException("Property:packages has cardinality NonNull, but is null");
+        }
+        this.name = name;
+        this.classes = classes;
+        this.bmmPackageDefinition = bmmPackageDefinition;
+        this.packages = packages;
+    }
+
+    private PBmmPackage(Builder builder) {
+        this.setName( builder.name );
+        this.setClasses( builder.classes );
+        this.setBmmPackageDefinition( builder.bmmPackageDefinition );
+        this.setPackages( builder.packages );
+        this.setDocumentation( builder.documentation );
+    }
+
+    public static class Builder {
+        private final String name;  //required
+        private List<string> classes;
+        private BmmPackage bmmPackageDefinition;
+        private final Map<string, pBmmPackage> packages;  //required
+        private String documentation;
+
+        public Builder (
+            String name,
+            Map<string, pBmmPackage> packages
+        ){
+            if ( name == null ) {
+                throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+            }
+            if ( packages == null ) {
+                throw new NullPointerException("Property:packages has cardinality NonNull, but is null");
+            }
+            this.name = name;
+            this.packages = packages;
+        }
+
+        public Builder setClasses(List<string> value) {
+            this.classes = classes;
+            return this;
+        }
+
+        public Builder setBmmPackageDefinition(BmmPackage value) {
+            this.bmmPackageDefinition = bmmPackageDefinition;
+            return this;
+        }
+
+        public Builder setDocumentation(String value) {
+            this.documentation = documentation;
+            return this;
+        }
+
+        public PBmmPackage build(){
+            return new PBmmPackage( this );
+        }
+    }
+
+
+    //***** PBmmPackage *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        PBmmPackage that = (PBmmPackage) object;
+        return
+            java.util.Objects.equals(name, that.name) &&
+            java.util.Objects.equals(classes, that.classes) &&
+            java.util.Objects.equals(bmmPackageDefinition, that.bmmPackageDefinition) &&
+            java.util.Objects.equals(packages, that.packages);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            name,
+            classes,
+            bmmPackageDefinition,
+            packages
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "PBmmPackage {" +
+            "name='" + name + '\''; +
+            "classes='" + classes + '\''; +
+            "bmmPackageDefinition='" + bmmPackageDefinition + '\''; +
+            "packages='" + packages + '\''; +
+            '}';
     }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmGenericType;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -68,13 +68,13 @@ public class PBmmGenericType extends PBmmBaseType {
  * 
 */
     public String getRootType() {
-        return root_type;
+        return rootType;
     }
-    public void setRootType(String value) {
-        if (root_type == null ) {
-            throw new NullPointerException(" root_type has cardinality NonNull, but is null")
+    public setRootType(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:rootType failed, it has cardinality NonNull, but is null");
         }
-        this.root_type = root_type;
+        this.rootType = rootType;
     }
 
 /**
@@ -105,11 +105,12 @@ public class PBmmGenericType extends PBmmBaseType {
     PBmmType getGenericParameterDefs() {
         return this.genericParameterDefs;
     }
-    void setGenericParameterDefs(PBmmType genericParameterDefs) {
+    public PBmmGenericType setGenericParameterDefs(PBmmType genericParameterDefs) {
         if (genericParameterDefs == null ) {
-            throw new NullPointerException(" genericParameterDefs has cardinality NonNull, but is null")
+            throw new NullPointerException(" genericParameterDefs has cardinality NonNull, but is null");
         }
         this.genericParameterDefs = genericParameterDefs;
+        return this;
     }
     public List<PBmmType> genericParameterDefs() {
         return Collections.unmodifiableList(this.genericParameterDefs);
@@ -146,8 +147,9 @@ public class PBmmGenericType extends PBmmBaseType {
     String getGenericParameters() {
         return this.genericParameters;
     }
-    void setGenericParameters(String genericParameters) {
+    public PBmmGenericType setGenericParameters(String genericParameters) {
         this.genericParameters = genericParameters;
+        return this;
     }
     public List<String> genericParameters() {
         return Collections.unmodifiableList(this.genericParameters);
@@ -160,10 +162,10 @@ public class PBmmGenericType extends PBmmBaseType {
  * 
 */
     public BmmGenericType getBmmType() {
-        return bmm_type;
+        return bmmType;
     }
-    public void setBmmType(BmmGenericType value) {
-        this.bmm_type = bmm_type;
+    public setBmmType(BmmGenericType value) {
+        this.bmmType = bmmType;
     }
 
 /*=========================================================*/
@@ -177,34 +179,163 @@ public class PBmmGenericType extends PBmmBaseType {
  * cardinality: 0..1
  * 
 */
-    public abstract List<PBmmType>  genericParameterRefs();
+    public List<PBmmType>  genericParameterRefs() {
+        List<PBmmType>  result;
+
+
+        return  result;
+    }
+
+    //***** PBmmGenericType *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    public PBmmGenericType(
+            String rootType,
+            List<pBmmType> genericParameterDefs,
+            List<string> genericParameters,
+            BmmGenericType bmmType,
+            String valueConstraint,
+            BmmType bmmType
+        ){
+        super( 
+            valueConstraint
+        );
+        if ( rootType == null ) {
+            throw new NullPointerException("Property:rootType has cardinality NonNull, but is null");
+        }
+        if ( genericParameterDefs == null ) {
+            throw new NullPointerException("Property:genericParameterDefs has cardinality NonNull, but is null");
+        }
+        this.rootType = rootType;
+        this.genericParameterDefs = genericParameterDefs;
+        this.genericParameters = genericParameters;
+        this.bmmType = bmmType;
+    }
+
+    private PBmmGenericType(Builder builder) {
+        this.setRootType( builder.rootType );
+        this.setGenericParameterDefs( builder.genericParameterDefs );
+        this.setGenericParameters( builder.genericParameters );
+        this.setBmmType( builder.bmmType );
+        this.setValueConstraint( builder.valueConstraint );
+        this.setBmmType( builder.bmmType );
+    }
+
+    public static class Builder {
+        private final String rootType;  //required
+        private final List<pBmmType> genericParameterDefs;  //required
+        private List<string> genericParameters;
+        private BmmGenericType bmmType;
+        private String valueConstraint;
+        private BmmType bmmType;
+
+        public Builder (
+            String rootType,
+            List<pBmmType> genericParameterDefs
+        ){
+            if ( rootType == null ) {
+                throw new NullPointerException("Property:rootType has cardinality NonNull, but is null");
+            }
+            if ( genericParameterDefs == null ) {
+                throw new NullPointerException("Property:genericParameterDefs has cardinality NonNull, but is null");
+            }
+            this.rootType = rootType;
+            this.genericParameterDefs = genericParameterDefs;
+        }
+
+        public Builder setGenericParameters(List<string> value) {
+            this.genericParameters = genericParameters;
+            return this;
+        }
+
+        public Builder setBmmType(BmmGenericType value) {
+            this.bmmType = bmmType;
+            return this;
+        }
+
+        public Builder setValueConstraint(String value) {
+            this.valueConstraint = valueConstraint;
+            return this;
+        }
+
+        public Builder setBmmType(BmmType value) {
+            this.bmmType = bmmType;
+            return this;
+        }
+
+        public PBmmGenericType build(){
+            return new PBmmGenericType( this );
+        }
+    }
+
+
+    //***** PBmmGenericType *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        PBmmGenericType that = (PBmmGenericType) object;
+        return
+            java.util.Objects.equals(rootType, that.rootType) &&
+            java.util.Objects.equals(genericParameterDefs, that.genericParameterDefs) &&
+            java.util.Objects.equals(genericParameters, that.genericParameters) &&
+            java.util.Objects.equals(bmmType, that.bmmType);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            rootType,
+            genericParameterDefs,
+            genericParameters,
+            bmmType
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "PBmmGenericType {" +
+            "rootType='" + rootType + '\''; +
+            "genericParameterDefs='" + genericParameterDefs + '\''; +
+            "genericParameters='" + genericParameters + '\''; +
+            "bmmType='" + bmmType + '\''; +
+            '}';
+    }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * 
  * Enumeration of possible position of operator in a syntactic representation for operators associated with 1- and 2- degree functions.
  * 

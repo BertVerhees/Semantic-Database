@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.expressions.ElExpression;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -49,12 +49,11 @@ public class BmmAssignment extends BmmStatement {
     public EL_INSTANTIABLE_REF getTarget() {
         return target;
     }
-    public BmmAssignment setTarget(EL_INSTANTIABLE_REF value) {
+    public setTarget(EL_INSTANTIABLE_REF value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:target failed, it has cardinality NonNull, but is null");
         }
         this.target = target;
-        return this;
     }
 
 /**
@@ -66,12 +65,11 @@ public class BmmAssignment extends BmmStatement {
     public ElExpression getSource() {
         return source;
     }
-    public BmmAssignment setSource(ElExpression value) {
+    public setSource(ElExpression value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:source failed, it has cardinality NonNull, but is null");
         }
         this.source = source;
-        return this;
     }
 
     //***** BmmAssignment *****
@@ -80,17 +78,11 @@ public class BmmAssignment extends BmmStatement {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmAssignment build() {
-        return new BmmAssignment(
-            target,
-            source
-        );
-    }
 
     public BmmAssignment(
-            EL_INSTANTIABLE_REF target,
+            ElInstantiableRef target,
             ElExpression source
-    ){
+        ){
         if ( target == null ) {
             throw new NullPointerException("Property:target has cardinality NonNull, but is null");
         }
@@ -99,6 +91,70 @@ public class BmmAssignment extends BmmStatement {
         }
         this.target = target;
         this.source = source;
+    }
+
+    private BmmAssignment(Builder builder) {
+        this.setTarget( builder.target );
+        this.setSource( builder.source );
+    }
+
+    public static class Builder {
+        private final ElInstantiableRef target;  //required
+        private final ElExpression source;  //required
+
+        public Builder (
+            ElInstantiableRef target,
+            ElExpression source
+        ){
+            if ( target == null ) {
+                throw new NullPointerException("Property:target has cardinality NonNull, but is null");
+            }
+            if ( source == null ) {
+                throw new NullPointerException("Property:source has cardinality NonNull, but is null");
+            }
+            this.target = target;
+            this.source = source;
+        }
+
+        public BmmAssignment build(){
+            return new BmmAssignment( this );
+        }
+    }
+
+
+    //***** BmmAssignment *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmAssignment that = (BmmAssignment) object;
+        return
+            java.util.Objects.equals(target, that.target) &&
+            java.util.Objects.equals(source, that.source);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            target,
+            source
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmAssignment {" +
+            "target='" + target + '\''; +
+            "source='" + source + '\''; +
+            '}';
     }
 
 }

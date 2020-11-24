@@ -1,13 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.overview;
 
 import nl.rosa.semanticdatabase.base_types.definitions_package.BasicDefinitions;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -43,12 +42,11 @@ public class BmmDefinitions extends BasicDefinitions {
     public String getBmmInternalVersion() {
         return bmmInternalVersion;
     }
-    public BmmDefinitions setBmmInternalVersion(String value) {
+    public setBmmInternalVersion(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:bmmInternalVersion failed, it has cardinality NonNull, but is null");
         }
         this.bmmInternalVersion = bmmInternalVersion;
-        return this;
     }
 
 /*=========================================================*/
@@ -265,19 +263,68 @@ public class BmmDefinitions extends BasicDefinitions {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmDefinitions build() {
-        return new BmmDefinitions(
-            bmmInternalVersion
-        );
-    }
 
     public BmmDefinitions(
             String bmmInternalVersion
-    ){
+        ){
         if ( bmmInternalVersion == null ) {
             throw new NullPointerException("Property:bmmInternalVersion has cardinality NonNull, but is null");
         }
         this.bmmInternalVersion = bmmInternalVersion;
+    }
+
+    private BmmDefinitions(Builder builder) {
+        this.setBmmInternalVersion( builder.bmmInternalVersion );
+    }
+
+    public static class Builder {
+        private final String bmmInternalVersion;  //required
+
+        public Builder (
+            String bmmInternalVersion
+        ){
+            if ( bmmInternalVersion == null ) {
+                throw new NullPointerException("Property:bmmInternalVersion has cardinality NonNull, but is null");
+            }
+            this.bmmInternalVersion = bmmInternalVersion;
+        }
+
+        public BmmDefinitions build(){
+            return new BmmDefinitions( this );
+        }
+    }
+
+
+    //***** BmmDefinitions *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmDefinitions that = (BmmDefinitions) object;
+        return
+            java.util.Objects.equals(bmmInternalVersion, that.bmmInternalVersion);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            bmmInternalVersion
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmDefinitions {" +
+            "bmmInternalVersion='" + bmmInternalVersion + '\''; +
+            '}';
     }
 
 }

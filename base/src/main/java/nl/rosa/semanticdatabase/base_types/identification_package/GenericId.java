@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.base_types.identification_package;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -43,12 +42,11 @@ public class GenericId extends ObjectId {
     public String getScheme() {
         return scheme;
     }
-    public GenericId setScheme(String value) {
+    public setScheme(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:scheme failed, it has cardinality NonNull, but is null");
         }
         this.scheme = scheme;
-        return this;
     }
 
     //***** GenericId *****
@@ -57,25 +55,79 @@ public class GenericId extends ObjectId {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public GenericId build() {
-        return new GenericId(
-            scheme,
-            value
-        );
-    }
 
     public GenericId(
             String scheme,
             String value
-    ){
+        ){
+        super( 
+            value
+        );
         if ( scheme == null ) {
             throw new NullPointerException("Property:scheme has cardinality NonNull, but is null");
         }
-        if ( value == null ) {
-            throw new NullPointerException("Property:value has cardinality NonNull, but is null");
-        }
         this.scheme = scheme;
-        this.value = value;
+    }
+
+    private GenericId(Builder builder) {
+        this.setScheme( builder.scheme );
+        this.setValue( builder.value );
+    }
+
+    public static class Builder {
+        private final String scheme;  //required
+        private final String value;  //required
+
+        public Builder (
+            String scheme,
+            String value
+        ){
+            if ( scheme == null ) {
+                throw new NullPointerException("Property:scheme has cardinality NonNull, but is null");
+            }
+            if ( value == null ) {
+                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+            }
+            this.scheme = scheme;
+            this.value = value;
+        }
+
+        public GenericId build(){
+            return new GenericId( this );
+        }
+    }
+
+
+    //***** GenericId *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        GenericId that = (GenericId) object;
+        return
+            java.util.Objects.equals(scheme, that.scheme);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            scheme
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "GenericId {" +
+            "scheme='" + scheme + '\''; +
+            '}';
     }
 
 }

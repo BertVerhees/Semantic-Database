@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.expressions.ElBooleanExpression;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -48,12 +48,11 @@ public class BmmConditionalAction {
     public ElBooleanExpression getCondition() {
         return condition;
     }
-    public BmmConditionalAction setCondition(ElBooleanExpression value) {
+    public setCondition(ElBooleanExpression value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:condition failed, it has cardinality NonNull, but is null");
         }
         this.condition = condition;
-        return this;
     }
 
 /**
@@ -65,12 +64,11 @@ public class BmmConditionalAction {
     public BmmStatementItem getStatement() {
         return statement;
     }
-    public BmmConditionalAction setStatement(BmmStatementItem value) {
+    public setStatement(BmmStatementItem value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:statement failed, it has cardinality NonNull, but is null");
         }
         this.statement = statement;
-        return this;
     }
 
     //***** BmmConditionalAction *****
@@ -79,17 +77,11 @@ public class BmmConditionalAction {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmConditionalAction build() {
-        return new BmmConditionalAction(
-            condition,
-            statement
-        );
-    }
 
     public BmmConditionalAction(
             ElBooleanExpression condition,
             BmmStatementItem statement
-    ){
+        ){
         if ( condition == null ) {
             throw new NullPointerException("Property:condition has cardinality NonNull, but is null");
         }
@@ -98,6 +90,70 @@ public class BmmConditionalAction {
         }
         this.condition = condition;
         this.statement = statement;
+    }
+
+    private BmmConditionalAction(Builder builder) {
+        this.setCondition( builder.condition );
+        this.setStatement( builder.statement );
+    }
+
+    public static class Builder {
+        private final ElBooleanExpression condition;  //required
+        private final BmmStatementItem statement;  //required
+
+        public Builder (
+            ElBooleanExpression condition,
+            BmmStatementItem statement
+        ){
+            if ( condition == null ) {
+                throw new NullPointerException("Property:condition has cardinality NonNull, but is null");
+            }
+            if ( statement == null ) {
+                throw new NullPointerException("Property:statement has cardinality NonNull, but is null");
+            }
+            this.condition = condition;
+            this.statement = statement;
+        }
+
+        public BmmConditionalAction build(){
+            return new BmmConditionalAction( this );
+        }
+    }
+
+
+    //***** BmmConditionalAction *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmConditionalAction that = (BmmConditionalAction) object;
+        return
+            java.util.Objects.equals(condition, that.condition) &&
+            java.util.Objects.equals(statement, that.statement);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            condition,
+            statement
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmConditionalAction {" +
+            "condition='" + condition + '\''; +
+            "statement='" + statement + '\''; +
+            '}';
     }
 
 }

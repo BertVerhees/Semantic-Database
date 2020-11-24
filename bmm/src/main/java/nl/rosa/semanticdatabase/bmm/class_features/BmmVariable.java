@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,12 +39,11 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
     public BmmRoutine getScope() {
         return scope;
     }
-    public BmmVariable setScope(BmmRoutine value) {
+    public setScope(BmmRoutine value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:scope failed, it has cardinality NonNull, but is null");
         }
         this.scope = scope;
-        return this;
     }
 
 /*=========================================================*/
@@ -99,12 +98,11 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
     public BmmType getType() {
         return type;
     }
-    public BmmTyped setType(BmmType value) {
+    public setType(BmmType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
-        return this;
     }
 
 /*=========================================================*/
@@ -126,6 +124,72 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return  result;
+    }
+
+    //***** BmmVariable *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmVariable(
+            BmmRoutine scope,
+            BmmType type,
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
+            name,
+            documentation,
+            extensions
+        );
+        if ( scope == null ) {
+            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+        }
+        if ( type == null ) {
+            throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+        }
+        this.scope = scope;
+        this.type = type;
+    }
+
+
+    //***** BmmVariable *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmVariable that = (BmmVariable) object;
+        return
+            java.util.Objects.equals(scope, that.scope) &&
+            java.util.Objects.equals(type, that.type);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            scope,
+            type
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmVariable {" +
+            "scope='" + scope + '\''; +
+            "type='" + type + '\''; +
+            '}';
     }
 
 }

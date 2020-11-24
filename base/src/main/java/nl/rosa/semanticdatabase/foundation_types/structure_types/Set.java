@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase..;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -19,15 +19,54 @@ public class Set<t> extends Container {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public Set<t> build() {
-        return new Set<t>(
-            
-        );
-    }
 
     public Set<t>(
             
-    ){
+        ){
+    }
+
+    private Set<t>(Builder builder) {
+    }
+
+    public static class Builder {
+
+        public Builder (
+        ){
+        }
+
+        public Set<t> build(){
+            return new Set<t>( this );
+        }
+    }
+
+
+    //***** Set<t> *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Set<t> that = (Set<t>) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "Set<t> {" +
+            '}';
     }
 
 }

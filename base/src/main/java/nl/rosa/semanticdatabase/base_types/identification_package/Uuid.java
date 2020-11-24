@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.base_types.identification_package;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -19,19 +19,64 @@ public class Uuid extends Uid {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public Uuid build() {
-        return new Uuid(
+
+    public Uuid(
+            String value
+        ){
+        super( 
             value
         );
     }
 
-    public Uuid(
+    private Uuid(Builder builder) {
+        this.setValue( builder.value );
+    }
+
+    public static class Builder {
+        private final String value;  //required
+
+        public Builder (
             String value
-    ){
-        if ( value == null ) {
-            throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+        ){
+            if ( value == null ) {
+                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+            }
+            this.value = value;
         }
-        this.value = value;
+
+        public Uuid build(){
+            return new Uuid( this );
+        }
+    }
+
+
+    //***** Uuid *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Uuid that = (Uuid) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "Uuid {" +
+            '}';
     }
 
 }

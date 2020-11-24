@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -75,31 +75,87 @@ public class ElConditionChain extends ElDecisionTable {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElConditionChain build() {
-        return new ElConditionChain(
-            items,
-            else,
+
+    public ElConditionChain(
+            List<elConditionalExpression> items,
+            ElExpression else,
+            List<elDecisionBranch> items
+        ){
+        super( 
+            else
+        );
+        if ( items == null ) {
+            throw new NullPointerException("Property:items has cardinality NonNull, but is null");
+        }
+        this.items = items;
+    }
+
+    private ElConditionChain(Builder builder) {
+        this.setItems( builder.items );
+        this.setElse( builder.else );
+        this.setItems( builder.items );
+    }
+
+    public static class Builder {
+        private final List<elConditionalExpression> items;  //required
+        private final ElExpression else;  //required
+        private final List<elDecisionBranch> items;  //required
+
+        public Builder (
+            List<elConditionalExpression> items,
+            ElExpression else,
+            List<elDecisionBranch> items
+        ){
+            if ( items == null ) {
+                throw new NullPointerException("Property:items has cardinality NonNull, but is null");
+            }
+            if ( else == null ) {
+                throw new NullPointerException("Property:else has cardinality NonNull, but is null");
+            }
+            if ( items == null ) {
+                throw new NullPointerException("Property:items has cardinality NonNull, but is null");
+            }
+            this.items = items;
+            this.else = else;
+            this.items = items;
+        }
+
+        public ElConditionChain build(){
+            return new ElConditionChain( this );
+        }
+    }
+
+
+    //***** ElConditionChain *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElConditionChain that = (ElConditionChain) object;
+        return
+            java.util.Objects.equals(items, that.items);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
             items
         );
     }
 
-    public ElConditionChain(
-            List<ElConditionalExpression> items,
-            ElExpression else,
-            List<ElDecisionBranch> items
-    ){
-        if ( items == null ) {
-            throw new NullPointerException("Property:items has cardinality NonNull, but is null");
-        }
-        if ( else == null ) {
-            throw new NullPointerException("Property:else has cardinality NonNull, but is null");
-        }
-        if ( items == null ) {
-            throw new NullPointerException("Property:items has cardinality NonNull, but is null");
-        }
-        this.items = items;
-        this.else = else;
-        this.items = items;
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElConditionChain {" +
+            "items='" + items + '\''; +
+            '}';
     }
 
 }

@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.model_access_package;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -135,12 +134,11 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public String getBmmVersion() {
         return bmmVersion;
     }
-    public BmmSchema setBmmVersion(String value) {
+    public setBmmVersion(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:bmmVersion failed, it has cardinality NonNull, but is null");
         }
         this.bmmVersion = bmmVersion;
-        return this;
     }
 
 /**
@@ -197,9 +195,8 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public BmmModel getBmmModel() {
         return bmmModel;
     }
-    public BmmSchema setBmmModel(BmmModel value) {
+    public setBmmModel(BmmModel value) {
         this.bmmModel = bmmModel;
-        return this;
     }
 
 /**
@@ -211,12 +208,11 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public BmmSchemaState getState() {
         return state;
     }
-    public BmmSchema setState(BmmSchemaState value) {
+    public setState(BmmSchemaState value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:state failed, it has cardinality NonNull, but is null");
         }
         this.state = state;
-        return this;
     }
 
 /**
@@ -229,9 +225,8 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public String getModelName() {
         return modelName;
     }
-    public BmmSchema setModelName(String value) {
+    public setModelName(String value) {
         this.modelName = modelName;
-        return this;
     }
 
 /**
@@ -244,12 +239,11 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public String getSchemaName() {
         return schemaName;
     }
-    public BmmSchema setSchemaName(String value) {
+    public setSchemaName(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:schemaName failed, it has cardinality NonNull, but is null");
         }
         this.schemaName = schemaName;
-        return this;
     }
 
 /**
@@ -261,12 +255,11 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public String getSchemaRevision() {
         return schemaRevision;
     }
-    public BmmSchema setSchemaRevision(String value) {
+    public setSchemaRevision(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:schemaRevision failed, it has cardinality NonNull, but is null");
         }
         this.schemaRevision = schemaRevision;
-        return this;
     }
 
 /**
@@ -278,12 +271,11 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public String getSchemaLifecycleState() {
         return schemaLifecycleState;
     }
-    public BmmSchema setSchemaLifecycleState(String value) {
+    public setSchemaLifecycleState(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:schemaLifecycleState failed, it has cardinality NonNull, but is null");
         }
         this.schemaLifecycleState = schemaLifecycleState;
-        return this;
     }
 
 /**
@@ -295,12 +287,11 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public String getSchemaAuthor() {
         return schemaAuthor;
     }
-    public BmmSchema setSchemaAuthor(String value) {
+    public setSchemaAuthor(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:schemaAuthor failed, it has cardinality NonNull, but is null");
         }
         this.schemaAuthor = schemaAuthor;
-        return this;
     }
 
 /**
@@ -312,12 +303,11 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public String getSchemaDescription() {
         return schemaDescription;
     }
-    public BmmSchema setSchemaDescription(String value) {
+    public setSchemaDescription(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:schemaDescription failed, it has cardinality NonNull, but is null");
         }
         this.schemaDescription = schemaDescription;
-        return this;
     }
 
 /**
@@ -366,9 +356,8 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public  get() {
         return ;
     }
-    public BmmSchema set( value) {
+    public set( value) {
         this. = ;
-        return this;
     }
 
 /*=========================================================*/
@@ -479,12 +468,11 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public String getRmPublisher() {
         return rmPublisher;
     }
-    public BmmModelMetadata setRmPublisher(String value) {
+    public setRmPublisher(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:rmPublisher failed, it has cardinality NonNull, but is null");
         }
         this.rmPublisher = rmPublisher;
-        return this;
     }
 
 /**
@@ -497,12 +485,144 @@ public abstract class BmmSchema implements BmmModelMetadata {
     public String getRmRelease() {
         return rmRelease;
     }
-    public BmmModelMetadata setRmRelease(String value) {
+    public setRmRelease(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:rmRelease failed, it has cardinality NonNull, but is null");
         }
         this.rmRelease = rmRelease;
-        return this;
+    }
+
+    //***** BmmSchema *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmSchema(
+            String bmmVersion,
+            Map<string,bmmIncludeSpec> includes,
+            BmmModel bmmModel,
+            BmmSchemaState state,
+            String modelName,
+            String schemaName,
+            String schemaRevision,
+            String schemaLifecycleState,
+            String schemaAuthor,
+            String schemaDescription,
+            List<string> schemaContributors,
+            String rmPublisher,
+            String rmRelease
+        ){
+        if ( bmmVersion == null ) {
+            throw new NullPointerException("Property:bmmVersion has cardinality NonNull, but is null");
+        }
+        if ( state == null ) {
+            throw new NullPointerException("Property:state has cardinality NonNull, but is null");
+        }
+        if ( schemaName == null ) {
+            throw new NullPointerException("Property:schemaName has cardinality NonNull, but is null");
+        }
+        if ( schemaRevision == null ) {
+            throw new NullPointerException("Property:schemaRevision has cardinality NonNull, but is null");
+        }
+        if ( schemaLifecycleState == null ) {
+            throw new NullPointerException("Property:schemaLifecycleState has cardinality NonNull, but is null");
+        }
+        if ( schemaAuthor == null ) {
+            throw new NullPointerException("Property:schemaAuthor has cardinality NonNull, but is null");
+        }
+        if ( schemaDescription == null ) {
+            throw new NullPointerException("Property:schemaDescription has cardinality NonNull, but is null");
+        }
+        if ( rmPublisher == null ) {
+            throw new NullPointerException("Property:rmPublisher has cardinality NonNull, but is null");
+        }
+        if ( rmRelease == null ) {
+            throw new NullPointerException("Property:rmRelease has cardinality NonNull, but is null");
+        }
+        this.bmmVersion = bmmVersion;
+        this.includes = includes;
+        this.bmmModel = bmmModel;
+        this.state = state;
+        this.modelName = modelName;
+        this.schemaName = schemaName;
+        this.schemaRevision = schemaRevision;
+        this.schemaLifecycleState = schemaLifecycleState;
+        this.schemaAuthor = schemaAuthor;
+        this.schemaDescription = schemaDescription;
+        this.schemaContributors = schemaContributors;
+        this.rmPublisher = rmPublisher;
+        this.rmRelease = rmRelease;
+    }
+
+
+    //***** BmmSchema *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmSchema that = (BmmSchema) object;
+        return
+            java.util.Objects.equals(bmmVersion, that.bmmVersion) &&
+            java.util.Objects.equals(includes, that.includes) &&
+            java.util.Objects.equals(bmmModel, that.bmmModel) &&
+            java.util.Objects.equals(state, that.state) &&
+            java.util.Objects.equals(modelName, that.modelName) &&
+            java.util.Objects.equals(schemaName, that.schemaName) &&
+            java.util.Objects.equals(schemaRevision, that.schemaRevision) &&
+            java.util.Objects.equals(schemaLifecycleState, that.schemaLifecycleState) &&
+            java.util.Objects.equals(schemaAuthor, that.schemaAuthor) &&
+            java.util.Objects.equals(schemaDescription, that.schemaDescription) &&
+            java.util.Objects.equals(schemaContributors, that.schemaContributors) &&
+            java.util.Objects.equals(rmPublisher, that.rmPublisher) &&
+            java.util.Objects.equals(rmRelease, that.rmRelease);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            bmmVersion,
+            includes,
+            bmmModel,
+            state,
+            modelName,
+            schemaName,
+            schemaRevision,
+            schemaLifecycleState,
+            schemaAuthor,
+            schemaDescription,
+            schemaContributors,
+            rmPublisher,
+            rmRelease
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmSchema {" +
+            "bmmVersion='" + bmmVersion + '\''; +
+            "includes='" + includes + '\''; +
+            "bmmModel='" + bmmModel + '\''; +
+            "state='" + state + '\''; +
+            "modelName='" + modelName + '\''; +
+            "schemaName='" + schemaName + '\''; +
+            "schemaRevision='" + schemaRevision + '\''; +
+            "schemaLifecycleState='" + schemaLifecycleState + '\''; +
+            "schemaAuthor='" + schemaAuthor + '\''; +
+            "schemaDescription='" + schemaDescription + '\''; +
+            "schemaContributors='" + schemaContributors + '\''; +
+            "rmPublisher='" + rmPublisher + '\''; +
+            "rmRelease='" + rmRelease + '\''; +
+            '}';
     }
 
 }

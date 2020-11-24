@@ -2,12 +2,11 @@ package nl.rosa.semanticdatabase.bmm.types;
 
 import nl.rosa.semanticdatabase.bmm.classes.BmmValueSetSpec;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -49,9 +48,8 @@ public abstract class BmmModelType extends BmmEffectiveType {
     public BmmValueSetSpec getValueConstraint() {
         return valueConstraint;
     }
-    public BmmModelType setValueConstraint(BmmValueSetSpec value) {
+    public setValueConstraint(BmmValueSetSpec value) {
         this.valueConstraint = valueConstraint;
-        return this;
     }
 
 /**
@@ -63,12 +61,11 @@ public abstract class BmmModelType extends BmmEffectiveType {
     public BmmClass getBaseClass() {
         return baseClass;
     }
-    public BmmModelType setBaseClass(BmmClass value) {
+    public setBaseClass(BmmClass value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:baseClass failed, it has cardinality NonNull, but is null");
         }
         this.baseClass = baseClass;
-        return this;
     }
 
 /*=========================================================*/
@@ -105,6 +102,60 @@ public abstract class BmmModelType extends BmmEffectiveType {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return  result;
+    }
+
+    //***** BmmModelType *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmModelType(
+            BmmValueSetSpec valueConstraint,
+            BmmClass baseClass
+        ){
+        if ( baseClass == null ) {
+            throw new NullPointerException("Property:baseClass has cardinality NonNull, but is null");
+        }
+        this.valueConstraint = valueConstraint;
+        this.baseClass = baseClass;
+    }
+
+
+    //***** BmmModelType *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmModelType that = (BmmModelType) object;
+        return
+            java.util.Objects.equals(valueConstraint, that.valueConstraint) &&
+            java.util.Objects.equals(baseClass, that.baseClass);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            valueConstraint,
+            baseClass
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmModelType {" +
+            "valueConstraint='" + valueConstraint + '\''; +
+            "baseClass='" + baseClass + '\''; +
+            '}';
     }
 
 }

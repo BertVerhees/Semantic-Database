@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,12 +39,11 @@ public class ElUnaryOperator extends ElOperator {
     public ElSimple getOperand() {
         return operand;
     }
-    public ElUnaryOperator setOperand(ElSimple value) {
+    public setOperand(ElSimple value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:operand failed, it has cardinality NonNull, but is null");
         }
         this.operand = operand;
-        return this;
     }
 
     //***** ElUnaryOperator *****
@@ -53,31 +52,97 @@ public class ElUnaryOperator extends ElOperator {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public ElUnaryOperator build() {
-        return new ElUnaryOperator(
-            operand,
-            precedenceOverridden,
-            symbol,
-            definition
-        );
-    }
 
     public ElUnaryOperator(
             ElSimple operand,
             Boolean precedenceOverridden,
             String symbol,
             BmmFunction definition
-    ){
+        ){
+        super( 
+            precedenceOverridden,
+            symbol,
+            definition
+        );
         if ( operand == null ) {
             throw new NullPointerException("Property:operand has cardinality NonNull, but is null");
         }
-        if ( definition == null ) {
-            throw new NullPointerException("Property:definition has cardinality NonNull, but is null");
-        }
         this.operand = operand;
-        this.precedenceOverridden = precedenceOverridden;
-        this.symbol = symbol;
-        this.definition = definition;
+    }
+
+    private ElUnaryOperator(Builder builder) {
+        this.setOperand( builder.operand );
+        this.setPrecedenceOverridden( builder.precedenceOverridden );
+        this.setSymbol( builder.symbol );
+        this.setDefinition( builder.definition );
+    }
+
+    public static class Builder {
+        private final ElSimple operand;  //required
+        private Boolean precedenceOverridden;
+        private String symbol;
+        private final BmmFunction definition;  //required
+
+        public Builder (
+            ElSimple operand,
+            BmmFunction definition
+        ){
+            if ( operand == null ) {
+                throw new NullPointerException("Property:operand has cardinality NonNull, but is null");
+            }
+            if ( definition == null ) {
+                throw new NullPointerException("Property:definition has cardinality NonNull, but is null");
+            }
+            this.operand = operand;
+            this.definition = definition;
+        }
+
+        public Builder setPrecedenceOverridden(Boolean value) {
+            this.precedenceOverridden = precedenceOverridden;
+            return this;
+        }
+
+        public Builder setSymbol(String value) {
+            this.symbol = symbol;
+            return this;
+        }
+
+        public ElUnaryOperator build(){
+            return new ElUnaryOperator( this );
+        }
+    }
+
+
+    //***** ElUnaryOperator *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElUnaryOperator that = (ElUnaryOperator) object;
+        return
+            java.util.Objects.equals(operand, that.operand);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            operand
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElUnaryOperator {" +
+            "operand='" + operand + '\''; +
+            '}';
     }
 
 }

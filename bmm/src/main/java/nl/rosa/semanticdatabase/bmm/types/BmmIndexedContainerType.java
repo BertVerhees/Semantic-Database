@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,12 +39,11 @@ public class BmmIndexedContainerType extends BmmContainerType {
     public BmmSimpleType getIndexType() {
         return indexType;
     }
-    public BmmIndexedContainerType setIndexType(BmmSimpleType value) {
+    public setIndexType(BmmSimpleType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:indexType failed, it has cardinality NonNull, but is null");
         }
         this.indexType = indexType;
-        return this;
     }
 
 /*=========================================================*/
@@ -75,31 +73,88 @@ public class BmmIndexedContainerType extends BmmContainerType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmIndexedContainerType build() {
-        return new BmmIndexedContainerType(
-            indexType,
-            containerClass,
-            itemType
-        );
-    }
 
     public BmmIndexedContainerType(
             BmmSimpleType indexType,
             BmmGenericClass containerClass,
             BmmUnitaryType itemType
-    ){
+        ){
+        super( 
+            containerClass,
+            itemType
+        );
         if ( indexType == null ) {
             throw new NullPointerException("Property:indexType has cardinality NonNull, but is null");
         }
-        if ( containerClass == null ) {
-            throw new NullPointerException("Property:containerClass has cardinality NonNull, but is null");
-        }
-        if ( itemType == null ) {
-            throw new NullPointerException("Property:itemType has cardinality NonNull, but is null");
-        }
         this.indexType = indexType;
-        this.containerClass = containerClass;
-        this.itemType = itemType;
+    }
+
+    private BmmIndexedContainerType(Builder builder) {
+        this.setIndexType( builder.indexType );
+        this.setContainerClass( builder.containerClass );
+        this.setItemType( builder.itemType );
+    }
+
+    public static class Builder {
+        private final BmmSimpleType indexType;  //required
+        private final BmmGenericClass containerClass;  //required
+        private final BmmUnitaryType itemType;  //required
+
+        public Builder (
+            BmmSimpleType indexType,
+            BmmGenericClass containerClass,
+            BmmUnitaryType itemType
+        ){
+            if ( indexType == null ) {
+                throw new NullPointerException("Property:indexType has cardinality NonNull, but is null");
+            }
+            if ( containerClass == null ) {
+                throw new NullPointerException("Property:containerClass has cardinality NonNull, but is null");
+            }
+            if ( itemType == null ) {
+                throw new NullPointerException("Property:itemType has cardinality NonNull, but is null");
+            }
+            this.indexType = indexType;
+            this.containerClass = containerClass;
+            this.itemType = itemType;
+        }
+
+        public BmmIndexedContainerType build(){
+            return new BmmIndexedContainerType( this );
+        }
+    }
+
+
+    //***** BmmIndexedContainerType *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmIndexedContainerType that = (BmmIndexedContainerType) object;
+        return
+            java.util.Objects.equals(indexType, that.indexType);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            indexType
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmIndexedContainerType {" +
+            "indexType='" + indexType + '\''; +
+            '}';
     }
 
 }

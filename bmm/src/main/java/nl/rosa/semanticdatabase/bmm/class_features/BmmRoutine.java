@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -219,9 +219,8 @@ public abstract class BmmRoutine extends BmmClassFeature {
     public BmmRoutineBody getBody() {
         return body;
     }
-    public BmmRoutine setBody(BmmRoutineBody value) {
+    public setBody(BmmRoutineBody value) {
         this.body = body;
-        return this;
     }
 
 /*=========================================================*/
@@ -251,6 +250,90 @@ public abstract class BmmRoutine extends BmmClassFeature {
  * 
 */
     public void  signature() {
+    }
+
+    //***** BmmRoutine *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmRoutine(
+            List<bmmParameter> parameters,
+            List<bmmLocal> locals,
+            List<bmmAssertion> preConditions,
+            List<bmmAssertion> postConditions,
+            BmmRoutineBody body,
+            BmmVisibility visibility,
+            List<bmmFeatureExtension> featureExtensions,
+            BmmFeatureGroup group,
+            BmmClass scope,
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
+            visibility,
+            featureExtensions,
+            group,
+            scope,
+            name,
+            documentation,
+            scope,
+            extensions
+        );
+        this.parameters = parameters;
+        this.locals = locals;
+        this.preConditions = preConditions;
+        this.postConditions = postConditions;
+        this.body = body;
+    }
+
+
+    //***** BmmRoutine *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmRoutine that = (BmmRoutine) object;
+        return
+            java.util.Objects.equals(parameters, that.parameters) &&
+            java.util.Objects.equals(locals, that.locals) &&
+            java.util.Objects.equals(preConditions, that.preConditions) &&
+            java.util.Objects.equals(postConditions, that.postConditions) &&
+            java.util.Objects.equals(body, that.body);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            parameters,
+            locals,
+            preConditions,
+            postConditions,
+            body
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmRoutine {" +
+            "parameters='" + parameters + '\''; +
+            "locals='" + locals + '\''; +
+            "preConditions='" + preConditions + '\''; +
+            "postConditions='" + postConditions + '\''; +
+            "body='" + body + '\''; +
+            '}';
     }
 
 }

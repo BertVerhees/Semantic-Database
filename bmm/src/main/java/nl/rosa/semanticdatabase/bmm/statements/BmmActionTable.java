@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.statements;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -73,19 +73,68 @@ public class BmmActionTable extends BmmStatement {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmActionTable build() {
-        return new BmmActionTable(
-            items
-        );
-    }
 
     public BmmActionTable(
-            List<BmmConditionalAction> items
-    ){
+            List<bmmConditionalAction> items
+        ){
         if ( items == null ) {
             throw new NullPointerException("Property:items has cardinality NonNull, but is null");
         }
         this.items = items;
+    }
+
+    private BmmActionTable(Builder builder) {
+        this.setItems( builder.items );
+    }
+
+    public static class Builder {
+        private final List<bmmConditionalAction> items;  //required
+
+        public Builder (
+            List<bmmConditionalAction> items
+        ){
+            if ( items == null ) {
+                throw new NullPointerException("Property:items has cardinality NonNull, but is null");
+            }
+            this.items = items;
+        }
+
+        public BmmActionTable build(){
+            return new BmmActionTable( this );
+        }
+    }
+
+
+    //***** BmmActionTable *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmActionTable that = (BmmActionTable) object;
+        return
+            java.util.Objects.equals(items, that.items);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            items
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmActionTable {" +
+            "items='" + items + '\''; +
+            '}';
     }
 
 }

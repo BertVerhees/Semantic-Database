@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.bmm.model_structure;
 
 import nl.rosa.semanticdatabase.bmm.model_access_package.BmmModelMetadata;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.bmm.classes.BmmEnumeration;
@@ -11,7 +10,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -523,12 +522,11 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     public String getRmPublisher() {
         return rmPublisher;
     }
-    public BmmModelMetadata setRmPublisher(String value) {
+    public setRmPublisher(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:rmPublisher failed, it has cardinality NonNull, but is null");
         }
         this.rmPublisher = rmPublisher;
-        return this;
     }
 
 /**
@@ -541,12 +539,11 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     public String getRmRelease() {
         return rmRelease;
     }
-    public BmmModelMetadata setRmRelease(String value) {
+    public setRmRelease(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:rmRelease failed, it has cardinality NonNull, but is null");
         }
         this.rmRelease = rmRelease;
-        return this;
     }
 
     //***** BmmModel *****
@@ -555,12 +552,20 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmModel build() {
-        return new BmmModel(
-            classDefinitions,
-            usedModels,
-            rmPublisher,
-            rmRelease,
+
+    public BmmModel(
+            Map<string,bmmClass> classDefinitions,
+            List<bmmModel> usedModels,
+            String rmPublisher,
+            String rmRelease,
+            Map<string,bmmPackage> packages,
+            BmmPackageContainer scope,
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
             packages,
             scope,
             name,
@@ -568,45 +573,142 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
             scope,
             extensions
         );
-    }
-
-    public BmmModel(
-            Map<String,BmmClass> classDefinitions,
-            List<BmmModel> usedModels,
-            String rmPublisher,
-            String rmRelease,
-            Map<String,BmmPackage> packages,
-            BmmPackageContainer scope,
-            String name,
-            Map<String, Any> documentation,
-            BmmDeclaration scope,
-            Map<String, Any> extensions
-    ){
         if ( rmPublisher == null ) {
             throw new NullPointerException("Property:rmPublisher has cardinality NonNull, but is null");
         }
         if ( rmRelease == null ) {
             throw new NullPointerException("Property:rmRelease has cardinality NonNull, but is null");
         }
-        if ( scope == null ) {
-            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
-        }
-        if ( name == null ) {
-            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
-        }
-        if ( scope == null ) {
-            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
-        }
         this.classDefinitions = classDefinitions;
         this.usedModels = usedModels;
         this.rmPublisher = rmPublisher;
         this.rmRelease = rmRelease;
-        this.packages = packages;
-        this.scope = scope;
-        this.name = name;
-        this.documentation = documentation;
-        this.scope = scope;
-        this.extensions = extensions;
+    }
+
+    private BmmModel(Builder builder) {
+        this.setClassDefinitions( builder.classDefinitions );
+        this.setUsedModels( builder.usedModels );
+        this.setRmPublisher( builder.rmPublisher );
+        this.setRmRelease( builder.rmRelease );
+        this.setPackages( builder.packages );
+        this.setScope( builder.scope );
+        this.setName( builder.name );
+        this.setDocumentation( builder.documentation );
+        this.setScope( builder.scope );
+        this.setExtensions( builder.extensions );
+    }
+
+    public static class Builder {
+        private Map<string,bmmClass> classDefinitions;
+        private List<bmmModel> usedModels;
+        private final String rmPublisher;  //required
+        private final String rmRelease;  //required
+        private Map<string,bmmPackage> packages;
+        private final BmmPackageContainer scope;  //required
+        private final String name;  //required
+        private Map<string, any> documentation;
+        private final BmmDeclaration scope;  //required
+        private Map<string, any> extensions;
+
+        public Builder (
+            String rmPublisher,
+            String rmRelease,
+            BmmPackageContainer scope,
+            String name,
+            BmmDeclaration scope
+        ){
+            if ( rmPublisher == null ) {
+                throw new NullPointerException("Property:rmPublisher has cardinality NonNull, but is null");
+            }
+            if ( rmRelease == null ) {
+                throw new NullPointerException("Property:rmRelease has cardinality NonNull, but is null");
+            }
+            if ( scope == null ) {
+                throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+            }
+            if ( name == null ) {
+                throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+            }
+            if ( scope == null ) {
+                throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+            }
+            this.rmPublisher = rmPublisher;
+            this.rmRelease = rmRelease;
+            this.scope = scope;
+            this.name = name;
+            this.scope = scope;
+        }
+
+        public Builder setClassDefinitions(Map<string,bmmClass> value) {
+            this.classDefinitions = classDefinitions;
+            return this;
+        }
+
+        public Builder setUsedModels(List<bmmModel> value) {
+            this.usedModels = usedModels;
+            return this;
+        }
+
+        public Builder setPackages(Map<string,bmmPackage> value) {
+            this.packages = packages;
+            return this;
+        }
+
+        public Builder setDocumentation(Map<string, any> value) {
+            this.documentation = documentation;
+            return this;
+        }
+
+        public Builder setExtensions(Map<string, any> value) {
+            this.extensions = extensions;
+            return this;
+        }
+
+        public BmmModel build(){
+            return new BmmModel( this );
+        }
+    }
+
+
+    //***** BmmModel *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmModel that = (BmmModel) object;
+        return
+            java.util.Objects.equals(classDefinitions, that.classDefinitions) &&
+            java.util.Objects.equals(usedModels, that.usedModels) &&
+            java.util.Objects.equals(rmPublisher, that.rmPublisher) &&
+            java.util.Objects.equals(rmRelease, that.rmRelease);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            classDefinitions,
+            usedModels,
+            rmPublisher,
+            rmRelease
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmModel {" +
+            "classDefinitions='" + classDefinitions + '\''; +
+            "usedModels='" + usedModels + '\''; +
+            "rmPublisher='" + rmPublisher + '\''; +
+            "rmRelease='" + rmRelease + '\''; +
+            '}';
     }
 
 }

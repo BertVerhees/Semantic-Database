@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -153,15 +153,54 @@ public class Boolean extends Any {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public Boolean build() {
-        return new Boolean(
-            
-        );
-    }
 
     public Boolean(
             
-    ){
+        ){
+    }
+
+    private Boolean(Builder builder) {
+    }
+
+    public static class Builder {
+
+        public Builder (
+        ){
+        }
+
+        public Boolean build(){
+            return new Boolean( this );
+        }
+    }
+
+
+    //***** Boolean *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Boolean that = (Boolean) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public java.lang.String toString() {
+        return
+            "Boolean {" +
+            '}';
     }
 
 }

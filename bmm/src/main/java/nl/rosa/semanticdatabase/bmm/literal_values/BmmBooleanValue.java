@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,12 +40,11 @@ public class BmmBooleanValue extends BmmPrimitiveValue {
     public Boolean getValue() {
         return value;
     }
-    public BmmBooleanValue setValue(Boolean value) {
+    public setValue(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:value failed, it has cardinality NonNull, but is null");
         }
         this.value = value;
-        return this;
     }
 
     //***** BmmBooleanValue *****
@@ -54,17 +53,6 @@ public class BmmBooleanValue extends BmmPrimitiveValue {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmBooleanValue build() {
-        return new BmmBooleanValue(
-            value,
-            type,
-            type,
-            valueLiteral,
-            value,
-            syntax,
-            type
-        );
-    }
 
     public BmmBooleanValue(
             Boolean value,
@@ -74,29 +62,114 @@ public class BmmBooleanValue extends BmmPrimitiveValue {
             Any value,
             String syntax,
             BmmType type
-    ){
+        ){
+        super( 
+            type,
+            type,
+            valueLiteral,
+            syntax,
+            type
+        );
         if ( value == null ) {
             throw new NullPointerException("Property:value has cardinality NonNull, but is null");
         }
-        if ( type == null ) {
-            throw new NullPointerException("Property:type has cardinality NonNull, but is null");
-        }
-        if ( type == null ) {
-            throw new NullPointerException("Property:type has cardinality NonNull, but is null");
-        }
-        if ( valueLiteral == null ) {
-            throw new NullPointerException("Property:valueLiteral has cardinality NonNull, but is null");
-        }
-        if ( type == null ) {
-            throw new NullPointerException("Property:type has cardinality NonNull, but is null");
-        }
         this.value = value;
-        this.type = type;
-        this.type = type;
-        this.valueLiteral = valueLiteral;
-        this.value = value;
-        this.syntax = syntax;
-        this.type = type;
+    }
+
+    private BmmBooleanValue(Builder builder) {
+        this.setValue( builder.value );
+        this.setType( builder.type );
+        this.setType( builder.type );
+        this.setValueLiteral( builder.valueLiteral );
+        this.setValue( builder.value );
+        this.setSyntax( builder.syntax );
+        this.setType( builder.type );
+    }
+
+    public static class Builder {
+        private final Boolean value;  //required
+        private final BmmSimpleType type;  //required
+        private final BmmUnitaryType type;  //required
+        private final String valueLiteral;  //required
+        private Any value;
+        private String syntax;
+        private final BmmType type;  //required
+
+        public Builder (
+            Boolean value,
+            BmmSimpleType type,
+            BmmUnitaryType type,
+            String valueLiteral,
+            BmmType type
+        ){
+            if ( value == null ) {
+                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+            }
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            if ( valueLiteral == null ) {
+                throw new NullPointerException("Property:valueLiteral has cardinality NonNull, but is null");
+            }
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            this.value = value;
+            this.type = type;
+            this.type = type;
+            this.valueLiteral = valueLiteral;
+            this.type = type;
+        }
+
+        public Builder setValue(Any value) {
+            this.value = value;
+            return this;
+        }
+
+        public Builder setSyntax(String value) {
+            this.syntax = syntax;
+            return this;
+        }
+
+        public BmmBooleanValue build(){
+            return new BmmBooleanValue( this );
+        }
+    }
+
+
+    //***** BmmBooleanValue *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmBooleanValue that = (BmmBooleanValue) object;
+        return
+            java.util.Objects.equals(value, that.value);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            value
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmBooleanValue {" +
+            "value='" + value + '\''; +
+            '}';
     }
 
 }

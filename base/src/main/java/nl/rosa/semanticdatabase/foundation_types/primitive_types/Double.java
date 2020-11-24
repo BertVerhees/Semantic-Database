@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.foundation_types.primitive_types;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -209,15 +209,54 @@ public class Double extends OrderedNumeric {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public Double build() {
-        return new Double(
-            
-        );
-    }
 
     public Double(
             
-    ){
+        ){
+    }
+
+    private Double(Builder builder) {
+    }
+
+    public static class Builder {
+
+        public Builder (
+        ){
+        }
+
+        public Double build(){
+            return new Double( this );
+        }
+    }
+
+
+    //***** Double *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Double that = (Double) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public java.lang.String toString() {
+        return
+            "Double {" +
+            '}';
     }
 
 }

@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -64,9 +64,8 @@ public abstract class BmmClassFeature extends BmmClassEntity {
     public BmmVisibility getVisibility() {
         return visibility;
     }
-    public BmmClassFeature setVisibility(BmmVisibility value) {
+    public setVisibility(BmmVisibility value) {
         this.visibility = visibility;
-        return this;
     }
 
 /**
@@ -115,12 +114,11 @@ public abstract class BmmClassFeature extends BmmClassEntity {
     public BmmFeatureGroup getGroup() {
         return group;
     }
-    public BmmClassFeature setGroup(BmmFeatureGroup value) {
+    public setGroup(BmmFeatureGroup value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:group failed, it has cardinality NonNull, but is null");
         }
         this.group = group;
-        return this;
     }
 
 /**
@@ -132,12 +130,86 @@ public abstract class BmmClassFeature extends BmmClassEntity {
     public BmmClass getScope() {
         return scope;
     }
-    public BmmClassFeature setScope(BmmClass value) {
+    public setScope(BmmClass value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:scope failed, it has cardinality NonNull, but is null");
         }
         this.scope = scope;
-        return this;
+    }
+
+    //***** BmmClassFeature *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmClassFeature(
+            BmmVisibility visibility,
+            List<bmmFeatureExtension> featureExtensions,
+            BmmFeatureGroup group,
+            BmmClass scope,
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
+            name,
+            documentation
+        );
+        if ( group == null ) {
+            throw new NullPointerException("Property:group has cardinality NonNull, but is null");
+        }
+        if ( scope == null ) {
+            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+        }
+        this.visibility = visibility;
+        this.featureExtensions = featureExtensions;
+        this.group = group;
+        this.scope = scope;
+    }
+
+
+    //***** BmmClassFeature *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmClassFeature that = (BmmClassFeature) object;
+        return
+            java.util.Objects.equals(visibility, that.visibility) &&
+            java.util.Objects.equals(featureExtensions, that.featureExtensions) &&
+            java.util.Objects.equals(group, that.group) &&
+            java.util.Objects.equals(scope, that.scope);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            visibility,
+            featureExtensions,
+            group,
+            scope
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmClassFeature {" +
+            "visibility='" + visibility + '\''; +
+            "featureExtensions='" + featureExtensions + '\''; +
+            "group='" + group + '\''; +
+            "scope='" + scope + '\''; +
+            '}';
     }
 
 }

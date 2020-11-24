@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -50,9 +49,8 @@ public class BmmSignature extends BmmEffectiveType {
     public BmmTupleType getArgumentTypes() {
         return argumentTypes;
     }
-    public BmmSignature setArgumentTypes(BmmTupleType value) {
+    public setArgumentTypes(BmmTupleType value) {
         this.argumentTypes = argumentTypes;
-        return this;
     }
 
 /**
@@ -64,9 +62,8 @@ public class BmmSignature extends BmmEffectiveType {
     public BmmType getResultType() {
         return resultType;
     }
-    public BmmSignature setResultType(BmmType value) {
+    public setResultType(BmmType value) {
         this.resultType = resultType;
-        return this;
     }
 
 /*=========================================================*/
@@ -171,19 +168,77 @@ public class BmmSignature extends BmmEffectiveType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmSignature build() {
-        return new BmmSignature(
+
+    public BmmSignature(
+            BmmTupleType argumentTypes,
+            BmmType resultType
+        ){
+        this.argumentTypes = argumentTypes;
+        this.resultType = resultType;
+    }
+
+    private BmmSignature(Builder builder) {
+        this.setArgumentTypes( builder.argumentTypes );
+        this.setResultType( builder.resultType );
+    }
+
+    public static class Builder {
+        private BmmTupleType argumentTypes;
+        private BmmType resultType;
+
+        public Builder (
+        ){
+        }
+
+        public Builder setArgumentTypes(BmmTupleType value) {
+            this.argumentTypes = argumentTypes;
+            return this;
+        }
+
+        public Builder setResultType(BmmType value) {
+            this.resultType = resultType;
+            return this;
+        }
+
+        public BmmSignature build(){
+            return new BmmSignature( this );
+        }
+    }
+
+
+    //***** BmmSignature *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmSignature that = (BmmSignature) object;
+        return
+            java.util.Objects.equals(argumentTypes, that.argumentTypes) &&
+            java.util.Objects.equals(resultType, that.resultType);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
             argumentTypes,
             resultType
         );
     }
 
-    public BmmSignature(
-            BmmTupleType argumentTypes,
-            BmmType resultType
-    ){
-        this.argumentTypes = argumentTypes;
-        this.resultType = resultType;
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmSignature {" +
+            "argumentTypes='" + argumentTypes + '\''; +
+            "resultType='" + resultType + '\''; +
+            '}';
     }
 
 }

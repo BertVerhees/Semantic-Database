@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.bmm.model_access_package;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -42,12 +41,11 @@ public class BmmIncludeSpec {
     public String getId() {
         return id;
     }
-    public BmmIncludeSpec setId(String value) {
+    public setId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:id failed, it has cardinality NonNull, but is null");
         }
         this.id = id;
-        return this;
     }
 
     //***** BmmIncludeSpec *****
@@ -56,19 +54,68 @@ public class BmmIncludeSpec {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmIncludeSpec build() {
-        return new BmmIncludeSpec(
-            id
-        );
-    }
 
     public BmmIncludeSpec(
             String id
-    ){
+        ){
         if ( id == null ) {
             throw new NullPointerException("Property:id has cardinality NonNull, but is null");
         }
         this.id = id;
+    }
+
+    private BmmIncludeSpec(Builder builder) {
+        this.setId( builder.id );
+    }
+
+    public static class Builder {
+        private final String id;  //required
+
+        public Builder (
+            String id
+        ){
+            if ( id == null ) {
+                throw new NullPointerException("Property:id has cardinality NonNull, but is null");
+            }
+            this.id = id;
+        }
+
+        public BmmIncludeSpec build(){
+            return new BmmIncludeSpec( this );
+        }
+    }
+
+
+    //***** BmmIncludeSpec *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmIncludeSpec that = (BmmIncludeSpec) object;
+        return
+            java.util.Objects.equals(id, that.id);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            id
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmIncludeSpec {" +
+            "id='" + id + '\''; +
+            '}';
     }
 
 }

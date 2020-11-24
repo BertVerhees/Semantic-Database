@@ -2,11 +2,10 @@ package nl.rosa.semanticdatabase.foundation_types.time_types;
 
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -274,25 +273,73 @@ public class Iso8601Date extends Iso8601Type {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public Iso8601Date build() {
-        return new Iso8601Date(
+
+    public Iso8601Date(
+            String value,
+            Integer maxDaysInYear
+        ){
+        super( 
             value,
             maxDaysInYear
         );
     }
 
-    public Iso8601Date(
+    private Iso8601Date(Builder builder) {
+        this.setValue( builder.value );
+        this.setMaxDaysInYear( builder.maxDaysInYear );
+    }
+
+    public static class Builder {
+        private final String value;  //required
+        private final Integer maxDaysInYear;  //required
+
+        public Builder (
             String value,
             Integer maxDaysInYear
-    ){
-        if ( value == null ) {
-            throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+        ){
+            if ( value == null ) {
+                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+            }
+            if ( maxDaysInYear == null ) {
+                throw new NullPointerException("Property:maxDaysInYear has cardinality NonNull, but is null");
+            }
+            this.value = value;
+            this.maxDaysInYear = maxDaysInYear;
         }
-        if ( maxDaysInYear == null ) {
-            throw new NullPointerException("Property:maxDaysInYear has cardinality NonNull, but is null");
+
+        public Iso8601Date build(){
+            return new Iso8601Date( this );
         }
-        this.value = value;
-        this.maxDaysInYear = maxDaysInYear;
+    }
+
+
+    //***** Iso8601Date *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Iso8601Date that = (Iso8601Date) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "Iso8601Date {" +
+            '}';
     }
 
 }

@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -116,12 +115,11 @@ public abstract class BmmProperty extends BmmClassFeature implements BmmInstanti
     public BmmType getType() {
         return type;
     }
-    public BmmTyped setType(BmmType value) {
+    public setType(BmmType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
-        return this;
     }
 
 /*=========================================================*/
@@ -143,6 +141,73 @@ public abstract class BmmProperty extends BmmClassFeature implements BmmInstanti
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return  result;
+    }
+
+    //***** BmmProperty *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmProperty(
+            BmmType type,
+            BmmVisibility visibility,
+            List<bmmFeatureExtension> featureExtensions,
+            BmmFeatureGroup group,
+            BmmClass scope,
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
+            visibility,
+            featureExtensions,
+            group,
+            scope,
+            name,
+            documentation,
+            scope,
+            extensions
+        );
+        if ( type == null ) {
+            throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+        }
+        this.type = type;
+    }
+
+
+    //***** BmmProperty *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmProperty that = (BmmProperty) object;
+        return
+            java.util.Objects.equals(type, that.type);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            type
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmProperty {" +
+            "type='" + type + '\''; +
+            '}';
     }
 
 }

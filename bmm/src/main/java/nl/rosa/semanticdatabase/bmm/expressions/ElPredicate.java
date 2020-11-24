@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,12 +40,11 @@ public abstract class ElPredicate extends ElTerminal {
     public ElInstanceRef getOperand() {
         return operand;
     }
-    public ElPredicate setOperand(ElInstanceRef value) {
+    public setOperand(ElInstanceRef value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:operand failed, it has cardinality NonNull, but is null");
         }
         this.operand = operand;
-        return this;
     }
 
 /*=========================================================*/
@@ -66,6 +65,55 @@ public abstract class ElPredicate extends ElTerminal {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return  result;
+    }
+
+    //***** ElPredicate *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected ElPredicate(
+            ElInstanceRef operand
+        ){
+        if ( operand == null ) {
+            throw new NullPointerException("Property:operand has cardinality NonNull, but is null");
+        }
+        this.operand = operand;
+    }
+
+
+    //***** ElPredicate *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElPredicate that = (ElPredicate) object;
+        return
+            java.util.Objects.equals(operand, that.operand);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            operand
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElPredicate {" +
+            "operand='" + operand + '\''; +
+            '}';
     }
 
 }

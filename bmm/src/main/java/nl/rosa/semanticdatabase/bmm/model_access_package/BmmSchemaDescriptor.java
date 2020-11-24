@@ -1,12 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.model_access_package;
 
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -103,9 +102,8 @@ public abstract class BmmSchemaDescriptor {
     public BmmSchema getBmmSchema() {
         return bmmSchema;
     }
-    public BmmSchemaDescriptor setBmmSchema(BmmSchema value) {
+    public setBmmSchema(BmmSchema value) {
         this.bmmSchema = bmmSchema;
-        return this;
     }
 
 /**
@@ -117,9 +115,8 @@ public abstract class BmmSchemaDescriptor {
     public BmmModel getBmmModel() {
         return bmmModel;
     }
-    public BmmSchemaDescriptor setBmmModel(BmmModel value) {
+    public setBmmModel(BmmModel value) {
         this.bmmModel = bmmModel;
-        return this;
     }
 
 /**
@@ -132,12 +129,11 @@ public abstract class BmmSchemaDescriptor {
     public String getSchemaId() {
         return schemaId;
     }
-    public BmmSchemaDescriptor setSchemaId(String value) {
+    public setSchemaId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:schemaId failed, it has cardinality NonNull, but is null");
         }
         this.schemaId = schemaId;
-        return this;
     }
 
 /**
@@ -229,9 +225,8 @@ public abstract class BmmSchemaDescriptor {
     public  get() {
         return ;
     }
-    public BmmSchemaDescriptor set( value) {
+    public set( value) {
         this. = ;
-        return this;
     }
 
 /**
@@ -243,9 +238,8 @@ public abstract class BmmSchemaDescriptor {
     public  get() {
         return ;
     }
-    public BmmSchemaDescriptor set( value) {
+    public set( value) {
         this. = ;
-        return this;
     }
 
 /**
@@ -258,9 +252,8 @@ public abstract class BmmSchemaDescriptor {
     public  get() {
         return ;
     }
-    public BmmSchemaDescriptor set( value) {
+    public set( value) {
         this. = ;
-        return this;
     }
 
 /*=========================================================*/
@@ -307,6 +300,78 @@ public abstract class BmmSchemaDescriptor {
  * 
 */
     public void  validateIncludes(List<String> all_schemas_list) {
+    }
+
+    //***** BmmSchemaDescriptor *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmSchemaDescriptor(
+            BmmSchema bmmSchema,
+            BmmModel bmmModel,
+            String schemaId,
+            Map<string, string> metaData,
+            List<string> includes
+        ){
+        if ( schemaId == null ) {
+            throw new NullPointerException("Property:schemaId has cardinality NonNull, but is null");
+        }
+        if ( metaData == null ) {
+            throw new NullPointerException("Property:metaData has cardinality NonNull, but is null");
+        }
+        this.bmmSchema = bmmSchema;
+        this.bmmModel = bmmModel;
+        this.schemaId = schemaId;
+        this.metaData = metaData;
+        this.includes = includes;
+    }
+
+
+    //***** BmmSchemaDescriptor *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmSchemaDescriptor that = (BmmSchemaDescriptor) object;
+        return
+            java.util.Objects.equals(bmmSchema, that.bmmSchema) &&
+            java.util.Objects.equals(bmmModel, that.bmmModel) &&
+            java.util.Objects.equals(schemaId, that.schemaId) &&
+            java.util.Objects.equals(metaData, that.metaData) &&
+            java.util.Objects.equals(includes, that.includes);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            bmmSchema,
+            bmmModel,
+            schemaId,
+            metaData,
+            includes
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmSchemaDescriptor {" +
+            "bmmSchema='" + bmmSchema + '\''; +
+            "bmmModel='" + bmmModel + '\''; +
+            "schemaId='" + schemaId + '\''; +
+            "metaData='" + metaData + '\''; +
+            "includes='" + includes + '\''; +
+            '}';
     }
 
 }

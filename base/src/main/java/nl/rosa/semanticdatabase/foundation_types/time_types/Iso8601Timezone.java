@@ -2,11 +2,10 @@ package nl.rosa.semanticdatabase.foundation_types.time_types;
 
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -156,25 +155,73 @@ public class Iso8601Timezone extends Iso8601Type {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public Iso8601Timezone build() {
-        return new Iso8601Timezone(
+
+    public Iso8601Timezone(
+            String value,
+            Integer maxDaysInYear
+        ){
+        super( 
             value,
             maxDaysInYear
         );
     }
 
-    public Iso8601Timezone(
+    private Iso8601Timezone(Builder builder) {
+        this.setValue( builder.value );
+        this.setMaxDaysInYear( builder.maxDaysInYear );
+    }
+
+    public static class Builder {
+        private final String value;  //required
+        private final Integer maxDaysInYear;  //required
+
+        public Builder (
             String value,
             Integer maxDaysInYear
-    ){
-        if ( value == null ) {
-            throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+        ){
+            if ( value == null ) {
+                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+            }
+            if ( maxDaysInYear == null ) {
+                throw new NullPointerException("Property:maxDaysInYear has cardinality NonNull, but is null");
+            }
+            this.value = value;
+            this.maxDaysInYear = maxDaysInYear;
         }
-        if ( maxDaysInYear == null ) {
-            throw new NullPointerException("Property:maxDaysInYear has cardinality NonNull, but is null");
+
+        public Iso8601Timezone build(){
+            return new Iso8601Timezone( this );
         }
-        this.value = value;
-        this.maxDaysInYear = maxDaysInYear;
+    }
+
+
+    //***** Iso8601Timezone *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Iso8601Timezone that = (Iso8601Timezone) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "Iso8601Timezone {" +
+            '}';
     }
 
 }

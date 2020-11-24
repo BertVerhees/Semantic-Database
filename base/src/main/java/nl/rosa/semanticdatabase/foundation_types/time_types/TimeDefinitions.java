@@ -3,11 +3,10 @@ package nl.rosa.semanticdatabase.foundation_types.time_types;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Double;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -47,12 +46,11 @@ public class TimeDefinitions {
     public Integer getMaxDaysInYear() {
         return maxDaysInYear;
     }
-    public TimeDefinitions setMaxDaysInYear(Integer value) {
+    public setMaxDaysInYear(Integer value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:maxDaysInYear failed, it has cardinality NonNull, but is null");
         }
         this.maxDaysInYear = maxDaysInYear;
-        return this;
     }
 
 /*=========================================================*/
@@ -398,19 +396,68 @@ public class TimeDefinitions {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public TimeDefinitions build() {
-        return new TimeDefinitions(
-            maxDaysInYear
-        );
-    }
 
     public TimeDefinitions(
             Integer maxDaysInYear
-    ){
+        ){
         if ( maxDaysInYear == null ) {
             throw new NullPointerException("Property:maxDaysInYear has cardinality NonNull, but is null");
         }
         this.maxDaysInYear = maxDaysInYear;
+    }
+
+    private TimeDefinitions(Builder builder) {
+        this.setMaxDaysInYear( builder.maxDaysInYear );
+    }
+
+    public static class Builder {
+        private final Integer maxDaysInYear;  //required
+
+        public Builder (
+            Integer maxDaysInYear
+        ){
+            if ( maxDaysInYear == null ) {
+                throw new NullPointerException("Property:maxDaysInYear has cardinality NonNull, but is null");
+            }
+            this.maxDaysInYear = maxDaysInYear;
+        }
+
+        public TimeDefinitions build(){
+            return new TimeDefinitions( this );
+        }
+    }
+
+
+    //***** TimeDefinitions *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        TimeDefinitions that = (TimeDefinitions) object;
+        return
+            java.util.Objects.equals(maxDaysInYear, that.maxDaysInYear);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            maxDaysInYear
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "TimeDefinitions {" +
+            "maxDaysInYear='" + maxDaysInYear + '\''; +
+            '}';
     }
 
 }

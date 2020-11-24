@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,9 +39,54 @@ public abstract class ElScopedRef extends ElInstanceRef {
     public ElInstanceRef getScope() {
         return scope;
     }
-    public ElScopedRef setScope(ElInstanceRef value) {
+    public setScope(ElInstanceRef value) {
         this.scope = scope;
-        return this;
+    }
+
+    //***** ElScopedRef *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected ElScopedRef(
+            ElInstanceRef scope
+        ){
+        this.scope = scope;
+    }
+
+
+    //***** ElScopedRef *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElScopedRef that = (ElScopedRef) object;
+        return
+            java.util.Objects.equals(scope, that.scope);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            scope
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElScopedRef {" +
+            "scope='" + scope + '\''; +
+            '}';
     }
 
 }

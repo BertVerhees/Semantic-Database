@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.bmm.model_structure;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -68,12 +67,11 @@ public abstract class BmmDeclaration {
     public String getName() {
         return name;
     }
-    public BmmDeclaration setName(String value) {
+    public setName(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
         this.name = name;
-        return this;
     }
 
 /**
@@ -130,12 +128,11 @@ public abstract class BmmDeclaration {
     public BmmDeclaration getScope() {
         return scope;
     }
-    public BmmDeclaration setScope(BmmDeclaration value) {
+    public setScope(BmmDeclaration value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:scope failed, it has cardinality NonNull, but is null");
         }
         this.scope = scope;
-        return this;
     }
 
 /**
@@ -201,6 +198,73 @@ public abstract class BmmDeclaration {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return  result;
+    }
+
+    //***** BmmDeclaration *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmDeclaration(
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        if ( name == null ) {
+            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+        }
+        if ( scope == null ) {
+            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+        }
+        this.name = name;
+        this.documentation = documentation;
+        this.scope = scope;
+        this.extensions = extensions;
+    }
+
+
+    //***** BmmDeclaration *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmDeclaration that = (BmmDeclaration) object;
+        return
+            java.util.Objects.equals(name, that.name) &&
+            java.util.Objects.equals(documentation, that.documentation) &&
+            java.util.Objects.equals(scope, that.scope) &&
+            java.util.Objects.equals(extensions, that.extensions);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            name,
+            documentation,
+            scope,
+            extensions
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmDeclaration {" +
+            "name='" + name + '\''; +
+            "documentation='" + documentation + '\''; +
+            "scope='" + scope + '\''; +
+            "extensions='" + extensions + '\''; +
+            '}';
     }
 
 }

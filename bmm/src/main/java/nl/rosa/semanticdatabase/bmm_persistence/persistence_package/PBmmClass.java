@@ -1,11 +1,13 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 
 /**
  * 
- * #Generated: 2020-11-15T18:16:51.043+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -133,9 +135,9 @@ public class PBmmClass extends PBmmModelElement {
     public String getName() {
         return name;
     }
-    public void setName(String value) {
-        if (name == null ) {
-            throw new NullPointerException(" name has cardinality NonNull, but is null")
+    public setName(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
         this.name = name;
     }
@@ -171,8 +173,9 @@ public class PBmmClass extends PBmmModelElement {
     String getAncestors() {
         return this.ancestors;
     }
-    void setAncestors(String ancestors) {
+    public PBmmClass setAncestors(String ancestors) {
         this.ancestors = ancestors;
+        return this;
     }
     public List<String> ancestors() {
         return Collections.unmodifiableList(this.ancestors);
@@ -212,13 +215,14 @@ public class PBmmClass extends PBmmModelElement {
     public void removeProperties( Collection <String> keys ) {
         keys.forEach(this::removeProperty);
     }
-    Map<String,PBmmProperty> getProperties() {
+    public Map<String, PBmmProperty> getProperties() {
         return this.properties;
     }
-    void setProperties(Map<String,PBmmProperty> properties) {
+    public PBmmClass setProperties(Map<String, PBmmProperty> properties) {
         this.properties = properties;
+        return this;
     }
-    public Map<String,PBmmProperty> properties() {
+    public Map<String, PBmmProperty> properties() {
         return Collections.unmodifiableMap(this.properties);
     }
 
@@ -230,10 +234,10 @@ public class PBmmClass extends PBmmModelElement {
  * 
 */
     public Boolean getIsAbstract() {
-        return is_abstract;
+        return isAbstract;
     }
-    public void setIsAbstract(Boolean value) {
-        this.is_abstract = is_abstract;
+    public setIsAbstract(Boolean value) {
+        this.isAbstract = isAbstract;
     }
 
 /**
@@ -243,10 +247,10 @@ public class PBmmClass extends PBmmModelElement {
  * 
 */
     public Boolean getIsOverride() {
-        return is_override;
+        return isOverride;
     }
-    public void setIsOverride(Boolean value) {
-        this.is_override = is_override;
+    public setIsOverride(Boolean value) {
+        this.isOverride = isOverride;
     }
 
 /**
@@ -257,39 +261,40 @@ public class PBmmClass extends PBmmModelElement {
  * 
 */
 
-    public void putGenericparameterdef(String key, PBmmGenericParameter value ) {
+    public void putGenericParameterDef(String key, PBmmGenericParameter value ) {
         if (genericParameterDefs == null ) {
             genericParameterDefs = new HashMap<> ();
         }
         genericParameterDefs.put( key, value);
     }
 
-    public void putGenericparameterdefs(Map<String,PBmmGenericParameter> items ) {
+    public void putGenericParameterDefs(Map<String,PBmmGenericParameter> items ) {
         items.keySet().forEach(key -> putGenericparameterdef(key, items.get(key)));
     }
 
-    public PBmmGenericParameter getGenericparameterdef(String key ) {
+    public PBmmGenericParameter getGenericParameterDef(String key ) {
         if (genericParameterDefs == null ) {
             return null;
         }
         return genericParameterDefs.get( key);
     }
 
-    public void removeGenericparameterdef(String key ) {
+    public void removeGenericParameterDef(String key ) {
         if (genericParameterDefs != null ) {
             genericParameterDefs.remove(key);
         }
     }
-    public void removeGenericparameterdefs( Collection <String> keys ) {
-        keys.forEach(this::removeGenericparameterdef);
+    public void removeGenericParameterDefs( Collection <String> keys ) {
+        keys.forEach(this::removeGenericParameterDef);
     }
-    Map<String,PBmmGenericParameter> getGenericparameterdefs() {
+    public Map<String, PBmmGenericParameter> getGenericParameterDefs() {
         return this.genericParameterDefs;
     }
-    void setGenericparameterdefs(Map<String,PBmmGenericParameter> genericParameterDefs) {
+    public PBmmClass setGenericParameterDefs(Map<String, PBmmGenericParameter> genericParameterDefs) {
         this.genericParameterDefs = genericParameterDefs;
+        return this;
     }
-    public Map<String,PBmmGenericParameter> genericParameterDefs() {
+    public Map<String, PBmmGenericParameter> genericParameterDefs() {
         return Collections.unmodifiableMap(this.genericParameterDefs);
     }
 
@@ -303,13 +308,13 @@ public class PBmmClass extends PBmmModelElement {
  * 
 */
     public String getSourceSchemaId() {
-        return source_schema_id;
+        return sourceSchemaId;
     }
-    public void setSourceSchemaId(String value) {
-        if (source_schema_id == null ) {
-            throw new NullPointerException(" source_schema_id has cardinality NonNull, but is null")
+    public setSourceSchemaId(String value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:sourceSchemaId failed, it has cardinality NonNull, but is null");
         }
-        this.source_schema_id = source_schema_id;
+        this.sourceSchemaId = sourceSchemaId;
     }
 
 /**
@@ -319,10 +324,10 @@ public class PBmmClass extends PBmmModelElement {
  * 
 */
     public BmmClass getBmmClass() {
-        return bmm_class;
+        return bmmClass;
     }
-    public void setBmmClass(BmmClass value) {
-        this.bmm_class = bmm_class;
+    public setBmmClass(BmmClass value) {
+        this.bmmClass = bmmClass;
     }
 
 /**
@@ -335,9 +340,9 @@ public class PBmmClass extends PBmmModelElement {
     public Integer getUid() {
         return uid;
     }
-    public void setUid(Integer value) {
-        if (uid == null ) {
-            throw new NullPointerException(" uid has cardinality NonNull, but is null")
+    public setUid(Integer value) {
+        if ( value == null ) {
+            throw new NullPointerException(" Setting property:uid failed, it has cardinality NonNull, but is null");
         }
         this.uid = uid;
     }
@@ -372,8 +377,9 @@ public class PBmmClass extends PBmmModelElement {
     PBmmGenericType getAncestorDefs() {
         return this.ancestorDefs;
     }
-    void setAncestorDefs(PBmmGenericType ancestorDefs) {
+    public PBmmClass setAncestorDefs(PBmmGenericType ancestorDefs) {
         this.ancestorDefs = ancestorDefs;
+        return this;
     }
     public List<PBmmGenericType> ancestorDefs() {
         return Collections.unmodifiableList(this.ancestorDefs);
@@ -388,7 +394,7 @@ public class PBmmClass extends PBmmModelElement {
     public  get() {
         return ;
     }
-    public void set( value) {
+    public set( value) {
         this. = ;
     }
 
@@ -402,7 +408,15 @@ public class PBmmClass extends PBmmModelElement {
  * cardinality: 1..1
  * 
 */
-    public abstract = generic_parameter_defs /= Void  isGeneric();
+    public = generic_parameter_defs /= Void  isGeneric() {
+        = generic_parameter_defs /= Void  result;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
 
 /**
  * 
@@ -410,34 +424,229 @@ public class PBmmClass extends PBmmModelElement {
  * cardinality: 0..1
  * 
 */
-    public abstract void  populateBmmClass();
+    public void  populateBmmClass(BmmModel a_bmm_schema) {
+        if (a_bmm_schema == null ) {
+            throw new NullPointerException("Parameter a_bmm_schema has cardinality NonNull, but is null");
+        }
+    }
+
+    //***** PBmmClass *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    public PBmmClass(
+            String name,
+            List<string> ancestors,
+            Map<string,pBmmProperty> properties,
+            Boolean isAbstract,
+            Boolean isOverride,
+            Map<string,pBmmGenericParameter> genericParameterDefs,
+            String sourceSchemaId,
+            BmmClass bmmClass,
+            Integer uid,
+            List<pBmmGenericType> ancestorDefs,
+            String documentation
+        ){
+        super( 
+            documentation
+        );
+        if ( name == null ) {
+            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+        }
+        if ( sourceSchemaId == null ) {
+            throw new NullPointerException("Property:sourceSchemaId has cardinality NonNull, but is null");
+        }
+        if ( uid == null ) {
+            throw new NullPointerException("Property:uid has cardinality NonNull, but is null");
+        }
+        this.name = name;
+        this.ancestors = ancestors;
+        this.properties = properties;
+        this.isAbstract = isAbstract;
+        this.isOverride = isOverride;
+        this.genericParameterDefs = genericParameterDefs;
+        this.sourceSchemaId = sourceSchemaId;
+        this.bmmClass = bmmClass;
+        this.uid = uid;
+        this.ancestorDefs = ancestorDefs;
+    }
+
+    private PBmmClass(Builder builder) {
+        this.setName( builder.name );
+        this.setAncestors( builder.ancestors );
+        this.setProperties( builder.properties );
+        this.setIsAbstract( builder.isAbstract );
+        this.setIsOverride( builder.isOverride );
+        this.setGenericParameterDefs( builder.genericParameterDefs );
+        this.setSourceSchemaId( builder.sourceSchemaId );
+        this.setBmmClass( builder.bmmClass );
+        this.setUid( builder.uid );
+        this.setAncestorDefs( builder.ancestorDefs );
+        this.setDocumentation( builder.documentation );
+    }
+
+    public static class Builder {
+        private final String name;  //required
+        private List<string> ancestors;
+        private Map<string,pBmmProperty> properties;
+        private Boolean isAbstract;
+        private Boolean isOverride;
+        private Map<string,pBmmGenericParameter> genericParameterDefs;
+        private final String sourceSchemaId;  //required
+        private BmmClass bmmClass;
+        private final Integer uid;  //required
+        private List<pBmmGenericType> ancestorDefs;
+        private String documentation;
+
+        public Builder (
+            String name,
+            String sourceSchemaId,
+            Integer uid
+        ){
+            if ( name == null ) {
+                throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+            }
+            if ( sourceSchemaId == null ) {
+                throw new NullPointerException("Property:sourceSchemaId has cardinality NonNull, but is null");
+            }
+            if ( uid == null ) {
+                throw new NullPointerException("Property:uid has cardinality NonNull, but is null");
+            }
+            this.name = name;
+            this.sourceSchemaId = sourceSchemaId;
+            this.uid = uid;
+        }
+
+        public Builder setAncestors(List<string> value) {
+            this.ancestors = ancestors;
+            return this;
+        }
+
+        public Builder setProperties(Map<string,pBmmProperty> value) {
+            this.properties = properties;
+            return this;
+        }
+
+        public Builder setIsAbstract(Boolean value) {
+            this.isAbstract = isAbstract;
+            return this;
+        }
+
+        public Builder setIsOverride(Boolean value) {
+            this.isOverride = isOverride;
+            return this;
+        }
+
+        public Builder setGenericParameterDefs(Map<string,pBmmGenericParameter> value) {
+            this.genericParameterDefs = genericParameterDefs;
+            return this;
+        }
+
+        public Builder setBmmClass(BmmClass value) {
+            this.bmmClass = bmmClass;
+            return this;
+        }
+
+        public Builder setAncestorDefs(List<pBmmGenericType> value) {
+            this.ancestorDefs = ancestorDefs;
+            return this;
+        }
+
+        public Builder setDocumentation(String value) {
+            this.documentation = documentation;
+            return this;
+        }
+
+        public PBmmClass build(){
+            return new PBmmClass( this );
+        }
+    }
+
+
+    //***** PBmmClass *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        PBmmClass that = (PBmmClass) object;
+        return
+            java.util.Objects.equals(name, that.name) &&
+            java.util.Objects.equals(ancestors, that.ancestors) &&
+            java.util.Objects.equals(properties, that.properties) &&
+            java.util.Objects.equals(isAbstract, that.isAbstract) &&
+            java.util.Objects.equals(isOverride, that.isOverride) &&
+            java.util.Objects.equals(genericParameterDefs, that.genericParameterDefs) &&
+            java.util.Objects.equals(sourceSchemaId, that.sourceSchemaId) &&
+            java.util.Objects.equals(bmmClass, that.bmmClass) &&
+            java.util.Objects.equals(uid, that.uid) &&
+            java.util.Objects.equals(ancestorDefs, that.ancestorDefs);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            name,
+            ancestors,
+            properties,
+            isAbstract,
+            isOverride,
+            genericParameterDefs,
+            sourceSchemaId,
+            bmmClass,
+            uid,
+            ancestorDefs
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "PBmmClass {" +
+            "name='" + name + '\''; +
+            "ancestors='" + ancestors + '\''; +
+            "properties='" + properties + '\''; +
+            "isAbstract='" + isAbstract + '\''; +
+            "isOverride='" + isOverride + '\''; +
+            "genericParameterDefs='" + genericParameterDefs + '\''; +
+            "sourceSchemaId='" + sourceSchemaId + '\''; +
+            "bmmClass='" + bmmClass + '\''; +
+            "uid='" + uid + '\''; +
+            "ancestorDefs='" + ancestorDefs + '\''; +
+            '}';
+    }
 
 }
 
 /**
  * 
- * ***** BEGIN LICENSE BLOCK ***** Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ * ***** BEGIN LICENSE BLOCK *****
  * 
- * The contents of this file are subject to the Mozilla Public License Version
- * 1.1 (the "License"); you may not use this file except in compliance with the
- * License.
- * You may obtain a copy of the License at http://www.mozilla.org/MPL/
+ * ISC License
  * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * Copyright (c) 2020, Bert Verhees
  * 
- * The Initial Developer of the Original Code is Bert Verhees.
- * the Initial Developer Copyright (C) 2020 the Initial Developer.
- * All Rights Reserved.
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
  * 
- * Contributor(s): Bert Verhees
- * 
- * Software distributed under the License is distributed on an "AS IS" basis,
- * WITHOUT WARRANTY OF ANY KIND, either express or implied.
- * See the License for
- * the specific language governing rights and limitations under the License.
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  * 
  * ***** END LICENSE BLOCK *****
  * 

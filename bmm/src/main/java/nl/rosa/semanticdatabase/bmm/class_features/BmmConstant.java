@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase.bmm.expressions.ElInstanceRef;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -43,12 +43,11 @@ public class BmmConstant extends BmmClassFeature implements BmmInstantiable {
     public ElInstanceRef getGenerator() {
         return generator;
     }
-    public BmmConstant setGenerator(ElInstanceRef value) {
+    public setGenerator(ElInstanceRef value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:generator failed, it has cardinality NonNull, but is null");
         }
         this.generator = generator;
-        return this;
     }
 
 /*=========================================================*/
@@ -90,12 +89,11 @@ public class BmmConstant extends BmmClassFeature implements BmmInstantiable {
     public BmmType getType() {
         return type;
     }
-    public BmmTyped setType(BmmType value) {
+    public setType(BmmType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
-        return this;
     }
 
 /*=========================================================*/
@@ -125,10 +123,20 @@ public class BmmConstant extends BmmClassFeature implements BmmInstantiable {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmConstant build() {
-        return new BmmConstant(
-            generator,
-            type,
+
+    public BmmConstant(
+            ElInstanceRef generator,
+            BmmType type,
+            BmmVisibility visibility,
+            List<bmmFeatureExtension> featureExtensions,
+            BmmFeatureGroup group,
+            BmmClass scope,
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
             visibility,
             featureExtensions,
             group,
@@ -138,48 +146,134 @@ public class BmmConstant extends BmmClassFeature implements BmmInstantiable {
             scope,
             extensions
         );
-    }
-
-    public BmmConstant(
-            ElInstanceRef generator,
-            BmmType type,
-            BmmVisibility visibility,
-            List<BMM_FEATURE_EXTENSION> featureExtensions,
-            BmmFeatureGroup group,
-            BmmClass scope,
-            String name,
-            Map<String, Any> documentation,
-            BmmDeclaration scope,
-            Map<String, Any> extensions
-    ){
         if ( generator == null ) {
             throw new NullPointerException("Property:generator has cardinality NonNull, but is null");
         }
         if ( type == null ) {
             throw new NullPointerException("Property:type has cardinality NonNull, but is null");
         }
-        if ( group == null ) {
-            throw new NullPointerException("Property:group has cardinality NonNull, but is null");
-        }
-        if ( scope == null ) {
-            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
-        }
-        if ( name == null ) {
-            throw new NullPointerException("Property:name has cardinality NonNull, but is null");
-        }
-        if ( scope == null ) {
-            throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
-        }
         this.generator = generator;
         this.type = type;
-        this.visibility = visibility;
-        this.featureExtensions = featureExtensions;
-        this.group = group;
-        this.scope = scope;
-        this.name = name;
-        this.documentation = documentation;
-        this.scope = scope;
-        this.extensions = extensions;
+    }
+
+    private BmmConstant(Builder builder) {
+        this.setGenerator( builder.generator );
+        this.setType( builder.type );
+        this.setVisibility( builder.visibility );
+        this.setFeatureExtensions( builder.featureExtensions );
+        this.setGroup( builder.group );
+        this.setScope( builder.scope );
+        this.setName( builder.name );
+        this.setDocumentation( builder.documentation );
+        this.setScope( builder.scope );
+        this.setExtensions( builder.extensions );
+    }
+
+    public static class Builder {
+        private final ElInstanceRef generator;  //required
+        private final BmmType type;  //required
+        private BmmVisibility visibility;
+        private List<bmmFeatureExtension> featureExtensions;
+        private final BmmFeatureGroup group;  //required
+        private final BmmClass scope;  //required
+        private final String name;  //required
+        private Map<string, any> documentation;
+        private final BmmDeclaration scope;  //required
+        private Map<string, any> extensions;
+
+        public Builder (
+            ElInstanceRef generator,
+            BmmType type,
+            BmmFeatureGroup group,
+            BmmClass scope,
+            String name,
+            BmmDeclaration scope
+        ){
+            if ( generator == null ) {
+                throw new NullPointerException("Property:generator has cardinality NonNull, but is null");
+            }
+            if ( type == null ) {
+                throw new NullPointerException("Property:type has cardinality NonNull, but is null");
+            }
+            if ( group == null ) {
+                throw new NullPointerException("Property:group has cardinality NonNull, but is null");
+            }
+            if ( scope == null ) {
+                throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+            }
+            if ( name == null ) {
+                throw new NullPointerException("Property:name has cardinality NonNull, but is null");
+            }
+            if ( scope == null ) {
+                throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
+            }
+            this.generator = generator;
+            this.type = type;
+            this.group = group;
+            this.scope = scope;
+            this.name = name;
+            this.scope = scope;
+        }
+
+        public Builder setVisibility(BmmVisibility value) {
+            this.visibility = visibility;
+            return this;
+        }
+
+        public Builder setFeatureExtensions(List<bmmFeatureExtension> value) {
+            this.featureExtensions = featureExtensions;
+            return this;
+        }
+
+        public Builder setDocumentation(Map<string, any> value) {
+            this.documentation = documentation;
+            return this;
+        }
+
+        public Builder setExtensions(Map<string, any> value) {
+            this.extensions = extensions;
+            return this;
+        }
+
+        public BmmConstant build(){
+            return new BmmConstant( this );
+        }
+    }
+
+
+    //***** BmmConstant *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmConstant that = (BmmConstant) object;
+        return
+            java.util.Objects.equals(generator, that.generator) &&
+            java.util.Objects.equals(type, that.type);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            generator,
+            type
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmConstant {" +
+            "generator='" + generator + '\''; +
+            "type='" + type + '\''; +
+            '}';
     }
 
 }

@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.bmm.classes;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -52,12 +51,11 @@ public class BmmValueSetSpec {
     public String getResourceId() {
         return resourceId;
     }
-    public BmmValueSetSpec setResourceId(String value) {
+    public setResourceId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:resourceId failed, it has cardinality NonNull, but is null");
         }
         this.resourceId = resourceId;
-        return this;
     }
 
 /**
@@ -70,12 +68,11 @@ public class BmmValueSetSpec {
     public String getValueSetId() {
         return valueSetId;
     }
-    public BmmValueSetSpec setValueSetId(String value) {
+    public setValueSetId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:valueSetId failed, it has cardinality NonNull, but is null");
         }
         this.valueSetId = valueSetId;
-        return this;
     }
 
     //***** BmmValueSetSpec *****
@@ -84,17 +81,11 @@ public class BmmValueSetSpec {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public BmmValueSetSpec build() {
-        return new BmmValueSetSpec(
-            resourceId,
-            valueSetId
-        );
-    }
 
     public BmmValueSetSpec(
             String resourceId,
             String valueSetId
-    ){
+        ){
         if ( resourceId == null ) {
             throw new NullPointerException("Property:resourceId has cardinality NonNull, but is null");
         }
@@ -103,6 +94,70 @@ public class BmmValueSetSpec {
         }
         this.resourceId = resourceId;
         this.valueSetId = valueSetId;
+    }
+
+    private BmmValueSetSpec(Builder builder) {
+        this.setResourceId( builder.resourceId );
+        this.setValueSetId( builder.valueSetId );
+    }
+
+    public static class Builder {
+        private final String resourceId;  //required
+        private final String valueSetId;  //required
+
+        public Builder (
+            String resourceId,
+            String valueSetId
+        ){
+            if ( resourceId == null ) {
+                throw new NullPointerException("Property:resourceId has cardinality NonNull, but is null");
+            }
+            if ( valueSetId == null ) {
+                throw new NullPointerException("Property:valueSetId has cardinality NonNull, but is null");
+            }
+            this.resourceId = resourceId;
+            this.valueSetId = valueSetId;
+        }
+
+        public BmmValueSetSpec build(){
+            return new BmmValueSetSpec( this );
+        }
+    }
+
+
+    //***** BmmValueSetSpec *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmValueSetSpec that = (BmmValueSetSpec) object;
+        return
+            java.util.Objects.equals(resourceId, that.resourceId) &&
+            java.util.Objects.equals(valueSetId, that.valueSetId);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            resourceId,
+            valueSetId
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmValueSetSpec {" +
+            "resourceId='" + resourceId + '\''; +
+            "valueSetId='" + valueSetId + '\''; +
+            '}';
     }
 
 }

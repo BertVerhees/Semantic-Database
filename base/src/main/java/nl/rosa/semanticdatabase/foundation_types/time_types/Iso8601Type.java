@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.foundation_types.time_types;
 
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,12 +40,11 @@ public abstract class Iso8601Type extends Temporal,TimeDefinitions {
     public String getValue() {
         return value;
     }
-    public Iso8601Type setValue(String value) {
+    public setValue(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:value failed, it has cardinality NonNull, but is null");
         }
         this.value = value;
-        return this;
     }
 
 /*=========================================================*/
@@ -71,6 +69,59 @@ public abstract class Iso8601Type extends Temporal,TimeDefinitions {
  * 
 */
     public abstract Boolean  isExtended();
+
+    //***** Iso8601Type *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected Iso8601Type(
+            String value,
+            Integer maxDaysInYear
+        ){
+        super( 
+            maxDaysInYear
+        );
+        if ( value == null ) {
+            throw new NullPointerException("Property:value has cardinality NonNull, but is null");
+        }
+        this.value = value;
+    }
+
+
+    //***** Iso8601Type *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Iso8601Type that = (Iso8601Type) object;
+        return
+            java.util.Objects.equals(value, that.value);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            value
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "Iso8601Type {" +
+            "value='" + value + '\''; +
+            '}';
+    }
 
 }
 

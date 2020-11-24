@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,12 +39,60 @@ public abstract class ElConstrained {
     public ElExpression getBaseExpression() {
         return baseExpression;
     }
-    public ElConstrained setBaseExpression(ElExpression value) {
+    public setBaseExpression(ElExpression value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:baseExpression failed, it has cardinality NonNull, but is null");
         }
         this.baseExpression = baseExpression;
-        return this;
+    }
+
+    //***** ElConstrained *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected ElConstrained(
+            ElExpression baseExpression
+        ){
+        if ( baseExpression == null ) {
+            throw new NullPointerException("Property:baseExpression has cardinality NonNull, but is null");
+        }
+        this.baseExpression = baseExpression;
+    }
+
+
+    //***** ElConstrained *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        ElConstrained that = (ElConstrained) object;
+        return
+            java.util.Objects.equals(baseExpression, that.baseExpression);
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+            baseExpression
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "ElConstrained {" +
+            "baseExpression='" + baseExpression + '\''; +
+            '}';
     }
 
 }

@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmSignature;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -36,6 +36,57 @@ public abstract class BmmClassEntity extends BmmDeclaration {
  * 
 */
     final Boolean {default isSynthesisedGeneric = false};
+
+    //***** BmmClassEntity *****
+
+/*=========================================================*/
+/* * BUILD PATTERN AND CONSTRUCTOR * */
+/*=========================================================*/
+
+
+    protected BmmClassEntity(
+            String name,
+            Map<string, any> documentation,
+            BmmDeclaration scope,
+            Map<string, any> extensions
+        ){
+        super( 
+            name,
+            documentation,
+            scope,
+            extensions
+        );
+    }
+
+
+    //***** BmmClassEntity *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        BmmClassEntity that = (BmmClassEntity) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return
+            "BmmClassEntity {" +
+            '}';
+    }
 
 }
 

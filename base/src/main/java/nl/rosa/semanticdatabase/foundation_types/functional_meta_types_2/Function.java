@@ -4,7 +4,7 @@ import nl.rosa.semanticdatabase..;
 
 /**
  * 
- * #Generated: 2020-11-19T08:28:08.518+01:00
+ * #Generated: 2020-11-24T17:04:33.085+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -19,15 +19,54 @@ public class Function<args,result> extends Routine {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-    public Function<args,result> build() {
-        return new Function<args,result>(
-            
-        );
-    }
 
     public Function<args,result>(
             
-    ){
+        ){
+    }
+
+    private Function<args,result>(Builder builder) {
+    }
+
+    public static class Builder {
+
+        public Builder (
+        ){
+        }
+
+        public Function<args,result> build(){
+            return new Function<args,result>( this );
+        }
+    }
+
+
+    //***** Function<args,result> *****
+
+/*=========================================================*/
+/* * TOSTRING, EQUALS AND HASHCODE * */
+/*=========================================================*/
+
+
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Function<args,result> that = (Function<args,result>) object;
+        return
+        }
+    }
+
+    public int hashCode() {
+        return Objects.hash(
+            super.hashCode(),
+        );
+    }
+
+    @Override
+    public String toString() {
+        return
+            "Function<args,result> {" +
+            '}';
     }
 
 }
