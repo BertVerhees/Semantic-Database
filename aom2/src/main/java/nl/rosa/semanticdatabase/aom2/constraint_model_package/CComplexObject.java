@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -313,7 +313,6 @@ public class CComplexObject extends CDefinedObject {
         return
             Objects.equals(attributes, that.attributes) &&
             Objects.equals(attributeTuples, that.attributeTuples);
-        }
     }
 
     public int hashCode() {
@@ -328,8 +327,8 @@ public class CComplexObject extends CDefinedObject {
     public String toString() {
         return
             "CComplexObject {" +
-            "attributes='" + attributes + '\''; +
-            "attributeTuples='" + attributeTuples + '\''; +
+            "attributes='" + attributes + '\'' +
+            "attributeTuples='" + attributeTuples + '\'' +
             '}';
     }
 

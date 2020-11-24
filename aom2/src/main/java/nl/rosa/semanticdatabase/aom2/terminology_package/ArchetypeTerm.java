@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -241,7 +241,6 @@ public class ArchetypeTerm {
             Objects.equals(text, that.text) &&
             Objects.equals(description, that.description) &&
             Objects.equals(otherItems, that.otherItems);
-        }
     }
 
     public int hashCode() {
@@ -258,10 +257,10 @@ public class ArchetypeTerm {
     public String toString() {
         return
             "ArchetypeTerm {" +
-            "code='" + code + '\''; +
-            "text='" + text + '\''; +
-            "description='" + description + '\''; +
-            "otherItems='" + otherItems + '\''; +
+            "code='" + code + '\'' +
+            "text='" + text + '\'' +
+            "description='" + description + '\'' +
+            "otherItems='" + otherItems + '\'' +
             '}';
     }
 

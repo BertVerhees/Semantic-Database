@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.aom2.the_rm_overlay_package.;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * 
  * Enumeration of visibility settings for model elements.
  * 

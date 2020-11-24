@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -341,7 +341,6 @@ public abstract class CObject extends ArchetypeConstraint {
             Objects.equals(nodeId, that.nodeId) &&
             Objects.equals(isDeprecated, that.isDeprecated) &&
             Objects.equals(siblingOrder, that.siblingOrder);
-        }
     }
 
     public int hashCode() {
@@ -359,11 +358,11 @@ public abstract class CObject extends ArchetypeConstraint {
     public String toString() {
         return
             "CObject {" +
-            "rmTypeName='" + rmTypeName + '\''; +
-            "occurrences='" + occurrences + '\''; +
-            "nodeId='" + nodeId + '\''; +
-            "isDeprecated='" + isDeprecated + '\''; +
-            "siblingOrder='" + siblingOrder + '\''; +
+            "rmTypeName='" + rmTypeName + '\'' +
+            "occurrences='" + occurrences + '\'' +
+            "nodeId='" + nodeId + '\'' +
+            "isDeprecated='" + isDeprecated + '\'' +
+            "siblingOrder='" + siblingOrder + '\'' +
             '}';
     }
 

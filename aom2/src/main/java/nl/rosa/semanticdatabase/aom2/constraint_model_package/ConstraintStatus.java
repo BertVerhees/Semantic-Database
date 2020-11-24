@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.aom2.constraint_model_package.;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * 
  * Status of constraint, with values allowing for 'soft' constraints, which are effectively different kinds of suggestions.
  * 

@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -357,7 +357,6 @@ public class CBoolean extends CPrimitiveObject {
             Objects.equals(constraint, that.constraint) &&
             Objects.equals(assumedValue, that.assumedValue) &&
             Objects.equals(defaultValue, that.defaultValue);
-        }
     }
 
     public int hashCode() {
@@ -373,9 +372,9 @@ public class CBoolean extends CPrimitiveObject {
     public String toString() {
         return
             "CBoolean {" +
-            "constraint='" + constraint + '\''; +
-            "assumedValue='" + assumedValue + '\''; +
-            "defaultValue='" + defaultValue + '\''; +
+            "constraint='" + constraint + '\'' +
+            "assumedValue='" + assumedValue + '\'' +
+            "defaultValue='" + defaultValue + '\'' +
             '}';
     }
 

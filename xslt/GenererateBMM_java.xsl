@@ -1101,22 +1101,26 @@
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (this == object) return true;'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (object == null || getClass() != object.getClass()) return false;'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (!super.equals(object)) return false;'))"/>
-        <xsl:if test="count($localFields) > 0">
-            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $class/className, ' that = (', $class/className, ') object;'))"/>
-            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return'))"/>
-            <xsl:for-each select="$localFields">
-                <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
-                <xsl:choose>
-                    <xsl:when test="position() &lt; count($localFields)">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'java.util.Objects.equals(',$name,', that.',$name,') &amp;&amp;'))"/>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'java.util.Objects.equals(', $name, ', that.', $name, ');'))"/>
-                    </xsl:otherwise>
-                </xsl:choose>
-            </xsl:for-each>
-            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
-        </xsl:if>
+        <xsl:choose>
+            <xsl:when test="count($localFields) > 0">
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $class/className, ' that = (', $class/className, ') object;'))"/>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return'))"/>
+                <xsl:for-each select="$localFields">
+                    <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
+                    <xsl:choose>
+                        <xsl:when test="position() &lt; count($localFields)">
+                            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'java.util.Objects.equals(',$name,', that.',$name,') &amp;&amp;'))"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'java.util.Objects.equals(', $name, ', that.', $name, ');'))"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:for-each>
+            </xsl:when>
+            <xsl:otherwise>
+                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return true;'))"/>
+            </xsl:otherwise>
+        </xsl:choose>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <xsl:value-of select="do:output('')"/>
         <!-- HASHCODE -->
@@ -1153,7 +1157,7 @@
         <xsl:variable name="apos">'</xsl:variable>
         <xsl:for-each select="$localFields">
             <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
-            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, '&quot;', $name, '=', $apos, '&quot; + ', $name, ' + ', $apos, '\', $apos, $apos, '; +'))"/>
+            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, '&quot;', $name, '=', $apos, '&quot; + ', $name, ' + ', $apos, '\', $apos, $apos, ' +'))"/>
         </xsl:for-each>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $apos, '}', $apos, ';'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>

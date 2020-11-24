@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -729,7 +729,6 @@ public class ArchetypeTerminology {
             Objects.equals(ownerArchetype, that.ownerArchetype) &&
             Objects.equals(valueSets, that.valueSets) &&
             Objects.equals(terminologyExtracts, that.terminologyExtracts);
-        }
     }
 
     public int hashCode() {
@@ -750,14 +749,14 @@ public class ArchetypeTerminology {
     public java.lang.String toString() {
         return
             "ArchetypeTerminology {" +
-            "isDifferential='" + isDifferential + '\''; +
-            "originalLanguage='" + originalLanguage + '\''; +
-            "conceptCode='" + conceptCode + '\''; +
-            "termDefinitions='" + termDefinitions + '\''; +
-            "termBindings='" + termBindings + '\''; +
-            "ownerArchetype='" + ownerArchetype + '\''; +
-            "valueSets='" + valueSets + '\''; +
-            "terminologyExtracts='" + terminologyExtracts + '\''; +
+            "isDifferential='" + isDifferential + '\'' +
+            "originalLanguage='" + originalLanguage + '\'' +
+            "conceptCode='" + conceptCode + '\'' +
+            "termDefinitions='" + termDefinitions + '\'' +
+            "termBindings='" + termBindings + '\'' +
+            "ownerArchetype='" + ownerArchetype + '\'' +
+            "valueSets='" + valueSets + '\'' +
+            "terminologyExtracts='" + terminologyExtracts + '\'' +
             '}';
     }
 

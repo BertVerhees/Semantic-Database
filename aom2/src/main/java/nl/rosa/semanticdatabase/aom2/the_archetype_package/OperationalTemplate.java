@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.aom_2.terminology_package.ArchetypeTerminology;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -384,7 +384,6 @@ public class OperationalTemplate extends AuthoredArchetype {
         return
             Objects.equals(componentTerminologies, that.componentTerminologies) &&
             Objects.equals(terminologyExtracts, that.terminologyExtracts);
-        }
     }
 
     public int hashCode() {
@@ -399,8 +398,8 @@ public class OperationalTemplate extends AuthoredArchetype {
     public String toString() {
         return
             "OperationalTemplate {" +
-            "componentTerminologies='" + componentTerminologies + '\''; +
-            "terminologyExtracts='" + terminologyExtracts + '\''; +
+            "componentTerminologies='" + componentTerminologies + '\'' +
+            "terminologyExtracts='" + terminologyExtracts + '\'' +
             '}';
     }
 

@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -177,7 +177,6 @@ public class CPrimitiveTuple extends CSecondOrder {
         CPrimitiveTuple that = (CPrimitiveTuple) object;
         return
             Objects.equals(members, that.members);
-        }
     }
 
     public int hashCode() {
@@ -191,7 +190,7 @@ public class CPrimitiveTuple extends CSecondOrder {
     public String toString() {
         return
             "CPrimitiveTuple {" +
-            "members='" + members + '\''; +
+            "members='" + members + '\'' +
             '}';
     }
 

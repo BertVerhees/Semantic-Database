@@ -1,10 +1,10 @@
 package nl.rosa.semanticdatabase.aom2.terminology_package;
 
-import java.util.Objects;
+import java.util.*;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -33,7 +33,7 @@ public abstract class TerminologyRelation {
  * cardinality: 1..1
  * 
 */
-    private List<String> members = new ArrayList<> ();
+    private List<String> members = new ArrayList<>();
 
 /*=========================================================*/
 /* * POJOS * */
@@ -75,7 +75,7 @@ public abstract class TerminologyRelation {
             members.remove(item);
         }
     }
-    public void removeFromMembers( Collection <String> values ) {
+    public void removeFromMembers( Collection<String> values ) {
         values.forEach(this::removeFromMember);
     }
     List<String> getMembers() {
@@ -103,7 +103,7 @@ public abstract class TerminologyRelation {
 
     protected TerminologyRelation(
             String id,
-            List<string> members
+            List<String> members
         ){
         if ( id == null ) {
             throw new NullPointerException("Property:id has cardinality NonNull, but is null");
@@ -131,7 +131,6 @@ public abstract class TerminologyRelation {
         return
             Objects.equals(id, that.id) &&
             Objects.equals(members, that.members);
-        }
     }
 
     public int hashCode() {
@@ -146,8 +145,8 @@ public abstract class TerminologyRelation {
     public String toString() {
         return
             "TerminologyRelation {" +
-            "id='" + id + '\''; +
-            "members='" + members + '\''; +
+            "id='" + id + '\'' +
+            "members='" + members + '\'' +
             '}';
     }
 

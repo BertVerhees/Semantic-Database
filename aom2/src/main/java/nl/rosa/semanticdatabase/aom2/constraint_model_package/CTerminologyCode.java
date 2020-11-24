@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Uri;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -453,7 +453,6 @@ public class CTerminologyCode extends CPrimitiveObject {
             Objects.equals(constraint, that.constraint) &&
             Objects.equals(assumedValue, that.assumedValue) &&
             Objects.equals(defaultValue, that.defaultValue);
-        }
     }
 
     public int hashCode() {
@@ -470,10 +469,10 @@ public class CTerminologyCode extends CPrimitiveObject {
     public String toString() {
         return
             "CTerminologyCode {" +
-            "constraintStatus='" + constraintStatus + '\''; +
-            "constraint='" + constraint + '\''; +
-            "assumedValue='" + assumedValue + '\''; +
-            "defaultValue='" + defaultValue + '\''; +
+            "constraintStatus='" + constraintStatus + '\'' +
+            "constraint='" + constraint + '\'' +
+            "assumedValue='" + assumedValue + '\'' +
+            "defaultValue='" + defaultValue + '\'' +
             '}';
     }
 

@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -301,7 +301,6 @@ public class ArchetypeSlot extends CObject {
             Objects.equals(includes, that.includes) &&
             Objects.equals(excludes, that.excludes) &&
             Objects.equals(isClosed, that.isClosed);
-        }
     }
 
     public int hashCode() {
@@ -317,9 +316,9 @@ public class ArchetypeSlot extends CObject {
     public String toString() {
         return
             "ArchetypeSlot {" +
-            "includes='" + includes + '\''; +
-            "excludes='" + excludes + '\''; +
-            "isClosed='" + isClosed + '\''; +
+            "includes='" + includes + '\'' +
+            "excludes='" + excludes + '\'' +
+            "isClosed='" + isClosed + '\'' +
             '}';
     }
 

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -286,7 +286,6 @@ public class Template extends AuthoredArchetype {
         Template that = (Template) object;
         return
             Objects.equals(overlays, that.overlays);
-        }
     }
 
     public int hashCode() {
@@ -300,7 +299,7 @@ public class Template extends AuthoredArchetype {
     public String toString() {
         return
             "Template {" +
-            "overlays='" + overlays + '\''; +
+            "overlays='" + overlays + '\'' +
             '}';
     }
 

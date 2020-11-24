@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -452,7 +452,6 @@ public class CAttribute extends ArchetypeConstraint {
             Objects.equals(differentialPath, that.differentialPath) &&
             Objects.equals(cardinality, that.cardinality) &&
             Objects.equals(isMultiple, that.isMultiple);
-        }
     }
 
     public int hashCode() {
@@ -471,12 +470,12 @@ public class CAttribute extends ArchetypeConstraint {
     public String toString() {
         return
             "CAttribute {" +
-            "rmAttributeName='" + rmAttributeName + '\''; +
-            "existence='" + existence + '\''; +
-            "children='" + children + '\''; +
-            "differentialPath='" + differentialPath + '\''; +
-            "cardinality='" + cardinality + '\''; +
-            "isMultiple='" + isMultiple + '\''; +
+            "rmAttributeName='" + rmAttributeName + '\'' +
+            "existence='" + existence + '\'' +
+            "children='" + children + '\'' +
+            "differentialPath='" + differentialPath + '\'' +
+            "cardinality='" + cardinality + '\'' +
+            "isMultiple='" + isMultiple + '\'' +
             '}';
     }
 

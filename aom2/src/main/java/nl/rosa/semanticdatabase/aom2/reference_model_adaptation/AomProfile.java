@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -361,7 +361,6 @@ public class AomProfile {
             Objects.equals(profileName, that.profileName) &&
             Objects.equals(aomRmTypeMappings, that.aomRmTypeMappings) &&
             Objects.equals(rmPrimitiveTypeEquivalences, that.rmPrimitiveTypeEquivalences);
-        }
     }
 
     public int hashCode() {
@@ -379,11 +378,11 @@ public class AomProfile {
     public String toString() {
         return
             "AomProfile {" +
-            "aomRmTypeSubstitutions='" + aomRmTypeSubstitutions + '\''; +
-            "aomLifecycleMappings='" + aomLifecycleMappings + '\''; +
-            "profileName='" + profileName + '\''; +
-            "aomRmTypeMappings='" + aomRmTypeMappings + '\''; +
-            "rmPrimitiveTypeEquivalences='" + rmPrimitiveTypeEquivalences + '\''; +
+            "aomRmTypeSubstitutions='" + aomRmTypeSubstitutions + '\'' +
+            "aomLifecycleMappings='" + aomLifecycleMappings + '\'' +
+            "profileName='" + profileName + '\'' +
+            "aomRmTypeMappings='" + aomRmTypeMappings + '\'' +
+            "rmPrimitiveTypeEquivalences='" + rmPrimitiveTypeEquivalences + '\'' +
             '}';
     }
 

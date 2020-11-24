@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -230,7 +230,6 @@ public class CAttributeTuple extends CSecondOrder {
         return
             Objects.equals(tuples, that.tuples) &&
             Objects.equals(members, that.members);
-        }
     }
 
     public int hashCode() {
@@ -245,8 +244,8 @@ public class CAttributeTuple extends CSecondOrder {
     public String toString() {
         return
             "CAttributeTuple {" +
-            "tuples='" + tuples + '\''; +
-            "members='" + members + '\''; +
+            "tuples='" + tuples + '\'' +
+            "members='" + members + '\'' +
             '}';
     }
 

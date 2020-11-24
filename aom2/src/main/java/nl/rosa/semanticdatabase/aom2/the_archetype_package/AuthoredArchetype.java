@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -621,7 +621,6 @@ public class AuthoredArchetype extends Archetype implements AuthoredResource {
             Objects.equals(isControlled, that.isControlled) &&
             Objects.equals(annotations, that.annotations) &&
             Objects.equals(translations, that.translations);
-        }
     }
 
     public int hashCode() {
@@ -645,17 +644,17 @@ public class AuthoredArchetype extends Archetype implements AuthoredResource {
     public String toString() {
         return
             "AuthoredArchetype {" +
-            "adlVersion='" + adlVersion + '\''; +
-            "buildUid='" + buildUid + '\''; +
-            "rmRelease='" + rmRelease + '\''; +
-            "isGenerated='" + isGenerated + '\''; +
-            "otherMetaData='" + otherMetaData + '\''; +
-            "uid='" + uid + '\''; +
-            "originalLanguage='" + originalLanguage + '\''; +
-            "description='" + description + '\''; +
-            "isControlled='" + isControlled + '\''; +
-            "annotations='" + annotations + '\''; +
-            "translations='" + translations + '\''; +
+            "adlVersion='" + adlVersion + '\'' +
+            "buildUid='" + buildUid + '\'' +
+            "rmRelease='" + rmRelease + '\'' +
+            "isGenerated='" + isGenerated + '\'' +
+            "otherMetaData='" + otherMetaData + '\'' +
+            "uid='" + uid + '\'' +
+            "originalLanguage='" + originalLanguage + '\'' +
+            "description='" + description + '\'' +
+            "isControlled='" + isControlled + '\'' +
+            "annotations='" + annotations + '\'' +
+            "translations='" + translations + '\'' +
             '}';
     }
 

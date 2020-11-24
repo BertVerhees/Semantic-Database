@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -211,7 +211,6 @@ public class CComplexObjectProxy extends CObject {
         CComplexObjectProxy that = (CComplexObjectProxy) object;
         return
             Objects.equals(targetPath, that.targetPath);
-        }
     }
 
     public int hashCode() {
@@ -225,7 +224,7 @@ public class CComplexObjectProxy extends CObject {
     public String toString() {
         return
             "CComplexObjectProxy {" +
-            "targetPath='" + targetPath + '\''; +
+            "targetPath='" + targetPath + '\'' +
             '}';
     }
 

@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.base_types.definitions_package.VersionStatus;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -463,7 +463,6 @@ public class ArchetypeHrid {
             Objects.equals(releaseVersion, that.releaseVersion) &&
             Objects.equals(versionStatus, that.versionStatus) &&
             Objects.equals(buildCount, that.buildCount);
-        }
     }
 
     public int hashCode() {
@@ -484,14 +483,14 @@ public class ArchetypeHrid {
     public String toString() {
         return
             "ArchetypeHrid {" +
-            "namespace='" + namespace + '\''; +
-            "rmPublisher='" + rmPublisher + '\''; +
-            "rmPackage='" + rmPackage + '\''; +
-            "rmClass='" + rmClass + '\''; +
-            "conceptId='" + conceptId + '\''; +
-            "releaseVersion='" + releaseVersion + '\''; +
-            "versionStatus='" + versionStatus + '\''; +
-            "buildCount='" + buildCount + '\''; +
+            "namespace='" + namespace + '\'' +
+            "rmPublisher='" + rmPublisher + '\'' +
+            "rmPackage='" + rmPackage + '\'' +
+            "rmClass='" + rmClass + '\'' +
+            "conceptId='" + conceptId + '\'' +
+            "releaseVersion='" + releaseVersion + '\'' +
+            "versionStatus='" + versionStatus + '\'' +
+            "buildCount='" + buildCount + '\'' +
             '}';
     }
 

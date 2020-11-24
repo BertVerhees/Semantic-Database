@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -219,7 +219,6 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
         return
             Objects.equals(parent, that.parent) &&
             Objects.equals(socParent, that.socParent);
-        }
     }
 
     public int hashCode() {
@@ -234,8 +233,8 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
     public String toString() {
         return
             "ArchetypeConstraint {" +
-            "parent='" + parent + '\''; +
-            "socParent='" + socParent + '\''; +
+            "parent='" + parent + '\'' +
+            "socParent='" + socParent + '\'' +
             '}';
     }
 

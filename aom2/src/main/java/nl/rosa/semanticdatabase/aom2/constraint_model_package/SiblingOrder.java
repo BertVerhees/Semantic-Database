@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -160,7 +160,6 @@ public class SiblingOrder {
         return
             Objects.equals(isBefore, that.isBefore) &&
             Objects.equals(siblingNodeId, that.siblingNodeId);
-        }
     }
 
     public int hashCode() {
@@ -175,8 +174,8 @@ public class SiblingOrder {
     public String toString() {
         return
             "SiblingOrder {" +
-            "isBefore='" + isBefore + '\''; +
-            "siblingNodeId='" + siblingNodeId + '\''; +
+            "isBefore='" + isBefore + '\'' +
+            "siblingNodeId='" + siblingNodeId + '\'' +
             '}';
     }
 

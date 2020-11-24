@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.base_types.definitions_package.ValidityKind;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -234,7 +234,6 @@ public class CTime extends CTemporal {
             Objects.equals(constraint, that.constraint) &&
             Objects.equals(defaultValue, that.defaultValue) &&
             Objects.equals(assumedValue, that.assumedValue);
-        }
     }
 
     public int hashCode() {
@@ -250,9 +249,9 @@ public class CTime extends CTemporal {
     public String toString() {
         return
             "CTime {" +
-            "constraint='" + constraint + '\''; +
-            "defaultValue='" + defaultValue + '\''; +
-            "assumedValue='" + assumedValue + '\''; +
+            "constraint='" + constraint + '\'' +
+            "defaultValue='" + defaultValue + '\'' +
+            "assumedValue='" + assumedValue + '\'' +
             '}';
     }
 

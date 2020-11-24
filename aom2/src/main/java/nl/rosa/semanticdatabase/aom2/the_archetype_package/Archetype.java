@@ -9,7 +9,7 @@ import nl.rosa.semanticdatabase.aom_2.the_rm_overlay_package.RmOverlay;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -370,7 +370,6 @@ public abstract class Archetype {
             Objects.equals(terminology, that.terminology) &&
             Objects.equals(rules, that.rules) &&
             Objects.equals(rmOverlay, that.rmOverlay);
-        }
     }
 
     public int hashCode() {
@@ -390,13 +389,13 @@ public abstract class Archetype {
     public String toString() {
         return
             "Archetype {" +
-            "parentArchetypeId='" + parentArchetypeId + '\''; +
-            "archetypeId='" + archetypeId + '\''; +
-            "isDifferential='" + isDifferential + '\''; +
-            "definition='" + definition + '\''; +
-            "terminology='" + terminology + '\''; +
-            "rules='" + rules + '\''; +
-            "rmOverlay='" + rmOverlay + '\''; +
+            "parentArchetypeId='" + parentArchetypeId + '\'' +
+            "archetypeId='" + archetypeId + '\'' +
+            "isDifferential='" + isDifferential + '\'' +
+            "definition='" + definition + '\'' +
+            "terminology='" + terminology + '\'' +
+            "rules='" + rules + '\'' +
+            "rmOverlay='" + rmOverlay + '\'' +
             '}';
     }
 

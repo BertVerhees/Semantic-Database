@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.aom2.terminology_package;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:57:46.357+01:00
+ * #Generated: 2020-11-24T18:12:03.636+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -24,7 +25,7 @@ public class ValueSet extends TerminologyRelation {
 
     public ValueSet(
             String id,
-            List<string> members
+            List<String> members
         ){
         super( 
             id,
@@ -39,11 +40,11 @@ public class ValueSet extends TerminologyRelation {
 
     public static class Builder {
         private final String id;  //required
-        private final List<string> members;  //required
+        private final List<String> members;  //required
 
         public Builder (
             String id,
-            List<string> members
+            List<String> members
         ){
             if ( id == null ) {
                 throw new NullPointerException("Property:id has cardinality NonNull, but is null");
@@ -72,6 +73,7 @@ public class ValueSet extends TerminologyRelation {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
+        return true;
     }
 
     public int hashCode() {
