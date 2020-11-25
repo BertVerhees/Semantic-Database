@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -44,7 +45,7 @@ public class ElConditionChain extends ElDecisionTable {
     }
 
     public void addToItems(List<ElConditionalExpression> values ) {
-        values.forEach(value -> addItem(value));
+        values.forEach(value -> addToItem(value));
     }
 
     public void removeFromItem(ElConditionalExpression item ) {
@@ -53,12 +54,12 @@ public class ElConditionChain extends ElDecisionTable {
         }
     }
     public void removeFromItems( Collection <ElConditionalExpression> values ) {
-        values.forEach(this::removeItem);
+        values.forEach(this::removeFromItem);
     }
-    ElConditionalExpression getItems() {
+    List<ElConditionalExpression> getItems() {
         return this.items;
     }
-    public ElConditionChain setItems(ElConditionalExpression items) {
+    public ElConditionChain setItems(List<ElConditionalExpression> items) {
         if (items == null ) {
             throw new NullPointerException(" items has cardinality NonNull, but is null");
         }
@@ -75,6 +76,8 @@ public class ElConditionChain extends ElDecisionTable {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElConditionChain() {}
 
     public ElConditionChain(
             List<elConditionalExpression> items,
@@ -140,7 +143,6 @@ public class ElConditionChain extends ElDecisionTable {
         ElConditionChain that = (ElConditionChain) object;
         return
             java.util.Objects.equals(items, that.items);
-        }
     }
 
     public int hashCode() {
@@ -154,7 +156,7 @@ public class ElConditionChain extends ElDecisionTable {
     public java.lang.String toString() {
         return
             "ElConditionChain {" +
-            "items='" + items + '\''; +
+            "items='" + items + '\'' +
             '}';
     }
 

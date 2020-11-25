@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.foundation_types.time_types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,7 +41,7 @@ public abstract class Iso8601Type extends Temporal,TimeDefinitions {
     public String getValue() {
         return value;
     }
-    public setValue(String value) {
+    public void setValue(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:value failed, it has cardinality NonNull, but is null");
         }
@@ -77,6 +78,8 @@ public abstract class Iso8601Type extends Temporal,TimeDefinitions {
 /*=========================================================*/
 
 
+    protected Iso8601Type() {}
+
     protected Iso8601Type(
             String value,
             Integer maxDaysInYear
@@ -104,8 +107,7 @@ public abstract class Iso8601Type extends Temporal,TimeDefinitions {
         if (!super.equals(object)) return false;
         Iso8601Type that = (Iso8601Type) object;
         return
-            java.util.Objects.equals(value, that.value);
-        }
+            Objects.equals(value, that.value);
     }
 
     public int hashCode() {
@@ -119,7 +121,7 @@ public abstract class Iso8601Type extends Temporal,TimeDefinitions {
     public String toString() {
         return
             "Iso8601Type {" +
-            "value='" + value + '\''; +
+            "value='" + value + '\'' +
             '}';
     }
 

@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.statements.BmmAssertion;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -78,7 +79,7 @@ public abstract class BmmRoutine extends BmmClassFeature {
     }
 
     public void addToParameters(List<BmmParameter> values ) {
-        values.forEach(value -> addParameter(value));
+        values.forEach(value -> addToParameter(value));
     }
 
     public void removeFromParameter(BmmParameter item ) {
@@ -87,12 +88,12 @@ public abstract class BmmRoutine extends BmmClassFeature {
         }
     }
     public void removeFromParameters( Collection <BmmParameter> values ) {
-        values.forEach(this::removeParameter);
+        values.forEach(this::removeFromParameter);
     }
-    BmmParameter getParameters() {
+    List<BmmParameter> getParameters() {
         return this.parameters;
     }
-    public BmmRoutine setParameters(BmmParameter parameters) {
+    public BmmRoutine setParameters(List<BmmParameter> parameters) {
         this.parameters = parameters;
         return this;
     }
@@ -115,7 +116,7 @@ public abstract class BmmRoutine extends BmmClassFeature {
     }
 
     public void addToLocals(List<BmmLocal> values ) {
-        values.forEach(value -> addLocal(value));
+        values.forEach(value -> addToLocal(value));
     }
 
     public void removeFromLocal(BmmLocal item ) {
@@ -124,12 +125,12 @@ public abstract class BmmRoutine extends BmmClassFeature {
         }
     }
     public void removeFromLocals( Collection <BmmLocal> values ) {
-        values.forEach(this::removeLocal);
+        values.forEach(this::removeFromLocal);
     }
-    BmmLocal getLocals() {
+    List<BmmLocal> getLocals() {
         return this.locals;
     }
-    public BmmRoutine setLocals(BmmLocal locals) {
+    public BmmRoutine setLocals(List<BmmLocal> locals) {
         this.locals = locals;
         return this;
     }
@@ -151,7 +152,7 @@ public abstract class BmmRoutine extends BmmClassFeature {
     }
 
     public void addToPreConditions(List<BmmAssertion> values ) {
-        values.forEach(value -> addPrecondition(value));
+        values.forEach(value -> addToPrecondition(value));
     }
 
     public void removeFromPreCondition(BmmAssertion item ) {
@@ -160,12 +161,12 @@ public abstract class BmmRoutine extends BmmClassFeature {
         }
     }
     public void removeFromPreConditions( Collection <BmmAssertion> values ) {
-        values.forEach(this::removePreCondition);
+        values.forEach(this::removeFromPreCondition);
     }
-    BmmAssertion getPreConditions() {
+    List<BmmAssertion> getPreConditions() {
         return this.preConditions;
     }
-    public BmmRoutine setPreConditions(BmmAssertion preConditions) {
+    public BmmRoutine setPreConditions(List<BmmAssertion> preConditions) {
         this.preConditions = preConditions;
         return this;
     }
@@ -187,7 +188,7 @@ public abstract class BmmRoutine extends BmmClassFeature {
     }
 
     public void addToPostConditions(List<BmmAssertion> values ) {
-        values.forEach(value -> addPostcondition(value));
+        values.forEach(value -> addToPostcondition(value));
     }
 
     public void removeFromPostCondition(BmmAssertion item ) {
@@ -196,12 +197,12 @@ public abstract class BmmRoutine extends BmmClassFeature {
         }
     }
     public void removeFromPostConditions( Collection <BmmAssertion> values ) {
-        values.forEach(this::removePostCondition);
+        values.forEach(this::removeFromPostCondition);
     }
-    BmmAssertion getPostConditions() {
+    List<BmmAssertion> getPostConditions() {
         return this.postConditions;
     }
-    public BmmRoutine setPostConditions(BmmAssertion postConditions) {
+    public BmmRoutine setPostConditions(List<BmmAssertion> postConditions) {
         this.postConditions = postConditions;
         return this;
     }
@@ -219,7 +220,7 @@ public abstract class BmmRoutine extends BmmClassFeature {
     public BmmRoutineBody getBody() {
         return body;
     }
-    public setBody(BmmRoutineBody value) {
+    public void setBody(BmmRoutineBody value) {
         this.body = body;
     }
 
@@ -258,6 +259,8 @@ public abstract class BmmRoutine extends BmmClassFeature {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmRoutine() {}
 
     protected BmmRoutine(
             List<bmmParameter> parameters,
@@ -310,7 +313,6 @@ public abstract class BmmRoutine extends BmmClassFeature {
             java.util.Objects.equals(preConditions, that.preConditions) &&
             java.util.Objects.equals(postConditions, that.postConditions) &&
             java.util.Objects.equals(body, that.body);
-        }
     }
 
     public int hashCode() {
@@ -328,11 +330,11 @@ public abstract class BmmRoutine extends BmmClassFeature {
     public java.lang.String toString() {
         return
             "BmmRoutine {" +
-            "parameters='" + parameters + '\''; +
-            "locals='" + locals + '\''; +
-            "preConditions='" + preConditions + '\''; +
-            "postConditions='" + postConditions + '\''; +
-            "body='" + body + '\''; +
+            "parameters='" + parameters + '\'' +
+            "locals='" + locals + '\'' +
+            "preConditions='" + preConditions + '\'' +
+            "postConditions='" + postConditions + '\'' +
+            "body='" + body + '\'' +
             '}';
     }
 

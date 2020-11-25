@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.base_types.definitions_package;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -30,6 +31,8 @@ public class OpenehrDefinitions extends BasicDefinitions {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected OpenehrDefinitions() {}
 
     public OpenehrDefinitions(
             
@@ -62,14 +65,12 @@ public class OpenehrDefinitions extends BasicDefinitions {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        OpenehrDefinitions that = (OpenehrDefinitions) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

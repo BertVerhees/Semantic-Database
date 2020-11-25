@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -115,7 +116,7 @@ public abstract class BmmProperty extends BmmClassFeature implements BmmInstanti
     public BmmType getType() {
         return type;
     }
-    public setType(BmmType value) {
+    public void setType(BmmType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -149,6 +150,8 @@ public abstract class BmmProperty extends BmmClassFeature implements BmmInstanti
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmProperty() {}
 
     protected BmmProperty(
             BmmType type,
@@ -192,7 +195,6 @@ public abstract class BmmProperty extends BmmClassFeature implements BmmInstanti
         BmmProperty that = (BmmProperty) object;
         return
             java.util.Objects.equals(type, that.type);
-        }
     }
 
     public int hashCode() {
@@ -206,7 +208,7 @@ public abstract class BmmProperty extends BmmClassFeature implements BmmInstanti
     public java.lang.String toString() {
         return
             "BmmProperty {" +
-            "type='" + type + '\''; +
+            "type='" + type + '\'' +
             '}';
     }
 

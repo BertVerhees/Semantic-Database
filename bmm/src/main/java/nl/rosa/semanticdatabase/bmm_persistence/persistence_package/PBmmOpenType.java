@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -47,7 +48,7 @@ public class PBmmOpenType extends PBmmBaseType {
     public String getType() {
         return type;
     }
-    public setType(String value) {
+    public void setType(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -63,7 +64,7 @@ public class PBmmOpenType extends PBmmBaseType {
     public @@ getBmmType() {
         return bmmType;
     }
-    public setBmmType(@@ value) {
+    public void setBmmType(@@ value) {
         this.bmmType = bmmType;
     }
 
@@ -73,6 +74,8 @@ public class PBmmOpenType extends PBmmBaseType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmOpenType() {}
 
     public PBmmOpenType(
             String type,
@@ -148,7 +151,6 @@ public class PBmmOpenType extends PBmmBaseType {
         return
             java.util.Objects.equals(type, that.type) &&
             java.util.Objects.equals(bmmType, that.bmmType);
-        }
     }
 
     public int hashCode() {
@@ -163,8 +165,8 @@ public class PBmmOpenType extends PBmmBaseType {
     public java.lang.String toString() {
         return
             "PBmmOpenType {" +
-            "type='" + type + '\''; +
-            "bmmType='" + bmmType + '\''; +
+            "type='" + type + '\'' +
+            "bmmType='" + bmmType + '\'' +
             '}';
     }
 

@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -37,7 +38,7 @@ public abstract class PBmmBaseType extends PBmmType {
     public String getValueConstraint() {
         return valueConstraint;
     }
-    public setValueConstraint(String value) {
+    public void setValueConstraint(String value) {
         this.valueConstraint = valueConstraint;
     }
 
@@ -47,6 +48,8 @@ public abstract class PBmmBaseType extends PBmmType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmBaseType() {}
 
     protected PBmmBaseType(
             String valueConstraint,
@@ -73,7 +76,6 @@ public abstract class PBmmBaseType extends PBmmType {
         PBmmBaseType that = (PBmmBaseType) object;
         return
             java.util.Objects.equals(valueConstraint, that.valueConstraint);
-        }
     }
 
     public int hashCode() {
@@ -87,7 +89,7 @@ public abstract class PBmmBaseType extends PBmmType {
     public java.lang.String toString() {
         return
             "PBmmBaseType {" +
-            "valueConstraint='" + valueConstraint + '\''; +
+            "valueConstraint='" + valueConstraint + '\'' +
             '}';
     }
 

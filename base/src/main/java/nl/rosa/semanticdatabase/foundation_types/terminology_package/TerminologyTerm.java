@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.foundation_types.terminology_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -49,7 +50,7 @@ public class TerminologyTerm extends Any {
     public TerminologyCode getConcept() {
         return concept;
     }
-    public setConcept(TerminologyCode value) {
+    public void setConcept(TerminologyCode value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:concept failed, it has cardinality NonNull, but is null");
         }
@@ -65,7 +66,7 @@ public class TerminologyTerm extends Any {
     public String getText() {
         return text;
     }
-    public setText(String value) {
+    public void setText(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:text failed, it has cardinality NonNull, but is null");
         }
@@ -78,6 +79,8 @@ public class TerminologyTerm extends Any {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected TerminologyTerm() {}
 
     public TerminologyTerm(
             TerminologyCode concept,
@@ -135,9 +138,8 @@ public class TerminologyTerm extends Any {
         if (!super.equals(object)) return false;
         TerminologyTerm that = (TerminologyTerm) object;
         return
-            java.util.Objects.equals(concept, that.concept) &&
-            java.util.Objects.equals(text, that.text);
-        }
+            Objects.equals(concept, that.concept) &&
+            Objects.equals(text, that.text);
     }
 
     public int hashCode() {
@@ -152,8 +154,8 @@ public class TerminologyTerm extends Any {
     public String toString() {
         return
             "TerminologyTerm {" +
-            "concept='" + concept + '\''; +
-            "text='" + text + '\''; +
+            "concept='" + concept + '\'' +
+            "text='" + text + '\'' +
             '}';
     }
 

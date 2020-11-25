@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.classes;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -51,7 +52,7 @@ public class BmmValueSetSpec {
     public String getResourceId() {
         return resourceId;
     }
-    public setResourceId(String value) {
+    public void setResourceId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:resourceId failed, it has cardinality NonNull, but is null");
         }
@@ -68,7 +69,7 @@ public class BmmValueSetSpec {
     public String getValueSetId() {
         return valueSetId;
     }
-    public setValueSetId(String value) {
+    public void setValueSetId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:valueSetId failed, it has cardinality NonNull, but is null");
         }
@@ -81,6 +82,8 @@ public class BmmValueSetSpec {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmValueSetSpec() {}
 
     public BmmValueSetSpec(
             String resourceId,
@@ -140,7 +143,6 @@ public class BmmValueSetSpec {
         return
             java.util.Objects.equals(resourceId, that.resourceId) &&
             java.util.Objects.equals(valueSetId, that.valueSetId);
-        }
     }
 
     public int hashCode() {
@@ -155,8 +157,8 @@ public class BmmValueSetSpec {
     public java.lang.String toString() {
         return
             "BmmValueSetSpec {" +
-            "resourceId='" + resourceId + '\''; +
-            "valueSetId='" + valueSetId + '\''; +
+            "resourceId='" + resourceId + '\'' +
+            "valueSetId='" + valueSetId + '\'' +
             '}';
     }
 

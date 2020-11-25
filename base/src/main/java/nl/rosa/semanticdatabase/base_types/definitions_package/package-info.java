@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.base_types.definitions_package/definitions_package;
+package nl.rosa.semanticdatabase.base_types.definitions_package;
 /**
  * 
  * 

@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.aom_2.constraint_model_package.CObject;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -38,7 +39,7 @@ public class ElCase extends ElDecisionBranch {
     public CObject getValueConstraint() {
         return valueConstraint;
     }
-    public setValueConstraint(CObject value) {
+    public void setValueConstraint(CObject value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:valueConstraint failed, it has cardinality NonNull, but is null");
         }
@@ -51,6 +52,8 @@ public class ElCase extends ElDecisionBranch {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElCase() {}
 
     public ElCase(
             CObject valueConstraint,
@@ -108,7 +111,6 @@ public class ElCase extends ElDecisionBranch {
         ElCase that = (ElCase) object;
         return
             java.util.Objects.equals(valueConstraint, that.valueConstraint);
-        }
     }
 
     public int hashCode() {
@@ -122,7 +124,7 @@ public class ElCase extends ElDecisionBranch {
     public java.lang.String toString() {
         return
             "ElCase {" +
-            "valueConstraint='" + valueConstraint + '\''; +
+            "valueConstraint='" + valueConstraint + '\'' +
             '}';
     }
 

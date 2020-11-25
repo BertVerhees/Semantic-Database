@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.classes;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmParameterType;
 import nl.rosa.semanticdatabase.bmm.types.BmmGenericType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -135,6 +136,8 @@ public class BmmGenericClass extends BmmClass {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmGenericClass() {}
 
     public BmmGenericClass(
             Map<string,bmmParameterType> genericParameters,
@@ -345,7 +348,6 @@ public class BmmGenericClass extends BmmClass {
         BmmGenericClass that = (BmmGenericClass) object;
         return
             java.util.Objects.equals(genericParameters, that.genericParameters);
-        }
     }
 
     public int hashCode() {
@@ -359,7 +361,7 @@ public class BmmGenericClass extends BmmClass {
     public java.lang.String toString() {
         return
             "BmmGenericClass {" +
-            "genericParameters='" + genericParameters + '\''; +
+            "genericParameters='" + genericParameters + '\'' +
             '}';
     }
 

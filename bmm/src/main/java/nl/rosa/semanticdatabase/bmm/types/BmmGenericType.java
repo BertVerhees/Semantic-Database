@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.classes.BmmGenericClass;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -55,7 +56,7 @@ public class BmmGenericType extends BmmModelType {
     }
 
     public void addToGenericParameters(List<BmmUnitaryType> values ) {
-        values.forEach(value -> addGenericparameter(value));
+        values.forEach(value -> addToGenericparameter(value));
     }
 
     public void removeFromGenericParameter(BmmUnitaryType item ) {
@@ -64,12 +65,12 @@ public class BmmGenericType extends BmmModelType {
         }
     }
     public void removeFromGenericParameters( Collection <BmmUnitaryType> values ) {
-        values.forEach(this::removeGenericParameter);
+        values.forEach(this::removeFromGenericParameter);
     }
-    BmmUnitaryType getGenericParameters() {
+    List<BmmUnitaryType> getGenericParameters() {
         return this.genericParameters;
     }
-    public BmmGenericType setGenericParameters(BmmUnitaryType genericParameters) {
+    public BmmGenericType setGenericParameters(List<BmmUnitaryType> genericParameters) {
         if (genericParameters == null ) {
             throw new NullPointerException(" genericParameters has cardinality NonNull, but is null");
         }
@@ -89,7 +90,7 @@ public class BmmGenericType extends BmmModelType {
     public BmmGenericClass getBaseClass() {
         return baseClass;
     }
-    public setBaseClass(BmmGenericClass value) {
+    public void setBaseClass(BmmGenericClass value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:baseClass failed, it has cardinality NonNull, but is null");
         }
@@ -221,6 +222,8 @@ public class BmmGenericType extends BmmModelType {
 /*=========================================================*/
 
 
+    protected BmmGenericType() {}
+
     public BmmGenericType(
             List<bmmUnitaryType> genericParameters,
             BmmGenericClass baseClass,
@@ -298,7 +301,6 @@ public class BmmGenericType extends BmmModelType {
         return
             java.util.Objects.equals(genericParameters, that.genericParameters) &&
             java.util.Objects.equals(baseClass, that.baseClass);
-        }
     }
 
     public int hashCode() {
@@ -313,8 +315,8 @@ public class BmmGenericType extends BmmModelType {
     public java.lang.String toString() {
         return
             "BmmGenericType {" +
-            "genericParameters='" + genericParameters + '\''; +
-            "baseClass='" + baseClass + '\''; +
+            "genericParameters='" + genericParameters + '\'' +
+            "baseClass='" + baseClass + '\'' +
             '}';
     }
 

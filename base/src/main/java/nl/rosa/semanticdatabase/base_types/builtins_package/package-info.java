@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.base_types.builtins_package/builtins_package;
+package nl.rosa.semanticdatabase.base_types.builtins_package;
 /**
  * 
  * 

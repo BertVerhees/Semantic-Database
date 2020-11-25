@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.model_access_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -81,7 +82,7 @@ public class BmmModelAccess {
     }
 
     public void addToSchemaDirectories(List<String> values ) {
-        values.forEach(value -> addSchemadirectory(value));
+        values.forEach(value -> addToSchemadirectory(value));
     }
 
     public void removeFromSchemaDirectory(String item ) {
@@ -90,12 +91,12 @@ public class BmmModelAccess {
         }
     }
     public void removeFromSchemaDirectories( Collection <String> values ) {
-        values.forEach(this::removeSchemaDirectory);
+        values.forEach(this::removeFromSchemaDirectory);
     }
-    String getSchemaDirectories() {
+    List<String> getSchemaDirectories() {
         return this.schemaDirectories;
     }
-    public BmmModelAccess setSchemaDirectories(String schemaDirectories) {
+    public BmmModelAccess setSchemaDirectories(List<String> schemaDirectories) {
         this.schemaDirectories = schemaDirectories;
         return this;
     }
@@ -246,7 +247,7 @@ public class BmmModelAccess {
     public  get() {
         return ;
     }
-    public set( value) {
+    public void set( value) {
         this. = ;
     }
 
@@ -329,6 +330,8 @@ public class BmmModelAccess {
 /*=========================================================*/
 
 
+    protected BmmModelAccess() {}
+
     public BmmModelAccess(
             List<string> schemaDirectories,
             Map<string,bmmSchemaDescriptor> allSchemas,
@@ -401,7 +404,6 @@ public class BmmModelAccess {
             java.util.Objects.equals(allSchemas, that.allSchemas) &&
             java.util.Objects.equals(bmmModels, that.bmmModels) &&
             java.util.Objects.equals(matchingBmmModels, that.matchingBmmModels);
-        }
     }
 
     public int hashCode() {
@@ -418,10 +420,10 @@ public class BmmModelAccess {
     public java.lang.String toString() {
         return
             "BmmModelAccess {" +
-            "schemaDirectories='" + schemaDirectories + '\''; +
-            "allSchemas='" + allSchemas + '\''; +
-            "bmmModels='" + bmmModels + '\''; +
-            "matchingBmmModels='" + matchingBmmModels + '\''; +
+            "schemaDirectories='" + schemaDirectories + '\'' +
+            "allSchemas='" + allSchemas + '\'' +
+            "bmmModels='" + bmmModels + '\'' +
+            "matchingBmmModels='" + matchingBmmModels + '\'' +
             '}';
     }
 

@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmDeclaration;
 import nl.rosa.semanticdatabase.bmm.types.BmmSignature;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -44,6 +45,8 @@ public abstract class BmmClassEntity extends BmmDeclaration {
 /*=========================================================*/
 
 
+    protected BmmClassEntity() {}
+
     protected BmmClassEntity(
             String name,
             Map<string, any> documentation,
@@ -70,14 +73,12 @@ public abstract class BmmClassEntity extends BmmDeclaration {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        BmmClassEntity that = (BmmClassEntity) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

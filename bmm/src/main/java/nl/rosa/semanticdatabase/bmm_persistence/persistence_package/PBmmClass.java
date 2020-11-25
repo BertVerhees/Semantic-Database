@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
@@ -7,7 +8,7 @@ import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -135,7 +136,7 @@ public class PBmmClass extends PBmmModelElement {
     public String getName() {
         return name;
     }
-    public setName(String value) {
+    public void setName(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
@@ -159,7 +160,7 @@ public class PBmmClass extends PBmmModelElement {
     }
 
     public void addToAncestors(List<String> values ) {
-        values.forEach(value -> addAncestor(value));
+        values.forEach(value -> addToAncestor(value));
     }
 
     public void removeFromAncestor(String item ) {
@@ -168,12 +169,12 @@ public class PBmmClass extends PBmmModelElement {
         }
     }
     public void removeFromAncestors( Collection <String> values ) {
-        values.forEach(this::removeAncestor);
+        values.forEach(this::removeFromAncestor);
     }
-    String getAncestors() {
+    List<String> getAncestors() {
         return this.ancestors;
     }
-    public PBmmClass setAncestors(String ancestors) {
+    public PBmmClass setAncestors(List<String> ancestors) {
         this.ancestors = ancestors;
         return this;
     }
@@ -236,7 +237,7 @@ public class PBmmClass extends PBmmModelElement {
     public Boolean getIsAbstract() {
         return isAbstract;
     }
-    public setIsAbstract(Boolean value) {
+    public void setIsAbstract(Boolean value) {
         this.isAbstract = isAbstract;
     }
 
@@ -249,7 +250,7 @@ public class PBmmClass extends PBmmModelElement {
     public Boolean getIsOverride() {
         return isOverride;
     }
-    public setIsOverride(Boolean value) {
+    public void setIsOverride(Boolean value) {
         this.isOverride = isOverride;
     }
 
@@ -310,7 +311,7 @@ public class PBmmClass extends PBmmModelElement {
     public String getSourceSchemaId() {
         return sourceSchemaId;
     }
-    public setSourceSchemaId(String value) {
+    public void setSourceSchemaId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:sourceSchemaId failed, it has cardinality NonNull, but is null");
         }
@@ -326,7 +327,7 @@ public class PBmmClass extends PBmmModelElement {
     public BmmClass getBmmClass() {
         return bmmClass;
     }
-    public setBmmClass(BmmClass value) {
+    public void setBmmClass(BmmClass value) {
         this.bmmClass = bmmClass;
     }
 
@@ -340,7 +341,7 @@ public class PBmmClass extends PBmmModelElement {
     public Integer getUid() {
         return uid;
     }
-    public setUid(Integer value) {
+    public void setUid(Integer value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:uid failed, it has cardinality NonNull, but is null");
         }
@@ -363,7 +364,7 @@ public class PBmmClass extends PBmmModelElement {
     }
 
     public void addToAncestorDefs(List<PBmmGenericType> values ) {
-        values.forEach(value -> addAncestordef(value));
+        values.forEach(value -> addToAncestordef(value));
     }
 
     public void removeFromAncestorDef(PBmmGenericType item ) {
@@ -372,12 +373,12 @@ public class PBmmClass extends PBmmModelElement {
         }
     }
     public void removeFromAncestorDefs( Collection <PBmmGenericType> values ) {
-        values.forEach(this::removeAncestorDef);
+        values.forEach(this::removeFromAncestorDef);
     }
-    PBmmGenericType getAncestorDefs() {
+    List<PBmmGenericType> getAncestorDefs() {
         return this.ancestorDefs;
     }
-    public PBmmClass setAncestorDefs(PBmmGenericType ancestorDefs) {
+    public PBmmClass setAncestorDefs(List<PBmmGenericType> ancestorDefs) {
         this.ancestorDefs = ancestorDefs;
         return this;
     }
@@ -394,7 +395,7 @@ public class PBmmClass extends PBmmModelElement {
     public  get() {
         return ;
     }
-    public set( value) {
+    public void set( value) {
         this. = ;
     }
 
@@ -436,6 +437,8 @@ public class PBmmClass extends PBmmModelElement {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmClass() {}
 
     public PBmmClass(
             String name,
@@ -589,7 +592,6 @@ public class PBmmClass extends PBmmModelElement {
             java.util.Objects.equals(bmmClass, that.bmmClass) &&
             java.util.Objects.equals(uid, that.uid) &&
             java.util.Objects.equals(ancestorDefs, that.ancestorDefs);
-        }
     }
 
     public int hashCode() {
@@ -612,16 +614,16 @@ public class PBmmClass extends PBmmModelElement {
     public java.lang.String toString() {
         return
             "PBmmClass {" +
-            "name='" + name + '\''; +
-            "ancestors='" + ancestors + '\''; +
-            "properties='" + properties + '\''; +
-            "isAbstract='" + isAbstract + '\''; +
-            "isOverride='" + isOverride + '\''; +
-            "genericParameterDefs='" + genericParameterDefs + '\''; +
-            "sourceSchemaId='" + sourceSchemaId + '\''; +
-            "bmmClass='" + bmmClass + '\''; +
-            "uid='" + uid + '\''; +
-            "ancestorDefs='" + ancestorDefs + '\''; +
+            "name='" + name + '\'' +
+            "ancestors='" + ancestors + '\'' +
+            "properties='" + properties + '\'' +
+            "isAbstract='" + isAbstract + '\'' +
+            "isOverride='" + isOverride + '\'' +
+            "genericParameterDefs='" + genericParameterDefs + '\'' +
+            "sourceSchemaId='" + sourceSchemaId + '\'' +
+            "bmmClass='" + bmmClass + '\'' +
+            "uid='" + uid + '\'' +
+            "ancestorDefs='" + ancestorDefs + '\'' +
             '}';
     }
 

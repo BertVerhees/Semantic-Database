@@ -1,4 +1,4 @@
-package bmm_persistence/persistence_package;
+package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 /**
  * 
  * 

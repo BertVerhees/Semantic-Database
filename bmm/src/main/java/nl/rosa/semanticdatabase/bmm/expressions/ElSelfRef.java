@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,7 +41,7 @@ public class ElSelfRef extends ElInstanceRef {
     public BmmType getType() {
         return type;
     }
-    public setType(BmmType value) {
+    public void setType(BmmType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -73,6 +74,8 @@ public class ElSelfRef extends ElInstanceRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElSelfRef() {}
 
     public ElSelfRef(
             BmmType type
@@ -119,7 +122,6 @@ public class ElSelfRef extends ElInstanceRef {
         ElSelfRef that = (ElSelfRef) object;
         return
             java.util.Objects.equals(type, that.type);
-        }
     }
 
     public int hashCode() {
@@ -133,7 +135,7 @@ public class ElSelfRef extends ElInstanceRef {
     public java.lang.String toString() {
         return
             "ElSelfRef {" +
-            "type='" + type + '\''; +
+            "type='" + type + '\'' +
             '}';
     }
 

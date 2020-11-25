@@ -1291,7 +1291,7 @@
                 <xsl:element name="package">
                     <xsl:variable name="packageDirectory" select="concat($baseDirectory, '/', $packageName)"/>
                     <xsl:element name="packageInfo">
-                        <xsl:value-of select="do:output(concat('package ', $packageDirectory, ';'))"/>
+                        <xsl:value-of select="do:output(concat('package ', replace(concat($packageBase, $packageDirectory), '/', '.'), ';'))"/>
                         <xsl:value-of select="do:commentOpen()"/>
                         <xsl:value-of select="do:commentOutput('')"/>
                         <xsl:value-of select="do:commentOutput($context/h2[1])"/>

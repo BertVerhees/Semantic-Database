@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmRoutine;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -68,7 +69,7 @@ public abstract class ElAgent extends ElScopedRef {
     public String getName() {
         return name;
     }
-    public setName(String value) {
+    public void setName(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
@@ -84,7 +85,7 @@ public abstract class ElAgent extends ElScopedRef {
     public ElTuple getClosedArgs() {
         return closedArgs;
     }
-    public setClosedArgs(ElTuple value) {
+    public void setClosedArgs(ElTuple value) {
         this.closedArgs = closedArgs;
     }
 
@@ -104,7 +105,7 @@ public abstract class ElAgent extends ElScopedRef {
     }
 
     public void addToOpenArgs(List<String> values ) {
-        values.forEach(value -> addOpenarg(value));
+        values.forEach(value -> addToOpenarg(value));
     }
 
     public void removeFromOpenArg(String item ) {
@@ -113,12 +114,12 @@ public abstract class ElAgent extends ElScopedRef {
         }
     }
     public void removeFromOpenArgs( Collection <String> values ) {
-        values.forEach(this::removeOpenArg);
+        values.forEach(this::removeFromOpenArg);
     }
-    String getOpenArgs() {
+    List<String> getOpenArgs() {
         return this.openArgs;
     }
-    public ElAgent setOpenArgs(String openArgs) {
+    public ElAgent setOpenArgs(List<String> openArgs) {
         this.openArgs = openArgs;
         return this;
     }
@@ -135,7 +136,7 @@ public abstract class ElAgent extends ElScopedRef {
     public BmmRoutine getDefinition() {
         return definition;
     }
-    public setDefinition(BmmRoutine value) {
+    public void setDefinition(BmmRoutine value) {
         this.definition = definition;
     }
 
@@ -182,6 +183,8 @@ public abstract class ElAgent extends ElScopedRef {
 /*=========================================================*/
 
 
+    protected ElAgent() {}
+
     protected ElAgent(
             String name,
             ElTuple closedArgs,
@@ -219,7 +222,6 @@ public abstract class ElAgent extends ElScopedRef {
             java.util.Objects.equals(closedArgs, that.closedArgs) &&
             java.util.Objects.equals(openArgs, that.openArgs) &&
             java.util.Objects.equals(definition, that.definition);
-        }
     }
 
     public int hashCode() {
@@ -236,10 +238,10 @@ public abstract class ElAgent extends ElScopedRef {
     public java.lang.String toString() {
         return
             "ElAgent {" +
-            "name='" + name + '\''; +
-            "closedArgs='" + closedArgs + '\''; +
-            "openArgs='" + openArgs + '\''; +
-            "definition='" + definition + '\''; +
+            "name='" + name + '\'' +
+            "closedArgs='" + closedArgs + '\'' +
+            "openArgs='" + openArgs + '\'' +
+            "definition='" + definition + '\'' +
             '}';
     }
 

@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.statements;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmRoutineBody;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -19,6 +20,8 @@ public abstract class BmmStatementItem extends BmmRoutineBody {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmStatementItem() {}
 
     protected BmmStatementItem(
             
@@ -37,14 +40,12 @@ public abstract class BmmStatementItem extends BmmRoutineBody {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        BmmStatementItem that = (BmmStatementItem) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

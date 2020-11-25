@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,7 +40,7 @@ public class ElUnaryOperator extends ElOperator {
     public ElSimple getOperand() {
         return operand;
     }
-    public setOperand(ElSimple value) {
+    public void setOperand(ElSimple value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:operand failed, it has cardinality NonNull, but is null");
         }
@@ -52,6 +53,8 @@ public class ElUnaryOperator extends ElOperator {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElUnaryOperator() {}
 
     public ElUnaryOperator(
             ElSimple operand,
@@ -127,7 +130,6 @@ public class ElUnaryOperator extends ElOperator {
         ElUnaryOperator that = (ElUnaryOperator) object;
         return
             java.util.Objects.equals(operand, that.operand);
-        }
     }
 
     public int hashCode() {
@@ -141,7 +143,7 @@ public class ElUnaryOperator extends ElOperator {
     public java.lang.String toString() {
         return
             "ElUnaryOperator {" +
-            "operand='" + operand + '\''; +
+            "operand='" + operand + '\'' +
             '}';
     }
 

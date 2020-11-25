@@ -1,4 +1,4 @@
-package bmm/overview;
+package nl.rosa.semanticdatabase.bmm.overview;
 /**
  * 
  * 

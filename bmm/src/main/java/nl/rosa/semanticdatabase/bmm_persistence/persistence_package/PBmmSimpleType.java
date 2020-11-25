@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -48,7 +49,7 @@ public class PBmmSimpleType extends PBmmBaseType {
     public String getType() {
         return type;
     }
-    public setType(String value) {
+    public void setType(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -64,7 +65,7 @@ public class PBmmSimpleType extends PBmmBaseType {
     public BmmSimpleType getBmmType() {
         return bmmType;
     }
-    public setBmmType(BmmSimpleType value) {
+    public void setBmmType(BmmSimpleType value) {
         this.bmmType = bmmType;
     }
 
@@ -74,6 +75,8 @@ public class PBmmSimpleType extends PBmmBaseType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmSimpleType() {}
 
     public PBmmSimpleType(
             String type,
@@ -149,7 +152,6 @@ public class PBmmSimpleType extends PBmmBaseType {
         return
             java.util.Objects.equals(type, that.type) &&
             java.util.Objects.equals(bmmType, that.bmmType);
-        }
     }
 
     public int hashCode() {
@@ -164,8 +166,8 @@ public class PBmmSimpleType extends PBmmBaseType {
     public java.lang.String toString() {
         return
             "PBmmSimpleType {" +
-            "type='" + type + '\''; +
-            "bmmType='" + bmmType + '\''; +
+            "type='" + type + '\'' +
+            "bmmType='" + bmmType + '\'' +
             '}';
     }
 

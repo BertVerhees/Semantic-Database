@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.foundation_types.interval/interval;
+package nl.rosa.semanticdatabase.foundation_types.interval;
 /**
  * 
  * 

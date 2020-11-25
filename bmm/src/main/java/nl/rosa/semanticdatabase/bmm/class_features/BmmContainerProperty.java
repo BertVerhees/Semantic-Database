@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmm.types.BmmContainerType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -49,7 +50,7 @@ public class BmmContainerProperty extends BmmProperty {
     public MultiplicityInterval getCardinality() {
         return cardinality;
     }
-    public setCardinality(MultiplicityInterval value) {
+    public void setCardinality(MultiplicityInterval value) {
         this.cardinality = cardinality;
     }
 
@@ -62,7 +63,7 @@ public class BmmContainerProperty extends BmmProperty {
     public BmmContainerType getType() {
         return type;
     }
-    public setType(BmmContainerType value) {
+    public void setType(BmmContainerType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -95,6 +96,8 @@ public class BmmContainerProperty extends BmmProperty {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmContainerProperty() {}
 
     public BmmContainerProperty(
             MultiplicityInterval cardinality,
@@ -233,7 +236,6 @@ public class BmmContainerProperty extends BmmProperty {
         return
             java.util.Objects.equals(cardinality, that.cardinality) &&
             java.util.Objects.equals(type, that.type);
-        }
     }
 
     public int hashCode() {
@@ -248,8 +250,8 @@ public class BmmContainerProperty extends BmmProperty {
     public java.lang.String toString() {
         return
             "BmmContainerProperty {" +
-            "cardinality='" + cardinality + '\''; +
-            "type='" + type + '\''; +
+            "cardinality='" + cardinality + '\'' +
+            "type='" + type + '\'' +
             '}';
     }
 

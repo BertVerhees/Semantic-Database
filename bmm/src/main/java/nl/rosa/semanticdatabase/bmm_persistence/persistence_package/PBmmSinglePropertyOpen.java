@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmUnitaryProperty;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -59,7 +60,7 @@ public class PBmmSinglePropertyOpen extends PBmmProperty {
     public PBmmOpenType getTypeRef() {
         return typeRef;
     }
-    public setTypeRef(PBmmOpenType value) {
+    public void setTypeRef(PBmmOpenType value) {
         this.typeRef = typeRef;
     }
 
@@ -75,7 +76,7 @@ public class PBmmSinglePropertyOpen extends PBmmProperty {
     public String getType() {
         return type;
     }
-    public setType(String value) {
+    public void setType(String value) {
         this.type = type;
     }
 
@@ -88,7 +89,7 @@ public class PBmmSinglePropertyOpen extends PBmmProperty {
     public BmmUnitaryProperty getBmmProperty() {
         return bmmProperty;
     }
-    public setBmmProperty(BmmUnitaryProperty value) {
+    public void setBmmProperty(BmmUnitaryProperty value) {
         this.bmmProperty = bmmProperty;
     }
 
@@ -118,6 +119,8 @@ public class PBmmSinglePropertyOpen extends PBmmProperty {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmSinglePropertyOpen() {}
 
     public PBmmSinglePropertyOpen(
             PBmmOpenType typeRef,
@@ -254,7 +257,6 @@ public class PBmmSinglePropertyOpen extends PBmmProperty {
             java.util.Objects.equals(typeRef, that.typeRef) &&
             java.util.Objects.equals(type, that.type) &&
             java.util.Objects.equals(bmmProperty, that.bmmProperty);
-        }
     }
 
     public int hashCode() {
@@ -270,9 +272,9 @@ public class PBmmSinglePropertyOpen extends PBmmProperty {
     public java.lang.String toString() {
         return
             "PBmmSinglePropertyOpen {" +
-            "typeRef='" + typeRef + '\''; +
-            "type='" + type + '\''; +
-            "bmmProperty='" + bmmProperty + '\''; +
+            "typeRef='" + typeRef + '\'' +
+            "type='" + type + '\'' +
+            "bmmProperty='" + bmmProperty + '\'' +
             '}';
     }
 

@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -60,7 +61,7 @@ public class BmmParameterType extends BmmUnitaryType {
     public String getName() {
         return name;
     }
-    public setName(String value) {
+    public void setName(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
@@ -76,7 +77,7 @@ public class BmmParameterType extends BmmUnitaryType {
     public BmmEffectiveType getTypeConstraint() {
         return typeConstraint;
     }
-    public setTypeConstraint(BmmEffectiveType value) {
+    public void setTypeConstraint(BmmEffectiveType value) {
         this.typeConstraint = typeConstraint;
     }
 
@@ -89,7 +90,7 @@ public class BmmParameterType extends BmmUnitaryType {
     public BmmParameterType getInheritancePrecursor() {
         return inheritancePrecursor;
     }
-    public setInheritancePrecursor(BmmParameterType value) {
+    public void setInheritancePrecursor(BmmParameterType value) {
         this.inheritancePrecursor = inheritancePrecursor;
     }
 
@@ -217,6 +218,8 @@ public class BmmParameterType extends BmmUnitaryType {
 /*=========================================================*/
 
 
+    protected BmmParameterType() {}
+
     public BmmParameterType(
             String name,
             BmmEffectiveType typeConstraint,
@@ -282,7 +285,6 @@ public class BmmParameterType extends BmmUnitaryType {
             java.util.Objects.equals(name, that.name) &&
             java.util.Objects.equals(typeConstraint, that.typeConstraint) &&
             java.util.Objects.equals(inheritancePrecursor, that.inheritancePrecursor);
-        }
     }
 
     public int hashCode() {
@@ -298,9 +300,9 @@ public class BmmParameterType extends BmmUnitaryType {
     public java.lang.String toString() {
         return
             "BmmParameterType {" +
-            "name='" + name + '\''; +
-            "typeConstraint='" + typeConstraint + '\''; +
-            "inheritancePrecursor='" + inheritancePrecursor + '\''; +
+            "name='" + name + '\'' +
+            "typeConstraint='" + typeConstraint + '\'' +
+            "inheritancePrecursor='" + inheritancePrecursor + '\'' +
             '}';
     }
 

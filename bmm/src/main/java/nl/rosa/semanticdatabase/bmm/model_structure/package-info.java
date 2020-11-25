@@ -1,4 +1,4 @@
-package bmm/model_structure;
+package nl.rosa.semanticdatabase.bmm.model_structure;
 /**
  * 
  * 

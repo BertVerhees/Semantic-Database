@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProcedure;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,7 +42,7 @@ public class ElProcedureAgent extends ElAgent {
     public BmmProcedure getDefinition() {
         return definition;
     }
-    public setDefinition(BmmProcedure value) {
+    public void setDefinition(BmmProcedure value) {
         this.definition = definition;
     }
 
@@ -51,6 +52,8 @@ public class ElProcedureAgent extends ElAgent {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElProcedureAgent() {}
 
     public ElProcedureAgent(
             BmmProcedure definition,
@@ -140,7 +143,6 @@ public class ElProcedureAgent extends ElAgent {
         ElProcedureAgent that = (ElProcedureAgent) object;
         return
             java.util.Objects.equals(definition, that.definition);
-        }
     }
 
     public int hashCode() {
@@ -154,7 +156,7 @@ public class ElProcedureAgent extends ElAgent {
     public java.lang.String toString() {
         return
             "ElProcedureAgent {" +
-            "definition='" + definition + '\''; +
+            "definition='" + definition + '\'' +
             '}';
     }
 

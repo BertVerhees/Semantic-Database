@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.foundation_types.time_types/time_types;
+package nl.rosa.semanticdatabase.foundation_types.time_types;
 /**
  * 
  * 

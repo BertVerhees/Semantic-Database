@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.foundation_types.primitive_types/primitive_types;
+package nl.rosa.semanticdatabase.foundation_types.primitive_types;
 /**
  * 
  * 

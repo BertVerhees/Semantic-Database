@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.bmm.classes;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModule;
 import nl.rosa.semanticdatabase.bmm.types.BmmModelType;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmPackage;
@@ -14,7 +15,7 @@ import nl.rosa.semanticdatabase.bmm.class_features.BmmClassFeature;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -195,7 +196,7 @@ public abstract class BmmClass extends BmmModule {
     public BmmPackage getPackage() {
         return package;
     }
-    public setPackage(BmmPackage value) {
+    public void setPackage(BmmPackage value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:package failed, it has cardinality NonNull, but is null");
         }
@@ -256,7 +257,7 @@ public abstract class BmmClass extends BmmModule {
     public String getSourceSchemaId() {
         return sourceSchemaId;
     }
-    public setSourceSchemaId(String value) {
+    public void setSourceSchemaId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:sourceSchemaId failed, it has cardinality NonNull, but is null");
         }
@@ -278,7 +279,7 @@ public abstract class BmmClass extends BmmModule {
     }
 
     public void addToImmediateDescendants(List<BmmClass> values ) {
-        values.forEach(value -> addImmediatedescendant(value));
+        values.forEach(value -> addToImmediatedescendant(value));
     }
 
     public void removeFromImmediateDescendant(BmmClass item ) {
@@ -287,12 +288,12 @@ public abstract class BmmClass extends BmmModule {
         }
     }
     public void removeFromImmediateDescendants( Collection <BmmClass> values ) {
-        values.forEach(this::removeImmediateDescendant);
+        values.forEach(this::removeFromImmediateDescendant);
     }
-    BmmClass getImmediateDescendants() {
+    List<BmmClass> getImmediateDescendants() {
         return this.immediateDescendants;
     }
-    public BmmClass setImmediateDescendants(BmmClass immediateDescendants) {
+    public BmmClass setImmediateDescendants(List<BmmClass> immediateDescendants) {
         this.immediateDescendants = immediateDescendants;
         return this;
     }
@@ -309,7 +310,7 @@ public abstract class BmmClass extends BmmModule {
     public Boolean getIsOverride() {
         return isOverride;
     }
-    public setIsOverride(Boolean value) {
+    public void setIsOverride(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:isOverride failed, it has cardinality NonNull, but is null");
         }
@@ -462,7 +463,7 @@ public abstract class BmmClass extends BmmModule {
     }
 
     public void addToInvariants(List<BmmAssertion> values ) {
-        values.forEach(value -> addInvariant(value));
+        values.forEach(value -> addToInvariant(value));
     }
 
     public void removeFromInvariant(BmmAssertion item ) {
@@ -471,12 +472,12 @@ public abstract class BmmClass extends BmmModule {
         }
     }
     public void removeFromInvariants( Collection <BmmAssertion> values ) {
-        values.forEach(this::removeInvariant);
+        values.forEach(this::removeFromInvariant);
     }
-    BmmAssertion getInvariants() {
+    List<BmmAssertion> getInvariants() {
         return this.invariants;
     }
-    public BmmClass setInvariants(BmmAssertion invariants) {
+    public BmmClass setInvariants(List<BmmAssertion> invariants) {
         this.invariants = invariants;
         return this;
     }
@@ -587,7 +588,7 @@ public abstract class BmmClass extends BmmModule {
     }
 
     public void addToFeatureGroups(List<BmmFeatureGroup> values ) {
-        values.forEach(value -> addFeaturegroup(value));
+        values.forEach(value -> addToFeaturegroup(value));
     }
 
     public void removeFromFeatureGroup(BmmFeatureGroup item ) {
@@ -596,12 +597,12 @@ public abstract class BmmClass extends BmmModule {
         }
     }
     public void removeFromFeatureGroups( Collection <BmmFeatureGroup> values ) {
-        values.forEach(this::removeFeatureGroup);
+        values.forEach(this::removeFromFeatureGroup);
     }
-    BmmFeatureGroup getFeatureGroups() {
+    List<BmmFeatureGroup> getFeatureGroups() {
         return this.featureGroups;
     }
-    public BmmClass setFeatureGroups(BmmFeatureGroup featureGroups) {
+    public BmmClass setFeatureGroups(List<BmmFeatureGroup> featureGroups) {
         this.featureGroups = featureGroups;
         return this;
     }
@@ -821,6 +822,8 @@ public abstract class BmmClass extends BmmModule {
 /*=========================================================*/
 
 
+    protected BmmClass() {}
+
     protected BmmClass(
             Map<string,bmmModelType> ancestors,
             BmmPackage package,
@@ -899,7 +902,6 @@ public abstract class BmmClass extends BmmModule {
             java.util.Objects.equals(creators, that.creators) &&
             java.util.Objects.equals(converters, that.converters) &&
             java.util.Objects.equals(featureGroups, that.featureGroups);
-        }
     }
 
     public int hashCode() {
@@ -925,19 +927,19 @@ public abstract class BmmClass extends BmmModule {
     public java.lang.String toString() {
         return
             "BmmClass {" +
-            "ancestors='" + ancestors + '\''; +
-            "package='" + package + '\''; +
-            "properties='" + properties + '\''; +
-            "sourceSchemaId='" + sourceSchemaId + '\''; +
-            "immediateDescendants='" + immediateDescendants + '\''; +
-            "isOverride='" + isOverride + '\''; +
-            "constants='" + constants + '\''; +
-            "functions='" + functions + '\''; +
-            "procedures='" + procedures + '\''; +
-            "invariants='" + invariants + '\''; +
-            "creators='" + creators + '\''; +
-            "converters='" + converters + '\''; +
-            "featureGroups='" + featureGroups + '\''; +
+            "ancestors='" + ancestors + '\'' +
+            "package='" + package + '\'' +
+            "properties='" + properties + '\'' +
+            "sourceSchemaId='" + sourceSchemaId + '\'' +
+            "immediateDescendants='" + immediateDescendants + '\'' +
+            "isOverride='" + isOverride + '\'' +
+            "constants='" + constants + '\'' +
+            "functions='" + functions + '\'' +
+            "procedures='" + procedures + '\'' +
+            "invariants='" + invariants + '\'' +
+            "creators='" + creators + '\'' +
+            "converters='" + converters + '\'' +
+            "featureGroups='" + featureGroups + '\'' +
             '}';
     }
 

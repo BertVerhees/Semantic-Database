@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmParameterType;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -64,7 +65,7 @@ public class PBmmGenericParameter extends PBmmModelElement {
     public String getName() {
         return name;
     }
-    public setName(String value) {
+    public void setName(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
@@ -81,7 +82,7 @@ public class PBmmGenericParameter extends PBmmModelElement {
     public String getConformsToType() {
         return conformsToType;
     }
-    public setConformsToType(String value) {
+    public void setConformsToType(String value) {
         this.conformsToType = conformsToType;
     }
 
@@ -94,7 +95,7 @@ public class PBmmGenericParameter extends PBmmModelElement {
     public BmmParameterType getBmmGenericParameter() {
         return bmmGenericParameter;
     }
-    public setBmmGenericParameter(BmmParameterType value) {
+    public void setBmmGenericParameter(BmmParameterType value) {
         this.bmmGenericParameter = bmmGenericParameter;
     }
 
@@ -120,6 +121,8 @@ public class PBmmGenericParameter extends PBmmModelElement {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmGenericParameter() {}
 
     public PBmmGenericParameter(
             String name,
@@ -197,7 +200,6 @@ public class PBmmGenericParameter extends PBmmModelElement {
             java.util.Objects.equals(name, that.name) &&
             java.util.Objects.equals(conformsToType, that.conformsToType) &&
             java.util.Objects.equals(bmmGenericParameter, that.bmmGenericParameter);
-        }
     }
 
     public int hashCode() {
@@ -213,9 +215,9 @@ public class PBmmGenericParameter extends PBmmModelElement {
     public java.lang.String toString() {
         return
             "PBmmGenericParameter {" +
-            "name='" + name + '\''; +
-            "conformsToType='" + conformsToType + '\''; +
-            "bmmGenericParameter='" + bmmGenericParameter + '\''; +
+            "name='" + name + '\'' +
+            "conformsToType='" + conformsToType + '\'' +
+            "bmmGenericParameter='" + bmmGenericParameter + '\'' +
             '}';
     }
 

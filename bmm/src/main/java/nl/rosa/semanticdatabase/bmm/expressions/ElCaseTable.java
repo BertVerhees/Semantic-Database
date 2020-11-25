@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -50,7 +51,7 @@ public class ElCaseTable extends ElDecisionTable {
     public ElSimple getInput() {
         return input;
     }
-    public setInput(ElSimple value) {
+    public void setInput(ElSimple value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:input failed, it has cardinality NonNull, but is null");
         }
@@ -69,7 +70,7 @@ public class ElCaseTable extends ElDecisionTable {
     }
 
     public void addToItems(List<ElCase> values ) {
-        values.forEach(value -> addItem(value));
+        values.forEach(value -> addToItem(value));
     }
 
     public void removeFromItem(ElCase item ) {
@@ -78,12 +79,12 @@ public class ElCaseTable extends ElDecisionTable {
         }
     }
     public void removeFromItems( Collection <ElCase> values ) {
-        values.forEach(this::removeItem);
+        values.forEach(this::removeFromItem);
     }
-    ElCase getItems() {
+    List<ElCase> getItems() {
         return this.items;
     }
-    public ElCaseTable setItems(ElCase items) {
+    public ElCaseTable setItems(List<ElCase> items) {
         if (items == null ) {
             throw new NullPointerException(" items has cardinality NonNull, but is null");
         }
@@ -100,6 +101,8 @@ public class ElCaseTable extends ElDecisionTable {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElCaseTable() {}
 
     public ElCaseTable(
             ElSimple input,
@@ -178,7 +181,6 @@ public class ElCaseTable extends ElDecisionTable {
         return
             java.util.Objects.equals(input, that.input) &&
             java.util.Objects.equals(items, that.items);
-        }
     }
 
     public int hashCode() {
@@ -193,8 +195,8 @@ public class ElCaseTable extends ElDecisionTable {
     public java.lang.String toString() {
         return
             "ElCaseTable {" +
-            "input='" + input + '\''; +
-            "items='" + items + '\''; +
+            "input='" + input + '\'' +
+            "items='" + items + '\'' +
             '}';
     }
 

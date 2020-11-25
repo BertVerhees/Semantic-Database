@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.literal_values.BmmLiteralValue;
 import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -42,7 +43,7 @@ public class ElLiteral extends ElInstanceRef {
     public BmmLiteralValue getValue() {
         return value;
     }
-    public setValue(BmmLiteralValue value) {
+    public void setValue(BmmLiteralValue value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:value failed, it has cardinality NonNull, but is null");
         }
@@ -75,6 +76,8 @@ public class ElLiteral extends ElInstanceRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElLiteral() {}
 
     public ElLiteral(
             BmmLiteralValue value
@@ -121,7 +124,6 @@ public class ElLiteral extends ElInstanceRef {
         ElLiteral that = (ElLiteral) object;
         return
             java.util.Objects.equals(value, that.value);
-        }
     }
 
     public int hashCode() {
@@ -135,7 +137,7 @@ public class ElLiteral extends ElInstanceRef {
     public java.lang.String toString() {
         return
             "ElLiteral {" +
-            "value='" + value + '\''; +
+            "value='" + value + '\'' +
             '}';
     }
 

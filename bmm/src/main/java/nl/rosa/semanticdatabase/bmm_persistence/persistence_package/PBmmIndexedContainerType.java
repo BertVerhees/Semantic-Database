@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmIndexedContainerType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -46,7 +47,7 @@ public class PBmmIndexedContainerType extends PBmmContainerType {
     public String getIndexType() {
         return indexType;
     }
-    public setIndexType(String value) {
+    public void setIndexType(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:indexType failed, it has cardinality NonNull, but is null");
         }
@@ -62,7 +63,7 @@ public class PBmmIndexedContainerType extends PBmmContainerType {
     public BmmIndexedContainerType getBmmType() {
         return bmmType;
     }
-    public setBmmType(BmmIndexedContainerType value) {
+    public void setBmmType(BmmIndexedContainerType value) {
         this.bmmType = bmmType;
     }
 
@@ -72,6 +73,8 @@ public class PBmmIndexedContainerType extends PBmmContainerType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmIndexedContainerType() {}
 
     public PBmmIndexedContainerType(
             String indexType,
@@ -172,7 +175,6 @@ public class PBmmIndexedContainerType extends PBmmContainerType {
         return
             java.util.Objects.equals(indexType, that.indexType) &&
             java.util.Objects.equals(bmmType, that.bmmType);
-        }
     }
 
     public int hashCode() {
@@ -187,8 +189,8 @@ public class PBmmIndexedContainerType extends PBmmContainerType {
     public java.lang.String toString() {
         return
             "PBmmIndexedContainerType {" +
-            "indexType='" + indexType + '\''; +
-            "bmmType='" + bmmType + '\''; +
+            "indexType='" + indexType + '\'' +
+            "bmmType='" + bmmType + '\'' +
             '}';
     }
 

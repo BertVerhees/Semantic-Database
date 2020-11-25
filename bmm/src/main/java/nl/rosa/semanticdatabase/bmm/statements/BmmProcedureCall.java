@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.statements;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.expressions.ElAgentCall;
 import nl.rosa.semanticdatabase.bmm.expressions.ElProcedureAgent;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,7 +42,7 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
     public ElProcedureAgent getAgent() {
         return agent;
     }
-    public setAgent(ElProcedureAgent value) {
+    public void setAgent(ElProcedureAgent value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
@@ -75,7 +76,7 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
     public ElAgent getAgent() {
         return agent;
     }
-    public setAgent(ElAgent value) {
+    public void setAgent(ElAgent value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
@@ -88,6 +89,8 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmProcedureCall() {}
 
     public BmmProcedureCall(
             ElProcedureAgent agent,
@@ -147,7 +150,6 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
         return
             java.util.Objects.equals(agent, that.agent) &&
             java.util.Objects.equals(agent, that.agent);
-        }
     }
 
     public int hashCode() {
@@ -162,8 +164,8 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
     public java.lang.String toString() {
         return
             "BmmProcedureCall {" +
-            "agent='" + agent + '\''; +
-            "agent='" + agent + '\''; +
+            "agent='" + agent + '\'' +
+            "agent='" + agent + '\'' +
             '}';
     }
 

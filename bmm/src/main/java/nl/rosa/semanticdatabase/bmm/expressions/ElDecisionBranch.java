@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,7 +40,7 @@ public abstract class ElDecisionBranch {
     public ElExpression getResult() {
         return result;
     }
-    public setResult(ElExpression value) {
+    public void setResult(ElExpression value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:result failed, it has cardinality NonNull, but is null");
         }
@@ -52,6 +53,8 @@ public abstract class ElDecisionBranch {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElDecisionBranch() {}
 
     protected ElDecisionBranch(
             ElExpression result
@@ -77,7 +80,6 @@ public abstract class ElDecisionBranch {
         ElDecisionBranch that = (ElDecisionBranch) object;
         return
             java.util.Objects.equals(result, that.result);
-        }
     }
 
     public int hashCode() {
@@ -91,7 +93,7 @@ public abstract class ElDecisionBranch {
     public java.lang.String toString() {
         return
             "ElDecisionBranch {" +
-            "result='" + result + '\''; +
+            "result='" + result + '\'' +
             '}';
     }
 

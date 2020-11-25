@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -47,7 +48,7 @@ public class ElBinaryOperator extends ElOperator {
     public ElSimple getLeftOperand() {
         return leftOperand;
     }
-    public setLeftOperand(ElSimple value) {
+    public void setLeftOperand(ElSimple value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:leftOperand failed, it has cardinality NonNull, but is null");
         }
@@ -63,7 +64,7 @@ public class ElBinaryOperator extends ElOperator {
     public ElTerminal getRightOperand() {
         return rightOperand;
     }
-    public setRightOperand(ElTerminal value) {
+    public void setRightOperand(ElTerminal value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:rightOperand failed, it has cardinality NonNull, but is null");
         }
@@ -76,6 +77,8 @@ public class ElBinaryOperator extends ElOperator {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElBinaryOperator() {}
 
     public ElBinaryOperator(
             ElSimple leftOperand,
@@ -164,7 +167,6 @@ public class ElBinaryOperator extends ElOperator {
         return
             java.util.Objects.equals(leftOperand, that.leftOperand) &&
             java.util.Objects.equals(rightOperand, that.rightOperand);
-        }
     }
 
     public int hashCode() {
@@ -179,8 +181,8 @@ public class ElBinaryOperator extends ElOperator {
     public java.lang.String toString() {
         return
             "ElBinaryOperator {" +
-            "leftOperand='" + leftOperand + '\''; +
-            "rightOperand='" + rightOperand + '\''; +
+            "leftOperand='" + leftOperand + '\'' +
+            "rightOperand='" + rightOperand + '\'' +
             '}';
     }
 

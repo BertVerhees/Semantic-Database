@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.base_types.identification_package;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -19,6 +20,8 @@ public class InternetId extends Uid {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected InternetId() {}
 
     public InternetId(
             String value
@@ -61,14 +64,12 @@ public class InternetId extends Uid {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        InternetId that = (InternetId) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

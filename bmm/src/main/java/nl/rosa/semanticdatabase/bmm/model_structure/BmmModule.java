@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.model_structure;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,7 +41,7 @@ public abstract class BmmModule extends BmmDeclaration {
     public BmmModel getScope() {
         return scope;
     }
-    public setScope(BmmModel value) {
+    public void setScope(BmmModel value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:scope failed, it has cardinality NonNull, but is null");
         }
@@ -53,6 +54,8 @@ public abstract class BmmModule extends BmmDeclaration {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmModule() {}
 
     protected BmmModule(
             BmmModel scope,
@@ -87,7 +90,6 @@ public abstract class BmmModule extends BmmDeclaration {
         BmmModule that = (BmmModule) object;
         return
             java.util.Objects.equals(scope, that.scope);
-        }
     }
 
     public int hashCode() {
@@ -101,7 +103,7 @@ public abstract class BmmModule extends BmmDeclaration {
     public java.lang.String toString() {
         return
             "BmmModule {" +
-            "scope='" + scope + '\''; +
+            "scope='" + scope + '\'' +
             '}';
     }
 

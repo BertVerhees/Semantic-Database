@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.base_types.identification_package;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -71,7 +72,7 @@ public class ObjectRef {
     public String getNamespace() {
         return namespace;
     }
-    public setNamespace(String value) {
+    public void setNamespace(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:namespace failed, it has cardinality NonNull, but is null");
         }
@@ -91,7 +92,7 @@ public class ObjectRef {
     public String getType() {
         return type;
     }
-    public setType(String value) {
+    public void setType(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -107,7 +108,7 @@ public class ObjectRef {
     public ObjectId getId() {
         return id;
     }
-    public setId(ObjectId value) {
+    public void setId(ObjectId value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:id failed, it has cardinality NonNull, but is null");
         }
@@ -120,6 +121,8 @@ public class ObjectRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ObjectRef() {}
 
     public ObjectRef(
             String namespace,
@@ -189,10 +192,9 @@ public class ObjectRef {
         if (!super.equals(object)) return false;
         ObjectRef that = (ObjectRef) object;
         return
-            java.util.Objects.equals(namespace, that.namespace) &&
-            java.util.Objects.equals(type, that.type) &&
-            java.util.Objects.equals(id, that.id);
-        }
+            Objects.equals(namespace, that.namespace) &&
+            Objects.equals(type, that.type) &&
+            Objects.equals(id, that.id);
     }
 
     public int hashCode() {
@@ -208,9 +210,9 @@ public class ObjectRef {
     public String toString() {
         return
             "ObjectRef {" +
-            "namespace='" + namespace + '\''; +
-            "type='" + type + '\''; +
-            "id='" + id + '\''; +
+            "namespace='" + namespace + '\'' +
+            "type='" + type + '\'' +
+            "id='" + id + '\'' +
             '}';
     }
 

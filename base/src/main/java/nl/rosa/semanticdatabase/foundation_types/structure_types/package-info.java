@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.foundation_types.structure_types/structure_types;
+package nl.rosa.semanticdatabase.foundation_types.structure_types;
 /**
  * 
  * 

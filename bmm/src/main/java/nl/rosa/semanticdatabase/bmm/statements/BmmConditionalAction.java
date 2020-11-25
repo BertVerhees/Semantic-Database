@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.statements;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.expressions.ElBooleanExpression;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -48,7 +49,7 @@ public class BmmConditionalAction {
     public ElBooleanExpression getCondition() {
         return condition;
     }
-    public setCondition(ElBooleanExpression value) {
+    public void setCondition(ElBooleanExpression value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:condition failed, it has cardinality NonNull, but is null");
         }
@@ -64,7 +65,7 @@ public class BmmConditionalAction {
     public BmmStatementItem getStatement() {
         return statement;
     }
-    public setStatement(BmmStatementItem value) {
+    public void setStatement(BmmStatementItem value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:statement failed, it has cardinality NonNull, but is null");
         }
@@ -77,6 +78,8 @@ public class BmmConditionalAction {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmConditionalAction() {}
 
     public BmmConditionalAction(
             ElBooleanExpression condition,
@@ -136,7 +139,6 @@ public class BmmConditionalAction {
         return
             java.util.Objects.equals(condition, that.condition) &&
             java.util.Objects.equals(statement, that.statement);
-        }
     }
 
     public int hashCode() {
@@ -151,8 +153,8 @@ public class BmmConditionalAction {
     public java.lang.String toString() {
         return
             "BmmConditionalAction {" +
-            "condition='" + condition + '\''; +
-            "statement='" + statement + '\''; +
+            "condition='" + condition + '\'' +
+            "statement='" + statement + '\'' +
             '}';
     }
 

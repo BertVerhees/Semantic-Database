@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,7 +40,7 @@ public abstract class PBmmModelElement {
     public String getDocumentation() {
         return documentation;
     }
-    public setDocumentation(String value) {
+    public void setDocumentation(String value) {
         this.documentation = documentation;
     }
 
@@ -49,6 +50,8 @@ public abstract class PBmmModelElement {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmModelElement() {}
 
     protected PBmmModelElement(
             String documentation
@@ -71,7 +74,6 @@ public abstract class PBmmModelElement {
         PBmmModelElement that = (PBmmModelElement) object;
         return
             java.util.Objects.equals(documentation, that.documentation);
-        }
     }
 
     public int hashCode() {
@@ -85,7 +87,7 @@ public abstract class PBmmModelElement {
     public java.lang.String toString() {
         return
             "PBmmModelElement {" +
-            "documentation='" + documentation + '\''; +
+            "documentation='" + documentation + '\'' +
             '}';
     }
 

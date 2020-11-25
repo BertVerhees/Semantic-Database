@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.statements;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.expressions.ElBooleanExpression;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -49,7 +50,7 @@ public class BmmAssertion extends BmmStatement {
     public ElBooleanExpression getExpression() {
         return expression;
     }
-    public setExpression(ElBooleanExpression value) {
+    public void setExpression(ElBooleanExpression value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:expression failed, it has cardinality NonNull, but is null");
         }
@@ -66,7 +67,7 @@ public class BmmAssertion extends BmmStatement {
     public String getTag() {
         return tag;
     }
-    public setTag(String value) {
+    public void setTag(String value) {
         this.tag = tag;
     }
 
@@ -76,6 +77,8 @@ public class BmmAssertion extends BmmStatement {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmAssertion() {}
 
     public BmmAssertion(
             ElBooleanExpression expression,
@@ -132,7 +135,6 @@ public class BmmAssertion extends BmmStatement {
         return
             java.util.Objects.equals(expression, that.expression) &&
             java.util.Objects.equals(tag, that.tag);
-        }
     }
 
     public int hashCode() {
@@ -147,8 +149,8 @@ public class BmmAssertion extends BmmStatement {
     public java.lang.String toString() {
         return
             "BmmAssertion {" +
-            "expression='" + expression + '\''; +
-            "tag='" + tag + '\''; +
+            "expression='" + expression + '\'' +
+            "tag='" + tag + '\'' +
             '}';
     }
 

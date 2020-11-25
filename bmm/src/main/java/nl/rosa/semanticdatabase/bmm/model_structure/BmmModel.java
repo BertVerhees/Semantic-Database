@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.bmm.model_structure;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.model_access_package.BmmModelMetadata;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
@@ -10,7 +11,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -108,7 +109,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     }
 
     public void addToUsedModels(List<BmmModel> values ) {
-        values.forEach(value -> addUsedmodel(value));
+        values.forEach(value -> addToUsedmodel(value));
     }
 
     public void removeFromUsedModel(BmmModel item ) {
@@ -117,12 +118,12 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
         }
     }
     public void removeFromUsedModels( Collection <BmmModel> values ) {
-        values.forEach(this::removeUsedModel);
+        values.forEach(this::removeFromUsedModel);
     }
-    BmmModel getUsedModels() {
+    List<BmmModel> getUsedModels() {
         return this.usedModels;
     }
-    public BmmModel setUsedModels(BmmModel usedModels) {
+    public BmmModel setUsedModels(List<BmmModel> usedModels) {
         this.usedModels = usedModels;
         return this;
     }
@@ -522,7 +523,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     public String getRmPublisher() {
         return rmPublisher;
     }
-    public setRmPublisher(String value) {
+    public void setRmPublisher(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:rmPublisher failed, it has cardinality NonNull, but is null");
         }
@@ -539,7 +540,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     public String getRmRelease() {
         return rmRelease;
     }
-    public setRmRelease(String value) {
+    public void setRmRelease(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:rmRelease failed, it has cardinality NonNull, but is null");
         }
@@ -552,6 +553,8 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmModel() {}
 
     public BmmModel(
             Map<string,bmmClass> classDefinitions,
@@ -687,7 +690,6 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
             java.util.Objects.equals(usedModels, that.usedModels) &&
             java.util.Objects.equals(rmPublisher, that.rmPublisher) &&
             java.util.Objects.equals(rmRelease, that.rmRelease);
-        }
     }
 
     public int hashCode() {
@@ -704,10 +706,10 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
     public java.lang.String toString() {
         return
             "BmmModel {" +
-            "classDefinitions='" + classDefinitions + '\''; +
-            "usedModels='" + usedModels + '\''; +
-            "rmPublisher='" + rmPublisher + '\''; +
-            "rmRelease='" + rmRelease + '\''; +
+            "classDefinitions='" + classDefinitions + '\'' +
+            "usedModels='" + usedModels + '\'' +
+            "rmPublisher='" + rmPublisher + '\'' +
+            "rmRelease='" + rmRelease + '\'' +
             '}';
     }
 

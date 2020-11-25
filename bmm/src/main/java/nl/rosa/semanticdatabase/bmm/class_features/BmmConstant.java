@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.expressions.ElInstanceRef;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -43,7 +44,7 @@ public class BmmConstant extends BmmClassFeature implements BmmInstantiable {
     public ElInstanceRef getGenerator() {
         return generator;
     }
-    public setGenerator(ElInstanceRef value) {
+    public void setGenerator(ElInstanceRef value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:generator failed, it has cardinality NonNull, but is null");
         }
@@ -89,7 +90,7 @@ public class BmmConstant extends BmmClassFeature implements BmmInstantiable {
     public BmmType getType() {
         return type;
     }
-    public setType(BmmType value) {
+    public void setType(BmmType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -123,6 +124,8 @@ public class BmmConstant extends BmmClassFeature implements BmmInstantiable {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmConstant() {}
 
     public BmmConstant(
             ElInstanceRef generator,
@@ -256,7 +259,6 @@ public class BmmConstant extends BmmClassFeature implements BmmInstantiable {
         return
             java.util.Objects.equals(generator, that.generator) &&
             java.util.Objects.equals(type, that.type);
-        }
     }
 
     public int hashCode() {
@@ -271,8 +273,8 @@ public class BmmConstant extends BmmClassFeature implements BmmInstantiable {
     public java.lang.String toString() {
         return
             "BmmConstant {" +
-            "generator='" + generator + '\''; +
-            "type='" + type + '\''; +
+            "generator='" + generator + '\'' +
+            "type='" + type + '\'' +
             '}';
     }
 

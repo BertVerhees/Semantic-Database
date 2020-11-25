@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 import nl.rosa.semanticdatabase.bmm.classes.BmmEnumeration;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -60,7 +61,7 @@ public class PBmmEnumeration extends PBmmClass {
     }
 
     public void addToItemNames(List<String> values ) {
-        values.forEach(value -> addItemname(value));
+        values.forEach(value -> addToItemname(value));
     }
 
     public void removeFromItemName(String item ) {
@@ -69,12 +70,12 @@ public class PBmmEnumeration extends PBmmClass {
         }
     }
     public void removeFromItemNames( Collection <String> values ) {
-        values.forEach(this::removeItemName);
+        values.forEach(this::removeFromItemName);
     }
-    String getItemNames() {
+    List<String> getItemNames() {
         return this.itemNames;
     }
-    public PBmmEnumeration setItemNames(String itemNames) {
+    public PBmmEnumeration setItemNames(List<String> itemNames) {
         this.itemNames = itemNames;
         return this;
     }
@@ -96,7 +97,7 @@ public class PBmmEnumeration extends PBmmClass {
     }
 
     public void addToItemValues(List<Any> values ) {
-        values.forEach(value -> addItemvalue(value));
+        values.forEach(value -> addToItemvalue(value));
     }
 
     public void removeFromItemValue(Any item ) {
@@ -105,12 +106,12 @@ public class PBmmEnumeration extends PBmmClass {
         }
     }
     public void removeFromItemValues( Collection <Any> values ) {
-        values.forEach(this::removeItemValue);
+        values.forEach(this::removeFromItemValue);
     }
-    Any getItemValues() {
+    List<Any> getItemValues() {
         return this.itemValues;
     }
-    public PBmmEnumeration setItemValues(Any itemValues) {
+    public PBmmEnumeration setItemValues(List<Any> itemValues) {
         this.itemValues = itemValues;
         return this;
     }
@@ -127,7 +128,7 @@ public class PBmmEnumeration extends PBmmClass {
     public BmmEnumeration getBmmClass() {
         return bmmClass;
     }
-    public setBmmClass(BmmEnumeration value) {
+    public void setBmmClass(BmmEnumeration value) {
         this.bmmClass = bmmClass;
     }
 
@@ -137,6 +138,8 @@ public class PBmmEnumeration extends PBmmClass {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmEnumeration() {}
 
     public PBmmEnumeration(
             List<string> itemNames,
@@ -299,7 +302,6 @@ public class PBmmEnumeration extends PBmmClass {
             java.util.Objects.equals(itemNames, that.itemNames) &&
             java.util.Objects.equals(itemValues, that.itemValues) &&
             java.util.Objects.equals(bmmClass, that.bmmClass);
-        }
     }
 
     public int hashCode() {
@@ -315,9 +317,9 @@ public class PBmmEnumeration extends PBmmClass {
     public java.lang.String toString() {
         return
             "PBmmEnumeration {" +
-            "itemNames='" + itemNames + '\''; +
-            "itemValues='" + itemValues + '\''; +
-            "bmmClass='" + bmmClass + '\''; +
+            "itemNames='" + itemNames + '\'' +
+            "itemValues='" + itemValues + '\'' +
+            "bmmClass='" + bmmClass + '\'' +
             '}';
     }
 

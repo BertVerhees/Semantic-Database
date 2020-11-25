@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.base_types.builtins_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.terminology_package.TerminologyCode;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,6 +41,8 @@ public class Locale {
 /*=========================================================*/
 
 
+    protected Locale() {}
+
     public Locale(
             
         ){
@@ -71,14 +74,12 @@ public class Locale {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        Locale that = (Locale) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

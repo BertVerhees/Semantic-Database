@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,7 +40,7 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
     public BmmRoutine getScope() {
         return scope;
     }
-    public setScope(BmmRoutine value) {
+    public void setScope(BmmRoutine value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:scope failed, it has cardinality NonNull, but is null");
         }
@@ -98,7 +99,7 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
     public BmmType getType() {
         return type;
     }
-    public setType(BmmType value) {
+    public void setType(BmmType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -132,6 +133,8 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmVariable() {}
 
     protected BmmVariable(
             BmmRoutine scope,
@@ -172,7 +175,6 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
         return
             java.util.Objects.equals(scope, that.scope) &&
             java.util.Objects.equals(type, that.type);
-        }
     }
 
     public int hashCode() {
@@ -187,8 +189,8 @@ public abstract class BmmVariable extends BmmClassEntity implements BmmInstantia
     public java.lang.String toString() {
         return
             "BmmVariable {" +
-            "scope='" + scope + '\''; +
-            "type='" + type + '\''; +
+            "scope='" + scope + '\'' +
+            "type='" + type + '\'' +
             '}';
     }
 

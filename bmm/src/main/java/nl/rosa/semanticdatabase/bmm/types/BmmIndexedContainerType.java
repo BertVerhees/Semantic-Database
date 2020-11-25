@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,7 +40,7 @@ public class BmmIndexedContainerType extends BmmContainerType {
     public BmmSimpleType getIndexType() {
         return indexType;
     }
-    public setIndexType(BmmSimpleType value) {
+    public void setIndexType(BmmSimpleType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:indexType failed, it has cardinality NonNull, but is null");
         }
@@ -73,6 +74,8 @@ public class BmmIndexedContainerType extends BmmContainerType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmIndexedContainerType() {}
 
     public BmmIndexedContainerType(
             BmmSimpleType indexType,
@@ -139,7 +142,6 @@ public class BmmIndexedContainerType extends BmmContainerType {
         BmmIndexedContainerType that = (BmmIndexedContainerType) object;
         return
             java.util.Objects.equals(indexType, that.indexType);
-        }
     }
 
     public int hashCode() {
@@ -153,7 +155,7 @@ public class BmmIndexedContainerType extends BmmContainerType {
     public java.lang.String toString() {
         return
             "BmmIndexedContainerType {" +
-            "indexType='" + indexType + '\''; +
+            "indexType='" + indexType + '\'' +
             '}';
     }
 

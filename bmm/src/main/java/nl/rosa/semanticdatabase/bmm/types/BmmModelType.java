@@ -1,12 +1,13 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.classes.BmmValueSetSpec;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -48,7 +49,7 @@ public abstract class BmmModelType extends BmmEffectiveType {
     public BmmValueSetSpec getValueConstraint() {
         return valueConstraint;
     }
-    public setValueConstraint(BmmValueSetSpec value) {
+    public void setValueConstraint(BmmValueSetSpec value) {
         this.valueConstraint = valueConstraint;
     }
 
@@ -61,7 +62,7 @@ public abstract class BmmModelType extends BmmEffectiveType {
     public BmmClass getBaseClass() {
         return baseClass;
     }
-    public setBaseClass(BmmClass value) {
+    public void setBaseClass(BmmClass value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:baseClass failed, it has cardinality NonNull, but is null");
         }
@@ -111,6 +112,8 @@ public abstract class BmmModelType extends BmmEffectiveType {
 /*=========================================================*/
 
 
+    protected BmmModelType() {}
+
     protected BmmModelType(
             BmmValueSetSpec valueConstraint,
             BmmClass baseClass
@@ -138,7 +141,6 @@ public abstract class BmmModelType extends BmmEffectiveType {
         return
             java.util.Objects.equals(valueConstraint, that.valueConstraint) &&
             java.util.Objects.equals(baseClass, that.baseClass);
-        }
     }
 
     public int hashCode() {
@@ -153,8 +155,8 @@ public abstract class BmmModelType extends BmmEffectiveType {
     public java.lang.String toString() {
         return
             "BmmModelType {" +
-            "valueConstraint='" + valueConstraint + '\''; +
-            "baseClass='" + baseClass + '\''; +
+            "valueConstraint='" + valueConstraint + '\'' +
+            "baseClass='" + baseClass + '\'' +
             '}';
     }
 

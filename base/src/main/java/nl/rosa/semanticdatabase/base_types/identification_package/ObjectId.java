@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.base_types.identification_package;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -43,7 +44,7 @@ public abstract class ObjectId {
     public String getValue() {
         return value;
     }
-    public setValue(String value) {
+    public void setValue(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:value failed, it has cardinality NonNull, but is null");
         }
@@ -56,6 +57,8 @@ public abstract class ObjectId {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ObjectId() {}
 
     protected ObjectId(
             String value
@@ -80,8 +83,7 @@ public abstract class ObjectId {
         if (!super.equals(object)) return false;
         ObjectId that = (ObjectId) object;
         return
-            java.util.Objects.equals(value, that.value);
-        }
+            Objects.equals(value, that.value);
     }
 
     public int hashCode() {
@@ -95,7 +97,7 @@ public abstract class ObjectId {
     public String toString() {
         return
             "ObjectId {" +
-            "value='" + value + '\''; +
+            "value='" + value + '\'' +
             '}';
     }
 

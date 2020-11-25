@@ -1,12 +1,13 @@
 package nl.rosa.semanticdatabase.foundation_types.time_types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Real;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -337,6 +338,8 @@ public class Iso8601Duration extends Iso8601Type {
 /*=========================================================*/
 
 
+    protected Iso8601Duration() {}
+
     public Iso8601Duration(
             String value,
             Integer maxDaysInYear
@@ -387,14 +390,12 @@ public class Iso8601Duration extends Iso8601Type {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        Iso8601Duration that = (Iso8601Duration) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

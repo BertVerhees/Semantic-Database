@@ -1,4 +1,4 @@
-package bmm/literal_values;
+package nl.rosa.semanticdatabase.bmm.literal_values;
 /**
  * 
  * 

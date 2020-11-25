@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.classes.BmmGenericClass;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -50,7 +51,7 @@ public class BmmContainerType extends BmmType {
     public BmmGenericClass getContainerClass() {
         return containerClass;
     }
-    public setContainerClass(BmmGenericClass value) {
+    public void setContainerClass(BmmGenericClass value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:containerClass failed, it has cardinality NonNull, but is null");
         }
@@ -66,7 +67,7 @@ public class BmmContainerType extends BmmType {
     public BmmUnitaryType getItemType() {
         return itemType;
     }
-    public setItemType(BmmUnitaryType value) {
+    public void setItemType(BmmUnitaryType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:itemType failed, it has cardinality NonNull, but is null");
         }
@@ -203,6 +204,8 @@ public class BmmContainerType extends BmmType {
 /*=========================================================*/
 
 
+    protected BmmContainerType() {}
+
     public BmmContainerType(
             BmmGenericClass containerClass,
             BmmUnitaryType itemType
@@ -261,7 +264,6 @@ public class BmmContainerType extends BmmType {
         return
             java.util.Objects.equals(containerClass, that.containerClass) &&
             java.util.Objects.equals(itemType, that.itemType);
-        }
     }
 
     public int hashCode() {
@@ -276,8 +278,8 @@ public class BmmContainerType extends BmmType {
     public java.lang.String toString() {
         return
             "BmmContainerType {" +
-            "containerClass='" + containerClass + '\''; +
-            "itemType='" + itemType + '\''; +
+            "containerClass='" + containerClass + '\'' +
+            "itemType='" + itemType + '\'' +
             '}';
     }
 

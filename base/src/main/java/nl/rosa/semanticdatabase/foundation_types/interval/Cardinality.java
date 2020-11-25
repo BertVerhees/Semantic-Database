@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.foundation_types.interval;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -56,7 +57,7 @@ public class Cardinality {
     public MultiplicityInterval getInterval() {
         return interval;
     }
-    public setInterval(MultiplicityInterval value) {
+    public void setInterval(MultiplicityInterval value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:interval failed, it has cardinality NonNull, but is null");
         }
@@ -72,7 +73,7 @@ public class Cardinality {
     public Boolean getIsOrdered() {
         return isOrdered;
     }
-    public setIsOrdered(Boolean value) {
+    public void setIsOrdered(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:isOrdered failed, it has cardinality NonNull, but is null");
         }
@@ -88,7 +89,7 @@ public class Cardinality {
     public Boolean getIsUnique() {
         return isUnique;
     }
-    public setIsUnique(Boolean value) {
+    public void setIsUnique(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:isUnique failed, it has cardinality NonNull, but is null");
         }
@@ -156,6 +157,8 @@ public class Cardinality {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected Cardinality() {}
 
     public Cardinality(
             MultiplicityInterval interval,
@@ -225,10 +228,9 @@ public class Cardinality {
         if (!super.equals(object)) return false;
         Cardinality that = (Cardinality) object;
         return
-            java.util.Objects.equals(interval, that.interval) &&
-            java.util.Objects.equals(isOrdered, that.isOrdered) &&
-            java.util.Objects.equals(isUnique, that.isUnique);
-        }
+            Objects.equals(interval, that.interval) &&
+            Objects.equals(isOrdered, that.isOrdered) &&
+            Objects.equals(isUnique, that.isUnique);
     }
 
     public int hashCode() {
@@ -244,9 +246,9 @@ public class Cardinality {
     public String toString() {
         return
             "Cardinality {" +
-            "interval='" + interval + '\''; +
-            "isOrdered='" + isOrdered + '\''; +
-            "isUnique='" + isUnique + '\''; +
+            "interval='" + interval + '\'' +
+            "isOrdered='" + isOrdered + '\'' +
+            "isUnique='" + isUnique + '\'' +
             '}';
     }
 

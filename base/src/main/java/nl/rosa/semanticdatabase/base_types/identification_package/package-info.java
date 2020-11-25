@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.base_types.identification_package/identification_package;
+package nl.rosa.semanticdatabase.base_types.identification_package;
 /**
  * 
  * 

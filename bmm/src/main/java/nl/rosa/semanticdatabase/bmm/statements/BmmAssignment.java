@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.statements;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.expressions.ElExpression;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -49,7 +50,7 @@ public class BmmAssignment extends BmmStatement {
     public EL_INSTANTIABLE_REF getTarget() {
         return target;
     }
-    public setTarget(EL_INSTANTIABLE_REF value) {
+    public void setTarget(EL_INSTANTIABLE_REF value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:target failed, it has cardinality NonNull, but is null");
         }
@@ -65,7 +66,7 @@ public class BmmAssignment extends BmmStatement {
     public ElExpression getSource() {
         return source;
     }
-    public setSource(ElExpression value) {
+    public void setSource(ElExpression value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:source failed, it has cardinality NonNull, but is null");
         }
@@ -78,6 +79,8 @@ public class BmmAssignment extends BmmStatement {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmAssignment() {}
 
     public BmmAssignment(
             ElInstantiableRef target,
@@ -137,7 +140,6 @@ public class BmmAssignment extends BmmStatement {
         return
             java.util.Objects.equals(target, that.target) &&
             java.util.Objects.equals(source, that.source);
-        }
     }
 
     public int hashCode() {
@@ -152,8 +154,8 @@ public class BmmAssignment extends BmmStatement {
     public java.lang.String toString() {
         return
             "BmmAssignment {" +
-            "target='" + target + '\''; +
-            "source='" + source + '\''; +
+            "target='" + target + '\'' +
+            "source='" + source + '\'' +
             '}';
     }
 

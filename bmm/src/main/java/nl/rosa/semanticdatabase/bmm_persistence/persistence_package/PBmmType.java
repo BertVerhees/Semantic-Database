@@ -1,12 +1,13 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmType;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -42,7 +43,7 @@ public abstract class PBmmType {
     public BmmType getBmmType() {
         return bmmType;
     }
-    public setBmmType(BmmType value) {
+    public void setBmmType(BmmType value) {
         this.bmmType = bmmType;
     }
 
@@ -73,6 +74,8 @@ public abstract class PBmmType {
 /*=========================================================*/
 
 
+    protected PBmmType() {}
+
     protected PBmmType(
             BmmType bmmType
         ){
@@ -94,7 +97,6 @@ public abstract class PBmmType {
         PBmmType that = (PBmmType) object;
         return
             java.util.Objects.equals(bmmType, that.bmmType);
-        }
     }
 
     public int hashCode() {
@@ -108,7 +110,7 @@ public abstract class PBmmType {
     public java.lang.String toString() {
         return
             "PBmmType {" +
-            "bmmType='" + bmmType + '\''; +
+            "bmmType='" + bmmType + '\'' +
             '}';
     }
 

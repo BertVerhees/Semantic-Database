@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -47,7 +48,7 @@ public abstract class ElDecisionTable extends ElExpression {
     public ElExpression getElse() {
         return else;
     }
-    public setElse(ElExpression value) {
+    public void setElse(ElExpression value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:else failed, it has cardinality NonNull, but is null");
         }
@@ -66,7 +67,7 @@ public abstract class ElDecisionTable extends ElExpression {
     }
 
     public void addToItems(List<ElDecisionBranch> values ) {
-        values.forEach(value -> addItem(value));
+        values.forEach(value -> addToItem(value));
     }
 
     public void removeFromItem(ElDecisionBranch item ) {
@@ -75,12 +76,12 @@ public abstract class ElDecisionTable extends ElExpression {
         }
     }
     public void removeFromItems( Collection <ElDecisionBranch> values ) {
-        values.forEach(this::removeItem);
+        values.forEach(this::removeFromItem);
     }
-    ElDecisionBranch getItems() {
+    List<ElDecisionBranch> getItems() {
         return this.items;
     }
-    public ElDecisionTable setItems(ElDecisionBranch items) {
+    public ElDecisionTable setItems(List<ElDecisionBranch> items) {
         if (items == null ) {
             throw new NullPointerException(" items has cardinality NonNull, but is null");
         }
@@ -97,6 +98,8 @@ public abstract class ElDecisionTable extends ElExpression {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElDecisionTable() {}
 
     protected ElDecisionTable(
             ElExpression else,
@@ -128,7 +131,6 @@ public abstract class ElDecisionTable extends ElExpression {
         return
             java.util.Objects.equals(else, that.else) &&
             java.util.Objects.equals(items, that.items);
-        }
     }
 
     public int hashCode() {
@@ -143,8 +145,8 @@ public abstract class ElDecisionTable extends ElExpression {
     public java.lang.String toString() {
         return
             "ElDecisionTable {" +
-            "else='" + else + '\''; +
-            "items='" + items + '\''; +
+            "else='" + else + '\'' +
+            "items='" + items + '\'' +
             '}';
     }
 

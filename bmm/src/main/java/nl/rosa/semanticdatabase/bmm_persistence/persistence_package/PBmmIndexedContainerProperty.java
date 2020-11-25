@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmIndexedContainerProperty;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -50,7 +51,7 @@ public class PBmmIndexedContainerProperty extends PBmmContainerProperty {
     public PBmmIndexedContainerType getTypeDef() {
         return typeDef;
     }
-    public setTypeDef(PBmmIndexedContainerType value) {
+    public void setTypeDef(PBmmIndexedContainerType value) {
         this.typeDef = typeDef;
     }
 
@@ -63,7 +64,7 @@ public class PBmmIndexedContainerProperty extends PBmmContainerProperty {
     public BmmIndexedContainerProperty getBmmProperty() {
         return bmmProperty;
     }
-    public setBmmProperty(BmmIndexedContainerProperty value) {
+    public void setBmmProperty(BmmIndexedContainerProperty value) {
         this.bmmProperty = bmmProperty;
     }
 
@@ -73,6 +74,8 @@ public class PBmmIndexedContainerProperty extends PBmmContainerProperty {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmIndexedContainerProperty() {}
 
     public PBmmIndexedContainerProperty(
             PBmmIndexedContainerType typeDef,
@@ -223,7 +226,6 @@ public class PBmmIndexedContainerProperty extends PBmmContainerProperty {
         return
             java.util.Objects.equals(typeDef, that.typeDef) &&
             java.util.Objects.equals(bmmProperty, that.bmmProperty);
-        }
     }
 
     public int hashCode() {
@@ -238,8 +240,8 @@ public class PBmmIndexedContainerProperty extends PBmmContainerProperty {
     public java.lang.String toString() {
         return
             "PBmmIndexedContainerProperty {" +
-            "typeDef='" + typeDef + '\''; +
-            "bmmProperty='" + bmmProperty + '\''; +
+            "typeDef='" + typeDef + '\'' +
+            "bmmProperty='" + bmmProperty + '\'' +
             '}';
     }
 

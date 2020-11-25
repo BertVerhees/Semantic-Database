@@ -1,12 +1,13 @@
 package nl.rosa.semanticdatabase.foundation_types.structure_types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -121,6 +122,8 @@ public abstract class Container<t> extends Any {
 /*=========================================================*/
 
 
+    protected Container<t>() {}
+
     protected Container<t>(
             
         ){
@@ -138,14 +141,12 @@ public abstract class Container<t> extends Any {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        Container<t> that = (Container<t>) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

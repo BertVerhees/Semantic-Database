@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,7 +42,7 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
     public ElFunctionAgent getAgent() {
         return agent;
     }
-    public setAgent(ElFunctionAgent value) {
+    public void setAgent(ElFunctionAgent value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
@@ -95,7 +96,7 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
     public ElAgent getAgent() {
         return agent;
     }
-    public setAgent(ElAgent value) {
+    public void setAgent(ElAgent value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
@@ -108,6 +109,8 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElFunctionCall() {}
 
     public ElFunctionCall(
             ElFunctionAgent agent,
@@ -178,7 +181,6 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
         return
             java.util.Objects.equals(agent, that.agent) &&
             java.util.Objects.equals(agent, that.agent);
-        }
     }
 
     public int hashCode() {
@@ -193,8 +195,8 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
     public java.lang.String toString() {
         return
             "ElFunctionCall {" +
-            "agent='" + agent + '\''; +
-            "agent='" + agent + '\''; +
+            "agent='" + agent + '\'' +
+            "agent='" + agent + '\'' +
             '}';
     }
 

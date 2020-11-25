@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.base_types.identification_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -89,6 +90,8 @@ public class ObjectVersionId extends UidBasedId {
 /*=========================================================*/
 
 
+    protected ObjectVersionId() {}
+
     public ObjectVersionId(
             String value
         ){
@@ -130,14 +133,12 @@ public class ObjectVersionId extends UidBasedId {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        ObjectVersionId that = (ObjectVersionId) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.statements;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -46,7 +47,7 @@ public class BmmStatementBlock extends BmmStatementItem {
     }
 
     public void addToItems(List<BmmStatementItem> values ) {
-        values.forEach(value -> addItem(value));
+        values.forEach(value -> addToItem(value));
     }
 
     public void removeFromItem(BmmStatementItem item ) {
@@ -55,12 +56,12 @@ public class BmmStatementBlock extends BmmStatementItem {
         }
     }
     public void removeFromItems( Collection <BmmStatementItem> values ) {
-        values.forEach(this::removeItem);
+        values.forEach(this::removeFromItem);
     }
-    BmmStatementItem getItems() {
+    List<BmmStatementItem> getItems() {
         return this.items;
     }
-    public BmmStatementBlock setItems(BmmStatementItem items) {
+    public BmmStatementBlock setItems(List<BmmStatementItem> items) {
         this.items = items;
         return this;
     }
@@ -74,6 +75,8 @@ public class BmmStatementBlock extends BmmStatementItem {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmStatementBlock() {}
 
     public BmmStatementBlock(
             List<bmmStatementItem> items
@@ -117,7 +120,6 @@ public class BmmStatementBlock extends BmmStatementItem {
         BmmStatementBlock that = (BmmStatementBlock) object;
         return
             java.util.Objects.equals(items, that.items);
-        }
     }
 
     public int hashCode() {
@@ -131,7 +133,7 @@ public class BmmStatementBlock extends BmmStatementItem {
     public java.lang.String toString() {
         return
             "BmmStatementBlock {" +
-            "items='" + items + '\''; +
+            "items='" + items + '\'' +
             '}';
     }
 

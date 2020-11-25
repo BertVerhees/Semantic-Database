@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.classes;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.literal_values.BmmIntegerValue;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -48,7 +49,7 @@ public class BmmEnumerationInteger extends BmmEnumeration {
     }
 
     public void addToItemValues(List<BmmIntegerValue> values ) {
-        values.forEach(value -> addItemvalue(value));
+        values.forEach(value -> addToItemvalue(value));
     }
 
     public void removeFromItemValue(BmmIntegerValue item ) {
@@ -57,12 +58,12 @@ public class BmmEnumerationInteger extends BmmEnumeration {
         }
     }
     public void removeFromItemValues( Collection <BmmIntegerValue> values ) {
-        values.forEach(this::removeItemValue);
+        values.forEach(this::removeFromItemValue);
     }
-    BmmIntegerValue getItemValues() {
+    List<BmmIntegerValue> getItemValues() {
         return this.itemValues;
     }
-    public BmmEnumerationInteger setItemValues(BmmIntegerValue itemValues) {
+    public BmmEnumerationInteger setItemValues(List<BmmIntegerValue> itemValues) {
         this.itemValues = itemValues;
         return this;
     }
@@ -76,6 +77,8 @@ public class BmmEnumerationInteger extends BmmEnumeration {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmEnumerationInteger() {}
 
     public BmmEnumerationInteger(
             List<bmmIntegerValue> itemValues,
@@ -300,7 +303,6 @@ public class BmmEnumerationInteger extends BmmEnumeration {
         BmmEnumerationInteger that = (BmmEnumerationInteger) object;
         return
             java.util.Objects.equals(itemValues, that.itemValues);
-        }
     }
 
     public int hashCode() {
@@ -314,7 +316,7 @@ public class BmmEnumerationInteger extends BmmEnumeration {
     public java.lang.String toString() {
         return
             "BmmEnumerationInteger {" +
-            "itemValues='" + itemValues + '\''; +
+            "itemValues='" + itemValues + '\'' +
             '}';
     }
 

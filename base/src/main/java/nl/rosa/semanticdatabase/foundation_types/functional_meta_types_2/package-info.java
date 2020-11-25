@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.foundation_types.functional_meta_types_2/functional_meta_types_2;
+package nl.rosa.semanticdatabase.foundation_types.functional_meta_types_2;
 /**
  * 
  * 

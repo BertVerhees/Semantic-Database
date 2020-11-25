@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.model_access_package;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,7 +42,7 @@ public class BmmIncludeSpec {
     public String getId() {
         return id;
     }
-    public setId(String value) {
+    public void setId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:id failed, it has cardinality NonNull, but is null");
         }
@@ -54,6 +55,8 @@ public class BmmIncludeSpec {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmIncludeSpec() {}
 
     public BmmIncludeSpec(
             String id
@@ -100,7 +103,6 @@ public class BmmIncludeSpec {
         BmmIncludeSpec that = (BmmIncludeSpec) object;
         return
             java.util.Objects.equals(id, that.id);
-        }
     }
 
     public int hashCode() {
@@ -114,7 +116,7 @@ public class BmmIncludeSpec {
     public java.lang.String toString() {
         return
             "BmmIncludeSpec {" +
-            "id='" + id + '\''; +
+            "id='" + id + '\'' +
             '}';
     }
 

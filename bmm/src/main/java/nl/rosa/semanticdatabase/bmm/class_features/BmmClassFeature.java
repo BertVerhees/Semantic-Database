@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -64,7 +65,7 @@ public abstract class BmmClassFeature extends BmmClassEntity {
     public BmmVisibility getVisibility() {
         return visibility;
     }
-    public setVisibility(BmmVisibility value) {
+    public void setVisibility(BmmVisibility value) {
         this.visibility = visibility;
     }
 
@@ -83,7 +84,7 @@ public abstract class BmmClassFeature extends BmmClassEntity {
     }
 
     public void addToFeatureExtensions(List<BMM_FEATURE_EXTENSION> values ) {
-        values.forEach(value -> addFeatureextension(value));
+        values.forEach(value -> addToFeatureextension(value));
     }
 
     public void removeFromFeatureExtension(BMM_FEATURE_EXTENSION item ) {
@@ -92,12 +93,12 @@ public abstract class BmmClassFeature extends BmmClassEntity {
         }
     }
     public void removeFromFeatureExtensions( Collection <BMM_FEATURE_EXTENSION> values ) {
-        values.forEach(this::removeFeatureExtension);
+        values.forEach(this::removeFromFeatureExtension);
     }
-    BMM_FEATURE_EXTENSION getFeatureExtensions() {
+    List<BMM_FEATURE_EXTENSION> getFeatureExtensions() {
         return this.featureExtensions;
     }
-    public BmmClassFeature setFeatureExtensions(BMM_FEATURE_EXTENSION featureExtensions) {
+    public BmmClassFeature setFeatureExtensions(List<BMM_FEATURE_EXTENSION> featureExtensions) {
         this.featureExtensions = featureExtensions;
         return this;
     }
@@ -114,7 +115,7 @@ public abstract class BmmClassFeature extends BmmClassEntity {
     public BmmFeatureGroup getGroup() {
         return group;
     }
-    public setGroup(BmmFeatureGroup value) {
+    public void setGroup(BmmFeatureGroup value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:group failed, it has cardinality NonNull, but is null");
         }
@@ -130,7 +131,7 @@ public abstract class BmmClassFeature extends BmmClassEntity {
     public BmmClass getScope() {
         return scope;
     }
-    public setScope(BmmClass value) {
+    public void setScope(BmmClass value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:scope failed, it has cardinality NonNull, but is null");
         }
@@ -143,6 +144,8 @@ public abstract class BmmClassFeature extends BmmClassEntity {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmClassFeature() {}
 
     protected BmmClassFeature(
             BmmVisibility visibility,
@@ -188,7 +191,6 @@ public abstract class BmmClassFeature extends BmmClassEntity {
             java.util.Objects.equals(featureExtensions, that.featureExtensions) &&
             java.util.Objects.equals(group, that.group) &&
             java.util.Objects.equals(scope, that.scope);
-        }
     }
 
     public int hashCode() {
@@ -205,10 +207,10 @@ public abstract class BmmClassFeature extends BmmClassEntity {
     public java.lang.String toString() {
         return
             "BmmClassFeature {" +
-            "visibility='" + visibility + '\''; +
-            "featureExtensions='" + featureExtensions + '\''; +
-            "group='" + group + '\''; +
-            "scope='" + scope + '\''; +
+            "visibility='" + visibility + '\'' +
+            "featureExtensions='" + featureExtensions + '\'' +
+            "group='" + group + '\'' +
+            "scope='" + scope + '\'' +
             '}';
     }
 

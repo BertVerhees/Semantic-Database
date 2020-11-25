@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -49,7 +50,7 @@ public class BmmSignature extends BmmEffectiveType {
     public BmmTupleType getArgumentTypes() {
         return argumentTypes;
     }
-    public setArgumentTypes(BmmTupleType value) {
+    public void setArgumentTypes(BmmTupleType value) {
         this.argumentTypes = argumentTypes;
     }
 
@@ -62,7 +63,7 @@ public class BmmSignature extends BmmEffectiveType {
     public BmmType getResultType() {
         return resultType;
     }
-    public setResultType(BmmType value) {
+    public void setResultType(BmmType value) {
         this.resultType = resultType;
     }
 
@@ -169,6 +170,8 @@ public class BmmSignature extends BmmEffectiveType {
 /*=========================================================*/
 
 
+    protected BmmSignature() {}
+
     public BmmSignature(
             BmmTupleType argumentTypes,
             BmmType resultType
@@ -221,7 +224,6 @@ public class BmmSignature extends BmmEffectiveType {
         return
             java.util.Objects.equals(argumentTypes, that.argumentTypes) &&
             java.util.Objects.equals(resultType, that.resultType);
-        }
     }
 
     public int hashCode() {
@@ -236,8 +238,8 @@ public class BmmSignature extends BmmEffectiveType {
     public java.lang.String toString() {
         return
             "BmmSignature {" +
-            "argumentTypes='" + argumentTypes + '\''; +
-            "resultType='" + resultType + '\''; +
+            "argumentTypes='" + argumentTypes + '\'' +
+            "resultType='" + resultType + '\'' +
             '}';
     }
 

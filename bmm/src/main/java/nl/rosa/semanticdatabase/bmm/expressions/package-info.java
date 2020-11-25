@@ -1,4 +1,4 @@
-package bmm/expressions;
+package nl.rosa.semanticdatabase.bmm.expressions;
 /**
  * 
  * 

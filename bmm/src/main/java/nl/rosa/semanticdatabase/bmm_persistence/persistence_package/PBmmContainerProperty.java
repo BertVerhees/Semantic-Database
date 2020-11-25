@@ -1,12 +1,13 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmContainerProperty;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -61,7 +62,7 @@ public class PBmmContainerProperty extends PBmmProperty {
     public Interval<Integer> getCardinality() {
         return cardinality;
     }
-    public setCardinality(Interval<Integer> value) {
+    public void setCardinality(Interval<Integer> value) {
         this.cardinality = cardinality;
     }
 
@@ -75,7 +76,7 @@ public class PBmmContainerProperty extends PBmmProperty {
     public PBmmContainerType getTypeDef() {
         return typeDef;
     }
-    public setTypeDef(PBmmContainerType value) {
+    public void setTypeDef(PBmmContainerType value) {
         this.typeDef = typeDef;
     }
 
@@ -88,7 +89,7 @@ public class PBmmContainerProperty extends PBmmProperty {
     public BmmContainerProperty getBmmProperty() {
         return bmmProperty;
     }
-    public setBmmProperty(BmmContainerProperty value) {
+    public void setBmmProperty(BmmContainerProperty value) {
         this.bmmProperty = bmmProperty;
     }
 
@@ -117,6 +118,8 @@ public class PBmmContainerProperty extends PBmmProperty {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmContainerProperty() {}
 
     public PBmmContainerProperty(
             Interval<integer> cardinality,
@@ -252,7 +255,6 @@ public class PBmmContainerProperty extends PBmmProperty {
             java.util.Objects.equals(cardinality, that.cardinality) &&
             java.util.Objects.equals(typeDef, that.typeDef) &&
             java.util.Objects.equals(bmmProperty, that.bmmProperty);
-        }
     }
 
     public int hashCode() {
@@ -268,9 +270,9 @@ public class PBmmContainerProperty extends PBmmProperty {
     public java.lang.String toString() {
         return
             "PBmmContainerProperty {" +
-            "cardinality='" + cardinality + '\''; +
-            "typeDef='" + typeDef + '\''; +
-            "bmmProperty='" + bmmProperty + '\''; +
+            "cardinality='" + cardinality + '\'' +
+            "typeDef='" + typeDef + '\'' +
+            "bmmProperty='" + bmmProperty + '\'' +
             '}';
     }
 

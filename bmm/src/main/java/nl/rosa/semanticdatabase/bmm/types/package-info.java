@@ -1,4 +1,4 @@
-package bmm/types;
+package nl.rosa.semanticdatabase.bmm.types;
 /**
  * 
  * 

@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.foundation_types.terminology_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Uri;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -68,7 +69,7 @@ public class TerminologyCode extends Any {
     public String getTerminologyId() {
         return terminologyId;
     }
-    public setTerminologyId(String value) {
+    public void setTerminologyId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:terminologyId failed, it has cardinality NonNull, but is null");
         }
@@ -84,7 +85,7 @@ public class TerminologyCode extends Any {
     public String getTerminologyVersion() {
         return terminologyVersion;
     }
-    public setTerminologyVersion(String value) {
+    public void setTerminologyVersion(String value) {
         this.terminologyVersion = terminologyVersion;
     }
 
@@ -98,7 +99,7 @@ public class TerminologyCode extends Any {
     public String getCodeString() {
         return codeString;
     }
-    public setCodeString(String value) {
+    public void setCodeString(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:codeString failed, it has cardinality NonNull, but is null");
         }
@@ -114,7 +115,7 @@ public class TerminologyCode extends Any {
     public Uri getUri() {
         return uri;
     }
-    public setUri(Uri value) {
+    public void setUri(Uri value) {
         this.uri = uri;
     }
 
@@ -124,6 +125,8 @@ public class TerminologyCode extends Any {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected TerminologyCode() {}
 
     public TerminologyCode(
             String terminologyId,
@@ -199,11 +202,10 @@ public class TerminologyCode extends Any {
         if (!super.equals(object)) return false;
         TerminologyCode that = (TerminologyCode) object;
         return
-            java.util.Objects.equals(terminologyId, that.terminologyId) &&
-            java.util.Objects.equals(terminologyVersion, that.terminologyVersion) &&
-            java.util.Objects.equals(codeString, that.codeString) &&
-            java.util.Objects.equals(uri, that.uri);
-        }
+            Objects.equals(terminologyId, that.terminologyId) &&
+            Objects.equals(terminologyVersion, that.terminologyVersion) &&
+            Objects.equals(codeString, that.codeString) &&
+            Objects.equals(uri, that.uri);
     }
 
     public int hashCode() {
@@ -220,10 +222,10 @@ public class TerminologyCode extends Any {
     public String toString() {
         return
             "TerminologyCode {" +
-            "terminologyId='" + terminologyId + '\''; +
-            "terminologyVersion='" + terminologyVersion + '\''; +
-            "codeString='" + codeString + '\''; +
-            "uri='" + uri + '\''; +
+            "terminologyId='" + terminologyId + '\'' +
+            "terminologyVersion='" + terminologyVersion + '\'' +
+            "codeString='" + codeString + '\'' +
+            "uri='" + uri + '\'' +
             '}';
     }
 

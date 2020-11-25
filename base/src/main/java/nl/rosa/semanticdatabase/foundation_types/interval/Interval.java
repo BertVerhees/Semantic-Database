@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.foundation_types.interval;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -93,7 +94,7 @@ public abstract class Interval<t> extends Any {
     public T getLower() {
         return lower;
     }
-    public setLower(T value) {
+    public void setLower(T value) {
         this.lower = lower;
     }
 
@@ -107,7 +108,7 @@ public abstract class Interval<t> extends Any {
     public T getUpper() {
         return upper;
     }
-    public setUpper(T value) {
+    public void setUpper(T value) {
         this.upper = upper;
     }
 
@@ -123,7 +124,7 @@ public abstract class Interval<t> extends Any {
     public Boolean getLowerUnbounded() {
         return lowerUnbounded;
     }
-    public setLowerUnbounded(Boolean value) {
+    public void setLowerUnbounded(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:lowerUnbounded failed, it has cardinality NonNull, but is null");
         }
@@ -142,7 +143,7 @@ public abstract class Interval<t> extends Any {
     public Boolean getUpperUnbounded() {
         return upperUnbounded;
     }
-    public setUpperUnbounded(Boolean value) {
+    public void setUpperUnbounded(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:upperUnbounded failed, it has cardinality NonNull, but is null");
         }
@@ -159,7 +160,7 @@ public abstract class Interval<t> extends Any {
     public Boolean getLowerIncluded() {
         return lowerIncluded;
     }
-    public setLowerIncluded(Boolean value) {
+    public void setLowerIncluded(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:lowerIncluded failed, it has cardinality NonNull, but is null");
         }
@@ -176,7 +177,7 @@ public abstract class Interval<t> extends Any {
     public Boolean getUpperIncluded() {
         return upperIncluded;
     }
-    public setUpperIncluded(Boolean value) {
+    public void setUpperIncluded(Boolean value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:upperIncluded failed, it has cardinality NonNull, but is null");
         }
@@ -239,6 +240,8 @@ public abstract class Interval<t> extends Any {
 /*=========================================================*/
 
 
+    protected Interval<t>() {}
+
     protected Interval<t>(
             T lower,
             T upper,
@@ -281,13 +284,12 @@ public abstract class Interval<t> extends Any {
         if (!super.equals(object)) return false;
         Interval<t> that = (Interval<t>) object;
         return
-            java.util.Objects.equals(lower, that.lower) &&
-            java.util.Objects.equals(upper, that.upper) &&
-            java.util.Objects.equals(lowerUnbounded, that.lowerUnbounded) &&
-            java.util.Objects.equals(upperUnbounded, that.upperUnbounded) &&
-            java.util.Objects.equals(lowerIncluded, that.lowerIncluded) &&
-            java.util.Objects.equals(upperIncluded, that.upperIncluded);
-        }
+            Objects.equals(lower, that.lower) &&
+            Objects.equals(upper, that.upper) &&
+            Objects.equals(lowerUnbounded, that.lowerUnbounded) &&
+            Objects.equals(upperUnbounded, that.upperUnbounded) &&
+            Objects.equals(lowerIncluded, that.lowerIncluded) &&
+            Objects.equals(upperIncluded, that.upperIncluded);
     }
 
     public int hashCode() {
@@ -306,12 +308,12 @@ public abstract class Interval<t> extends Any {
     public String toString() {
         return
             "Interval<t> {" +
-            "lower='" + lower + '\''; +
-            "upper='" + upper + '\''; +
-            "lowerUnbounded='" + lowerUnbounded + '\''; +
-            "upperUnbounded='" + upperUnbounded + '\''; +
-            "lowerIncluded='" + lowerIncluded + '\''; +
-            "upperIncluded='" + upperIncluded + '\''; +
+            "lower='" + lower + '\'' +
+            "upper='" + upper + '\'' +
+            "lowerUnbounded='" + lowerUnbounded + '\'' +
+            "upperUnbounded='" + upperUnbounded + '\'' +
+            "lowerIncluded='" + lowerIncluded + '\'' +
+            "upperIncluded='" + upperIncluded + '\'' +
             '}';
     }
 

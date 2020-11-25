@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.model_structure;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -67,7 +68,7 @@ public abstract class BmmDeclaration {
     public String getName() {
         return name;
     }
-    public setName(String value) {
+    public void setName(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
@@ -128,7 +129,7 @@ public abstract class BmmDeclaration {
     public BmmDeclaration getScope() {
         return scope;
     }
-    public setScope(BmmDeclaration value) {
+    public void setScope(BmmDeclaration value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:scope failed, it has cardinality NonNull, but is null");
         }
@@ -207,6 +208,8 @@ public abstract class BmmDeclaration {
 /*=========================================================*/
 
 
+    protected BmmDeclaration() {}
+
     protected BmmDeclaration(
             String name,
             Map<string, any> documentation,
@@ -243,7 +246,6 @@ public abstract class BmmDeclaration {
             java.util.Objects.equals(documentation, that.documentation) &&
             java.util.Objects.equals(scope, that.scope) &&
             java.util.Objects.equals(extensions, that.extensions);
-        }
     }
 
     public int hashCode() {
@@ -260,10 +262,10 @@ public abstract class BmmDeclaration {
     public java.lang.String toString() {
         return
             "BmmDeclaration {" +
-            "name='" + name + '\''; +
-            "documentation='" + documentation + '\''; +
-            "scope='" + scope + '\''; +
-            "extensions='" + extensions + '\''; +
+            "name='" + name + '\'' +
+            "documentation='" + documentation + '\'' +
+            "scope='" + scope + '\'' +
+            "extensions='" + extensions + '\'' +
             '}';
     }
 

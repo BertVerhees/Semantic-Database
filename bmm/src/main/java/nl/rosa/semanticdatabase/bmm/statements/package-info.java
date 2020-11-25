@@ -1,4 +1,4 @@
-package bmm/statements;
+package nl.rosa.semanticdatabase.bmm.statements;
 /**
  * 
  * 

@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.model_access_package.BmmSchema;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -65,7 +66,7 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
     }
 
     public void addToPrimitiveTypes(List<PBmmClass> values ) {
-        values.forEach(value -> addPrimitivetype(value));
+        values.forEach(value -> addToPrimitivetype(value));
     }
 
     public void removeFromPrimitiveType(PBmmClass item ) {
@@ -74,12 +75,12 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
         }
     }
     public void removeFromPrimitiveTypes( Collection <PBmmClass> values ) {
-        values.forEach(this::removePrimitiveType);
+        values.forEach(this::removeFromPrimitiveType);
     }
-    PBmmClass getPrimitiveTypes() {
+    List<PBmmClass> getPrimitiveTypes() {
         return this.primitiveTypes;
     }
-    public PBmmSchema setPrimitiveTypes(PBmmClass primitiveTypes) {
+    public PBmmSchema setPrimitiveTypes(List<PBmmClass> primitiveTypes) {
         this.primitiveTypes = primitiveTypes;
         return this;
     }
@@ -103,7 +104,7 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
     }
 
     public void addToClassDefinitions(List<PBmmClass> values ) {
-        values.forEach(value -> addClassdefinition(value));
+        values.forEach(value -> addToClassdefinition(value));
     }
 
     public void removeFromClassDefinition(PBmmClass item ) {
@@ -112,12 +113,12 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
         }
     }
     public void removeFromClassDefinitions( Collection <PBmmClass> values ) {
-        values.forEach(this::removeClassDefinition);
+        values.forEach(this::removeFromClassDefinition);
     }
-    PBmmClass getClassDefinitions() {
+    List<PBmmClass> getClassDefinitions() {
         return this.classDefinitions;
     }
-    public PBmmSchema setClassDefinitions(PBmmClass classDefinitions) {
+    public PBmmSchema setClassDefinitions(List<PBmmClass> classDefinitions) {
         this.classDefinitions = classDefinitions;
         return this;
     }
@@ -134,7 +135,7 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
     public  get() {
         return ;
     }
-    public set( value) {
+    public void set( value) {
         this. = ;
     }
 
@@ -264,6 +265,8 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmSchema() {}
 
     public PBmmSchema(
             List<pBmmClass> primitiveTypes,
@@ -449,7 +452,6 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
             java.util.Objects.equals(primitiveTypes, that.primitiveTypes) &&
             java.util.Objects.equals(classDefinitions, that.classDefinitions) &&
             java.util.Objects.equals(packages, that.packages);
-        }
     }
 
     public int hashCode() {
@@ -465,9 +467,9 @@ public class PBmmSchema extends BmmSchema implements PBmmPackageContainer {
     public java.lang.String toString() {
         return
             "PBmmSchema {" +
-            "primitiveTypes='" + primitiveTypes + '\''; +
-            "classDefinitions='" + classDefinitions + '\''; +
-            "packages='" + packages + '\''; +
+            "primitiveTypes='" + primitiveTypes + '\'' +
+            "classDefinitions='" + classDefinitions + '\'' +
+            "packages='" + packages + '\'' +
             '}';
     }
 

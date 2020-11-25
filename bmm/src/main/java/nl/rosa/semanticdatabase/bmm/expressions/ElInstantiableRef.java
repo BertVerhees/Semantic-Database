@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,7 +42,7 @@ public class ElInstantiableRef<t> extends ElScopedRef {
     public T getDefinition() {
         return definition;
     }
-    public setDefinition(T value) {
+    public void setDefinition(T value) {
         this.definition = definition;
     }
 
@@ -73,6 +74,8 @@ public class ElInstantiableRef<t> extends ElScopedRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElInstantiableRef<t>() {}
 
     public ElInstantiableRef<t>(
             T definition,
@@ -127,7 +130,6 @@ public class ElInstantiableRef<t> extends ElScopedRef {
         ElInstantiableRef<t> that = (ElInstantiableRef<t>) object;
         return
             java.util.Objects.equals(definition, that.definition);
-        }
     }
 
     public int hashCode() {
@@ -141,7 +143,7 @@ public class ElInstantiableRef<t> extends ElScopedRef {
     public java.lang.String toString() {
         return
             "ElInstantiableRef<t> {" +
-            "definition='" + definition + '\''; +
+            "definition='" + definition + '\'' +
             '}';
     }
 

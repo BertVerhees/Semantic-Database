@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -51,7 +52,7 @@ public class ElTupleItem {
     public ElExpression getItem() {
         return item;
     }
-    public setItem(ElExpression value) {
+    public void setItem(ElExpression value) {
         this.item = item;
     }
 
@@ -64,7 +65,7 @@ public class ElTupleItem {
     public String getName() {
         return name;
     }
-    public setName(String value) {
+    public void setName(String value) {
         this.name = name;
     }
 
@@ -74,6 +75,8 @@ public class ElTupleItem {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElTupleItem() {}
 
     public ElTupleItem(
             ElExpression item,
@@ -127,7 +130,6 @@ public class ElTupleItem {
         return
             java.util.Objects.equals(item, that.item) &&
             java.util.Objects.equals(name, that.name);
-        }
     }
 
     public int hashCode() {
@@ -142,8 +144,8 @@ public class ElTupleItem {
     public java.lang.String toString() {
         return
             "ElTupleItem {" +
-            "item='" + item + '\''; +
-            "name='" + name + '\''; +
+            "item='" + item + '\'' +
+            "name='" + name + '\'' +
             '}';
     }
 

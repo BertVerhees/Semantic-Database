@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmGenericType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -70,7 +71,7 @@ public class PBmmGenericType extends PBmmBaseType {
     public String getRootType() {
         return rootType;
     }
-    public setRootType(String value) {
+    public void setRootType(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:rootType failed, it has cardinality NonNull, but is null");
         }
@@ -91,7 +92,7 @@ public class PBmmGenericType extends PBmmBaseType {
     }
 
     public void addToGenericParameterDefs(List<PBmmType> values ) {
-        values.forEach(value -> addGenericparameterdef(value));
+        values.forEach(value -> addToGenericparameterdef(value));
     }
 
     public void removeFromGenericParameterDef(PBmmType item ) {
@@ -100,12 +101,12 @@ public class PBmmGenericType extends PBmmBaseType {
         }
     }
     public void removeFromGenericParameterDefs( Collection <PBmmType> values ) {
-        values.forEach(this::removeGenericParameterDef);
+        values.forEach(this::removeFromGenericParameterDef);
     }
-    PBmmType getGenericParameterDefs() {
+    List<PBmmType> getGenericParameterDefs() {
         return this.genericParameterDefs;
     }
-    public PBmmGenericType setGenericParameterDefs(PBmmType genericParameterDefs) {
+    public PBmmGenericType setGenericParameterDefs(List<PBmmType> genericParameterDefs) {
         if (genericParameterDefs == null ) {
             throw new NullPointerException(" genericParameterDefs has cardinality NonNull, but is null");
         }
@@ -133,7 +134,7 @@ public class PBmmGenericType extends PBmmBaseType {
     }
 
     public void addToGenericParameters(List<String> values ) {
-        values.forEach(value -> addGenericparameter(value));
+        values.forEach(value -> addToGenericparameter(value));
     }
 
     public void removeFromGenericParameter(String item ) {
@@ -142,12 +143,12 @@ public class PBmmGenericType extends PBmmBaseType {
         }
     }
     public void removeFromGenericParameters( Collection <String> values ) {
-        values.forEach(this::removeGenericParameter);
+        values.forEach(this::removeFromGenericParameter);
     }
-    String getGenericParameters() {
+    List<String> getGenericParameters() {
         return this.genericParameters;
     }
-    public PBmmGenericType setGenericParameters(String genericParameters) {
+    public PBmmGenericType setGenericParameters(List<String> genericParameters) {
         this.genericParameters = genericParameters;
         return this;
     }
@@ -164,7 +165,7 @@ public class PBmmGenericType extends PBmmBaseType {
     public BmmGenericType getBmmType() {
         return bmmType;
     }
-    public setBmmType(BmmGenericType value) {
+    public void setBmmType(BmmGenericType value) {
         this.bmmType = bmmType;
     }
 
@@ -192,6 +193,8 @@ public class PBmmGenericType extends PBmmBaseType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmGenericType() {}
 
     public PBmmGenericType(
             String rootType,
@@ -290,7 +293,6 @@ public class PBmmGenericType extends PBmmBaseType {
             java.util.Objects.equals(genericParameterDefs, that.genericParameterDefs) &&
             java.util.Objects.equals(genericParameters, that.genericParameters) &&
             java.util.Objects.equals(bmmType, that.bmmType);
-        }
     }
 
     public int hashCode() {
@@ -307,10 +309,10 @@ public class PBmmGenericType extends PBmmBaseType {
     public java.lang.String toString() {
         return
             "PBmmGenericType {" +
-            "rootType='" + rootType + '\''; +
-            "genericParameterDefs='" + genericParameterDefs + '\''; +
-            "genericParameters='" + genericParameters + '\''; +
-            "bmmType='" + bmmType + '\''; +
+            "rootType='" + rootType + '\'' +
+            "genericParameterDefs='" + genericParameterDefs + '\'' +
+            "genericParameters='" + genericParameters + '\'' +
+            "bmmType='" + bmmType + '\'' +
             '}';
     }
 

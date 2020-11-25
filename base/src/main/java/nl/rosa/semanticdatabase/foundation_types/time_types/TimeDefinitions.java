@@ -1,12 +1,13 @@
 package nl.rosa.semanticdatabase.foundation_types.time_types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Double;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -46,7 +47,7 @@ public class TimeDefinitions {
     public Integer getMaxDaysInYear() {
         return maxDaysInYear;
     }
-    public setMaxDaysInYear(Integer value) {
+    public void setMaxDaysInYear(Integer value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:maxDaysInYear failed, it has cardinality NonNull, but is null");
         }
@@ -397,6 +398,8 @@ public class TimeDefinitions {
 /*=========================================================*/
 
 
+    protected TimeDefinitions() {}
+
     public TimeDefinitions(
             Integer maxDaysInYear
         ){
@@ -441,8 +444,7 @@ public class TimeDefinitions {
         if (!super.equals(object)) return false;
         TimeDefinitions that = (TimeDefinitions) object;
         return
-            java.util.Objects.equals(maxDaysInYear, that.maxDaysInYear);
-        }
+            Objects.equals(maxDaysInYear, that.maxDaysInYear);
     }
 
     public int hashCode() {
@@ -456,7 +458,7 @@ public class TimeDefinitions {
     public String toString() {
         return
             "TimeDefinitions {" +
-            "maxDaysInYear='" + maxDaysInYear + '\''; +
+            "maxDaysInYear='" + maxDaysInYear + '\'' +
             '}';
     }
 

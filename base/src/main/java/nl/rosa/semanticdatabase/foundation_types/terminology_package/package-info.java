@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.foundation_types.terminology_package/terminology_package;
+package nl.rosa.semanticdatabase.foundation_types.terminology_package;
 /**
  * 
  * 

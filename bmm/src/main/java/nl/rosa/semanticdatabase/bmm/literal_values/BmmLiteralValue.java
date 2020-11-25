@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.literal_values;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmTyped;
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -61,7 +62,7 @@ public abstract class BmmLiteralValue implements BmmTyped {
     public String getValueLiteral() {
         return valueLiteral;
     }
-    public setValueLiteral(String value) {
+    public void setValueLiteral(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:valueLiteral failed, it has cardinality NonNull, but is null");
         }
@@ -77,7 +78,7 @@ public abstract class BmmLiteralValue implements BmmTyped {
     public Any getValue() {
         return value;
     }
-    public setValue(Any value) {
+    public void setValue(Any value) {
         this.value = value;
     }
 
@@ -92,7 +93,7 @@ public abstract class BmmLiteralValue implements BmmTyped {
     public String getSyntax() {
         return syntax;
     }
-    public setSyntax(String value) {
+    public void setSyntax(String value) {
         this.syntax = syntax;
     }
 
@@ -123,7 +124,7 @@ public abstract class BmmLiteralValue implements BmmTyped {
     public BmmType getType() {
         return type;
     }
-    public setType(BmmType value) {
+    public void setType(BmmType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -157,6 +158,8 @@ public abstract class BmmLiteralValue implements BmmTyped {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmLiteralValue() {}
 
     protected BmmLiteralValue(
             String valueLiteral,
@@ -194,7 +197,6 @@ public abstract class BmmLiteralValue implements BmmTyped {
             java.util.Objects.equals(value, that.value) &&
             java.util.Objects.equals(syntax, that.syntax) &&
             java.util.Objects.equals(type, that.type);
-        }
     }
 
     public int hashCode() {
@@ -211,10 +213,10 @@ public abstract class BmmLiteralValue implements BmmTyped {
     public java.lang.String toString() {
         return
             "BmmLiteralValue {" +
-            "valueLiteral='" + valueLiteral + '\''; +
-            "value='" + value + '\''; +
-            "syntax='" + syntax + '\''; +
-            "type='" + type + '\''; +
+            "valueLiteral='" + valueLiteral + '\'' +
+            "value='" + value + '\'' +
+            "syntax='" + syntax + '\'' +
+            "type='" + type + '\'' +
             '}';
     }
 

@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,7 +40,7 @@ public abstract class ElScopedRef extends ElInstanceRef {
     public ElInstanceRef getScope() {
         return scope;
     }
-    public setScope(ElInstanceRef value) {
+    public void setScope(ElInstanceRef value) {
         this.scope = scope;
     }
 
@@ -49,6 +50,8 @@ public abstract class ElScopedRef extends ElInstanceRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElScopedRef() {}
 
     protected ElScopedRef(
             ElInstanceRef scope
@@ -71,7 +74,6 @@ public abstract class ElScopedRef extends ElInstanceRef {
         ElScopedRef that = (ElScopedRef) object;
         return
             java.util.Objects.equals(scope, that.scope);
-        }
     }
 
     public int hashCode() {
@@ -85,7 +87,7 @@ public abstract class ElScopedRef extends ElInstanceRef {
     public java.lang.String toString() {
         return
             "ElScopedRef {" +
-            "scope='" + scope + '\''; +
+            "scope='" + scope + '\'' +
             '}';
     }
 

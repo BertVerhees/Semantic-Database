@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.base_types.identification_package;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -42,7 +43,7 @@ public class GenericId extends ObjectId {
     public String getScheme() {
         return scheme;
     }
-    public setScheme(String value) {
+    public void setScheme(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:scheme failed, it has cardinality NonNull, but is null");
         }
@@ -55,6 +56,8 @@ public class GenericId extends ObjectId {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected GenericId() {}
 
     public GenericId(
             String scheme,
@@ -111,8 +114,7 @@ public class GenericId extends ObjectId {
         if (!super.equals(object)) return false;
         GenericId that = (GenericId) object;
         return
-            java.util.Objects.equals(scheme, that.scheme);
-        }
+            Objects.equals(scheme, that.scheme);
     }
 
     public int hashCode() {
@@ -126,7 +128,7 @@ public class GenericId extends ObjectId {
     public String toString() {
         return
             "GenericId {" +
-            "scheme='" + scheme + '\''; +
+            "scheme='" + scheme + '\'' +
             '}';
     }
 

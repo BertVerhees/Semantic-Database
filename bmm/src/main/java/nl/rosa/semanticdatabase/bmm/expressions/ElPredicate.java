@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,7 +41,7 @@ public abstract class ElPredicate extends ElTerminal {
     public ElInstanceRef getOperand() {
         return operand;
     }
-    public setOperand(ElInstanceRef value) {
+    public void setOperand(ElInstanceRef value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:operand failed, it has cardinality NonNull, but is null");
         }
@@ -74,6 +75,8 @@ public abstract class ElPredicate extends ElTerminal {
 /*=========================================================*/
 
 
+    protected ElPredicate() {}
+
     protected ElPredicate(
             ElInstanceRef operand
         ){
@@ -98,7 +101,6 @@ public abstract class ElPredicate extends ElTerminal {
         ElPredicate that = (ElPredicate) object;
         return
             java.util.Objects.equals(operand, that.operand);
-        }
     }
 
     public int hashCode() {
@@ -112,7 +114,7 @@ public abstract class ElPredicate extends ElTerminal {
     public java.lang.String toString() {
         return
             "ElPredicate {" +
-            "operand='" + operand + '\''; +
+            "operand='" + operand + '\'' +
             '}';
     }
 

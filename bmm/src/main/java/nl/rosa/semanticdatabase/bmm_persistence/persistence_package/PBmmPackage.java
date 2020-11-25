@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmPackage;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -67,7 +68,7 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
     public String getName() {
         return name;
     }
-    public setName(String value) {
+    public void setName(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
@@ -90,7 +91,7 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
     }
 
     public void addToClasses(List<String> values ) {
-        values.forEach(value -> addClasse(value));
+        values.forEach(value -> addToClasse(value));
     }
 
     public void removeFromClasse(String item ) {
@@ -99,12 +100,12 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
         }
     }
     public void removeFromClasses( Collection <String> values ) {
-        values.forEach(this::removeClasse);
+        values.forEach(this::removeFromClasse);
     }
-    String getClasses() {
+    List<String> getClasses() {
         return this.classes;
     }
-    public PBmmPackage setClasses(String classes) {
+    public PBmmPackage setClasses(List<String> classes) {
         this.classes = classes;
         return this;
     }
@@ -121,7 +122,7 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
     public BmmPackage getBmmPackageDefinition() {
         return bmmPackageDefinition;
     }
-    public setBmmPackageDefinition(BmmPackage value) {
+    public void setBmmPackageDefinition(BmmPackage value) {
         this.bmmPackageDefinition = bmmPackageDefinition;
     }
 
@@ -134,7 +135,7 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
     public  get() {
         return ;
     }
-    public set( value) {
+    public void set( value) {
         this. = ;
     }
 
@@ -219,6 +220,8 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmPackage() {}
 
     public PBmmPackage(
             String name,
@@ -309,7 +312,6 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
             java.util.Objects.equals(classes, that.classes) &&
             java.util.Objects.equals(bmmPackageDefinition, that.bmmPackageDefinition) &&
             java.util.Objects.equals(packages, that.packages);
-        }
     }
 
     public int hashCode() {
@@ -326,10 +328,10 @@ public class PBmmPackage extends PBmmModelElement implements PBmmPackageContaine
     public java.lang.String toString() {
         return
             "PBmmPackage {" +
-            "name='" + name + '\''; +
-            "classes='" + classes + '\''; +
-            "bmmPackageDefinition='" + bmmPackageDefinition + '\''; +
-            "packages='" + packages + '\''; +
+            "name='" + name + '\'' +
+            "classes='" + classes + '\'' +
+            "bmmPackageDefinition='" + bmmPackageDefinition + '\'' +
+            "packages='" + packages + '\'' +
             '}';
     }
 

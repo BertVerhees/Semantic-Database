@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.foundation_types.primitive_types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -154,6 +155,8 @@ public class Boolean extends Any {
 /*=========================================================*/
 
 
+    protected Boolean() {}
+
     public Boolean(
             
         ){
@@ -185,14 +188,12 @@ public class Boolean extends Any {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        Boolean that = (Boolean) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

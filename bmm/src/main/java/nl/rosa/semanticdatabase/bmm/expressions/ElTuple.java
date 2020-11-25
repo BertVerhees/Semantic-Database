@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmTupleType;
 import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -57,7 +58,7 @@ public class ElTuple extends ElInstanceRef {
     }
 
     public void addToItems(List<ElTupleItem> values ) {
-        values.forEach(value -> addItem(value));
+        values.forEach(value -> addToItem(value));
     }
 
     public void removeFromItem(ElTupleItem item ) {
@@ -66,12 +67,12 @@ public class ElTuple extends ElInstanceRef {
         }
     }
     public void removeFromItems( Collection <ElTupleItem> values ) {
-        values.forEach(this::removeItem);
+        values.forEach(this::removeFromItem);
     }
-    ElTupleItem getItems() {
+    List<ElTupleItem> getItems() {
         return this.items;
     }
-    public ElTuple setItems(ElTupleItem items) {
+    public ElTuple setItems(List<ElTupleItem> items) {
         this.items = items;
         return this;
     }
@@ -88,7 +89,7 @@ public class ElTuple extends ElInstanceRef {
     public BmmTupleType getType() {
         return type;
     }
-    public setType(BmmTupleType value) {
+    public void setType(BmmTupleType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -121,6 +122,8 @@ public class ElTuple extends ElInstanceRef {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElTuple() {}
 
     public ElTuple(
             List<elTupleItem> items,
@@ -177,7 +180,6 @@ public class ElTuple extends ElInstanceRef {
         return
             java.util.Objects.equals(items, that.items) &&
             java.util.Objects.equals(type, that.type);
-        }
     }
 
     public int hashCode() {
@@ -192,8 +194,8 @@ public class ElTuple extends ElInstanceRef {
     public java.lang.String toString() {
         return
             "ElTuple {" +
-            "items='" + items + '\''; +
-            "type='" + type + '\''; +
+            "items='" + items + '\'' +
+            "type='" + type + '\'' +
             '}';
     }
 

@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -48,7 +49,7 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
     public BmmOperator getOperatorDefinition() {
         return operatorDefinition;
     }
-    public setOperatorDefinition(BmmOperator value) {
+    public void setOperatorDefinition(BmmOperator value) {
         this.operatorDefinition = operatorDefinition;
     }
 
@@ -61,7 +62,7 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
     public BmmResult getResult() {
         return result;
     }
-    public setResult(BmmResult value) {
+    public void setResult(BmmResult value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:result failed, it has cardinality NonNull, but is null");
         }
@@ -107,7 +108,7 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
     public BmmType getType() {
         return type;
     }
-    public setType(BmmType value) {
+    public void setType(BmmType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -141,6 +142,8 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmFunction() {}
 
     public BmmFunction(
             BmmOperator operatorDefinition,
@@ -329,7 +332,6 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
             java.util.Objects.equals(operatorDefinition, that.operatorDefinition) &&
             java.util.Objects.equals(result, that.result) &&
             java.util.Objects.equals(type, that.type);
-        }
     }
 
     public int hashCode() {
@@ -345,9 +347,9 @@ public class BmmFunction extends BmmRoutine implements BmmTypedFeature {
     public java.lang.String toString() {
         return
             "BmmFunction {" +
-            "operatorDefinition='" + operatorDefinition + '\''; +
-            "result='" + result + '\''; +
-            "type='" + type + '\''; +
+            "operatorDefinition='" + operatorDefinition + '\'' +
+            "result='" + result + '\'' +
+            "type='" + type + '\'' +
             '}';
     }
 

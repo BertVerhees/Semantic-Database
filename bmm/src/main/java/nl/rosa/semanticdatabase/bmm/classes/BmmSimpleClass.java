@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.classes;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,6 +42,8 @@ public class BmmSimpleClass extends BmmClass {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmSimpleClass() {}
 
     public BmmSimpleClass(
             Map<string,bmmModelType> ancestors,
@@ -236,14 +239,12 @@ public class BmmSimpleClass extends BmmClass {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        BmmSimpleClass that = (BmmSimpleClass) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

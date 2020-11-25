@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -43,7 +44,7 @@ public class BmmParameter extends BmmVariable {
     public BmmParameterDirection getDirection() {
         return direction;
     }
-    public setDirection(BmmParameterDirection value) {
+    public void setDirection(BmmParameterDirection value) {
         this.direction = direction;
     }
 
@@ -53,6 +54,8 @@ public class BmmParameter extends BmmVariable {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmParameter() {}
 
     public BmmParameter(
             BmmParameterDirection direction,
@@ -152,7 +155,6 @@ public class BmmParameter extends BmmVariable {
         BmmParameter that = (BmmParameter) object;
         return
             java.util.Objects.equals(direction, that.direction);
-        }
     }
 
     public int hashCode() {
@@ -166,7 +168,7 @@ public class BmmParameter extends BmmVariable {
     public java.lang.String toString() {
         return
             "BmmParameter {" +
-            "direction='" + direction + '\''; +
+            "direction='" + direction + '\'' +
             '}';
     }
 

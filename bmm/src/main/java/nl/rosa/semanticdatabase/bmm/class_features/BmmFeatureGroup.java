@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -104,7 +105,7 @@ public class BmmFeatureGroup {
     }
 
     public void addToFeatures(List<BmmClassFeature> values ) {
-        values.forEach(value -> addFeature(value));
+        values.forEach(value -> addToFeature(value));
     }
 
     public void removeFromFeature(BmmClassFeature item ) {
@@ -113,12 +114,12 @@ public class BmmFeatureGroup {
         }
     }
     public void removeFromFeatures( Collection <BmmClassFeature> values ) {
-        values.forEach(this::removeFeature);
+        values.forEach(this::removeFromFeature);
     }
-    BmmClassFeature getFeatures() {
+    List<BmmClassFeature> getFeatures() {
         return this.features;
     }
-    public BmmFeatureGroup setFeatures(BmmClassFeature features) {
+    public BmmFeatureGroup setFeatures(List<BmmClassFeature> features) {
         this.features = features;
         return this;
     }
@@ -135,7 +136,7 @@ public class BmmFeatureGroup {
     public BmmVisibility getVisibility() {
         return visibility;
     }
-    public setVisibility(BmmVisibility value) {
+    public void setVisibility(BmmVisibility value) {
         this.visibility = visibility;
     }
 
@@ -156,6 +157,8 @@ public class BmmFeatureGroup {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmFeatureGroup() {}
 
     public BmmFeatureGroup(
             Map<string, string> properties,
@@ -222,7 +225,6 @@ public class BmmFeatureGroup {
             java.util.Objects.equals(properties, that.properties) &&
             java.util.Objects.equals(features, that.features) &&
             java.util.Objects.equals(visibility, that.visibility);
-        }
     }
 
     public int hashCode() {
@@ -238,9 +240,9 @@ public class BmmFeatureGroup {
     public java.lang.String toString() {
         return
             "BmmFeatureGroup {" +
-            "properties='" + properties + '\''; +
-            "features='" + features + '\''; +
-            "visibility='" + visibility + '\''; +
+            "properties='" + properties + '\'' +
+            "features='" + features + '\'' +
+            "visibility='" + visibility + '\'' +
             '}';
     }
 

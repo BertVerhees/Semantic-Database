@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmContainerType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -70,7 +71,7 @@ public class PBmmContainerType extends PBmmType {
     public String getContainerType() {
         return containerType;
     }
-    public setContainerType(String value) {
+    public void setContainerType(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:containerType failed, it has cardinality NonNull, but is null");
         }
@@ -87,7 +88,7 @@ public class PBmmContainerType extends PBmmType {
     public PBmmBaseType getTypeDef() {
         return typeDef;
     }
-    public setTypeDef(PBmmBaseType value) {
+    public void setTypeDef(PBmmBaseType value) {
         this.typeDef = typeDef;
     }
 
@@ -101,7 +102,7 @@ public class PBmmContainerType extends PBmmType {
     public String getType() {
         return type;
     }
-    public setType(String value) {
+    public void setType(String value) {
         this.type = type;
     }
 
@@ -114,7 +115,7 @@ public class PBmmContainerType extends PBmmType {
     public BmmContainerType getBmmType() {
         return bmmType;
     }
-    public setBmmType(BmmContainerType value) {
+    public void setBmmType(BmmContainerType value) {
         this.bmmType = bmmType;
     }
 
@@ -145,6 +146,8 @@ public class PBmmContainerType extends PBmmType {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmContainerType() {}
 
     public PBmmContainerType(
             String containerType,
@@ -229,7 +232,6 @@ public class PBmmContainerType extends PBmmType {
             java.util.Objects.equals(typeDef, that.typeDef) &&
             java.util.Objects.equals(type, that.type) &&
             java.util.Objects.equals(bmmType, that.bmmType);
-        }
     }
 
     public int hashCode() {
@@ -246,10 +248,10 @@ public class PBmmContainerType extends PBmmType {
     public java.lang.String toString() {
         return
             "PBmmContainerType {" +
-            "containerType='" + containerType + '\''; +
-            "typeDef='" + typeDef + '\''; +
-            "type='" + type + '\''; +
-            "bmmType='" + bmmType + '\''; +
+            "containerType='" + containerType + '\'' +
+            "typeDef='" + typeDef + '\'' +
+            "type='" + type + '\'' +
+            "bmmType='" + bmmType + '\'' +
             '}';
     }
 

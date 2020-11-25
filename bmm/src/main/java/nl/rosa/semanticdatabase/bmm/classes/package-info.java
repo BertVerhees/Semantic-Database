@@ -1,4 +1,4 @@
-package bmm/classes;
+package nl.rosa.semanticdatabase.bmm.classes;
 /**
  * 
  * 

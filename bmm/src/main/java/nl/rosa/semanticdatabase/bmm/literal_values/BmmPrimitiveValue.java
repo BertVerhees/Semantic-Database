@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.literal_values;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,7 +41,7 @@ public class BmmPrimitiveValue extends BmmUnitaryValue {
     public BmmSimpleType getType() {
         return type;
     }
-    public setType(BmmSimpleType value) {
+    public void setType(BmmSimpleType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -53,6 +54,8 @@ public class BmmPrimitiveValue extends BmmUnitaryValue {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmPrimitiveValue() {}
 
     public BmmPrimitiveValue(
             BmmSimpleType type,
@@ -144,7 +147,6 @@ public class BmmPrimitiveValue extends BmmUnitaryValue {
         BmmPrimitiveValue that = (BmmPrimitiveValue) object;
         return
             java.util.Objects.equals(type, that.type);
-        }
     }
 
     public int hashCode() {
@@ -158,7 +160,7 @@ public class BmmPrimitiveValue extends BmmUnitaryValue {
     public java.lang.String toString() {
         return
             "BmmPrimitiveValue {" +
-            "type='" + type + '\''; +
+            "type='" + type + '\'' +
             '}';
     }
 

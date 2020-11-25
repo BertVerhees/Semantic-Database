@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProperty;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
@@ -7,7 +8,7 @@ import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -98,7 +99,7 @@ public abstract class PBmmProperty extends PBmmModelElement {
     public String getName() {
         return name;
     }
-    public setName(String value) {
+    public void setName(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:name failed, it has cardinality NonNull, but is null");
         }
@@ -115,7 +116,7 @@ public abstract class PBmmProperty extends PBmmModelElement {
     public Boolean getIsMandatory() {
         return isMandatory;
     }
-    public setIsMandatory(Boolean value) {
+    public void setIsMandatory(Boolean value) {
         this.isMandatory = isMandatory;
     }
 
@@ -129,7 +130,7 @@ public abstract class PBmmProperty extends PBmmModelElement {
     public Boolean getIsComputed() {
         return isComputed;
     }
-    public setIsComputed(Boolean value) {
+    public void setIsComputed(Boolean value) {
         this.isComputed = isComputed;
     }
 
@@ -143,7 +144,7 @@ public abstract class PBmmProperty extends PBmmModelElement {
     public Boolean getIsImInfrastructure() {
         return isImInfrastructure;
     }
-    public setIsImInfrastructure(Boolean value) {
+    public void setIsImInfrastructure(Boolean value) {
         this.isImInfrastructure = isImInfrastructure;
     }
 
@@ -157,7 +158,7 @@ public abstract class PBmmProperty extends PBmmModelElement {
     public Boolean getIsImRuntime() {
         return isImRuntime;
     }
-    public setIsImRuntime(Boolean value) {
+    public void setIsImRuntime(Boolean value) {
         this.isImRuntime = isImRuntime;
     }
 
@@ -171,7 +172,7 @@ public abstract class PBmmProperty extends PBmmModelElement {
     public PBmmType getTypeDef() {
         return typeDef;
     }
-    public setTypeDef(PBmmType value) {
+    public void setTypeDef(PBmmType value) {
         this.typeDef = typeDef;
     }
 
@@ -184,7 +185,7 @@ public abstract class PBmmProperty extends PBmmModelElement {
     public BmmProperty getBmmProperty() {
         return bmmProperty;
     }
-    public setBmmProperty(BmmProperty value) {
+    public void setBmmProperty(BmmProperty value) {
         this.bmmProperty = bmmProperty;
     }
 
@@ -213,6 +214,8 @@ public abstract class PBmmProperty extends PBmmModelElement {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmProperty() {}
 
     protected PBmmProperty(
             String name,
@@ -260,7 +263,6 @@ public abstract class PBmmProperty extends PBmmModelElement {
             java.util.Objects.equals(isImRuntime, that.isImRuntime) &&
             java.util.Objects.equals(typeDef, that.typeDef) &&
             java.util.Objects.equals(bmmProperty, that.bmmProperty);
-        }
     }
 
     public int hashCode() {
@@ -280,13 +282,13 @@ public abstract class PBmmProperty extends PBmmModelElement {
     public java.lang.String toString() {
         return
             "PBmmProperty {" +
-            "name='" + name + '\''; +
-            "isMandatory='" + isMandatory + '\''; +
-            "isComputed='" + isComputed + '\''; +
-            "isImInfrastructure='" + isImInfrastructure + '\''; +
-            "isImRuntime='" + isImRuntime + '\''; +
-            "typeDef='" + typeDef + '\''; +
-            "bmmProperty='" + bmmProperty + '\''; +
+            "name='" + name + '\'' +
+            "isMandatory='" + isMandatory + '\'' +
+            "isComputed='" + isComputed + '\'' +
+            "isImInfrastructure='" + isImInfrastructure + '\'' +
+            "isImRuntime='" + isImRuntime + '\'' +
+            "typeDef='" + typeDef + '\'' +
+            "bmmProperty='" + bmmProperty + '\'' +
             '}';
     }
 

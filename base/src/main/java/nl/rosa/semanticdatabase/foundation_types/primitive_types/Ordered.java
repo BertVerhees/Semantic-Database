@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.foundation_types.primitive_types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -93,6 +94,8 @@ public abstract class Ordered extends Any {
 /*=========================================================*/
 
 
+    protected Ordered() {}
+
     protected Ordered(
             
         ){
@@ -110,14 +113,12 @@ public abstract class Ordered extends Any {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        Ordered that = (Ordered) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

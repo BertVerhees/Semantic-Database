@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.base_types.identification_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -41,7 +42,7 @@ public class VersionTreeId {
     public String getValue() {
         return value;
     }
-    public setValue(String value) {
+    public void setValue(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:value failed, it has cardinality NonNull, but is null");
         }
@@ -124,6 +125,8 @@ public class VersionTreeId {
 /*=========================================================*/
 
 
+    protected VersionTreeId() {}
+
     public VersionTreeId(
             String value
         ){
@@ -168,8 +171,7 @@ public class VersionTreeId {
         if (!super.equals(object)) return false;
         VersionTreeId that = (VersionTreeId) object;
         return
-            java.util.Objects.equals(value, that.value);
-        }
+            Objects.equals(value, that.value);
     }
 
     public int hashCode() {
@@ -183,7 +185,7 @@ public class VersionTreeId {
     public String toString() {
         return
             "VersionTreeId {" +
-            "value='" + value + '\''; +
+            "value='" + value + '\'' +
             '}';
     }
 

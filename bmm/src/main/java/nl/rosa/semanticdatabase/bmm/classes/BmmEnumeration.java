@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.classes;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.literal_values.BmmPrimitiveValue;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -60,7 +61,7 @@ public class BmmEnumeration extends BmmSimpleClass {
     }
 
     public void addToItemNames(List<String> values ) {
-        values.forEach(value -> addItemname(value));
+        values.forEach(value -> addToItemname(value));
     }
 
     public void removeFromItemName(String item ) {
@@ -69,12 +70,12 @@ public class BmmEnumeration extends BmmSimpleClass {
         }
     }
     public void removeFromItemNames( Collection <String> values ) {
-        values.forEach(this::removeItemName);
+        values.forEach(this::removeFromItemName);
     }
-    String getItemNames() {
+    List<String> getItemNames() {
         return this.itemNames;
     }
-    public BmmEnumeration setItemNames(String itemNames) {
+    public BmmEnumeration setItemNames(List<String> itemNames) {
         this.itemNames = itemNames;
         return this;
     }
@@ -98,7 +99,7 @@ public class BmmEnumeration extends BmmSimpleClass {
     }
 
     public void addToItemValues(List<BmmPrimitiveValue> values ) {
-        values.forEach(value -> addItemvalue(value));
+        values.forEach(value -> addToItemvalue(value));
     }
 
     public void removeFromItemValue(BmmPrimitiveValue item ) {
@@ -107,12 +108,12 @@ public class BmmEnumeration extends BmmSimpleClass {
         }
     }
     public void removeFromItemValues( Collection <BmmPrimitiveValue> values ) {
-        values.forEach(this::removeItemValue);
+        values.forEach(this::removeFromItemValue);
     }
-    BmmPrimitiveValue getItemValues() {
+    List<BmmPrimitiveValue> getItemValues() {
         return this.itemValues;
     }
-    public BmmEnumeration setItemValues(BmmPrimitiveValue itemValues) {
+    public BmmEnumeration setItemValues(List<BmmPrimitiveValue> itemValues) {
         this.itemValues = itemValues;
         return this;
     }
@@ -146,6 +147,8 @@ public class BmmEnumeration extends BmmSimpleClass {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmEnumeration() {}
 
     public BmmEnumeration(
             List<string> itemNames,
@@ -362,7 +365,6 @@ public class BmmEnumeration extends BmmSimpleClass {
         return
             java.util.Objects.equals(itemNames, that.itemNames) &&
             java.util.Objects.equals(itemValues, that.itemValues);
-        }
     }
 
     public int hashCode() {
@@ -377,8 +379,8 @@ public class BmmEnumeration extends BmmSimpleClass {
     public java.lang.String toString() {
         return
             "BmmEnumeration {" +
-            "itemNames='" + itemNames + '\''; +
-            "itemValues='" + itemValues + '\''; +
+            "itemNames='" + itemNames + '\'' +
+            "itemValues='" + itemValues + '\'' +
             '}';
     }
 

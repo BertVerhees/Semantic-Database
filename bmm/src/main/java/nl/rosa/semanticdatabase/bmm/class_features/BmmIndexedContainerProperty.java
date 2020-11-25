@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.types.BmmIndexedContainerType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,7 +41,7 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
     public BmmIndexedContainerType getType() {
         return type;
     }
-    public setType(BmmIndexedContainerType value) {
+    public void setType(BmmIndexedContainerType value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
@@ -73,6 +74,8 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmIndexedContainerProperty() {}
 
     public BmmIndexedContainerProperty(
             BmmIndexedContainerType type,
@@ -218,7 +221,6 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
         BmmIndexedContainerProperty that = (BmmIndexedContainerProperty) object;
         return
             java.util.Objects.equals(type, that.type);
-        }
     }
 
     public int hashCode() {
@@ -232,7 +234,7 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
     public java.lang.String toString() {
         return
             "BmmIndexedContainerProperty {" +
-            "type='" + type + '\''; +
+            "type='" + type + '\'' +
             '}';
     }
 

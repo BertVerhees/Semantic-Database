@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -42,7 +43,7 @@ public class BmmSimpleType extends BmmModelType {
     public BmmSimpleClass getBaseClass() {
         return baseClass;
     }
-    public setBaseClass(BmmSimpleClass value) {
+    public void setBaseClass(BmmSimpleClass value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:baseClass failed, it has cardinality NonNull, but is null");
         }
@@ -124,6 +125,8 @@ public class BmmSimpleType extends BmmModelType {
 /*=========================================================*/
 
 
+    protected BmmSimpleType() {}
+
     public BmmSimpleType(
             BmmSimpleClass baseClass,
             BmmValueSetSpec valueConstraint,
@@ -188,7 +191,6 @@ public class BmmSimpleType extends BmmModelType {
         BmmSimpleType that = (BmmSimpleType) object;
         return
             java.util.Objects.equals(baseClass, that.baseClass);
-        }
     }
 
     public int hashCode() {
@@ -202,7 +204,7 @@ public class BmmSimpleType extends BmmModelType {
     public java.lang.String toString() {
         return
             "BmmSimpleType {" +
-            "baseClass='" + baseClass + '\''; +
+            "baseClass='" + baseClass + '\'' +
             '}';
     }
 

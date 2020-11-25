@@ -1,12 +1,13 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmOperator;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -61,7 +62,7 @@ public abstract class ElOperator extends ElSimple {
     public Boolean getPrecedenceOverridden() {
         return precedenceOverridden;
     }
-    public setPrecedenceOverridden(Boolean value) {
+    public void setPrecedenceOverridden(Boolean value) {
         this.precedenceOverridden = precedenceOverridden;
     }
 
@@ -75,7 +76,7 @@ public abstract class ElOperator extends ElSimple {
     public String getSymbol() {
         return symbol;
     }
-    public setSymbol(String value) {
+    public void setSymbol(String value) {
         this.symbol = symbol;
     }
 
@@ -88,7 +89,7 @@ public abstract class ElOperator extends ElSimple {
     public BmmFunction getDefinition() {
         return definition;
     }
-    public setDefinition(BmmFunction value) {
+    public void setDefinition(BmmFunction value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:definition failed, it has cardinality NonNull, but is null");
         }
@@ -138,6 +139,8 @@ public abstract class ElOperator extends ElSimple {
 /*=========================================================*/
 
 
+    protected ElOperator() {}
+
     protected ElOperator(
             Boolean precedenceOverridden,
             String symbol,
@@ -168,7 +171,6 @@ public abstract class ElOperator extends ElSimple {
             java.util.Objects.equals(precedenceOverridden, that.precedenceOverridden) &&
             java.util.Objects.equals(symbol, that.symbol) &&
             java.util.Objects.equals(definition, that.definition);
-        }
     }
 
     public int hashCode() {
@@ -184,9 +186,9 @@ public abstract class ElOperator extends ElSimple {
     public java.lang.String toString() {
         return
             "ElOperator {" +
-            "precedenceOverridden='" + precedenceOverridden + '\''; +
-            "symbol='" + symbol + '\''; +
-            "definition='" + definition + '\''; +
+            "precedenceOverridden='" + precedenceOverridden + '\'' +
+            "symbol='" + symbol + '\'' +
+            "definition='" + definition + '\'' +
             '}';
     }
 

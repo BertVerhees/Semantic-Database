@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -130,6 +131,8 @@ public class BmmRoutineExternal extends BmmRoutineBody {
 /*=========================================================*/
 
 
+    protected BmmRoutineExternal() {}
+
     public BmmRoutineExternal(
             Map<string, string> metaData,
             Map<string, string> argumentMapping
@@ -185,7 +188,6 @@ public class BmmRoutineExternal extends BmmRoutineBody {
         return
             java.util.Objects.equals(metaData, that.metaData) &&
             java.util.Objects.equals(argumentMapping, that.argumentMapping);
-        }
     }
 
     public int hashCode() {
@@ -200,8 +202,8 @@ public class BmmRoutineExternal extends BmmRoutineBody {
     public java.lang.String toString() {
         return
             "BmmRoutineExternal {" +
-            "metaData='" + metaData + '\''; +
-            "argumentMapping='" + argumentMapping + '\''; +
+            "metaData='" + metaData + '\'' +
+            "argumentMapping='" + argumentMapping + '\'' +
             '}';
     }
 

@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.model_structure;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -47,7 +48,7 @@ public class BmmPackage extends BmmPackageContainer {
     }
 
     public void addToClasses(List<BmmClass> values ) {
-        values.forEach(value -> addClasse(value));
+        values.forEach(value -> addToClasse(value));
     }
 
     public void removeFromClasse(BmmClass item ) {
@@ -56,12 +57,12 @@ public class BmmPackage extends BmmPackageContainer {
         }
     }
     public void removeFromClasses( Collection <BmmClass> values ) {
-        values.forEach(this::removeClasse);
+        values.forEach(this::removeFromClasse);
     }
-    BmmClass getClasses() {
+    List<BmmClass> getClasses() {
         return this.classes;
     }
-    public BmmPackage setClasses(BmmClass classes) {
+    public BmmPackage setClasses(List<BmmClass> classes) {
         this.classes = classes;
         return this;
     }
@@ -109,6 +110,8 @@ public class BmmPackage extends BmmPackageContainer {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected BmmPackage() {}
 
     public BmmPackage(
             List<bmmClass> classes,
@@ -208,7 +211,6 @@ public class BmmPackage extends BmmPackageContainer {
         BmmPackage that = (BmmPackage) object;
         return
             java.util.Objects.equals(classes, that.classes);
-        }
     }
 
     public int hashCode() {
@@ -222,7 +224,7 @@ public class BmmPackage extends BmmPackageContainer {
     public java.lang.String toString() {
         return
             "BmmPackage {" +
-            "classes='" + classes + '\''; +
+            "classes='" + classes + '\'' +
             '}';
     }
 

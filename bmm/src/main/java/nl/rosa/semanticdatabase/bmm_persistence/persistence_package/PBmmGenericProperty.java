@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmUnitaryProperty;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -50,7 +51,7 @@ public class PBmmGenericProperty extends PBmmProperty {
     public PBmmGenericType getTypeDef() {
         return typeDef;
     }
-    public setTypeDef(PBmmGenericType value) {
+    public void setTypeDef(PBmmGenericType value) {
         this.typeDef = typeDef;
     }
 
@@ -63,7 +64,7 @@ public class PBmmGenericProperty extends PBmmProperty {
     public BmmUnitaryProperty getBmmProperty() {
         return bmmProperty;
     }
-    public setBmmProperty(BmmUnitaryProperty value) {
+    public void setBmmProperty(BmmUnitaryProperty value) {
         this.bmmProperty = bmmProperty;
     }
 
@@ -73,6 +74,8 @@ public class PBmmGenericProperty extends PBmmProperty {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmGenericProperty() {}
 
     public PBmmGenericProperty(
             PBmmGenericType typeDef,
@@ -198,7 +201,6 @@ public class PBmmGenericProperty extends PBmmProperty {
         return
             java.util.Objects.equals(typeDef, that.typeDef) &&
             java.util.Objects.equals(bmmProperty, that.bmmProperty);
-        }
     }
 
     public int hashCode() {
@@ -213,8 +215,8 @@ public class PBmmGenericProperty extends PBmmProperty {
     public java.lang.String toString() {
         return
             "PBmmGenericProperty {" +
-            "typeDef='" + typeDef + '\''; +
-            "bmmProperty='" + bmmProperty + '\''; +
+            "typeDef='" + typeDef + '\'' +
+            "bmmProperty='" + bmmProperty + '\'' +
             '}';
     }
 

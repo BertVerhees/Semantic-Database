@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.foundation_types.structure_types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase..;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -64,6 +65,8 @@ public class Hash<k,v> extends Container {
 /*=========================================================*/
 
 
+    protected Hash<k,v>() {}
+
     public Hash<k,v>(
             
         ){
@@ -95,14 +98,12 @@ public class Hash<k,v> extends Container {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        Hash<k,v> that = (Hash<k,v>) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

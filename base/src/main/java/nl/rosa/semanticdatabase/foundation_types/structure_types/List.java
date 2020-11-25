@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.foundation_types.structure_types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase..;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -56,6 +57,8 @@ public class List<t> extends Container {
 /*=========================================================*/
 
 
+    protected List<t>() {}
+
     public List<t>(
             
         ){
@@ -87,14 +90,12 @@ public class List<t> extends Container {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        List<t> that = (List<t>) object;
-        return
-        }
+        return true;
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
+            super.hashCode()
         );
     }
 

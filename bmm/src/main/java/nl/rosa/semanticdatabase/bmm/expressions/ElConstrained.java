@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -39,7 +40,7 @@ public abstract class ElConstrained {
     public ElExpression getBaseExpression() {
         return baseExpression;
     }
-    public setBaseExpression(ElExpression value) {
+    public void setBaseExpression(ElExpression value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:baseExpression failed, it has cardinality NonNull, but is null");
         }
@@ -52,6 +53,8 @@ public abstract class ElConstrained {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElConstrained() {}
 
     protected ElConstrained(
             ElExpression baseExpression
@@ -77,7 +80,6 @@ public abstract class ElConstrained {
         ElConstrained that = (ElConstrained) object;
         return
             java.util.Objects.equals(baseExpression, that.baseExpression);
-        }
     }
 
     public int hashCode() {
@@ -91,7 +93,7 @@ public abstract class ElConstrained {
     public java.lang.String toString() {
         return
             "ElConstrained {" +
-            "baseExpression='" + baseExpression + '\''; +
+            "baseExpression='" + baseExpression + '\'' +
             '}';
     }
 

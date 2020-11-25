@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.bmm.model_access_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -102,7 +103,7 @@ public abstract class BmmSchemaDescriptor {
     public BmmSchema getBmmSchema() {
         return bmmSchema;
     }
-    public setBmmSchema(BmmSchema value) {
+    public void setBmmSchema(BmmSchema value) {
         this.bmmSchema = bmmSchema;
     }
 
@@ -115,7 +116,7 @@ public abstract class BmmSchemaDescriptor {
     public BmmModel getBmmModel() {
         return bmmModel;
     }
-    public setBmmModel(BmmModel value) {
+    public void setBmmModel(BmmModel value) {
         this.bmmModel = bmmModel;
     }
 
@@ -129,7 +130,7 @@ public abstract class BmmSchemaDescriptor {
     public String getSchemaId() {
         return schemaId;
     }
-    public setSchemaId(String value) {
+    public void setSchemaId(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:schemaId failed, it has cardinality NonNull, but is null");
         }
@@ -192,7 +193,7 @@ public abstract class BmmSchemaDescriptor {
     }
 
     public void addToIncludes(List<String> values ) {
-        values.forEach(value -> addInclude(value));
+        values.forEach(value -> addToInclude(value));
     }
 
     public void removeFromInclude(String item ) {
@@ -201,12 +202,12 @@ public abstract class BmmSchemaDescriptor {
         }
     }
     public void removeFromIncludes( Collection <String> values ) {
-        values.forEach(this::removeInclude);
+        values.forEach(this::removeFromInclude);
     }
-    String getIncludes() {
+    List<String> getIncludes() {
         return this.includes;
     }
-    public BmmSchemaDescriptor setIncludes(String includes) {
+    public BmmSchemaDescriptor setIncludes(List<String> includes) {
         this.includes = includes;
         return this;
     }
@@ -225,7 +226,7 @@ public abstract class BmmSchemaDescriptor {
     public  get() {
         return ;
     }
-    public set( value) {
+    public void set( value) {
         this. = ;
     }
 
@@ -238,7 +239,7 @@ public abstract class BmmSchemaDescriptor {
     public  get() {
         return ;
     }
-    public set( value) {
+    public void set( value) {
         this. = ;
     }
 
@@ -252,7 +253,7 @@ public abstract class BmmSchemaDescriptor {
     public  get() {
         return ;
     }
-    public set( value) {
+    public void set( value) {
         this. = ;
     }
 
@@ -309,6 +310,8 @@ public abstract class BmmSchemaDescriptor {
 /*=========================================================*/
 
 
+    protected BmmSchemaDescriptor() {}
+
     protected BmmSchemaDescriptor(
             BmmSchema bmmSchema,
             BmmModel bmmModel,
@@ -348,7 +351,6 @@ public abstract class BmmSchemaDescriptor {
             java.util.Objects.equals(schemaId, that.schemaId) &&
             java.util.Objects.equals(metaData, that.metaData) &&
             java.util.Objects.equals(includes, that.includes);
-        }
     }
 
     public int hashCode() {
@@ -366,11 +368,11 @@ public abstract class BmmSchemaDescriptor {
     public java.lang.String toString() {
         return
             "BmmSchemaDescriptor {" +
-            "bmmSchema='" + bmmSchema + '\''; +
-            "bmmModel='" + bmmModel + '\''; +
-            "schemaId='" + schemaId + '\''; +
-            "metaData='" + metaData + '\''; +
-            "includes='" + includes + '\''; +
+            "bmmSchema='" + bmmSchema + '\'' +
+            "bmmModel='" + bmmModel + '\'' +
+            "schemaId='" + schemaId + '\'' +
+            "metaData='" + metaData + '\'' +
+            "includes='" + includes + '\'' +
             '}';
     }
 

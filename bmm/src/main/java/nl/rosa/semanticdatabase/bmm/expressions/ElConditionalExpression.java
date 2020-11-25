@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
+import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,7 +41,7 @@ public class ElConditionalExpression extends ElDecisionBranch {
     public ElSimple getCondition() {
         return condition;
     }
-    public setCondition(ElSimple value) {
+    public void setCondition(ElSimple value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:condition failed, it has cardinality NonNull, but is null");
         }
@@ -53,6 +54,8 @@ public class ElConditionalExpression extends ElDecisionBranch {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected ElConditionalExpression() {}
 
     public ElConditionalExpression(
             ElSimple condition,
@@ -110,7 +113,6 @@ public class ElConditionalExpression extends ElDecisionBranch {
         ElConditionalExpression that = (ElConditionalExpression) object;
         return
             java.util.Objects.equals(condition, that.condition);
-        }
     }
 
     public int hashCode() {
@@ -124,7 +126,7 @@ public class ElConditionalExpression extends ElDecisionBranch {
     public java.lang.String toString() {
         return
             "ElConditionalExpression {" +
-            "condition='" + condition + '\''; +
+            "condition='" + condition + '\'' +
             '}';
     }
 

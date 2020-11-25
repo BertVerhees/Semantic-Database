@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.bmm.classes.BmmEnumerationString;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,7 +41,7 @@ public class PBmmEnumerationString extends PBmmEnumeration {
     public BmmEnumerationString getBmmClass() {
         return bmmClass;
     }
-    public setBmmClass(BmmEnumerationString value) {
+    public void setBmmClass(BmmEnumerationString value) {
         this.bmmClass = bmmClass;
     }
 
@@ -50,6 +51,8 @@ public class PBmmEnumerationString extends PBmmEnumeration {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    protected PBmmEnumerationString() {}
 
     public PBmmEnumerationString(
             BmmEnumerationString bmmClass,
@@ -219,7 +222,6 @@ public class PBmmEnumerationString extends PBmmEnumeration {
         PBmmEnumerationString that = (PBmmEnumerationString) object;
         return
             java.util.Objects.equals(bmmClass, that.bmmClass);
-        }
     }
 
     public int hashCode() {
@@ -233,7 +235,7 @@ public class PBmmEnumerationString extends PBmmEnumeration {
     public java.lang.String toString() {
         return
             "PBmmEnumerationString {" +
-            "bmmClass='" + bmmClass + '\''; +
+            "bmmClass='" + bmmClass + '\'' +
             '}';
     }
 

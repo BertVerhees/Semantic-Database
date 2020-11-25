@@ -1,10 +1,11 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -178,6 +179,8 @@ public class BmmTupleType extends BmmEffectiveType {
 /*=========================================================*/
 
 
+    protected BmmTupleType() {}
+
     public BmmTupleType(
             Map<string,bmmType> itemTypes
         ){
@@ -223,7 +226,6 @@ public class BmmTupleType extends BmmEffectiveType {
         BmmTupleType that = (BmmTupleType) object;
         return
             java.util.Objects.equals(itemTypes, that.itemTypes);
-        }
     }
 
     public int hashCode() {
@@ -237,7 +239,7 @@ public class BmmTupleType extends BmmEffectiveType {
     public java.lang.String toString() {
         return
             "BmmTupleType {" +
-            "itemTypes='" + itemTypes + '\''; +
+            "itemTypes='" + itemTypes + '\'' +
             '}';
     }
 

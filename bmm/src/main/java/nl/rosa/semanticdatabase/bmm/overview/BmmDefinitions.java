@@ -1,12 +1,13 @@
 package nl.rosa.semanticdatabase.bmm.overview;
 
+import java.util.Objects;
 import nl.rosa.semanticdatabase.base_types.definitions_package.BasicDefinitions;
 import nl.rosa.semanticdatabase.bmm.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-24T17:04:33.085+01:00
+ * #Generated: 2020-11-25T09:35:00.89+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -42,7 +43,7 @@ public class BmmDefinitions extends BasicDefinitions {
     public String getBmmInternalVersion() {
         return bmmInternalVersion;
     }
-    public setBmmInternalVersion(String value) {
+    public void setBmmInternalVersion(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:bmmInternalVersion failed, it has cardinality NonNull, but is null");
         }
@@ -264,6 +265,8 @@ public class BmmDefinitions extends BasicDefinitions {
 /*=========================================================*/
 
 
+    protected BmmDefinitions() {}
+
     public BmmDefinitions(
             String bmmInternalVersion
         ){
@@ -309,7 +312,6 @@ public class BmmDefinitions extends BasicDefinitions {
         BmmDefinitions that = (BmmDefinitions) object;
         return
             java.util.Objects.equals(bmmInternalVersion, that.bmmInternalVersion);
-        }
     }
 
     public int hashCode() {
@@ -323,7 +325,7 @@ public class BmmDefinitions extends BasicDefinitions {
     public java.lang.String toString() {
         return
             "BmmDefinitions {" +
-            "bmmInternalVersion='" + bmmInternalVersion + '\''; +
+            "bmmInternalVersion='" + bmmInternalVersion + '\'' +
             '}';
     }
 
