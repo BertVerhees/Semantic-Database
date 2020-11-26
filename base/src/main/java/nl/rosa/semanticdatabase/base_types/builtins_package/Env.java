@@ -8,7 +8,7 @@ import nl.rosa.semanticdatabase.foundation_types.time_types.Iso8601Timezone;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -28,7 +28,7 @@ public class Env {
  * 
 */
     public Iso8601Date  currentDate() {
-        Iso8601Date  result;
+        Iso8601Date  result = null;
 
 
         if ( result  == null ) {
@@ -44,7 +44,7 @@ public class Env {
  * 
 */
     public Iso8601Time  currentTime() {
-        Iso8601Time  result;
+        Iso8601Time  result = null;
 
 
         if ( result  == null ) {
@@ -60,7 +60,7 @@ public class Env {
  * 
 */
     public Iso8601DateTime  currentDateTime() {
-        Iso8601DateTime  result;
+        Iso8601DateTime  result = null;
 
 
         if ( result  == null ) {
@@ -76,7 +76,7 @@ public class Env {
  * 
 */
     public Iso8601Timezone  timeZone() {
-        Iso8601Timezone  result;
+        Iso8601Timezone  result = null;
 
 
         if ( result  == null ) {

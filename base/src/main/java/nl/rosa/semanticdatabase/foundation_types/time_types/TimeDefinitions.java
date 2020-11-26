@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -68,7 +68,7 @@ public class TimeDefinitions {
         if (y == null ) {
             throw new NullPointerException("Parameter y has cardinality NonNull, but is null.");
         }
-        Result = y >= 0  result;
+        Result = y >= 0  result = null;
 
 
         if ( result  == null ) {
@@ -87,7 +87,7 @@ public class TimeDefinitions {
         if (m == null ) {
             throw new NullPointerException("Parameter m has cardinality NonNull, but is null.");
         }
-        Result = m >= 1 and m <>  result;
+        Result = m >= 1 and m <>  result = null;
 
 
         if ( result  == null ) {
@@ -112,7 +112,7 @@ public class TimeDefinitions {
         if (d == null ) {
             throw new NullPointerException("Parameter d has cardinality NonNull, but is null.");
         }
-        Result = d >= 1 and d <>  result;
+        Result = d >= 1 and d <>  result = null;
 
 
         if ( result  == null ) {
@@ -137,7 +137,7 @@ public class TimeDefinitions {
         if (s == null ) {
             throw new NullPointerException("Parameter s has cardinality NonNull, but is null.");
         }
-        Result = (h >= 0 and h <>  result;
+        Result = (h >= 0 and h <>  result = null;
 
 
         if ( result  == null ) {
@@ -156,7 +156,7 @@ public class TimeDefinitions {
         if (m == null ) {
             throw new NullPointerException("Parameter m has cardinality NonNull, but is null.");
         }
-        Result = m >= 0 and m <>  result;
+        Result = m >= 0 and m <>  result = null;
 
 
         if ( result  == null ) {
@@ -175,7 +175,7 @@ public class TimeDefinitions {
         if (s == null ) {
             throw new NullPointerException("Parameter s has cardinality NonNull, but is null.");
         }
-        Result = s >= 0 and s <>  result;
+        Result = s >= 0 and s <>  result = null;
 
 
         if ( result  == null ) {
@@ -194,7 +194,7 @@ public class TimeDefinitions {
         if (fs == null ) {
             throw new NullPointerException("Parameter fs has cardinality NonNull, but is null.");
         }
-        Result = fs >= 0.0 and fs <>  result;
+        Result = fs >= 0.0 and fs <>  result = null;
 
 
         if ( result  == null ) {
@@ -215,7 +215,7 @@ public class TimeDefinitions {
         if (s == null ) {
             throw new NullPointerException("Parameter s has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -236,7 +236,7 @@ public class TimeDefinitions {
         if (s == null ) {
             throw new NullPointerException("Parameter s has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -256,7 +256,7 @@ public class TimeDefinitions {
         if (s == null ) {
             throw new NullPointerException("Parameter s has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -282,7 +282,7 @@ public class TimeDefinitions {
         if (s == null ) {
             throw new NullPointerException("Parameter s has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {

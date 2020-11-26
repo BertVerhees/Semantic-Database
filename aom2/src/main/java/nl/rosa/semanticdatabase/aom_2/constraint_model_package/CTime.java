@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.base_types.definitions_package.ValidityKind;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -106,7 +106,7 @@ public class CTime extends CTemporal {
  * 
 */
     public ValidityKind  minuteValidity() {
-        ValidityKind  result;
+        ValidityKind  result = null;
 
 
         if ( result  == null ) {
@@ -122,7 +122,7 @@ public class CTime extends CTemporal {
  * 
 */
     public ValidityKind  secondValidity() {
-        ValidityKind  result;
+        ValidityKind  result = null;
 
 
         if ( result  == null ) {
@@ -138,7 +138,7 @@ public class CTime extends CTemporal {
  * 
 */
     public ValidityKind  millisecondValidity() {
-        ValidityKind  result;
+        ValidityKind  result = null;
 
 
         if ( result  == null ) {
@@ -154,7 +154,7 @@ public class CTime extends CTemporal {
  * 
 */
     public ValidityKind  timezoneValidity() {
-        ValidityKind  result;
+        ValidityKind  result = null;
 
 
         if ( result  == null ) {

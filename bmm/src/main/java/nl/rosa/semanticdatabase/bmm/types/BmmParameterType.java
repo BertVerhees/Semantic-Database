@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -105,7 +105,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * 
 */
     public BmmEffectiveType  flattenedConformsToType() {
-        BmmEffectiveType  result;
+        BmmEffectiveType  result = null;
 
 
         if ( result  == null ) {
@@ -122,7 +122,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * 
 */
     public String  typeSignature() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -138,7 +138,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * 
 */
     public Boolean  isPrimitive() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -154,7 +154,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * 
 */
     public Boolean  isAbstract() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -170,7 +170,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * 
 */
     public String  typeName() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -186,7 +186,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * 
 */
     public List<String>  flattenedTypeList() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         if ( result  == null ) {
@@ -202,7 +202,7 @@ public class BmmParameterType extends BmmUnitaryType {
  * 
 */
     public BmmEffectiveType  effectiveType() {
-        BmmEffectiveType  result;
+        BmmEffectiveType  result = null;
 
 
         if ( result  == null ) {

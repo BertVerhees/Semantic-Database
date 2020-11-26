@@ -1,10 +1,13 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
+import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
+
+import java.util.List;
 import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -72,9 +75,9 @@ public class CArchetypeRoot extends CComplexObject {
 
     public CArchetypeRoot(
             String archetypeRef,
-            List<cAttribute> attributes,
-            List<cAttributeTuple> attributeTuples,
-            Any defaultValue,
+            List<CAttribute> attributes,
+            List<CAttributeTuple> attributeTuples,
+            Object defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,

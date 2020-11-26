@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.class_features.BmmRoutine;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -151,7 +151,7 @@ public abstract class ElAgent extends ElScopedRef {
  * 
 */
     public Result = definition.signature  evalType() {
-        Result = definition.signature  result;
+        Result = definition.signature  result = null;
 
 
         if ( result  == null ) {
@@ -167,7 +167,7 @@ public abstract class ElAgent extends ElScopedRef {
  * 
 */
     public Result = open_arguments = Void  isCallable() {
-        Result = open_arguments = Void  result;
+        Result = open_arguments = Void  result = null;
 
 
         if ( result  == null ) {

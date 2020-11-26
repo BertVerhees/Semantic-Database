@@ -3,13 +3,11 @@ package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
-
-import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -63,7 +61,7 @@ public class ArchetypeSlot extends CObject {
 
     public void addToInclude(ArchetypeIdConstraint value ) {
         if (includes == null ) {
-            includes = new ArrayList<> ();
+            includes = new ArrayList<>();
         }
         includes.add( value);
     }
@@ -100,7 +98,7 @@ public class ArchetypeSlot extends CObject {
 
     public void addToExclude(ArchetypeIdConstraint value ) {
         if (excludes == null ) {
-            excludes = new ArrayList<>();
+            excludes = new ArrayList<> ();
         }
         excludes.add( value);
     }
@@ -157,7 +155,7 @@ public class ArchetypeSlot extends CObject {
  * 
 */
     public Boolean  anyAllowed() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -176,8 +174,8 @@ public class ArchetypeSlot extends CObject {
     protected ArchetypeSlot() {}
 
     public ArchetypeSlot(
-            List<ArchetypeIdConstraint> includes,
-            List<ArchetypeIdConstraint> excludes,
+            List<archetypeIdConstraint> includes,
+            List<archetypeIdConstraint> excludes,
             Boolean isClosed,
             String rmTypeName,
             MultiplicityInterval occurrences,
@@ -218,8 +216,8 @@ public class ArchetypeSlot extends CObject {
     }
 
     public static class Builder {
-        private List<ArchetypeIdConstraint> includes;
-        private List<ArchetypeIdConstraint> excludes;
+        private List<archetypeIdConstraint> includes;
+        private List<archetypeIdConstraint> excludes;
         private final Boolean isClosed;  //required
         private final String rmTypeName;  //required
         private MultiplicityInterval occurrences;
@@ -248,12 +246,12 @@ public class ArchetypeSlot extends CObject {
             this.nodeId = nodeId;
         }
 
-        public Builder setIncludes(List<ArchetypeIdConstraint> value) {
+        public Builder setIncludes(List<archetypeIdConstraint> value) {
             this.includes = includes;
             return this;
         }
 
-        public Builder setExcludes(List<ArchetypeIdConstraint> value) {
+        public Builder setExcludes(List<archetypeIdConstraint> value) {
             this.excludes = excludes;
             return this;
         }

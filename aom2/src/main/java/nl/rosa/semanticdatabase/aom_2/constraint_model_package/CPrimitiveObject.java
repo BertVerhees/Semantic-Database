@@ -1,12 +1,13 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.Objects;
-import nl.rosa.semanticdatabase.foundation_types.overview.Any;
+
+import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -27,7 +28,7 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 0..1
  * 
 */
-    private Any assumedValue;
+    private Object assumedValue;
 
 /**
  * 
@@ -43,7 +44,7 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 1..1
  * 
 */
-    private Any constraint;
+    private Object constraint;
 
 /*=========================================================*/
 /* * POJOS * */
@@ -55,10 +56,10 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 0..1
  * 
 */
-    public Any getAssumedValue() {
+    public Object getAssumedValue() {
         return assumedValue;
     }
-    public void setAssumedValue(Any value) {
+    public void setAssumedValue(Object value) {
         this.assumedValue = assumedValue;
     }
 
@@ -81,10 +82,10 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 1..1
  * 
 */
-    public Any getConstraint() {
+    public Object getConstraint() {
         return constraint;
     }
-    public void setConstraint(Any value) {
+    public void setConstraint(Object value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:constraint failed, it has cardinality NonNull, but is null");
         }
@@ -102,7 +103,7 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * 
 */
     public Boolean  hasAssumedValue() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -123,7 +124,7 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * 
 */
     public String  constrainedTypename() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -140,11 +141,11 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  cConformsTo(CPrimitiveObject other, FUNCTION<> rmcc,  ,  ) {
+    public Boolean  cConformsTo(CPrimitiveObject other, FUNCTION<> rmcc) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -173,7 +174,7 @@ public abstract class CPrimitiveObject extends CDefinedObject {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -201,10 +202,10 @@ public abstract class CPrimitiveObject extends CDefinedObject {
     protected CPrimitiveObject() {}
 
     protected CPrimitiveObject(
-            Any assumedValue,
+            Object assumedValue,
             Boolean isEnumeratedTypeConstraint,
-            Any constraint,
-            Any defaultValue,
+            Object constraint,
+            Object defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,

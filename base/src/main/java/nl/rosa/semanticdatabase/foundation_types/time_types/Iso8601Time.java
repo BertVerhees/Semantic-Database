@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -29,7 +29,7 @@ public class Iso8601Time extends Iso8601Type {
  * 
 */
     public Integer  hour() {
-        Integer  result;
+        Integer  result = null;
 
 
         if ( result  == null ) {
@@ -45,7 +45,7 @@ public class Iso8601Time extends Iso8601Type {
  * 
 */
     public Integer  minute() {
-        Integer  result;
+        Integer  result = null;
 
 
         if ( result  == null ) {
@@ -62,7 +62,7 @@ public class Iso8601Time extends Iso8601Type {
  * 
 */
     public Integer  second() {
-        Integer  result;
+        Integer  result = null;
 
 
         if ( result  == null ) {
@@ -79,7 +79,7 @@ public class Iso8601Time extends Iso8601Type {
  * 
 */
     public not second_unknown  fractionalSecond() {
-        not second_unknown  result;
+        not second_unknown  result = null;
 
 
         if ( result  == null ) {
@@ -95,7 +95,7 @@ public class Iso8601Time extends Iso8601Type {
  * 
 */
     public Iso8601Timezone  timezone() {
-        Iso8601Timezone  result;
+        Iso8601Timezone  result = null;
 
 
         if ( result  == null ) {
@@ -112,7 +112,7 @@ public class Iso8601Time extends Iso8601Type {
  * 
 */
     public Boolean  minuteUnknown() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -129,7 +129,7 @@ public class Iso8601Time extends Iso8601Type {
  * 
 */
     public Boolean  secondUnknown() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -145,7 +145,7 @@ public class Iso8601Time extends Iso8601Type {
  * 
 */
     public Boolean  isDecimalSignComma() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -162,7 +162,7 @@ public class Iso8601Time extends Iso8601Type {
  * 
 */
     public Boolean  isPartial() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -178,7 +178,7 @@ public class Iso8601Time extends Iso8601Type {
  * 
 */
     public Boolean  isExtended() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -195,7 +195,7 @@ public class Iso8601Time extends Iso8601Type {
  * 
 */
     public Boolean  hasFractionalSecond() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -211,7 +211,7 @@ public class Iso8601Time extends Iso8601Type {
  * 
 */
     public String  asString() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -230,7 +230,7 @@ public class Iso8601Time extends Iso8601Type {
         if (a_diff == null ) {
             throw new NullPointerException("Parameter a_diff has cardinality NonNull, but is null.");
         }
-        Iso8601Time  result;
+        Iso8601Time  result = null;
 
 
         if ( result  == null ) {
@@ -249,7 +249,7 @@ public class Iso8601Time extends Iso8601Type {
         if (a_diff == null ) {
             throw new NullPointerException("Parameter a_diff has cardinality NonNull, but is null.");
         }
-        Iso8601Time  result;
+        Iso8601Time  result = null;
 
 
         if ( result  == null ) {
@@ -268,7 +268,7 @@ public class Iso8601Time extends Iso8601Type {
         if (a_time == null ) {
             throw new NullPointerException("Parameter a_time has cardinality NonNull, but is null.");
         }
-        Iso8601Duration  result;
+        Iso8601Duration  result = null;
 
 
         if ( result  == null ) {

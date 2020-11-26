@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.expressions.ElInstanceRef;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -109,7 +109,7 @@ public class BmmConstant extends BmmClassFeature implements BmmInstantiable {
  * 
 */
     public Result = type().equal( {BMM_MODEL}.boolean_type_definition())  isBoolean() {
-        Result = type().equal( {BMM_MODEL}.boolean_type_definition())  result;
+        Result = type().equal( {BMM_MODEL}.boolean_type_definition())  result = null;
 
 
         if ( result  == null ) {

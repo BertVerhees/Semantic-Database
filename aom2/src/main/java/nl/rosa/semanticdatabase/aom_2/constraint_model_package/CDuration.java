@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -108,7 +108,7 @@ public class CDuration extends CTemporal {
  * 
 */
     public Boolean  yearsAllowed:() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -124,7 +124,7 @@ public class CDuration extends CTemporal {
  * 
 */
     public Boolean  monthsAllowed:() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -140,7 +140,7 @@ public class CDuration extends CTemporal {
  * 
 */
     public Boolean  weeksAllowed:() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -156,7 +156,7 @@ public class CDuration extends CTemporal {
  * 
 */
     public Boolean  daysAllowed() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -172,7 +172,7 @@ public class CDuration extends CTemporal {
  * 
 */
     public Boolean  hoursAllowed() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -188,7 +188,7 @@ public class CDuration extends CTemporal {
  * 
 */
     public Boolean  minutesAllowed() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -204,7 +204,7 @@ public class CDuration extends CTemporal {
  * 
 */
     public Boolean  secondsAllowed() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {

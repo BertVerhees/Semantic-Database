@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -163,7 +163,7 @@ public abstract class CObject extends ArchetypeConstraint {
  * 
 */
     public Integer  specialisationDepth() {
-        Integer  result;
+        Integer  result = null;
 
 
         if ( result  == null ) {
@@ -181,7 +181,7 @@ public abstract class CObject extends ArchetypeConstraint {
  * 
 */
     public MultiplicityInterval  effectiveOccurrences() {
-        MultiplicityInterval  result;
+        MultiplicityInterval  result = null;
 
 
         if ( result  == null ) {
@@ -198,11 +198,11 @@ public abstract class CObject extends ArchetypeConstraint {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  cConformsTo(CObject other, FUNCTION<> rmcc) {
+    public Boolean  cConformsTo(CObject other, FUNCTION<> rmcc,  ,  ) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -222,7 +222,7 @@ public abstract class CObject extends ArchetypeConstraint {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -242,28 +242,8 @@ public abstract class CObject extends ArchetypeConstraint {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return  result;
-    }
-
-/**
- * 
- * True if this node id conforms to other.node_id, which includes the ids being identical; other is assumed to be in a flat archetype.
- * cardinality: 1..1
- * Post: Result = codes_conformant (node_id, other.node_id)
- *
- * 
-*/
-    public Boolean nodeIdConformsTo(CObject other) {
-        if (other == null ) {
-            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
-        }
-        Boolean result;
 
         if ( result  == null ) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
@@ -273,20 +253,45 @@ public abstract class CObject extends ArchetypeConstraint {
 
     /**
      *
-     * True if this C_OBJECT node is prohibited, i.e. if its occurrences is 0..0.
-     * cardinality: 1..1
+     * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
+     * Typically used during validation of special-ised archetype nodes.
+     * cardinality: 1..1 (effected)
      *
-     * Post: Result = occurrences /= Void and then occurrences.is_prohibited
+     * Post: Result = existence_conforms_to (other) and is_single and other.is_single) or else (is_multiple and cardinality_conforms_to (other)
+     *
      */
-
     @Override
-    public Boolean isProhibited() {
-        Boolean result;
+    public Boolean  cConformsTo(ArchetypeConstraint other, FUNCTION<> rmcc ) {
+        if (other == null ) {
+            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+        }
+        Boolean result = null;
+
 
         if ( result  == null ) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return result;
+        return  result;
+    }
+
+    /**
+     *
+     * True if this C_ATTRIBUTE has an existence constraint of 0..0, i.e.
+     * prohibition.
+     * cardinality: 1..1 (effected)
+     *
+     * Post: Result = existence /= Void and then existence.is_prohibited
+     *
+     */
+    @Override
+    public Boolean isProhibited() {
+        Boolean  result = null;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
     }
 
     //***** CObject *****

@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -91,7 +91,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
         if (a_path == null ) {
             throw new NullPointerException("Parameter a_path has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -107,7 +107,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
  * 
 */
     public String  path() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -141,12 +141,11 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
  * 
  * True if there is a second order constraint such as a tuple constraint on this node.
  * cardinality: 1..1
- *
  * Post: soc_parent /= Void or else (parent /= Void and then parent.is_second_order_constrained)
  * 
 */
     public Boolean isSecondOrderConstrained() {
-        Boolean result;
+        Boolean result = null;
 
 
         if ( result  == null ) {
@@ -162,7 +161,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
  * 
 */
     public Boolean  isRoot() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -179,7 +178,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
  * 
 */
     public Boolean  isLeaf() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {

@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -40,7 +40,7 @@ public abstract class Ordered extends Any {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        not (other <>  result;
+        not (other <>  result = null;
 
 
         if ( result  == null ) {
@@ -59,7 +59,7 @@ public abstract class Ordered extends Any {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Result = (other <>  result;
+        Result = (other <>  result = null;
 
 
         if ( result  == null ) {
@@ -78,7 +78,7 @@ public abstract class Ordered extends Any {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Result = (other <>  result;
+        Result = (other <>  result = null;
 
 
         if ( result  == null ) {

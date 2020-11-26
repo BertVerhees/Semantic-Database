@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -61,7 +61,7 @@ public class BmmDefinitions extends BasicDefinitions {
  * 
 */
     public BmmSimpleClass  anyClass() {
-        BmmSimpleClass  result;
+        BmmSimpleClass  result = null;
 
 
         if ( result  == null ) {
@@ -77,7 +77,7 @@ public class BmmDefinitions extends BasicDefinitions {
  * 
 */
     public BmmSimpleType  anyType() {
-        BmmSimpleType  result;
+        BmmSimpleType  result = null;
 
 
         if ( result  == null ) {
@@ -97,7 +97,7 @@ public class BmmDefinitions extends BasicDefinitions {
         if (a_model_release == null ) {
             throw new NullPointerException("Parameter a_model_release has cardinality NonNull, but is null.");
         }
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {

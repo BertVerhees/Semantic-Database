@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmGenericType;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -87,7 +87,7 @@ public class BmmGenericClass extends BmmClass {
  * 
 */
     public List<String>  suppliers() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         return  result;
@@ -100,7 +100,7 @@ public class BmmGenericClass extends BmmClass {
  * 
 */
     public BmmGenericType  type() {
-        BmmGenericType  result;
+        BmmGenericType  result = null;
 
 
         if ( result  == null ) {
@@ -121,7 +121,7 @@ public class BmmGenericClass extends BmmClass {
         if (a_name == null ) {
             throw new NullPointerException("Parameter a_name has cardinality NonNull, but is null.");
         }
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {

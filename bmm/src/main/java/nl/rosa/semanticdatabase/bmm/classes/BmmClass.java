@@ -15,7 +15,7 @@ import nl.rosa.semanticdatabase.bmm.class_features.BmmClassFeature;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -629,7 +629,7 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public List<String>  allAncestors() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         return  result;
@@ -642,7 +642,7 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public List<String>  allDescendants() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         return  result;
@@ -657,7 +657,7 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public List<String>  suppliers() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         return  result;
@@ -670,7 +670,7 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public List<String>  suppliersNonPrimitive() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         return  result;
@@ -684,7 +684,7 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public List<String>  supplierClosure() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         return  result;
@@ -697,7 +697,7 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public String  packagePath() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -713,7 +713,7 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public String  classPath() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -730,7 +730,7 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public Boolean  isPrimitive() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -747,7 +747,7 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public Boolean  isAbstract() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -763,7 +763,7 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public List<BmmClassFeature>  features() {
-        List<BmmClassFeature>  result;
+        List<BmmClassFeature>  result = null;
 
 
         return  result;
@@ -776,7 +776,7 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public List<BmmClassFeature>  flatFeatures() {
-        List<BmmClassFeature>  result;
+        List<BmmClassFeature>  result = null;
 
 
         return  result;
@@ -789,7 +789,7 @@ public abstract class BmmClass extends BmmModule {
  * 
 */
     public List<BmmProperty>  flatProperties() {
-        List<BmmProperty>  result;
+        List<BmmProperty>  result = null;
 
 
         return  result;

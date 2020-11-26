@@ -9,7 +9,7 @@ import nl.rosa.semanticdatabase.aom_2.the_rm_overlay_package.RmOverlay;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -231,7 +231,7 @@ public abstract class Archetype {
  * 
 */
     public Result.is_equal (definition.node_id)  conceptCode() {
-        Result.is_equal (definition.node_id)  result;
+        Result.is_equal (definition.node_id)  result = null;
 
 
         if ( result  == null ) {
@@ -248,7 +248,7 @@ public abstract class Archetype {
  * 
 */
     public List<String>  physicalPaths() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         if ( result  == null ) {
@@ -268,7 +268,7 @@ public abstract class Archetype {
         if (lang == null ) {
             throw new NullPointerException("Parameter lang has cardinality NonNull, but is null.");
         }
-        List<String>  result;
+        List<String>  result = null;
 
 
         if ( result  == null ) {
@@ -285,7 +285,7 @@ public abstract class Archetype {
  * 
 */
     public Result = terminology.specialisation_depth  specialisationDepth() {
-        Result = terminology.specialisation_depth  result;
+        Result = terminology.specialisation_depth  result = null;
 
 
         if ( result  == null ) {
@@ -301,7 +301,7 @@ public abstract class Archetype {
  * 
 */
     public Result implies parent_archetype_hrid /= Void  isSpecialised() {
-        Result implies parent_archetype_hrid /= Void  result;
+        Result implies parent_archetype_hrid /= Void  result = null;
 
 
         if ( result  == null ) {

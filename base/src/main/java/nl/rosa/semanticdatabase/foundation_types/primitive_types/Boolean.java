@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -28,7 +28,7 @@ public class Boolean extends Any {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Result = (other and self)  result;
+        Result = (other and self)  result = null;
 
 
         if ( result  == null ) {
@@ -47,7 +47,7 @@ public class Boolean extends Any {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Result = not (not self or else not other)  result;
+        Result = not (not self or else not other)  result = null;
 
 
         if ( result  == null ) {
@@ -66,7 +66,7 @@ public class Boolean extends Any {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Result implies (self or else other)  result;
+        Result implies (self or else other)  result = null;
 
 
         if ( result  == null ) {
@@ -85,7 +85,7 @@ public class Boolean extends Any {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Result = not (not self and then not other)  result;
+        Result = not (not self and then not other)  result = null;
 
 
         if ( result  == null ) {
@@ -104,7 +104,7 @@ public class Boolean extends Any {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Result = self or other) and not (self and other  result;
+        Result = self or other) and not (self and other  result = null;
 
 
         if ( result  == null ) {
@@ -123,7 +123,7 @@ public class Boolean extends Any {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Result = (not self or else other)  result;
+        Result = (not self or else other)  result = null;
 
 
         if ( result  == null ) {
@@ -139,7 +139,7 @@ public class Boolean extends Any {
  * 
 */
     public Boolean  negation alias "not", "¬", "!"() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {

@@ -1,11 +1,13 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
-import java.util.Objects;
+import java.util.*;
+
+import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -58,13 +60,13 @@ public class CBoolean extends CPrimitiveObject {
 
     public void addToConstraint(Boolean value ) {
         if (constraint == null ) {
-            constraint = new ArrayList<> ();
+            constraint = new ArrayList<>();
         }
         constraint.add( value);
     }
 
     public void addToConstraint(List<Boolean> values ) {
-        values.forEach(value -> addToConstrain(value));
+        values.forEach(value -> addToConstraint(value));
     }
 
     public void removeFromConstraint(Boolean item ) {
@@ -72,10 +74,10 @@ public class CBoolean extends CPrimitiveObject {
             constraint.remove(item);
         }
     }
-    public void removeFromConstraint( Collection <Boolean> values ) {
+    public void removeFromConstraint( Collection<Boolean> values ) {
         values.forEach(this::removeFromConstraint);
     }
-    List<Boolean> getConstraint() {
+    public List<Boolean> getConstraint() {
         return this.constraint;
     }
     public CBoolean setConstraint(List<Boolean> constraint) {
@@ -123,25 +125,7 @@ public class CBoolean extends CPrimitiveObject {
  * 
 */
     public Boolean  prototypeValue() {
-        Boolean  result;
-
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return  result;
-    }
-
-/**
- * 
- * True if any value (i.e.
- * instance) of the reference model type would be allowed.
- * Redefined in descendants.
- * cardinality: 1..1 (effected)
- * 
-*/
-    public Result = constraint.is_empty  anyAllowed() {
-        Result = constraint.is_empty  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -160,7 +144,7 @@ public class CBoolean extends CPrimitiveObject {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -179,7 +163,7 @@ public class CBoolean extends CPrimitiveObject {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -198,13 +182,10 @@ public class CBoolean extends CPrimitiveObject {
     protected CBoolean() {}
 
     public CBoolean(
-            List<boolean> constraint,
+            List<Boolean> constraint,
             Boolean assumedValue,
             Boolean defaultValue,
-            Any assumedValue,
             Boolean isEnumeratedTypeConstraint,
-            Any constraint,
-            Any defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
@@ -232,10 +213,8 @@ public class CBoolean extends CPrimitiveObject {
         this.setConstraint( builder.constraint );
         this.setAssumedValue( builder.assumedValue );
         this.setDefaultValue( builder.defaultValue );
-        this.setAssumedValue( builder.assumedValue );
         this.setIsEnumeratedTypeConstraint( builder.isEnumeratedTypeConstraint );
         this.setConstraint( builder.constraint );
-        this.setDefaultValue( builder.defaultValue );
         this.setRmTypeName( builder.rmTypeName );
         this.setOccurrences( builder.occurrences );
         this.setNodeId( builder.nodeId );
@@ -246,13 +225,10 @@ public class CBoolean extends CPrimitiveObject {
     }
 
     public static class Builder {
-        private List<boolean> constraint;
+        private List<Boolean> constraint;
         private Boolean assumedValue;
         private Boolean defaultValue;
-        private Any assumedValue;
         private Boolean isEnumeratedTypeConstraint;
-        private final Any constraint;  //required
-        private Any defaultValue;
         private final String rmTypeName;  //required
         private MultiplicityInterval occurrences;
         private final String nodeId;  //required
@@ -262,7 +238,7 @@ public class CBoolean extends CPrimitiveObject {
         private CSecondOrder socParent;
 
         public Builder (
-            Any constraint,
+                Boolean constraint,
             String rmTypeName,
             String nodeId
         ){
@@ -280,7 +256,7 @@ public class CBoolean extends CPrimitiveObject {
             this.nodeId = nodeId;
         }
 
-        public Builder setConstraint(List<boolean> value) {
+        public Builder setConstraint(List<Boolean> value) {
             this.constraint = constraint;
             return this;
         }
@@ -295,18 +271,8 @@ public class CBoolean extends CPrimitiveObject {
             return this;
         }
 
-        public Builder setAssumedValue(Any value) {
-            this.assumedValue = assumedValue;
-            return this;
-        }
-
         public Builder setIsEnumeratedTypeConstraint(Boolean value) {
             this.isEnumeratedTypeConstraint = isEnumeratedTypeConstraint;
-            return this;
-        }
-
-        public Builder setDefaultValue(Any value) {
-            this.defaultValue = defaultValue;
             return this;
         }
 

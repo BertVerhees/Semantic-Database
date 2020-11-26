@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -364,7 +364,7 @@ public class ArchetypeTerminology {
  * 
 */
     public Integer  specialisationDepth() {
-        Integer  result;
+        Integer  result = null;
 
 
         if ( result  == null ) {
@@ -381,7 +381,7 @@ public class ArchetypeTerminology {
  * 
 */
     public List<String>  idCodes() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         if ( result  == null ) {
@@ -398,7 +398,7 @@ public class ArchetypeTerminology {
  * 
 */
     public List<String>  valueCodes() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         return  result;
@@ -412,7 +412,7 @@ public class ArchetypeTerminology {
  * 
 */
     public List<String>  valueSetCodes() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         return  result;
@@ -428,7 +428,7 @@ public class ArchetypeTerminology {
         if (a_lang == null ) {
             throw new NullPointerException("Parameter a_lang has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -448,7 +448,7 @@ public class ArchetypeTerminology {
         if (a_terminology_id == null ) {
             throw new NullPointerException("Parameter a_terminology_id has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -467,7 +467,7 @@ public class ArchetypeTerminology {
         if (a_code == null ) {
             throw new NullPointerException("Parameter a_code has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -489,7 +489,7 @@ public class ArchetypeTerminology {
         if (a_code == null ) {
             throw new NullPointerException("Parameter a_code has cardinality NonNull, but is null.");
         }
-        has_term-definition (a_lang, a_code)  result;
+        has_term-definition (a_lang, a_code)  result = null;
 
 
         if ( result  == null ) {
@@ -511,7 +511,7 @@ public class ArchetypeTerminology {
         if (a_code == null ) {
             throw new NullPointerException("Parameter a_code has cardinality NonNull, but is null.");
         }
-        has_term_binding (a_terminology_id, a_code)  result;
+        has_term_binding (a_terminology_id, a_code)  result = null;
 
 
         if ( result  == null ) {
@@ -527,7 +527,7 @@ public class ArchetypeTerminology {
  * 
 */
     public List<String>  terminologiesAvailable() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         if ( result  == null ) {
@@ -549,7 +549,7 @@ public class ArchetypeTerminology {
         if (a_code == null ) {
             throw new NullPointerException("Parameter a_code has cardinality NonNull, but is null.");
         }
-        has_terminology_extract (a_terminology_id) and has_terminology_extract_code (a_code)  result;
+        has_terminology_extract (a_terminology_id) and has_terminology_extract_code (a_code)  result = null;
 
 
         if ( result  == null ) {
@@ -568,7 +568,7 @@ public class ArchetypeTerminology {
         if (a_terminology_id == null ) {
             throw new NullPointerException("Parameter a_terminology_id has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -584,7 +584,7 @@ public class ArchetypeTerminology {
  * 
 */
     public List<String>  languagesAvailable() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         if ( result  == null ) {

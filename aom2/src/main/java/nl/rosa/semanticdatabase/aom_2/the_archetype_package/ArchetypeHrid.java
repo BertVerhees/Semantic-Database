@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.base_types.definitions_package.VersionStatus;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -229,7 +229,7 @@ public class ArchetypeHrid {
  * 
 */
     public String  semanticId() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -246,7 +246,7 @@ public class ArchetypeHrid {
  * 
 */
     public String  physicalId() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -263,7 +263,7 @@ public class ArchetypeHrid {
  * 
 */
     public String  versionId() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -279,7 +279,7 @@ public class ArchetypeHrid {
  * 
 */
     public String  majorVersion() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -295,7 +295,7 @@ public class ArchetypeHrid {
  * 
 */
     public String  minorVersion() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -312,7 +312,7 @@ public class ArchetypeHrid {
  * 
 */
     public String  patchVersion() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {

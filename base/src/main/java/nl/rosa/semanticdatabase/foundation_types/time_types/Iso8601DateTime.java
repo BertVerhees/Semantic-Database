@@ -7,7 +7,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -30,7 +30,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public Integer  year() {
-        Integer  result;
+        Integer  result = null;
 
 
         if ( result  == null ) {
@@ -46,7 +46,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public not month_unknown  month() {
-        not month_unknown  result;
+        not month_unknown  result = null;
 
 
         if ( result  == null ) {
@@ -62,7 +62,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public not day_unknown  day() {
-        not day_unknown  result;
+        not day_unknown  result = null;
 
 
         if ( result  == null ) {
@@ -78,7 +78,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public not hour_unknown  hour() {
-        not hour_unknown  result;
+        not hour_unknown  result = null;
 
 
         if ( result  == null ) {
@@ -94,7 +94,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public not minute_unknown  minute() {
-        not minute_unknown  result;
+        not minute_unknown  result = null;
 
 
         if ( result  == null ) {
@@ -111,7 +111,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public not second_unknown  second() {
-        not second_unknown  result;
+        not second_unknown  result = null;
 
 
         if ( result  == null ) {
@@ -128,7 +128,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public Real  fractionalSecond() {
-        Real  result;
+        Real  result = null;
 
 
         if ( result  == null ) {
@@ -144,7 +144,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public Iso8601Timezone  timezone() {
-        Iso8601Timezone  result;
+        Iso8601Timezone  result = null;
 
 
         if ( result  == null ) {
@@ -160,7 +160,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public Boolean  monthUnknown() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -176,7 +176,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public Boolean  dayUnknown() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -192,7 +192,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public Boolean  minuteUnknown() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -208,7 +208,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public Boolean  secondUnknown() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -224,7 +224,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public Boolean  isDecimalSignComma() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -241,7 +241,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public Boolean  isPartial() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -257,7 +257,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public Boolean  isExtended() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -274,7 +274,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public Boolean  hasFractionalSecond() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -290,7 +290,7 @@ public class Iso8601DateTime extends Iso8601Type {
  * 
 */
     public String  asString() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -309,7 +309,7 @@ public class Iso8601DateTime extends Iso8601Type {
         if (a_diff == null ) {
             throw new NullPointerException("Parameter a_diff has cardinality NonNull, but is null.");
         }
-        Iso8601DateTime  result;
+        Iso8601DateTime  result = null;
 
 
         if ( result  == null ) {
@@ -328,7 +328,7 @@ public class Iso8601DateTime extends Iso8601Type {
         if (a_diff == null ) {
             throw new NullPointerException("Parameter a_diff has cardinality NonNull, but is null.");
         }
-        Iso8601DateTime  result;
+        Iso8601DateTime  result = null;
 
 
         if ( result  == null ) {
@@ -347,7 +347,7 @@ public class Iso8601DateTime extends Iso8601Type {
         if (a_date_time == null ) {
             throw new NullPointerException("Parameter a_date_time has cardinality NonNull, but is null.");
         }
-        Iso8601Duration  result;
+        Iso8601Duration  result = null;
 
 
         if ( result  == null ) {
@@ -367,7 +367,7 @@ public class Iso8601DateTime extends Iso8601Type {
         if (a_diff == null ) {
             throw new NullPointerException("Parameter a_diff has cardinality NonNull, but is null.");
         }
-        Iso8601Date  result;
+        Iso8601Date  result = null;
 
 
         if ( result  == null ) {
@@ -387,7 +387,7 @@ public class Iso8601DateTime extends Iso8601Type {
         if (a_diff == null ) {
             throw new NullPointerException("Parameter a_diff has cardinality NonNull, but is null.");
         }
-        Iso8601Date  result;
+        Iso8601Date  result = null;
 
 
         if ( result  == null ) {

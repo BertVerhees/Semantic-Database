@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.classes.BmmGenericClass;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -86,7 +86,7 @@ public class BmmContainerType extends BmmType {
  * 
 */
     public String  typeName() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -102,7 +102,7 @@ public class BmmContainerType extends BmmType {
  * 
 */
     public Result = container_type.is_abstract  isAbstract() {
-        Result = container_type.is_abstract  result;
+        Result = container_type.is_abstract  result = null;
 
 
         if ( result  == null ) {
@@ -119,7 +119,7 @@ public class BmmContainerType extends BmmType {
  * 
 */
     public Result = item_type.flattened_type_list  flattenedTypeList() {
-        Result = item_type.flattened_type_list  result;
+        Result = item_type.flattened_type_list  result = null;
 
 
         if ( result  == null ) {
@@ -135,7 +135,7 @@ public class BmmContainerType extends BmmType {
  * 
 */
     public BmmUnitaryType  unitaryType() {
-        BmmUnitaryType  result;
+        BmmUnitaryType  result = null;
 
 
         if ( result  == null ) {
@@ -151,7 +151,7 @@ public class BmmContainerType extends BmmType {
  * 
 */
     public Result = item_type.is_primitive  isPrimitive() {
-        Result = item_type.is_primitive  result;
+        Result = item_type.is_primitive  result = null;
 
 
         if ( result  == null ) {
@@ -167,7 +167,7 @@ public class BmmContainerType extends BmmType {
  * 
 */
     public BmmEffectiveType  effectiveType() {
-        BmmEffectiveType  result;
+        BmmEffectiveType  result = null;
 
 
         if ( result  == null ) {

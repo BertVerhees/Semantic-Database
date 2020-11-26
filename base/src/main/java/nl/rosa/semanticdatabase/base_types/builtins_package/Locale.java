@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.terminology_package.Terminology
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -25,7 +25,7 @@ public class Locale {
  * 
 */
     public TerminologyCode  primaryLanguage() {
-        TerminologyCode  result;
+        TerminologyCode  result = null;
 
 
         if ( result  == null ) {

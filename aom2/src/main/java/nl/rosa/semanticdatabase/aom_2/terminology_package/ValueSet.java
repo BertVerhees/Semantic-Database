@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.aom_2.terminology_package;
 
-import java.util.List;
 import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -25,7 +24,7 @@ public class ValueSet extends TerminologyRelation {
 
     public ValueSet(
             String id,
-            List<String> members
+            List<string> members
         ){
         super( 
             id,

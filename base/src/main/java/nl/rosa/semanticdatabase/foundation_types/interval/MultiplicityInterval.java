@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -27,7 +27,7 @@ public class MultiplicityInterval extends ProperInterval {
  * 
 */
     public Boolean  isOpen() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -44,7 +44,7 @@ public class MultiplicityInterval extends ProperInterval {
  * 
 */
     public Boolean  isOptional() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -61,7 +61,7 @@ public class MultiplicityInterval extends ProperInterval {
  * 
 */
     public Boolean  isMandatory() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -77,7 +77,7 @@ public class MultiplicityInterval extends ProperInterval {
  * 
 */
     public Boolean  isProhibited() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {

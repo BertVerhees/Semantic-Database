@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -25,7 +25,7 @@ public class Double extends OrderedNumeric {
  * 
 */
     public Integer  floor() {
-        Integer  result;
+        Integer  result = null;
 
 
         if ( result  == null ) {
@@ -44,7 +44,7 @@ public class Double extends OrderedNumeric {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Double  result;
+        Double  result = null;
 
 
         if ( result  == null ) {
@@ -63,7 +63,7 @@ public class Double extends OrderedNumeric {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Double  result;
+        Double  result = null;
 
 
         if ( result  == null ) {
@@ -82,7 +82,7 @@ public class Double extends OrderedNumeric {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Double  result;
+        Double  result = null;
 
 
         if ( result  == null ) {
@@ -101,7 +101,7 @@ public class Double extends OrderedNumeric {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Double  result;
+        Double  result = null;
 
 
         if ( result  == null ) {
@@ -120,7 +120,7 @@ public class Double extends OrderedNumeric {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Double  result;
+        Double  result = null;
 
 
         if ( result  == null ) {
@@ -139,7 +139,7 @@ public class Double extends OrderedNumeric {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -155,7 +155,7 @@ public class Double extends OrderedNumeric {
  * 
 */
     public Double  negative alias "-"() {
-        Double  result;
+        Double  result = null;
 
 
         if ( result  == null ) {
@@ -175,7 +175,7 @@ public class Double extends OrderedNumeric {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -195,7 +195,7 @@ public class Double extends OrderedNumeric {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {

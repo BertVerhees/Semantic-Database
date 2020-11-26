@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -87,7 +87,7 @@ public class BmmTupleType extends BmmEffectiveType {
  * 
 */
     public Result.is_equal (base_name())  typeBaseName() {
-        Result.is_equal (base_name())  result;
+        Result.is_equal (base_name())  result = null;
 
 
         if ( result  == null ) {
@@ -103,7 +103,7 @@ public class BmmTupleType extends BmmEffectiveType {
  * 
 */
     public Boolean  isPrimitive() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -119,7 +119,7 @@ public class BmmTupleType extends BmmEffectiveType {
  * 
 */
     public Boolean  isAbstract() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -135,7 +135,7 @@ public class BmmTupleType extends BmmEffectiveType {
  * 
 */
     public Result.is_equal (base_name())  typeName() {
-        Result.is_equal (base_name())  result;
+        Result.is_equal (base_name())  result = null;
 
 
         if ( result  == null ) {
@@ -152,7 +152,7 @@ public class BmmTupleType extends BmmEffectiveType {
  * 
 */
     public List<String>  flattenedTypeList() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         if ( result  == null ) {

@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -29,7 +29,7 @@ public class Array<t> extends Container {
         if (a_key == null ) {
             throw new NullPointerException("Parameter a_key has cardinality NonNull, but is null.");
         }
-        T  result;
+        T  result = null;
 
 
         if ( result  == null ) {

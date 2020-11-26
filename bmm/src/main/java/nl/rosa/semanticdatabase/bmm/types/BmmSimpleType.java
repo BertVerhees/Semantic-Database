@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -61,7 +61,7 @@ public class BmmSimpleType extends BmmModelType {
  * 
 */
     public String  typeName() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -77,7 +77,7 @@ public class BmmSimpleType extends BmmModelType {
  * 
 */
     public Boolean  isAbstract() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -93,7 +93,7 @@ public class BmmSimpleType extends BmmModelType {
  * 
 */
     public List<String>  flattenedTypeList() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         if ( result  == null ) {
@@ -109,7 +109,7 @@ public class BmmSimpleType extends BmmModelType {
  * 
 */
     public BmmSimpleClass  effectiveBaseClass() {
-        BmmSimpleClass  result;
+        BmmSimpleClass  result = null;
 
 
         if ( result  == null ) {

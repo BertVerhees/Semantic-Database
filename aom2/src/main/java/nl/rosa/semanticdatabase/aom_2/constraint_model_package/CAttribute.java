@@ -1,13 +1,14 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
-import java.util.Objects;
+import java.util.*;
+
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.interval.Cardinality;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -124,13 +125,13 @@ public class CAttribute extends ArchetypeConstraint {
 
     public void addToChildren(CObject value ) {
         if (children == null ) {
-            children = new ArrayList<> ();
+            children = new ArrayList<>();
         }
         children.add( value);
     }
 
     public void addToChildren(List<CObject> values ) {
-        values.forEach(value -> addToChildre(value));
+        values.forEach(value -> addToChildren(value));
     }
 
     public void removeFromChildren(CObject item ) {
@@ -138,7 +139,7 @@ public class CAttribute extends ArchetypeConstraint {
             children.remove(item);
         }
     }
-    public void removeFromChildren( Collection <CObject> values ) {
+    public void removeFromChildren( Collection<CObject> values ) {
         values.forEach(this::removeFromChildren);
     }
     List<CObject> getChildren() {
@@ -206,10 +207,12 @@ public class CAttribute extends ArchetypeConstraint {
  * 
  * True if there is no effective constraint on the children of the RM attribute to which this C_ATTRIBUTE refers.
  * cardinality: 1..1
+ *
+ * Post: Result := children.is_empty and not is_prohibited
  * 
 */
-    public = children.is_empty and not is_prohibited  anyAllowed() {
-        = children.is_empty and not is_prohibited  result;
+    public Boolean anyAllowed() {
+        Boolean result = null;
 
 
         if ( result  == null ) {
@@ -223,10 +226,12 @@ public class CAttribute extends ArchetypeConstraint {
  * True if this C_ATTRIBUTE has an existence constraint of 1..1, i..e.
  * mandation.
  * cardinality: 1..1
+ *
+ * Post: Result = existence /= Void and then existence.is_mandatory
  * 
 */
-    public Result = existence /= Void and then existence.is_mandatory  isMandatory() {
-        Result = existence /= Void and then existence.is_mandatory  result;
+    public Boolean isMandatory() {
+        Boolean result = null;
 
 
         if ( result  == null ) {
@@ -242,7 +247,7 @@ public class CAttribute extends ArchetypeConstraint {
  * 
 */
     public String  rmAttributePath() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -259,7 +264,7 @@ public class CAttribute extends ArchetypeConstraint {
  * 
 */
     public Boolean  isSingle() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -273,13 +278,15 @@ public class CAttribute extends ArchetypeConstraint {
  * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.
  * Typically used to test if an inherited node locally contains any constraints.
  * cardinality: 1..1 (effected)
+ *
+ * Post: Result = existence = Void and is_single and other.is_single) or (is_multiple and other.is_multiple and cardinality = Void
  * 
 */
-    public Result = existence = Void and is_single and other.is_single) or (is_multiple and other.is_multiple and cardinality = Void  cCongruentTo(ArchetypeConstraint other) {
+    public Boolean cCongruentTo(ArchetypeConstraint other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Result = existence = Void and is_single and other.is_single) or (is_multiple and other.is_multiple and cardinality = Void  result;
+        Boolean result = null;
 
 
         if ( result  == null ) {
@@ -293,13 +300,15 @@ public class CAttribute extends ArchetypeConstraint {
  * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
  * Typically used during validation of special-ised archetype nodes.
  * cardinality: 1..1 (effected)
+ *
+ * Post: Result = existence_conforms_to (other) and is_single and other.is_single) or else (is_multiple and cardinality_conforms_to (other)
  * 
 */
-    public Result = existence_conforms_to (other) and is_single and other.is_single) or else (is_multiple and cardinality_conforms_to (other)  cConformsTo(ArchetypeConstraint other, FUNCTION<> rmcc,  ,  ) {
+    public Boolean  cConformsTo(ArchetypeConstraint other, FUNCTION<> rmcc ) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Result = existence_conforms_to (other) and is_single and other.is_single) or else (is_multiple and cardinality_conforms_to (other)  result;
+        Boolean result = null;
 
 
         if ( result  == null ) {
@@ -313,10 +322,12 @@ public class CAttribute extends ArchetypeConstraint {
  * True if this C_ATTRIBUTE has an existence constraint of 0..0, i.e.
  * prohibition.
  * cardinality: 1..1 (effected)
- * 
+ *
+ * Post: Result = existence /= Void and then existence.is_prohibited
+ *
 */
-    public Result = existence /= Void and then existence.is_prohibited  isProhibited() {
-        Result = existence /= Void and then existence.is_prohibited  result;
+    public Boolean isProhibited() {
+        Boolean  result = null;
 
 
         if ( result  == null ) {

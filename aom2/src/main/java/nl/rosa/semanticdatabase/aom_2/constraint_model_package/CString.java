@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -121,7 +121,7 @@ public class CString extends CPrimitiveObject {
  * 
 */
     public String  prototypeValue() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -140,7 +140,7 @@ public class CString extends CPrimitiveObject {
         if (a_value == null ) {
             throw new NullPointerException("Parameter a_value has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -158,7 +158,7 @@ public class CString extends CPrimitiveObject {
  * 
 */
     public Result = constraint.is_empty or else constraint.count = 1 and constraint.first.is_equal (Regex_any_string)  anyAllowed() {
-        Result = constraint.is_empty or else constraint.count = 1 and constraint.first.is_equal (Regex_any_string)  result;
+        Result = constraint.is_empty or else constraint.count = 1 and constraint.first.is_equal (Regex_any_string)  result = null;
 
 
         if ( result  == null ) {
@@ -177,7 +177,7 @@ public class CString extends CPrimitiveObject {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -196,7 +196,7 @@ public class CString extends CPrimitiveObject {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {

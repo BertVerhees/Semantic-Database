@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Numeric;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -29,7 +29,7 @@ public class StatisticalEvaluator {
         if (vals == null ) {
             throw new NullPointerException("Parameter vals has cardinality NonNull, but is null.");
         }
-        Double  result;
+        Double  result = null;
 
 
         if ( result  == null ) {
@@ -48,7 +48,7 @@ public class StatisticalEvaluator {
         if (vals == null ) {
             throw new NullPointerException("Parameter vals has cardinality NonNull, but is null.");
         }
-        Double  result;
+        Double  result = null;
 
 
         if ( result  == null ) {
@@ -67,7 +67,7 @@ public class StatisticalEvaluator {
         if (vals == null ) {
             throw new NullPointerException("Parameter vals has cardinality NonNull, but is null.");
         }
-        Numeric  result;
+        Numeric  result = null;
 
 
         if ( result  == null ) {
@@ -86,7 +86,7 @@ public class StatisticalEvaluator {
         if (vals == null ) {
             throw new NullPointerException("Parameter vals has cardinality NonNull, but is null.");
         }
-        Numeric  result;
+        Numeric  result = null;
 
 
         if ( result  == null ) {
@@ -105,7 +105,7 @@ public class StatisticalEvaluator {
         if (vals == null ) {
             throw new NullPointerException("Parameter vals has cardinality NonNull, but is null.");
         }
-        Numeric  result;
+        Numeric  result = null;
 
 
         if ( result  == null ) {

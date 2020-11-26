@@ -11,7 +11,7 @@ import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -143,7 +143,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * 
 */
     public String  modelId() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -162,7 +162,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
         if (a_name == null ) {
             throw new NullPointerException("Parameter a_name has cardinality NonNull, but is null.");
         }
-        BmmClass  result;
+        BmmClass  result = null;
 
 
         if ( result  == null ) {
@@ -180,7 +180,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * 
 */
     public BmmClass  typeDefinition() {
-        BmmClass  result;
+        BmmClass  result = null;
 
 
         if ( result  == null ) {
@@ -199,7 +199,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
         if (a_class_name == null ) {
             throw new NullPointerException("Parameter a_class_name has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -218,7 +218,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
         if (a_type_name == null ) {
             throw new NullPointerException("Parameter a_type_name has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -237,7 +237,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
         if (a_name == null ) {
             throw new NullPointerException("Parameter a_name has cardinality NonNull, but is null.");
         }
-        BmmEnumeration  result;
+        BmmEnumeration  result = null;
 
 
         if ( result  == null ) {
@@ -253,7 +253,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * 
 */
     public List<String>  primitiveTypes() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         return  result;
@@ -266,7 +266,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * 
 */
     public List<String>  enumerationTypes() {
-        List<String>  result;
+        List<String>  result = null;
 
 
         return  result;
@@ -279,7 +279,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * 
 */
     public BmmProperty  propertyDefinition() {
-        BmmProperty  result;
+        BmmProperty  result = null;
 
 
         if ( result  == null ) {
@@ -306,7 +306,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
         if (a_ms_property_name == null ) {
             throw new NullPointerException("Parameter a_ms_property_name has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -322,7 +322,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * 
 */
     public BmmProperty  propertyDefinitionAtPath() {
-        BmmProperty  result;
+        BmmProperty  result = null;
 
 
         if ( result  == null ) {
@@ -344,7 +344,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
         if (a_prop_path == null ) {
             throw new NullPointerException("Parameter a_prop_path has cardinality NonNull, but is null.");
         }
-        BmmClass  result;
+        BmmClass  result = null;
 
 
         if ( result  == null ) {
@@ -365,7 +365,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
         if (a_class == null ) {
             throw new NullPointerException("Parameter a_class has cardinality NonNull, but is null.");
         }
-        List<String>  result;
+        List<String>  result = null;
 
 
         return  result;
@@ -384,7 +384,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
         if (a_parent_class_name == null ) {
             throw new NullPointerException("Parameter a_parent_class_name has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -408,7 +408,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
         if (an_anc_type == null ) {
             throw new NullPointerException("Parameter an_anc_type has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -429,7 +429,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
         if (a_type == null ) {
             throw new NullPointerException("Parameter a_type has cardinality NonNull, but is null.");
         }
-        List<String>  result;
+        List<String>  result = null;
 
 
         if ( result  == null ) {
@@ -446,7 +446,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * 
 */
     public BmmSimpleClass  anyClassDefinition() {
-        BmmSimpleClass  result;
+        BmmSimpleClass  result = null;
 
 
         if ( result  == null ) {
@@ -462,7 +462,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * 
 */
     public BmmSimpleType  anyTypeDefinition() {
-        BmmSimpleType  result;
+        BmmSimpleType  result = null;
 
 
         if ( result  == null ) {
@@ -478,7 +478,7 @@ public class BmmModel extends BmmPackageContainer implements BmmModelMetadata {
  * 
 */
     public BmmSimpleType  booleanTypeDefinition() {
-        BmmSimpleType  result;
+        BmmSimpleType  result = null;
 
 
         if ( result  == null ) {

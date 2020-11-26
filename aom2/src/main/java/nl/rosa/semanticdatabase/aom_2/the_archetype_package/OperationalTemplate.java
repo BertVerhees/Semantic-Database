@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.aom_2.terminology_package.ArchetypeTerminology;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -151,7 +151,7 @@ public class OperationalTemplate extends AuthoredArchetype {
         if (an_id == null ) {
             throw new NullPointerException("Parameter an_id has cardinality NonNull, but is null.");
         }
-        ArchetypeTerminology  result;
+        ArchetypeTerminology  result = null;
 
 
         if ( result  == null ) {

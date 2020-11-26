@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.literal_values.BmmPrimitiveValue;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -132,7 +132,7 @@ public class BmmEnumeration extends BmmSimpleClass {
  * 
 */
     public Map<String, String>  nameMap() {
-        Map<String, String>  result;
+        Map<String, String>  result = null;
 
 
         if ( result  == null ) {

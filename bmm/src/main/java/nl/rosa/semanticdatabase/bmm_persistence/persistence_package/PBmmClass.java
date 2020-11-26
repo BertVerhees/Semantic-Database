@@ -8,7 +8,7 @@ import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -410,7 +410,7 @@ public class PBmmClass extends PBmmModelElement {
  * 
 */
     public = generic_parameter_defs /= Void  isGeneric() {
-        = generic_parameter_defs /= Void  result;
+        = generic_parameter_defs /= Void  result = null;
 
 
         if ( result  == null ) {

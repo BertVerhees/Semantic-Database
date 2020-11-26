@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -25,7 +25,7 @@ public class String extends Ordered {
  * 
 */
     public Boolean  isEmpty() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -41,7 +41,7 @@ public class String extends Ordered {
  * 
 */
     public Boolean  isInteger() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -57,7 +57,7 @@ public class String extends Ordered {
  * 
 */
     public Integer  asInteger() {
-        Integer  result;
+        Integer  result = null;
 
 
         if ( result  == null ) {
@@ -76,7 +76,7 @@ public class String extends Ordered {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -95,7 +95,7 @@ public class String extends Ordered {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -114,7 +114,7 @@ public class String extends Ordered {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {

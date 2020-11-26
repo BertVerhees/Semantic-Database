@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -34,7 +34,7 @@ public class TerminologyId extends ObjectId {
  * 
 */
     public String  name() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -50,7 +50,7 @@ public class TerminologyId extends ObjectId {
  * 
 */
     public String  versionId() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {

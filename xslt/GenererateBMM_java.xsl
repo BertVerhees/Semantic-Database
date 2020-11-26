@@ -378,7 +378,7 @@
                             </xsl:if>
                         </xsl:for-each>
 
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $type, '  result', ';'))"/>
+                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $type, '  result = null;'))"/>
                         <xsl:value-of select="do:output('')"/>
                         <xsl:value-of select="do:output('')"/>
                         <xsl:if test="starts-with($nameAndTypeAndKind/cardinality, '1')">

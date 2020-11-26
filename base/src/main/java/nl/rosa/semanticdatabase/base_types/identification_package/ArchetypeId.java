@@ -4,7 +4,7 @@ import java.util.Objects;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -27,7 +27,7 @@ public class ArchetypeId extends ObjectId {
  * 
 */
     public String  qualifiedRmEntity() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -44,7 +44,7 @@ public class ArchetypeId extends ObjectId {
  * 
 */
     public String  domainConcept() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -61,7 +61,7 @@ public class ArchetypeId extends ObjectId {
  * 
 */
     public String  rmOriginator() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -78,7 +78,7 @@ public class ArchetypeId extends ObjectId {
  * 
 */
     public String  rmName() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -95,7 +95,7 @@ public class ArchetypeId extends ObjectId {
  * 
 */
     public String  rmEntity() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -112,7 +112,7 @@ public class ArchetypeId extends ObjectId {
  * 
 */
     public String  specialisation() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
@@ -128,7 +128,7 @@ public class ArchetypeId extends ObjectId {
  * 
 */
     public String  versionId() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {

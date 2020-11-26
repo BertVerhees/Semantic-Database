@@ -1,12 +1,14 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.Objects;
+
+import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -29,7 +31,7 @@ public abstract class CDefinedObject extends CObject {
  * cardinality: 0..1
  * 
 */
-    private Any defaultValue;
+    private Object defaultValue;
 
 /*=========================================================*/
 /* * POJOS * */
@@ -42,7 +44,7 @@ public abstract class CDefinedObject extends CObject {
  * cardinality: 0..1
  * 
 */
-    public Any getDefaultValue() {
+    public Object getDefaultValue() {
         return defaultValue;
     }
     public void setDefaultValue(Any value) {
@@ -77,7 +79,7 @@ public abstract class CDefinedObject extends CObject {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public abstract Any  prototypeValue();
+    public abstract Object  prototypeValue();
 
 /**
  * 
@@ -86,7 +88,7 @@ public abstract class CDefinedObject extends CObject {
  * 
 */
     public Boolean  hasDefaultValue() {
-        Boolean  result;
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -97,27 +99,15 @@ public abstract class CDefinedObject extends CObject {
 
     //***** CDefinedObject *****
 
-
-
-    /*=========================================================*/
+/*=========================================================*/
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
 
-    @Override
-    public Boolean isProhibited() {
-        return null;
-    }
-
-    @Override
-    public Boolean cConformsTo(ArchetypeConstraint other, FUNCTION<> rmcc) {
-        return null;
-    }
-
     protected CDefinedObject() {}
 
     protected CDefinedObject(
-            Any defaultValue,
+            Object defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,

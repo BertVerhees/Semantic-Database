@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
 
 /**
  * 
- * #Generated: 2020-11-25T09:35:00.89+01:00
+ * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
  * 
@@ -82,7 +82,7 @@ public class BmmPackage extends BmmPackageContainer {
  * 
 */
     public List<BmmClass>  rootClasses() {
-        List<BmmClass>  result;
+        List<BmmClass>  result = null;
 
 
         return  result;
@@ -95,7 +95,7 @@ public class BmmPackage extends BmmPackageContainer {
  * 
 */
     public String  path() {
-        String  result;
+        String  result = null;
 
 
         if ( result  == null ) {
