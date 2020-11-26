@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.Objects;
-import nl.rosa.semanticdatabase..;
+import nl.rosa.semanticdatabase.base.paths.AdlCodeDefinitions;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
@@ -141,10 +141,12 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
  * 
  * True if there is a second order constraint such as a tuple constraint on this node.
  * cardinality: 1..1
+ *
+ * Post: soc_parent /= Void or else (parent /= Void and then parent.is_second_order_constrained)
  * 
 */
-    public soc_parent /= Void or else (parent /= Void and then parent.is_second_order_constrained)  isSecondOrderConstrained() {
-        soc_parent /= Void or else (parent /= Void and then parent.is_second_order_constrained)  result;
+    public Boolean isSecondOrderConstrained() {
+        Boolean result;
 
 
         if ( result  == null ) {

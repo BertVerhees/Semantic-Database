@@ -1,6 +1,5 @@
 package nl.rosa.semanticdatabase.base.rminfo;
 
-import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.base.paths.PathSegment;
 import nl.rosa.semanticdatabase.query.APathQuery;
 

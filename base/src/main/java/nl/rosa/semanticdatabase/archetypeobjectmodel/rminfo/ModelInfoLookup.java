@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.archetypeobjectmodel.rminfo;
 
 
-import nl.rosa.semanticdatabase.base.MultiplicityInterval;
 import nl.rosa.semanticdatabase.base.paths.PathSegment;
 import nl.rosa.semanticdatabase.base.rminfo.RMAttributeInfo;
 import nl.rosa.semanticdatabase.base.rminfo.RMTypeInfo;

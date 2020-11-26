@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.aom_2.terminology_package;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -24,7 +25,7 @@ public class ValueSet extends TerminologyRelation {
 
     public ValueSet(
             String id,
-            List<string> members
+            List<String> members
         ){
         super( 
             id,

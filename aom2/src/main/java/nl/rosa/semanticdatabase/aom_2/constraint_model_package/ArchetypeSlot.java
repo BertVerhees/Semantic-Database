@@ -1,6 +1,10 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Objects;
+
+import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
@@ -26,7 +30,7 @@ public class ArchetypeSlot extends CObject {
  * cardinality: 0..1
  * 
 */
-    private List<ARCHETYPE_ID_CONSTRAINT> includes;
+    private List<ArchetypeIdConstraint> includes;
 
 /**
  * 
@@ -34,7 +38,7 @@ public class ArchetypeSlot extends CObject {
  * cardinality: 0..1
  * 
 */
-    private List<ARCHETYPE_ID_CONSTRAINT> excludes;
+    private List<ArchetypeIdConstraint> excludes;
 
 /**
  * 
@@ -57,33 +61,33 @@ public class ArchetypeSlot extends CObject {
  * 
 */
 
-    public void addToInclude(ARCHETYPE_ID_CONSTRAINT value ) {
+    public void addToInclude(ArchetypeIdConstraint value ) {
         if (includes == null ) {
             includes = new ArrayList<> ();
         }
         includes.add( value);
     }
 
-    public void addToIncludes(List<ARCHETYPE_ID_CONSTRAINT> values ) {
+    public void addToIncludes(List<ArchetypeIdConstraint> values ) {
         values.forEach(value -> addToInclude(value));
     }
 
-    public void removeFromInclude(ARCHETYPE_ID_CONSTRAINT item ) {
+    public void removeFromInclude(ArchetypeIdConstraint item ) {
         if (includes != null ) {
             includes.remove(item);
         }
     }
-    public void removeFromIncludes( Collection <ARCHETYPE_ID_CONSTRAINT> values ) {
+    public void removeFromIncludes( Collection <ArchetypeIdConstraint> values ) {
         values.forEach(this::removeFromInclude);
     }
-    List<ARCHETYPE_ID_CONSTRAINT> getIncludes() {
+    List<ArchetypeIdConstraint> getIncludes() {
         return this.includes;
     }
-    public ArchetypeSlot setIncludes(List<ARCHETYPE_ID_CONSTRAINT> includes) {
+    public ArchetypeSlot setIncludes(List<ArchetypeIdConstraint> includes) {
         this.includes = includes;
         return this;
     }
-    public List<ARCHETYPE_ID_CONSTRAINT> includes() {
+    public List<ArchetypeIdConstraint> includes() {
         return Collections.unmodifiableList(this.includes);
     }
 
@@ -94,33 +98,33 @@ public class ArchetypeSlot extends CObject {
  * 
 */
 
-    public void addToExclude(ARCHETYPE_ID_CONSTRAINT value ) {
+    public void addToExclude(ArchetypeIdConstraint value ) {
         if (excludes == null ) {
-            excludes = new ArrayList<> ();
+            excludes = new ArrayList<>();
         }
         excludes.add( value);
     }
 
-    public void addToExcludes(List<ARCHETYPE_ID_CONSTRAINT> values ) {
+    public void addToExcludes(List<ArchetypeIdConstraint> values ) {
         values.forEach(value -> addToExclude(value));
     }
 
-    public void removeFromExclude(ARCHETYPE_ID_CONSTRAINT item ) {
+    public void removeFromExclude(ArchetypeIdConstraint item ) {
         if (excludes != null ) {
             excludes.remove(item);
         }
     }
-    public void removeFromExcludes( Collection <ARCHETYPE_ID_CONSTRAINT> values ) {
+    public void removeFromExcludes( Collection <ArchetypeIdConstraint> values ) {
         values.forEach(this::removeFromExclude);
     }
-    List<ARCHETYPE_ID_CONSTRAINT> getExcludes() {
+    List<ArchetypeIdConstraint> getExcludes() {
         return this.excludes;
     }
-    public ArchetypeSlot setExcludes(List<ARCHETYPE_ID_CONSTRAINT> excludes) {
+    public ArchetypeSlot setExcludes(List<ArchetypeIdConstraint> excludes) {
         this.excludes = excludes;
         return this;
     }
-    public List<ARCHETYPE_ID_CONSTRAINT> excludes() {
+    public List<ArchetypeIdConstraint> excludes() {
         return Collections.unmodifiableList(this.excludes);
     }
 
@@ -172,8 +176,8 @@ public class ArchetypeSlot extends CObject {
     protected ArchetypeSlot() {}
 
     public ArchetypeSlot(
-            List<archetypeIdConstraint> includes,
-            List<archetypeIdConstraint> excludes,
+            List<ArchetypeIdConstraint> includes,
+            List<ArchetypeIdConstraint> excludes,
             Boolean isClosed,
             String rmTypeName,
             MultiplicityInterval occurrences,
@@ -214,8 +218,8 @@ public class ArchetypeSlot extends CObject {
     }
 
     public static class Builder {
-        private List<archetypeIdConstraint> includes;
-        private List<archetypeIdConstraint> excludes;
+        private List<ArchetypeIdConstraint> includes;
+        private List<ArchetypeIdConstraint> excludes;
         private final Boolean isClosed;  //required
         private final String rmTypeName;  //required
         private MultiplicityInterval occurrences;
@@ -244,12 +248,12 @@ public class ArchetypeSlot extends CObject {
             this.nodeId = nodeId;
         }
 
-        public Builder setIncludes(List<archetypeIdConstraint> value) {
+        public Builder setIncludes(List<ArchetypeIdConstraint> value) {
             this.includes = includes;
             return this;
         }
 
-        public Builder setExcludes(List<archetypeIdConstraint> value) {
+        public Builder setExcludes(List<ArchetypeIdConstraint> value) {
             this.excludes = excludes;
             return this;
         }

@@ -198,7 +198,7 @@ public abstract class CObject extends ArchetypeConstraint {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  cConformsTo(CObject other, FUNCTION<> rmcc,  ,  ) {
+    public Boolean  cConformsTo(CObject other, FUNCTION<> rmcc) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -255,14 +255,15 @@ public abstract class CObject extends ArchetypeConstraint {
  * 
  * True if this node id conforms to other.node_id, which includes the ids being identical; other is assumed to be in a flat archetype.
  * cardinality: 1..1
+ * Post: Result = codes_conformant (node_id, other.node_id)
+ *
  * 
 */
-    public Result = codes_conformant (node_id, other.node_id)  nodeIdConformsTo(CObject other) {
+    public Boolean nodeIdConformsTo(CObject other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Result = codes_conformant (node_id, other.node_id)  result;
-
+        Boolean result;
 
         if ( result  == null ) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
@@ -270,21 +271,22 @@ public abstract class CObject extends ArchetypeConstraint {
         return  result;
     }
 
-/**
- * 
- * True if this C_OBJECT node is prohibited, i.e.
- * if its occurrences is 0..0.
- * cardinality: 1..1 (effected)
- * 
-*/
-    public Result = occurrences /= Void and then occurrences.is_prohibited  isProhibited() {
-        Result = occurrences /= Void and then occurrences.is_prohibited  result;
+    /**
+     *
+     * True if this C_OBJECT node is prohibited, i.e. if its occurrences is 0..0.
+     * cardinality: 1..1
+     *
+     * Post: Result = occurrences /= Void and then occurrences.is_prohibited
+     */
 
+    @Override
+    public Boolean isProhibited() {
+        Boolean result;
 
         if ( result  == null ) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return  result;
+        return result;
     }
 
     //***** CObject *****

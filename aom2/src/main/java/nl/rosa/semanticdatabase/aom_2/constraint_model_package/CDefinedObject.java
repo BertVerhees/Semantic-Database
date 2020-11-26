@@ -97,10 +97,22 @@ public abstract class CDefinedObject extends CObject {
 
     //***** CDefinedObject *****
 
-/*=========================================================*/
+
+
+    /*=========================================================*/
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
+
+    @Override
+    public Boolean isProhibited() {
+        return null;
+    }
+
+    @Override
+    public Boolean cConformsTo(ArchetypeConstraint other, FUNCTION<> rmcc) {
+        return null;
+    }
 
     protected CDefinedObject() {}
 
