@@ -240,6 +240,10 @@ public abstract class CPrimitiveObject extends CDefinedObject {
 /*=========================================================*/
 
 
+    public abstract Boolean cValueConformsTo(CString other);
+
+    public abstract Boolean  cValueCongruentTo(CString other);
+
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;

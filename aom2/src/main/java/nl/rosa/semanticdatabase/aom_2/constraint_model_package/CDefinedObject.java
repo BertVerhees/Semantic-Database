@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 import java.util.Objects;
 
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.foundation_types.overview.Any;
+import nl.rosa.semanticdatabase.foundation_types.overview.Object;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
@@ -47,7 +47,7 @@ public abstract class CDefinedObject extends CObject {
     public Object getDefaultValue() {
         return defaultValue;
     }
-    public void setDefaultValue(Any value) {
+    public void setDefaultValue(Object value) {
         this.defaultValue = defaultValue;
     }
 
@@ -71,7 +71,7 @@ public abstract class CDefinedObject extends CObject {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public abstract Boolean  validValue(Any a_value);
+    public abstract Boolean  validValue(Object a_value);
 
 /**
  * 

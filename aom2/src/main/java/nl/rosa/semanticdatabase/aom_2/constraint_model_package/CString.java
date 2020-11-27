@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 import java.util.*;
 
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
+import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
@@ -76,6 +77,7 @@ public class CString extends CPrimitiveObject {
     public List<String> getConstraint() {
         return this.constraint;
     }
+
     public CString setConstraint(List<String> constraint) {
         if (constraint == null ) {
             throw new NullPointerException(" constraint has cardinality NonNull, but is null");
@@ -169,13 +171,14 @@ public class CString extends CPrimitiveObject {
         return  result;
     }
 
-/**
+    /**
  * 
  * True if other.any_allowed or else every constraint in the constraint list exists in the other.constraint.
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  cValueConformsTo(CString other) {
+    @Override
+    public Boolean cValueConformsTo(CString other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -194,6 +197,7 @@ public class CString extends CPrimitiveObject {
  * cardinality: 1..1 (effected)
  * 
 */
+    @Override
     public Boolean  cValueCongruentTo(CString other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
@@ -206,6 +210,17 @@ public class CString extends CPrimitiveObject {
         }
         return  result;
     }
+    @Override
+    public Boolean cValueConformsTo(CPrimitiveObject other) {
+        return null;
+    }
+
+    @Override
+    public Boolean cValueCongruentTo(CPrimitiveObject other) {
+        return null;
+    }
+
+
 
     //***** CString *****
 

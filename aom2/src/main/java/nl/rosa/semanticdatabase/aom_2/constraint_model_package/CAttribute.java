@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.*;
 
+import nl.rosa.semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.interval.Cardinality;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
@@ -304,7 +305,7 @@ public class CAttribute extends ArchetypeConstraint {
  * Post: Result = existence_conforms_to (other) and is_single and other.is_single) or else (is_multiple and cardinality_conforms_to (other)
  * 
 */
-    public Boolean  cConformsTo(ArchetypeConstraint other, FUNCTION<> rmcc ) {
+    public Boolean cConformsTo(ArchetypeConstraint other, RMConformanceChecker rmcc) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -326,6 +327,7 @@ public class CAttribute extends ArchetypeConstraint {
  * Post: Result = existence /= Void and then existence.is_prohibited
  *
 */
+    @Override
     public Boolean isProhibited() {
         Boolean  result = null;
 
@@ -348,7 +350,7 @@ public class CAttribute extends ArchetypeConstraint {
     public CAttribute(
             String rmAttributeName,
             MultiplicityInterval existence,
-            List<cObject> children,
+            List<CObject> children,
             String differentialPath,
             Cardinality cardinality,
             Boolean isMultiple,
@@ -387,7 +389,7 @@ public class CAttribute extends ArchetypeConstraint {
     public static class Builder {
         private final String rmAttributeName;  //required
         private MultiplicityInterval existence;
-        private List<cObject> children;
+        private List<CObject> children;
         private String differentialPath;
         private Cardinality cardinality;
         private final Boolean isMultiple;  //required
@@ -413,7 +415,7 @@ public class CAttribute extends ArchetypeConstraint {
             return this;
         }
 
-        public Builder setChildren(List<cObject> value) {
+        public Builder setChildren(List<CObject> value) {
             this.children = children;
             return this;
         }
