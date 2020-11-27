@@ -5,6 +5,7 @@ import java.util.Objects;
 import nl.rosa.semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import nl.rosa.semanticdatabase.base.paths.AdlCodeDefinitions;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
@@ -81,7 +82,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public abstract Boolean  isProhibited();
+    public abstract Boolean isProhibited();
 
 /**
  * 
@@ -233,7 +234,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return
             "ArchetypeConstraint {" +
             "parent='" + parent + '\'' +

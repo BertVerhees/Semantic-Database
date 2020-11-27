@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.Objects;
-import nl.rosa.semanticdatabase..;
+.;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Real;
 
 /**

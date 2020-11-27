@@ -6,6 +6,7 @@ import nl.rosa.semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.interval.Cardinality;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
@@ -480,7 +481,7 @@ public class CAttribute extends ArchetypeConstraint {
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return
             "CAttribute {" +
             "rmAttributeName='" + rmAttributeName + '\'' +

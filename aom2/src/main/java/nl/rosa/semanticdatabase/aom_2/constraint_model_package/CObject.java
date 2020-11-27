@@ -1,9 +1,12 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.Objects;
+
+import nl.rosa.semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
@@ -162,7 +165,7 @@ public abstract class CObject extends ArchetypeConstraint {
  * cardinality: 1..1
  * 
 */
-    public Integer  specialisationDepth() {
+    public Integer specialisationDepth() {
         Integer  result = null;
 
 
@@ -190,26 +193,6 @@ public abstract class CObject extends ArchetypeConstraint {
         return  result;
     }
 
-/**
- * 
- * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
- * Typically used during validation of special-ised archetype nodes.
- * Parameters rmcc Reference Model conformance checker agent (lambda).
- * cardinality: 1..1 (effected)
- * 
-*/
-    public Boolean  cConformsTo(CObject other, FUNCTION<> rmcc,  ,  ) {
-        if (other == null ) {
-            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
-        }
-        Boolean  result = null;
-
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return  result;
-    }
 
 /**
  * 
@@ -261,7 +244,7 @@ public abstract class CObject extends ArchetypeConstraint {
      *
      */
     @Override
-    public Boolean  cConformsTo(ArchetypeConstraint other, FUNCTION<> rmcc ) {
+    public Boolean  cConformsTo(ArchetypeConstraint other, RMConformanceChecker rmcc ) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -362,7 +345,7 @@ public abstract class CObject extends ArchetypeConstraint {
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return
             "CObject {" +
             "rmTypeName='" + rmTypeName + '\'' +

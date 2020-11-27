@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Objects;
 
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.foundation_types.terminology_package.TerminologyCode;
+import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Uri;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
+import nl.rosa.semanticdatabase.foundation_types.terminology_package.TerminologyCode;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.*;
 
 /**
  * 
@@ -89,6 +91,7 @@ public class CTerminologyCode extends CPrimitiveObject {
     public String getConstraint() {
         return constraint;
     }
+
     public void setConstraint(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:constraint failed, it has cardinality NonNull, but is null");
@@ -117,6 +120,29 @@ public class CTerminologyCode extends CPrimitiveObject {
     public TerminologyCode getDefaultValue() {
         return defaultValue;
     }
+
+    /**
+     * True if any value (i.e.
+     * instance) of the reference model type would be allowed.
+     * Redefined in descendants.
+     * cardinality: 1..1 (abstract)
+     */
+    @Override
+    public Boolean anyAllowed() {
+        return null;
+    }
+
+    /**
+     * True if a_value is valid with respect to constraint expressed in concrete instance of this type.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param a_value
+     */
+    @Override
+    public Boolean validValue(Any a_value) {
+        return null;
+    }
+
     public void setDefaultValue(TerminologyCode value) {
         this.defaultValue = defaultValue;
     }
@@ -125,7 +151,8 @@ public class CTerminologyCode extends CPrimitiveObject {
 /* * FUNCTIONS * */
 /*=========================================================*/
 
-/**
+
+    /**
  * 
  * True if constraint_status is defined and equals required OR if Void.
  * I.e.
@@ -133,7 +160,7 @@ public class CTerminologyCode extends CPrimitiveObject {
  * cardinality: 1..1
  * 
 */
-    public Boolean  constraintRequired() {
+    public Boolean constraintRequired() {
         Boolean  result = null;
 
 
@@ -224,6 +251,7 @@ public class CTerminologyCode extends CPrimitiveObject {
  * cardinality: 1..1 (effected)
  * 
 */
+    @Override
     public Boolean  cValueConformsTo(CTerminologyCode other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
@@ -243,6 +271,7 @@ public class CTerminologyCode extends CPrimitiveObject {
  * cardinality: 1..1 (effected)
  * 
 */
+@Override
     public Boolean  cValueCongruentTo(CTerminologyCode other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
@@ -270,9 +299,7 @@ public class CTerminologyCode extends CPrimitiveObject {
             String constraint,
             TerminologyCode assumedValue,
             TerminologyCode defaultValue,
-            Object assumedValue,
             Boolean isEnumeratedTypeConstraint,
-            Object defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
@@ -281,8 +308,11 @@ public class CTerminologyCode extends CPrimitiveObject {
             ArchetypeConstraint parent,
             CSecondOrder socParent
         ){
-        super( 
+        super(
+                assumedValue,
             isEnumeratedTypeConstraint,
+            constraint,
+            defaultValue,
             rmTypeName,
             occurrences,
             nodeId,
@@ -323,10 +353,7 @@ public class CTerminologyCode extends CPrimitiveObject {
         private final String constraint;  //required
         private TerminologyCode assumedValue;
         private TerminologyCode defaultValue;
-        private Object assumedValue;
         private Boolean isEnumeratedTypeConstraint;
-        private final Object constraint;  //required
-        private Object defaultValue;
         private final String rmTypeName;  //required
         private MultiplicityInterval occurrences;
         private final String nodeId;  //required
@@ -369,7 +396,7 @@ public class CTerminologyCode extends CPrimitiveObject {
             return this;
         }
 
-        public Builder setAssumedValue(Object value) {
+        public Builder setAssumedValue(Any value) {
             this.assumedValue = assumedValue;
             return this;
         }
@@ -379,7 +406,7 @@ public class CTerminologyCode extends CPrimitiveObject {
             return this;
         }
 
-        public Builder setDefaultValue(Object value) {
+        public Builder setDefaultValue(Any value) {
             this.defaultValue = defaultValue;
             return this;
         }
@@ -445,7 +472,7 @@ public class CTerminologyCode extends CPrimitiveObject {
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return
             "CTerminologyCode {" +
             "constraintStatus='" + constraintStatus + '\'' +

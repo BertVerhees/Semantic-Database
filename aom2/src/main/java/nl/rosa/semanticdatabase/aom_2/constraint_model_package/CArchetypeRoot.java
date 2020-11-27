@@ -1,6 +1,9 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
+import nl.rosa.semanticdatabase.foundation_types.overview.Any;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 import java.util.List;
 import java.util.Objects;
@@ -77,7 +80,7 @@ public class CArchetypeRoot extends CComplexObject {
             String archetypeRef,
             List<CAttribute> attributes,
             List<CAttributeTuple> attributeTuples,
-            Object defaultValue,
+            Any defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
@@ -120,8 +123,8 @@ public class CArchetypeRoot extends CComplexObject {
 
     public static class Builder {
         private final String archetypeRef;  //required
-        private List<cAttribute> attributes;
-        private List<cAttributeTuple> attributeTuples;
+        private List<CAttribute> attributes;
+        private List<CAttributeTuple> attributeTuples;
         private Any defaultValue;
         private final String rmTypeName;  //required
         private MultiplicityInterval occurrences;
@@ -150,12 +153,12 @@ public class CArchetypeRoot extends CComplexObject {
             this.nodeId = nodeId;
         }
 
-        public Builder setAttributes(List<cAttribute> value) {
+        public Builder setAttributes(List<CAttribute> value) {
             this.attributes = attributes;
             return this;
         }
 
-        public Builder setAttributeTuples(List<cAttributeTuple> value) {
+        public Builder setAttributeTuples(List<CAttributeTuple> value) {
             this.attributeTuples = attributeTuples;
             return this;
         }
@@ -220,7 +223,7 @@ public class CArchetypeRoot extends CComplexObject {
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return
             "CArchetypeRoot {" +
             "archetypeRef='" + archetypeRef + '\'' +

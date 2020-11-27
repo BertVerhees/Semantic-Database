@@ -1,7 +1,10 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.Objects;
+
+import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
@@ -59,10 +62,12 @@ public class CComplexObjectProxy extends CObject {
  * 
  * True if target occurrences are to be used as the value of occurrences in this object; by the time of runtime use, the target occurrences value has to be set into this object.
  * cardinality: 1..1
+ *
+ * Post: Result = (occurrences = Void)
  * 
 */
-    public Result = (occurrences = Void)  useTargetOccurrences() {
-        Result = (occurrences = Void)  result = null;
+    public Boolean useTargetOccurrences() {
+        Boolean result = null;
 
 
         if ( result  == null ) {
@@ -75,7 +80,10 @@ public class CComplexObjectProxy extends CObject {
  * 
  * True if this node occurrences conforms to other.occurrences; other is assumed to be in a flat archetype.
  * If other is a C_COMPLEX_OBJECT, then always True, since if occurrences defined on proxy node, it is an override of the occurrences on the target, and it doesn’t have to conform to anything except the containing attribute’s cardinality.
- * However, if other is also a C_COMPLEX_OBJECT then the override is of another use_node, and normal occurrences apply Parameters other C_OBJECT from a flat parent archetype.
+ * However, if other is also a C_COMPLEX_OBJECT then the override is of another use_node, and normal occurrences apply
+ *
+ * Parameters other C_OBJECT from a flat parent archetype.
+ *
  * cardinality: 1..1 (redefined)
  * 
 */
@@ -221,7 +229,7 @@ public class CComplexObjectProxy extends CObject {
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return
             "CComplexObjectProxy {" +
             "targetPath='" + targetPath + '\'' +

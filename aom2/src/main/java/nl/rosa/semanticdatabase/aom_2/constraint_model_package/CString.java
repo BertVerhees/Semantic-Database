@@ -3,8 +3,10 @@ package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 import java.util.*;
 
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
+import nl.rosa.semanticdatabase.foundation_types.structure_types.*;
+import nl.rosa.semanticdatabase.foundation_types.structure_types.List;
 
 /**
  * 
@@ -29,7 +31,7 @@ public class CString extends CPrimitiveObject {
  * cardinality: 1..1 (redefined)
  * 
 */
-    private List<String> constraint = new ArrayList<>();
+    private List<String> constraint = new List<>();
 
 /**
  * 
@@ -140,7 +142,7 @@ public class CString extends CPrimitiveObject {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  validValue(String a_value) {
+    public Boolean validValue(String a_value) {
         if (a_value == null ) {
             throw new NullPointerException("Parameter a_value has cardinality NonNull, but is null.");
         }
@@ -209,15 +211,6 @@ public class CString extends CPrimitiveObject {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return  result;
-    }
-    @Override
-    public Boolean cValueConformsTo(CPrimitiveObject other) {
-        return null;
-    }
-
-    @Override
-    public Boolean cValueCongruentTo(CPrimitiveObject other) {
-        return null;
     }
 
 
@@ -319,7 +312,7 @@ public class CString extends CPrimitiveObject {
             return this;
         }
 
-        public Builder setAssumedValue(Object value) {
+        public Builder setAssumedValue(Any value) {
             this.assumedValue = assumedValue;
             return this;
         }
@@ -329,7 +322,7 @@ public class CString extends CPrimitiveObject {
             return this;
         }
 
-        public Builder setDefaultValue(Object value) {
+        public Builder setDefaultValue(Any value) {
             this.defaultValue = defaultValue;
             return this;
         }
@@ -393,7 +386,7 @@ public class CString extends CPrimitiveObject {
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return
             "CString {" +
             "constraint='" + constraint + '\'' +

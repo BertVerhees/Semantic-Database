@@ -1,11 +1,12 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
+import nl.rosa.semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
@@ -54,7 +55,7 @@ public class CComplexObject extends CDefinedObject {
 
     public void addToAttribute(CAttribute value ) {
         if (attributes == null ) {
-            attributes = new ArrayList<> ();
+            attributes = new ArrayList<>();
         }
         attributes.add( value);
     }
@@ -68,7 +69,7 @@ public class CComplexObject extends CDefinedObject {
             attributes.remove(item);
         }
     }
-    public void removeFromAttributes( Collection <CAttribute> values ) {
+    public void removeFromAttributes( Collection<CAttribute> values ) {
         values.forEach(this::removeFromAttribute);
     }
     List<CAttribute> getAttributes() {
@@ -97,7 +98,7 @@ public class CComplexObject extends CDefinedObject {
     }
 
     public void addToAttributeTuples(List<CAttributeTuple> values ) {
-        values.forEach(value -> addToAttributetuple(value));
+        values.forEach(value -> addToAttributeTuple(value));
     }
 
     public void removeFromAttributeTuple(CAttributeTuple item ) {
@@ -125,14 +126,13 @@ public class CComplexObject extends CDefinedObject {
 
 /**
  * 
- * True if any value (i.e.
- * instance) of the reference model type would be allowed.
- * Redefined in descendants.
+ * True if there is an assumed value.
  * cardinality: 1..1 (effected)
- * 
+ *
 */
-    public Result = attributes.is_empty and not is_prohibited  anyAllowed() {
-        Result = attributes.is_empty and not is_prohibited  result = null;
+
+    public Boolean hasDefaultValue() {
+        Boolean result = null;
 
 
         if ( result  == null ) {
@@ -141,7 +141,61 @@ public class CComplexObject extends CDefinedObject {
         return  result;
     }
 
-/**
+    /**
+     *
+     * True if any value (i.e.
+     * instance) of the reference model type would be allowed.
+     * Redefined in descendants.
+     * cardinality: 1..1 (effected)
+     *
+     * Post: Result = attributes.is_empty and not is_prohibited
+     *
+     */
+
+    public Boolean anyAllowed() {
+        Boolean result = null;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
+
+    /**
+     * True if aValue is valid with respect to constraint expressed in concrete instance of this type.
+     * @param aValue
+     * @return
+     */
+    @Override
+    public Boolean validValue(Any aValue) {
+        if ( aValue  == null ) {
+            throw new NullPointerException("Parameter: aValue has cardinality NonNull, but is null.");
+        }
+        Boolean result = null;
+
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
+
+    /**
+     * Generate a prototype value from this constraint object.
+     * @return
+     */
+    @Override
+    public Any prototypeValue() {
+        Any result = null;
+
+        if ( result  == null ) {
+            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        }
+        return  result;
+    }
+
+    /**
  * 
  * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
  * Typically used during validation of special-ised archetype nodes.
@@ -149,7 +203,7 @@ public class CComplexObject extends CDefinedObject {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  cConformsTo(CComplexObject other, FUNCTION<> rmcc,  ,  ) {
+    public Boolean  cConformsTo(CComplexObject other, RMConformanceChecker rmcc ) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -194,7 +248,7 @@ public class CComplexObject extends CDefinedObject {
     public CComplexObject(
             List<CAttribute> attributes,
             List<CAttributeTuple> attributeTuples,
-            Object defaultValue,
+            Any defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
@@ -231,8 +285,8 @@ public class CComplexObject extends CDefinedObject {
     }
 
     public static class Builder {
-        private List<cAttribute> attributes;
-        private List<cAttributeTuple> attributeTuples;
+        private List<CAttribute> attributes;
+        private List<CAttributeTuple> attributeTuples;
         private Any defaultValue;
         private final String rmTypeName;  //required
         private MultiplicityInterval occurrences;
@@ -256,12 +310,12 @@ public class CComplexObject extends CDefinedObject {
             this.nodeId = nodeId;
         }
 
-        public Builder setAttributes(List<cAttribute> value) {
+        public Builder setAttributes(List<CAttribute> value) {
             this.attributes = attributes;
             return this;
         }
 
-        public Builder setAttributeTuples(List<cAttributeTuple> value) {
+        public Builder setAttributeTuples(List<CAttributeTuple> value) {
             this.attributeTuples = attributeTuples;
             return this;
         }
@@ -328,7 +382,7 @@ public class CComplexObject extends CDefinedObject {
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return
             "CComplexObject {" +
             "attributes='" + attributes + '\'' +
