@@ -1,6 +1,8 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
-import java.util.Objects;
+import java.util.*;
+
+import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
@@ -26,7 +28,7 @@ public class CString extends CPrimitiveObject {
  * cardinality: 1..1 (redefined)
  * 
 */
-    private List<String> constraint = new ArrayList<> ();
+    private List<String> constraint = new ArrayList<>();
 
 /**
  * 
@@ -60,7 +62,7 @@ public class CString extends CPrimitiveObject {
     }
 
     public void addToConstraint(List<String> values ) {
-        values.forEach(value -> addToConstrain(value));
+        values.forEach(value -> addToConstraint(value));
     }
 
     public void removeFromConstraint(String item ) {
@@ -68,10 +70,10 @@ public class CString extends CPrimitiveObject {
             constraint.remove(item);
         }
     }
-    public void removeFromConstraint( Collection <String> values ) {
+    public void removeFromConstraint( Collection<String> values ) {
         values.forEach(this::removeFromConstraint);
     }
-    List<String> getConstraint() {
+    public List<String> getConstraint() {
         return this.constraint;
     }
     public CString setConstraint(List<String> constraint) {
@@ -157,8 +159,8 @@ public class CString extends CPrimitiveObject {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Result = constraint.is_empty or else constraint.count = 1 and constraint.first.is_equal (Regex_any_string)  anyAllowed() {
-        Result = constraint.is_empty or else constraint.count = 1 and constraint.first.is_equal (Regex_any_string)  result = null;
+    public Boolean anyAllowed() {
+        Boolean result = null;
 
 
         if ( result  == null ) {
@@ -215,13 +217,10 @@ public class CString extends CPrimitiveObject {
     protected CString() {}
 
     public CString(
-            List<string> constraint,
+            List<String> constraint,
             String defaultValue,
             String assumedValue,
-            Any assumedValue,
             Boolean isEnumeratedTypeConstraint,
-            Any constraint,
-            Any defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
@@ -230,8 +229,11 @@ public class CString extends CPrimitiveObject {
             ArchetypeConstraint parent,
             CSecondOrder socParent
         ){
-        super( 
+        super(
+                assumedValue,
             isEnumeratedTypeConstraint,
+            constraint,
+            defaultValue,
             rmTypeName,
             occurrences,
             nodeId,
@@ -240,12 +242,7 @@ public class CString extends CPrimitiveObject {
             parent,
             socParent
         );
-        if ( constraint == null ) {
-            throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
-        }
-        this.constraint = constraint;
         this.defaultValue = defaultValue;
-        this.assumedValue = assumedValue;
     }
 
     private CString(Builder builder) {
@@ -266,13 +263,10 @@ public class CString extends CPrimitiveObject {
     }
 
     public static class Builder {
-        private final List<string> constraint;  //required
+        private final List<String> constraint;  //required
         private String defaultValue;
         private String assumedValue;
-        private Any assumedValue;
         private Boolean isEnumeratedTypeConstraint;
-        private final Any constraint;  //required
-        private Any defaultValue;
         private final String rmTypeName;  //required
         private MultiplicityInterval occurrences;
         private final String nodeId;  //required
@@ -282,14 +276,10 @@ public class CString extends CPrimitiveObject {
         private CSecondOrder socParent;
 
         public Builder (
-            List<string> constraint,
-            Any constraint,
+            List<String> constraint,
             String rmTypeName,
             String nodeId
         ){
-            if ( constraint == null ) {
-                throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
-            }
             if ( constraint == null ) {
                 throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
             }
@@ -299,7 +289,6 @@ public class CString extends CPrimitiveObject {
             if ( nodeId == null ) {
                 throw new NullPointerException("Property:nodeId has cardinality NonNull, but is null");
             }
-            this.constraint = constraint;
             this.constraint = constraint;
             this.rmTypeName = rmTypeName;
             this.nodeId = nodeId;
@@ -315,7 +304,7 @@ public class CString extends CPrimitiveObject {
             return this;
         }
 
-        public Builder setAssumedValue(Any value) {
+        public Builder setAssumedValue(Object value) {
             this.assumedValue = assumedValue;
             return this;
         }
@@ -325,7 +314,7 @@ public class CString extends CPrimitiveObject {
             return this;
         }
 
-        public Builder setDefaultValue(Any value) {
+        public Builder setDefaultValue(Object value) {
             this.defaultValue = defaultValue;
             return this;
         }

@@ -194,8 +194,11 @@ public class CBoolean extends CPrimitiveObject {
             ArchetypeConstraint parent,
             CSecondOrder socParent
         ){
-        super( 
+        super(
+                assumedValue,
             isEnumeratedTypeConstraint,
+            constraint,
+            defaultValue,
             rmTypeName,
             occurrences,
             nodeId,
@@ -204,9 +207,6 @@ public class CBoolean extends CPrimitiveObject {
             parent,
             socParent
         );
-        this.constraint = constraint;
-        this.assumedValue = assumedValue;
-        this.defaultValue = defaultValue;
     }
 
     private CBoolean(Builder builder) {
