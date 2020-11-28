@@ -312,7 +312,7 @@ public class CString extends CPrimitiveObject {
             return this;
         }
 
-        public Builder setAssumedValue(Any value) {
+        public Builder setAssumedValue(Object value) {
             this.assumedValue = assumedValue;
             return this;
         }
@@ -322,7 +322,7 @@ public class CString extends CPrimitiveObject {
             return this;
         }
 
-        public Builder setDefaultValue(Any value) {
+        public Builder setDefaultValue(Object value) {
             this.defaultValue = defaultValue;
             return this;
         }

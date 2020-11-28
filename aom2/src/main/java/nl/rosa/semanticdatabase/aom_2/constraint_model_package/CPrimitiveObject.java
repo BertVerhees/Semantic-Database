@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import nl.rosa.semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.foundation_types.overview.Any;
+import nl.rosa.semanticdatabase.foundation_types.overview.Object;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
@@ -31,7 +31,7 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 0..1
  * 
 */
-    private Any assumedValue;
+    private Object assumedValue;
 
 /**
  * 
@@ -47,7 +47,7 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 1..1
  * 
 */
-    private Any constraint;
+    private Object constraint;
 
 /*=========================================================*/
 /* * POJOS * */
@@ -59,10 +59,10 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 0..1
  * 
 */
-    public Any getAssumedValue() {
+    public Object getAssumedValue() {
         return assumedValue;
     }
-    public void setAssumedValue(Any value) {
+    public void setAssumedValue(Object value) {
         this.assumedValue = assumedValue;
     }
 
@@ -85,10 +85,10 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 1..1
  * 
 */
-    public Any getConstraint() {
+    public Object getConstraint() {
         return constraint;
     }
-    public void setConstraint(Any value) {
+    public void setConstraint(Object value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:constraint failed, it has cardinality NonNull, but is null");
         }
@@ -205,10 +205,10 @@ public abstract class CPrimitiveObject extends CDefinedObject {
     protected CPrimitiveObject() {}
 
     protected CPrimitiveObject(
-            Any assumedValue,
+            Object assumedValue,
             Boolean isEnumeratedTypeConstraint,
-            Any constraint,
-            Any defaultValue,
+            Object constraint,
+            Object defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,

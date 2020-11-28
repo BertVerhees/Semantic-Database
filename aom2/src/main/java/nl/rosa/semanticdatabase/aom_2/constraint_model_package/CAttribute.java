@@ -5,8 +5,6 @@ import java.util.*;
 import nl.rosa.semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.foundation_types.interval.Cardinality;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 

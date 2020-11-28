@@ -4,9 +4,6 @@ import java.util.*;
 
 import nl.rosa.semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.foundation_types.overview.Any;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
@@ -168,7 +165,7 @@ public class CComplexObject extends CDefinedObject {
      * @return
      */
     @Override
-    public Boolean validValue(Any aValue) {
+    public Boolean validValue(Object aValue) {
         if ( aValue  == null ) {
             throw new NullPointerException("Parameter: aValue has cardinality NonNull, but is null.");
         }
@@ -186,8 +183,8 @@ public class CComplexObject extends CDefinedObject {
      * @return
      */
     @Override
-    public Any prototypeValue() {
-        Any result = null;
+    public Object prototypeValue() {
+        Object result = null;
 
         if ( result  == null ) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
@@ -248,7 +245,7 @@ public class CComplexObject extends CDefinedObject {
     public CComplexObject(
             List<CAttribute> attributes,
             List<CAttributeTuple> attributeTuples,
-            Any defaultValue,
+            Object defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
@@ -287,7 +284,7 @@ public class CComplexObject extends CDefinedObject {
     public static class Builder {
         private List<CAttribute> attributes;
         private List<CAttributeTuple> attributeTuples;
-        private Any defaultValue;
+        private Object defaultValue;
         private final String rmTypeName;  //required
         private MultiplicityInterval occurrences;
         private final String nodeId;  //required
@@ -320,7 +317,7 @@ public class CComplexObject extends CDefinedObject {
             return this;
         }
 
-        public Builder setDefaultValue(Any value) {
+        public Builder setDefaultValue(Object value) {
             this.defaultValue = defaultValue;
             return this;
         }

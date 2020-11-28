@@ -384,7 +384,7 @@ package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
  * ARCHETYPE_SLOT Class
  * 4.5.8.1.
  * Validity Rules The validity rules for ARCHETYPE_SLOTs are as follows: VDFAI archetype identifier validity in definition.
- * Any archetype identifier mentioned in an archetype slot in the definition section must conform to the published openEHR specification for archetype identifiers.
+ * Object archetype identifier mentioned in an archetype slot in the definition section must conform to the published openEHR specification for archetype identifiers.
  * VDSIV archetype slot 'include' constraint validity.
  * The 'include' constraint in an archetype slot must conform to the slot constraint validity rules.
  * VDSEV archetype slot 'exclude' constraint validity.

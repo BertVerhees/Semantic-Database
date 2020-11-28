@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.foundation_types.overview.Any;
+import nl.rosa.semanticdatabase.foundation_types.overview.Object;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.terminology_package.TerminologyCode;
@@ -139,7 +139,7 @@ public class CTerminologyCode extends CPrimitiveObject {
      * @param a_value
      */
     @Override
-    public Boolean validValue(Any a_value) {
+    public Boolean validValue(Object a_value) {
         return null;
     }
 
@@ -396,7 +396,7 @@ public class CTerminologyCode extends CPrimitiveObject {
             return this;
         }
 
-        public Builder setAssumedValue(Any value) {
+        public Builder setAssumedValue(Object value) {
             this.assumedValue = assumedValue;
             return this;
         }
@@ -406,7 +406,7 @@ public class CTerminologyCode extends CPrimitiveObject {
             return this;
         }
 
-        public Builder setDefaultValue(Any value) {
+        public Builder setDefaultValue(Object value) {
             this.defaultValue = defaultValue;
             return this;
         }

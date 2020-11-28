@@ -3,9 +3,6 @@ package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 import java.util.Objects;
 
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.foundation_types.overview.Any;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
@@ -32,7 +29,7 @@ public abstract class CDefinedObject extends CObject {
  * cardinality: 0..1
  * 
 */
-    private Any defaultValue;
+    private Object defaultValue;
 
 /*=========================================================*/
 /* * POJOS * */
@@ -45,10 +42,10 @@ public abstract class CDefinedObject extends CObject {
  * cardinality: 0..1
  * 
 */
-    public Any getDefaultValue() {
+    public Object getDefaultValue() {
         return defaultValue;
     }
-    public void setDefaultValue(Any value) {
+    public void setDefaultValue(Object value) {
         this.defaultValue = defaultValue;
     }
 
@@ -72,7 +69,7 @@ public abstract class CDefinedObject extends CObject {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public abstract Boolean  validValue(Any a_value);
+    public abstract Boolean  validValue(Object a_value);
 
 /**
  * 
@@ -80,7 +77,7 @@ public abstract class CDefinedObject extends CObject {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public abstract Any  prototypeValue();
+    public abstract Object  prototypeValue();
 
 /**
  * 
@@ -108,7 +105,7 @@ public abstract class CDefinedObject extends CObject {
     protected CDefinedObject() {}
 
     protected CDefinedObject(
-            Any defaultValue,
+            Object defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,

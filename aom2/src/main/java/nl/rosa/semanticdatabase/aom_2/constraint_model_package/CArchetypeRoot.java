@@ -1,9 +1,6 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.foundation_types.overview.Any;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 import java.util.List;
 import java.util.Objects;
@@ -80,7 +77,7 @@ public class CArchetypeRoot extends CComplexObject {
             String archetypeRef,
             List<CAttribute> attributes,
             List<CAttributeTuple> attributeTuples,
-            Any defaultValue,
+            Object defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
@@ -125,7 +122,7 @@ public class CArchetypeRoot extends CComplexObject {
         private final String archetypeRef;  //required
         private List<CAttribute> attributes;
         private List<CAttributeTuple> attributeTuples;
-        private Any defaultValue;
+        private Object defaultValue;
         private final String rmTypeName;  //required
         private MultiplicityInterval occurrences;
         private final String nodeId;  //required
@@ -163,7 +160,7 @@ public class CArchetypeRoot extends CComplexObject {
             return this;
         }
 
-        public Builder setDefaultValue(Any value) {
+        public Builder setDefaultValue(Object value) {
             this.defaultValue = defaultValue;
             return this;
         }

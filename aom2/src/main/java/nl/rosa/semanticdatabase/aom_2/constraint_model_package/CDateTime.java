@@ -1,7 +1,6 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.Objects;
-.;
 import nl.rosa.semanticdatabase.foundation_types.time_types.Iso8601DateTime;
 import nl.rosa.semanticdatabase.base_types.definitions_package.ValidityKind;
 
