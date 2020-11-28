@@ -1,223 +1,211 @@
-package nl.rosa.semanticdatabase.foundation_types.primitive_types;
+    package nl.rosa.semanticdatabase.foundation_types.primitive_types;
 
 import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.overview.Any;
 
-/**
- * 
- * #Generated: 2020-11-26T17:29:11.503+01:00
- * #Copyright: Bert Verhees
- * #License: See bottom of file
- * 
- * Type representing minimal interface of built-in Boolean type.
- * 
-*/
-public class Boolean extends Any {
+    /**
+     *
+     * #Generated: 2020-11-26T17:29:11.503+01:00
+     * #Copyright: Bert Verhees
+     * #License: See bottom of file
+     *
+     * Type representing minimal interface of built-in Boolean type.
+     *
+     */
+    public class Boolean extends Any {
 
-/*=========================================================*/
-/* * FUNCTIONS * */
-/*=========================================================*/
+        private java.lang.Boolean _boolean;
 
-/**
- * 
- * Logical conjunction of this with other.
- * cardinality: 1..1
- * 
-*/
-    public Result = (other and self)  conjunction alias "and", "∧", "&"(Boolean other) {
-        if (other == null ) {
-            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+        /*=========================================================*/
+        /* * FUNCTIONS * */
+        /*=========================================================*/
+
+        /**
+         *
+         * Logical conjunction of this with other.
+         * cardinality: 1..1
+         *
+         * alias "and", "∧", "&"
+         *
+         * Post_de_Morgan: Result = not (not self or not other)
+         * Post_commutative: Result = (other and self)
+         *
+         */
+        public nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean conjunction (nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean other) {
+            if (other == null ) {
+                throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+            }
+            return new nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean(_boolean && other._boolean);
         }
-        Result = (other and self)  result = null;
 
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        /**
+         *
+         * Boolean semi-strict conjunction with other.
+         * cardinality: 1..1
+         *
+         * alias "and then", "&&"
+         * Post_de_Morgan: Result = not (not self or else not other)
+         *
+         */
+        public nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean semistrictConjunction(nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean other) {
+            if (other == null ) {
+                throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+            }
+            return new nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean(_boolean && other._boolean);
         }
-        return  result;
-    }
 
-/**
- * 
- * Boolean semi-strict conjunction with other.
- * cardinality: 1..1
- * 
-*/
-    public Result = not (not self or else not other)  semistrictConjunction alias "and then", "&&"(Boolean other) {
-        if (other == null ) {
-            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+        /**
+         *
+         * Boolean disjunction with other.
+         * cardinality: 1..1
+         *
+         * alias "or", "∨", "|"
+         * Post_de_Morgan: Result = not (not self and not other)
+         * Post_commutative: Result = (other or Current)
+         * Post_consistent_with_semi_strict: Result implies (self or else other)
+         *
+         */
+        public nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean disjunction(nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean other) {
+            if (other == null ) {
+                throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+            }
+            boolean b1 = _boolean;
+            boolean b2 = other._boolean;
+            return new nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean(b1 | b2);
         }
-        Result = not (not self or else not other)  result = null;
 
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        /**
+         *
+         * Boolean semi-strict disjunction with other.
+         * cardinality: 1..1
+         *
+         *  alias "or else", "||"
+         *
+         *  Post_de_Morgan: Result = not (not self and then not other)
+         *
+         */
+        public nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean semistrictDisjunction (nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean other) {
+            if (other == null ) {
+                throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+            }
+            boolean b1 = _boolean;
+            boolean b2 = other._boolean;
+            return new nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean(b1 || b2);
         }
-        return  result;
-    }
 
-/**
- * 
- * Boolean disjunction with other.
- * cardinality: 1..1
- * 
-*/
-    public Result implies (self or else other)  disjunction alias "or", "∨", "|"(Boolean other) {
-        if (other == null ) {
-            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+        /**
+         *
+         * Boolean exclusive or with other.
+         * cardinality: 1..1
+         *
+         * alias "xor", "⊻"
+         *
+         * Post_definition: Result = self or other) and not (self and other
+         *
+         */
+        public nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean exclusiveDisjunction(nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean other) {
+            if (other == null ) {
+                throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+            }
+            boolean b1 = _boolean;
+            boolean b2 = other._boolean;
+            return new nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean((b1 || b2) && !(b1 && b2));
         }
-        Result implies (self or else other)  result = null;
 
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        /**
+         *
+         * Boolean implication of other (semi-strict)
+         * cardinality: 1..1
+         *
+         * alias "implies", "⇒"
+         *
+         * Post_definition: Result = (not self or else other)
+         *
+         */
+        public nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean implication(nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean other) {
+            if (other == null ) {
+                throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+            }
+            boolean b1 = _boolean;
+            boolean b2 = other._boolean;
+            return new nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean((b1 && b2) || !(b1 && !b2) || (!b1 && b2) || (!b1 && !b2));
         }
-        return  result;
-    }
 
-/**
- * 
- * Boolean semi-strict disjunction with other.
- * cardinality: 1..1
- * 
-*/
-    public Result = not (not self and then not other)  semistrictDisjunction alias "or else", "||"(Boolean other) {
-        if (other == null ) {
-            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+        /**
+         *
+         * Boolean negation of the current value.
+         * cardinality: 1..1
+         *
+         * alias "not", "¬", "!"
+         *
+         */
+        public nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean negation() {
+            return new nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean(!_boolean);
         }
-        Result = not (not self and then not other)  result = null;
+
+        //***** Boolean *****
+
+        /*=========================================================*/
+        /* * BUILD PATTERN AND CONSTRUCTOR * */
+        /*=========================================================*/
 
 
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        /**
+         * Value equality: return True if this and other are attached to objects considered to be equal in value.
+         * Parameters other Other object for comparison.
+         * cardinality: 1..1 (abstract)
+         *
+         * @param other
+         */
+        @Override
+        public nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean isEqual(Any other) {
+            return null;
         }
-        return  result;
-    }
 
-/**
- * 
- * Boolean exclusive or with other.
- * cardinality: 1..1
- * 
-*/
-    public Result = self or other) and not (self and other  exclusiveDisjunction alias "xor", "⊻"(Boolean other) {
-        if (other == null ) {
-            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
-        }
-        Result = self or other) and not (self and other  result = null;
-
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return  result;
-    }
-
-/**
- * 
- * Boolean implication of other (semi-strict)
- * cardinality: 1..1
- * 
-*/
-    public Result = (not self or else other)  implication alias "implies", "⇒"(Boolean other) {
-        if (other == null ) {
-            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
-        }
-        Result = (not self or else other)  result = null;
-
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return  result;
-    }
-
-/**
- * 
- * Boolean negation of the current value.
- * cardinality: 1..1
- * 
-*/
-    public Boolean  negation alias "not", "¬", "!"() {
-        Boolean  result = null;
-
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return  result;
-    }
-
-    //***** Boolean *****
-
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
-
-
-    protected Boolean() {}
-
-    public Boolean(
-            
+        public Boolean(
+                java.lang.Boolean _boolean
         ){
-    }
-
-    private Boolean(Builder builder) {
-    }
-
-    public static class Builder {
-
-        public Builder (
-        ){
+            this._boolean = _boolean;
         }
 
-        public Boolean build(){
-            return new Boolean( this );
+        //***** Boolean *****
+
+        /*=========================================================*/
+        /* * TOSTRING, EQUALS AND HASHCODE * */
+        /*=========================================================*/
+
+
+        public boolean equals(Object object) {
+            if (this == object) return true;
+            if (object == null || getClass() != object.getClass()) return false;
+            if (!super.equals(object)) return false;
+            return true;
         }
+
+        public int hashCode() {
+            return Objects.hash(
+                    super.hashCode()
+            );
+        }
+
+        public boolean value(){
+            return _boolean;
+        }
+
     }
-
-
-    //***** Boolean *****
-
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
-
-
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        return true;
-    }
-
-    public int hashCode() {
-        return Objects.hash(
-            super.hashCode()
-        );
-    }
-
-    @Override
-    public java.lang.String toString() {
-        return
-            "Boolean {" +
-            '}';
-    }
-
-}
 
 /**
- * 
+ *
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ *
  * ISC License
- * 
+ *
  * Copyright (c) 2020, Bert Verhees
- * 
+ *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -226,7 +214,8 @@ public class Boolean extends Any {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ *
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ *
+ */
+

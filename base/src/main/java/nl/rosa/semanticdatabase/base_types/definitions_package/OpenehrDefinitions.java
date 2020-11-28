@@ -23,7 +23,15 @@ public class OpenehrDefinitions extends BasicDefinitions {
  * an archetype
  * 
 */
-    final String {default localTerminologyId = "local"};
+    private String localTerminologyId = "local";
+
+    public String getLocalTerminologyId() {
+        return localTerminologyId;
+    }
+
+    public void setLocalTerminologyId(String localTerminologyId) {
+        this.localTerminologyId = localTerminologyId;
+    }
 
     //***** OpenehrDefinitions *****
 
@@ -31,28 +39,10 @@ public class OpenehrDefinitions extends BasicDefinitions {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-
-    protected OpenehrDefinitions() {}
-
-    public OpenehrDefinitions(
-            
-        ){
+    public OpenehrDefinitions(String localTerminologyId) {
+        super();
+        this.localTerminologyId = localTerminologyId;
     }
-
-    private OpenehrDefinitions(Builder builder) {
-    }
-
-    public static class Builder {
-
-        public Builder (
-        ){
-        }
-
-        public OpenehrDefinitions build(){
-            return new OpenehrDefinitions( this );
-        }
-    }
-
 
     //***** OpenehrDefinitions *****
 

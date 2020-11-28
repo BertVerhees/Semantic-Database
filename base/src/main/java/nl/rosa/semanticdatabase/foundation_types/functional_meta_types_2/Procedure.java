@@ -1,7 +1,5 @@
 package nl.rosa.semanticdatabase.foundation_types.functional_meta_types_2;
 
-import java.util.Objects;
-import nl.rosa.semanticdatabase..;
 
 /**
  * 
@@ -13,62 +11,6 @@ import nl.rosa.semanticdatabase..;
  * 
 */
 public class Procedure<args> extends Routine {
-
-    //***** Procedure<args> *****
-
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
-
-
-    protected Procedure<args>() {}
-
-    public Procedure<args>(
-            
-        ){
-    }
-
-    private Procedure<args>(Builder builder) {
-    }
-
-    public static class Builder {
-
-        public Builder (
-        ){
-        }
-
-        public Procedure<args> build(){
-            return new Procedure<args>( this );
-        }
-    }
-
-
-    //***** Procedure<args> *****
-
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
-
-
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        return true;
-    }
-
-    public int hashCode() {
-        return Objects.hash(
-            super.hashCode()
-        );
-    }
-
-    @Override
-    public String toString() {
-        return
-            "Procedure<args> {" +
-            '}';
-    }
 
 }
 

@@ -13,62 +13,6 @@ import java.util.Objects;
 */
 public class Tuple {
 
-    //***** Tuple *****
-
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
-
-
-    protected Tuple() {}
-
-    public Tuple(
-            
-        ){
-    }
-
-    private Tuple(Builder builder) {
-    }
-
-    public static class Builder {
-
-        public Builder (
-        ){
-        }
-
-        public Tuple build(){
-            return new Tuple( this );
-        }
-    }
-
-
-    //***** Tuple *****
-
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
-
-
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        return true;
-    }
-
-    public int hashCode() {
-        return Objects.hash(
-            super.hashCode()
-        );
-    }
-
-    @Override
-    public String toString() {
-        return
-            "Tuple {" +
-            '}';
-    }
-
 }
 
 /**

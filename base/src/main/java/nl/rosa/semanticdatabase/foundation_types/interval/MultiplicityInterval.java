@@ -1,6 +1,9 @@
 package nl.rosa.semanticdatabase.foundation_types.interval;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import nl.rosa.semanticdatabase..;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
@@ -13,11 +16,39 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
  * An Interval of Integer, used to represent multiplicity, cardinality and optionality in models.
  * 
 */
-public class MultiplicityInterval extends ProperInterval {
+public class MultiplicityInterval extends Interval<Integer> {
 
-/*=========================================================*/
+    /*=========================================================*/
 /* * FUNCTIONS * */
 /*=========================================================*/
+    public static MultiplicityInterval createFromString(String interval) {
+        Pattern pattern = Pattern.compile("(?<lower>[0-9]+)\\.\\.(?<upper>[0-9]+|\\*)");
+        Matcher matcher = pattern.matcher(interval);
+        if(!matcher.matches()) {
+            throw new IllegalArgumentException("Cannot parse interval " + interval);
+        }
+        String lower = matcher.group("lower");
+        String upper = matcher.group("upper");
+        MultiplicityInterval result = new MultiplicityInterval();
+        if(upper.equalsIgnoreCase("*")) {
+            result.setUpperUnbounded(true);
+        } else {
+            result.setUpper(Integer.parseInt(upper));
+        }
+        result.setLower(Integer.parseInt(lower));
+        return result;
+    }
+
+    /**
+     * Equal to '0..*' or '*'
+     * @return a new unbounded multiplicity interval
+     */
+    public static MultiplicityInterval unbounded() {
+        MultiplicityInterval result = new MultiplicityInterval();
+        result.setLower(0);
+        result.setUpperUnbounded(true);
+        return result;
+    }
 
 /**
  * 
@@ -26,14 +57,12 @@ public class MultiplicityInterval extends ProperInterval {
  * cardinality: 1..1
  * 
 */
-    public Boolean  isOpen() {
-        Boolean  result = null;
-
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
+    public boolean  getOpen() {
+        boolean  result = Integer.valueOf(0).equals(getLower()) && getUpperUnbounded() && getLowerIncluded();
         return  result;
+    }
+    public static MultiplicityInterval open() {
+        return new MultiplicityInterval(0, true, false, null, true, true);
     }
 
 /**
@@ -43,14 +72,12 @@ public class MultiplicityInterval extends ProperInterval {
  * cardinality: 1..1
  * 
 */
-    public Boolean  isOptional() {
-        Boolean  result = null;
-
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
+    public boolean  getOptional() {
+        boolean result = Integer.valueOf(0).equals(getLower()) && Integer.valueOf(1).equals(getUpper()) && !getUpperUnbounded() && getLowerIncluded() && getUpperIncluded();
         return  result;
+    }
+    public static MultiplicityInterval optional() {
+        return new MultiplicityInterval(0, true, false, 1, true, false);
     }
 
 /**
@@ -60,14 +87,12 @@ public class MultiplicityInterval extends ProperInterval {
  * cardinality: 1..1
  * 
 */
-    public Boolean  isMandatory() {
-        Boolean  result = null;
-
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
+    public boolean  isMandatory() {
+        boolean  result = !getLowerUnbounded() && getLower() >= 1 ;
         return  result;
+    }
+    public static MultiplicityInterval mandatory() {
+        return new MultiplicityInterval(1, true, false, 1, true, false);
     }
 
 /**
@@ -76,33 +101,34 @@ public class MultiplicityInterval extends ProperInterval {
  * cardinality: 1..1
  * 
 */
-    public Boolean  isProhibited() {
-        Boolean  result = null;
-
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
+    public boolean  isProhibited() {
+        boolean  result = Integer.valueOf(0).equals(getLower()) && Integer.valueOf(0).equals(getUpper()) && !getUpperUnbounded();
         return  result;
+    }
+    public static MultiplicityInterval prohibited() {
+        return new MultiplicityInterval(0, true, false, 0, true, false);
+    }
+
+    public static MultiplicityInterval upperUnbounded(Integer lower) {
+        return new MultiplicityInterval(lower, true, false, null, true, true);
+    }
+
+    public static MultiplicityInterval bounded(int lower, int upper) {
+        return new MultiplicityInterval(lower, true, false, upper, true, false);
     }
 
 /*=========================================================*/
 /* * CONSTANTS * */
 /*=========================================================*/
 
-/**
- * 
- * Marker to use in string form of interval between limits.
- * 
-*/
-    final String multiplicityRangeMarker = "..";
-
-/**
- * 
- * Symbol to use to indicate upper limit unbounded.
- * 
-*/
-    final char multiplicityUnboundedMarker = '*';
+    /**
+     * Marker to use in string form of interval between limits.
+     */
+    public static final String MULTIPLICITY_RANGE_MARKER = "..";
+    /**
+     * Symbol to use to indicate upper limit unbounded.
+     */
+    public static final Character MULTIPLICITY_UNBOUNDED_MARKER = '*';
 
     //***** MultiplicityInterval *****
 
@@ -111,30 +137,26 @@ public class MultiplicityInterval extends ProperInterval {
 /*=========================================================*/
 
 
-    protected MultiplicityInterval() {}
-
-    public MultiplicityInterval(
-            
-        ){
+    public MultiplicityInterval() {
+        super();
     }
 
-    private MultiplicityInterval(Builder builder) {
+    public MultiplicityInterval(int lower, int upper) {
+        super(lower, upper);
     }
 
-    public static class Builder {
-
-        public Builder (
-        ){
-        }
-
-        public MultiplicityInterval build(){
-            return new MultiplicityInterval( this );
-        }
+    public MultiplicityInterval(Interval<Integer> interval) {
+        this(interval.getLower(), interval.getLowerIncluded(), interval.getLowerUnbounded(), interval.getUpper(), interval.getUpperIncluded(), interval.getUpperUnbounded());
     }
 
-
-    //***** MultiplicityInterval *****
-
+    public MultiplicityInterval(Integer lower, boolean lowerIncluded, boolean lowerUnbounded, Integer upper, boolean upperIncluded, boolean upperUnbounded) {
+        setLower(lower);
+        setLowerIncluded(lowerIncluded);
+        setLowerUnbounded(lowerUnbounded);
+        setUpper(upper);
+        setUpperIncluded(upperIncluded);
+        setUpperUnbounded(upperUnbounded);
+    }
 /*=========================================================*/
 /* * TOSTRING, EQUALS AND HASHCODE * */
 /*=========================================================*/

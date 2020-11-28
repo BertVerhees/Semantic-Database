@@ -41,60 +41,6 @@ public class BasicDefinitions {
 
     //***** BasicDefinitions *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
-
-
-    protected BasicDefinitions() {}
-
-    public BasicDefinitions(
-            
-        ){
-    }
-
-    private BasicDefinitions(Builder builder) {
-    }
-
-    public static class Builder {
-
-        public Builder (
-        ){
-        }
-
-        public BasicDefinitions build(){
-            return new BasicDefinitions( this );
-        }
-    }
-
-
-    //***** BasicDefinitions *****
-
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
-
-
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        return true;
-    }
-
-    public int hashCode() {
-        return Objects.hash(
-            super.hashCode()
-        );
-    }
-
-    @Override
-    public String toString() {
-        return
-            "BasicDefinitions {" +
-            '}';
-    }
-
 }
 
 /**

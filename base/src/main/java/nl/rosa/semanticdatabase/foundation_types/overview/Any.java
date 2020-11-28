@@ -1,8 +1,10 @@
 package nl.rosa.semanticdatabase.foundation_types.overview;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Objects;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Ordered;
+import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
@@ -15,7 +17,9 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Ordered;
  * Defined here to provide value and reference equality semantics.
  * 
 */
-public abstract class Any {
+public abstract class Any extends Object {
+
+    private java.lang.Object object;
 
 /*=========================================================*/
 /* * FUNCTIONS * */
@@ -37,7 +41,7 @@ public abstract class Any {
  * cardinality: 1..1
  * 
 */
-    public Boolean  equal alias "=", "=="(Any other) {
+    public Boolean  equal(Any other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -56,17 +60,19 @@ public abstract class Any {
  * cardinality: 1..1
  * 
 */
-    public Any  instanceOf(String a_type) {
-        if (a_type == null ) {
+    public static Any instanceOf(java.lang.String aType) {
+        if (aType == null ) {
             throw new NullPointerException("Parameter a_type has cardinality NonNull, but is null.");
         }
-        Any  result = null;
-
-
-        if ( result  == null ) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        try {
+            Any result = (Any) Class.forName(aType).getDeclaredConstructor().newInstance();
+            if ( result  == null ) {
+                throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+            }
+            return result;
+        }catch(Exception e){
+            throw new IllegalArgumentException(e.getMessage());
         }
-        return  result;
     }
 
 /**
@@ -76,12 +82,11 @@ public abstract class Any {
  * cardinality: 1..1
  * 
 */
-    public String  typeOf(Any an_object) {
-        if (an_object == null ) {
+    public String typeOf(Any anObject) {
+        if (anObject == null ) {
             throw new NullPointerException("Parameter an_object has cardinality NonNull, but is null.");
         }
-        String  result = null;
-
+        String result = new String(anObject.getClass().getName());
 
         if ( result  == null ) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
@@ -96,7 +101,7 @@ public abstract class Any {
  * cardinality: 1..1
  * 
 */
-    public Boolean  notEqual alias "!=", "≠"(Ordered other) {
+    public Boolean  notEqual(Ordered other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -109,6 +114,14 @@ public abstract class Any {
         return  result;
     }
 
+    public java.lang.Object valueOf(){
+        return object;
+    }
+
+    public void value(Object object){
+        this.object = object;
+    }
+
     //***** Any *****
 
 /*=========================================================*/
@@ -117,12 +130,6 @@ public abstract class Any {
 
 
     protected Any() {}
-
-    protected Any(
-            
-        ){
-    }
-
 
     //***** Any *****
 
@@ -145,7 +152,7 @@ public abstract class Any {
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return
             "Any {" +
             '}';

@@ -1,7 +1,5 @@
 package nl.rosa.semanticdatabase.foundation_types.functional_meta_types_2;
 
-import java.util.Objects;
-
 /**
  * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -12,63 +10,6 @@ import java.util.Objects;
  * 
 */
 public class Routine<args> {
-
-    //***** Routine<args> *****
-
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
-
-
-    protected Routine<args>() {}
-
-    public Routine<args>(
-            
-        ){
-    }
-
-    private Routine<args>(Builder builder) {
-    }
-
-    public static class Builder {
-
-        public Builder (
-        ){
-        }
-
-        public Routine<args> build(){
-            return new Routine<args>( this );
-        }
-    }
-
-
-    //***** Routine<args> *****
-
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
-
-
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        return true;
-    }
-
-    public int hashCode() {
-        return Objects.hash(
-            super.hashCode()
-        );
-    }
-
-    @Override
-    public String toString() {
-        return
-            "Routine<args> {" +
-            '}';
-    }
-
 }
 
 /**
