@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.Objects;
 .;
+import nl.rosa.semanticdatabase.foundation_types.interval.Interval;
 import nl.rosa.semanticdatabase.foundation_types.primitive_types.Real;
 
 /**
@@ -27,7 +28,7 @@ public class CReal extends COrdered {
  * cardinality: 1..1 (redefined)
  * 
 */
-    private Interval<Real> constraint;
+    private Interval<Double> constraint;
 
 /**
  * 
@@ -36,7 +37,7 @@ public class CReal extends COrdered {
  * cardinality: 0..1 (redefined)
  * 
 */
-    private Real defaultValue;
+    private Double defaultValue;
 
 /**
  * 
@@ -44,7 +45,7 @@ public class CReal extends COrdered {
  * cardinality: 0..1 (redefined)
  * 
 */
-    private Real assumedValue;
+    private Double assumedValue;
 
 /*=========================================================*/
 /* * POJOS * */
@@ -56,10 +57,10 @@ public class CReal extends COrdered {
  * cardinality: 1..1 (redefined)
  * 
 */
-    public Interval<Real> getConstraint() {
+    public Interval<Double> getConstraint() {
         return constraint;
     }
-    public void setConstraint(Interval<Real> value) {
+    public void setConstraint(Interval<Double> value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:constraint failed, it has cardinality NonNull, but is null");
         }
@@ -73,10 +74,10 @@ public class CReal extends COrdered {
  * cardinality: 0..1 (redefined)
  * 
 */
-    public Real getDefaultValue() {
+    public Double getDefaultValue() {
         return defaultValue;
     }
-    public void setDefaultValue(Real value) {
+    public void setDefaultValue(Double value) {
         this.defaultValue = defaultValue;
     }
 
@@ -86,10 +87,10 @@ public class CReal extends COrdered {
  * cardinality: 0..1 (redefined)
  * 
 */
-    public Real getAssumedValue() {
+    public Double getAssumedValue() {
         return assumedValue;
     }
-    public void setAssumedValue(Real value) {
+    public void setAssumedValue(Double value) {
         this.assumedValue = assumedValue;
     }
 
@@ -103,9 +104,9 @@ public class CReal extends COrdered {
     protected CReal() {}
 
     public CReal(
-            Interval<real> constraint,
-            Real defaultValue,
-            Real assumedValue
+            Interval<Double> constraint,
+            Double defaultValue,
+            Double assumedValue
         ){
         if ( constraint == null ) {
             throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
@@ -122,12 +123,12 @@ public class CReal extends COrdered {
     }
 
     public static class Builder {
-        private final Interval<real> constraint;  //required
-        private Real defaultValue;
-        private Real assumedValue;
+        private final Interval<Double> constraint;  //required
+        private Double defaultValue;
+        private Double assumedValue;
 
         public Builder (
-            Interval<real> constraint
+            Interval<Double> constraint
         ){
             if ( constraint == null ) {
                 throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
@@ -135,12 +136,12 @@ public class CReal extends COrdered {
             this.constraint = constraint;
         }
 
-        public Builder setDefaultValue(Real value) {
+        public Builder setDefaultValue(Double value) {
             this.defaultValue = defaultValue;
             return this;
         }
 
-        public Builder setAssumedValue(Real value) {
+        public Builder setAssumedValue(Double value) {
             this.assumedValue = assumedValue;
             return this;
         }

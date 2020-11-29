@@ -1,9 +1,8 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
+import nl.rosa.semanticdatabase.foundation_types.interval.Interval;
+
 import java.util.Objects;
-.;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Real;
 
 /**
  * 
@@ -45,7 +44,7 @@ public class CInteger extends COrdered {
  * cardinality: 0..1 (redefined)
  * 
 */
-    private Real assumedValue;
+    private Integer assumedValue;
 
 /*=========================================================*/
 /* * POJOS * */
@@ -87,10 +86,10 @@ public class CInteger extends COrdered {
  * cardinality: 0..1 (redefined)
  * 
 */
-    public Real getAssumedValue() {
+    public Integer getAssumedValue() {
         return assumedValue;
     }
-    public void setAssumedValue(Real value) {
+    public void setAssumedValue(Integer value) {
         this.assumedValue = assumedValue;
     }
 
@@ -101,12 +100,10 @@ public class CInteger extends COrdered {
 /*=========================================================*/
 
 
-    protected CInteger() {}
-
     public CInteger(
-            Interval<integer> constraint,
+            Interval<Integer> constraint,
             Integer defaultValue,
-            Real assumedValue
+            Integer assumedValue
         ){
         if ( constraint == null ) {
             throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");

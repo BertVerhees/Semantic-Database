@@ -1,14 +1,11 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.foundation_types.overview.Object;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 import nl.rosa.semanticdatabase.foundation_types.terminology_package.TerminologyCode;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.*;
 
 /**
  * 
@@ -92,6 +89,7 @@ public class CTerminologyCode extends CPrimitiveObject {
         return constraint;
     }
 
+
     public void setConstraint(String value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:constraint failed, it has cardinality NonNull, but is null");
@@ -126,9 +124,10 @@ public class CTerminologyCode extends CPrimitiveObject {
      * instance) of the reference model type would be allowed.
      * Redefined in descendants.
      * cardinality: 1..1 (abstract)
+     * @return
      */
     @Override
-    public Boolean anyAllowed() {
+    public java.lang.Boolean anyAllowed() {
         return null;
     }
 
@@ -190,8 +189,8 @@ public class CTerminologyCode extends CPrimitiveObject {
  * cardinality: 0..1
  * 
 */
-    public List<Uri>  valueSetSubstituted() {
-        List<Uri>  result = null;
+    public List<URI>  valueSetSubstituted() {
+        List<URI>  result = null;
 
 
         return  result;
@@ -335,10 +334,7 @@ public class CTerminologyCode extends CPrimitiveObject {
         this.setConstraint( builder.constraint );
         this.setAssumedValue( builder.assumedValue );
         this.setDefaultValue( builder.defaultValue );
-        this.setAssumedValue( builder.assumedValue );
         this.setIsEnumeratedTypeConstraint( builder.isEnumeratedTypeConstraint );
-        this.setConstraint( builder.constraint );
-        this.setDefaultValue( builder.defaultValue );
         this.setRmTypeName( builder.rmTypeName );
         this.setOccurrences( builder.occurrences );
         this.setNodeId( builder.nodeId );

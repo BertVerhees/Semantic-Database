@@ -4,9 +4,6 @@ import java.util.Objects;
 
 import nl.rosa.semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
 
 /**
  * 
@@ -199,9 +196,10 @@ public abstract class CObject extends ArchetypeConstraint {
  * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.
  * Typically used to test if an inherited node locally contains any constraints.
  * cardinality: 1..1 (effected)
- * 
-*/
-    public Boolean  cCongruentTo(ArchetypeConstraint other) {
+ *
+ * @return
+ */
+    public java.lang.Boolean cCongruentTo(ArchetypeConstraint other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }

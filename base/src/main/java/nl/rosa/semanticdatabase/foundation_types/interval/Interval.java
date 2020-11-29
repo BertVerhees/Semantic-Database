@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.foundation_types.interval;
 
+import java.time.temporal.TemporalAmount;
 import java.util.Objects;
 
 /**

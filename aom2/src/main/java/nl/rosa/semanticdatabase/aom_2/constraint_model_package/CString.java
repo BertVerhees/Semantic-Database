@@ -3,10 +3,6 @@ package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 import java.util.*;
 
 import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.String;
-import nl.rosa.semanticdatabase.foundation_types.structure_types.*;
-import nl.rosa.semanticdatabase.foundation_types.structure_types.List;
 
 /**
  * 
@@ -31,7 +27,7 @@ public class CString extends CPrimitiveObject {
  * cardinality: 1..1 (redefined)
  * 
 */
-    private List<String> constraint = new List<>();
+    private List<String> constraint = new ArrayList<>();
 
 /**
  * 

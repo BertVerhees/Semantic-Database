@@ -1,6 +1,8 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.Objects;
+
+import nl.rosa.semanticdatabase.foundation_types.interval.Interval;
 import nl.rosa.semanticdatabase.foundation_types.time_types.Iso8601Date;
 import nl.rosa.semanticdatabase.base_types.definitions_package.ValidityKind;
 
@@ -156,7 +158,7 @@ public class CDate extends CTemporal {
     protected CDate() {}
 
     public CDate(
-            Interval<iso8601Date> constraint,
+            Interval<Iso8601Date> constraint,
             Iso8601Date defaultValue,
             Iso8601Date assumedValue
         ){
@@ -172,7 +174,7 @@ public class CDate extends CTemporal {
     }
 
     public static class Builder {
-        private Interval<iso8601Date> constraint;
+        private Interval<Iso8601Date> constraint;
         private Iso8601Date defaultValue;
         private Iso8601Date assumedValue;
 
@@ -180,7 +182,7 @@ public class CDate extends CTemporal {
         ){
         }
 
-        public Builder setConstraint(Interval<iso8601Date> value) {
+        public Builder setConstraint(Interval<Iso8601Date> value) {
             this.constraint = constraint;
             return this;
         }

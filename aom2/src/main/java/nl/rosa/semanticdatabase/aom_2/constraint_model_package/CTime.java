@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.Objects;
 .;
+import nl.rosa.semanticdatabase.foundation_types.interval.Interval;
 import nl.rosa.semanticdatabase.foundation_types.time_types.Iso8601Time;
 import nl.rosa.semanticdatabase.base_types.definitions_package.ValidityKind;
 
@@ -173,7 +174,7 @@ public class CTime extends CTemporal {
     protected CTime() {}
 
     public CTime(
-            Interval<iso8601Time> constraint,
+            Interval<Iso8601Time> constraint,
             Iso8601Time defaultValue,
             Iso8601Time assumedValue
         ){
@@ -189,7 +190,7 @@ public class CTime extends CTemporal {
     }
 
     public static class Builder {
-        private Interval<iso8601Time> constraint;
+        private Interval<Iso8601Time> constraint;
         private Iso8601Time defaultValue;
         private Iso8601Time assumedValue;
 
@@ -197,7 +198,7 @@ public class CTime extends CTemporal {
         ){
         }
 
-        public Builder setConstraint(Interval<iso8601Time> value) {
+        public Builder setConstraint(Interval<Iso8601Time> value) {
             this.constraint = constraint;
             return this;
         }

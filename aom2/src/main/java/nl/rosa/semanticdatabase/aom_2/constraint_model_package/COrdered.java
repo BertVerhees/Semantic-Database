@@ -1,7 +1,9 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
-import java.util.Objects;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
+import java.util.*;
+
+import nl.rosa.semanticdatabase.foundation_types.interval.Interval;
+import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
 
 /**
  * 
@@ -18,7 +20,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
  * The most complex form is a list of any combination of point and proper intervals.
  * 
 */
-public abstract class COrdered<t> extends CPrimitiveObject {
+public abstract class COrdered<T> extends CPrimitiveObject {
 
     //***** COrdered<t> *****
 
@@ -66,13 +68,13 @@ public abstract class COrdered<t> extends CPrimitiveObject {
 
     public void addToConstraint(Interval value ) {
         if (constraint == null ) {
-            constraint = new ArrayList<> ();
+            constraint = new ArrayList<>();
         }
         constraint.add( value);
     }
 
     public void addToConstraint(List<Interval> values ) {
-        values.forEach(value -> addToConstrain(value));
+        values.forEach(value -> addToConstraint(value));
     }
 
     public void removeFromConstraint(Interval item ) {
@@ -80,13 +82,13 @@ public abstract class COrdered<t> extends CPrimitiveObject {
             constraint.remove(item);
         }
     }
-    public void removeFromConstraint( Collection <Interval> values ) {
+    public void removeFromConstraint( Collection<Interval> values ) {
         values.forEach(this::removeFromConstraint);
     }
-    List<Interval> getConstraint() {
+    public List<Interval> getConstraint() {
         return this.constraint;
     }
-    public COrdered<t> setConstraint(List<Interval> constraint) {
+    public COrdered<T> setConstraint(List<Interval> constraint) {
         this.constraint = constraint;
         return this;
     }
@@ -104,7 +106,7 @@ public abstract class COrdered<t> extends CPrimitiveObject {
     public T getDefaultValue() {
         return defaultValue;
     }
-    public void setDefaultValue(T value) {
+    public void setDefaultValue(Object value) {
         this.defaultValue = defaultValue;
     }
 
@@ -117,7 +119,7 @@ public abstract class COrdered<t> extends CPrimitiveObject {
     public T getAssumedValue() {
         return assumedValue;
     }
-    public void setAssumedValue(T value) {
+    public void setAssumedValue(Object value) {
         this.assumedValue = assumedValue;
     }
 
@@ -133,8 +135,8 @@ public abstract class COrdered<t> extends CPrimitiveObject {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Result = constraint.is_empty  anyAllowed() {
-        Result = constraint.is_empty  result = null;
+    public Boolean  anyAllowed() {
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -149,7 +151,7 @@ public abstract class COrdered<t> extends CPrimitiveObject {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  cValueConformsTo(C_ORDERED other) {
+    public Boolean  cValueConformsTo(COrdered other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -168,7 +170,7 @@ public abstract class COrdered<t> extends CPrimitiveObject {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  cValueCongruentTo(C_ORDERED other) {
+    public Boolean  cValueCongruentTo(COrdered other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -188,16 +190,11 @@ public abstract class COrdered<t> extends CPrimitiveObject {
 /*=========================================================*/
 
 
-    protected COrdered<t>() {}
-
-    protected COrdered<t>(
-            List<interval> constraint,
+    protected COrdered(
+            List<Interval> constraint,
             T defaultValue,
             T assumedValue,
-            Object assumedValue,
             Boolean isEnumeratedTypeConstraint,
-            Object constraint,
-            Object defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
@@ -206,8 +203,11 @@ public abstract class COrdered<t> extends CPrimitiveObject {
             ArchetypeConstraint parent,
             CSecondOrder socParent
         ){
-        super( 
+        super(
+                assumedValue,
             isEnumeratedTypeConstraint,
+            constraint,
+            defaultValue,
             rmTypeName,
             occurrences,
             nodeId,
@@ -233,7 +233,7 @@ public abstract class COrdered<t> extends CPrimitiveObject {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        COrdered<t> that = (COrdered<t>) object;
+        COrdered that = (COrdered) object;
         return
             Objects.equals(constraint, that.constraint) &&
             Objects.equals(defaultValue, that.defaultValue) &&

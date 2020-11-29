@@ -1,8 +1,6 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.Objects;
-.;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * 
@@ -13,7 +11,7 @@ import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
  * Purpose Abstract parent of C_ORDERED types whose base type is an ISO date/time type.
  * 
 */
-public abstract class CTemporal<t> extends COrdered {
+public abstract class CTemporal<T> extends COrdered {
 
     //***** CTemporal<t> *****
 
@@ -78,8 +76,8 @@ public abstract class CTemporal<t> extends COrdered {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Result = precursor and pattern_constraint.is_empty  anyAllowed() {
-        Result = precursor and pattern_constraint.is_empty  result = null;
+    public Boolean anyAllowed() {
+        Boolean  result = null;
 
 
         if ( result  == null ) {
@@ -94,7 +92,7 @@ public abstract class CTemporal<t> extends COrdered {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  cValueConformsTo(C_ORDERED other) {
+    public Boolean  cValueConformsTo(CTemporal other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -114,7 +112,7 @@ public abstract class CTemporal<t> extends COrdered {
  * cardinality: 1..1 (effected)
  * 
 */
-    public Boolean  cValueCongruentTo(C_ORDERED other) {
+    public Boolean  cValueCongruentTo(CTemporal other) {
         if (other == null ) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -134,9 +132,7 @@ public abstract class CTemporal<t> extends COrdered {
 /*=========================================================*/
 
 
-    protected CTemporal<t>() {}
-
-    protected CTemporal<t>(
+    public CTemporal(
             String patternConstraint
         ){
         this.patternConstraint = patternConstraint;
@@ -154,7 +150,7 @@ public abstract class CTemporal<t> extends COrdered {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        CTemporal<t> that = (CTemporal<t>) object;
+        CTemporal that = (CTemporal) object;
         return
             Objects.equals(patternConstraint, that.patternConstraint);
     }

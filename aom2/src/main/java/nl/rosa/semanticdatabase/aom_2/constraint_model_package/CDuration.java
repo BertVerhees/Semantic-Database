@@ -1,6 +1,8 @@
 package nl.rosa.semanticdatabase.aom_2.constraint_model_package;
 
 import java.util.Objects;
+
+import nl.rosa.semanticdatabase.foundation_types.interval.Interval;
 import nl.rosa.semanticdatabase.foundation_types.time_types.Iso8601Duration;
 
 /**
@@ -105,7 +107,7 @@ public class CDuration extends CTemporal {
  * cardinality: 1..1
  * 
 */
-    public Boolean  yearsAllowed:() {
+    public Boolean  yearsAllowed() {
         Boolean  result = null;
 
 
@@ -121,7 +123,7 @@ public class CDuration extends CTemporal {
  * cardinality: 1..1
  * 
 */
-    public Boolean  monthsAllowed:() {
+    public Boolean  monthsAllowed() {
         Boolean  result = null;
 
 
@@ -137,7 +139,7 @@ public class CDuration extends CTemporal {
  * cardinality: 1..1
  * 
 */
-    public Boolean  weeksAllowed:() {
+    public Boolean  weeksAllowed() {
         Boolean  result = null;
 
 
@@ -221,7 +223,7 @@ public class CDuration extends CTemporal {
     protected CDuration() {}
 
     public CDuration(
-            Interval<iso8601Duration> constraint,
+            Interval<Iso8601Duration> constraint,
             Iso8601Duration defaultValue,
             Iso8601Duration assumedValue
         ){
@@ -237,7 +239,7 @@ public class CDuration extends CTemporal {
     }
 
     public static class Builder {
-        private Interval<iso8601Duration> constraint;
+        private Interval<Iso8601Duration> constraint;
         private Iso8601Duration defaultValue;
         private Iso8601Duration assumedValue;
 
@@ -245,7 +247,7 @@ public class CDuration extends CTemporal {
         ){
         }
 
-        public Builder setConstraint(Interval<iso8601Duration> value) {
+        public Builder setConstraint(Interval<Iso8601Duration> value) {
             this.constraint = constraint;
             return this;
         }
