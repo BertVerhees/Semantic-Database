@@ -343,9 +343,6 @@ public class CAttribute extends ArchetypeConstraint {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-
-    protected CAttribute() {}
-
     public CAttribute(
             String rmAttributeName,
             MultiplicityInterval existence,
@@ -375,14 +372,15 @@ public class CAttribute extends ArchetypeConstraint {
     }
 
     private CAttribute(Builder builder) {
+        super(
+                builder.parent,
+                builder.socParent);
         this.setRmAttributeName( builder.rmAttributeName );
         this.setExistence( builder.existence );
         this.setChildren( builder.children );
         this.setDifferentialPath( builder.differentialPath );
         this.setCardinality( builder.cardinality );
         this.setIsMultiple( builder.isMultiple );
-        this.setParent( builder.parent );
-        this.setSocParent( builder.socParent );
     }
 
     public static class Builder {

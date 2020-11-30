@@ -194,9 +194,6 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
 /* * BUILD PATTERN AND CONSTRUCTOR * */
 /*=========================================================*/
 
-
-    protected ArchetypeConstraint() {}
-
     protected ArchetypeConstraint(
             ArchetypeConstraint parent,
             CSecondOrder socParent
