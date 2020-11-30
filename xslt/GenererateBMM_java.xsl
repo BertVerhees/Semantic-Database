@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:do="http://whatever"
-    exclude-result-prefixes="xs" version="2.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" xmlns:do="http://whatever"
+                exclude-result-prefixes="xs" version="2.0">
 
     <xsl:output method="text"/>
     <xsl:variable name="newline" select="'&#xA;'"/>
@@ -8,7 +9,7 @@
     <xsl:variable name="sourceBase" select="'generated_source/main/java/'"/>
     <xsl:variable name="fourSp" select="'    '"/>
     <xsl:variable name="implements" as="xs:string*"
-        select="
+                  select="
             'BMM_MODEL_METADATA',
             'BMM_INSTANTIABLE',
             'BMM_TYPED_FEATURE',
@@ -27,13 +28,13 @@
             "/>
 
 
-
     <xsl:function name="do:proceed">
         <xsl:param name="base" as="xs:string"/>
         <xsl:variable name="package">
             <xsl:element name="package">
                 <xsl:element name="packageInfo">
-                    <xsl:copy-of select="do:basePackageInfo(document(concat($base, '.html')), concat($packageBase, $base))"/>
+                    <xsl:copy-of
+                            select="do:basePackageInfo(document(concat($base, '.html')), concat($packageBase, $base))"/>
                 </xsl:element>
                 <xsl:element name="packageDirectory">
                     <xsl:value-of select="$base"/>
@@ -81,7 +82,8 @@
             </xsl:if>
             <xsl:for-each select="class">
                 <xsl:value-of select="do:message(concat('###', ./packageDirectory, '.', ./className))"/>
-                <xsl:variable name="includeSequence" as="xs:string*" select="do:getIncludes($root/packages, ., $allClasses)"/>
+                <xsl:variable name="includeSequence" as="xs:string*"
+                              select="do:getIncludes($root/packages, ., $allClasses)"/>
                 <xsl:result-document href="{$sourceBase}{$packageBase}{$pd}/{classFileName}.java">
                     <xsl:choose>
                         <xsl:when test="enumeration = true()">
@@ -115,7 +117,8 @@
         <xsl:param name="package" as="node()"/>
         <xsl:param name="class" as="node()"/>
         <xsl:param name="includeSequence" as="xs:string*"/>
-        <xsl:value-of select="do:output(concat('package ', replace(concat($packageBase, $package/packageDirectory), '/', '.'), ';'))"/>
+        <xsl:value-of
+                select="do:output(concat('package ', replace(concat($packageBase, $package/packageDirectory), '/', '.'), ';'))"/>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:output('import java.util.Objects;')"/>
         <xsl:if test="count(distinct-values($includeSequence)) > 0">
@@ -123,7 +126,8 @@
                 <xsl:variable name="found" select="do:findClass($packages, .)"/>
                 <xsl:if test="$found">
                     <xsl:if test="not($found/packageDirectory = $package/packageDirectory)">
-                        <xsl:value-of select="do:output(concat('import ', replace($packageBase, '/', '.'), replace($found/packageDirectory, '/', '.'), '.', $found/className, ';'))"/>
+                        <xsl:value-of
+                                select="do:output(concat('import ', replace($packageBase, '/', '.'), replace($found/packageDirectory, '/', '.'), '.', $found/className, ';'))"/>
                     </xsl:if>
                 </xsl:if>
             </xsl:for-each>
@@ -158,10 +162,12 @@
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="$class/abstract = true()">
-                <xsl:value-of select="do:output(concat('public abstract class ', $class/className, $inherit, $implements, ' {'))"/>
+                <xsl:value-of
+                        select="do:output(concat('public abstract class ', $class/className, $inherit, $implements, ' {'))"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="do:output(concat('public class ', $class/className, $inherit, $implements, ' {'))"/>
+                <xsl:value-of
+                        select="do:output(concat('public class ', $class/className, $inherit, $implements, ' {'))"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -171,14 +177,16 @@
         <xsl:param name="package" as="node()"/>
         <xsl:param name="class" as="node()"/>
         <xsl:param name="includeSequence" as="xs:string*"/>
-        <xsl:value-of select="do:output(concat('package ', replace(concat($packageBase, $package/packageDirectory), '/', '.'), ';'))"/>
+        <xsl:value-of
+                select="do:output(concat('package ', replace(concat($packageBase, $package/packageDirectory), '/', '.'), ';'))"/>
         <xsl:value-of select="do:output('')"/>
         <xsl:if test="count(distinct-values($includeSequence)) > 0">
             <xsl:for-each select="distinct-values($includeSequence)">
                 <xsl:variable name="found" select="do:findClass($packages, .)"/>
                 <xsl:if test="$found">
                     <xsl:if test="not($found/packageDirectory = $package/packageDirectory)">
-                        <xsl:value-of select="do:output(concat('import ', replace($packageBase, '/', '.'), replace($found/packageDirectory, '/', '.'), '.', $found/className, ';'))"/>
+                        <xsl:value-of
+                                select="do:output(concat('import ', replace($packageBase, '/', '.'), replace($found/packageDirectory, '/', '.'), '.', $found/className, ';'))"/>
                     </xsl:if>
                 </xsl:if>
             </xsl:for-each>
@@ -215,16 +223,23 @@
         <xsl:value-of select="do:commentOutput('')"/>
         <xsl:value-of select="do:commentOutput('Copyright (c) 2020, Bert Verhees')"/>
         <xsl:value-of select="do:commentOutput('')"/>
-        <xsl:value-of select="do:commentOutput('Permission to use, copy, modify, and/or distribute this software for any')"/>
-        <xsl:value-of select="do:commentOutput('purpose with or without fee is hereby granted, provided that the above')"/>
+        <xsl:value-of
+                select="do:commentOutput('Permission to use, copy, modify, and/or distribute this software for any')"/>
+        <xsl:value-of
+                select="do:commentOutput('purpose with or without fee is hereby granted, provided that the above')"/>
         <xsl:value-of select="do:commentOutput('copyright notice and this permission notice appear in all copies.')"/>
         <xsl:value-of select="do:commentOutput('')"/>
-        <xsl:value-of select="do:commentOutput('THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES')"/>
+        <xsl:value-of
+                select="do:commentOutput('THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES')"/>
         <xsl:value-of select="do:commentOutput('WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF')"/>
-        <xsl:value-of select="do:commentOutput('MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR')"/>
-        <xsl:value-of select="do:commentOutput('ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES')"/>
-        <xsl:value-of select="do:commentOutput('WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN')"/>
-        <xsl:value-of select="do:commentOutput('ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF')"/>
+        <xsl:value-of
+                select="do:commentOutput('MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR')"/>
+        <xsl:value-of
+                select="do:commentOutput('ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES')"/>
+        <xsl:value-of
+                select="do:commentOutput('WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN')"/>
+        <xsl:value-of
+                select="do:commentOutput('ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF')"/>
         <xsl:value-of select="do:commentOutput('OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.')"/>
         <xsl:value-of select="do:commentOutput('')"/>
         <xsl:value-of select="do:commentOutput('***** END LICENSE BLOCK *****')"/>
@@ -242,16 +257,23 @@
         <xsl:value-of select="do:commentOutput('')"/>
         <xsl:value-of select="do:commentOutput('Copyright (c) 2020, Bert Verhees')"/>
         <xsl:value-of select="do:commentOutput('')"/>
-        <xsl:value-of select="do:commentOutput('Permission to use, copy, modify, and/or distribute this software for any')"/>
-        <xsl:value-of select="do:commentOutput('purpose with or without fee is hereby granted, provided that the above')"/>
+        <xsl:value-of
+                select="do:commentOutput('Permission to use, copy, modify, and/or distribute this software for any')"/>
+        <xsl:value-of
+                select="do:commentOutput('purpose with or without fee is hereby granted, provided that the above')"/>
         <xsl:value-of select="do:commentOutput('copyright notice and this permission notice appear in all copies.')"/>
         <xsl:value-of select="do:commentOutput('')"/>
-        <xsl:value-of select="do:commentOutput('THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES')"/>
+        <xsl:value-of
+                select="do:commentOutput('THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES')"/>
         <xsl:value-of select="do:commentOutput('WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF')"/>
-        <xsl:value-of select="do:commentOutput('MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR')"/>
-        <xsl:value-of select="do:commentOutput('ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES')"/>
-        <xsl:value-of select="do:commentOutput('WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN')"/>
-        <xsl:value-of select="do:commentOutput('ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF')"/>
+        <xsl:value-of
+                select="do:commentOutput('MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR')"/>
+        <xsl:value-of
+                select="do:commentOutput('ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES')"/>
+        <xsl:value-of
+                select="do:commentOutput('WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN')"/>
+        <xsl:value-of
+                select="do:commentOutput('ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF')"/>
         <xsl:value-of select="do:commentOutput('OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.')"/>
         <xsl:value-of select="do:commentOutput('')"/>
         <xsl:value-of select="do:commentOutput('***** END LICENSE BLOCK *****')"/>
@@ -286,15 +308,19 @@
         <xsl:param name="nameAndTypeAndKind" as="node()"/>
         <xsl:param name="packages" as="node()"/>
         <xsl:value-of select="do:writeComment($nameAndTypeAndKind/description, $nameAndTypeAndKind/cardinality)"/>
-        <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
+        <xsl:variable name="type" as="xs:string"
+                      select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
         <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1)"/>
         <xsl:choose>
-            <xsl:when test="$nameAndTypeAndKind/container = true() and starts-with($nameAndTypeAndKind/cardinality, '1')">
+            <xsl:when
+                    test="$nameAndTypeAndKind/container = true() and starts-with($nameAndTypeAndKind/cardinality, '1')">
                 <xsl:variable name="implementationType" select="do:writeClassImplementationType($type)"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'private ', do:processType($packages, $type), ' ', $name, ' = new ', $implementationType, '&lt;&gt; ();'))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, 'private ', do:processType($packages, $type), ' ', $name, ' = new ', $implementationType, '&lt;&gt; ();'))"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'private ', do:processType($packages, $type), ' ', $name, ';'))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, 'private ', do:processType($packages, $type), ' ', $name, ';'))"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -319,16 +345,20 @@
         <xsl:param name="nameAndTypeAndKind" as="node()"/>
         <xsl:param name="packages" as="node()"/>
         <xsl:value-of select="do:writeComment($nameAndTypeAndKind/description, '')"/>
-        <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'final ', $type, ' ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' = ', $nameAndTypeAndKind/value, ';'))"/>
+        <xsl:variable name="type" as="xs:string"
+                      select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'final ', $type, ' ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' = ', $nameAndTypeAndKind/value, ';'))"/>
     </xsl:function>
 
     <xsl:function name="do:writeInterfaceConstants">
         <xsl:param name="nameAndTypeAndKind" as="node()"/>
         <xsl:param name="packages" as="node()"/>
         <xsl:value-of select="do:writeComment($nameAndTypeAndKind/description, '')"/>
-        <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, $type, ' ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' = ', $nameAndTypeAndKind/value, ';'))"/>
+        <xsl:variable name="type" as="xs:string"
+                      select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, $type, ' ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' = ', $nameAndTypeAndKind/value, ';'))"/>
     </xsl:function>
 
     <xsl:function name="do:writeClassFunctions">
@@ -337,7 +367,8 @@
         <xsl:value-of select="do:writeComment($nameAndTypeAndKind/description, $nameAndTypeAndKind/cardinality)"/>
         <xsl:variable name="parameters" as="xs:string*">
             <xsl:for-each select="$nameAndTypeAndKind/parameters/parameter">
-                <xsl:variable name="par-type" as="xs:string" select="string-join(do:processType($packages, type/type-name))"/>
+                <xsl:variable name="par-type" as="xs:string"
+                              select="string-join(do:processType($packages, type/type-name))"/>
                 <xsl:value-of select="concat($par-type, ' ', name)"/>
             </xsl:for-each>
         </xsl:variable>
@@ -345,15 +376,18 @@
             <xsl:when test="$nameAndTypeAndKind/kind = 'void-function'">
                 <xsl:choose>
                     <xsl:when test="$nameAndTypeAndKind/abstract/text() = 'true'">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public abstract void  ', $nameAndTypeAndKind/name, '(', string-join($parameters, ', '), ');')))"/>
+                        <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, concat('public abstract void  ', $nameAndTypeAndKind/name, '(', string-join($parameters, ', '), ');')))"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public void  ', $nameAndTypeAndKind/name, '(', string-join($parameters, ', '), ') {')))"/>
+                        <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, concat('public void  ', $nameAndTypeAndKind/name, '(', string-join($parameters, ', '), ') {')))"/>
                         <xsl:for-each select="$nameAndTypeAndKind/parameters/parameter">
                             <xsl:if test="starts-with(type/type-cardinality, '1')">
-                                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', name, ' == null ) {'))"/>
                                 <xsl:value-of
-                                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Parameter ', name, ' has cardinality NonNull, but is null&quot;);'))"/>
+                                        select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', name, ' == null ) {'))"/>
+                                <xsl:value-of
+                                        select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Parameter ', name, ' has cardinality NonNull, but is null&quot;);'))"/>
                                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
                             </xsl:if>
                         </xsl:for-each>
@@ -362,18 +396,22 @@
                 </xsl:choose>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
+                <xsl:variable name="type" as="xs:string"
+                              select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
                 <xsl:choose>
                     <xsl:when test="$nameAndTypeAndKind/abstract/text() = 'true'">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public abstract ', $type, '  ', $nameAndTypeAndKind/name, '(', string-join($parameters, ', '), ');'))"/>
+                        <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, 'public abstract ', $type, '  ', $nameAndTypeAndKind/name, '(', string-join($parameters, ', '), ');'))"/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $type, '  ', $nameAndTypeAndKind/name, '(', string-join($parameters, ', '), ') {'))"/>
+                        <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, 'public ', $type, '  ', $nameAndTypeAndKind/name, '(', string-join($parameters, ', '), ') {'))"/>
                         <xsl:for-each select="$nameAndTypeAndKind/parameters/parameter">
                             <xsl:if test="starts-with(type/type-cardinality, '1')">
-                                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', name, ' == null ) {'))"/>
                                 <xsl:value-of
-                                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Parameter ', name, ' has cardinality NonNull, but is null.&quot;);'))"/>
+                                        select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', name, ' == null ) {'))"/>
+                                <xsl:value-of
+                                        select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Parameter ', name, ' has cardinality NonNull, but is null.&quot;);'))"/>
                                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
                             </xsl:if>
                         </xsl:for-each>
@@ -382,8 +420,10 @@
                         <xsl:value-of select="do:output('')"/>
                         <xsl:value-of select="do:output('')"/>
                         <xsl:if test="starts-with($nameAndTypeAndKind/cardinality, '1')">
-                            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( result  == null ) {'))"/>
-                            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Return-value has cardinality NonNull, but is null.&quot;);'))"/>
+                            <xsl:value-of
+                                    select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( result  == null ) {'))"/>
+                            <xsl:value-of
+                                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Return-value has cardinality NonNull, but is null.&quot;);'))"/>
                             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
                         </xsl:if>
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return  result', ';'))"/>
@@ -400,17 +440,21 @@
         <xsl:value-of select="do:writeComment($nameAndTypeAndKind/description, $nameAndTypeAndKind/cardinality)"/>
         <xsl:variable name="parameters" as="xs:string*">
             <xsl:for-each select="$nameAndTypeAndKind/parameters/parameter">
-                <xsl:variable name="par-type" as="xs:string" select="string-join(do:processType($packages, type/type-name))"/>
+                <xsl:variable name="par-type" as="xs:string"
+                              select="string-join(do:processType($packages, type/type-name))"/>
                 <xsl:value-of select="concat($par-type, ' ', name)"/>
             </xsl:for-each>
         </xsl:variable>
         <xsl:choose>
             <xsl:when test="$nameAndTypeAndKind/kind = 'void-function'">
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public void  ', $nameAndTypeAndKind/name, '(', string-join($parameters, ', '), ');')))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, concat('public void  ', $nameAndTypeAndKind/name, '(', string-join($parameters, ', '), ');')))"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $type, '  ', $nameAndTypeAndKind/name, '(', string-join($parameters, ', '), ');'))"/>
+                <xsl:variable name="type" as="xs:string"
+                              select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, 'public ', $type, '  ', $nameAndTypeAndKind/name, '(', string-join($parameters, ', '), ');'))"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -421,28 +465,34 @@
         <xsl:param name="implementationType" as="xs:string"/>
         <xsl:param name="class"/>
         <xsl:value-of select="do:writeComment($nameAndTypeAndKind/description, $nameAndTypeAndKind/cardinality)"/>
-        <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
+        <xsl:variable name="type" as="xs:string"
+                      select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
         <xsl:choose>
             <xsl:when test="starts-with($type, 'List') or starts-with($type, 'Set')">
-                <xsl:value-of select="do:writeClassListPojo($packages, $type, do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), $nameAndTypeAndKind/cardinality, $implementationType, $class)"
+                <xsl:value-of
+                        select="do:writeClassListPojo($packages, $type, do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), $nameAndTypeAndKind/cardinality, $implementationType, $class)"
                 />
             </xsl:when>
             <xsl:when test="starts-with($type, 'Map')">
-                <xsl:value-of select="do:writeClassMapPojo($packages, $type, do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), $nameAndTypeAndKind/cardinality, $implementationType, $class)"/>
+                <xsl:value-of
+                        select="do:writeClassMapPojo($packages, $type, do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), $nameAndTypeAndKind/cardinality, $implementationType, $class)"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public ', $type, ' get', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '() {')))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ';'))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, concat('public ', $type, ' get', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '() {')))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, $fourSp, 'return ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ';'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('public void set', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '(', $type, ' value) {')))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, concat('public void set', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '(', $type, ' value) {')))"/>
                 <xsl:if test="starts-with($nameAndTypeAndKind/cardinality, '1')">
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( value == null ) {'))"/>
                     <xsl:value-of
-                        select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; Setting property:', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' failed, it has cardinality NonNull, but is null&quot;);'))"/>
+                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; Setting property:', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' failed, it has cardinality NonNull, but is null&quot;);'))"/>
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
                 </xsl:if>
                 <xsl:value-of
-                    select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' = ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ';'))"/>
+                        select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ' = ', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), ';'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
             </xsl:otherwise>
         </xsl:choose>
@@ -453,17 +503,22 @@
         <xsl:param name="packages" as="node()"/>
         <xsl:param name="implementationType" as="xs:string"/>
         <xsl:value-of select="do:writeComment($nameAndTypeAndKind/description, $nameAndTypeAndKind/cardinality)"/>
-        <xsl:variable name="type" as="xs:string" select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
+        <xsl:variable name="type" as="xs:string"
+                      select="string-join(do:processType($packages, $nameAndTypeAndKind/type))"/>
         <xsl:choose>
             <xsl:when test="starts-with($type, 'List') or starts-with($type, 'Set')">
-                <xsl:value-of select="do:writeInterfaceListPojo($packages, $type, do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), $nameAndTypeAndKind/cardinality, $implementationType)"/>
+                <xsl:value-of
+                        select="do:writeInterfaceListPojo($packages, $type, do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), $nameAndTypeAndKind/cardinality, $implementationType)"/>
             </xsl:when>
             <xsl:when test="starts-with($type, 'Map')">
-                <xsl:value-of select="do:writeInterfaceMapPojo($packages, $type, do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), $nameAndTypeAndKind/cardinality, $implementationType)"/>
+                <xsl:value-of
+                        select="do:writeInterfaceMapPojo($packages, $type, do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 1), $nameAndTypeAndKind/cardinality, $implementationType)"/>
             </xsl:when>
             <xsl:otherwise>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, concat($type, ' get', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '();')))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, concat('void set', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '(', $type, ' value);')))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, concat($type, ' get', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '();')))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, concat('void set', do:snakeUpperCaseToCamelCase($nameAndTypeAndKind/name, 0), '(', $type, ' value);')))"/>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:function>
@@ -475,15 +530,18 @@
         <xsl:param name="cardinality" as="xs:string"/>
         <xsl:param name="implementationType" as="xs:string"/>
         <xsl:param name="class"/>
-        <xsl:variable name="types" as="xs:string*" select="tokenize(substring-before(substring-after($type, '&lt;'), '&gt;'), ',')"/>
+        <xsl:variable name="types" as="xs:string*"
+                      select="tokenize(substring-before(substring-after($type, '&lt;'), '&gt;'), ',')"/>
         <xsl:variable name="keyType" as="xs:string" select="do:processType($packages, normalize-space($types[1]))"/>
         <xsl:variable name="valueType" as="xs:string" select="do:processType($packages, normalize-space($types[2]))"/>
-        <xsl:variable name="processedType" as="xs:string" select="concat(substring-before($type, '&lt;'), '&lt;', $keyType, ', ', $valueType, '&gt;')"/>
+        <xsl:variable name="processedType" as="xs:string"
+                      select="concat(substring-before($type, '&lt;'), '&lt;', $keyType, ', ', $valueType, '&gt;')"/>
         <xsl:variable name="attributeNameInFunction" as="xs:string" select="do:snakeUpperCaseToCamelCase($name, -1)"/>
         <xsl:variable name="singleAttributeNameInFunction" as="xs:string">
             <xsl:choose>
                 <xsl:when test="ends-with($name, 's')">
-                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), -1)"/>
+                    <xsl:value-of
+                            select="do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), -1)"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="do:snakeUpperCaseToCamelCase(replace($name, 'ie', 'y'), -1)"/>
@@ -492,23 +550,27 @@
         </xsl:variable>
         <xsl:value-of select="do:output($fourSp)"/>
         <!-- PUT item -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public void put', $singleAttributeNameInFunction, '(', $keyType, ' key, ', $valueType, ' value ) {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'public void put', $singleAttributeNameInFunction, '(', $keyType, ' key, ', $valueType, ' value ) {'))"/>
         <xsl:if test="not(starts-with($cardinality, '1'))">
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', $name, ' == null ) {'))"/>
-            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $name, ' = new ', $implementationType, '&lt;&gt; ();'))"/>
+            <xsl:value-of
+                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $name, ' = new ', $implementationType, '&lt;&gt; ();'))"/>
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
         </xsl:if>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $name, '.put( key, value);'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <xsl:value-of select="do:output($fourSp)"/>
         <!-- PUT items -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public void put', $attributeNameInFunction, '(', do:processType($packages, $type), ' items ) {'))"/>
         <xsl:value-of
-            select="do:outputSpaces(concat($fourSp, $fourSp, 'items.keySet().forEach(key -&gt; put', do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), 0), '(key, items.get(key)));'))"/>
+                select="do:outputSpaces(concat($fourSp, 'public void put', $attributeNameInFunction, '(', do:processType($packages, $type), ' items ) {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, $fourSp, 'items.keySet().forEach(key -&gt; put', do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), 0), '(key, items.get(key)));'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <xsl:value-of select="do:output($fourSp)"/>
         <!-- GET item -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $valueType, ' get', $singleAttributeNameInFunction, '(', $keyType, ' key ) {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'public ', $valueType, ' get', $singleAttributeNameInFunction, '(', $keyType, ' key ) {'))"/>
         <xsl:if test="not(starts-with($cardinality, '1'))">
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', $name, ' == null ) {'))"/>
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'return null;'))"/>
@@ -518,23 +580,29 @@
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <xsl:value-of select="do:output($fourSp)"/>
         <!-- REMOVE item -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public void remove', $singleAttributeNameInFunction, '(', $keyType, ' key ) {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'public void remove', $singleAttributeNameInFunction, '(', $keyType, ' key ) {'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', $name, ' != null ) {'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $name, '.remove(key);'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <!-- REMOVE items -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public void remove', $attributeNameInFunction, '( Collection &lt;', $keyType, '&gt; keys ) {'))"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'keys.forEach(this::remove', $singleAttributeNameInFunction, ');'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'public void remove', $attributeNameInFunction, '( Collection &lt;', $keyType, '&gt; keys ) {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, $fourSp, 'keys.forEach(this::remove', $singleAttributeNameInFunction, ');'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <!-- GETTER/SETTER -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $processedType, ' get', $attributeNameInFunction, '() {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'public ', $processedType, ' get', $attributeNameInFunction, '() {'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return this.', $name, ';'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $class/className, ' set', $attributeNameInFunction, '(', $processedType, ' ', $name, ') {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'public ', $class/className, ' set', $attributeNameInFunction, '(', $processedType, ' ', $name, ') {'))"/>
         <xsl:if test="starts-with($cardinality, '1')">
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', $name, ' == null ) {'))"/>
-            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; ', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
+            <xsl:value-of
+                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; ', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
         </xsl:if>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', $name, ' = ', $name, ';'))"/>
@@ -542,7 +610,8 @@
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <!-- GETTER unmodifiable -->
         <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $processedType, ' ', $name, '() {'))"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return Collections.unmodifiableMap(this.', $name, ');'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, $fourSp, 'return Collections.unmodifiableMap(this.', $name, ');'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
     </xsl:function>
 
@@ -552,7 +621,8 @@
         <xsl:param name="name" as="xs:string"/>
         <xsl:param name="cardinality" as="xs:string"/>
         <xsl:param name="implementationType" as="xs:string"/>
-        <xsl:variable name="types" as="xs:string*" select="tokenize(substring-before(substring-after($type, '&lt;'), '&gt;'), ',')"/>
+        <xsl:variable name="types" as="xs:string*"
+                      select="tokenize(substring-before(substring-after($type, '&lt;'), '&gt;'), ',')"/>
         <xsl:variable name="processedType" as="xs:string" select="do:processType($packages, $type)"/>
         <xsl:variable name="keyType" as="xs:string" select="do:processType($packages, normalize-space($types[1]))"/>
         <xsl:variable name="valueType" as="xs:string" select="do:processType($packages, normalize-space($types[2]))"/>
@@ -560,7 +630,8 @@
         <xsl:variable name="singleAttributeNameInFunction" as="xs:string">
             <xsl:choose>
                 <xsl:when test="ends-with($name, 's')">
-                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), -1)"/>
+                    <xsl:value-of
+                            select="do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), -1)"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="do:snakeUpperCaseToCamelCase(replace($name, 'ie', 'y'), -1)"/>
@@ -569,18 +640,25 @@
         </xsl:variable>
         <xsl:value-of select="do:output($fourSp)"/>
         <!-- PUT item -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'void put', $singleAttributeNameInFunction, '(', $keyType, ' key, ', $valueType, ' value );'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'void put', $singleAttributeNameInFunction, '(', $keyType, ' key, ', $valueType, ' value );'))"/>
         <!-- PUT items -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'void put', $attributeNameInFunction, '(', do:processType($packages, $type), ' items );'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'void put', $attributeNameInFunction, '(', do:processType($packages, $type), ' items );'))"/>
         <!-- GET item -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, $valueType, ' get', $singleAttributeNameInFunction, '(', $keyType, ' key );'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, $valueType, ' get', $singleAttributeNameInFunction, '(', $keyType, ' key );'))"/>
         <!-- REMOVE item -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'void remove', $singleAttributeNameInFunction, '(', $keyType, ' key );'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'void remove', $singleAttributeNameInFunction, '(', $keyType, ' key );'))"/>
         <!-- REMOVE items -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'void remove', $attributeNameInFunction, '( Collection &lt;', $keyType, '&gt; keys );'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'void remove', $attributeNameInFunction, '( Collection &lt;', $keyType, '&gt; keys );'))"/>
         <!-- GETTER/SETTER -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, $processedType, ' get', $attributeNameInFunction, '();'))"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'void set', $attributeNameInFunction, '(', $processedType, ' ', $name, ');'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, $processedType, ' get', $attributeNameInFunction, '();'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'void set', $attributeNameInFunction, '(', $processedType, ' ', $name, ');'))"/>
         <!-- GETTER unmodifiable -->
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $processedType, ' ', $name, '();'))"/>
     </xsl:function>
@@ -592,12 +670,14 @@
         <xsl:param name="cardinality" as="xs:string"/>
         <xsl:param name="implementationType" as="xs:string"/>
         <xsl:param name="class"/>
-        <xsl:variable name="processedType" as="xs:string" select="do:processType($packages, substring-before(substring-after($type, '&lt;'), '&gt;'))"/>
+        <xsl:variable name="processedType" as="xs:string"
+                      select="do:processType($packages, substring-before(substring-after($type, '&lt;'), '&gt;'))"/>
         <xsl:variable name="attributeNameInFunction" as="xs:string" select="do:snakeUpperCaseToCamelCase($name, -1)"/>
         <xsl:variable name="singleAttributeNameInFunction" as="xs:string">
             <xsl:choose>
                 <xsl:when test="ends-with($name, 's')">
-                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), -1)"/>
+                    <xsl:value-of
+                            select="do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), -1)"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="do:snakeUpperCaseToCamelCase(replace($name, 'ie', 'y'), -1)"/>
@@ -606,47 +686,58 @@
         </xsl:variable>
         <xsl:value-of select="do:output($fourSp)"/>
         <!-- ADD item -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public void addTo', $singleAttributeNameInFunction, '(', $processedType, ' value ) {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'public void addTo', $singleAttributeNameInFunction, '(', $processedType, ' value ) {'))"/>
         <xsl:if test="not(starts-with($cardinality, '1'))">
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', $name, ' == null ) {'))"/>
-            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $name, ' = new ', $implementationType, '&lt;&gt; ();'))"/>
+            <xsl:value-of
+                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $name, ' = new ', $implementationType, '&lt;&gt; ();'))"/>
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
         </xsl:if>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $name, '.add( value);'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <xsl:value-of select="do:output($fourSp)"/>
         <!-- ADD items -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public void addTo', $attributeNameInFunction, '(', do:processType($packages, $type), ' values ) {'))"/>
         <xsl:value-of
-            select="do:outputSpaces(concat($fourSp, $fourSp, 'values.forEach(value -&gt; addTo', do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), 0), '(value));'))"/>
+                select="do:outputSpaces(concat($fourSp, 'public void addTo', $attributeNameInFunction, '(', do:processType($packages, $type), ' values ) {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, $fourSp, 'values.forEach(value -&gt; addTo', do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), 0), '(value));'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <xsl:value-of select="do:output($fourSp)"/>
         <!-- REMOVE item -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public void removeFrom', $singleAttributeNameInFunction, '(', $processedType, ' item ) {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'public void removeFrom', $singleAttributeNameInFunction, '(', $processedType, ' item ) {'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', $name, ' != null ) {'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $name, '.remove(item);'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <!-- REMOVE items -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public void removeFrom', $attributeNameInFunction, '( Collection &lt;', $processedType, '&gt; values ) {'))"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'values.forEach(this::removeFrom', $singleAttributeNameInFunction, ');'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'public void removeFrom', $attributeNameInFunction, '( Collection &lt;', $processedType, '&gt; values ) {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, $fourSp, 'values.forEach(this::removeFrom', $singleAttributeNameInFunction, ');'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <!-- GETTER/SETTER -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, do:processType($packages, $type), ' get', $attributeNameInFunction, '() {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, do:processType($packages, $type), ' get', $attributeNameInFunction, '() {'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return this.', $name, ';'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $class/className, ' set', $attributeNameInFunction, '(', do:processType($packages, $type), ' ', $name, ') {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'public ', $class/className, ' set', $attributeNameInFunction, '(', do:processType($packages, $type), ' ', $name, ') {'))"/>
         <xsl:if test="starts-with($cardinality, '1')">
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (', $name, ' == null ) {'))"/>
-            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; ', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
+            <xsl:value-of
+                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot; ', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
             <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
         </xsl:if>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', $name, ' = ', $name, ';'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return this;'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
         <!-- GETTER unmodifiable -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', do:processType($packages, $type), ' ', $name, '() {'))"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return Collections.unmodifiable', substring-before(do:processType($packages, $type), '&lt;'), '(this.', $name, ');'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'public ', do:processType($packages, $type), ' ', $name, '() {'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, $fourSp, 'return Collections.unmodifiable', substring-before(do:processType($packages, $type), '&lt;'), '(this.', $name, ');'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
     </xsl:function>
 
@@ -656,12 +747,14 @@
         <xsl:param name="name" as="xs:string"/>
         <xsl:param name="cardinality" as="xs:string"/>
         <xsl:param name="implementationType" as="xs:string"/>
-        <xsl:variable name="processedType" as="xs:string" select="do:processType($packages, substring-before(substring-after($type, '&lt;'), '&gt;'))"/>
+        <xsl:variable name="processedType" as="xs:string"
+                      select="do:processType($packages, substring-before(substring-after($type, '&lt;'), '&gt;'))"/>
         <xsl:variable name="attributeNameInFunction" as="xs:string" select="do:snakeUpperCaseToCamelCase($name, -1)"/>
         <xsl:variable name="singleAttributeNameInFunction" as="xs:string">
             <xsl:choose>
                 <xsl:when test="ends-with($name, 's')">
-                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), -1)"/>
+                    <xsl:value-of
+                            select="do:snakeUpperCaseToCamelCase(replace(substring($name, 0, string-length($name)), 'ie', 'y'), -1)"/>
                 </xsl:when>
                 <xsl:otherwise>
                     <xsl:value-of select="do:snakeUpperCaseToCamelCase(replace($name, 'ie', 'y'), -1)"/>
@@ -670,16 +763,22 @@
         </xsl:variable>
         <xsl:value-of select="do:output($fourSp)"/>
         <!-- ADD item -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'void addTo', $singleAttributeNameInFunction, '(', $processedType, ' value );'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'void addTo', $singleAttributeNameInFunction, '(', $processedType, ' value );'))"/>
         <!-- ADD items -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'void addTo', $attributeNameInFunction, '(', do:processType($packages, $type), ' values );'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'void addTo', $attributeNameInFunction, '(', do:processType($packages, $type), ' values );'))"/>
         <!-- REMOVE item -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'void removeFrom', $singleAttributeNameInFunction, '(', $processedType, ' item );'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'void removeFrom', $singleAttributeNameInFunction, '(', $processedType, ' item );'))"/>
         <!-- REMOVE items -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'void removeFrom', $attributeNameInFunction, '( Collection &lt;', $processedType, '&gt; values );'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'void removeFrom', $attributeNameInFunction, '( Collection &lt;', $processedType, '&gt; values );'))"/>
         <!-- GETTER/SETTER -->
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, $processedType, ' get', $attributeNameInFunction, '();'))"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, 'void set', $attributeNameInFunction, '(', $processedType, ' ', $name, ');'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, $processedType, ' get', $attributeNameInFunction, '();'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, 'void set', $attributeNameInFunction, '(', $processedType, ' ', $name, ');'))"/>
         <!-- GETTER unmodifiable -->
         <xsl:value-of select="do:outputSpaces(concat($fourSp, do:processType($packages, $type), ' ', $name, '();'))"/>
     </xsl:function>
@@ -793,7 +892,8 @@
                 <xsl:value-of select="do:writeClassProperties($packages, .)"/>
             </xsl:for-each>
         </xsl:if>
-        <xsl:value-of select="do:writeClassConstructorAndBuild($packages, do:getClassFieldsInheritedInterfaced($packages, $class), $class)"/>
+        <xsl:value-of
+                select="do:writeClassConstructorAndBuild($packages, do:getClassFieldsInheritedInterfaced($packages, $class), $class)"/>
         <xsl:value-of select="do:writeClassToStringAndHashCode($packages, $class)"/>
         <xsl:value-of select="do:writeClassFooter()"/>
     </xsl:function>
@@ -877,7 +977,8 @@
                 </xsl:for-each>
             </xsl:for-each>
         </xsl:variable>
-        <xsl:value-of select="do:message(concat('Class:', $class/className, ' LocalFields:', string-join($localFields/name, ', ')))"/>
+        <xsl:value-of
+                select="do:message(concat('Class:', $class/className, ' LocalFields:', string-join($localFields/name, ', ')))"/>
         <!-- ALLFIELDS, with interfaces and inheritance and interfaces of inheritance (for constructor parameters) -->
         <xsl:variable name="allFields" as="node()*">
             <xsl:for-each select="do:getClassesFromInheritedChains($packages, $class)">
@@ -903,11 +1004,13 @@
         <xsl:variable name="allFieldsNameAndType" as="xs:string*">
             <xsl:for-each select="$allFields">
                 <xsl:if test="not(name = '') and kind = 'attribute'">
-                    <xsl:value-of select="concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1))"/>
+                    <xsl:value-of
+                            select="concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1))"/>
                 </xsl:if>
             </xsl:for-each>
         </xsl:variable>
-        <xsl:value-of select="do:message(concat('Class:', $class/className, ' AllFields:', string-join($allFields/name, ', ')))"/>
+        <xsl:value-of
+                select="do:message(concat('Class:', $class/className, ' AllFields:', string-join($allFields/name, ', ')))"/>
         <!-- INHERITEDFIELDS and interfaces (for parent-call) -->
         <xsl:variable name="inheritedFields" as="node()*">
             <xsl:for-each select="$allFields">
@@ -925,7 +1028,8 @@
                 </xsl:if>
             </xsl:for-each>
         </xsl:variable>
-        <xsl:value-of select="do:message(concat('Class:', $class/className, ' InheritedFields:', string-join($inheritedFields/name, ', ')))"/>
+        <xsl:value-of
+                select="do:message(concat('Class:', $class/className, ' InheritedFields:', string-join($inheritedFields/name, ', ')))"/>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:outputSpaces(concat('    //***** ', $class/className, ' *****'))"/>
         <xsl:value-of select="do:output('')"/>
@@ -940,26 +1044,30 @@
             <xsl:when test="$class/abstract = true()">
                 <!-- PROTECTED CONSTRUCTOR -->
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, 'protected ', $class/className, '('))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($allFieldsNameAndType, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($allFieldsNameAndType, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '){'))"/>
                 <xsl:if test="count($inheritedFieldsName) > 0">
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'super( '))"/>
-                    <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($inheritedFieldsName, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
+                    <xsl:value-of
+                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($inheritedFieldsName, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, ');'))"/>
                 </xsl:if>
                 <xsl:for-each select="$localFields">
                     <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
                     <xsl:if test="not(name = '') and starts-with(cardinality, '1')">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( ', $name, ' == null ) {'))"/>
                         <xsl:value-of
-                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Property:', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
+                                select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( ', $name, ' == null ) {'))"/>
+                        <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Property:', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
                     </xsl:if>
                 </xsl:for-each>
                 <xsl:for-each select="$localFields">
                     <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
                     <xsl:if test="not(name = '')">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', $name, ' = ', $name, ';'))"/>
+                        <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', $name, ' = ', $name, ';'))"/>
                     </xsl:if>
                 </xsl:for-each>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
@@ -968,36 +1076,42 @@
             <xsl:otherwise>
                 <!-- PUBLIC CONSTRUCTOR -->
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public ', $class/className, '('))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($allFieldsNameAndType, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($allFieldsNameAndType, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '){'))"/>
                 <xsl:if test="count($inheritedFieldsName) > 0">
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'super( '))"/>
-                    <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($inheritedFieldsName, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
+                    <xsl:value-of
+                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, string-join($inheritedFieldsName, concat(',', $newline, $fourSp, $fourSp, $fourSp))))"/>
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, ');'))"/>
                 </xsl:if>
                 <xsl:for-each select="$localFields">
                     <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
                     <xsl:if test="not(name = '') and starts-with(cardinality, '1')">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( ', $name, ' == null ) {'))"/>
                         <xsl:value-of
-                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Property:', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
+                                select="do:outputSpaces(concat($fourSp, $fourSp, 'if ( ', $name, ' == null ) {'))"/>
+                        <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Property:', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
                         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
                     </xsl:if>
                 </xsl:for-each>
                 <xsl:for-each select="$localFields">
                     <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
                     <xsl:if test="not(name = '')">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', $name, ' = ', $name, ';'))"/>
+                        <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, $fourSp, 'this.', $name, ' = ', $name, ';'))"/>
                     </xsl:if>
                 </xsl:for-each>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
                 <xsl:value-of select="do:output('')"/>
                 <!-- PRIVATE CONSTRUCTOR -->
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, 'private ', $class/className, '(Builder builder) {'))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, 'private ', $class/className, '(Builder builder) {'))"/>
                 <xsl:for-each select="$allFields">
                     <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
                     <xsl:if test="not(replace(name, ' ', '') = '')">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'this.set', do:snakeUpperCaseToCamelCase(name, 0), '( builder.', $name, ' );'))"/>
+                        <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, $fourSp, 'this.set', do:snakeUpperCaseToCamelCase(name, 0), '( builder.', $name, ' );'))"/>
                     </xsl:if>
                 </xsl:for-each>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
@@ -1006,14 +1120,17 @@
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public static class Builder {'))"/>
                 <!-- BUILDER CLASS FIELDS -->
                 <xsl:for-each select="$allFields">
-                    <xsl:variable name="nameAndType" select="concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1))"/>
+                    <xsl:variable name="nameAndType"
+                                  select="concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1))"/>
                     <xsl:if test="not(replace($nameAndType, ' ', '') = '')">
                         <xsl:choose>
                             <xsl:when test="starts-with(cardinality, '1')">
-                                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'private final ', $nameAndType, ';  //required'))"/>
+                                <xsl:value-of
+                                        select="do:outputSpaces(concat($fourSp, $fourSp, 'private final ', $nameAndType, ';  //required'))"/>
                             </xsl:when>
                             <xsl:otherwise>
-                                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'private ', $nameAndType, ';'))"/>
+                                <xsl:value-of
+                                        select="do:outputSpaces(concat($fourSp, $fourSp, 'private ', $nameAndType, ';'))"/>
                             </xsl:otherwise>
                         </xsl:choose>
                     </xsl:if>
@@ -1022,17 +1139,21 @@
                 <!-- BUILDER CLASS CONSTRUCTOR -->
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'public Builder ('))"/>
                 <xsl:for-each
-                    select="$allFields[starts-with(cardinality, '1') and not(replace(concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1)), ' ', '') = '')]">
-                    <xsl:variable name="nameAndType" select="concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1))"/>
-                    <xsl:variable name="numberOfRequired" select="count($allFields[starts-with(cardinality, '1') and not(replace($nameAndType, ' ', '') = '')])"/>
+                        select="$allFields[starts-with(cardinality, '1') and not(replace(concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1)), ' ', '') = '')]">
+                    <xsl:variable name="nameAndType"
+                                  select="concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1))"/>
+                    <xsl:variable name="numberOfRequired"
+                                  select="count($allFields[starts-with(cardinality, '1') and not(replace($nameAndType, ' ', '') = '')])"/>
                     <xsl:if test="not(replace($nameAndType, ' ', '') = '')">
                         <xsl:if test="starts-with(cardinality, '1')">
                             <xsl:choose>
                                 <xsl:when test="position() &lt; $numberOfRequired">
-                                    <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $nameAndType, ','))"/>
+                                    <xsl:value-of
+                                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $nameAndType, ','))"/>
                                 </xsl:when>
                                 <xsl:otherwise>
-                                    <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $nameAndType))"/>
+                                    <xsl:value-of
+                                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $nameAndType))"/>
                                 </xsl:otherwise>
                             </xsl:choose>
                         </xsl:if>
@@ -1040,34 +1161,39 @@
                 </xsl:for-each>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '){'))"/>
                 <xsl:for-each
-                    select="$allFields[starts-with(cardinality, '1') and not(replace(concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1)), ' ', '') = '')]">
+                        select="$allFields[starts-with(cardinality, '1') and not(replace(concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1)), ' ', '') = '')]">
                     <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
-                    <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'if ( ', $name, ' == null ) {'))"/>
                     <xsl:value-of
-                        select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Property:', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
+                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'if ( ', $name, ' == null ) {'))"/>
+                    <xsl:value-of
+                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Property:', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, '}'))"/>
                 </xsl:for-each>
                 <xsl:for-each
-                    select="$allFields[starts-with(cardinality, '1') and not(replace(concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1)), ' ', '') = '')]">
+                        select="$allFields[starts-with(cardinality, '1') and not(replace(concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1)), ' ', '') = '')]">
                     <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
                     <xsl:if test="not($name = '')">
-                        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'this.', $name, ' = ', $name, ';'))"/>
+                        <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'this.', $name, ' = ', $name, ';'))"/>
                     </xsl:if>
                 </xsl:for-each>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
                 <xsl:value-of select="do:output('')"/>
                 <!-- BUILDER SETTERS -->
                 <xsl:for-each
-                    select="$allFields[not(starts-with(cardinality, '1')) and not(replace(concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1)), ' ', '') = '')]">
+                        select="$allFields[not(starts-with(cardinality, '1')) and not(replace(concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1)), ' ', '') = '')]">
                     <xsl:value-of
-                        select="do:outputSpaces(concat($fourSp, $fourSp, concat('public Builder set', do:snakeUpperCaseToCamelCase(name, 0), '(', do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' value) {')))"/>
-                    <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'this.', do:snakeUpperCaseToCamelCase(name, 1), ' = ', do:snakeUpperCaseToCamelCase(name, 1), ';'))"/>
+                            select="do:outputSpaces(concat($fourSp, $fourSp, concat('public Builder set', do:snakeUpperCaseToCamelCase(name, 0), '(', do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' value) {')))"/>
+                    <xsl:value-of
+                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'this.', do:snakeUpperCaseToCamelCase(name, 1), ' = ', do:snakeUpperCaseToCamelCase(name, 1), ';'))"/>
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'return this;'))"/>
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
                     <xsl:value-of select="do:output('')"/>
                 </xsl:for-each>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'public ', $class/className, ' build(){'))"/>
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'return new ', $class/className, '( this );'))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, $fourSp, 'public ', $class/className, ' build(){'))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'return new ', $class/className, '( this );'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
                 <xsl:value-of select="do:output('')"/>
@@ -1099,20 +1225,24 @@
         <!-- EQUALS -->
         <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public boolean equals(Object object) {'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (this == object) return true;'))"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (object == null || getClass() != object.getClass()) return false;'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, $fourSp, 'if (object == null || getClass() != object.getClass()) return false;'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'if (!super.equals(object)) return false;'))"/>
         <xsl:choose>
             <xsl:when test="count($localFields) > 0">
-                <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $class/className, ' that = (', $class/className, ') object;'))"/>
+                <xsl:value-of
+                        select="do:outputSpaces(concat($fourSp, $fourSp, $class/className, ' that = (', $class/className, ') object;'))"/>
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return'))"/>
                 <xsl:for-each select="$localFields">
                     <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
                     <xsl:choose>
                         <xsl:when test="position() &lt; count($localFields)">
-                            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'java.util.Objects.equals(',$name,', that.',$name,') &amp;&amp;'))"/>
+                            <xsl:value-of
+                                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'java.util.Objects.equals(',$name,', that.',$name,') &amp;&amp;'))"/>
                         </xsl:when>
                         <xsl:otherwise>
-                            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'java.util.Objects.equals(', $name, ', that.', $name, ');'))"/>
+                            <xsl:value-of
+                                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'java.util.Objects.equals(', $name, ', that.', $name, ');'))"/>
                         </xsl:otherwise>
                     </xsl:choose>
                 </xsl:for-each>
@@ -1153,11 +1283,13 @@
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '@java.lang.Override'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, 'public java.lang.String toString() {'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, 'return'))"/>
-        <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, '&quot;', $class/className, ' {&quot; +'))"/>
+        <xsl:value-of
+                select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, '&quot;', $class/className, ' {&quot; +'))"/>
         <xsl:variable name="apos">'</xsl:variable>
         <xsl:for-each select="$localFields">
             <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
-            <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, '&quot;', $name, '=', $apos, '&quot; + ', $name, ' + ', $apos, '\', $apos, $apos, ' +'))"/>
+            <xsl:value-of
+                    select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, '&quot;', $name, '=', $apos, '&quot; + ', $name, ' + ', $apos, '\', $apos, $apos, ' +'))"/>
         </xsl:for-each>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $apos, '}', $apos, ';'))"/>
         <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
@@ -1173,7 +1305,8 @@
                     <xsl:variable name="interfaced" select="do:getClassesFromInterfaceInheritedChains($packages, .)"/>
                     <xsl:for-each select="$interfaced">
                         <xsl:if test="count(functionsAndAttributesAndConstants/nameAndTypeAndKind[kind = 'attribute']) > 0">
-                            <xsl:for-each select="./functionsAndAttributesAndConstants/nameAndTypeAndKind[kind = 'attribute']">
+                            <xsl:for-each
+                                    select="./functionsAndAttributesAndConstants/nameAndTypeAndKind[kind = 'attribute']">
                                 <xsl:copy-of select="."/>
                             </xsl:for-each>
                         </xsl:if>
@@ -1197,7 +1330,8 @@
     <xsl:function name="do:writeEnumeration">
         <xsl:param name="package" as="node()"/>
         <xsl:param name="class" as="node()"/>
-        <xsl:value-of select="do:output(concat('package ', replace(concat($packageBase, $package/packageDirectory), '/', '.'), ';'))"/>
+        <xsl:value-of
+                select="do:output(concat('package ', replace(concat($packageBase, $package/packageDirectory), '/', '.'), ';'))"/>
         <xsl:value-of select="do:output('')"/>
         <xsl:value-of select="do:commentOpen()"/>
         <xsl:value-of select="do:commentOutput(concat('#Generated: ', current-dateTime()))"/>
@@ -1228,7 +1362,8 @@
         <xsl:param name="packages" as="node()"/>
         <xsl:param name="context" as="node()"/>
         <xsl:param name="incomingString"/>
-        <xsl:value-of select="concat(do:processType($packages, $incomingString), ' ', do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString, ':')[1]), 1), '();')"/>
+        <xsl:value-of
+                select="concat(do:processType($packages, $incomingString), ' ', do:snakeUpperCaseToCamelCase(normalize-space(tokenize($incomingString, ':')[1]), 1), '();')"/>
     </xsl:function>
 
     <xsl:function name="do:processType">
@@ -1237,7 +1372,8 @@
         <xsl:variable name="result">
             <xsl:choose>
                 <xsl:when test="$packages/package/class[classNameOrgAbstractStripped = $incomingString]/className">
-                    <xsl:value-of select="$packages/package/class[classNameOrgAbstractStripped = $incomingString]/className"/>
+                    <xsl:value-of
+                            select="$packages/package/class[classNameOrgAbstractStripped = $incomingString]/className"/>
                 </xsl:when>
                 <xsl:when test="$incomingString = 'Any'">
                     <xsl:value-of select="'Object'"/>
@@ -1253,7 +1389,8 @@
                             </xsl:otherwise>
                         </xsl:choose>
                     </xsl:variable>
-                    <xsl:variable name="types" as="xs:string*" select="tokenize(substring-before(substring-after($incomingString, '&lt;'), '&gt;'), ',')"/>
+                    <xsl:variable name="types" as="xs:string*"
+                                  select="tokenize(substring-before(substring-after($incomingString, '&lt;'), '&gt;'), ',')"/>
                     <xsl:variable name="newTypes">
                         <xsl:for-each select="$types">
                             <xsl:variable name="testType" select="."/>
@@ -1291,7 +1428,8 @@
                 <xsl:element name="package">
                     <xsl:variable name="packageDirectory" select="concat($baseDirectory, '/', $packageName)"/>
                     <xsl:element name="packageInfo">
-                        <xsl:value-of select="do:output(concat('package ', replace(concat($packageBase, $packageDirectory), '/', '.'), ';'))"/>
+                        <xsl:value-of
+                                select="do:output(concat('package ', replace(concat($packageBase, $packageDirectory), '/', '.'), ';'))"/>
                         <xsl:value-of select="do:commentOpen()"/>
                         <xsl:value-of select="do:commentOutput('')"/>
                         <xsl:value-of select="do:commentOutput($context/h2[1])"/>
@@ -1311,8 +1449,10 @@
                     <xsl:element name="packageDirectory">
                         <xsl:value-of select="$packageDirectory"/>
                     </xsl:element>
-                    <xsl:for-each select="$context/descendant-or-self::*/table[@class = 'tableblock frame-all grid-all stretch']">
-                        <xsl:variable name="className" select="normalize-space(string-join(tbody/tr[1]/th[2]/p/strong))"/>
+                    <xsl:for-each
+                            select="$context/descendant-or-self::*/table[@class = 'tableblock frame-all grid-all stretch']">
+                        <xsl:variable name="className"
+                                      select="normalize-space(string-join(tbody/tr[1]/th[2]/p/strong))"/>
                         <xsl:if test="string-length($className) > 0">
                             <xsl:variable name="class">
                                 <xsl:element name="class">
@@ -1323,22 +1463,28 @@
                                     <xsl:value-of select="do:message($className)"/>
                                     <!-- Check abstract by scanning for word abstract -->
                                     <xsl:element name="abstract">
-                                        <xsl:value-of select="do:message(concat('    abstr:', contains(tbody/tr[1]/th[2]/p/strong, '(abstract)')))"/>
+                                        <xsl:value-of
+                                                select="do:message(concat('    abstr:', contains(tbody/tr[1]/th[2]/p/strong, '(abstract)')))"/>
                                         <xsl:value-of select="contains(tbody/tr[1]/th[2]/p/strong, '(abstract)')"/>
                                     </xsl:element>
                                     <!-- check enumaration for checking the word enumeration -->
                                     <xsl:element name="enumeration">
-                                        <xsl:value-of select="do:message(concat('    enum:', normalize-space(tbody/tr[1]/th[1]/p/strong/text()[1]) = 'Enumeration'))"/>
-                                        <xsl:value-of select="normalize-space(tbody/tr[1]/th[1]/p/strong/text()[1]) = 'Enumeration'"/>
+                                        <xsl:value-of
+                                                select="do:message(concat('    enum:', normalize-space(tbody/tr[1]/th[1]/p/strong/text()[1]) = 'Enumeration'))"/>
+                                        <xsl:value-of
+                                                select="normalize-space(tbody/tr[1]/th[1]/p/strong/text()[1]) = 'Enumeration'"/>
                                     </xsl:element>
                                     <!-- NormalClassName -->
                                     <xsl:element name="className">
-                                        <xsl:value-of select="tokenize(do:snakeUpperCaseToCamelCase($className, 0), ' ')[1]"/>
+                                        <xsl:value-of
+                                                select="tokenize(do:snakeUpperCaseToCamelCase($className, 0), ' ')[1]"/>
                                     </xsl:element>
                                     <!-- NormalClassName with generic-parameters stripped -->
                                     <xsl:element name="classFileName">
-                                        <xsl:value-of select="do:message(concat('    filename:', tokenize(tokenize(do:snakeUpperCaseToCamelCase($className, 0), ' ')[1], '&lt;')[1]))"/>
-                                        <xsl:value-of select="tokenize(tokenize(do:snakeUpperCaseToCamelCase($className, 0), ' ')[1], '&lt;')[1]"/>
+                                        <xsl:value-of
+                                                select="do:message(concat('    filename:', tokenize(tokenize(do:snakeUpperCaseToCamelCase($className, 0), ' ')[1], '&lt;')[1]))"/>
+                                        <xsl:value-of
+                                                select="tokenize(tokenize(do:snakeUpperCaseToCamelCase($className, 0), ' ')[1], '&lt;')[1]"/>
                                     </xsl:element>
                                     <!-- UPPERCASE_UNDERSCORE_CLASSNAME (abstract) -->
                                     <xsl:element name="classNameOrg">
@@ -1350,14 +1496,16 @@
                                         <xsl:variable name="classNameOrgAbstractStripped" as="xs:string">
                                             <xsl:choose>
                                                 <xsl:when test="contains($className, '(')">
-                                                    <xsl:value-of select="normalize-space(tokenize($className, '\(')[1])"/>
+                                                    <xsl:value-of
+                                                            select="normalize-space(tokenize($className, '\(')[1])"/>
                                                 </xsl:when>
                                                 <xsl:otherwise>
                                                     <xsl:value-of select="$className"/>
                                                 </xsl:otherwise>
                                             </xsl:choose>
                                         </xsl:variable>
-                                        <xsl:value-of select="do:message(concat('    classNameOrgAbstractStripped:', $classNameOrgAbstractStripped))"/>
+                                        <xsl:value-of
+                                                select="do:message(concat('    classNameOrgAbstractStripped:', $classNameOrgAbstractStripped))"/>
                                         <xsl:value-of select="$classNameOrgAbstractStripped"/>
                                     </xsl:element>
                                     <!-- Class Comments -->
@@ -1365,37 +1513,47 @@
                                         <xsl:variable name="classComment" select="."/>
                                         <xsl:if test="string-length($classComment) > 0">
                                             <xsl:element name="classComment">
-                                                <xsl:value-of select="do:message(concat('    comm:', normalize-space($classComment)))"/>
+                                                <xsl:value-of
+                                                        select="do:message(concat('    comm:', normalize-space($classComment)))"/>
                                                 <xsl:value-of select="normalize-space($classComment)"/>
                                             </xsl:element>
                                         </xsl:if>
                                     </xsl:for-each>
                                     <xsl:for-each select="tbody/tr[3]/td/p/code">
                                         <xsl:choose>
-                                            <xsl:when test="not(do:is-value-in-sequence(normalize-space(.), $implements))">
+                                            <xsl:when
+                                                    test="not(do:is-value-in-sequence(normalize-space(.), $implements))">
                                                 <!-- ClassNames from parents (evt more then one) -->
-                                                <xsl:variable name="inherit" as="xs:string" select="do:snakeUpperCaseToCamelCase(normalize-space(.), 0)"/>
-                                                <xsl:value-of select="do:message(concat('         inherit:', $inherit))"/>
+                                                <xsl:variable name="inherit" as="xs:string"
+                                                              select="do:snakeUpperCaseToCamelCase(normalize-space(.), 0)"/>
+                                                <xsl:value-of
+                                                        select="do:message(concat('         inherit:', $inherit))"/>
                                                 <xsl:element name="inherit">
                                                     <xsl:value-of select="$inherit"/>
                                                 </xsl:element>
                                                 <!-- CLASS_NAMES from parents (original) -->
-                                                <xsl:variable name="inheritOrg" as="xs:string" select="normalize-space(.)"/>
-                                                <xsl:value-of select="do:message(concat('INHERITANCE:    ', $inheritOrg))"/>
+                                                <xsl:variable name="inheritOrg" as="xs:string"
+                                                              select="normalize-space(.)"/>
+                                                <xsl:value-of
+                                                        select="do:message(concat('INHERITANCE:    ', $inheritOrg))"/>
                                                 <xsl:element name="inheritOrg">
                                                     <xsl:value-of select="normalize-space($inheritOrg)"/>
                                                 </xsl:element>
                                             </xsl:when>
                                             <xsl:otherwise>
                                                 <!-- ClassNames from parents (evt more then one) -->
-                                                <xsl:variable name="implement" as="xs:string" select="do:snakeUpperCaseToCamelCase(normalize-space(.), 0)"/>
-                                                <xsl:value-of select="do:message(concat('         implement:', $implement))"/>
+                                                <xsl:variable name="implement" as="xs:string"
+                                                              select="do:snakeUpperCaseToCamelCase(normalize-space(.), 0)"/>
+                                                <xsl:value-of
+                                                        select="do:message(concat('         implement:', $implement))"/>
                                                 <xsl:element name="implement">
                                                     <xsl:value-of select="$implement"/>
                                                 </xsl:element>
                                                 <!-- CLASS_NAMES from parents (original) -->
-                                                <xsl:variable name="implementOrg" as="xs:string" select="normalize-space(.)"/>
-                                                <xsl:value-of select="do:message(concat('IMPLEMENT:    ', $implementOrg))"/>
+                                                <xsl:variable name="implementOrg" as="xs:string"
+                                                              select="normalize-space(.)"/>
+                                                <xsl:value-of
+                                                        select="do:message(concat('IMPLEMENT:    ', $implementOrg))"/>
                                                 <xsl:element name="implementOrg">
                                                     <xsl:value-of select="normalize-space($implementOrg)"/>
                                                 </xsl:element>
@@ -1405,15 +1563,19 @@
                                     <!-- Functions and Attributes and enum-values -->
                                     <xsl:element name="functionsAndAttributesAndConstants">
                                         <xsl:for-each select="tbody/tr">
-                                            <xsl:variable name="cardinality" select="string(normalize-space(string-join(th/p)))"/>
-                                            <xsl:variable name="nameAndType" select="string(normalize-space(string-join(td[1]/p)))"/>
-                                            <xsl:variable name="description" select="string(normalize-space(string-join(td[2])))"/>
+                                            <xsl:variable name="cardinality"
+                                                          select="string(normalize-space(string-join(th/p)))"/>
+                                            <xsl:variable name="nameAndType"
+                                                          select="string(normalize-space(string-join(td[1]/p)))"/>
+                                            <xsl:variable name="description"
+                                                          select="string(normalize-space(string-join(td[2])))"/>
                                             <xsl:if test="string-length(normalize-space($nameAndType)) > 0 and not($cardinality = 'Inherit')">
                                                 <xsl:element name="nameAndTypeAndKind">
                                                     <xsl:choose>
                                                         <!-- enumeration -->
                                                         <xsl:when test="normalize-space($cardinality) = ''">
-                                                            <xsl:variable name="enumType" select="do:snakeUpperCaseToCamelCase(normalize-space($nameAndType), 1)"/>
+                                                            <xsl:variable name="enumType"
+                                                                          select="do:snakeUpperCaseToCamelCase(normalize-space($nameAndType), 1)"/>
                                                             <xsl:variable name="kind" select="'enum-value'"/>
                                                             <xsl:element name="enumType">
                                                                 <xsl:value-of select="$enumType"/>
@@ -1421,25 +1583,32 @@
                                                             <xsl:element name="kind">
                                                                 <xsl:value-of select="$kind"/>
                                                             </xsl:element>
-                                                            <xsl:value-of select="do:message(concat('            kind: ', $kind, ', name: ', $enumType))"/>
+                                                            <xsl:value-of
+                                                                    select="do:message(concat('            kind: ', $kind, ', name: ', $enumType))"/>
                                                         </xsl:when>
                                                         <!-- function or attribute -->
                                                         <xsl:otherwise>
                                                             <xsl:choose>
                                                                 <!-- functions -->
                                                                 <xsl:when test="contains($nameAndType, ')')">
-                                                                    <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(normalize-space(substring-before($nameAndType, '(')), 1)"/>
+                                                                    <xsl:variable name="name"
+                                                                                  select="do:snakeUpperCaseToCamelCase(normalize-space(substring-before($nameAndType, '(')), 1)"/>
                                                                     <xsl:choose>
-                                                                        <xsl:when test="contains($cardinality, '(abstract)')">
-                                                                            <xsl:value-of select="do:message(concat('    ABSTRACT        ---function:', $name))"/>
-                                                                            <xsl:element name="abstract">true</xsl:element>
+                                                                        <xsl:when
+                                                                                test="contains($cardinality, '(abstract)')">
+                                                                            <xsl:value-of
+                                                                                    select="do:message(concat('    ABSTRACT        ---function:', $name))"/>
+                                                                            <xsl:element name="abstract">true
+                                                                            </xsl:element>
                                                                         </xsl:when>
                                                                         <xsl:otherwise>
-                                                                            <xsl:value-of select="do:message(concat('            ---function:', $name))"/>
-                                                                            <xsl:element name="abstract">false</xsl:element>
+                                                                            <xsl:value-of
+                                                                                    select="do:message(concat('            ---function:', $name))"/>
+                                                                            <xsl:element name="abstract">false
+                                                                            </xsl:element>
                                                                         </xsl:otherwise>
                                                                     </xsl:choose>
-                                                                    <xsl:if test="contains($cardinality, '(abstract)')"> </xsl:if>
+                                                                    <xsl:if test="contains($cardinality, '(abstract)')"></xsl:if>
                                                                     <xsl:element name="name">
                                                                         <xsl:value-of select="$name"/>
                                                                     </xsl:element>
@@ -1447,8 +1616,10 @@
                                                                     <xsl:variable name="kind">
                                                                         <xsl:choose>
                                                                             <!-- value-function -->
-                                                                            <xsl:when test="contains(substring-after($nameAndType, ')'), ':')">
-                                                                                <xsl:value-of select="'value-function'"/>
+                                                                            <xsl:when
+                                                                                    test="contains(substring-after($nameAndType, ')'), ':')">
+                                                                                <xsl:value-of
+                                                                                        select="'value-function'"/>
                                                                             </xsl:when>
                                                                             <!-- void function -->
                                                                             <xsl:otherwise>
@@ -1460,8 +1631,10 @@
                                                                     <xsl:variable name="return-type">
                                                                         <xsl:choose>
                                                                             <!-- value-function -->
-                                                                            <xsl:when test="contains(substring-after($nameAndType, ')'), ':')">
-                                                                                <xsl:value-of select="normalize-space(do:substring-after-last($nameAndType, ':'))"/>
+                                                                            <xsl:when
+                                                                                    test="contains(substring-after($nameAndType, ')'), ':')">
+                                                                                <xsl:value-of
+                                                                                        select="normalize-space(do:substring-after-last($nameAndType, ':'))"/>
                                                                             </xsl:when>
                                                                             <!-- void function -->
                                                                             <xsl:otherwise>
@@ -1470,7 +1643,7 @@
                                                                         </xsl:choose>
                                                                     </xsl:variable>
                                                                     <xsl:variable name="container"
-                                                                        select="starts-with(lower-case($return-type), 'list') or starts-with(lower-case($return-type), 'set') or starts-with(lower-case($return-type), 'hash') or starts-with(lower-case($return-type), 'container')"/>
+                                                                                  select="starts-with(lower-case($return-type), 'list') or starts-with(lower-case($return-type), 'set') or starts-with(lower-case($return-type), 'hash') or starts-with(lower-case($return-type), 'container')"/>
                                                                     <xsl:element name="container">
                                                                         <xsl:value-of select="$container"/>
                                                                     </xsl:element>
@@ -1481,63 +1654,85 @@
                                                                         <xsl:value-of select="$kind"/>
                                                                     </xsl:element>
                                                                     <xsl:value-of
-                                                                        select="do:message(concat('            kind:', $kind, ', name: ', $name, ', return-type: ', $return-type, ', cardinality:', $cardinality))"/>
+                                                                            select="do:message(concat('            kind:', $kind, ', name: ', $name, ', return-type: ', $return-type, ', cardinality:', $cardinality))"/>
                                                                     <!-- function parameters -->
                                                                     <xsl:element name="parameters">
-                                                                        <xsl:variable name="parameterPart" select="normalize-space(substring-after(substring-before($nameAndType, ')'), '('))"/>
-                                                                        <xsl:value-of select="do:message(concat('            parameterPart:', $parameterPart))"/>
+                                                                        <xsl:variable name="parameterPart"
+                                                                                      select="normalize-space(substring-after(substring-before($nameAndType, ')'), '('))"/>
+                                                                        <xsl:value-of
+                                                                                select="do:message(concat('            parameterPart:', $parameterPart))"/>
                                                                         <xsl:value-of select="$parameterPart"/>
-                                                                        <xsl:for-each select="tokenize($parameterPart, ',')">
-                                                                            <xsl:value-of select="do:message(concat('                parameter:', normalize-space(.)))"/>
+                                                                        <xsl:for-each
+                                                                                select="tokenize($parameterPart, ',')">
+                                                                            <xsl:value-of
+                                                                                    select="do:message(concat('                parameter:', normalize-space(.)))"/>
                                                                             <xsl:element name="parameter">
                                                                                 <xsl:element name="name">
                                                                                     <xsl:variable name="name">
                                                                                         <xsl:choose>
-                                                                                            <xsl:when test="contains(., ':')">
-                                                                                                <xsl:value-of select="do:snakeUpperCaseToCamelCase(normalize-space(substring-before(., ':')), 1)"/>
+                                                                                            <xsl:when
+                                                                                                    test="contains(., ':')">
+                                                                                                <xsl:value-of
+                                                                                                        select="do:snakeUpperCaseToCamelCase(normalize-space(substring-before(., ':')), 1)"/>
                                                                                             </xsl:when>
                                                                                             <xsl:otherwise>
-                                                                                                <xsl:value-of select="."/>
+                                                                                                <xsl:value-of
+                                                                                                        select="."/>
                                                                                             </xsl:otherwise>
                                                                                         </xsl:choose>
                                                                                     </xsl:variable>
-                                                                                    <xsl:value-of select="do:message(concat('                    name:', $name))"/>
-                                                                                    <xsl:value-of select="normalize-space(substring-before(., ':'))"/>
+                                                                                    <xsl:value-of
+                                                                                            select="do:message(concat('                    name:', $name))"/>
+                                                                                    <xsl:value-of
+                                                                                            select="normalize-space(substring-before(., ':'))"/>
                                                                                 </xsl:element>
                                                                                 <xsl:element name="type">
                                                                                     <xsl:variable name="type">
                                                                                         <xsl:if test="contains(., ':')">
-                                                                                            <xsl:value-of select="normalize-space(substring-after(., ':'))"/>
+                                                                                            <xsl:value-of
+                                                                                                    select="normalize-space(substring-after(., ':'))"/>
                                                                                         </xsl:if>
                                                                                     </xsl:variable>
-                                                                                    <xsl:value-of select="do:message(concat('                    type:', $type))"/>
+                                                                                    <xsl:value-of
+                                                                                            select="do:message(concat('                    type:', $type))"/>
                                                                                     <xsl:variable name="type-name">
                                                                                         <xsl:choose>
-                                                                                            <xsl:when test="contains(normalize-space(substring-after(., ':')), '[')">
-                                                                                                <xsl:value-of select="normalize-space(substring-before($type, '['))"/>
+                                                                                            <xsl:when
+                                                                                                    test="contains(normalize-space(substring-after(., ':')), '[')">
+                                                                                                <xsl:value-of
+                                                                                                        select="normalize-space(substring-before($type, '['))"/>
                                                                                             </xsl:when>
                                                                                             <xsl:otherwise>
-                                                                                                <xsl:value-of select="normalize-space($type)"/>
+                                                                                                <xsl:value-of
+                                                                                                        select="normalize-space($type)"/>
                                                                                             </xsl:otherwise>
                                                                                         </xsl:choose>
                                                                                     </xsl:variable>
-                                                                                    <xsl:value-of select="do:message(concat('                    type-name:', $type-name))"/>
-                                                                                    <xsl:variable name="type-cardinality">
+                                                                                    <xsl:value-of
+                                                                                            select="do:message(concat('                    type-name:', $type-name))"/>
+                                                                                    <xsl:variable
+                                                                                            name="type-cardinality">
                                                                                         <xsl:if test="contains($type, '[')">
-                                                                                            <xsl:value-of select="substring-after(normalize-space(substring-before($type, ']')), '[')"/>
+                                                                                            <xsl:value-of
+                                                                                                    select="substring-after(normalize-space(substring-before($type, ']')), '[')"/>
                                                                                         </xsl:if>
                                                                                     </xsl:variable>
-                                                                                    <xsl:value-of select="do:message(concat('                    type-cardinality:', $type-cardinality))"/>
+                                                                                    <xsl:value-of
+                                                                                            select="do:message(concat('                    type-cardinality:', $type-cardinality))"/>
                                                                                     <xsl:variable name="container"
-                                                                                        select="starts-with(lower-case($type-name), 'list') or starts-with(lower-case($type-name), 'set') or starts-with(lower-case($type-name), 'hash') or starts-with(lower-case($type-name), 'container')"/>
+                                                                                                  select="starts-with(lower-case($type-name), 'list') or starts-with(lower-case($type-name), 'set') or starts-with(lower-case($type-name), 'hash') or starts-with(lower-case($type-name), 'container')"/>
                                                                                     <xsl:element name="container">
-                                                                                        <xsl:value-of select="$container"/>
+                                                                                        <xsl:value-of
+                                                                                                select="$container"/>
                                                                                     </xsl:element>
                                                                                     <xsl:element name="type-name">
-                                                                                        <xsl:value-of select="$type-name"/>
+                                                                                        <xsl:value-of
+                                                                                                select="$type-name"/>
                                                                                     </xsl:element>
-                                                                                    <xsl:element name="type-cardinality">
-                                                                                        <xsl:value-of select="$type-cardinality"/>
+                                                                                    <xsl:element
+                                                                                            name="type-cardinality">
+                                                                                        <xsl:value-of
+                                                                                                select="$type-cardinality"/>
                                                                                     </xsl:element>
                                                                                 </xsl:element>
                                                                             </xsl:element>
@@ -1547,11 +1742,14 @@
                                                                 <xsl:otherwise>
                                                                     <xsl:choose>
                                                                         <xsl:when test="contains($nameAndType, '=')">
-                                                                            <xsl:variable name="name" select="normalize-space(substring-before($nameAndType, ':'))"/>
+                                                                            <xsl:variable name="name"
+                                                                                          select="normalize-space(substring-before($nameAndType, ':'))"/>
                                                                             <xsl:variable name="type"
-                                                                                select="replace(normalize-space(substring-before(normalize-space(substring-after($nameAndType, ':')), '=')), '&#160;', '')"/>
-                                                                            <xsl:variable name="value" select="replace(normalize-space(substring-after($nameAndType, '=')), '&#160;', '')"/>
-                                                                            <xsl:variable name="kind" select="'constant'"/>
+                                                                                          select="replace(normalize-space(substring-before(normalize-space(substring-after($nameAndType, ':')), '=')), '&#160;', '')"/>
+                                                                            <xsl:variable name="value"
+                                                                                          select="replace(normalize-space(substring-after($nameAndType, '=')), '&#160;', '')"/>
+                                                                            <xsl:variable name="kind"
+                                                                                          select="'constant'"/>
                                                                             <xsl:element name="name">
                                                                                 <xsl:value-of select="$name"/>
                                                                             </xsl:element>
@@ -1565,16 +1763,19 @@
                                                                                 <xsl:value-of select="$kind"/>
                                                                             </xsl:element>
                                                                             <xsl:value-of
-                                                                                select="do:message(concat('            ', $kind, ', name: ', $name, ' type: ', $type, '  value:', $value, ', cardinality:', $cardinality))"
+                                                                                    select="do:message(concat('            ', $kind, ', name: ', $name, ' type: ', $type, '  value:', $value, ', cardinality:', $cardinality))"
                                                                             />
                                                                         </xsl:when>
                                                                         <!-- attribute -->
                                                                         <xsl:otherwise>
-                                                                            <xsl:variable name="name" select="normalize-space(substring-before($nameAndType, ':'))"/>
-                                                                            <xsl:variable name="type" select="normalize-space(substring-after($nameAndType, ':'))"/>
+                                                                            <xsl:variable name="name"
+                                                                                          select="normalize-space(substring-before($nameAndType, ':'))"/>
+                                                                            <xsl:variable name="type"
+                                                                                          select="normalize-space(substring-after($nameAndType, ':'))"/>
                                                                             <xsl:variable name="container"
-                                                                                select="starts-with(lower-case($type), 'list') or starts-with(lower-case($type), 'set') or starts-with(lower-case($type), 'hash') or starts-with(lower-case($type), 'container')"/>
-                                                                            <xsl:variable name="kind" select="'attribute'"/>
+                                                                                          select="starts-with(lower-case($type), 'list') or starts-with(lower-case($type), 'set') or starts-with(lower-case($type), 'hash') or starts-with(lower-case($type), 'container')"/>
+                                                                            <xsl:variable name="kind"
+                                                                                          select="'attribute'"/>
                                                                             <xsl:element name="name">
                                                                                 <xsl:value-of select="$name"/>
                                                                             </xsl:element>
@@ -1588,7 +1789,7 @@
                                                                                 <xsl:value-of select="$kind"/>
                                                                             </xsl:element>
                                                                             <xsl:value-of
-                                                                                select="do:message(concat('            ---', $kind, ', name: ', $name, ', type: ', $type, ', container:', $container, ', cardinality:', $cardinality))"
+                                                                                    select="do:message(concat('            ---', $kind, ', name: ', $name, ', type: ', $type, ', container:', $container, ', cardinality:', $cardinality))"
                                                                             />
                                                                         </xsl:otherwise>
                                                                     </xsl:choose>
@@ -1635,7 +1836,7 @@
         <xsl:value-of select="do:commentOutput('From BMM-document:')"/>
         <xsl:value-of select="do:commentOutput('')"/>
         <xsl:value-of
-            select="
+                select="
                 do:commentOutput(concat(
                 normalize-space($context/html/body[1]/div[2]/div[3]/div[1]/table[1]/tbody[1]/tr[2]/td[1]),
                 ':',
@@ -1662,7 +1863,8 @@
                 <xsl:if test="kind = 'attribute' or kind = 'void-function' or kind = 'value-function'">
                     <xsl:choose>
                         <xsl:when test="container = true()">
-                            <xsl:variable name="types" as="xs:string*" select="tokenize(substring-before(substring-after(type, '&lt;'), '&gt;'), ',')"/>
+                            <xsl:variable name="types" as="xs:string*"
+                                          select="tokenize(substring-before(substring-after(type, '&lt;'), '&gt;'), ',')"/>
                             <xsl:for-each select="$types">
                                 <xsl:if test="do:is-value-in-sequence(., $allClasses)">
                                     <xsl:value-of select="."/>
@@ -1680,7 +1882,8 @@
                     <xsl:for-each select="parameters/parameter">
                         <xsl:choose>
                             <xsl:when test="type/container = true()">
-                                <xsl:variable name="types" as="xs:string*" select="tokenize(substring-before(substring-after(type/type-name, '&lt;'), '&gt;'), ',')"/>
+                                <xsl:variable name="types" as="xs:string*"
+                                              select="tokenize(substring-before(substring-after(type/type-name, '&lt;'), '&gt;'), ',')"/>
                                 <xsl:for-each select="$types">
                                     <xsl:if test="do:is-value-in-sequence(., $allClasses)">
                                         <xsl:value-of select="."/>
@@ -1748,7 +1951,8 @@
 
     <xsl:function name="do:commentOutput">
         <xsl:param name="input" as="xs:string*"/>
-        <xsl:value-of select="concat(' * ', replace(normalize-space(string-join($input)), '\. ', concat('.', $newline, ' * ')), $newline)"/>
+        <xsl:value-of
+                select="concat(' * ', replace(normalize-space(string-join($input)), '\. ', concat('.', $newline, ' * ')), $newline)"/>
     </xsl:function>
 
     <xsl:function name="do:commentOpen">
