@@ -8,6 +8,14 @@
         <module>utils</module>
         <module>bmm</module>
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>nl.rosa.semanticdatabase</groupId>
+            <artifactId>base</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

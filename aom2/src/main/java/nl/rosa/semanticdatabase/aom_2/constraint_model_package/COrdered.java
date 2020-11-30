@@ -20,7 +20,7 @@ import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
  * The most complex form is a list of any combination of point and proper intervals.
  * 
 */
-public abstract class COrdered<T> extends CPrimitiveObject {
+public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
 
     //***** COrdered<t> *****
 

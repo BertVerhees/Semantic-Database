@@ -14,7 +14,10 @@ import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
  * Parent of types representing constraints on primitive types.
  * 
 */
-public abstract class CPrimitiveObject extends CDefinedObject {
+public abstract class CPrimitiveObject<Constraint, ValueType> extends CDefinedObject<ValueType> {
+
+    public static final String PRIMITIVE_NODE_ID_VALUE = "id9999";
+
 
     //***** CPrimitiveObject *****
 
@@ -28,7 +31,7 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 0..1
  * 
 */
-    private Object assumedValue;
+    private ValueType assumedValue;
 
 /**
  * 
@@ -44,7 +47,7 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 1..1
  * 
 */
-    private Object constraint;
+    private Constraint constraint;
 
 /*=========================================================*/
 /* * POJOS * */
@@ -56,10 +59,10 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 0..1
  * 
 */
-    public Object getAssumedValue() {
+    public ValueType getAssumedValue() {
         return assumedValue;
     }
-    public void setAssumedValue(Object value) {
+    public void setAssumedValue(ValueType value) {
         this.assumedValue = assumedValue;
     }
 
@@ -82,10 +85,10 @@ public abstract class CPrimitiveObject extends CDefinedObject {
  * cardinality: 1..1
  * 
 */
-    public Object getConstraint() {
+    public Constraint getConstraint() {
         return constraint;
     }
-    public void setConstraint(Object value) {
+    public void setConstraint(Constraint value) {
         if ( value == null ) {
             throw new NullPointerException(" Setting property:constraint failed, it has cardinality NonNull, but is null");
         }

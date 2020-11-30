@@ -14,7 +14,7 @@ import nl.rosa.semanticdatabase.foundation_types.interval.MultiplicityInterval;
  * whose definitions are actually in the archetype rather than being by reference.
  * 
 */
-public abstract class CDefinedObject extends CObject {
+public abstract class CDefinedObject<T> extends CObject {
 
     //***** CDefinedObject *****
 
@@ -29,7 +29,7 @@ public abstract class CDefinedObject extends CObject {
  * cardinality: 0..1
  * 
 */
-    private Object defaultValue;
+    private T defaultValue;
 
 /*=========================================================*/
 /* * POJOS * */
@@ -42,10 +42,10 @@ public abstract class CDefinedObject extends CObject {
  * cardinality: 0..1
  * 
 */
-    public Object getDefaultValue() {
+    public T getDefaultValue() {
         return defaultValue;
     }
-    public void setDefaultValue(Object value) {
+    public void setDefaultValue(T value) {
         this.defaultValue = defaultValue;
     }
 
@@ -69,7 +69,7 @@ public abstract class CDefinedObject extends CObject {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public abstract Boolean  validValue(Object a_value);
+    public abstract Boolean  validValue(T a_value);
 
 /**
  * 
@@ -77,7 +77,7 @@ public abstract class CDefinedObject extends CObject {
  * cardinality: 1..1 (abstract)
  * 
 */
-    public abstract Object  prototypeValue();
+    public abstract T  prototypeValue();
 
 /**
  * 
@@ -105,7 +105,7 @@ public abstract class CDefinedObject extends CObject {
     protected CDefinedObject() {}
 
     protected CDefinedObject(
-            Object defaultValue,
+            T defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
