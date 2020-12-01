@@ -81,7 +81,7 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
         constraint.add(value);
     }
 
-    public void addToConstraint(List<C> values) {
+    public void addToConstraint(Collection<C> values) {
         values.forEach(value -> addToConstraint(value));
     }
 
@@ -95,7 +95,7 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
         values.forEach(this::removeFromConstraint);
     }
 
-    List<C> getConstraint() {
+    public List<C> getConstraint() {
         return this.constraint;
     }
 
@@ -106,7 +106,7 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
         this.constraint = constraint;
     }
 
-    public List<C> featureExtensions() {
+    public List<C> constraint() {
         return Collections.unmodifiableList(this.constraint);
     }
 
@@ -153,7 +153,7 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
      * Parameters rmcc Reference Model conformance checker lambda.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cConformsTo(CPrimitiveObject other, BiFunction<String, String, Boolean> rmTypesConformant) {
+    public Boolean cConformsTo(CObject other, BiFunction<String, String, Boolean> rmTypesConformant) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -172,14 +172,14 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
      * Effected in descendants.
      * cardinality: 1..1 (abstract)
      */
-    public abstract Boolean cValueConformsTo(CPrimitiveObject other);
+    public abstract Boolean cValueConformsTo(CObject other);
 
     /**
      * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.
      * Typically used to test if an inherited node locally contains any constraints.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cCongruentTo(CPrimitiveObject other) {
+    public Boolean cCongruentTo(CObject other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -197,7 +197,7 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
      * Effected in descendants.
      * cardinality: 1..1 (abstract)
      */
-    public abstract Boolean cValueCongruentTo(CPrimitiveObject other);
+    public abstract Boolean cValueCongruentTo(CObject other);
 
     //***** CPrimitiveObject *****
 

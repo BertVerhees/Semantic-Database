@@ -178,7 +178,7 @@ public abstract class CObject extends ArchetypeConstraint {
      *
      * @return
      */
-    public java.lang.Boolean cCongruentTo(ArchetypeConstraint other) {
+    public java.lang.Boolean cCongruentTo(CObject other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -216,7 +216,7 @@ public abstract class CObject extends ArchetypeConstraint {
      * <p>
      * Post: Result = existence_conforms_to (other) and is_single and other.is_single) or else (is_multiple and cardinality_conforms_to (other)
      */
-    public boolean cConformsTo(CObject other, BiFunction<String, String, Boolean> rmTypesConformant) {
+    public Boolean cConformsTo(CObject other, BiFunction<String, String, Boolean> rmTypesConformant) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }

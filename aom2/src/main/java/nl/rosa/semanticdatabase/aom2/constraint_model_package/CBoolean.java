@@ -2,8 +2,8 @@ package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.util.*;
 
+import semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -13,7 +13,7 @@ import semanticdatabase.foundation_types.primitive_types.Boolean;
  * Constraint on instances of Boolean.
  * Both attributes cannot be set to False, since this would mean that the Boolean value being constrained cannot be True or False.
  */
-public class CBoolean extends CPrimitiveObject {
+public class CBoolean extends CPrimitiveObject<Boolean, Boolean> {
 
     //***** CBoolean *****
 
@@ -73,9 +73,8 @@ public class CBoolean extends CPrimitiveObject {
         return this.constraint;
     }
 
-    public CBoolean setConstraint(List<Boolean> constraint) {
+    public void setConstraint(List<Boolean> constraint) {
         this.constraint = constraint;
-        return this;
     }
 
     public List<Boolean> constraint() {
@@ -106,9 +105,33 @@ public class CBoolean extends CPrimitiveObject {
         this.defaultValue = defaultValue;
     }
 
+
+    /**
+     * True if a_value is valid with respect to constraint expressed in concrete instance of this type.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param a_value
+     */
+    @Override
+    public Boolean validValue(Boolean a_value) {
+        return null;
+    }
+
     /*=========================================================*/
     /* * FUNCTIONS * */
     /*=========================================================*/
+
+    /**
+     * True if any value (i.e.
+     * instance) of the reference model type would be allowed.
+     * Redefined in descendants.
+     * cardinality: 1..1 (abstract)
+     */
+    @Override
+    public Boolean anyAllowed() {
+        return null;
+    }
+
 
     /**
      * Prototype Boolean value.
@@ -128,7 +151,7 @@ public class CBoolean extends CPrimitiveObject {
      * True if other.any_allowed or else every constraint in the constraint list exists in the other.constraint.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cValueConformsTo(CBoolean other) {
+    public Boolean cValueConformsTo(CObject other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -145,7 +168,7 @@ public class CBoolean extends CPrimitiveObject {
      * True if the items in constraint are equal in number and identical pair-wise with those in other.constraint.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cValueCongruentTo(CBoolean other) {
+    public Boolean cValueCongruentTo(CObject other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -158,15 +181,42 @@ public class CBoolean extends CPrimitiveObject {
         return result;
     }
 
+    /**
+     * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
+     * Typically used during validation of special-ised archetype nodes.
+     * Parameters rmcc RM conformance checker - a lambda (i.e.
+     * function object) that can compute conformance of type-names within the Reference Model on which the current archetype is based.
+     * The signature provides two arguments representing respectively, the rm_type_name of the current node and the rm_type_name of the node being redefined in a specialisation parent archetype.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param other
+     * @param rmcc
+     */
+    @Override
+    public Boolean cConformsTo(ArchetypeConstraint other, RMConformanceChecker rmcc) {
+        return null;
+    }
+    /**
+     * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.
+     * Typically used to test if an inherited node locally contains any constraints.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param other
+     */
+    @Override
+    public Boolean cCongruentTo(ArchetypeConstraint other) {
+        return null;
+    }
+
+
+
+
     //***** CBoolean *****
 
     /*=========================================================*/
     /* * BUILD PATTERN AND CONSTRUCTOR * */
     /*=========================================================*/
 
-
-    protected CBoolean() {
-    }
 
     public CBoolean(
             List<Boolean> constraint,
@@ -197,18 +247,19 @@ public class CBoolean extends CPrimitiveObject {
     }
 
     private CBoolean(Builder builder) {
-        this.setConstraint(builder.constraint);
-        this.setAssumedValue(builder.assumedValue);
-        this.setDefaultValue(builder.defaultValue);
-        this.setIsEnumeratedTypeConstraint(builder.isEnumeratedTypeConstraint);
-        this.setConstraint(builder.constraint);
-        this.setRmTypeName(builder.rmTypeName);
-        this.setOccurrences(builder.occurrences);
-        this.setNodeId(builder.nodeId);
-        this.setIsDeprecated(builder.isDeprecated);
-        this.setSiblingOrder(builder.siblingOrder);
-        this.setParent(builder.parent);
-        this.setSocParent(builder.socParent);
+        super(
+                builder.assumedValue,
+                builder.isEnumeratedTypeConstraint,
+                builder.constraint,
+                builder.defaultValue,
+                builder.rmTypeName,
+                builder.occurrences,
+                builder.nodeId,
+                builder.isDeprecated,
+                builder.siblingOrder,
+                builder.parent,
+                builder.socParent
+        );
     }
 
     public static class Builder {
@@ -225,7 +276,7 @@ public class CBoolean extends CPrimitiveObject {
         private CSecondOrder socParent;
 
         public Builder(
-                Boolean constraint,
+                List<Boolean> constraint,
                 String rmTypeName,
                 String nodeId
         ) {
