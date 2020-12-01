@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
-import java.util.Objects;
+import java.util.*;
+import java.util.function.BiFunction;
 
 import semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import semanticdatabase.foundation_types.interval.MultiplicityInterval;
@@ -12,7 +13,7 @@ import semanticdatabase.foundation_types.interval.MultiplicityInterval;
  * <p>
  * Parent of types representing constraints on primitive types.
  */
-public abstract class CPrimitiveObject<Constraint, ValueType> extends CDefinedObject<ValueType> {
+public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
 
     public static final String PRIMITIVE_NODE_ID_VALUE = "id9999";
 
@@ -27,7 +28,7 @@ public abstract class CPrimitiveObject<Constraint, ValueType> extends CDefinedOb
      * Value to be assumed if none sent in data.
      * cardinality: 0..1
      */
-    private ValueType assumedValue;
+    private T assumedValue;
 
     /**
      * True if this object represents a constraint on an enumerated type from the reference model, where the latter is assumed to be based on a primitive type, generally Integer or String.
@@ -39,7 +40,7 @@ public abstract class CPrimitiveObject<Constraint, ValueType> extends CDefinedOb
      * Constraint represented by this object; redefine in descendants.
      * cardinality: 1..1
      */
-    private Constraint constraint;
+    private List<C> constraint;
 
     /*=========================================================*/
     /* * POJOS * */
@@ -49,11 +50,11 @@ public abstract class CPrimitiveObject<Constraint, ValueType> extends CDefinedOb
      * Value to be assumed if none sent in data.
      * cardinality: 0..1
      */
-    public ValueType getAssumedValue() {
+    public T getAssumedValue() {
         return assumedValue;
     }
 
-    public void setAssumedValue(ValueType value) {
+    public void setAssumedValue(T value) {
         this.assumedValue = assumedValue;
     }
 
@@ -73,15 +74,40 @@ public abstract class CPrimitiveObject<Constraint, ValueType> extends CDefinedOb
      * Constraint represented by this object; redefine in descendants.
      * cardinality: 1..1
      */
-    public Constraint getConstraint() {
-        return constraint;
+    public void addToConstraint(C value) {
+        if (constraint == null) {
+            constraint = new ArrayList<>();
+        }
+        constraint.add(value);
     }
 
-    public void setConstraint(Constraint value) {
-        if (value == null) {
+    public void addToConstraint(List<C> values) {
+        values.forEach(value -> addToConstraint(value));
+    }
+
+    public void removeFromConstraint(C item) {
+        if (constraint != null) {
+            constraint.remove(item);
+        }
+    }
+
+    public void removeFromConstraint(Collection<C> values) {
+        values.forEach(this::removeFromConstraint);
+    }
+
+    List<C> getConstraint() {
+        return this.constraint;
+    }
+
+    public void setConstraint(List<C> constraint) {
+        if (constraint == null) {
             throw new NullPointerException(" Setting property:constraint failed, it has cardinality NonNull, but is null");
         }
         this.constraint = constraint;
+    }
+
+    public List<C> featureExtensions() {
+        return Collections.unmodifiableList(this.constraint);
     }
 
     /*=========================================================*/
@@ -127,17 +153,18 @@ public abstract class CPrimitiveObject<Constraint, ValueType> extends CDefinedOb
      * Parameters rmcc Reference Model conformance checker lambda.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cConformsTo(CPrimitiveObject other, RMConformanceChecker rmcc) {
+    public Boolean cConformsTo(CPrimitiveObject other, BiFunction<String, String, Boolean> rmTypesConformant) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        if (other instanceof CPrimitiveObject && other.getClass().equals(getClass())) {
+            if (other == null) {
+                return false;
+            }
+            return occurrencesConformsTo(other) && getRmTypeName().equalsIgnoreCase(other.getRmTypeName());
+        } else {
+            return false;
         }
-        return result;
     }
 
     /**
@@ -179,14 +206,11 @@ public abstract class CPrimitiveObject<Constraint, ValueType> extends CDefinedOb
     /*=========================================================*/
 
 
-    protected CPrimitiveObject() {
-    }
-
     protected CPrimitiveObject(
-            Object assumedValue,
+            T assumedValue,
             Boolean isEnumeratedTypeConstraint,
-            Object constraint,
-            Object defaultValue,
+            List<C> constraint,
+            T defaultValue,
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
@@ -219,15 +243,6 @@ public abstract class CPrimitiveObject<Constraint, ValueType> extends CDefinedOb
     /*=========================================================*/
     /* * TOSTRING, EQUALS AND HASHCODE * */
     /*=========================================================*/
-
-
-    public abstract Boolean cValueConformsTo(CString other);
-
-    public abstract Boolean cValueCongruentTo(CString other);
-
-    public abstract Boolean cValueConformsTo(CTerminologyCode other);
-
-    public abstract Boolean cValueCongruentTo(CTerminologyCode other);
 
     public boolean equals(Object object) {
         if (this == object) return true;

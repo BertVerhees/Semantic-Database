@@ -96,9 +96,6 @@ public class CComplexObjectProxy extends CObject {
     /*=========================================================*/
 
 
-    protected CComplexObjectProxy() {
-    }
-
     public CComplexObjectProxy(
             String targetPath,
             String rmTypeName,
@@ -125,14 +122,17 @@ public class CComplexObjectProxy extends CObject {
     }
 
     private CComplexObjectProxy(Builder builder) {
+        super(
+                builder.rmTypeName,
+                builder.occurrences,
+                builder.nodeId,
+                builder.isDeprecated,
+                builder.siblingOrder,
+                builder.parent,
+                builder.socParent
+        );
         this.setTargetPath(builder.targetPath);
         this.setRmTypeName(builder.rmTypeName);
-        this.setOccurrences(builder.occurrences);
-        this.setNodeId(builder.nodeId);
-        this.setIsDeprecated(builder.isDeprecated);
-        this.setSiblingOrder(builder.siblingOrder);
-        this.setParent(builder.parent);
-        this.setSocParent(builder.socParent);
     }
 
     public static class Builder {

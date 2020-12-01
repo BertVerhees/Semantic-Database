@@ -89,9 +89,6 @@ public abstract class CDefinedObject<T> extends CObject {
     /*=========================================================*/
 
 
-    protected CDefinedObject() {
-    }
-
     protected CDefinedObject(
             T defaultValue,
             String rmTypeName,

@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.util.Objects;
+import java.util.function.BiFunction;
 
 import nl.rosa.semanticdatabase.aom2.utils.AOMUtils;
 import semanticdatabase.base.conformance_checker.RMConformanceChecker;
@@ -195,18 +196,18 @@ public abstract class CObject extends ArchetypeConstraint {
      * Parameters other C_OBJECT from a flat parent archetype.
      * cardinality: 1..1
      */
-    public Boolean occurrencesConformsTo(CObject other) {
+    public boolean occurrencesConformsTo(CObject other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        if (occurrences != null && other.occurrences != null) {
+            return other.occurrences.contains(occurrences);
+        } else {
+            return true;
         }
-        return result;
     }
+
+
 
     /**
      * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
@@ -215,19 +216,30 @@ public abstract class CObject extends ArchetypeConstraint {
      * <p>
      * Post: Result = existence_conforms_to (other) and is_single and other.is_single) or else (is_multiple and cardinality_conforms_to (other)
      */
-    @Override
-    public Boolean cConformsTo(ArchetypeConstraint other, RMConformanceChecker rmcc) {
+    public boolean cConformsTo(CObject other, BiFunction<String, String, Boolean> rmTypesConformant) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
+        return nodeIdConformsTo(other) &&
+                occurrencesConformsTo(other)
+                && typeNameConformsTo(other, rmTypesConformant);
 
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
     }
+
+    public boolean typeNameConformsTo(CObject other, BiFunction<String, String, Boolean> rmTypesConformant) {
+        if (other.getRmTypeName() == null || getRmTypeName() == null) {
+            return true;//these are not nullable, but we're not throwing exceptions here
+        }
+        if (other.getRmTypeName().equalsIgnoreCase(getRmTypeName())) {
+            return true;
+        }
+        return rmTypesConformant.apply(getRmTypeName(), other.getRmTypeName());
+    }
+
+    public boolean nodeIdConformsTo(CObject other) {
+        return AOMUtils.codesConformant(this.getNodeId(), other.getNodeId());
+    }
+
 
     /**
      * True if this C_ATTRIBUTE has an existence constraint of 0..0, i.e.
