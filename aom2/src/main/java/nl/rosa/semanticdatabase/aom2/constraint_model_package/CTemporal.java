@@ -1,5 +1,9 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
+import semanticdatabase.foundation_types.interval.Interval;
+import semanticdatabase.foundation_types.interval.MultiplicityInterval;
+
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -9,7 +13,7 @@ import java.util.Objects;
  * <p>
  * Purpose Abstract parent of C_ORDERED types whose base type is an ISO date/time type.
  */
-public abstract class CTemporal<T> extends COrdered {
+public abstract class CTemporal<T> extends COrdered<T> {
 
     //***** CTemporal<t> *****
 
@@ -23,6 +27,8 @@ public abstract class CTemporal<T> extends COrdered {
      * cardinality: 0..1
      */
     private String patternConstraint;
+
+
 
     /*=========================================================*/
     /* * POJOS * */
@@ -109,20 +115,6 @@ public abstract class CTemporal<T> extends COrdered {
         }
         return result;
     }
-
-    //***** CTemporal<t> *****
-
-    /*=========================================================*/
-    /* * BUILD PATTERN AND CONSTRUCTOR * */
-    /*=========================================================*/
-
-
-    public CTemporal(
-            String patternConstraint
-    ) {
-        this.patternConstraint = patternConstraint;
-    }
-
 
     //***** CTemporal<t> *****
 

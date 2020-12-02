@@ -84,35 +84,6 @@ public abstract class CDefinedObject<T> extends CObject {
 
     //***** CDefinedObject *****
 
-    /*=========================================================*/
-    /* * BUILD PATTERN AND CONSTRUCTOR * */
-    /*=========================================================*/
-
-
-    protected CDefinedObject(
-            T defaultValue,
-            String rmTypeName,
-            MultiplicityInterval occurrences,
-            String nodeId,
-            Boolean isDeprecated,
-            SiblingOrder siblingOrder,
-            ArchetypeConstraint parent,
-            CSecondOrder socParent
-    ) {
-        super(
-                rmTypeName,
-                occurrences,
-                nodeId,
-                isDeprecated,
-                siblingOrder,
-                parent,
-                socParent
-        );
-        this.defaultValue = defaultValue;
-    }
-
-
-    //***** CDefinedObject *****
 
     /*=========================================================*/
     /* * TOSTRING, EQUALS AND HASHCODE * */

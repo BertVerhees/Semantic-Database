@@ -1,7 +1,11 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
+import java.time.temporal.Temporal;
+import java.util.List;
 import java.util.Objects;
+import java.util.function.BiFunction;
 
+import semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import semanticdatabase.foundation_types.interval.Interval;
 import semanticdatabase.foundation_types.time_types.Iso8601Date;
 import semanticdatabase.base_types.definitions_package.ValidityKind;
@@ -15,7 +19,7 @@ import semanticdatabase.base_types.definitions_package.ValidityKind;
  * There is no validity flag for year, since it must always be by definition mandatory in order to have a sensible date at all.
  * Syntax expressions of instances of this class include "YYYY-??-??" (date with optional month and day).
  */
-public class CDate extends CTemporal {
+public class CDate extends CTemporal<Temporal> {
 
     //***** CDate *****
 
@@ -28,7 +32,7 @@ public class CDate extends CTemporal {
      * one or more intervals of Iso8601_date.
      * cardinality: 0..1 (redefined)
      */
-    private Interval<Iso8601Date> constraint;
+    private List<Interval<Iso8601Date>> constraint;
 
     /**
      * Default value set in a template, and present in an operational template.
@@ -52,11 +56,15 @@ public class CDate extends CTemporal {
      * one or more intervals of Iso8601_date.
      * cardinality: 0..1 (redefined)
      */
-    public Interval<Iso8601Date> getConstraint() {
+    public List<Interval<Iso8601Date>> getConstraint() {
         return constraint;
     }
 
-    public void setConstraint(Interval<Iso8601Date> value) {
+    @Override
+    public void setConstraint(List<Interval<Iso8601Date>> value) {
+        if (constraint == null) {
+            throw new NullPointerException(" Setting property:constraint failed, it has cardinality NonNull, but is null");
+        }
         this.constraint = constraint;
     }
 
@@ -69,6 +77,26 @@ public class CDate extends CTemporal {
         return defaultValue;
     }
 
+    /**
+     * True if a_value is valid with respect to constraint expressed in concrete instance of this type.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param a_value
+     */
+    @Override
+    public Boolean validValue(Temporal a_value) {
+        return null;
+    }
+
+    /**
+     * Generate a prototype value from this constraint object.
+     * cardinality: 1..1 (abstract)
+     */
+    @Override
+    public Temporal prototypeValue() {
+        return null;
+    }
+
     public void setDefaultValue(Iso8601Date value) {
         this.defaultValue = defaultValue;
     }
@@ -79,6 +107,35 @@ public class CDate extends CTemporal {
      */
     public Iso8601Date getAssumedValue() {
         return assumedValue;
+    }
+
+    @Override
+    public void setConstraint(List<Interval<Temporal>> constraint) {
+
+    }
+
+    /**
+     * True if this node expresses a value constraint that conforms to that of other.
+     * Effected in descendants.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param other
+     */
+    @Override
+    public Boolean cValueConformsTo(CObject other) {
+        return null;
+    }
+
+    /**
+     * True if this node expresses the same value constraint as other.
+     * Effected in descendants.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param other
+     */
+    @Override
+    public Boolean cValueCongruentTo(CObject other) {
+        return null;
     }
 
     public void setAssumedValue(Iso8601Date value) {
@@ -193,6 +250,59 @@ public class CDate extends CTemporal {
     /* * TOSTRING, EQUALS AND HASHCODE * */
     /*=========================================================*/
 
+
+    /**
+     * True if a_pattern is a valid constraint.
+     * Define in concrete descendants.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param a_pattern
+     */
+    @Override
+    public Boolean validPatternConstraint(String a_pattern) {
+        return null;
+    }
+
+    /**
+     * Return True if a_pattern can be replaced by an_other_pattern in a specialised constraint.
+     * Define in concrete subtypes.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param a_pattern
+     * @param an_other_pattern
+     */
+    @Override
+    public Boolean validPatternConstraintReplacement(String a_pattern, String an_other_pattern) {
+        return null;
+    }
+
+    /**
+     * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
+     * Typically used during validation of special-ised archetype nodes.
+     * Parameters rmcc RM conformance checker - a lambda (i.e.
+     * function object) that can compute conformance of type-names within the Reference Model on which the current archetype is based.
+     * The signature provides two arguments representing respectively, the rm_type_name of the current node and the rm_type_name of the node being redefined in a specialisation parent archetype.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param other
+     * @param rmcc
+     */
+    @Override
+    public Boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
+        return null;
+    }
+
+    /**
+     * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.
+     * Typically used to test if an inherited node locally contains any constraints.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param other
+     */
+    @Override
+    public Boolean cCongruentTo(ArchetypeConstraint other) {
+        return null;
+    }
 
     public boolean equals(Object object) {
         if (this == object) return true;

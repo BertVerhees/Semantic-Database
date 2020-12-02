@@ -63,31 +63,10 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
         constraint.add(value);
     }
 
-    public void addToConstraint(List<Interval> values) {
-        values.forEach(value -> addToConstraint(value));
-    }
-
     public void removeFromConstraint(Interval item) {
         if (constraint != null) {
             constraint.remove(item);
         }
-    }
-
-    public void removeFromConstraint(Collection<Interval> values) {
-        values.forEach(this::removeFromConstraint);
-    }
-
-    public List<Interval> getConstraint() {
-        return this.constraint;
-    }
-
-    public COrdered<T> setConstraint(List<Interval> constraint) {
-        this.constraint = constraint;
-        return this;
-    }
-
-    public List<Interval> constraint() {
-        return Collections.unmodifiableList(this.constraint);
     }
 
     /**
@@ -169,46 +148,6 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
         return result;
     }
 
-    //***** COrdered<t> *****
-
-    /*=========================================================*/
-    /* * BUILD PATTERN AND CONSTRUCTOR * */
-    /*=========================================================*/
-
-
-    protected COrdered(
-            List<Interval> constraint,
-            T defaultValue,
-            T assumedValue,
-            Boolean isEnumeratedTypeConstraint,
-            String rmTypeName,
-            MultiplicityInterval occurrences,
-            String nodeId,
-            Boolean isDeprecated,
-            SiblingOrder siblingOrder,
-            ArchetypeConstraint parent,
-            CSecondOrder socParent
-    ) {
-        super(
-                assumedValue,
-                isEnumeratedTypeConstraint,
-                constraint,
-                defaultValue,
-                rmTypeName,
-                occurrences,
-                nodeId,
-                isDeprecated,
-                siblingOrder,
-                parent,
-                socParent
-        );
-        this.constraint = constraint;
-        this.defaultValue = defaultValue;
-        this.assumedValue = assumedValue;
-    }
-
-
-    //***** COrdered<t> *****
 
     /*=========================================================*/
     /* * TOSTRING, EQUALS AND HASHCODE * */

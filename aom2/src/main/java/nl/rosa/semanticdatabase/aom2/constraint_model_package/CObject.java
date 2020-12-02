@@ -262,39 +262,6 @@ public abstract class CObject extends ArchetypeConstraint {
     //***** CObject *****
 
     /*=========================================================*/
-    /* * BUILD PATTERN AND CONSTRUCTOR * */
-    /*=========================================================*/
-
-    protected CObject(
-            String rmTypeName,
-            MultiplicityInterval occurrences,
-            String nodeId,
-            Boolean isDeprecated,
-            SiblingOrder siblingOrder,
-            ArchetypeConstraint parent,
-            CSecondOrder socParent
-    ) {
-        super(
-                parent,
-                socParent
-        );
-        if (rmTypeName == null) {
-            throw new NullPointerException("Property:rmTypeName has cardinality NonNull, but is null");
-        }
-        if (nodeId == null) {
-            throw new NullPointerException("Property:nodeId has cardinality NonNull, but is null");
-        }
-        this.rmTypeName = rmTypeName;
-        this.occurrences = occurrences;
-        this.nodeId = nodeId;
-        this.isDeprecated = isDeprecated;
-        this.siblingOrder = siblingOrder;
-    }
-
-
-    //***** CObject *****
-
-    /*=========================================================*/
     /* * TOSTRING, EQUALS AND HASHCODE * */
     /*=========================================================*/
 

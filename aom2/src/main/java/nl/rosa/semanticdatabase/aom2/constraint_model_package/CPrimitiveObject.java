@@ -95,16 +95,7 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
         values.forEach(this::removeFromConstraint);
     }
 
-    public List<C> getConstraint() {
-        return this.constraint;
-    }
-
-    public void setConstraint(List<C> constraint) {
-        if (constraint == null) {
-            throw new NullPointerException(" Setting property:constraint failed, it has cardinality NonNull, but is null");
-        }
-        this.constraint = constraint;
-    }
+    public abstract void setConstraint(List<C> constraint);
 
     public List<C> constraint() {
         return Collections.unmodifiableList(this.constraint);
@@ -199,43 +190,6 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
      */
     public abstract Boolean cValueCongruentTo(CObject other);
 
-    //***** CPrimitiveObject *****
-
-    /*=========================================================*/
-    /* * BUILD PATTERN AND CONSTRUCTOR * */
-    /*=========================================================*/
-
-
-    protected CPrimitiveObject(
-            T assumedValue,
-            Boolean isEnumeratedTypeConstraint,
-            List<C> constraint,
-            T defaultValue,
-            String rmTypeName,
-            MultiplicityInterval occurrences,
-            String nodeId,
-            Boolean isDeprecated,
-            SiblingOrder siblingOrder,
-            ArchetypeConstraint parent,
-            CSecondOrder socParent
-    ) {
-        super(
-                defaultValue,
-                rmTypeName,
-                occurrences,
-                nodeId,
-                isDeprecated,
-                siblingOrder,
-                parent,
-                socParent
-        );
-        if (constraint == null) {
-            throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
-        }
-        this.assumedValue = assumedValue;
-        this.isEnumeratedTypeConstraint = isEnumeratedTypeConstraint;
-        this.constraint = constraint;
-    }
 
 
     //***** CPrimitiveObject *****
