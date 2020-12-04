@@ -1,7 +1,9 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import semanticdatabase.foundation_types.interval.Interval;
+import semanticdatabase.foundation_types.interval.MultiplicityInterval;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -11,7 +13,7 @@ import java.util.Objects;
  * <p>
  * Constraint on instances of Integer.
  */
-public class CInteger extends COrdered {
+public class CInteger extends COrdered<Long> {
 
     //***** CInteger *****
 
@@ -90,31 +92,70 @@ public class CInteger extends COrdered {
 
 
     public CInteger(
-            Interval<Integer> constraint,
-            Integer defaultValue,
-            Integer assumedValue
+            //CDefinedObject
+            //CPrimitiveObject
+            Long assumedValue,
+            Boolean isEnumeratedTypeConstraint,
+            List<Interval<Long>> constraint,
+            //CDefinedObject
+            Long defaultValue,
+            //CObject
+            String rmTypeName,
+            MultiplicityInterval occurrences,
+            String nodeId,
+            Boolean isDeprecated,
+            SiblingOrder siblingOrder,
+            //ArchetypeConstraint
+            ArchetypeConstraint parent,
+            CSecondOrder socParent
     ) {
-        if (constraint == null) {
-            throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
-        }
-        this.constraint = constraint;
-        this.defaultValue = defaultValue;
-        this.assumedValue = assumedValue;
+        super(
+                assumedValue,
+                isEnumeratedTypeConstraint,
+                constraint,
+                defaultValue,
+                rmTypeName,
+                occurrences,
+                nodeId,
+                isDeprecated,
+                siblingOrder,
+                parent,
+                socParent
+        );
     }
 
     private CInteger(Builder builder) {
-        this.setConstraint(builder.constraint);
-        this.setDefaultValue(builder.defaultValue);
-        this.setAssumedValue(builder.assumedValue);
+        this(
+                builder.assumedValue,
+                builder.isEnumeratedTypeConstraint
+                builder.constraint,
+                builder.defaultValue,
+                builder.rmTypeName,
+                builder.occurrences,
+                builder.nodeId,
+                builder.isDeprecated,
+                builder.siblingOrder,
+                builder.parent,
+                builder.socParent
+        );
     }
 
     public static class Builder {
-        private final Interval<integer> constraint;  //required
-        private Integer defaultValue;
-        private Real assumedValue;
+        private final List<Interval<Double>> constraint;  //required
+        private Double defaultValue;
+        private Double assumedValue;
+        private Boolean isEnumeratedTypeConstraint;
+        private String rmTypeName;
+        private MultiplicityInterval occurrences;
+        private String nodeId;
+        private Boolean isDeprecated;
+        private SiblingOrder siblingOrder;
+        private ArchetypeConstraint parent;
+        private CSecondOrder socParent;
+
 
         public Builder(
-                Interval<integer> constraint
+                List<Interval<Double>> constraint
         ) {
             if (constraint == null) {
                 throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
@@ -122,13 +163,53 @@ public class CInteger extends COrdered {
             this.constraint = constraint;
         }
 
-        public Builder setDefaultValue(Integer value) {
-            this.defaultValue = defaultValue;
+        public Builder setDefaultValue(Double value) {
+            this.defaultValue = value;
             return this;
         }
 
-        public Builder setAssumedValue(Real value) {
-            this.assumedValue = assumedValue;
+        public Builder setAssumedValue(Double value) {
+            this.assumedValue = value;
+            return this;
+        }
+
+        public Builder setEnumeratedTypeConstraint(Boolean value) {
+            this.isEnumeratedTypeConstraint = value;
+            return this;
+        }
+
+        public Builder setRmTypeName(String value) {
+            this.rmTypeName = value;
+            return this;
+        }
+
+        public Builder setOccurrences(MultiplicityInterval value) {
+            this.occurrences = value;
+            return this;
+        }
+
+        public Builder setNodeId(String value) {
+            this.nodeId = value;
+            return this;
+        }
+
+        public Builder setDeprecated(Boolean value) {
+            isDeprecated = value;
+            return this;
+        }
+
+        public Builder setSiblingOrder(SiblingOrder value) {
+            this.siblingOrder = value;
+            return this;
+        }
+
+        public Builder setParent(ArchetypeConstraint value) {
+            this.parent = value;
+            return this;
+        }
+
+        public Builder setSocParent(CSecondOrder value) {
+            this.socParent = value;
             return this;
         }
 

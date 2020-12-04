@@ -1,12 +1,14 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAccessor;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.BiFunction;
 
 import semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import semanticdatabase.foundation_types.interval.Interval;
+import semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import semanticdatabase.foundation_types.time_types.Iso8601Date;
 import semanticdatabase.base_types.definitions_package.ValidityKind;
 
@@ -19,7 +21,7 @@ import semanticdatabase.base_types.definitions_package.ValidityKind;
  * There is no validity flag for year, since it must always be by definition mandatory in order to have a sensible date at all.
  * Syntax expressions of instances of this class include "YYYY-??-??" (date with optional month and day).
  */
-public class CDate extends CTemporal<Temporal> {
+public class CDate extends CTemporal<TemporalAccessor> {
 
     //***** CDate *****
 
@@ -32,20 +34,20 @@ public class CDate extends CTemporal<Temporal> {
      * one or more intervals of Iso8601_date.
      * cardinality: 0..1 (redefined)
      */
-    private List<Interval<Iso8601Date>> constraint;
+    private List<Interval<TemporalAccessor>> constraint;
 
     /**
      * Default value set in a template, and present in an operational template.
      * Generally limited to leaf and near-leaf nodes.
      * cardinality: 0..1 (redefined)
      */
-    private Iso8601Date defaultValue;
+    private TemporalAccessor defaultValue;
 
     /**
      * Value to be assumed if none sent in data.
      * cardinality: 0..1 (redefined)
      */
-    private Iso8601Date assumedValue;
+    private TemporalAccessor assumedValue;
 
     /*=========================================================*/
     /* * POJOS * */
@@ -56,12 +58,12 @@ public class CDate extends CTemporal<Temporal> {
      * one or more intervals of Iso8601_date.
      * cardinality: 0..1 (redefined)
      */
-    public List<Interval<Iso8601Date>> getConstraint() {
+    public List<Interval<TemporalAccessor>> getConstraint() {
         return constraint;
     }
 
     @Override
-    public void setConstraint(List<Interval<Iso8601Date>> value) {
+    public void setConstraint(List<Interval<TemporalAccessor>> value) {
         if (constraint == null) {
             throw new NullPointerException(" Setting property:constraint failed, it has cardinality NonNull, but is null");
         }
@@ -73,7 +75,7 @@ public class CDate extends CTemporal<Temporal> {
      * Generally limited to leaf and near-leaf nodes.
      * cardinality: 0..1 (redefined)
      */
-    public Iso8601Date getDefaultValue() {
+    public TemporalAccessor getDefaultValue() {
         return defaultValue;
     }
 
@@ -195,46 +197,135 @@ public class CDate extends CTemporal<Temporal> {
     /*=========================================================*/
 
 
-    protected CDate() {
-    }
-
     public CDate(
-            Interval<Iso8601Date> constraint,
-            Iso8601Date defaultValue,
-            Iso8601Date assumedValue
+            //CTemporal
+            String patternConstraint,
+            //CDefinedObject
+            //CPrimitiveObject
+            TemporalAccessor assumedValue,
+            Boolean isEnumeratedTypeConstraint,
+            List<Interval<TemporalAccessor>> constraint,
+            //CDefinedObject
+            TemporalAccessor defaultValue,
+            //CObject
+            String rmTypeName,
+            MultiplicityInterval occurrences,
+            String nodeId,
+            Boolean isDeprecated,
+            SiblingOrder siblingOrder,
+            //ArchetypeConstraint
+            ArchetypeConstraint parent,
+            CSecondOrder socParent
     ) {
-        this.constraint = constraint;
-        this.defaultValue = defaultValue;
-        this.assumedValue = assumedValue;
+        super(
+                patternConstraint,
+                assumedValue,
+                isEnumeratedTypeConstraint,
+                constraint,
+                defaultValue,
+                rmTypeName,
+                occurrences,
+                nodeId,
+                isDeprecated,
+                siblingOrder,
+                parent,
+                socParent
+        );
     }
 
     private CDate(Builder builder) {
-        this.setConstraint(builder.constraint);
-        this.setDefaultValue(builder.defaultValue);
-        this.setAssumedValue(builder.assumedValue);
+        this(
+                builder.patternConstraint,
+                builder.assumedValue,
+                builder.isEnumeratedTypeConstraint,
+                builder.constraint,
+                builder.defaultValue,
+                builder.rmTypeName,
+                builder.occurrences,
+                builder.nodeId,
+                builder.isDeprecated,
+                builder.siblingOrder,
+                builder.parent,
+                builder.socParent
+        );
     }
 
     public static class Builder {
-        private Interval<Iso8601Date> constraint;
-        private Iso8601Date defaultValue;
-        private Iso8601Date assumedValue;
+        private final List<Interval<TemporalAccessor>> constraint;  //required
+        private String patternConstraint;
+        private TemporalAccessor defaultValue;
+        private TemporalAccessor assumedValue;
+        private Boolean isEnumeratedTypeConstraint;
+        private String rmTypeName;
+        private MultiplicityInterval occurrences;
+        private String nodeId;
+        private Boolean isDeprecated;
+        private SiblingOrder siblingOrder;
+        private ArchetypeConstraint parent;
+        private CSecondOrder socParent;
+
 
         public Builder(
+                List<Interval<TemporalAccessor>> constraint
         ) {
-        }
-
-        public Builder setConstraint(Interval<Iso8601Date> value) {
+            if (constraint == null) {
+                throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
+            }
             this.constraint = constraint;
+        }
+
+        public Builder setPatternConstraint(String value) {
+            this.patternConstraint = value;
             return this;
         }
 
-        public Builder setDefaultValue(Iso8601Date value) {
-            this.defaultValue = defaultValue;
+        public Builder setDefaultValue(TemporalAccessor value) {
+            this.defaultValue = value;
             return this;
         }
 
-        public Builder setAssumedValue(Iso8601Date value) {
-            this.assumedValue = assumedValue;
+        public Builder setAssumedValue(TemporalAccessor value) {
+            this.assumedValue = value;
+            return this;
+        }
+
+        public Builder setEnumeratedTypeConstraint(Boolean value) {
+            this.isEnumeratedTypeConstraint = value;
+            return this;
+        }
+
+        public Builder setRmTypeName(String value) {
+            this.rmTypeName = value;
+            return this;
+        }
+
+        public Builder setOccurrences(MultiplicityInterval value) {
+            this.occurrences = value;
+            return this;
+        }
+
+        public Builder setNodeId(String value) {
+            this.nodeId = value;
+            return this;
+        }
+
+        public Builder setDeprecated(Boolean value) {
+            isDeprecated = value;
+            return this;
+        }
+
+        public Builder setSiblingOrder(SiblingOrder value) {
+            this.siblingOrder = value;
+            return this;
+        }
+
+        public Builder setParent(ArchetypeConstraint value) {
+            this.parent = value;
+            return this;
+        }
+
+        public Builder setSocParent(CSecondOrder value) {
+            this.socParent = value;
             return this;
         }
 

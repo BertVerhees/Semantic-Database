@@ -319,6 +319,7 @@ public class CAttribute extends ArchetypeConstraint {
             String differentialPath,
             Cardinality cardinality,
             Boolean isMultiple,
+            //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
     ) {
@@ -341,15 +342,15 @@ public class CAttribute extends ArchetypeConstraint {
     }
 
     private CAttribute(Builder builder) {
-        super(
+        this(
+                builder.rmAttributeName,
+                builder.existence,
+                builder.children,
+                builder.differentialPath,
+                builder.cardinality,
+                builder.isMultiple,
                 builder.parent,
                 builder.socParent);
-        this.setRmAttributeName(builder.rmAttributeName);
-        this.setExistence(builder.existence);
-        this.setChildren(builder.children);
-        this.setDifferentialPath(builder.differentialPath);
-        this.setCardinality(builder.cardinality);
-        this.setIsMultiple(builder.isMultiple);
     }
 
     public static class Builder {
@@ -366,43 +367,37 @@ public class CAttribute extends ArchetypeConstraint {
                 String rmAttributeName,
                 Boolean isMultiple
         ) {
-            if (rmAttributeName == null) {
-                throw new NullPointerException("Property:rmAttributeName has cardinality NonNull, but is null");
-            }
-            if (isMultiple == null) {
-                throw new NullPointerException("Property:isMultiple has cardinality NonNull, but is null");
-            }
             this.rmAttributeName = rmAttributeName;
             this.isMultiple = isMultiple;
         }
 
         public Builder setExistence(MultiplicityInterval value) {
-            this.existence = existence;
+            this.existence = value;
             return this;
         }
 
         public Builder setChildren(List<CObject> value) {
-            this.children = children;
+            this.children = value;
             return this;
         }
 
         public Builder setDifferentialPath(String value) {
-            this.differentialPath = differentialPath;
+            this.differentialPath = value;
             return this;
         }
 
         public Builder setCardinality(Cardinality value) {
-            this.cardinality = cardinality;
+            this.cardinality = value;
             return this;
         }
 
         public Builder setParent(ArchetypeConstraint value) {
-            this.parent = parent;
+            this.parent = value;
             return this;
         }
 
         public Builder setSocParent(CSecondOrder value) {
-            this.socParent = socParent;
+            this.socParent = value;
             return this;
         }
 

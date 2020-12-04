@@ -1,9 +1,8 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
-import java.util.Objects;
-
-import semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import semanticdatabase.base.paths.AdlCodeDefinitions;
+
+import java.util.Objects;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -165,6 +164,17 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
     }
 
     //***** ArchetypeConstraint *****
+
+    /*=========================================================*/
+    /* * CONSTRUCTOR * */
+    /*=========================================================*/
+
+    protected ArchetypeConstraint(ArchetypeConstraint parent, CSecondOrder socParent) {
+        this.parent = parent;
+        this.socParent = socParent;
+    }
+
+
 
     /*=========================================================*/
     /* * TOSTRING, EQUALS AND HASHCODE * */

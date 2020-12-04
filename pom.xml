@@ -16,9 +16,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>semanticdatabase</groupId>
-    <artifactId>aom2</artifactId>
+    <artifactId>semanticdatabase</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>aom2</name>
+    <name>semanticdatabase</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

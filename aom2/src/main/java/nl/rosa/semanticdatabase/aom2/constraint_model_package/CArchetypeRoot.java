@@ -66,21 +66,23 @@ public class CArchetypeRoot extends CComplexObject {
     /*=========================================================*/
 
 
-    protected CArchetypeRoot() {
-    }
-
     public CArchetypeRoot(
             String archetypeRef,
+            //CComplexObject
             List<CAttribute> attributes,
             List<CAttributeTuple> attributeTuples,
+            //CDefinedObject
             Object defaultValue,
+            //CObject
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
             Boolean isDeprecated,
             SiblingOrder siblingOrder,
+            //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
+
     ) {
         super(
                 attributes,
@@ -101,17 +103,19 @@ public class CArchetypeRoot extends CComplexObject {
     }
 
     private CArchetypeRoot(Builder builder) {
-        this.setArchetypeRef(builder.archetypeRef);
-        this.setAttributes(builder.attributes);
-        this.setAttributeTuples(builder.attributeTuples);
-        this.setDefaultValue(builder.defaultValue);
-        this.setRmTypeName(builder.rmTypeName);
-        this.setOccurrences(builder.occurrences);
-        this.setNodeId(builder.nodeId);
-        this.setIsDeprecated(builder.isDeprecated);
-        this.setSiblingOrder(builder.siblingOrder);
-        this.setParent(builder.parent);
-        this.setSocParent(builder.socParent);
+        this(
+                builder.archetypeRef,
+                builder.attributes,
+                builder.attributeTuples,
+                builder.defaultValue,
+                builder.rmTypeName,
+                builder.occurrences,
+                builder.nodeId,
+                builder.isDeprecated,
+                builder.siblingOrder,
+                builder.parent,
+                builder.socParent
+        );
     }
 
     public static class Builder {
@@ -147,42 +151,42 @@ public class CArchetypeRoot extends CComplexObject {
         }
 
         public Builder setAttributes(List<CAttribute> value) {
-            this.attributes = attributes;
+            this.attributes = value;
             return this;
         }
 
         public Builder setAttributeTuples(List<CAttributeTuple> value) {
-            this.attributeTuples = attributeTuples;
+            this.attributeTuples = value;
             return this;
         }
 
         public Builder setDefaultValue(Object value) {
-            this.defaultValue = defaultValue;
+            this.defaultValue = value;
             return this;
         }
 
         public Builder setOccurrences(MultiplicityInterval value) {
-            this.occurrences = occurrences;
+            this.occurrences = value;
             return this;
         }
 
         public Builder setIsDeprecated(Boolean value) {
-            this.isDeprecated = isDeprecated;
+            this.isDeprecated = value;
             return this;
         }
 
         public Builder setSiblingOrder(SiblingOrder value) {
-            this.siblingOrder = siblingOrder;
+            this.siblingOrder = value;
             return this;
         }
 
         public Builder setParent(ArchetypeConstraint value) {
-            this.parent = parent;
+            this.parent = value;
             return this;
         }
 
         public Builder setSocParent(CSecondOrder value) {
-            this.socParent = socParent;
+            this.socParent = value;
             return this;
         }
 

@@ -31,7 +31,7 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
      * Concrete types generated in descendants via template binding.
      * cardinality: 0..1 (redefined)
      */
-    private List<Interval> constraint;
+    private List<Interval<T>> constraint;
 
     /**
      * Default value set in a template, and present in an operational template.
@@ -148,6 +148,40 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
         return result;
     }
 
+    /*=========================================================*/
+    /* * CONSTRUCTOR * */
+    /*=========================================================*/
+
+    protected COrdered(
+            //CPrimitiveObject
+            T assumedValue,
+            Boolean isEnumeratedTypeConstraint,
+            List<Interval<T>> constraint,
+            //CDefinedObject
+            T defaultValue,
+            //CObject
+            String rmTypeName,
+            MultiplicityInterval occurrences,
+            String nodeId,
+            Boolean isDeprecated,
+            SiblingOrder siblingOrder,
+            //ArchetypeConstraint
+            ArchetypeConstraint parent,
+            CSecondOrder socParent
+            ) {
+        super(
+                assumedValue,
+                isEnumeratedTypeConstraint,
+                constraint,
+                defaultValue,
+                rmTypeName,
+                occurrences,
+                nodeId,
+                isDeprecated,
+                siblingOrder,
+                parent,
+                socParent);
+    }
 
     /*=========================================================*/
     /* * TOSTRING, EQUALS AND HASHCODE * */

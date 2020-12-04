@@ -103,9 +103,10 @@ public class CComplexObjectProxy extends CObject {
             String nodeId,
             Boolean isDeprecated,
             SiblingOrder siblingOrder,
+            //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
-    ) {
+        ) {
         super(
                 rmTypeName,
                 occurrences,
@@ -122,7 +123,8 @@ public class CComplexObjectProxy extends CObject {
     }
 
     private CComplexObjectProxy(Builder builder) {
-        super(
+        this(
+                builder.targetPath,
                 builder.rmTypeName,
                 builder.occurrences,
                 builder.nodeId,
@@ -131,8 +133,6 @@ public class CComplexObjectProxy extends CObject {
                 builder.parent,
                 builder.socParent
         );
-        this.setTargetPath(builder.targetPath);
-        this.setRmTypeName(builder.rmTypeName);
     }
 
     public static class Builder {
@@ -150,42 +150,33 @@ public class CComplexObjectProxy extends CObject {
                 String rmTypeName,
                 String nodeId
         ) {
-            if (targetPath == null) {
-                throw new NullPointerException("Property:targetPath has cardinality NonNull, but is null");
-            }
-            if (rmTypeName == null) {
-                throw new NullPointerException("Property:rmTypeName has cardinality NonNull, but is null");
-            }
-            if (nodeId == null) {
-                throw new NullPointerException("Property:nodeId has cardinality NonNull, but is null");
-            }
             this.targetPath = targetPath;
             this.rmTypeName = rmTypeName;
             this.nodeId = nodeId;
         }
 
         public Builder setOccurrences(MultiplicityInterval value) {
-            this.occurrences = occurrences;
+            this.occurrences = value;
             return this;
         }
 
         public Builder setIsDeprecated(Boolean value) {
-            this.isDeprecated = isDeprecated;
+            this.isDeprecated = value;
             return this;
         }
 
         public Builder setSiblingOrder(SiblingOrder value) {
-            this.siblingOrder = siblingOrder;
+            this.siblingOrder = value;
             return this;
         }
 
         public Builder setParent(ArchetypeConstraint value) {
-            this.parent = parent;
+            this.parent = value;
             return this;
         }
 
         public Builder setSocParent(CSecondOrder value) {
-            this.socParent = socParent;
+            this.socParent = value;
             return this;
         }
 

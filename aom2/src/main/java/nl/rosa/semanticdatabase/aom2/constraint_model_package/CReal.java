@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 .;
 import semanticdatabase.foundation_types.interval.Interval;
+import semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import semanticdatabase.foundation_types.primitive_types.Real;
 
 /**
@@ -67,16 +68,68 @@ public class CReal extends COrdered<Double> {
     /* * BUILD PATTERN AND CONSTRUCTOR * */
     /*=========================================================*/
 
+    public CReal(
+            //CDefinedObject
+            //CPrimitiveObject
+            Double assumedValue,
+            Boolean isEnumeratedTypeConstraint,
+            List<Interval<Double>> constraint,
+            //CDefinedObject
+            Double defaultValue,
+            //CObject
+            String rmTypeName,
+            MultiplicityInterval occurrences,
+            String nodeId,
+            Boolean isDeprecated,
+            SiblingOrder siblingOrder,
+            //ArchetypeConstraint
+            ArchetypeConstraint parent,
+            CSecondOrder socParent
+    ) {
+        super(
+                assumedValue,
+                isEnumeratedTypeConstraint,
+                constraint,
+                defaultValue,
+                rmTypeName,
+                occurrences,
+                nodeId,
+                isDeprecated,
+                siblingOrder,
+                parent,
+                socParent
+        );
+    }
+
     private CReal(Builder builder) {
-        this.setConstraint(builder.constraint);
-        this.setDefaultValue(builder.defaultValue);
-        this.setAssumedValue(builder.assumedValue);
+        this(
+                builder.assumedValue,
+                builder.isEnumeratedTypeConstraint
+                builder.constraint,
+                builder.defaultValue,
+                builder.rmTypeName,
+                builder.occurrences,
+                builder.nodeId,
+                builder.isDeprecated,
+                builder.siblingOrder,
+                builder.parent,
+                builder.socParent
+        );
     }
 
     public static class Builder {
         private final List<Interval<Double>> constraint;  //required
         private Double defaultValue;
         private Double assumedValue;
+        private Boolean isEnumeratedTypeConstraint;
+        private String rmTypeName;
+        private MultiplicityInterval occurrences;
+        private String nodeId;
+        private Boolean isDeprecated;
+        private SiblingOrder siblingOrder;
+        private ArchetypeConstraint parent;
+        private CSecondOrder socParent;
+
 
         public Builder(
                 List<Interval<Double>> constraint
@@ -88,12 +141,52 @@ public class CReal extends COrdered<Double> {
         }
 
         public Builder setDefaultValue(Double value) {
-            this.defaultValue = defaultValue;
+            this.defaultValue = value;
             return this;
         }
 
         public Builder setAssumedValue(Double value) {
-            this.assumedValue = assumedValue;
+            this.assumedValue = value;
+            return this;
+        }
+
+        public Builder setEnumeratedTypeConstraint(Boolean value) {
+            this.isEnumeratedTypeConstraint = value;
+            return this;
+        }
+
+        public Builder setRmTypeName(String value) {
+            this.rmTypeName = value;
+            return this;
+        }
+
+        public Builder setOccurrences(MultiplicityInterval value) {
+            this.occurrences = value;
+            return this;
+        }
+
+        public Builder setNodeId(String value) {
+            this.nodeId = value;
+            return this;
+        }
+
+        public Builder setDeprecated(Boolean value) {
+            isDeprecated = value;
+            return this;
+        }
+
+        public Builder setSiblingOrder(SiblingOrder value) {
+            this.siblingOrder = value;
+            return this;
+        }
+
+        public Builder setParent(ArchetypeConstraint value) {
+            this.parent = value;
+            return this;
+        }
+
+        public Builder setSocParent(CSecondOrder value) {
+            this.socParent = value;
             return this;
         }
 

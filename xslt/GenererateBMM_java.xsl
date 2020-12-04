@@ -1001,6 +1001,13 @@
                 </xsl:for-each>
             </xsl:for-each>
         </xsl:variable>
+        <xsl:variable name="allFieldsName" as="xs:string*">
+            <xsl:for-each select="$allFields">
+                <xsl:if test="not(name = '') and kind = 'attribute'">
+                    <xsl:value-of select="do:snakeUpperCaseToCamelCase(name, 1)"/>
+                </xsl:if>
+            </xsl:for-each>
+        </xsl:variable>
         <xsl:variable name="allFieldsNameAndType" as="xs:string*">
             <xsl:for-each select="$allFields">
                 <xsl:if test="not(name = '') and kind = 'attribute'">
@@ -1107,13 +1114,25 @@
                 <!-- PRIVATE CONSTRUCTOR -->
                 <xsl:value-of
                         select="do:outputSpaces(concat($fourSp, 'private ', $class/className, '(Builder builder) {'))"/>
-                <xsl:for-each select="$allFields">
+                <xsl:value-of
+                    select="do:outputSpaces(concat($fourSp,$fourSp, 'this('))"/>
+                <xsl:variable name="numberOfRequired"
+                    select="count($allFields[not(replace(do:snakeUpperCaseToCamelCase(name, 1), ' ', '') = '')])"/>
+                <xsl:for-each select="$allFields[not(replace(do:snakeUpperCaseToCamelCase(name, 1), ' ', '') = '')]">
                     <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
-                    <xsl:if test="not(replace(name, ' ', '') = '')">
-                        <xsl:value-of
-                                select="do:outputSpaces(concat($fourSp, $fourSp, 'this.set', do:snakeUpperCaseToCamelCase(name, 0), '( builder.', $name, ' );'))"/>
-                    </xsl:if>
+                    <xsl:choose>
+                        <xsl:when test="position() &lt; $numberOfRequired">
+                            <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'builder.', $name, ','))"/>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <xsl:value-of
+                                select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'builder.', $name))"/>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </xsl:for-each>
+                <xsl:value-of
+                    select="do:outputSpaces(concat($fourSp,$fourSp, ');'))"/>                
                 <xsl:value-of select="do:outputSpaces(concat($fourSp, '}'))"/>
                 <xsl:value-of select="do:output('')"/>
                 <!-- BUILDER CLASS -->
@@ -1163,15 +1182,6 @@
                 <xsl:for-each
                         select="$allFields[starts-with(cardinality, '1') and not(replace(concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1)), ' ', '') = '')]">
                     <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
-                    <xsl:value-of
-                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'if ( ', $name, ' == null ) {'))"/>
-                    <xsl:value-of
-                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, $fourSp, 'throw new NullPointerException(&quot;Property:', $name, ' has cardinality NonNull, but is null&quot;);'))"/>
-                    <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, '}'))"/>
-                </xsl:for-each>
-                <xsl:for-each
-                        select="$allFields[starts-with(cardinality, '1') and not(replace(concat(do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' ', do:snakeUpperCaseToCamelCase(name, 1)), ' ', '') = '')]">
-                    <xsl:variable name="name" select="do:snakeUpperCaseToCamelCase(name, 1)"/>
                     <xsl:if test="not($name = '')">
                         <xsl:value-of
                                 select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'this.', $name, ' = ', $name, ';'))"/>
@@ -1185,7 +1195,7 @@
                     <xsl:value-of
                             select="do:outputSpaces(concat($fourSp, $fourSp, concat('public Builder set', do:snakeUpperCaseToCamelCase(name, 0), '(', do:processType($packages, do:snakeUpperCaseToCamelCase(type, 0)), ' value) {')))"/>
                     <xsl:value-of
-                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'this.', do:snakeUpperCaseToCamelCase(name, 1), ' = ', do:snakeUpperCaseToCamelCase(name, 1), ';'))"/>
+                            select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'this.', do:snakeUpperCaseToCamelCase(name, 1), ' = value;'))"/>
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, $fourSp, 'return this;'))"/>
                     <xsl:value-of select="do:outputSpaces(concat($fourSp, $fourSp, '}'))"/>
                     <xsl:value-of select="do:output('')"/>

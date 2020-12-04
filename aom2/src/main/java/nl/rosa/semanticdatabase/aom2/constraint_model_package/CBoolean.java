@@ -219,15 +219,19 @@ public class CBoolean extends CPrimitiveObject<Boolean, Boolean> {
 
 
     public CBoolean(
-            List<Boolean> constraint,
+            //CPrimitiveObject
             Boolean assumedValue,
-            Boolean defaultValue,
             Boolean isEnumeratedTypeConstraint,
+            List<Boolean> constraint,
+            //CDefinedObject
+            Boolean defaultValue,
+            //CObject
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
             Boolean isDeprecated,
             SiblingOrder siblingOrder,
+            //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
     ) {
@@ -247,7 +251,7 @@ public class CBoolean extends CPrimitiveObject<Boolean, Boolean> {
     }
 
     private CBoolean(Builder builder) {
-        super(
+        this(
                 builder.assumedValue,
                 builder.isEnumeratedTypeConstraint,
                 builder.constraint,
@@ -280,62 +284,53 @@ public class CBoolean extends CPrimitiveObject<Boolean, Boolean> {
                 String rmTypeName,
                 String nodeId
         ) {
-            if (constraint == null) {
-                throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
-            }
-            if (rmTypeName == null) {
-                throw new NullPointerException("Property:rmTypeName has cardinality NonNull, but is null");
-            }
-            if (nodeId == null) {
-                throw new NullPointerException("Property:nodeId has cardinality NonNull, but is null");
-            }
             this.constraint = constraint;
             this.rmTypeName = rmTypeName;
             this.nodeId = nodeId;
         }
 
         public Builder setConstraint(List<Boolean> value) {
-            this.constraint = constraint;
+            this.constraint = value;
             return this;
         }
 
         public Builder setAssumedValue(Boolean value) {
-            this.assumedValue = assumedValue;
+            this.assumedValue = value;
             return this;
         }
 
         public Builder setDefaultValue(Boolean value) {
-            this.defaultValue = defaultValue;
+            this.defaultValue = value;
             return this;
         }
 
         public Builder setIsEnumeratedTypeConstraint(Boolean value) {
-            this.isEnumeratedTypeConstraint = isEnumeratedTypeConstraint;
+            this.isEnumeratedTypeConstraint = value;
             return this;
         }
 
         public Builder setOccurrences(MultiplicityInterval value) {
-            this.occurrences = occurrences;
+            this.occurrences = value;
             return this;
         }
 
         public Builder setIsDeprecated(Boolean value) {
-            this.isDeprecated = isDeprecated;
+            this.isDeprecated = value;
             return this;
         }
 
         public Builder setSiblingOrder(SiblingOrder value) {
-            this.siblingOrder = siblingOrder;
+            this.siblingOrder = value;
             return this;
         }
 
         public Builder setParent(ArchetypeConstraint value) {
-            this.parent = parent;
+            this.parent = value;
             return this;
         }
 
         public Builder setSocParent(CSecondOrder value) {
-            this.socParent = socParent;
+            this.socParent = value;
             return this;
         }
 

@@ -119,6 +119,44 @@ public abstract class CTemporal<T> extends COrdered<T> {
     //***** CTemporal<t> *****
 
     /*=========================================================*/
+    /* * CONSTRUCTOR * */
+    /*=========================================================*/
+
+    protected CTemporal(
+            String patternConstraint,
+            //CDefinedObject
+            //CPrimitiveObject
+            T assumedValue,
+            Boolean isEnumeratedTypeConstraint,
+            List<Interval<T>> constraint,
+            //CDefinedObject
+            T defaultValue,
+            //CObject
+            String rmTypeName,
+            MultiplicityInterval occurrences,
+            String nodeId,
+            Boolean isDeprecated,
+            SiblingOrder siblingOrder,
+            //ArchetypeConstraint
+            ArchetypeConstraint parent,
+            CSecondOrder socParent
+    ) {
+        super(
+                assumedValue,
+                isEnumeratedTypeConstraint,
+                constraint,
+                defaultValue,
+                rmTypeName,
+                occurrences,
+                nodeId,
+                isDeprecated,
+                siblingOrder,
+                parent,
+                socParent
+        );
+        this.patternConstraint = patternConstraint;
+    }
+    /*=========================================================*/
     /* * TOSTRING, EQUALS AND HASHCODE * */
     /*=========================================================*/
 

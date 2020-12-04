@@ -198,22 +198,23 @@ public class CString extends CPrimitiveObject {
     /*=========================================================*/
 
 
-    protected CString() {
-    }
-
     public CString(
-            List<String> constraint,
-            String defaultValue,
+            //CPrimitiveObject
             String assumedValue,
             Boolean isEnumeratedTypeConstraint,
+            List<String> constraint,
+            //CDefinedObject
+            String defaultValue,
+            //CObject
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
             Boolean isDeprecated,
             SiblingOrder siblingOrder,
+            //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
-    ) {
+        ) {
         super(
                 assumedValue,
                 isEnumeratedTypeConstraint,
@@ -231,20 +232,19 @@ public class CString extends CPrimitiveObject {
     }
 
     private CString(Builder builder) {
-        this.setConstraint(builder.constraint);
-        this.setDefaultValue(builder.defaultValue);
-        this.setAssumedValue(builder.assumedValue);
-        this.setAssumedValue(builder.assumedValue);
-        this.setIsEnumeratedTypeConstraint(builder.isEnumeratedTypeConstraint);
-        this.setConstraint(builder.constraint);
-        this.setDefaultValue(builder.defaultValue);
-        this.setRmTypeName(builder.rmTypeName);
-        this.setOccurrences(builder.occurrences);
-        this.setNodeId(builder.nodeId);
-        this.setIsDeprecated(builder.isDeprecated);
-        this.setSiblingOrder(builder.siblingOrder);
-        this.setParent(builder.parent);
-        this.setSocParent(builder.socParent);
+        this(
+                builder.assumedValue,
+                builder.isEnumeratedTypeConstraint,
+                builder.constraint,
+                builder.defaultValue,
+                builder.rmTypeName,
+                builder.occurrences,
+                builder.nodeId,
+                builder.isDeprecated,
+                builder.siblingOrder,
+                builder.parent,
+                builder.socParent
+        );
     }
 
     public static class Builder {
@@ -260,77 +260,58 @@ public class CString extends CPrimitiveObject {
         private ArchetypeConstraint parent;
         private CSecondOrder socParent;
 
-        public Builder(
+        public Builder (
                 List<String> constraint,
                 String rmTypeName,
                 String nodeId
-        ) {
-            if (constraint == null) {
-                throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
-            }
-            if (rmTypeName == null) {
-                throw new NullPointerException("Property:rmTypeName has cardinality NonNull, but is null");
-            }
-            if (nodeId == null) {
-                throw new NullPointerException("Property:nodeId has cardinality NonNull, but is null");
-            }
+        ){
             this.constraint = constraint;
             this.rmTypeName = rmTypeName;
             this.nodeId = nodeId;
         }
 
         public Builder setDefaultValue(String value) {
-            this.defaultValue = defaultValue;
+            this.defaultValue = value;
             return this;
         }
 
         public Builder setAssumedValue(String value) {
-            this.assumedValue = assumedValue;
-            return this;
-        }
-
-        public Builder setAssumedValue(Object value) {
-            this.assumedValue = assumedValue;
+            this.assumedValue = value;
             return this;
         }
 
         public Builder setIsEnumeratedTypeConstraint(Boolean value) {
-            this.isEnumeratedTypeConstraint = isEnumeratedTypeConstraint;
-            return this;
-        }
-
-        public Builder setDefaultValue(Object value) {
-            this.defaultValue = defaultValue;
+            this.isEnumeratedTypeConstraint = value;
             return this;
         }
 
         public Builder setOccurrences(MultiplicityInterval value) {
-            this.occurrences = occurrences;
+            this.occurrences = value;
             return this;
         }
 
         public Builder setIsDeprecated(Boolean value) {
-            this.isDeprecated = isDeprecated;
+            this.isDeprecated = value;
             return this;
         }
 
         public Builder setSiblingOrder(SiblingOrder value) {
-            this.siblingOrder = siblingOrder;
+            this.siblingOrder = value;
             return this;
         }
 
         public Builder setParent(ArchetypeConstraint value) {
-            this.parent = parent;
+            this.parent = value;
             return this;
         }
 
         public Builder setSocParent(CSecondOrder value) {
-            this.socParent = socParent;
+            this.socParent = value;
             return this;
         }
 
-        public CString build() {
-            return new CString(this);
+        public CString build(){
+            return new CString( this );
         }
     }
 

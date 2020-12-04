@@ -162,19 +162,17 @@ public class ArchetypeSlot extends CObject {
     /* * BUILD PATTERN AND CONSTRUCTOR * */
     /*=========================================================*/
 
-
-    protected ArchetypeSlot() {
-    }
-
     public ArchetypeSlot(
             List<ArchetypeIdConstraint> includes,
             List<ArchetypeIdConstraint> excludes,
             Boolean isClosed,
+            //CObject
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
             Boolean isDeprecated,
             SiblingOrder siblingOrder,
+            //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
     ) {
@@ -196,16 +194,18 @@ public class ArchetypeSlot extends CObject {
     }
 
     private ArchetypeSlot(Builder builder) {
-        this.setIncludes(builder.includes);
-        this.setExcludes(builder.excludes);
-        this.setIsClosed(builder.isClosed);
-        this.setRmTypeName(builder.rmTypeName);
-        this.setOccurrences(builder.occurrences);
-        this.setNodeId(builder.nodeId);
-        this.setIsDeprecated(builder.isDeprecated);
-        this.setSiblingOrder(builder.siblingOrder);
-        this.setParent(builder.parent);
-        this.setSocParent(builder.socParent);
+        this(
+                builder.includes,
+                builder.excludes,
+                builder.isClosed,
+                builder.rmTypeName,
+                builder.occurrences,
+                builder.nodeId,
+                builder.isDeprecated,
+                builder.siblingOrder,
+                builder.parent,
+                builder.socParent
+        );
     }
 
     public static class Builder {
@@ -225,15 +225,6 @@ public class ArchetypeSlot extends CObject {
                 String rmTypeName,
                 String nodeId
         ) {
-            if (isClosed == null) {
-                throw new NullPointerException("Property:isClosed has cardinality NonNull, but is null");
-            }
-            if (rmTypeName == null) {
-                throw new NullPointerException("Property:rmTypeName has cardinality NonNull, but is null");
-            }
-            if (nodeId == null) {
-                throw new NullPointerException("Property:nodeId has cardinality NonNull, but is null");
-            }
             this.isClosed = isClosed;
             this.rmTypeName = rmTypeName;
             this.nodeId = nodeId;

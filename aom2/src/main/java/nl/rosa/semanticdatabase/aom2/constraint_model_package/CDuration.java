@@ -1,8 +1,12 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
+import java.time.temporal.TemporalAccessor;
+import java.time.temporal.TemporalAmount;
+import java.util.List;
 import java.util.Objects;
 
 import semanticdatabase.foundation_types.interval.Interval;
+import semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import semanticdatabase.foundation_types.time_types.Iso8601Duration;
 
 /**
@@ -16,7 +20,7 @@ import semanticdatabase.foundation_types.time_types.Iso8601Duration;
  * As for all of openEHR, two ISO 8601 exceptions are allowed: the ‘W’ (week) designator can be mixed in - the allowed patterns are: P[Y|y][M|m][D|d][T[H|h][M|m][S|s]] and P[W|w]; the values used in an interval constraint may be negated, i.e.
  * a leading minus ('-') sign may be used.
  */
-public class CDuration extends CTemporal {
+public class CDuration extends CTemporal<TemporalAmount> {
 
     //***** CDuration *****
 
@@ -29,20 +33,20 @@ public class CDuration extends CTemporal {
      * one or more intervals of Iso8601_duration.
      * cardinality: 0..1 (redefined)
      */
-    private Interval<Iso8601Duration> constraint;
+    private Interval<TemporalAmount> constraint;
 
     /**
      * Default value set in a template, and present in an operational template.
      * Generally limited to leaf and near-leaf nodes.
      * cardinality: 0..1 (redefined)
      */
-    private Iso8601Duration defaultValue;
+    private TemporalAmount defaultValue;
 
     /**
      * Value to be assumed if none sent in data.
      * cardinality: 0..1 (redefined)
      */
-    private Iso8601Duration assumedValue;
+    private TemporalAmount assumedValue;
 
     /*=========================================================*/
     /* * POJOS * */
@@ -53,11 +57,11 @@ public class CDuration extends CTemporal {
      * one or more intervals of Iso8601_duration.
      * cardinality: 0..1 (redefined)
      */
-    public Interval<Iso8601Duration> getConstraint() {
+    public Interval<TemporalAmount> getConstraint() {
         return constraint;
     }
 
-    public void setConstraint(Interval<Iso8601Duration> value) {
+    public void setConstraint(Interval<TemporalAmount> value) {
         this.constraint = constraint;
     }
 
@@ -66,11 +70,11 @@ public class CDuration extends CTemporal {
      * Generally limited to leaf and near-leaf nodes.
      * cardinality: 0..1 (redefined)
      */
-    public Iso8601Duration getDefaultValue() {
+    public TemporalAmount getDefaultValue() {
         return defaultValue;
     }
 
-    public void setDefaultValue(Iso8601Duration value) {
+    public void setDefaultValue(TemporalAmount value) {
         this.defaultValue = defaultValue;
     }
 
@@ -78,11 +82,11 @@ public class CDuration extends CTemporal {
      * Value to be assumed if none sent in data.
      * cardinality: 0..1 (redefined)
      */
-    public Iso8601Duration getAssumedValue() {
+    public TemporalAmount getAssumedValue() {
         return assumedValue;
     }
 
-    public void setAssumedValue(Iso8601Duration value) {
+    public void setAssumedValue(TemporalAmount value) {
         this.assumedValue = assumedValue;
     }
 
@@ -195,46 +199,135 @@ public class CDuration extends CTemporal {
     /*=========================================================*/
 
 
-    protected CDuration() {
-    }
-
     public CDuration(
-            Interval<Iso8601Duration> constraint,
-            Iso8601Duration defaultValue,
-            Iso8601Duration assumedValue
+            //CTemporal
+            String patternConstraint,
+            //CDefinedObject
+            //CPrimitiveObject
+            TemporalAmount assumedValue,
+            Boolean isEnumeratedTypeConstraint,
+            List<Interval<TemporalAmount>> constraint,
+            //CDefinedObject
+            TemporalAmount defaultValue,
+            //CObject
+            String rmTypeName,
+            MultiplicityInterval occurrences,
+            String nodeId,
+            Boolean isDeprecated,
+            SiblingOrder siblingOrder,
+            //ArchetypeConstraint
+            ArchetypeConstraint parent,
+            CSecondOrder socParent
     ) {
-        this.constraint = constraint;
-        this.defaultValue = defaultValue;
-        this.assumedValue = assumedValue;
+        super(
+                patternConstraint,
+                assumedValue,
+                isEnumeratedTypeConstraint,
+                constraint,
+                defaultValue,
+                rmTypeName,
+                occurrences,
+                nodeId,
+                isDeprecated,
+                siblingOrder,
+                parent,
+                socParent
+        );
     }
 
     private CDuration(Builder builder) {
-        this.setConstraint(builder.constraint);
-        this.setDefaultValue(builder.defaultValue);
-        this.setAssumedValue(builder.assumedValue);
+        this(
+                builder.patternConstraint,
+                builder.assumedValue,
+                builder.isEnumeratedTypeConstraint,
+                builder.constraint,
+                builder.defaultValue,
+                builder.rmTypeName,
+                builder.occurrences,
+                builder.nodeId,
+                builder.isDeprecated,
+                builder.siblingOrder,
+                builder.parent,
+                builder.socParent
+        );
     }
 
     public static class Builder {
-        private Interval<Iso8601Duration> constraint;
-        private Iso8601Duration defaultValue;
-        private Iso8601Duration assumedValue;
+        private final List<Interval<TemporalAmount>> constraint;  //required
+        private String patternConstraint;
+        private TemporalAmount defaultValue;
+        private TemporalAmount assumedValue;
+        private Boolean isEnumeratedTypeConstraint;
+        private String rmTypeName;
+        private MultiplicityInterval occurrences;
+        private String nodeId;
+        private Boolean isDeprecated;
+        private SiblingOrder siblingOrder;
+        private ArchetypeConstraint parent;
+        private CSecondOrder socParent;
+
 
         public Builder(
+                List<Interval<TemporalAmount>> constraint
         ) {
-        }
-
-        public Builder setConstraint(Interval<Iso8601Duration> value) {
+            if (constraint == null) {
+                throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
+            }
             this.constraint = constraint;
+        }
+
+        public Builder setPatternConstraint(String value) {
+            this.patternConstraint = value;
             return this;
         }
 
-        public Builder setDefaultValue(Iso8601Duration value) {
-            this.defaultValue = defaultValue;
+        public Builder setDefaultValue(TemporalAmount value) {
+            this.defaultValue = value;
             return this;
         }
 
-        public Builder setAssumedValue(Iso8601Duration value) {
-            this.assumedValue = assumedValue;
+        public Builder setAssumedValue(TemporalAmount value) {
+            this.assumedValue = value;
+            return this;
+        }
+
+        public Builder setEnumeratedTypeConstraint(Boolean value) {
+            this.isEnumeratedTypeConstraint = value;
+            return this;
+        }
+
+        public Builder setRmTypeName(String value) {
+            this.rmTypeName = value;
+            return this;
+        }
+
+        public Builder setOccurrences(MultiplicityInterval value) {
+            this.occurrences = value;
+            return this;
+        }
+
+        public Builder setNodeId(String value) {
+            this.nodeId = value;
+            return this;
+        }
+
+        public Builder setDeprecated(Boolean value) {
+            isDeprecated = value;
+            return this;
+        }
+
+        public Builder setSiblingOrder(SiblingOrder value) {
+            this.siblingOrder = value;
+            return this;
+        }
+
+        public Builder setSocParent(CSecondOrder value) {
+            this.socParent = value;
+            return this;
+        }
+
+        public Builder setParent(ArchetypeConstraint value) {
+            this.parent = value;
             return this;
         }
 

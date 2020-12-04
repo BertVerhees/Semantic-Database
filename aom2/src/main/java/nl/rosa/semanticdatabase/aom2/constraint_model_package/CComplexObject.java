@@ -232,18 +232,18 @@ public class CComplexObject extends CDefinedObject {
     /*=========================================================*/
 
 
-    protected CComplexObject() {
-    }
-
     public CComplexObject(
             List<CAttribute> attributes,
             List<CAttributeTuple> attributeTuples,
+            //CDefinedObject
             Object defaultValue,
+            //CObject
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
             Boolean isDeprecated,
             SiblingOrder siblingOrder,
+            //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
     ) {
@@ -301,42 +301,42 @@ public class CComplexObject extends CDefinedObject {
         }
 
         public Builder setAttributes(List<CAttribute> value) {
-            this.attributes = attributes;
+            this.attributes = value;
             return this;
         }
 
         public Builder setAttributeTuples(List<CAttributeTuple> value) {
-            this.attributeTuples = attributeTuples;
+            this.attributeTuples = value;
             return this;
         }
 
         public Builder setDefaultValue(Object value) {
-            this.defaultValue = defaultValue;
+            this.defaultValue = value;
             return this;
         }
 
         public Builder setOccurrences(MultiplicityInterval value) {
-            this.occurrences = occurrences;
+            this.occurrences = value;
             return this;
         }
 
         public Builder setIsDeprecated(Boolean value) {
-            this.isDeprecated = isDeprecated;
+            this.isDeprecated = value;
             return this;
         }
 
         public Builder setSiblingOrder(SiblingOrder value) {
-            this.siblingOrder = siblingOrder;
+            this.siblingOrder = value;
             return this;
         }
 
         public Builder setParent(ArchetypeConstraint value) {
-            this.parent = parent;
+            this.parent = value;
             return this;
         }
 
         public Builder setSocParent(CSecondOrder value) {
-            this.socParent = socParent;
+            this.socParent = value;
             return this;
         }
 

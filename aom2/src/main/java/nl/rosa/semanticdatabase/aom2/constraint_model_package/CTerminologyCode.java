@@ -17,7 +17,7 @@ import semanticdatabase.foundation_types.terminology_package.TerminologyCode;
  * The constraint_status attribute and constraint_required() function together define whether the constraint is considered formal ('required') or not.
  * In the non-required cases, a data-item matched to this constraint may be any coded term.
  */
-public class CTerminologyCode extends CPrimitiveObject {
+public class CTerminologyCode extends CPrimitiveObject<String, TerminologyCode> {
 
     //***** CTerminologyCode *****
 
@@ -260,23 +260,24 @@ public class CTerminologyCode extends CPrimitiveObject {
     /*=========================================================*/
 
 
-    protected CTerminologyCode() {
-    }
-
     public CTerminologyCode(
             ConstraintStatus constraintStatus,
-            String constraint,
+            //CPrimitiveObject
             TerminologyCode assumedValue,
-            TerminologyCode defaultValue,
             Boolean isEnumeratedTypeConstraint,
+            List<String> constraint,
+            //CDefinedObject
+            TerminologyCode defaultValue,
+            //CObject
             String rmTypeName,
             MultiplicityInterval occurrences,
             String nodeId,
             Boolean isDeprecated,
             SiblingOrder siblingOrder,
+            //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
-    ) {
+        ) {
         super(
                 assumedValue,
                 isEnumeratedTypeConstraint,
@@ -290,33 +291,31 @@ public class CTerminologyCode extends CPrimitiveObject {
                 parent,
                 socParent
         );
-        if (constraint == null) {
-            throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
-        }
         this.constraintStatus = constraintStatus;
-        this.constraint = constraint;
         this.assumedValue = assumedValue;
         this.defaultValue = defaultValue;
     }
 
     private CTerminologyCode(Builder builder) {
-        this.setConstraintStatus(builder.constraintStatus);
-        this.setConstraint(builder.constraint);
-        this.setAssumedValue(builder.assumedValue);
-        this.setDefaultValue(builder.defaultValue);
-        this.setIsEnumeratedTypeConstraint(builder.isEnumeratedTypeConstraint);
-        this.setRmTypeName(builder.rmTypeName);
-        this.setOccurrences(builder.occurrences);
-        this.setNodeId(builder.nodeId);
-        this.setIsDeprecated(builder.isDeprecated);
-        this.setSiblingOrder(builder.siblingOrder);
-        this.setParent(builder.parent);
-        this.setSocParent(builder.socParent);
+        this(
+                builder.constraintStatus,
+                builder.assumedValue,
+                builder.isEnumeratedTypeConstraint,
+                builder.constraint,
+                builder.defaultValue,
+                builder.rmTypeName,
+                builder.occurrences,
+                builder.nodeId,
+                builder.isDeprecated,
+                builder.siblingOrder,
+                builder.parent,
+                builder.socParent
+        );
     }
 
     public static class Builder {
         private ConstraintStatus constraintStatus;
-        private final String constraint;  //required
+        private final List<String> constraint;  //required
         private TerminologyCode assumedValue;
         private TerminologyCode defaultValue;
         private Boolean isEnumeratedTypeConstraint;
@@ -329,81 +328,62 @@ public class CTerminologyCode extends CPrimitiveObject {
         private CSecondOrder socParent;
 
         public Builder(
-                String constraint,
+                List<String> constraint,
                 String rmTypeName,
                 String nodeId
-        ) {
-            if (constraint == null) {
-                throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
-            }
-            if (rmTypeName == null) {
-                throw new NullPointerException("Property:rmTypeName has cardinality NonNull, but is null");
-            }
-            if (nodeId == null) {
-                throw new NullPointerException("Property:nodeId has cardinality NonNull, but is null");
-            }
+        ){
             this.constraint = constraint;
             this.rmTypeName = rmTypeName;
             this.nodeId = nodeId;
         }
 
         public Builder setConstraintStatus(ConstraintStatus value) {
-            this.constraintStatus = constraintStatus;
+            this.constraintStatus = value;
             return this;
         }
 
         public Builder setAssumedValue(TerminologyCode value) {
-            this.assumedValue = assumedValue;
+            this.assumedValue = value;
             return this;
         }
 
         public Builder setDefaultValue(TerminologyCode value) {
-            this.defaultValue = defaultValue;
-            return this;
-        }
-
-        public Builder setAssumedValue(Object value) {
-            this.assumedValue = assumedValue;
+            this.defaultValue = value;
             return this;
         }
 
         public Builder setIsEnumeratedTypeConstraint(Boolean value) {
-            this.isEnumeratedTypeConstraint = isEnumeratedTypeConstraint;
-            return this;
-        }
-
-        public Builder setDefaultValue(Object value) {
-            this.defaultValue = defaultValue;
+            this.isEnumeratedTypeConstraint = value;
             return this;
         }
 
         public Builder setOccurrences(MultiplicityInterval value) {
-            this.occurrences = occurrences;
+            this.occurrences = value;
             return this;
         }
 
         public Builder setIsDeprecated(Boolean value) {
-            this.isDeprecated = isDeprecated;
+            this.isDeprecated = value;
             return this;
         }
 
         public Builder setSiblingOrder(SiblingOrder value) {
-            this.siblingOrder = siblingOrder;
+            this.siblingOrder = value;
             return this;
         }
 
         public Builder setParent(ArchetypeConstraint value) {
-            this.parent = parent;
+            this.parent = value;
             return this;
         }
 
         public Builder setSocParent(CSecondOrder value) {
-            this.socParent = socParent;
+            this.socParent = value;
             return this;
         }
 
-        public CTerminologyCode build() {
-            return new CTerminologyCode(this);
+        public CTerminologyCode build(){
+            return new CTerminologyCode( this );
         }
     }
 

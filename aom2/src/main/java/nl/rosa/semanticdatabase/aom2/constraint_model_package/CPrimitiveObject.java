@@ -195,6 +195,36 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
     //***** CPrimitiveObject *****
 
     /*=========================================================*/
+    /* * CONSTRUCTOR * */
+    /*=========================================================*/
+
+    public CPrimitiveObject(
+            T assumedValue,
+            Boolean isEnumeratedTypeConstraint,
+            List<C> constraint,
+            //CDefinedObject
+            T defaultValue,
+            //CObject
+            String rmTypeName,
+            MultiplicityInterval occurrences,
+            String nodeId,
+            Boolean isDeprecated,
+            SiblingOrder siblingOrder,
+            //ArchetypeConstraint
+            ArchetypeConstraint parent,
+            CSecondOrder socParent
+        ) {
+        super(defaultValue, rmTypeName, occurrences, nodeId, isDeprecated, siblingOrder, parent, socParent);
+        if (constraint == null) {
+            throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");
+        }
+        this.assumedValue = assumedValue;
+        this.isEnumeratedTypeConstraint = isEnumeratedTypeConstraint;
+        this.constraint = constraint;
+    }
+
+
+    /*=========================================================*/
     /* * TOSTRING, EQUALS AND HASHCODE * */
     /*=========================================================*/
 
