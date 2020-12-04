@@ -116,9 +116,26 @@ public class CAttributeTuple extends CSecondOrder {
         return Collections.unmodifiableList(this.members);
     }
 
+
     /*=========================================================*/
     /* * FUNCTIONS * */
     /*=========================================================*/
+
+    /**
+     * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
+     * Typically used during validation of specialised archetype nodes.
+     * Parameters rmcc RM conformance checker agent - a lambda (i.e.
+     * function object) that can compute conformance of type-names within the Reference Model on which the current archetype is based.
+     * The signature provides two arguments representing respectively, the rm_type_name of the current node and the rm_type_name of the node being redefined in a specialisation parent archetype.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param other
+     * @param rmTypesConformant
+     */
+    @Override
+    public Boolean cConformsTo(CSecondOrder other, BiFunction<String, String, java.lang.Boolean> rmTypesConformant) {
+        return null;
+    }
 
     /**
      * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.

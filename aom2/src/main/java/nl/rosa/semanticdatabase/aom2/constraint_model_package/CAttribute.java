@@ -3,9 +3,12 @@ package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 import java.util.*;
 import java.util.function.BiFunction;
 
+import nl.rosa.semanticdatabase.aom2.utils.AOMUtils;
 import semanticdatabase.base.conformance_checker.RMConformanceChecker;
+import semanticdatabase.base.paths.PathSegment;
 import semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import semanticdatabase.foundation_types.interval.Cardinality;
+import semanticdatabase.query.APathQuery;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -82,7 +85,7 @@ public class CAttribute extends ArchetypeConstraint {
         if (value == null) {
             throw new NullPointerException(" Setting property:rmAttributeName failed, it has cardinality NonNull, but is null");
         }
-        this.rmAttributeName = rmAttributeName;
+        this.rmAttributeName = value;
     }
 
     /**
@@ -96,7 +99,7 @@ public class CAttribute extends ArchetypeConstraint {
     }
 
     public void setExistence(MultiplicityInterval value) {
-        this.existence = existence;
+        this.existence = value;
     }
 
     /**
@@ -106,15 +109,92 @@ public class CAttribute extends ArchetypeConstraint {
      * cardinality: 0..1
      */
 
-    public void addToChildren(CObject value) {
+    public void addChild(CObject value, SiblingOrder order) {
         if (children == null) {
             children = new ArrayList<>();
         }
+        if(order != null && order.getSiblingNodeId() != null) {
+            //TODO: this can be a specialized sibling node id as well!
+            CObject sibling = getChild(order.getSiblingNodeId());
+            int siblingIndex = getChildren().indexOf(sibling);
+            if(siblingIndex > -1) {
+                if (!order.isBefore()) {
+                    siblingIndex++;
+                }
+                children.add(siblingIndex, value);
+            } else{
+                children.add(value);
+            }
+        } else {
+            children.add(value);
+        }
+        value.setParent(this);    }
+
+    public void addChild(CObject value) {
+        if (children == null) {
+            children = new ArrayList<>();
+        }
+        value.setParent(this);
         children.add(value);
     }
 
+    public CObject getChild(String nodeId) {
+        //first don't look through CComplexObject proxies, then if no result, do lookup through the proxies
+        CObject result = getChild(nodeId, false);
+        if(result == null) {
+            result = getChild(nodeId, true);
+        }
+        return result;
+    }
+
+    private CObject getChild(String nodeId, boolean lookThroughProxies) {
+        for(CObject child:children) {
+            if(nodeId.equals(child.getNodeId())) {
+                return child;
+            } else if(child instanceof CArchetypeRoot) {
+                if (((CArchetypeRoot) child).getArchetypeRef().equals(nodeId)) {
+                    return child;
+                }
+            } else if(lookThroughProxies && child instanceof CComplexObjectProxy) {
+                String targetPath = ((CComplexObjectProxy) child).getTargetPath();
+                APathQuery aPathQuery = new APathQuery(targetPath);
+                PathSegment lastPathSegment = aPathQuery.getPathSegments().get(aPathQuery.getPathSegments().size() - 1);
+                if(lastPathSegment.hasIdCode() && lastPathSegment.getNodeId().equals(nodeId)) {
+                    return child;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Get the child cobject with the given nodeid. If it does not exist but a specialized version
+     * does exist, returns that one.
+     * If multiple specialized children exist, returns the first it can find. TODO: this should probably be better defined :)
+     * @param nodeId
+     * @return
+     */
+    public CObject getPossiblySpecializedChild(String nodeId) {
+        //if there's an exact node id match, return that first
+        CObject result = getChild(nodeId, false);
+        if(result != null) {
+            return result;
+        }
+        for(CObject child:children) {
+            if(nodeId.equals(child.getNodeId()) || AOMUtils.codesConformant(child.getNodeId(), nodeId)) {
+                return child;
+            } else if(child instanceof CArchetypeRoot) {
+                //TODO: Should we look for specialized archetype roots as well? :)
+                if (((CArchetypeRoot) child).getArchetypeRef().equals(nodeId)) {
+                    return child;
+                }
+            }
+        }
+        return null;
+    }
+
     public void addToChildren(List<CObject> values) {
-        values.forEach(value -> addToChildren(value));
+        values.forEach(value -> addChild(value));
     }
 
     public void removeFromChildren(CObject item) {
@@ -140,6 +220,27 @@ public class CAttribute extends ArchetypeConstraint {
         return Collections.unmodifiableList(this.children);
     }
 
+    public void replaceChild(String nodeId, CObject constraint) {
+
+        int index = getIndexOfChildWithNodeId(nodeId);
+        if(index > -1) {
+            children.set(index, constraint);
+            constraint.setParent(this);
+        } else {
+            addChild(constraint);
+        }
+    }
+
+    public int getIndexOfChildWithNodeId(String nodeId) {
+        for(int i = 0; i < children.size(); i++) {
+            CObject child = children.get(i);
+            if(nodeId.equals(child.getNodeId())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     /**
      * Path to the parent object of this attribute (i.e.
      * doesn’t include the name of this attribute).
@@ -152,7 +253,7 @@ public class CAttribute extends ArchetypeConstraint {
     }
 
     public void setDifferentialPath(String value) {
-        this.differentialPath = differentialPath;
+        this.differentialPath = value;
     }
 
     /**
@@ -164,7 +265,7 @@ public class CAttribute extends ArchetypeConstraint {
     }
 
     public void setCardinality(Cardinality value) {
-        this.cardinality = cardinality;
+        this.cardinality = value;
     }
 
     /**
@@ -172,15 +273,15 @@ public class CAttribute extends ArchetypeConstraint {
      * multiply-valued) attribute.
      * cardinality: 1..1
      */
-    public Boolean getIsMultiple() {
+    public Boolean isMultiple() {
         return isMultiple;
     }
 
-    public void setIsMultiple(Boolean value) {
+    public void setMultiple(Boolean value) {
         if (value == null) {
             throw new NullPointerException(" Setting property:isMultiple failed, it has cardinality NonNull, but is null");
         }
-        this.isMultiple = isMultiple;
+        this.isMultiple = value;
     }
 
     /*=========================================================*/
@@ -193,15 +294,10 @@ public class CAttribute extends ArchetypeConstraint {
      * <p>
      * Post: Result := children.is_empty and not is_prohibited
      */
-    public Boolean anyAllowed() {
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public boolean anyAllowed() {
+        return children.isEmpty() && !isProhibited();
     }
+
 
     /**
      * True if this C_ATTRIBUTE has an existence constraint of 1..1, i..e.
@@ -210,15 +306,13 @@ public class CAttribute extends ArchetypeConstraint {
      * <p>
      * Post: Result = existence /= Void and then existence.is_mandatory
      */
-    public Boolean isMandatory() {
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+    public boolean isMandatory() {
+        if(existence != null) {
+            return existence.isMandatory();
         }
-        return result;
+        return false;
     }
+
 
     /**
      * Path of this attribute with respect to owning C_OBJECT, including differential path where applicable.
@@ -239,14 +333,8 @@ public class CAttribute extends ArchetypeConstraint {
      * Evaluated as not is_multiple.
      * cardinality: 1..1
      */
-    public Boolean isSingle() {
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public boolean isSingle() {
+        return !isMultiple;
     }
 
     /**
@@ -256,17 +344,65 @@ public class CAttribute extends ArchetypeConstraint {
      * <p>
      * Post: Result = existence = Void and is_single and other.is_single) or (is_multiple and other.is_multiple and cardinality = Void
      */
-    public Boolean cCongruentTo(ArchetypeConstraint other) {
-        if (other == null) {
-            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+    public Boolean cCongruentTo(CAttribute other) {
+        //True if this node on its own (ignoring any subparts) expresses no additional constraints than `other'.
+        if(other == null) {
+            return false;
         }
-        Boolean result = null;
+
+        return existence == null
+                && ((isSingle()
+                    && other.isSingle())
+                || (isMultiple()
+                    && other.isMultiple()
+                    && cardinality == null)
+        );
+    }
+    public Boolean cConformsTo(CAttribute other) {
+        //True if this node on its own (ignoring any subparts) expresses the same or narrower constraints as `other'.
+        // Returns False if any of the following is incompatible:
+        //	 * cardinality
+        //   * existence
+        if(other == null) {
+            return false;
+        }
+
+        return existenceConformsTo(other) && ((isSingle() && other.isSingle()) || (isMultiple() && cardinalityConformsTo(other)));
+    }
 
 
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+    public Boolean existenceConformsTo(CAttribute other) {
+        //True if the existence of this node conforms to other.existence
+        if(other == null) {
+            return false;
         }
-        return result;
+        if(existence != null && other.existence != null) {
+            return other.existence.contains(existence);
+        } else {
+            return true;
+        }
+    }
+
+    public Boolean cardinalityConformsTo(CAttribute other) {
+        //True if the cardinality of this node conforms to other.cardinality, if it exists
+        if(other == null) {
+            return false;
+        }
+        if(cardinality != null && other.cardinality != null) {
+            return other.cardinality.contains(cardinality);
+        } else {
+            return true;
+        }
+    }
+
+    /**
+     * True if this node is a terminal node in the tree structure, i.e.
+     * having no child nodes.
+     * cardinality: 1..1
+     */
+    @Override
+    public Boolean isLeaf() {
+        return null;
     }
 
     /**
@@ -280,13 +416,7 @@ public class CAttribute extends ArchetypeConstraint {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return cConformsTo((CAttribute)other);
     }
 
     /**
@@ -299,12 +429,42 @@ public class CAttribute extends ArchetypeConstraint {
     @Override
     public Boolean isProhibited() {
         Boolean result = null;
-
-
         if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return result;
+    }
+
+    @Override
+    public List<PathSegment> getPathSegments() {
+        CObject parent = getParent();
+        if(parent == null) {
+            return new ArrayList<>();
+        }
+        List<PathSegment> segments = parent.getPathSegments();
+        if(differentialPath == null) {
+            segments.add(new PathSegment(getRmAttributeName()));
+        } else {
+            segments.addAll(new APathQuery(differentialPath).getPathSegments());
+        }
+        return segments;
+    }
+
+    @Override
+    public CObject getParent() {
+        return (CObject) super.getParent();
+    }
+
+    @Override
+    public String getLogicalPath() {
+        String path = "/" + rmAttributeName;
+        if(getParent() != null) {
+            path = getParent().getLogicalPath() + path;
+        }
+        if(path.startsWith("//")) {
+            return path.substring(1);
+        }
+        return path;
     }
 
     //***** CAttribute *****

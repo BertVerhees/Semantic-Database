@@ -49,6 +49,52 @@ public class MultiplicityInterval extends Interval<Integer> {
     }
 
     /**
+     * Creates interval of type [0,inf)
+     *
+     * @return the created interval
+     */
+    public static MultiplicityInterval createOpen() {
+        return new MultiplicityInterval(0, true, false, null, true, true);
+    }
+
+    /**
+     * Creates interval of type [0,1]
+     *
+     * @return the created interval
+     */
+    public static MultiplicityInterval createOptional() {
+        return new MultiplicityInterval(0, true, false, 1, true, false);
+    }
+
+    /**
+     * Creates interval of type [1,1]
+     *
+     * @return the created interval
+     */
+    public static MultiplicityInterval createMandatory() {
+        return new MultiplicityInterval(1, true, false, 1, true, false);
+    }
+
+    /**
+     * Creates interval of type [0,1]
+     *
+     * @return the created interval
+     */
+    public static MultiplicityInterval createProhibited() {
+        return new MultiplicityInterval(0, true, false, 0, true, false);
+    }
+
+    public static MultiplicityInterval createUpperUnbounded(Integer lower) {
+        return new MultiplicityInterval(lower, true, false, null, true, true);
+    }
+
+    public static MultiplicityInterval createBounded(int lower, int upper) {
+        return new MultiplicityInterval(lower, true, false, upper, true, false);
+    }
+
+
+
+    /**
      * True if this interval imposes no constraints, i.e.
      * is set to 0..*.
      * cardinality: 1..1

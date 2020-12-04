@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.util.Objects;
+import java.util.function.BiFunction;
 
 import semanticdatabase.foundation_types.interval.MultiplicityInterval;
 
@@ -44,12 +45,57 @@ public class CComplexObjectProxy extends CObject {
         if (value == null) {
             throw new NullPointerException(" Setting property:targetPath failed, it has cardinality NonNull, but is null");
         }
-        this.targetPath = targetPath;
+        this.targetPath = value;
     }
 
     /*=========================================================*/
     /* * FUNCTIONS * */
     /*=========================================================*/
+    @Override
+    public String getLogicalPath() {
+        return null;
+    }
+
+    /**
+     * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
+     * Typically used during validation of special-ised archetype nodes.
+     * Parameters rmcc RM conformance checker - a lambda (i.e.
+     * function object) that can compute conformance of type-names within the Reference Model on which the current archetype is based.
+     * The signature provides two arguments representing respectively, the rm_type_name of the current node and the rm_type_name of the node being redefined in a specialisation parent archetype.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param other
+     * @param rmTypesConformant
+     */
+    @Override
+    public boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
+        return super.cConformsTo(other, rmTypesConformant);
+    }
+
+    /**
+     * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.
+     * Typically used to test if an inherited node locally contains any constraints.
+     * cardinality: 1..1 (abstract)
+     *
+     * Cannot be abstract when class is not abstract.
+     *
+     * @param other
+     */
+    @Override
+    public Boolean cCongruentTo(ArchetypeConstraint other) {
+        return false;
+    }
+
+    /**
+     * True if this node is a terminal node in the tree structure, i.e.
+     * having no child nodes.
+     * cardinality: 1..1
+     */
+    @Override
+    public Boolean isLeaf() {
+        return true;
+    }
+
 
     /**
      * True if target occurrences are to be used as the value of occurrences in this object; by the time of runtime use, the target occurrences value has to be set into this object.
@@ -58,13 +104,7 @@ public class CComplexObjectProxy extends CObject {
      * Post: Result = (occurrences = Void)
      */
     public Boolean useTargetOccurrences() {
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return getOccurrences() == null;
     }
 
     /**
@@ -76,17 +116,17 @@ public class CComplexObjectProxy extends CObject {
      * <p>
      * cardinality: 1..1 (redefined)
      */
-    public Boolean occurrencesConformsTo(CObject other) {
+    public boolean occurrencesConformsTo(CObject other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        //TODO Get Target
+//        if (target instanceof CComplexObject){
+//            return true;
+//        }else {
+//            return getOccurrences() == other.getOccurrences();
+//        }
+        return true;
     }
 
     //***** CComplexObjectProxy *****

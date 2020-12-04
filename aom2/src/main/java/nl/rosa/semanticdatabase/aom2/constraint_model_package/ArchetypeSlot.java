@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.util.*;
+import java.util.function.BiFunction;
 
 import semanticdatabase.foundation_types.interval.MultiplicityInterval;
 
@@ -156,6 +157,35 @@ public class ArchetypeSlot extends CObject {
         return result;
     }
 
+    /**
+     * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
+     * Typically used during validation of special-ised archetype nodes.
+     * Parameters rmcc RM conformance checker - a lambda (i.e.
+     * function object) that can compute conformance of type-names within the Reference Model on which the current archetype is based.
+     * The signature provides two arguments representing respectively, the rm_type_name of the current node and the rm_type_name of the node being redefined in a specialisation parent archetype.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param other
+     * @param rmTypesConformant
+     */
+    @Override
+    public Boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
+        return null;
+    }
+
+    /**
+     * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.
+     * Typically used to test if an inherited node locally contains any constraints.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param other
+     */
+    @Override
+    public Boolean cCongruentTo(ArchetypeConstraint other) {
+        return null;
+    }
+
+
     //***** ArchetypeSlot *****
 
     /*=========================================================*/
@@ -276,7 +306,6 @@ public class ArchetypeSlot extends CObject {
     /*=========================================================*/
     /* * TOSTRING, EQUALS AND HASHCODE * */
     /*=========================================================*/
-
 
     public boolean equals(Object object) {
         if (this == object) return true;

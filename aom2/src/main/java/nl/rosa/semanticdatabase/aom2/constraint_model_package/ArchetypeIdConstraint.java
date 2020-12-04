@@ -17,10 +17,14 @@ public class ArchetypeIdConstraint {
         return constraint;
     }
 
-    public CString setConstraint(CString value){
+    public void setConstraint(CString value){
         if (value == null) {
             throw new NullPointerException(" Setting property:archetypeRef failed, it has cardinality NonNull, but is null");
         }
         this.constraint = value;
+    }
+
+    public ArchetypeIdConstraint(CString constraint) {
+        this.constraint = constraint;
     }
 }

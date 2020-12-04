@@ -106,7 +106,7 @@ public class Interval<T> {
      * = -infinity)
      * cardinality: 1..1
      */
-    public Boolean getLowerUnbounded() {
+    public Boolean isLowerUnbounded() {
         return lowerUnbounded;
     }
 
@@ -121,7 +121,7 @@ public class Interval<T> {
      * = +infinity)
      * cardinality: 1..1
      */
-    public boolean getUpperUnbounded() {
+    public boolean isUpperUnbounded() {
         return upperUnbounded;
     }
 
@@ -136,7 +136,7 @@ public class Interval<T> {
      * <p>
      * Lower_included_valid: lower_unbounded implies not lower_included
      */
-    public boolean getLowerIncluded() {
+    public boolean isLowerIncluded() {
         return lowerIncluded;
     }
 
@@ -151,7 +151,7 @@ public class Interval<T> {
      * <p>
      * Upper_included_valid: upper_unbounded implies not upper_included
      */
-    public Boolean getUpperIncluded() {
+    public Boolean isUpperIncluded() {
         return upperIncluded;
     }
 

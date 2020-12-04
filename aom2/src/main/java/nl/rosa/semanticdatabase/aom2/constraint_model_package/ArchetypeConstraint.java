@@ -1,7 +1,10 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import semanticdatabase.base.paths.AdlCodeDefinitions;
+import semanticdatabase.base.paths.PathSegment;
+import semanticdatabase.base.paths.PathUtil;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.function.BiFunction;
 
@@ -47,7 +50,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
     }
 
     public void setParent(ArchetypeConstraint value) {
-        this.parent = parent;
+        this.parent = value;
     }
 
     /**
@@ -58,7 +61,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
     }
 
     public void setSocParent(CSecondOrder value) {
-        this.socParent = socParent;
+        this.socParent = value;
     }
 
     /*=========================================================*/
@@ -89,18 +92,25 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
         return result;
     }
 
+    private String getPath(){
+        return PathUtil.getPath(getPathSegments());
+    }
+    private void setPath(String path){
+        //setter hack for jackson, unfortunately
+    }
+    public abstract List<PathSegment> getPathSegments();
     /**
      * Path of this node relative to root of archetype.
      * cardinality: 1..1
      */
     public String path() {
-        String result = null;
+        return getPath();
+    }
 
+    public abstract String getLogicalPath();
 
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    private void setLogicalPath(String path){
+        //setter hack for jackson, unfortunately
     }
 
     /**
@@ -111,7 +121,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
      * The signature provides two arguments representing respectively, the rm_type_name of the current node and the rm_type_name of the node being redefined in a specialisation parent archetype.
      * cardinality: 1..1 (abstract)
      */
-    public abstract Boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant);
+    public abstract boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant);
 
     /**
      * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.
@@ -125,14 +135,8 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
      * cardinality: 1..1
      * Post: soc_parent /= Void or else (parent /= Void and then parent.is_second_order_constrained)
      */
-    public Boolean isSecondOrderConstrained() {
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public Boolean isSecondOrderConstrained(){
+        return getSocParent() != null || (getParent() != null && getParent().getSocParent() != null);
     }
 
     /**
@@ -140,13 +144,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
      * cardinality: 1..1
      */
     public Boolean isRoot() {
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return parent == null;
     }
 
     /**
@@ -154,15 +152,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
      * having no child nodes.
      * cardinality: 1..1
      */
-    public Boolean isLeaf() {
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
-    }
+    public abstract Boolean isLeaf();
 
     //***** ArchetypeConstraint *****
 
