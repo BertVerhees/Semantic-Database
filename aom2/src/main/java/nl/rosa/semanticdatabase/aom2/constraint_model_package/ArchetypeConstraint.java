@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 import semanticdatabase.base.paths.AdlCodeDefinitions;
 
 import java.util.Objects;
+import java.util.function.BiFunction;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -110,7 +111,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
      * The signature provides two arguments representing respectively, the rm_type_name of the current node and the rm_type_name of the node being redefined in a specialisation parent archetype.
      * cardinality: 1..1 (abstract)
      */
-    public abstract Boolean cConformsTo(ArchetypeConstraint other, RMConformanceChecker rmcc);
+    public abstract Boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant);
 
     /**
      * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.

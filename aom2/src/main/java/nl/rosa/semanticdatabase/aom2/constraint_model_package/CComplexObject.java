@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.util.*;
+import java.util.function.BiFunction;
 
 import semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import semanticdatabase.foundation_types.interval.MultiplicityInterval;
@@ -194,7 +195,7 @@ public class CComplexObject extends CDefinedObject {
      * Parameters rmcc Reference Model conformance checker agent (lambda).
      * cardinality: 1..1 (effected)
      */
-    public Boolean cConformsTo(CComplexObject other, RMConformanceChecker rmcc) {
+    public Boolean cConformsTo(CComplexObject other, BiFunction<String, String, Boolean> rmTypesConformant) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }

@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.util.*;
+import java.util.function.BiFunction;
 
 import semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import semanticdatabase.foundation_types.interval.MultiplicityInterval;
@@ -193,7 +194,7 @@ public class CBoolean extends CPrimitiveObject<Boolean, Boolean> {
      * @param rmcc
      */
     @Override
-    public Boolean cConformsTo(ArchetypeConstraint other, RMConformanceChecker rmcc) {
+    public Boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
         return null;
     }
     /**

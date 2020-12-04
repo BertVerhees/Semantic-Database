@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.util.*;
+import java.util.function.BiFunction;
 
 import semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import semanticdatabase.foundation_types.interval.MultiplicityInterval;
@@ -275,7 +276,7 @@ public class CAttribute extends ArchetypeConstraint {
      * <p>
      * Post: Result = existence_conforms_to (other) and is_single and other.is_single) or else (is_multiple and cardinality_conforms_to (other)
      */
-    public Boolean cConformsTo(ArchetypeConstraint other, RMConformanceChecker rmcc) {
+    public Boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }

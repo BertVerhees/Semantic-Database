@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.util.Objects;
+import java.util.function.BiFunction;
 
 import semanticdatabase.foundation_types.primitive_types.Boolean;
 
@@ -82,7 +83,7 @@ public abstract class CSecondOrder {
      * The signature provides two arguments representing respectively, the rm_type_name of the current node and the rm_type_name of the node being redefined in a specialisation parent archetype.
      * cardinality: 1..1 (abstract)
      */
-    public abstract Boolean cConformsTo(CSecondOrder other, FUNCTION<> rmcc,,);
+    public abstract Boolean cConformsTo(CSecondOrder other, BiFunction<String, String, java.lang.Boolean> rmTypesConformant);
 
     /**
      * True if constraints represented by this node contain no further redefinitions with respect to the node other.

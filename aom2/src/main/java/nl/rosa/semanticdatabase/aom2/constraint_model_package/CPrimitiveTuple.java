@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.util.Objects;
+import java.util.function.BiFunction;
 
 import semanticdatabase.foundation_types.primitive_types.Boolean;
 
@@ -79,7 +80,7 @@ public class CPrimitiveTuple extends CSecondOrder {
      * Parameters rmcc RM conformance checker agent.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cConformsTo(CPrimitiveTuple other, FUNCTION<> rmcc,,) {
+    public Boolean cConformsTo(CPrimitiveTuple other, BiFunction<String, String, java.lang.Boolean> rmTypesConformant) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
