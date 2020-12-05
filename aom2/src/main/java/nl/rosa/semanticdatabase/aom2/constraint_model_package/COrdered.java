@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.util.*;
+import java.util.function.BiFunction;
 
 import semanticdatabase.foundation_types.interval.Interval;
 import semanticdatabase.foundation_types.interval.MultiplicityInterval;
@@ -20,60 +21,83 @@ import semanticdatabase.foundation_types.interval.MultiplicityInterval;
  */
 public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
 
+/*
     //***** COrdered<t> *****
 
-    /*=========================================================*/
-    /* * FIELDS * */
-    /*=========================================================*/
+    */
+/*=========================================================*//*
 
-    /**
+    */
+/* * FIELDS * *//*
+
+    */
+/*=========================================================*//*
+
+
+    */
+/**
      * Constraint in the form of a List of Intervals of the parameter type T.
      * Concrete types generated in descendants via template binding.
      * cardinality: 0..1 (redefined)
-     */
+     *//*
+
     private List<Interval<T>> constraint;
 
-    /**
+    */
+/**
      * Default value set in a template, and present in an operational template.
      * Generally limited to leaf and near-leaf nodes.
      * cardinality: 0..1 (redefined)
-     */
+     *//*
+
     private T defaultValue;
 
-    /**
+    */
+/**
      * Value to be assumed if none sent in data.
      * cardinality: 0..1 (redefined)
-     */
+     *//*
+
     private T assumedValue;
 
-    /*=========================================================*/
-    /* * POJOS * */
-    /*=========================================================*/
+    */
+/*=========================================================*//*
 
-    /**
+    */
+/* * POJOS * *//*
+
+    */
+/*=========================================================*//*
+
+
+    */
+/**
      * Constraint in the form of a List of Intervals of the parameter type T.
      * Concrete types generated in descendants via template binding.
      * cardinality: 0..1 (redefined)
-     */
+     *//*
 
-    public void addToConstraint(Interval value) {
+
+    public void addToConstraint(Interval<T> value) {
         if (constraint == null) {
             constraint = new ArrayList<>();
         }
         constraint.add(value);
     }
 
-    public void removeFromConstraint(Interval item) {
+    public void removeFromConstraint(Interval<T> item) {
         if (constraint != null) {
             constraint.remove(item);
         }
     }
 
-    /**
+    */
+/**
      * Default value set in a template, and present in an operational template.
      * Generally limited to leaf and near-leaf nodes.
      * cardinality: 0..1 (redefined)
-     */
+     *//*
+
     public T getDefaultValue() {
         return defaultValue;
     }
@@ -82,10 +106,12 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
         this.defaultValue = defaultValue;
     }
 
-    /**
+    */
+/**
      * Value to be assumed if none sent in data.
      * cardinality: 0..1 (redefined)
-     */
+     *//*
+
     public T getAssumedValue() {
         return assumedValue;
     }
@@ -94,6 +120,7 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
         this.assumedValue = assumedValue;
     }
 
+*/
     /*=========================================================*/
     /* * FUNCTIONS * */
     /*=========================================================*/
@@ -104,6 +131,7 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
      * Redefined in descendants.
      * cardinality: 1..1 (effected)
      */
+/*
     public Boolean anyAllowed() {
         Boolean result = null;
 
@@ -113,6 +141,7 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
         }
         return result;
     }
+*/
 
     /**
      * True if other.any_allowed or else for every constraint in the constraint list there is a constraint in other.constraint that contains it.
@@ -146,6 +175,38 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
         return result;
+    }
+
+    @Override
+    public boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
+        if (other == null) {
+            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+        }
+
+        if(!super.cConformsTo(other, rmTypesConformant)) {
+            return false;
+        }
+        //now guaranteed to be the same class
+
+        COrdered<?> o = (COrdered) other;
+        if(o.getConstraint().isEmpty()) {
+            return true;
+        }
+
+
+        for(Interval<T> constraint:getConstraint()) {
+            boolean found = false;
+            for(Interval otherConstraint:o.getConstraint()) {
+                if(otherConstraint.contains(constraint)) {
+                    found = true;
+                    break;
+                }
+            }
+            if(!found) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /*=========================================================*/

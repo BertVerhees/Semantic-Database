@@ -74,30 +74,22 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
      * Constraint represented by this object; redefine in descendants.
      * cardinality: 1..1
      */
-    public void addToConstraint(C value) {
+    public void addConstraint(C value) {
         if (constraint == null) {
             constraint = new ArrayList<>();
         }
         constraint.add(value);
     }
 
-    public void addToConstraint(Collection<C> values) {
-        values.forEach(value -> addToConstraint(value));
-    }
-
-    public void removeFromConstraint(C item) {
+    public void removeConstraint(C item) {
         if (constraint != null) {
             constraint.remove(item);
         }
     }
 
-    public void removeFromConstraint(Collection<C> values) {
-        values.forEach(this::removeFromConstraint);
-    }
-
     public abstract void setConstraint(List<C> constraint);
 
-    public List<C> constraint() {
+    public List<C> getConstraint() {
         return Collections.unmodifiableList(this.constraint);
     }
 
@@ -144,18 +136,11 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
      * Parameters rmcc Reference Model conformance checker lambda.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cConformsTo(CObject other, BiFunction<String, String, Boolean> rmTypesConformant) {
+    public boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        if (other instanceof CPrimitiveObject && other.getClass().equals(getClass())) {
-            if (other == null) {
-                return false;
-            }
-            return occurrencesConformsTo(other) && getRmTypeName().equalsIgnoreCase(other.getRmTypeName());
-        } else {
-            return false;
-        }
+        return rmTypesConformant.apply(getRmTypeName(), ((CPrimitiveObject)other).getRmTypeName()) && cValueConformsTo((CPrimitiveObject)other);
     }
 
     /**
@@ -163,24 +148,18 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
      * Effected in descendants.
      * cardinality: 1..1 (abstract)
      */
-    public abstract Boolean cValueConformsTo(CObject other);
+    public abstract boolean cValueConformsTo(CPrimitiveObject other);
 
     /**
      * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.
      * Typically used to test if an inherited node locally contains any constraints.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cCongruentTo(CObject other) {
+    public boolean cCongruentTo(ArchetypeConstraint other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return getRmTypeName().equalsIgnoreCase(((CObject)other).getRmTypeName())  && cValueCongruentTo((CPrimitiveObject) other);
     }
 
     /**
@@ -188,7 +167,7 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
      * Effected in descendants.
      * cardinality: 1..1 (abstract)
      */
-    public abstract Boolean cValueCongruentTo(CObject other);
+    public abstract boolean cValueCongruentTo(CPrimitiveObject other);
 
 
 

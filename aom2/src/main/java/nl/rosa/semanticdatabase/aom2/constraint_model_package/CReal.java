@@ -2,10 +2,8 @@ package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.util.List;
 import java.util.Objects;
-.;
 import semanticdatabase.foundation_types.interval.Interval;
 import semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import semanticdatabase.foundation_types.primitive_types.Real;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -15,6 +13,10 @@ import semanticdatabase.foundation_types.primitive_types.Real;
  * Constraint on instances of Real.
  */
 public class CReal extends COrdered<Double> {
+
+    private List<Interval<Double>> constraint;
+
+    private Double assumedValue;
 
     //***** CReal *****
 
@@ -34,21 +36,9 @@ public class CReal extends COrdered<Double> {
         if (value == null) {
             throw new NullPointerException(" Setting property:constraint failed, it has cardinality NonNull, but is null");
         }
-        this.constraint = constraint;
+        this.constraint = value;
     }
 
-    /**
-     * Default value set in a template, and present in an operational template.
-     * Generally limited to leaf and near-leaf nodes.
-     * cardinality: 0..1 (redefined)
-     */
-    public Double getDefaultValue() {
-        return defaultValue;
-    }
-
-    public void setDefaultValue(Double value) {
-        this.defaultValue = defaultValue;
-    }
 
     /**
      * Value to be assumed if none sent in data.

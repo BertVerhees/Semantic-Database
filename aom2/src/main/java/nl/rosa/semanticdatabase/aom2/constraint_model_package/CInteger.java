@@ -25,20 +25,13 @@ public class CInteger extends COrdered<Long> {
      * Formal constraint on Integer, in the form of List<Interval<Integer>>.
      * cardinality: 1..1 (redefined)
      */
-    private Interval<Integer> constraint;
-
-    /**
-     * Default value set in a template, and present in an operational template.
-     * Generally limited to leaf and near-leaf nodes.
-     * cardinality: 0..1 (redefined)
-     */
-    private Integer defaultValue;
+    private Interval<Long> constraint;
 
     /**
      * Value to be assumed if none sent in data.
      * cardinality: 0..1 (redefined)
      */
-    private Integer assumedValue;
+    private Long assumedValue;
 
     /*=========================================================*/
     /* * POJOS * */
@@ -48,7 +41,7 @@ public class CInteger extends COrdered<Long> {
      * Formal constraint on Integer, in the form of List<Interval<Integer>>.
      * cardinality: 1..1 (redefined)
      */
-    public Interval<Integer> getConstraint() {
+    public Interval<Long> getConstraint() {
         return constraint;
     }
 

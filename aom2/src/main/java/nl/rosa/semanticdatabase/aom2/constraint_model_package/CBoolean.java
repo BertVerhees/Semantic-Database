@@ -152,34 +152,23 @@ public class CBoolean extends CPrimitiveObject<Boolean, Boolean> {
      * True if other.any_allowed or else every constraint in the constraint list exists in the other.constraint.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cValueConformsTo(CObject other) {
+    public boolean cValueConformsTo(CBoolean other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return other.anyAllowed() ||
+                (constraint.size() < other.constraint.size()) && (constraint.stream().anyMatch(c -> other.constraint.contains(c)));
     }
 
     /**
      * True if the items in constraint are equal in number and identical pair-wise with those in other.constraint.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cValueCongruentTo(CObject other) {
+    public Boolean cValueCongruentTo(CBoolean other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return (constraint.size() == other.constraint.size()) && (constraint.stream().anyMatch(c -> other.constraint.contains(c)));
     }
 
     /**
@@ -191,10 +180,10 @@ public class CBoolean extends CPrimitiveObject<Boolean, Boolean> {
      * cardinality: 1..1 (abstract)
      *
      * @param other
-     * @param rmcc
+     * @param rmTypesConformant
      */
     @Override
-    public Boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
+    public boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
         return null;
     }
     /**
@@ -205,7 +194,7 @@ public class CBoolean extends CPrimitiveObject<Boolean, Boolean> {
      * @param other
      */
     @Override
-    public Boolean cCongruentTo(ArchetypeConstraint other) {
+    public boolean cCongruentTo(ArchetypeConstraint other) {
         return null;
     }
 

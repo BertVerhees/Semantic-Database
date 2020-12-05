@@ -128,15 +128,15 @@ public class ArchetypeSlot extends CObject {
      * unless explicitly set, a slot remains open.
      * cardinality: 1..1
      */
-    public Boolean getIsClosed() {
+    public Boolean isClosed() {
         return isClosed;
     }
 
-    public void setIsClosed(Boolean value) {
+    public void setClosed(Boolean value) {
         if (value == null) {
             throw new NullPointerException(" Setting property:isClosed failed, it has cardinality NonNull, but is null");
         }
-        this.isClosed = isClosed;
+        this.isClosed = value;
     }
 
     /*=========================================================*/
@@ -169,8 +169,8 @@ public class ArchetypeSlot extends CObject {
      * @param rmTypesConformant
      */
     @Override
-    public Boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
-        return null;
+    public boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
+        return super.cConformsTo(other, rmTypesConformant);
     }
 
     /**
@@ -181,8 +181,18 @@ public class ArchetypeSlot extends CObject {
      * @param other
      */
     @Override
-    public Boolean cCongruentTo(ArchetypeConstraint other) {
-        return null;
+    public boolean cCongruentTo(ArchetypeConstraint other) {
+        return super.cCongruentTo((CObject)other);
+    }
+
+    /**
+     * True if this node is a terminal node in the tree structure, i.e.
+     * having no child nodes.
+     * cardinality: 1..1
+     */
+    @Override
+    public boolean isLeaf() {
+        return true;
     }
 
 
@@ -261,37 +271,37 @@ public class ArchetypeSlot extends CObject {
         }
 
         public Builder setIncludes(List<ArchetypeIdConstraint> value) {
-            this.includes = includes;
+            this.includes = value;
             return this;
         }
 
         public Builder setExcludes(List<ArchetypeIdConstraint> value) {
-            this.excludes = excludes;
+            this.excludes = value;
             return this;
         }
 
         public Builder setOccurrences(MultiplicityInterval value) {
-            this.occurrences = occurrences;
+            this.occurrences = value;
             return this;
         }
 
         public Builder setIsDeprecated(Boolean value) {
-            this.isDeprecated = isDeprecated;
+            this.isDeprecated = value;
             return this;
         }
 
         public Builder setSiblingOrder(SiblingOrder value) {
-            this.siblingOrder = siblingOrder;
+            this.siblingOrder = value;
             return this;
         }
 
         public Builder setParent(ArchetypeConstraint value) {
-            this.parent = parent;
+            this.parent = value;
             return this;
         }
 
         public Builder setSocParent(CSecondOrder value) {
-            this.socParent = socParent;
+            this.socParent = value;
             return this;
         }
 

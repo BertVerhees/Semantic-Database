@@ -51,10 +51,6 @@ public class CComplexObjectProxy extends CObject {
     /*=========================================================*/
     /* * FUNCTIONS * */
     /*=========================================================*/
-    @Override
-    public String getLogicalPath() {
-        return null;
-    }
 
     /**
      * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
@@ -82,7 +78,7 @@ public class CComplexObjectProxy extends CObject {
      * @param other
      */
     @Override
-    public Boolean cCongruentTo(ArchetypeConstraint other) {
+    public boolean cCongruentTo(ArchetypeConstraint other) {
         return false;
     }
 

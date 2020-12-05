@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import java.util.*;
+import java.util.function.BiFunction;
 
 import semanticdatabase.foundation_types.interval.MultiplicityInterval;
 
@@ -46,34 +47,25 @@ public class CString extends CPrimitiveObject {
      * cardinality: 1..1 (redefined)
      */
 
-    public void addToConstraint(String value) {
+    public void addConstraint(String value) {
         constraint.add(value);
     }
 
-    public void addToConstraint(List<String> values) {
-        values.forEach(value -> addToConstraint(value));
-    }
-
-    public void removeFromConstraint(String item) {
+    public void removeConstraint(String item) {
         if (constraint != null) {
             constraint.remove(item);
         }
-    }
-
-    public void removeFromConstraint(Collection<String> values) {
-        values.forEach(this::removeFromConstraint);
     }
 
     public List<String> getConstraint() {
         return this.constraint;
     }
 
-    public CString setConstraint(List<String> constraint) {
+    public void setConstraint(List<String> constraint) {
         if (constraint == null) {
             throw new NullPointerException(" constraint has cardinality NonNull, but is null");
         }
         this.constraint = constraint;
-        return this;
     }
 
     public List<String> constraint() {
@@ -155,40 +147,102 @@ public class CString extends CPrimitiveObject {
     }
 
     /**
+     * True if a_value is valid with respect to constraint expressed in concrete instance of this type.
+     * cardinality: 1..1 (abstract)
+     *
+     * @param a_value
+     */
+    @Override
+    public Boolean validValue(Object a_value) {
+        return null;
+    }
+
+    /**
      * True if other.any_allowed or else every constraint in the constraint list exists in the other.constraint.
      * cardinality: 1..1 (effected)
      */
     @Override
-    public Boolean cValueConformsTo(CString other) {
+    public boolean cValueConformsTo(CPrimitiveObject other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return other.anyAllowed() ||
+                (constraint.size() < ((CString)other).constraint.size())
+                        && (constraint.stream().anyMatch(c -> ((CString)other).constraint.contains(c)));
     }
 
     /**
      * True if the items in constraint are equal in number and identical pair-wise with those in other.constraint.
+     * True if this node's value constraint is the same as that of `other'
      * cardinality: 1..1 (effected)
      */
     @Override
-    public Boolean cValueCongruentTo(CString other) {
+    public boolean cValueCongruentTo(CPrimitiveObject other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return (constraint.size() == ((CString)other).constraint.size())
+                && constraint.equals(((CString)other).constraint);
     }
+
+    @Override
+    public boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
+        if (other == null) {
+            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+        }
+        if(!super.cConformsTo(other, rmTypesConformant)) {
+            return false;
+        }
+        //now guaranteed to be the same class
+
+        CString o = (CString) other;
+        if(o.constraint.isEmpty()) {
+            return true;
+        }
+
+        for(String constraint:constraint) {
+            if(!hasMatchingConstraint(constraint, o)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * True if this node is a terminal node in the tree structure, i.e.
+     * having no child nodes.
+     * cardinality: 1..1
+     */
+    @Override
+    public boolean isLeaf() {
+        return false;
+    }
+
+    private boolean hasMatchingConstraint(String constraint, CString otherString) {
+        boolean isRegexp = CString.isRegexConstraint(constraint);
+
+        for(String otherConstraint:otherString.constraint) {
+            boolean otherIsRegexp = CString.isRegexConstraint(otherConstraint);
+            if(otherIsRegexp && !isRegexp) {
+                if(matchesRegexp(constraint, otherConstraint)) {
+                    return true;
+                }
+            } else if(otherConstraint.equals(constraint)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isRegexConstraint(String constraint) {
+        return (constraint.startsWith("/") && constraint.endsWith("/")) ||
+                (constraint.startsWith("^") && constraint.endsWith("^"));
+    }
+
+    private boolean matchesRegexp(String value, String constraint) {
+        return value.matches(constraint.substring(1).substring(0, constraint.length()-2));
+    }
+
 
 
     //***** CString *****

@@ -43,7 +43,7 @@ public class CComplexObject extends CDefinedObject {
      * cardinality: 0..1
      */
 
-    public void addToAttribute(CAttribute value) {
+    public void addAttribute(CAttribute value) {
         if (attributes == null) {
             attributes = new ArrayList<>();
         }
@@ -51,20 +51,20 @@ public class CComplexObject extends CDefinedObject {
     }
 
     public void addToAttributes(List<CAttribute> values) {
-        values.forEach(value -> addToAttribute(value));
+        values.forEach(value -> addAttribute(value));
     }
 
-    public void removeFromAttribute(CAttribute item) {
+    public void removeAttribute(CAttribute item) {
         if (attributes != null) {
             attributes.remove(item);
         }
     }
 
     public void removeFromAttributes(Collection<CAttribute> values) {
-        values.forEach(this::removeFromAttribute);
+        values.forEach(this::removeAttribute);
     }
 
-    List<CAttribute> getAttributes() {
+    public List<CAttribute> getAttributes() {
         return this.attributes;
     }
 
@@ -82,7 +82,7 @@ public class CComplexObject extends CDefinedObject {
      * cardinality: 0..1
      */
 
-    public void addToAttributeTuple(CAttributeTuple value) {
+    public void addAttributeTuple(CAttributeTuple value) {
         if (attributeTuples == null) {
             attributeTuples = new ArrayList<>();
         }
@@ -90,17 +90,17 @@ public class CComplexObject extends CDefinedObject {
     }
 
     public void addToAttributeTuples(List<CAttributeTuple> values) {
-        values.forEach(value -> addToAttributeTuple(value));
+        values.forEach(value -> addAttributeTuple(value));
     }
 
-    public void removeFromAttributeTuple(CAttributeTuple item) {
+    public void removeAttributeTuple(CAttributeTuple item) {
         if (attributeTuples != null) {
             attributeTuples.remove(item);
         }
     }
 
     public void removeFromAttributeTuples(Collection<CAttributeTuple> values) {
-        values.forEach(this::removeFromAttributeTuple);
+        values.forEach(this::removeAttributeTuple);
     }
 
     List<CAttributeTuple> getAttributeTuples() {
@@ -145,13 +145,7 @@ public class CComplexObject extends CDefinedObject {
      */
 
     public Boolean anyAllowed() {
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return attributes == null || attributes.isEmpty();
     }
 
     /**
@@ -195,7 +189,7 @@ public class CComplexObject extends CDefinedObject {
      * Parameters rmcc Reference Model conformance checker agent (lambda).
      * cardinality: 1..1 (effected)
      */
-    public Boolean cConformsTo(CComplexObject other, BiFunction<String, String, Boolean> rmTypesConformant) {
+    public boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -213,7 +207,7 @@ public class CComplexObject extends CDefinedObject {
      * Typically used to test if an inherited node locally contains any constraints.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cCongruentTo(CComplexObject other) {
+    public boolean cCongruentTo(ArchetypeConstraint other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -225,6 +219,17 @@ public class CComplexObject extends CDefinedObject {
         }
         return result;
     }
+
+    /**
+     * True if this node is a terminal node in the tree structure, i.e.
+     * having no child nodes.
+     * cardinality: 1..1
+     */
+    @Override
+    public boolean isLeaf() {
+        return (attributes == null || attributes.isEmpty()) && (attributeTuples == null || attributeTuples.isEmpty());
+    }
+
 
     //***** CComplexObject *****
 
@@ -263,16 +268,18 @@ public class CComplexObject extends CDefinedObject {
     }
 
     private CComplexObject(Builder builder) {
-        this.setAttributes(builder.attributes);
-        this.setAttributeTuples(builder.attributeTuples);
-        this.setDefaultValue(builder.defaultValue);
-        this.setRmTypeName(builder.rmTypeName);
-        this.setOccurrences(builder.occurrences);
-        this.setNodeId(builder.nodeId);
-        this.setIsDeprecated(builder.isDeprecated);
-        this.setSiblingOrder(builder.siblingOrder);
-        this.setParent(builder.parent);
-        this.setSocParent(builder.socParent);
+        this(
+                builder.attributes,
+                builder.attributeTuples,
+                builder.defaultValue,
+                builder.rmTypeName,
+                builder.occurrences,
+                builder.nodeId,
+                builder.isDeprecated,
+                builder.siblingOrder,
+                builder.parent,
+                builder.socParent
+        );
     }
 
     public static class Builder {
@@ -291,12 +298,6 @@ public class CComplexObject extends CDefinedObject {
                 String rmTypeName,
                 String nodeId
         ) {
-            if (rmTypeName == null) {
-                throw new NullPointerException("Property:rmTypeName has cardinality NonNull, but is null");
-            }
-            if (nodeId == null) {
-                throw new NullPointerException("Property:nodeId has cardinality NonNull, but is null");
-            }
             this.rmTypeName = rmTypeName;
             this.nodeId = nodeId;
         }

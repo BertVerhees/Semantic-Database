@@ -138,8 +138,8 @@ public class CAttribute extends ArchetypeConstraint {
         children.add(value);
     }
 
+    //first don't look through CComplexObject proxies, then if no result, do lookup through the proxies
     public CObject getChild(String nodeId) {
-        //first don't look through CComplexObject proxies, then if no result, do lookup through the proxies
         CObject result = getChild(nodeId, false);
         if(result == null) {
             result = getChild(nodeId, true);
@@ -193,35 +193,42 @@ public class CAttribute extends ArchetypeConstraint {
         return null;
     }
 
-    public void addToChildren(List<CObject> values) {
-        values.forEach(value -> addChild(value));
+    /**
+     * Removes the child with a node id exactly the same as the given node id. In case multiple children match, removes
+     * only the first child
+     * @param nodeId
+     */
+    public void removeChild(String nodeId) {
+        int index = getIndexOfChildWithNodeId(nodeId);
+        if(index > -1) {
+            children.remove(index);
+        }
     }
 
-    public void removeFromChildren(CObject item) {
+    public void removeChild(CObject item) {
         if (children != null) {
             children.remove(item);
         }
     }
 
-    public void removeFromChildren(Collection<CObject> values) {
-        values.forEach(this::removeFromChildren);
-    }
 
-    List<CObject> getChildren() {
+    public List<CObject> getChildren() {
         return this.children;
     }
 
-    public CAttribute setChildren(List<CObject> children) {
-        this.children = children;
-        return this;
-    }
+    public void setChildren(List<CObject> children) {
+        if(children == null) {
+            this.children = new ArrayList<>();
+        } else {
+            this.children = children;
 
-    public List<CObject> children() {
-        return Collections.unmodifiableList(this.children);
+            for(CObject child:children) {
+                child.setParent(this);
+            }
+        }
     }
 
     public void replaceChild(String nodeId, CObject constraint) {
-
         int index = getIndexOfChildWithNodeId(nodeId);
         if(index > -1) {
             children.set(index, constraint);
@@ -229,6 +236,47 @@ public class CAttribute extends ArchetypeConstraint {
         } else {
             addChild(constraint);
         }
+    }
+    /**
+     * Replace the child at node nodeId with all the objects from the parameter newChildren.
+     * If keepOriginal is true, it will not replace the original, but keep it in place
+     * and add the new elements directly after it
+     * Useful operation for flattening
+     */
+    public void replaceChildren(String nodeId, List<CObject> newChildren, boolean keepOriginal) {
+        int index = getIndexOfChildWithNodeId(nodeId);
+        if(index > -1) {
+            List<CObject> childrenBefore = children.subList(0, index+1);
+            if(!keepOriginal) {
+                childrenBefore.remove(index);
+            }
+            childrenBefore.addAll(newChildren);
+            for(CObject constraint:newChildren) {
+                constraint.setParent(this);
+            }
+        } else {
+            for(CObject constraint:newChildren) {
+                addChild(constraint);
+            }
+        }
+    }
+
+    public int getIndexOfMatchingCObjectChild(CObject child) {
+        if(child instanceof CPrimitiveObject) {
+            return getIndexOfChildWithMatchingRmTypeName(child.getRmTypeName());
+        } else {
+            return getIndexOfChildWithNodeId(child.getNodeId());
+        }
+    }
+
+    public int getIndexOfChildWithMatchingRmTypeName(String rmTypeName) {
+        for(int i = 0; i < children.size(); i++) {
+            CObject child = children.get(i);
+            if(rmTypeName.equals(child.getRmTypeName())) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public int getIndexOfChildWithNodeId(String nodeId) {
@@ -239,6 +287,59 @@ public class CAttribute extends ArchetypeConstraint {
             }
         }
         return -1;
+    }
+    /**
+     * Return all children that have the exact same type name as input.
+     * @param rmTypeName
+     * @return
+     */
+    public List<CObject> getChildrenByRmTypeName(String rmTypeName) {
+        List<CObject> result = new ArrayList<>();
+
+        for(int i = 0; i < children.size(); i++) {
+            CObject child = children.get(i);
+            if(rmTypeName.equals(child.getRmTypeName())) {
+                result.add(child);
+            }
+        }
+        return result;
+    }
+
+
+    /**
+     * Get the sum of all occurrences of all direct children of this c_attribute
+     * calculates sum of all occurrences lower bounds; where no occurrences are stated, 0 is assumed
+     * @return
+     */
+    public int getAggregateOccurrencesLowerSum() {
+        int sum = 0;
+        for(CObject cObject:getChildren()) {
+            if(cObject.getOccurrences() != null) {
+                sum+= cObject.getOccurrences().getLower();
+            }
+        }
+        return sum;
+    }
+
+    /**
+     *  calculate minimum number of child objects that must occur in data; count 1 for every mandatory
+     *  object, and 1 for all optional objects
+     * @return
+     */
+    public int getMinimumChildCount() {
+        int result = 0;
+        boolean foundOptional = false;
+        for(CObject cObject:getChildren()) {
+            if(cObject.isRequired()) {
+                result++;
+            } else if(cObject.isAllowed()) {
+                foundOptional = true;
+            }
+        }
+        if(foundOptional) {
+            result++;
+        }
+        return result;
     }
 
     /**
@@ -320,7 +421,7 @@ public class CAttribute extends ArchetypeConstraint {
      */
     public String rmAttributePath() {
         String result = null;
-
+        //TODO
 
         if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
@@ -344,21 +445,19 @@ public class CAttribute extends ArchetypeConstraint {
      * <p>
      * Post: Result = existence = Void and is_single and other.is_single) or (is_multiple and other.is_multiple and cardinality = Void
      */
-    public Boolean cCongruentTo(CAttribute other) {
-        //True if this node on its own (ignoring any subparts) expresses no additional constraints than `other'.
-        if(other == null) {
-            return false;
+    public boolean cCongruentTo(ArchetypeConstraint other) {
+        if (other == null) {
+            throw new NullPointerException(" Parameter:other failed, it has cardinality NonNull, but is null");
         }
-
         return existence == null
                 && ((isSingle()
-                    && other.isSingle())
+                    && ((CAttribute)other).isSingle())
                 || (isMultiple()
-                    && other.isMultiple()
+                    && ((CAttribute)other).isMultiple()
                     && cardinality == null)
         );
     }
-    public Boolean cConformsTo(CAttribute other) {
+    public boolean cConformsTo(CAttribute other) {
         //True if this node on its own (ignoring any subparts) expresses the same or narrower constraints as `other'.
         // Returns False if any of the following is incompatible:
         //	 * cardinality
@@ -389,7 +488,7 @@ public class CAttribute extends ArchetypeConstraint {
             return false;
         }
         if(cardinality != null && other.cardinality != null) {
-            return other.cardinality.contains(cardinality);
+            return other.cardinality.getInterval().contains(cardinality.getInterval());
         } else {
             return true;
         }
@@ -401,8 +500,8 @@ public class CAttribute extends ArchetypeConstraint {
      * cardinality: 1..1
      */
     @Override
-    public Boolean isLeaf() {
-        return null;
+    public boolean isLeaf() {
+        return children == null || children.size() == 0;
     }
 
     /**
@@ -412,7 +511,7 @@ public class CAttribute extends ArchetypeConstraint {
      * <p>
      * Post: Result = existence_conforms_to (other) and is_single and other.is_single) or else (is_multiple and cardinality_conforms_to (other)
      */
-    public Boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
+    public boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -427,12 +526,11 @@ public class CAttribute extends ArchetypeConstraint {
      * Post: Result = existence /= Void and then existence.is_prohibited
      */
     @Override
-    public Boolean isProhibited() {
-        Boolean result = null;
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+    public boolean isProhibited() {
+        if(existence != null) {
+            return existence.isProhibited();
         }
-        return result;
+        return false;
     }
 
     @Override
@@ -453,18 +551,6 @@ public class CAttribute extends ArchetypeConstraint {
     @Override
     public CObject getParent() {
         return (CObject) super.getParent();
-    }
-
-    @Override
-    public String getLogicalPath() {
-        String path = "/" + rmAttributeName;
-        if(getParent() != null) {
-            path = getParent().getLogicalPath() + path;
-        }
-        if(path.startsWith("//")) {
-            return path.substring(1);
-        }
-        return path;
     }
 
     //***** CAttribute *****

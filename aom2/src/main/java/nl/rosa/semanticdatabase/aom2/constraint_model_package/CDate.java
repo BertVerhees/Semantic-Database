@@ -379,7 +379,7 @@ public class CDate extends CTemporal<TemporalAccessor> {
      * @param rmcc
      */
     @Override
-    public Boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
+    public boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
         return null;
     }
 
@@ -391,7 +391,7 @@ public class CDate extends CTemporal<TemporalAccessor> {
      * @param other
      */
     @Override
-    public Boolean cCongruentTo(ArchetypeConstraint other) {
+    public boolean cCongruentTo(ArchetypeConstraint other) {
         return null;
     }
 

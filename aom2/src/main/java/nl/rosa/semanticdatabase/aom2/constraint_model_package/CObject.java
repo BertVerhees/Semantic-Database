@@ -142,6 +142,13 @@ public abstract class CObject extends ArchetypeConstraint {
     /* * FUNCTIONS * */
     /*=========================================================*/
 
+    public boolean isAllowed() {
+        if(occurrences == null) {
+            return true;
+        }
+        return occurrences.isUpperUnbounded() || occurrences.getUpper() > 0;
+    }
+
     @Override
     public List<PathSegment> getPathSegments() {
         CAttribute parent = getParent();
@@ -227,7 +234,8 @@ public abstract class CObject extends ArchetypeConstraint {
     public MultiplicityInterval getDefaultRMOccurrences(BiFunction<String, String, MultiplicityInterval> referenceModelPropMultiplicity) {
         CAttribute parent = getParent();
         if(parent != null) {
-            if(parent.getCardinality() != null && parent.getCardinality().getInterval() != null) { //technically a cardinality without interval is an error, but let's handle it correctly
+            //technically a cardinality without interval is an error, but let's handle it correctly
+            if(parent.getCardinality() != null && parent.getCardinality().getInterval() != null) {
                 if(parent.getCardinality().getInterval().isUpperUnbounded()) {
                     return MultiplicityInterval.createOpen();
                 } else {
@@ -250,8 +258,6 @@ public abstract class CObject extends ArchetypeConstraint {
         }
     }
 
-
-
     /**
      * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.
      * Typically used to test if an inherited node locally contains any constraints.
@@ -259,7 +265,7 @@ public abstract class CObject extends ArchetypeConstraint {
      *
      * @return
      */
-    public java.lang.Boolean cCongruentTo(CObject other) {
+    public boolean cCongruentTo(ArchetypeConstraint other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -286,6 +292,16 @@ public abstract class CObject extends ArchetypeConstraint {
         } else {
             return true;
         }
+    }
+
+    // True if this node is the sole re-using node of the corresponding node in the flat
+    public boolean nodeReuseCongruent(CObject other){
+        if (other == null) {
+            throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
+        }
+        //TODO
+//        return nodeIdConformsTo(other) && (isRoot() || (getParent().childReuseCount(other.getNodeId())==1))
+        return true;
     }
 
 
@@ -330,7 +346,7 @@ public abstract class CObject extends ArchetypeConstraint {
      * Post: Result = existence /= Void and then existence.is_prohibited
      */
     @Override
-    public Boolean isProhibited() {
+    public boolean isProhibited() {
         return occurrences != null && occurrences.isProhibited();
     }
 

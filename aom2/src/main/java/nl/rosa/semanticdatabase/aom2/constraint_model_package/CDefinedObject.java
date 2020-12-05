@@ -41,7 +41,7 @@ public abstract class CDefinedObject<T> extends CObject {
     }
 
     public void setDefaultValue(T value) {
-        this.defaultValue = defaultValue;
+        this.defaultValue = value;
     }
 
     /*=========================================================*/

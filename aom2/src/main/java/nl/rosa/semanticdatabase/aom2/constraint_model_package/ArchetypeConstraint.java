@@ -73,23 +73,19 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
      * Implemented in subtypes.
      * cardinality: 1..1 (abstract)
      */
-    public abstract Boolean isProhibited();
+    // implemented in CObject
+    public abstract boolean isProhibited();
 
     /**
      * True if the relative path a_path exists at this node.
      * cardinality: 1..1
      */
-    public Boolean hasPath(String a_path) {
+    public boolean hasPath(String a_path) {
         if (a_path == null) {
             throw new NullPointerException("Parameter a_path has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        //TODO Check
+        return getPath().endsWith(a_path);
     }
 
     private String getPath(){
@@ -107,12 +103,6 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
         return getPath();
     }
 
-    public abstract String getLogicalPath();
-
-    private void setLogicalPath(String path){
-        //setter hack for jackson, unfortunately
-    }
-
     /**
      * True if constraints represented by this node, ignoring any sub-parts, are narrower or the same as other.
      * Typically used during validation of special-ised archetype nodes.
@@ -128,14 +118,14 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
      * Typically used to test if an inherited node locally contains any constraints.
      * cardinality: 1..1 (abstract)
      */
-    public abstract Boolean cCongruentTo(ArchetypeConstraint other);
+    public abstract boolean cCongruentTo(ArchetypeConstraint other);
 
     /**
      * True if there is a second order constraint such as a tuple constraint on this node.
      * cardinality: 1..1
      * Post: soc_parent /= Void or else (parent /= Void and then parent.is_second_order_constrained)
      */
-    public Boolean isSecondOrderConstrained(){
+    public boolean isSecondOrderConstrained(){
         return getSocParent() != null || (getParent() != null && getParent().getSocParent() != null);
     }
 
@@ -143,7 +133,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
      * True if this node is the root of the tree.
      * cardinality: 1..1
      */
-    public Boolean isRoot() {
+    public boolean isRoot() {
         return parent == null;
     }
 
@@ -152,7 +142,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
      * having no child nodes.
      * cardinality: 1..1
      */
-    public abstract Boolean isLeaf();
+    public abstract boolean isLeaf();
 
     //***** ArchetypeConstraint *****
 
