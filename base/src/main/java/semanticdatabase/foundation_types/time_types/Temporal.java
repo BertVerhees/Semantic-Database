@@ -2,8 +2,6 @@ package semanticdatabase.foundation_types.time_types;
 
 import java.util.Objects;
 
-import semanticdatabase.foundation_types.primitive_types.Ordered;
-
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
@@ -11,50 +9,7 @@ import semanticdatabase.foundation_types.primitive_types.Ordered;
  * <p>
  * Abstract ancestor of time-related classes.
  */
-public abstract class Temporal extends Ordered {
-
-    //***** Temporal *****
-
-    /*=========================================================*/
-    /* * BUILD PATTERN AND CONSTRUCTOR * */
-    /*=========================================================*/
-
-
-    protected Temporal() {
-    }
-
-    protected Temporal(
-
-    ) {
-    }
-
-
-    //***** Temporal *****
-
-    /*=========================================================*/
-    /* * TOSTRING, EQUALS AND HASHCODE * */
-    /*=========================================================*/
-
-
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        return true;
-    }
-
-    public int hashCode() {
-        return Objects.hash(
-                super.hashCode()
-        );
-    }
-
-    @Override
-    public String toString() {
-        return
-                "Temporal {" +
-                        '}';
-    }
+public abstract class Temporal {
 
 }
 

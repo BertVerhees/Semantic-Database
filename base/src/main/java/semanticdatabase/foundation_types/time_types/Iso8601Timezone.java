@@ -1,5 +1,8 @@
 package semanticdatabase.foundation_types.time_types;
 
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 import semanticdatabase.foundation_types.primitive_types.Integer;
@@ -15,6 +18,8 @@ import semanticdatabase.foundation_types.primitive_types.Boolean;
  */
 public class Iso8601Timezone extends Iso8601Type {
 
+    private ZoneOffset zoneOffset;
+
     /*=========================================================*/
     /* * FUNCTIONS * */
     /*=========================================================*/
@@ -24,13 +29,7 @@ public class Iso8601Timezone extends Iso8601Type {
      * cardinality: 1..1
      */
     public Integer hour() {
-        Integer result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return ZoneOffset.of(value).getTotalSeconds()/3600;
     }
 
     /**
@@ -38,13 +37,7 @@ public class Iso8601Timezone extends Iso8601Type {
      * cardinality: 1..1
      */
     public Integer minute() {
-        Integer result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return ZoneOffset.of(value).getTotalSeconds()/60;
     }
 
     /**
@@ -52,13 +45,11 @@ public class Iso8601Timezone extends Iso8601Type {
      * cardinality: 1..1
      */
     public Integer sign() {
-        Integer result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+        if(minute()<0){
+            return -1;
+        }else{
+            return 1;
         }
-        return result;
     }
 
     /**

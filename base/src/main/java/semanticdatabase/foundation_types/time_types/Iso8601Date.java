@@ -1,5 +1,7 @@
 package semanticdatabase.foundation_types.time_types;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 import semanticdatabase.foundation_types.primitive_types.Integer;
@@ -20,50 +22,30 @@ public class Iso8601Date extends Iso8601Type {
     /* * FUNCTIONS * */
     /*=========================================================*/
 
+    private LocalDate date;
+
     /**
      * Extract the year part of the date as an Integer.
      * cardinality: 1..1
      */
     public Integer year() {
-        Integer result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return date.getYear();
     }
 
     /**
      * Extract the month part of the date as an Integer, or return 0 if not present.
      * cardinality: 1..1
      */
-    public not month_unknown
-
-    month() {
-        not month_unknown result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public Integer month() {
+        return date.getMonthValue();
     }
 
     /**
      * Extract the day part of the date as an Integer, or return 0 if not present.
      * cardinality: 1..1
      */
-    public not day_unknown
-
-    day() {
-        not day_unknown result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public Integer day() {
+        return date.getDayOfMonth();
     }
 
     /**

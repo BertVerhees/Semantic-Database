@@ -143,8 +143,8 @@ public class Iso8601Duration extends Iso8601Type {
      * the decimal part of the number preceding the 'S' in the 'HMS' part, if one exists.
      * cardinality: 1..1
      */
-    public Real fractionalSeconds() {
-        Real result = null;
+    public Double fractionalSeconds() {
+        Double result = null;
 
 
         if (result == null) {
@@ -158,8 +158,8 @@ public class Iso8601Duration extends Iso8601Type {
      * the value preceding the W, if one exists.
      * cardinality: 1..1
      */
-    public Integer weeks() {
-        Integer result = null;
+    public Long weeks() {
+        Long result = null;
 
 
         if (result == null) {
@@ -188,8 +188,8 @@ public class Iso8601Duration extends Iso8601Type {
      * 'Y' and 'M') are included, the corresponding 'average' durations from Time_definitions are used to compute the result.
      * cardinality: 1..1
      */
-    public Real toSeconds() {
-        Real result = null;
+    public Double toSeconds() {
+        Double result = null;
 
 
         if (result == null) {
@@ -216,9 +216,7 @@ public class Iso8601Duration extends Iso8601Type {
      * Arithmetic addition of a duration to a duration, via conversion to seconds, using Time_definitions.Average_days_in_year and Time_definitions.Average_days_in_month
      * cardinality: 1..1
      */
-    public Iso8601Duration add
-    alias "+"(
-    Iso8601Duration a_val)
+    public Iso8601Duration add(Iso8601Duration a_val)
 
     {
         if (a_val == null) {
@@ -237,9 +235,7 @@ public class Iso8601Duration extends Iso8601Type {
      * Arithmetic subtraction of a duration from a duration, via conversion to seconds, using Time_definitions.Average_days_in_year and Time_definitions.Average_days_in_month
      * cardinality: 1..1
      */
-    public Iso8601Duration subtract
-    alias "-"(
-    Iso8601Duration a_val)
+    public Iso8601Duration subtract(Iso8601Duration a_val)
 
     {
         if (a_val == null) {
@@ -258,10 +254,7 @@ public class Iso8601Duration extends Iso8601Type {
      * Arithmetic multiplication a duration by a number.
      * cardinality: 1..1
      */
-    public Iso8601Duration multiply
-    alias "*"(
-    Real a_val)
-
+    public Iso8601Duration multiply(Double a_val)
     {
         if (a_val == null) {
             throw new NullPointerException("Parameter a_val has cardinality NonNull, but is null.");
@@ -279,9 +272,7 @@ public class Iso8601Duration extends Iso8601Type {
      * Arithmetic division of a duration by a number.
      * cardinality: 1..1
      */
-    public Iso8601Duration divide
-    alias "/"(
-    Real a_val)
+    public Iso8601Duration divide(Double a_val)
 
     {
         if (a_val == null) {
@@ -300,8 +291,7 @@ public class Iso8601Duration extends Iso8601Type {
      * Generate negative of current duration value.
      * cardinality: 1..1
      */
-    public Iso8601Duration negative
-    alias "-"()
+    public Iso8601Duration negative()
 
     {
         Iso8601Duration result = null;
