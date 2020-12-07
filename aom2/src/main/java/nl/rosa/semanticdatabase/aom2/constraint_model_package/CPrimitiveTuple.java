@@ -1,5 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.BiFunction;
 
@@ -13,7 +15,7 @@ import semanticdatabase.foundation_types.primitive_types.Boolean;
  * Class representing a single object tuple instance in a tuple constraint.
  * Each such instance is a vector of object constraints, where each member (each C_PRIMITIVE_OBJECT) corresponds to one of the C_ATTRIBUTEs referred to by the owning C_ATTRIBUTE_TUPLE.
  */
-public class CPrimitiveTuple extends CSecondOrder {
+public class CPrimitiveTuple extends CSecondOrder<CPrimitiveObject> {
 
     //***** CPrimitiveTuple *****
 
@@ -36,38 +38,25 @@ public class CPrimitiveTuple extends CSecondOrder {
      * cardinality: 1..1 (redefined)
      */
 
-    public void addToMember(CPrimitiveObject value) {
+    public void addMember(CPrimitiveObject value) {
         members.add(value);
     }
 
-    public void addToMembers(List<CPrimitiveObject> values) {
-        values.forEach(value -> addToMember(value));
-    }
-
-    public void removeFromMember(CPrimitiveObject item) {
+    public void removeMember(CPrimitiveObject item) {
         if (members != null) {
             members.remove(item);
         }
     }
 
-    public void removeFromMembers(Collection<CPrimitiveObject> values) {
-        values.forEach(this::removeFromMember);
-    }
-
-    List<CPrimitiveObject> getMembers() {
+    public List<CPrimitiveObject> getMembers() {
         return this.members;
     }
 
-    public CPrimitiveTuple setMembers(List<CPrimitiveObject> members) {
+    public void setMembers(List<CPrimitiveObject> members) {
         if (members == null) {
             throw new NullPointerException(" members has cardinality NonNull, but is null");
         }
         this.members = members;
-        return this;
-    }
-
-    public List<CPrimitiveObject> members() {
-        return Collections.unmodifiableList(this.members);
     }
 
     /*=========================================================*/
@@ -80,17 +69,22 @@ public class CPrimitiveTuple extends CSecondOrder {
      * Parameters rmcc RM conformance checker agent.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cConformsTo(CPrimitiveTuple other, BiFunction<String, String, java.lang.Boolean> rmTypesConformant) {
+    public boolean cConformsTo(CSecondOrder other, BiFunction<String, String, java.lang.Boolean> rmTypesConformant) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
+        return this.getMembers().size() == other.getMembers().size() && allTupleMembersConform((CPrimitiveTuple)other, rmTypesConformant);
+    }
 
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+    private boolean allTupleMembersConform(CPrimitiveTuple other, BiFunction<String, String, java.lang.Boolean> rmTypesConformant) {
+        for(int i = 0; i < getMembers().size(); i++){
+            CPrimitiveObject member = getMember(i);
+            CPrimitiveObject otherMember = other.getMember(i);
+            if(!member.getClass().equals(otherMember.getClass()) || !member.cConformsTo(otherMember, rmTypesConformant)) {
+                return false;
+            }
         }
-        return result;
+        return true;
     }
 
     /**
@@ -98,16 +92,12 @@ public class CPrimitiveTuple extends CSecondOrder {
      * Typically used to test if an inherited node locally contains any constraints.
      * cardinality: 1..1 (effected)
      */
-    public Boolean cCongruentTo(CSecondOrder other) {
+    public boolean cCongruentTo(CSecondOrder other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        Boolean result = null;
+        boolean result = true;
 
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
         return result;
     }
 
@@ -122,8 +112,7 @@ public class CPrimitiveTuple extends CSecondOrder {
     }
 
     public CPrimitiveTuple(
-            List<cPrimitiveObject> members,
-            List<archetypeConstraint> members
+            List<CPrimitiveObject> members
     ) {
         if (members == null) {
             throw new NullPointerException("Property:members has cardinality NonNull, but is null");
@@ -132,26 +121,19 @@ public class CPrimitiveTuple extends CSecondOrder {
     }
 
     private CPrimitiveTuple(Builder builder) {
-        this.setMembers(builder.members);
-        this.setMembers(builder.members);
+        this(builder.members);
     }
 
     public static class Builder {
-        private final List<cPrimitiveObject> members;  //required
-        private List<archetypeConstraint> members;
+        private final List<CPrimitiveObject> members;  //required
 
         public Builder(
-                List<cPrimitiveObject> members
+                List<CPrimitiveObject> members
         ) {
             if (members == null) {
                 throw new NullPointerException("Property:members has cardinality NonNull, but is null");
             }
             this.members = members;
-        }
-
-        public Builder setMembers(List<archetypeConstraint> value) {
-            this.members = members;
-            return this;
         }
 
         public CPrimitiveTuple build() {

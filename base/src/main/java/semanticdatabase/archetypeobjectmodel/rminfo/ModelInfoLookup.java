@@ -2,8 +2,8 @@ package semanticdatabase.archetypeobjectmodel.rminfo;
 
 
 import semanticdatabase.base.paths.PathSegment;
-import semanticdatabase.base.rminfo.RMAttributeInfo;
-import semanticdatabase.base.rminfo.RMTypeInfo;
+import nl.rosa.semanticdatabase.rminfo.RMAttributeInfo;
+import nl.rosa.semanticdatabase.rminfo.RMTypeInfo;
 import semanticdatabase.query.APathQuery;
 
 import java.lang.reflect.Field;

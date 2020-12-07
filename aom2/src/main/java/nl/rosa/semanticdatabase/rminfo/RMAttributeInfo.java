@@ -1,11 +1,11 @@
-package semanticdatabase.base.rminfo;
+package nl.rosa.semanticdatabase.rminfo;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collection;
 
 /**
- * Created by pieter.bos on 25/03/16.
+ * Originally: Created by pieter.bos on 25/03/16.
  */
 public class RMAttributeInfo {
     private final String name;

@@ -1,5 +1,7 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.BiFunction;
 
@@ -12,7 +14,7 @@ import semanticdatabase.foundation_types.primitive_types.Boolean;
  * <p>
  * Abstract parent of classes defining second order constraints.
  */
-public abstract class CSecondOrder {
+public abstract class CSecondOrder<T extends ArchetypeConstraint> {
 
     //***** CSecondOrder *****
 
@@ -25,7 +27,7 @@ public abstract class CSecondOrder {
      * Normally redefined in descendants.
      * cardinality: 0..1
      */
-    private List<ArchetypeConstraint> members;
+    private List<T> members;
 
     /*=========================================================*/
     /* * POJOS * */
@@ -37,38 +39,29 @@ public abstract class CSecondOrder {
      * cardinality: 0..1
      */
 
-    public void addToMember(ArchetypeConstraint value) {
+    public T getMember(int i) {
+        return members.get(i);
+    }
+
+    public void addMember(T value) {
         if (members == null) {
             members = new ArrayList<>();
         }
         members.add(value);
     }
 
-    public void addToMembers(List<ArchetypeConstraint> values) {
-        values.forEach(value -> addToMember(value));
-    }
-
-    public void removeFromMember(ArchetypeConstraint item) {
+    public void removeMember(T item) {
         if (members != null) {
             members.remove(item);
         }
     }
 
-    public void removeFromMembers(Collection<ArchetypeConstraint> values) {
-        values.forEach(this::removeFromMember);
-    }
-
-    List<ArchetypeConstraint> getMembers() {
+    public List<T> getMembers() {
         return this.members;
     }
 
-    public CSecondOrder setMembers(List<ArchetypeConstraint> members) {
+    public void setMembers(List<T> members) {
         this.members = members;
-        return this;
-    }
-
-    public List<ArchetypeConstraint> members() {
-        return Collections.unmodifiableList(this.members);
     }
 
     /*=========================================================*/
@@ -83,14 +76,14 @@ public abstract class CSecondOrder {
      * The signature provides two arguments representing respectively, the rm_type_name of the current node and the rm_type_name of the node being redefined in a specialisation parent archetype.
      * cardinality: 1..1 (abstract)
      */
-    public abstract Boolean cConformsTo(CSecondOrder other, BiFunction<String, String, java.lang.Boolean> rmTypesConformant);
+    public abstract boolean cConformsTo(CSecondOrder other, BiFunction<String, String, java.lang.Boolean> rmTypesConformant);
 
     /**
      * True if constraints represented by this node contain no further redefinitions with respect to the node other.
      * Typically used to test if an inherited node locally contains any constraints.
      * cardinality: 1..1 (abstract)
      */
-    public abstract Boolean cCongruentTo(CSecondOrder other);
+    public abstract boolean cCongruentTo(CSecondOrder other);
 
     //***** CSecondOrder *****
 

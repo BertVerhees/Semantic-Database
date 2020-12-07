@@ -1,4 +1,4 @@
-package semanticdatabase.base.rminfo;
+package nl.rosa.semanticdatabase.rminfo;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,10 +6,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Annotation to override name of RM property.
+ * Mark methods as to be ignored by ReflectionModelInfoLookup, because they are not specified as a property in the model specification (eg openehr RM),
+ * but just an extra method
  */
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface RMProperty {
-    String value();
+public @interface RMPropertyIgnore {
 }

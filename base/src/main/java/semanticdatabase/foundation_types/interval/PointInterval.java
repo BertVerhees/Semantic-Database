@@ -1,6 +1,6 @@
 package semanticdatabase.foundation_types.interval;
 
-import java.util.Objects;.;
+import java.util.Objects;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -10,7 +10,7 @@ import java.util.Objects;.;
  * Type representing an Interval that happens to be a point value.
  * Provides an efficient representation that is substitutable for Interval<T> where needed.
  */
-public class PointInterval<t> extends Interval {
+public class PointInterval<T> extends Interval {
 
     /*=========================================================*/
     /* * CONSTANTS * */
@@ -20,10 +20,7 @@ public class PointInterval<t> extends Interval {
      * Lower boundary open (i.e.
      * = -infinity).
      */
-    final Boolean {
-        default
-        lowerUnbounded = false
-    }
+    private boolean lowerUnbounded = false;
 
     ;
 
@@ -31,32 +28,19 @@ public class PointInterval<t> extends Interval {
      * Upper boundary open (i.e.
      * = +infinity).
      */
-    final Boolean {
-        default
-        upperUnbounded = false
-    }
+    private boolean upperUnbounded = false;
 
     ;
 
     /**
      * Lower boundary value included in range if not lower_unbounded.
      */
-    final Boolean {
-        default
-        lowerIncluded = true
-    }
-
-    ;
+    private boolean lowerIncluded = true;
 
     /**
      * Upper boundary value included in range if not upper_unbounded.
      */
-    final Boolean {
-        default
-        upperIncluded = true
-    }
-
-    ;
+    private boolean upperIncluded = true;
 
     //***** PointInterval<t> *****
 
@@ -64,36 +48,36 @@ public class PointInterval<t> extends Interval {
     /* * BUILD PATTERN AND CONSTRUCTOR * */
     /*=========================================================*/
 
-
-    protected PointInterval<t>()
-
-    {
+    public PointInterval(boolean lowerUnbounded, boolean upperUnbounded, boolean lowerIncluded, boolean upperIncluded) {
+        this.lowerUnbounded = lowerUnbounded;
+        this.upperUnbounded = upperUnbounded;
+        this.lowerIncluded = lowerIncluded;
+        this.upperIncluded = upperIncluded;
     }
 
-    public PointInterval<t>(
-
-            )
-
-    {
+    public PointInterval(T value, boolean lowerUnbounded, boolean upperUnbounded, boolean lowerIncluded, boolean upperIncluded) {
+        super(value);
+        this.lowerUnbounded = lowerUnbounded;
+        this.upperUnbounded = upperUnbounded;
+        this.lowerIncluded = lowerIncluded;
+        this.upperIncluded = upperIncluded;
     }
 
-    private PointInterval<t>(
-    Builder builder)
-
-    {
+    public PointInterval(T lower, T upper, boolean lowerUnbounded, boolean upperUnbounded, boolean lowerIncluded, boolean upperIncluded) {
+        super(lower, upper);
+        this.lowerUnbounded = lowerUnbounded;
+        this.upperUnbounded = upperUnbounded;
+        this.lowerIncluded = lowerIncluded;
+        this.upperIncluded = upperIncluded;
     }
 
-    public static class Builder {
-
-        public Builder(
-        ) {
-        }
-
-        public PointInterval<t> build() {
-            return new PointInterval<t>(this);
-        }
+    public PointInterval(T lower, T upper, boolean lowerIncluded, boolean upperIncluded, boolean lowerUnbounded, boolean upperUnbounded, boolean lowerIncluded1, boolean upperIncluded1) {
+        super(lower, upper, lowerIncluded, upperIncluded);
+        this.lowerUnbounded = lowerUnbounded;
+        this.upperUnbounded = upperUnbounded;
+        this.lowerIncluded = lowerIncluded1;
+        this.upperIncluded = upperIncluded1;
     }
-
 
     //***** PointInterval<t> *****
 

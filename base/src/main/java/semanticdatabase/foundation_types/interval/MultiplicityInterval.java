@@ -4,8 +4,6 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-.;
-
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
@@ -100,7 +98,7 @@ public class MultiplicityInterval extends Interval<Integer> {
      * cardinality: 1..1
      */
     public boolean getOpen() {
-        boolean result = Integer.valueOf(0).equals(getLower()) && getUpperUnbounded() && getLowerIncluded();
+        boolean result = Integer.valueOf(0).equals(getLower()) && isUpperUnbounded() && isLowerIncluded();
         return result;
     }
 
@@ -114,7 +112,7 @@ public class MultiplicityInterval extends Interval<Integer> {
      * cardinality: 1..1
      */
     public boolean getOptional() {
-        boolean result = Integer.valueOf(0).equals(getLower()) && Integer.valueOf(1).equals(getUpper()) && !getUpperUnbounded() && getLowerIncluded() && getUpperIncluded();
+        boolean result = Integer.valueOf(0).equals(getLower()) && Integer.valueOf(1).equals(getUpper()) && !isUpperUnbounded() && isLowerIncluded() && isUpperIncluded();
         return result;
     }
 
@@ -128,7 +126,7 @@ public class MultiplicityInterval extends Interval<Integer> {
      * cardinality: 1..1
      */
     public boolean isMandatory() {
-        boolean result = !getLowerUnbounded() && getLower() >= 1;
+        boolean result = !isLowerUnbounded() && getLower() >= 1;
         return result;
     }
 
@@ -141,7 +139,7 @@ public class MultiplicityInterval extends Interval<Integer> {
      * cardinality: 1..1
      */
     public boolean isProhibited() {
-        boolean result = Integer.valueOf(0).equals(getLower()) && Integer.valueOf(0).equals(getUpper()) && !getUpperUnbounded();
+        boolean result = Integer.valueOf(0).equals(getLower()) && Integer.valueOf(0).equals(getUpper()) && !isUpperUnbounded();
         return result;
     }
 
@@ -186,7 +184,7 @@ public class MultiplicityInterval extends Interval<Integer> {
     }
 
     public MultiplicityInterval(Interval<Integer> interval) {
-        this(interval.getLower(), interval.getLowerIncluded(), interval.getLowerUnbounded(), interval.getUpper(), interval.getUpperIncluded(), interval.getUpperUnbounded());
+        this(interval.getLower(), interval.isLowerIncluded(), interval.isLowerUnbounded(), interval.getUpper(), interval.isUpperIncluded(), interval.isUpperUnbounded());
     }
 
     public MultiplicityInterval(Integer lower, boolean lowerIncluded, boolean lowerUnbounded, Integer upper, boolean upperIncluded, boolean upperUnbounded) {

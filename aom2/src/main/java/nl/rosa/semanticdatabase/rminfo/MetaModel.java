@@ -1,4 +1,4 @@
-package semanticdatabase.base.rminfo;
+package nl.rosa.semanticdatabase.rminfo;
 
 
 public class MetaModel implements MetaModelInterface {

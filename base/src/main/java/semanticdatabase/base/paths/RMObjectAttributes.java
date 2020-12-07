@@ -1,7 +1,7 @@
 package semanticdatabase.base.paths;
 
 import semanticdatabase.archetypeobjectmodel.rminfo.ModelInfoLookup;
-import semanticdatabase.base.rminfo.RMAttributeInfo;
+import nl.rosa.semanticdatabase.rminfo.RMAttributeInfo;
 
 import java.lang.reflect.InvocationTargetException;
 

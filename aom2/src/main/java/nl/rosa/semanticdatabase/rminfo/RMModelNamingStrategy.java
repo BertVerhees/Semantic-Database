@@ -1,9 +1,9 @@
-package semanticdatabase.base.rminfo;
+package nl.rosa.semanticdatabase.rminfo;
 
 //import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 
 /**
- * Created by pieter.bos on 29/03/16.
+ * Originally: Created by pieter.bos on 29/03/16.
  * A naming helper for both Archie RM and AOM objects
  */
 public class RMModelNamingStrategy {

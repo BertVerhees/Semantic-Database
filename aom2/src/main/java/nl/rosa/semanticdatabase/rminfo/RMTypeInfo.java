@@ -1,9 +1,9 @@
-package semanticdatabase.base.rminfo;
+package nl.rosa.semanticdatabase.rminfo;
 
 import java.util.*;
 
 /**
- * Created by pieter.bos on 25/03/16.
+ * Originally: Created by pieter.bos on 25/03/16.
  */
 public class RMTypeInfo {
 

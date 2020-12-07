@@ -1,6 +1,7 @@
-package semanticdatabase.base.rminfo;
+package nl.rosa.semanticdatabase.rminfo;
 
 import semanticdatabase.base.paths.PathSegment;
+import semanticdatabase.foundation_types.interval.MultiplicityInterval;
 import semanticdatabase.query.APathQuery;
 
 import java.lang.reflect.Field;
@@ -220,7 +221,7 @@ public interface ModelInfoLookup {
      * @param parentType
      * @return
      */
-    default Boolean rmTypesConformant(String childType, String parentType) {
+    default boolean rmTypesConformant(String childType, String parentType) {
         RMTypeInfo parentTypeInfo = getTypeInfo(parentType);
         RMTypeInfo childTypeInfo = getTypeInfo(childType);
         if (childTypeInfo == null || parentTypeInfo == null) {

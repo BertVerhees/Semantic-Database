@@ -1,9 +1,9 @@
-package semanticdatabase.base.rminfo;
+package nl.rosa.semanticdatabase.rminfo;
 
 import java.util.Collection;
 
 /**
- * Created by pieter.bos on 06/07/16.
+ * Originally: Created by pieter.bos on 06/07/16.
  */
 public class RMAOMInfoLookup extends ReflectionModelInfoLookup {
     @Override

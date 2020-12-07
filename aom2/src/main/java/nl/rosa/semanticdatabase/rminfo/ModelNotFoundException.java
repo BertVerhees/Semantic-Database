@@ -1,4 +1,4 @@
-package semanticdatabase.base.rminfo;
+package nl.rosa.semanticdatabase.rminfo;
 
 /**
  * Exception indicating that no model was found for the given archetype

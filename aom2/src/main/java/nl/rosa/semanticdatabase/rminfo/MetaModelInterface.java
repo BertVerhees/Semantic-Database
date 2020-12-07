@@ -1,4 +1,4 @@
-package semanticdatabase.base.rminfo;
+package nl.rosa.semanticdatabase.rminfo;
 
 //import com.nedap.archie.aom.CPrimitiveObject;
 //import com.nedap.archie.base.MultiplicityInterval;

@@ -162,6 +162,12 @@ public abstract class CObject extends ArchetypeConstraint {
         return segments;
     }
 
+    /**
+     * Get the underlying attributes of this CObject. From this class always returns an empty list. Overriden with
+     * different implementations in subclasses.
+     *
+     * @return
+     */
     public List<CAttribute> getAttributes() {
         return Collections.EMPTY_LIST;
     }
@@ -206,7 +212,6 @@ public abstract class CObject extends ArchetypeConstraint {
      */
     public Integer specialisationDepth() {
         Integer result = AOMUtils.getSpecializationDepthFromCode(nodeId);
-        ;
         if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
