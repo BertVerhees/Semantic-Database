@@ -1,12 +1,6 @@
 package semanticdatabase.foundation_types.time_types;
 
-import java.time.ZoneId;
 import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-import java.util.Objects;
-
-import semanticdatabase.foundation_types.primitive_types.Integer;
-import semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -20,6 +14,22 @@ public class Iso8601Timezone extends Iso8601Type {
 
     private ZoneOffset zoneOffset;
 
+    public Iso8601Timezone( String value){
+        if(value.equals("Z")){
+            this.zoneOffset = ZoneOffset.of("+00:00");
+        }else if(!value.contains(":")){
+            StringBuilder correctedValue = new StringBuilder("");
+            if(!value.contains(":")){
+                correctedValue.append(value.substring(0, value.length()-2)).append(":").append(value.substring(value.length()-2));
+            }else{
+                correctedValue.append(value);
+            }
+            this.zoneOffset = ZoneOffset.of(correctedValue.toString());
+        }
+    }
+
+
+
     /*=========================================================*/
     /* * FUNCTIONS * */
     /*=========================================================*/
@@ -29,7 +39,7 @@ public class Iso8601Timezone extends Iso8601Type {
      * cardinality: 1..1
      */
     public Integer hour() {
-        return ZoneOffset.of(value).getTotalSeconds()/3600;
+        return zoneOffset.getTotalSeconds()/3600;
     }
 
     /**
@@ -45,7 +55,7 @@ public class Iso8601Timezone extends Iso8601Type {
      * cardinality: 1..1
      */
     public Integer sign() {
-        if(minute()<0){
+        if(zoneOffset.getTotalSeconds()<0){
             return -1;
         }else{
             return 1;
@@ -56,14 +66,8 @@ public class Iso8601Timezone extends Iso8601Type {
      * Indicates whether minute part known.
      * cardinality: 1..1
      */
-    public Boolean minuteUnknown() {
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public boolean minuteUnknown() {
+        return false;
     }
 
     /**
@@ -71,28 +75,16 @@ public class Iso8601Timezone extends Iso8601Type {
      * if minutes is missing.
      * cardinality: 1..1 (effected)
      */
-    public Boolean isPartial() {
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public boolean isPartial() {
+        return false;
     }
 
     /**
      * True if this time-zone uses ‘:’ separators.
      * cardinality: 1..1 (effected)
      */
-    public Boolean isExtended() {
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public boolean isExtended() {
+        return false;
     }
 
     /**
@@ -100,14 +92,8 @@ public class Iso8601Timezone extends Iso8601Type {
      * +0000.
      * cardinality: 1..1
      */
-    public Boolean isGmt() {
-        Boolean result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public boolean isGmt() {
+        return zoneOffset.getTotalSeconds()==0;
     }
 
     /**
@@ -115,65 +101,8 @@ public class Iso8601Timezone extends Iso8601Type {
      * cardinality: 1..1
      */
     public String asString() {
-        String result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return zoneOffset.toString();
     }
-
-    //***** Iso8601Timezone *****
-
-    /*=========================================================*/
-    /* * BUILD PATTERN AND CONSTRUCTOR * */
-    /*=========================================================*/
-
-
-    protected Iso8601Timezone() {
-    }
-
-    public Iso8601Timezone(
-            String value,
-            Integer maxDaysInYear
-    ) {
-        super(
-                value,
-                maxDaysInYear
-        );
-    }
-
-    private Iso8601Timezone(Builder builder) {
-        this.setValue(builder.value);
-        this.setMaxDaysInYear(builder.maxDaysInYear);
-    }
-
-    public static class Builder {
-        private final String value;  //required
-        private final Integer maxDaysInYear;  //required
-
-        public Builder(
-                String value,
-                Integer maxDaysInYear
-        ) {
-            if (value == null) {
-                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
-            }
-            if (maxDaysInYear == null) {
-                throw new NullPointerException("Property:maxDaysInYear has cardinality NonNull, but is null");
-            }
-            this.value = value;
-            this.maxDaysInYear = maxDaysInYear;
-        }
-
-        public Iso8601Timezone build() {
-            return new Iso8601Timezone(this);
-        }
-    }
-
-
-    //***** Iso8601Timezone *****
 
     /*=========================================================*/
     /* * TOSTRING, EQUALS AND HASHCODE * */
@@ -184,19 +113,18 @@ public class Iso8601Timezone extends Iso8601Type {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        return true;
+        return zoneOffset.equals(object);
     }
 
     public int hashCode() {
-        return Objects.hash(
-                super.hashCode()
-        );
+        return zoneOffset.hashCode();
     }
 
     @Override
     public String toString() {
         return
                 "Iso8601Timezone {" +
+                        zoneOffset.toString() +
                         '}';
     }
 
