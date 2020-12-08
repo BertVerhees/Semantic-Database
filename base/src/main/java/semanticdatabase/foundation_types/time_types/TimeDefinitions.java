@@ -1,11 +1,5 @@
 package semanticdatabase.foundation_types.time_types;
 
-import java.util.Objects;
-
-import semanticdatabase.foundation_types.primitive_types.Integer;
-import semanticdatabase.foundation_types.primitive_types.Double;
-import semanticdatabase.foundation_types.primitive_types.Boolean;
-
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
@@ -60,19 +54,17 @@ public class TimeDefinitions {
  * cardinality: 1..1
  *
  */
-    public Result =y >=0
-
-    validYear(Integer y) {
+    public boolean validYear(Integer y) {
         if (y == null) {
             throw new NullPointerException("Parameter y has cardinality NonNull, but is null.");
         }
-        Result = y >= 0 result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+//        Result = y >= 0 result = null;
+//
+//
+//        if (result == null) {
+//            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+//        }
+        return false;
     }
 
 /**
@@ -81,20 +73,17 @@ public class TimeDefinitions {
  * cardinality: 1..1
  *
  */
-    public Result =m >=1
-    and m
-
-    <> validMonth(Integer m) {
+    public boolean validMonth(Integer m) {
         if (m == null) {
             throw new NullPointerException("Parameter m has cardinality NonNull, but is null.");
         }
-        Result = m >= 1 and m <>result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+//        Result = m >= 1 and m <>result = null;
+//
+//
+//        if (result == null) {
+//            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+//        }
+        return false;
     }
 
 /**
@@ -103,10 +92,7 @@ public class TimeDefinitions {
  * cardinality: 1..1
  *
  */
-    public Result =d >=1
-    and d
-
-    <> validDay(Integer y, Integer m, Integer d) {
+    public boolean validDay(Integer y, Integer m, Integer d) {
         if (y == null) {
             throw new NullPointerException("Parameter y has cardinality NonNull, but is null.");
         }
@@ -116,13 +102,13 @@ public class TimeDefinitions {
         if (d == null) {
             throw new NullPointerException("Parameter d has cardinality NonNull, but is null.");
         }
-        Result = d >= 1 and d <>result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+//        Result = d >= 1 and d <>result = null;
+//
+//
+//        if (result == null) {
+//            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+//        }
+        return false;
     }
 
 /**
@@ -131,10 +117,7 @@ public class TimeDefinitions {
  * cardinality: 1..1
  *
  */
-    public Result =(h >=0
-    and h
-
-    <> validHour(Integer h, Integer m, Integer s) {
+    public boolean validHour(Integer h, Integer m, Integer s) {
         if (h == null) {
             throw new NullPointerException("Parameter h has cardinality NonNull, but is null.");
         }
@@ -144,13 +127,13 @@ public class TimeDefinitions {
         if (s == null) {
             throw new NullPointerException("Parameter s has cardinality NonNull, but is null.");
         }
-        Result = (h >= 0 and h <>result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+//        Result = (h >= 0 and h <>result = null;
+//
+//
+//        if (result == null) {
+//            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+//        }
+        return false;
     }
 
 /**
@@ -159,20 +142,17 @@ public class TimeDefinitions {
  * cardinality: 1..1
  *
  */
-    public Result =m >=0
-    and m
-
-    <> validMinute(Integer m) {
+    public boolean validMinute(Integer m) {
         if (m == null) {
             throw new NullPointerException("Parameter m has cardinality NonNull, but is null.");
         }
-        Result = m >= 0 and m <>result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+//        Result = m >= 0 and m <>result = null;
+//
+//
+//        if (result == null) {
+//            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+//        }
+        return false;
     }
 
 /**
@@ -181,20 +161,17 @@ public class TimeDefinitions {
  * cardinality: 1..1
  *
  */
-    public Result =s >=0
-    and s
-
-    <> validSecond(Integer s) {
+    public boolean validSecond(Integer s) {
         if (s == null) {
             throw new NullPointerException("Parameter s has cardinality NonNull, but is null.");
         }
-        Result = s >= 0 and s <>result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+//        Result = s >= 0 and s <>result = null;
+//
+//
+//        if (result == null) {
+//            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+//        }
+        return false;
     }
 
 /**
@@ -203,20 +180,17 @@ public class TimeDefinitions {
  * cardinality: 1..1
  *
  */
-    public Result =fs >=0.0
-    and fs
-
-    <> validFractionalSecond(Double fs) {
+    public boolean validFractionalSecond(Double fs) {
         if (fs == null) {
             throw new NullPointerException("Parameter fs has cardinality NonNull, but is null.");
         }
-        Result = fs >= 0.0 and fs <>result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+//        Result = fs >= 0.0 and fs <>result = null;
+//
+//
+//        if (result == null) {
+//            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
+//        }
+        return false;
     }
 
     /**
@@ -322,7 +296,7 @@ public class TimeDefinitions {
     /**
      * Used for conversions of durations containing months to days and / or seconds.
      */
-    final Real averageDaysInMonth = 30.42;
+    final Double averageDaysInMonth = 30.42;
 
     /**
      * Maximum number of days in any month.
@@ -338,7 +312,7 @@ public class TimeDefinitions {
     /**
      * Used for conversions of durations containing years to days and / or seconds.
      */
-    final Real averageDaysInYear = 365.24;
+    final Double averageDaysInYear = 365.24;
 
     /**
      * Calendar days in a standard leap year, i.e.
@@ -366,12 +340,12 @@ public class TimeDefinitions {
     /**
      * Used for conversions of durations containing months to days and / or seconds.
      */
-    final Real nominalDaysInMonth = 30.42;
+    final Double nominalDaysInMonth = 30.42;
 
     /**
      * Used for conversions of durations containing years to days and / or seconds.
      */
-    final Real nominalDaysInYear = 365.24;
+    final Double nominalDaysInYear = 365.24;
 
     //***** TimeDefinitions *****
 
@@ -415,35 +389,6 @@ public class TimeDefinitions {
 
 
     //***** TimeDefinitions *****
-
-    /*=========================================================*/
-    /* * TOSTRING, EQUALS AND HASHCODE * */
-    /*=========================================================*/
-
-
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        TimeDefinitions that = (TimeDefinitions) object;
-        return
-                Objects.equals(maxDaysInYear, that.maxDaysInYear);
-    }
-
-    public int hashCode() {
-        return Objects.hash(
-                super.hashCode(),
-                maxDaysInYear
-        );
-    }
-
-    @Override
-    public String toString() {
-        return
-                "TimeDefinitions {" +
-                        "maxDaysInYear='" + maxDaysInYear + '\'' +
-                        '}';
-    }
 
 }
 

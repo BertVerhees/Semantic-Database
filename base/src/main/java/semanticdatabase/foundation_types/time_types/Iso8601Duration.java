@@ -1,10 +1,7 @@
 package semanticdatabase.foundation_types.time_types;
 
+import java.time.Duration;
 import java.util.Objects;
-
-import semanticdatabase.foundation_types.primitive_types.Boolean;
-import semanticdatabase.foundation_types.primitive_types.Integer;
-import semanticdatabase.foundation_types.primitive_types.Real;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -15,6 +12,8 @@ import semanticdatabase.foundation_types.primitive_types.Real;
  * The value attribute is a String in the format: P[nnY][nnM][nnW][nnD][T[nnH][nnM][nnS]] Note two deviations from ISO 8601 are supported, the first, to allow a negative sign, and the second allowing the 'W' designator to be mixed with other designators.
  */
 public class Iso8601Duration extends Iso8601Type {
+
+    private Duration duration;
 
     /*=========================================================*/
     /* * FUNCTIONS * */
@@ -310,47 +309,11 @@ public class Iso8601Duration extends Iso8601Type {
     /*=========================================================*/
 
 
-    protected Iso8601Duration() {
-    }
-
     public Iso8601Duration(
-            String value,
-            Integer maxDaysInYear
+            String value
     ) {
-        super(
-                value,
-                maxDaysInYear
-        );
+
     }
-
-    private Iso8601Duration(Builder builder) {
-        this.setValue(builder.value);
-        this.setMaxDaysInYear(builder.maxDaysInYear);
-    }
-
-    public static class Builder {
-        private final String value;  //required
-        private final Integer maxDaysInYear;  //required
-
-        public Builder(
-                String value,
-                Integer maxDaysInYear
-        ) {
-            if (value == null) {
-                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
-            }
-            if (maxDaysInYear == null) {
-                throw new NullPointerException("Property:maxDaysInYear has cardinality NonNull, but is null");
-            }
-            this.value = value;
-            this.maxDaysInYear = maxDaysInYear;
-        }
-
-        public Iso8601Duration build() {
-            return new Iso8601Duration(this);
-        }
-    }
-
 
     //***** Iso8601Duration *****
 
@@ -363,12 +326,12 @@ public class Iso8601Duration extends Iso8601Type {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        return true;
+        return duration.equals(object);
     }
 
     public int hashCode() {
         return Objects.hash(
-                super.hashCode()
+                duration.hashCode()
         );
     }
 
@@ -376,6 +339,7 @@ public class Iso8601Duration extends Iso8601Type {
     public String toString() {
         return
                 "Iso8601Duration {" +
+                        duration.toString() +
                         '}';
     }
 

@@ -95,18 +95,14 @@ public class LocatableRef extends ObjectRef {
             String path,
             UidBasedId id,
             String namespace,
-            String type,
-            ObjectId id
+            String type
     ) {
         super(
                 namespace,
-                type
+                type,
+                id
         );
-        if (id == null) {
-            throw new NullPointerException("Property:id has cardinality NonNull, but is null");
-        }
         this.path = path;
-        this.id = id;
     }
 
     private LocatableRef(Builder builder) {
@@ -122,13 +118,11 @@ public class LocatableRef extends ObjectRef {
         private final UidBasedId id;  //required
         private final String namespace;  //required
         private final String type;  //required
-        private final ObjectId id;  //required
 
         public Builder(
                 UidBasedId id,
                 String namespace,
-                String type,
-                ObjectId id
+                String type
         ) {
             if (id == null) {
                 throw new NullPointerException("Property:id has cardinality NonNull, but is null");
@@ -145,7 +139,6 @@ public class LocatableRef extends ObjectRef {
             this.id = id;
             this.namespace = namespace;
             this.type = type;
-            this.id = id;
         }
 
         public Builder setPath(String value) {

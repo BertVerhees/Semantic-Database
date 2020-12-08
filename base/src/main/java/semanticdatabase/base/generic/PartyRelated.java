@@ -1,21 +1,16 @@
 package semanticdatabase.base.generic;
 
-import com.nedap.archie.rm.datavalues.DvCodedText;
-import com.nedap.archie.rm.datavalues.DvIdentifier;
-import com.nedap.archie.rm.support.identification.PartyRef;
+import semanticdatabase.base_types.datavalues.DvCodedText;
+import semanticdatabase.base_types.datavalues.DvIdentifier;
+import semanticdatabase.base_types.identification_package.PartyRef;
 
 import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Created by pieter.bos on 08/07/16.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PARTY_RELATED")
 public class PartyRelated extends PartyIdentified {
     private DvCodedText relationship;
 

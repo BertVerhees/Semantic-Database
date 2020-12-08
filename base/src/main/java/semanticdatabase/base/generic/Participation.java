@@ -1,33 +1,20 @@
 package semanticdatabase.base.generic;
 
-import com.nedap.archie.rm.RMObject;
-import com.nedap.archie.rm.datavalues.DvCodedText;
-import com.nedap.archie.rm.datavalues.DvText;
-import com.nedap.archie.rm.datavalues.quantity.DvInterval;
-import com.nedap.archie.rm.datavalues.quantity.datetime.DvDateTime;
+import semanticdatabase.base_types.datavalues.DvCodedText;
+import semanticdatabase.base_types.datavalues.DvText;
+import semanticdatabase.base_types.datavalues.quantity.DvInterval;
+import semanticdatabase.base_types.datavalues.quantity.datetime.DvDateTime;
 
 import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
 /**
  * Created by pieter.bos on 08/07/16.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "PARTICIPATION", propOrder = {
-        "function",
-        "mode",
-        "time",
-        "performer"
-})
-public class Participation extends RMObject {
+public class Participation {
 
     private DvText function;
-    @Nullable
     private DvCodedText mode;
-    @Nullable
     private DvInterval<DvDateTime> time;
     private PartyProxy performer;
 

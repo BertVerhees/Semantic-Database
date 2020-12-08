@@ -1,9 +1,7 @@
 package semanticdatabase.foundation_types.time_types;
 
+import java.time.LocalTime;
 import java.util.Objects;
-
-import semanticdatabase.foundation_types.primitive_types.Integer;
-import semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -16,6 +14,8 @@ import semanticdatabase.foundation_types.primitive_types.Boolean;
  * Note A small deviation to the ISO 8601:2004 standard in this class is that the time 24:00:00 is not allowed, for consistency with Iso8601_date_time.
  */
 public class Iso8601Time extends Iso8601Type {
+
+    private LocalTime time;
 
     /*=========================================================*/
     /* * FUNCTIONS * */
@@ -69,10 +69,8 @@ public class Iso8601Time extends Iso8601Type {
      * following to any decimal sign) as a Real, or return 0.0 if not present.
      * cardinality: 1..1
      */
-    public not second_unknown
-
-    fractionalSecond() {
-        not second_unknown result = null;
+    public Double fractionalSecond() {
+        Double result = null;
 
 
         if (result == null) {
@@ -201,8 +199,7 @@ public class Iso8601Time extends Iso8601Type {
      * Arithmetic addition of a duration to a time.
      * cardinality: 1..1
      */
-    public Iso8601Time add
-    alias "+"(
+    public Iso8601Time add(
     Iso8601Duration a_diff)
 
     {
@@ -222,8 +219,7 @@ public class Iso8601Time extends Iso8601Type {
      * Arithmetic subtraction of a duration from a time.
      * cardinality: 1..1
      */
-    public Iso8601Time subtract
-    alias "-"(
+    public Iso8601Time subtract(
     Iso8601Duration a_diff)
 
     {
@@ -243,8 +239,7 @@ public class Iso8601Time extends Iso8601Type {
      * Difference of two times.
      * cardinality: 1..1
      */
-    public Iso8601Duration diff
-    alias "-"(
+    public Iso8601Duration diff(
     Iso8601Time a_time)
 
     {
@@ -267,47 +262,10 @@ public class Iso8601Time extends Iso8601Type {
     /*=========================================================*/
 
 
-    protected Iso8601Time() {
-    }
-
     public Iso8601Time(
-            String value,
-            Integer maxDaysInYear
+            String value
     ) {
-        super(
-                value,
-                maxDaysInYear
-        );
     }
-
-    private Iso8601Time(Builder builder) {
-        this.setValue(builder.value);
-        this.setMaxDaysInYear(builder.maxDaysInYear);
-    }
-
-    public static class Builder {
-        private final String value;  //required
-        private final Integer maxDaysInYear;  //required
-
-        public Builder(
-                String value,
-                Integer maxDaysInYear
-        ) {
-            if (value == null) {
-                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
-            }
-            if (maxDaysInYear == null) {
-                throw new NullPointerException("Property:maxDaysInYear has cardinality NonNull, but is null");
-            }
-            this.value = value;
-            this.maxDaysInYear = maxDaysInYear;
-        }
-
-        public Iso8601Time build() {
-            return new Iso8601Time(this);
-        }
-    }
-
 
     //***** Iso8601Time *****
 
@@ -320,12 +278,12 @@ public class Iso8601Time extends Iso8601Type {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        return true;
+        return time.equals(object);
     }
 
     public int hashCode() {
         return Objects.hash(
-                super.hashCode()
+                time.hashCode()
         );
     }
 
@@ -333,6 +291,7 @@ public class Iso8601Time extends Iso8601Type {
     public String toString() {
         return
                 "Iso8601Time {" +
+                        time.toString() +
                         '}';
     }
 
