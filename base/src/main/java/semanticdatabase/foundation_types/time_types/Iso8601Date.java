@@ -1,11 +1,8 @@
 package semanticdatabase.foundation_types.time_types;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Objects;
 
-import semanticdatabase.foundation_types.primitive_types.Integer;
-import semanticdatabase.foundation_types.primitive_types.Boolean;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -53,6 +50,7 @@ public class Iso8601Date extends Iso8601Type {
      * cardinality: 1..1
      */
     public Iso8601Timezone timezone() {
+
         Iso8601Timezone result = null;
 
 
@@ -139,9 +137,7 @@ public class Iso8601Date extends Iso8601Type {
      * Arithmetic addition of a duration to a date.
      * cardinality: 1..1
      */
-    public Iso8601Date add
-    alias "+"(
-    Iso8601Duration a_diff)
+    public Iso8601Date add(Iso8601Duration a_diff)
 
     {
         if (a_diff == null) {
@@ -160,9 +156,7 @@ public class Iso8601Date extends Iso8601Type {
      * Arithmetic subtraction of a duration from a date.
      * cardinality: 1..1
      */
-    public Iso8601Date subtract
-    alias "-"(
-    Iso8601Duration a_diff)
+    public Iso8601Date subtract(Iso8601Duration a_diff)
 
     {
         if (a_diff == null) {
@@ -181,9 +175,7 @@ public class Iso8601Date extends Iso8601Type {
      * Difference of two dates.
      * cardinality: 1..1
      */
-    public Iso8601Duration diff
-    alias "-"(
-    Iso8601Date a_date)
+    public Iso8601Duration diff(Iso8601Date a_date)
 
     {
         if (a_date == null) {
@@ -205,10 +197,9 @@ public class Iso8601Date extends Iso8601Type {
      * three less) and 29 Feb in a leap year (i.e.
      * two less).
      * cardinality: 1..1
+     * alias "++"
      */
-    public Iso8601Date addNominal
-    alias "++"(
-    Iso8601Duration a_diff)
+    public Iso8601Date addNominal(Iso8601Duration a_diff)
 
     {
         if (a_diff == null) {
@@ -227,10 +218,9 @@ public class Iso8601Date extends Iso8601Type {
      * Subtraction of nominal duration represented by a_diff.
      * See add_nominal() for semantics.
      * cardinality: 1..1
+     * alias "--"
      */
-    public Iso8601Date subtractNominal
-    alias "--"(
-    Iso8601Duration a_diff)
+    public Iso8601Date subtractNominal(Iso8601Duration a_diff)
 
     {
         if (a_diff == null) {
@@ -252,47 +242,12 @@ public class Iso8601Date extends Iso8601Type {
     /*=========================================================*/
 
 
-    protected Iso8601Date() {
-    }
-
     public Iso8601Date(
             String value,
             Integer maxDaysInYear
     ) {
-        super(
-                value,
-                maxDaysInYear
-        );
+
     }
-
-    private Iso8601Date(Builder builder) {
-        this.setValue(builder.value);
-        this.setMaxDaysInYear(builder.maxDaysInYear);
-    }
-
-    public static class Builder {
-        private final String value;  //required
-        private final Integer maxDaysInYear;  //required
-
-        public Builder(
-                String value,
-                Integer maxDaysInYear
-        ) {
-            if (value == null) {
-                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
-            }
-            if (maxDaysInYear == null) {
-                throw new NullPointerException("Property:maxDaysInYear has cardinality NonNull, but is null");
-            }
-            this.value = value;
-            this.maxDaysInYear = maxDaysInYear;
-        }
-
-        public Iso8601Date build() {
-            return new Iso8601Date(this);
-        }
-    }
-
 
     //***** Iso8601Date *****
 
@@ -305,12 +260,12 @@ public class Iso8601Date extends Iso8601Type {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        return true;
+        return date.equals(object);
     }
 
     public int hashCode() {
         return Objects.hash(
-                super.hashCode()
+                date.hashCode()
         );
     }
 
@@ -318,6 +273,7 @@ public class Iso8601Date extends Iso8601Type {
     public String toString() {
         return
                 "Iso8601Date {" +
+                        date.toString() +
                         '}';
     }
 

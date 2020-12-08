@@ -1,10 +1,8 @@
 package semanticdatabase.foundation_types.time_types;
 
-import java.util.Objects;
 
-import semanticdatabase.foundation_types.primitive_types.Integer;
-import semanticdatabase.foundation_types.primitive_types.Real;
-import semanticdatabase.foundation_types.primitive_types.Boolean;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -17,6 +15,8 @@ import semanticdatabase.foundation_types.primitive_types.Boolean;
  * Note that this class includes 2 deviations from ISO 8601:2004: for partial date/times, any part of the date/time up to the month may be missing, not just seconds and minutes as in the standard; the time 24:00:00 is not allowed, since it would mean the date was really on the next day.
  */
 public class Iso8601DateTime extends Iso8601Type {
+
+    private LocalDateTime dateTime;
 
     /*=========================================================*/
     /* * FUNCTIONS * */
@@ -40,64 +40,36 @@ public class Iso8601DateTime extends Iso8601Type {
      * Extract the month part of the date/time as an Integer, or return 0 if not present.
      * cardinality: 1..1
      */
-    public not month_unknown
-
-    month() {
-        not month_unknown result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public Integer month() {
+        //TODO
+        return 0;
     }
 
     /**
      * Extract the day part of the date/time as an Integer, or return 0 if not present.
      * cardinality: 1..1
      */
-    public not day_unknown
-
-    day() {
-        not day_unknown result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public Integer day() {
+        //TODO
+        return 0;
     }
 
     /**
      * Extract the hour part of the date/time as an Integer, or return 0 if not present.
      * cardinality: 1..1
      */
-    public not hour_unknown
-
-    hour() {
-        not hour_unknown result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public Integer hour() {
+        //TODO
+        return 0;
     }
 
     /**
      * Extract the minute part of the date/time as an Integer, or return 0 if not present.
      * cardinality: 1..1
      */
-    public not minute_unknown
-
-    minute() {
-        not minute_unknown result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public Integer minute() {
+        //TODO
+        return 0;
     }
 
     /**
@@ -105,16 +77,9 @@ public class Iso8601DateTime extends Iso8601Type {
      * prior to any decimal sign) as an Integer, or return 0 if not present.
      * cardinality: 1..1
      */
-    public not second_unknown
-
-    second() {
-        not second_unknown result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+    public Integer second() {
+        //TODO
+        return 0;
     }
 
     /**
@@ -122,8 +87,8 @@ public class Iso8601DateTime extends Iso8601Type {
      * following to any decimal sign) as a Real, or return 0.0 if not present.
      * cardinality: 1..1
      */
-    public Real fractionalSecond() {
-        Real result = null;
+    public Double fractionalSecond() {
+        Double result = null;
 
 
         if (result == null) {
@@ -150,7 +115,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * Indicates whether month in year is unknown.
      * cardinality: 1..1
      */
-    public Boolean monthUnknown() {
+    public boolean monthUnknown() {
         Boolean result = null;
 
 
@@ -164,7 +129,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * Indicates whether day in month is unknown.
      * cardinality: 1..1
      */
-    public Boolean dayUnknown() {
+    public boolean dayUnknown() {
         Boolean result = null;
 
 
@@ -178,7 +143,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * Indicates whether minute in hour is known.
      * cardinality: 1..1
      */
-    public Boolean minuteUnknown() {
+    public boolean minuteUnknown() {
         Boolean result = null;
 
 
@@ -192,7 +157,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * Indicates whether minute in hour is known.
      * cardinality: 1..1
      */
-    public Boolean secondUnknown() {
+    public boolean secondUnknown() {
         Boolean result = null;
 
 
@@ -206,7 +171,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * True if this time has a decimal part indicated by ',' (comma) rather than '.' (period).
      * cardinality: 1..1
      */
-    public Boolean isDecimalSignComma() {
+    public boolean isDecimalSignComma() {
         Boolean result = null;
 
 
@@ -221,7 +186,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * if seconds or more is missing.
      * cardinality: 1..1 (effected)
      */
-    public Boolean isPartial() {
+    public boolean isPartial() {
         Boolean result = null;
 
 
@@ -235,7 +200,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * True if this date/time uses '-', ':' separators.
      * cardinality: 1..1 (effected)
      */
-    public Boolean isExtended() {
+    public boolean isExtended() {
         Boolean result = null;
 
 
@@ -250,7 +215,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * even if = 0.0).
      * cardinality: 1..1
      */
-    public Boolean hasFractionalSecond() {
+    public boolean hasFractionalSecond() {
         Boolean result = null;
 
 
@@ -278,8 +243,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * Arithmetic addition of a duration to a date/time.
      * cardinality: 1..1
      */
-    public Iso8601DateTime add
-    alias "+"(
+    public Iso8601DateTime add(
     Iso8601Duration a_diff)
 
     {
@@ -299,8 +263,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * Arithmetic subtraction of a duration from a date/time.
      * cardinality: 1..1
      */
-    public Iso8601DateTime subtract
-    alias "-"(
+    public Iso8601DateTime subtract(
     Iso8601Duration a_diff)
 
     {
@@ -320,8 +283,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * Difference of two date/times.
      * cardinality: 1..1
      */
-    public Iso8601Duration diff
-    alias "-"(
+    public Iso8601Duration diff(
     Iso8601DateTime a_date_time)
 
     {
@@ -342,8 +304,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * See Iso8601_date.add_nominal() for semantics.
      * cardinality: 1..1
      */
-    public Iso8601Date addNominal
-    alias "++"(
+    public Iso8601Date addNominal(
     Iso8601Duration a_diff)
 
     {
@@ -364,8 +325,7 @@ public class Iso8601DateTime extends Iso8601Type {
      * See add_nominal() for semantics.
      * cardinality: 1..1
      */
-    public Iso8601Date subtractNominal
-    alias "--"(
+    public Iso8601Date subtractNominal(
     Iso8601Duration a_diff)
 
     {
@@ -388,47 +348,10 @@ public class Iso8601DateTime extends Iso8601Type {
     /*=========================================================*/
 
 
-    protected Iso8601DateTime() {
-    }
-
     public Iso8601DateTime(
-            String value,
-            Integer maxDaysInYear
+            String value
     ) {
-        super(
-                value,
-                maxDaysInYear
-        );
     }
-
-    private Iso8601DateTime(Builder builder) {
-        this.setValue(builder.value);
-        this.setMaxDaysInYear(builder.maxDaysInYear);
-    }
-
-    public static class Builder {
-        private final String value;  //required
-        private final Integer maxDaysInYear;  //required
-
-        public Builder(
-                String value,
-                Integer maxDaysInYear
-        ) {
-            if (value == null) {
-                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
-            }
-            if (maxDaysInYear == null) {
-                throw new NullPointerException("Property:maxDaysInYear has cardinality NonNull, but is null");
-            }
-            this.value = value;
-            this.maxDaysInYear = maxDaysInYear;
-        }
-
-        public Iso8601DateTime build() {
-            return new Iso8601DateTime(this);
-        }
-    }
-
 
     //***** Iso8601DateTime *****
 
@@ -441,7 +364,7 @@ public class Iso8601DateTime extends Iso8601Type {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        return true;
+        return dateTime.equals(object);
     }
 
     public int hashCode() {
@@ -454,6 +377,7 @@ public class Iso8601DateTime extends Iso8601Type {
     public String toString() {
         return
                 "Iso8601DateTime {" +
+                        dateTime.toString() +
                         '}';
     }
 
