@@ -71,14 +71,14 @@ public class CPrimitiveTuple extends CSecondOrder<CPrimitiveObject> {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        return this.getMembers().size() == other.getMembers().size() && allTupleMembersConform((CPrimitiveTuple)other, rmTypesConformant);
+        return this.getMembers().size() == other.getMembers().size() && allTupleMembersConform((CPrimitiveTuple) other, rmTypesConformant);
     }
 
     private boolean allTupleMembersConform(CPrimitiveTuple other, BiFunction<String, String, java.lang.Boolean> rmTypesConformant) {
-        for(int i = 0; i < getMembers().size(); i++){
+        for (int i = 0; i < getMembers().size(); i++) {
             CPrimitiveObject member = getMember(i);
             CPrimitiveObject otherMember = other.getMember(i);
-            if(!member.getClass().equals(otherMember.getClass()) || !member.cConformsTo(otherMember, rmTypesConformant)) {
+            if (!member.getClass().equals(otherMember.getClass()) || !member.cConformsTo(otherMember, rmTypesConformant)) {
                 return false;
             }
         }

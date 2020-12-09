@@ -88,13 +88,16 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
         return getPath().endsWith(a_path);
     }
 
-    private String getPath(){
+    private String getPath() {
         return PathUtil.getPath(getPathSegments());
     }
-    private void setPath(String path){
+
+    private void setPath(String path) {
         //setter hack for jackson, unfortunately
     }
+
     public abstract List<PathSegment> getPathSegments();
+
     /**
      * Path of this node relative to root of archetype.
      * cardinality: 1..1
@@ -125,7 +128,7 @@ public abstract class ArchetypeConstraint extends AdlCodeDefinitions {
      * cardinality: 1..1
      * Post: soc_parent /= Void or else (parent /= Void and then parent.is_second_order_constrained)
      */
-    public boolean isSecondOrderConstrained(){
+    public boolean isSecondOrderConstrained() {
         return getSocParent() != null || (getParent() != null && getParent().getSocParent() != null);
     }
 

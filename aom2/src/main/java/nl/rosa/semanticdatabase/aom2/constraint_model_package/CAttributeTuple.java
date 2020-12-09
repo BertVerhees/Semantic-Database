@@ -109,11 +109,12 @@ public class CAttributeTuple extends CSecondOrder<CAttribute> {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        return allTuplesConform((CAttributeTuple) other, rmTypesConformant) ||  isSubset((CAttributeTuple) other);
+        return allTuplesConform((CAttributeTuple) other, rmTypesConformant) || isSubset((CAttributeTuple) other);
     }
 
     /**
      * Return true if and only if the other tuple is a subset of the exact same tuples as this.
+     *
      * @param other
      * @return
      */
@@ -125,6 +126,7 @@ public class CAttributeTuple extends CSecondOrder<CAttribute> {
 
     /**
      * Return true if all of the tuples of this object conform to the tuples of the other object
+     *
      * @param other
      * @param rmTypesConformant function that returns whether to rm type names are conformant or not
      * @return

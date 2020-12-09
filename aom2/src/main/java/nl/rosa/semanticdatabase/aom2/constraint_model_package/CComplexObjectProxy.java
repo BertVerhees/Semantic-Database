@@ -72,7 +72,7 @@ public class CComplexObjectProxy extends CObject {
      * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.
      * Typically used to test if an inherited node locally contains any constraints.
      * cardinality: 1..1 (abstract)
-     *
+     * <p>
      * Cannot be abstract when class is not abstract.
      *
      * @param other
@@ -142,7 +142,7 @@ public class CComplexObjectProxy extends CObject {
             //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
-        ) {
+    ) {
         super(
                 rmTypeName,
                 occurrences,

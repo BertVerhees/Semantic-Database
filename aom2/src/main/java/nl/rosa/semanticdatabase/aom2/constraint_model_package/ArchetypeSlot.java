@@ -182,7 +182,7 @@ public class ArchetypeSlot extends CObject {
      */
     @Override
     public boolean cCongruentTo(ArchetypeConstraint other) {
-        return super.cCongruentTo((CObject)other);
+        return super.cCongruentTo((CObject) other);
     }
 
     /**

@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
  * This class is never directly created, but subclasses must be created that setup the correct model. Create a subclass
  * per model you want to use with Archie, for example one for an OpenEHR RM implementation, or the CIMI RM implementation
  * <p>
- * Created by pieter.bos on 02/02/16.
+ * Originally: Created by pieter.bos on 02/02/16.
  */
 public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
 

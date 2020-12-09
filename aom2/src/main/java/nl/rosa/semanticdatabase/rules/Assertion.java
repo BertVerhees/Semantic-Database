@@ -22,6 +22,7 @@ public final class Assertion extends RuleStatement {
 
     /**
      * Set the string expression. WARNING: this will not set the other fields, this is not a parser.
+     *
      * @param text
      */
     public Assertion(String text) {
@@ -34,6 +35,7 @@ public final class Assertion extends RuleStatement {
 
     /**
      * Set the string expression. WARNING: this will not set the other fields, this is not a parser.
+     *
      * @param text
      */
     public void setStringExpression(String text) {
@@ -69,9 +71,9 @@ public final class Assertion extends RuleStatement {
     }
 
     public boolean matchesAny() {
-        if(expression instanceof BinaryOperator) {
+        if (expression instanceof BinaryOperator) {
             BinaryOperator binaryOperator = (BinaryOperator) expression;
-            if(binaryOperator.getOperator() == OperatorKind.matches &&
+            if (binaryOperator.getOperator() == OperatorKind.matches &&
                     binaryOperator.getRightOperand() instanceof Constraint) {
                 Constraint constraint = (Constraint) binaryOperator.getRightOperand();
                 return constraint.getItem().equals(new CString("/.*/")) ||

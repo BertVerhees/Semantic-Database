@@ -5,10 +5,10 @@ package nl.rosa.semanticdatabase.rules;
  * Originally: Created by pieter.bos on 27/10/15.
  */
 public enum ExpressionType {
-     BOOLEAN, STRING, INTEGER, REAL;
+    BOOLEAN, STRING, INTEGER, REAL;
 
     public static ExpressionType fromString(String string) {
-        switch(string) {
+        switch (string) {
             case "Boolean":
                 return BOOLEAN;
             case "String":
@@ -22,7 +22,7 @@ public enum ExpressionType {
     }
 
     public String toString() {
-        switch(this) {
+        switch (this) {
             case BOOLEAN:
                 return "Boolean";
             case STRING:

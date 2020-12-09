@@ -39,7 +39,7 @@ public class ModelReference extends Leaf {
     }
 
     public String toString() {
-        if(variableReferencePrefix == null) {
+        if (variableReferencePrefix == null) {
             return path;
         } else {
             return "$" + variableReferencePrefix + path;

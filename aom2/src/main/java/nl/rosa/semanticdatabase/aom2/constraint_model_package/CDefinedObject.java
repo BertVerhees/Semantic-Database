@@ -98,7 +98,7 @@ public abstract class CDefinedObject<T> extends CObject {
             //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
-            ) {
+    ) {
         super(
                 rmTypeName,
                 occurrences,

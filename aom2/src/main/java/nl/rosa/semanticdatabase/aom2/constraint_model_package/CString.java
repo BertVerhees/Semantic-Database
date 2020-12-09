@@ -167,8 +167,8 @@ public class CString extends CPrimitiveObject {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
         return other.anyAllowed() ||
-                (constraint.size() < ((CString)other).constraint.size())
-                        && (constraint.stream().anyMatch(c -> ((CString)other).constraint.contains(c)));
+                (constraint.size() < ((CString) other).constraint.size())
+                        && (constraint.stream().anyMatch(c -> ((CString) other).constraint.contains(c)));
     }
 
     /**
@@ -181,8 +181,8 @@ public class CString extends CPrimitiveObject {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        return (constraint.size() == ((CString)other).constraint.size())
-                && constraint.equals(((CString)other).constraint);
+        return (constraint.size() == ((CString) other).constraint.size())
+                && constraint.equals(((CString) other).constraint);
     }
 
     @Override
@@ -190,18 +190,18 @@ public class CString extends CPrimitiveObject {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        if(!super.cConformsTo(other, rmTypesConformant)) {
+        if (!super.cConformsTo(other, rmTypesConformant)) {
             return false;
         }
         //now guaranteed to be the same class
 
         CString o = (CString) other;
-        if(o.constraint.isEmpty()) {
+        if (o.constraint.isEmpty()) {
             return true;
         }
 
-        for(String constraint:constraint) {
-            if(!hasMatchingConstraint(constraint, o)) {
+        for (String constraint : constraint) {
+            if (!hasMatchingConstraint(constraint, o)) {
                 return false;
             }
         }
@@ -221,13 +221,13 @@ public class CString extends CPrimitiveObject {
     private boolean hasMatchingConstraint(String constraint, CString otherString) {
         boolean isRegexp = CString.isRegexConstraint(constraint);
 
-        for(String otherConstraint:otherString.constraint) {
+        for (String otherConstraint : otherString.constraint) {
             boolean otherIsRegexp = CString.isRegexConstraint(otherConstraint);
-            if(otherIsRegexp && !isRegexp) {
-                if(matchesRegexp(constraint, otherConstraint)) {
+            if (otherIsRegexp && !isRegexp) {
+                if (matchesRegexp(constraint, otherConstraint)) {
                     return true;
                 }
-            } else if(otherConstraint.equals(constraint)) {
+            } else if (otherConstraint.equals(constraint)) {
                 return true;
             }
         }
@@ -240,9 +240,8 @@ public class CString extends CPrimitiveObject {
     }
 
     private boolean matchesRegexp(String value, String constraint) {
-        return value.matches(constraint.substring(1).substring(0, constraint.length()-2));
+        return value.matches(constraint.substring(1).substring(0, constraint.length() - 2));
     }
-
 
 
     //***** CString *****
@@ -268,7 +267,7 @@ public class CString extends CPrimitiveObject {
             //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
-        ) {
+    ) {
         super(
                 assumedValue,
                 isEnumeratedTypeConstraint,
@@ -314,11 +313,11 @@ public class CString extends CPrimitiveObject {
         private ArchetypeConstraint parent;
         private CSecondOrder socParent;
 
-        public Builder (
+        public Builder(
                 List<String> constraint,
                 String rmTypeName,
                 String nodeId
-        ){
+        ) {
             this.constraint = constraint;
             this.rmTypeName = rmTypeName;
             this.nodeId = nodeId;
@@ -364,8 +363,8 @@ public class CString extends CPrimitiveObject {
             return this;
         }
 
-        public CString build(){
-            return new CString( this );
+        public CString build() {
+            return new CString(this);
         }
     }
 

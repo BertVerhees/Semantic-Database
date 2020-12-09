@@ -10,7 +10,7 @@ import java.util.Set;
 public enum OperatorKind {
     eq("="), ne("!=", "≠"), le("<=", "≤"), lt("<"), ge(">=", "≥"), gt(">"),
     matches("matches", "∈", "is_in"), not("not", "!", "∼", "¬"), and("and", "∧"), or("or", "∨"), xor("xor", "⊻"),
-    implies("implies", "⇒"), for_all("for_all", "∀", "every"), exists("exists" ,"∃"),
+    implies("implies", "⇒"), for_all("for_all", "∀", "every"), exists("exists", "∃"),
     plus("+"), minus("-"), multiply("*"), divide("/"), modulo("%"), exponent("^");
 
     private Set<String> codes;
@@ -25,8 +25,8 @@ public enum OperatorKind {
 
     public static OperatorKind parse(String operatorString) {
         operatorString = operatorString.toLowerCase();
-        for(OperatorKind operator:values()) { //TODO: a hash implementation might be faster
-            if(operator.codes.contains(operatorString)) {
+        for (OperatorKind operator : values()) { //TODO: a hash implementation might be faster
+            if (operator.codes.contains(operatorString)) {
                 return operator;
             }
         }

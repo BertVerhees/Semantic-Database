@@ -185,6 +185,7 @@ public class CBoolean extends CPrimitiveObject<Boolean, Boolean> {
     public boolean cConformsTo(ArchetypeConstraint other, BiFunction<String, String, Boolean> rmTypesConformant) {
         return null;
     }
+
     /**
      * True if constraints represented by this node contain no further redefinitions with respect to the node other, with the exception of node_id redefnition in C_OBJECT nodes.
      * Typically used to test if an inherited node locally contains any constraints.
@@ -196,8 +197,6 @@ public class CBoolean extends CPrimitiveObject<Boolean, Boolean> {
     public boolean cCongruentTo(ArchetypeConstraint other) {
         return null;
     }
-
-
 
 
     //***** CBoolean *****

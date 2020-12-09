@@ -277,7 +277,7 @@ public class CTerminologyCode extends CPrimitiveObject<String, TerminologyCode> 
             //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
-        ) {
+    ) {
         super(
                 assumedValue,
                 isEnumeratedTypeConstraint,
@@ -331,7 +331,7 @@ public class CTerminologyCode extends CPrimitiveObject<String, TerminologyCode> 
                 List<String> constraint,
                 String rmTypeName,
                 String nodeId
-        ){
+        ) {
             this.constraint = constraint;
             this.rmTypeName = rmTypeName;
             this.nodeId = nodeId;
@@ -382,8 +382,8 @@ public class CTerminologyCode extends CPrimitiveObject<String, TerminologyCode> 
             return this;
         }
 
-        public CTerminologyCode build(){
-            return new CTerminologyCode( this );
+        public CTerminologyCode build() {
+            return new CTerminologyCode(this);
         }
     }
 

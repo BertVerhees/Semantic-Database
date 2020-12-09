@@ -25,57 +25,57 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
     //***** COrdered<t> *****
 
     */
-/*=========================================================*//*
+    /*=========================================================*//*
 
-    */
-/* * FIELDS * *//*
+     */
+    /* * FIELDS * *//*
 
-    */
-/*=========================================================*//*
+     */
+    /*=========================================================*//*
 
 
-    */
+     */
 /**
-     * Constraint in the form of a List of Intervals of the parameter type T.
-     * Concrete types generated in descendants via template binding.
-     * cardinality: 0..1 (redefined)
-     *//*
+ * Constraint in the form of a List of Intervals of the parameter type T.
+ * Concrete types generated in descendants via template binding.
+ * cardinality: 0..1 (redefined)
+ *//*
 
     private List<Interval<T>> constraint;
 
     */
 /**
-     * Default value set in a template, and present in an operational template.
-     * Generally limited to leaf and near-leaf nodes.
-     * cardinality: 0..1 (redefined)
-     *//*
+ * Default value set in a template, and present in an operational template.
+ * Generally limited to leaf and near-leaf nodes.
+ * cardinality: 0..1 (redefined)
+ *//*
 
     private T defaultValue;
 
     */
 /**
-     * Value to be assumed if none sent in data.
-     * cardinality: 0..1 (redefined)
-     *//*
+ * Value to be assumed if none sent in data.
+ * cardinality: 0..1 (redefined)
+ *//*
 
     private T assumedValue;
 
     */
-/*=========================================================*//*
+    /*=========================================================*//*
 
-    */
-/* * POJOS * *//*
+     */
+    /* * POJOS * *//*
 
-    */
-/*=========================================================*//*
+     */
+    /*=========================================================*//*
 
 
-    */
+     */
 /**
-     * Constraint in the form of a List of Intervals of the parameter type T.
-     * Concrete types generated in descendants via template binding.
-     * cardinality: 0..1 (redefined)
-     *//*
+ * Constraint in the form of a List of Intervals of the parameter type T.
+ * Concrete types generated in descendants via template binding.
+ * cardinality: 0..1 (redefined)
+ *//*
 
 
     public void addToConstraint(Interval<T> value) {
@@ -93,10 +93,10 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
 
     */
 /**
-     * Default value set in a template, and present in an operational template.
-     * Generally limited to leaf and near-leaf nodes.
-     * cardinality: 0..1 (redefined)
-     *//*
+ * Default value set in a template, and present in an operational template.
+ * Generally limited to leaf and near-leaf nodes.
+ * cardinality: 0..1 (redefined)
+ *//*
 
     public T getDefaultValue() {
         return defaultValue;
@@ -108,9 +108,9 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
 
     */
 /**
-     * Value to be assumed if none sent in data.
-     * cardinality: 0..1 (redefined)
-     *//*
+ * Value to be assumed if none sent in data.
+ * cardinality: 0..1 (redefined)
+ *//*
 
     public T getAssumedValue() {
         return assumedValue;
@@ -183,26 +183,26 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
 
-        if(!super.cConformsTo(other, rmTypesConformant)) {
+        if (!super.cConformsTo(other, rmTypesConformant)) {
             return false;
         }
         //now guaranteed to be the same class
 
         COrdered<?> o = (COrdered) other;
-        if(o.getConstraint().isEmpty()) {
+        if (o.getConstraint().isEmpty()) {
             return true;
         }
 
 
-        for(Interval<T> constraint:getConstraint()) {
+        for (Interval<T> constraint : getConstraint()) {
             boolean found = false;
-            for(Interval otherConstraint:o.getConstraint()) {
-                if(otherConstraint.contains(constraint)) {
+            for (Interval otherConstraint : o.getConstraint()) {
+                if (otherConstraint.contains(constraint)) {
                     found = true;
                     break;
                 }
             }
-            if(!found) {
+            if (!found) {
                 return false;
             }
         }
@@ -229,7 +229,7 @@ public abstract class COrdered<T> extends CPrimitiveObject<Interval<T>, T> {
             //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
-            ) {
+    ) {
         super(
                 assumedValue,
                 isEnumeratedTypeConstraint,

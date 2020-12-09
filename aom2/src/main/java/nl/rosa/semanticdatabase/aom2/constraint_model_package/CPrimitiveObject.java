@@ -139,7 +139,7 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        return rmTypesConformant.apply(getRmTypeName(), ((CPrimitiveObject)other).getRmTypeName()) && cValueConformsTo((CPrimitiveObject)other);
+        return rmTypesConformant.apply(getRmTypeName(), ((CPrimitiveObject) other).getRmTypeName()) && cValueConformsTo((CPrimitiveObject) other);
     }
 
     /**
@@ -158,7 +158,7 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        return getRmTypeName().equalsIgnoreCase(((CObject)other).getRmTypeName())  && cValueCongruentTo((CPrimitiveObject) other);
+        return getRmTypeName().equalsIgnoreCase(((CObject) other).getRmTypeName()) && cValueCongruentTo((CPrimitiveObject) other);
     }
 
     /**
@@ -167,7 +167,6 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
      * cardinality: 1..1 (abstract)
      */
     public abstract boolean cValueCongruentTo(CPrimitiveObject other);
-
 
 
     //***** CPrimitiveObject *****
@@ -191,7 +190,7 @@ public abstract class CPrimitiveObject<C, T> extends CDefinedObject<T> {
             //ArchetypeConstraint
             ArchetypeConstraint parent,
             CSecondOrder socParent
-        ) {
+    ) {
         super(defaultValue, rmTypeName, occurrences, nodeId, isDeprecated, siblingOrder, parent, socParent);
         if (constraint == null) {
             throw new NullPointerException("Property:constraint has cardinality NonNull, but is null");

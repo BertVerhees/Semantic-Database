@@ -3,7 +3,6 @@ package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 /**
  * Default created on 27-11-2020
  * Constraint expression representing a regex constraint on an archetype identifier.
- *
  */
 
 public class ArchetypeIdConstraint {
@@ -13,11 +12,11 @@ public class ArchetypeIdConstraint {
      */
     private CString constraint;
 
-    public CString getConstraint(){
+    public CString getConstraint() {
         return constraint;
     }
 
-    public void setConstraint(CString value){
+    public void setConstraint(CString value) {
         if (value == null) {
             throw new NullPointerException(" Setting property:archetypeRef failed, it has cardinality NonNull, but is null");
         }

@@ -142,7 +142,7 @@ public abstract class CObject extends ArchetypeConstraint {
     /*=========================================================*/
 
     public boolean isAllowed() {
-        if(occurrences == null) {
+        if (occurrences == null) {
             return true;
         }
         return occurrences.isUpperUnbounded() || occurrences.getUpper() > 0;
@@ -151,12 +151,12 @@ public abstract class CObject extends ArchetypeConstraint {
     @Override
     public List<PathSegment> getPathSegments() {
         CAttribute parent = getParent();
-        if(parent == null) {
+        if (parent == null) {
             return new ArrayList<>();
         }
         List<PathSegment> segments = parent.getPathSegments();
-        if(!segments.isEmpty()) {
-            segments.get(segments.size()-1).setNodeId(getNodeId());
+        if (!segments.isEmpty()) {
+            segments.get(segments.size() - 1).setNodeId(getNodeId());
         }
         return segments;
     }
@@ -177,7 +177,7 @@ public abstract class CObject extends ArchetypeConstraint {
     }
 
     public boolean isRequired() {
-        if(occurrences == null) {
+        if (occurrences == null) {
             return false;
         }
         return occurrences.getLower() > 0;
@@ -185,6 +185,7 @@ public abstract class CObject extends ArchetypeConstraint {
 
     /**
      * Return true if and only if this is a root node. Implemented in CComplexObject
+     *
      * @return
      */
     public boolean isRootNode() {
@@ -224,30 +225,32 @@ public abstract class CObject extends ArchetypeConstraint {
      * cardinality: 1..1
      */
     public MultiplicityInterval effectiveOccurrences(BiFunction<String, String, MultiplicityInterval> referenceModelPropMultiplicity) {
-        if(getOccurrences() != null) {
+        if (getOccurrences() != null) {
             return getOccurrences();
         }
         return getDefaultRMOccurrences(referenceModelPropMultiplicity);
     }
+
     /**
      * Calculate the occurrences from the RM, ignoring any occurrences in this CObject. Note that is only useful
      * when editing this archetype, not in general use.
+     *
      * @param referenceModelPropMultiplicity
      * @return
      */
     public MultiplicityInterval getDefaultRMOccurrences(BiFunction<String, String, MultiplicityInterval> referenceModelPropMultiplicity) {
         CAttribute parent = getParent();
-        if(parent != null) {
+        if (parent != null) {
             //technically a cardinality without interval is an error, but let's handle it correctly
-            if(parent.getCardinality() != null && parent.getCardinality().getInterval() != null) {
-                if(parent.getCardinality().getInterval().isUpperUnbounded()) {
+            if (parent.getCardinality() != null && parent.getCardinality().getInterval() != null) {
+                if (parent.getCardinality().getInterval().isUpperUnbounded()) {
                     return MultiplicityInterval.createOpen();
                 } else {
                     return MultiplicityInterval.createBounded(0, parent.getCardinality().getInterval().getUpper());
                 }
-            } else if(parent.getParent() != null) {
+            } else if (parent.getParent() != null) {
                 MultiplicityInterval multiplicity = referenceModelPropMultiplicity.apply(parent.getParent().getRmTypeName(), parent.getDifferentialPath() == null ? parent.getRmAttributeName() : parent.getDifferentialPath());
-                if(multiplicity == null) {
+                if (multiplicity == null) {
                     return null;
                 } else if (multiplicity.isUpperUnbounded()) {
                     return MultiplicityInterval.createOpen();
@@ -299,7 +302,7 @@ public abstract class CObject extends ArchetypeConstraint {
     }
 
     // True if this node is the sole re-using node of the corresponding node in the flat
-    public boolean nodeReuseCongruent(CObject other){
+    public boolean nodeReuseCongruent(CObject other) {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
@@ -307,7 +310,6 @@ public abstract class CObject extends ArchetypeConstraint {
 //        return nodeIdConformsTo(other) && (isRoot() || (getParent().childReuseCount(other.getNodeId())==1))
         return true;
     }
-
 
 
     /**
@@ -321,7 +323,7 @@ public abstract class CObject extends ArchetypeConstraint {
         if (other == null) {
             throw new NullPointerException("Parameter other has cardinality NonNull, but is null.");
         }
-        CObject o = (CObject)other;
+        CObject o = (CObject) other;
         return nodeIdConformsTo(o) &&
                 occurrencesConformsTo(o)
                 && typeNameConformsTo(o, rmTypesConformant);
