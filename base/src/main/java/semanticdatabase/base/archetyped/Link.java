@@ -1,7 +1,7 @@
 package semanticdatabase.base.archetyped;
 
-import semanticdatabase.base_types.datavalues.DvEHRURI;
-import semanticdatabase.base_types.datavalues.DvText;
+import semanticdatabase.base.base_types.datavalues.DvEHRURI;
+import semanticdatabase.base.base_types.datavalues.DvText;
 
 import java.util.Objects;
 

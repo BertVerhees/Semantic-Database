@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.literal_values;
 import java.util.Objects;
 
 import nl.rosa.semanticdatabase.bmm.class_features.BmmTyped;
-import semanticdatabase.foundation_types.overview.Any;
+import semanticdatabase.base.foundation_types.overview.Any;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00

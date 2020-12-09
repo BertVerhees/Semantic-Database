@@ -4,8 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
-import semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import semanticdatabase.foundation_types.terminology_package.TerminologyCode;
+import semanticdatabase.base.foundation_types.interval.MultiplicityInterval;
+import semanticdatabase.base.foundation_types.terminology_package.TerminologyCode;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00

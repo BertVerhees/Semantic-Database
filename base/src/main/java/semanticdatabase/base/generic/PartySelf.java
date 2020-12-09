@@ -1,6 +1,6 @@
 package semanticdatabase.base.generic;
 
-import semanticdatabase.base_types.identification_package.PartyRef;
+import semanticdatabase.base.foundation_types.identification_package.PartyRef;
 
 /**
  * Created by pieter.bos on 01/03/16.

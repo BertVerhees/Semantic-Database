@@ -1,6 +1,6 @@
 package semanticdatabase.base.archetyped;
 
-import semanticdatabase.base_types.identification_package.ArchetypeId;
+import semanticdatabase.base.foundation_types.identification_package.ArchetypeId;
 
 import java.util.Objects;
 

@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.aom2.the_archetype_package;
 
 import java.util.Objects;
 
-import semanticdatabase.base_types.definitions_package.VersionStatus;
+import semanticdatabase.base.base_types.definitions_package.VersionStatus;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00

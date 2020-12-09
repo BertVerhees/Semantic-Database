@@ -4,10 +4,9 @@ import java.util.*;
 import java.util.function.BiFunction;
 
 import nl.rosa.semanticdatabase.aom2.utils.AOMUtils;
-import semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import semanticdatabase.base.paths.PathSegment;
-import semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import semanticdatabase.foundation_types.interval.Cardinality;
+import semanticdatabase.base.foundation_types.interval.MultiplicityInterval;
+import semanticdatabase.base.foundation_types.interval.Cardinality;
 import semanticdatabase.query.APathQuery;
 
 /**

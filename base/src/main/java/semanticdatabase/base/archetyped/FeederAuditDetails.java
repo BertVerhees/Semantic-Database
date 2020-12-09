@@ -2,8 +2,8 @@ package semanticdatabase.base.archetyped;
 
 import semanticdatabase.base.generic.PartyIdentified;
 import semanticdatabase.base.generic.PartyProxy;
-import semanticdatabase.base_types.datastructures.ItemStructure;
-import semanticdatabase.base_types.datavalues.quantity.datetime.DvDateTime;
+import semanticdatabase.base.base_types.datastructures.ItemStructure;
+import semanticdatabase.base.base_types.datavalues.quantity.datetime.DvDateTime;
 
 import java.util.Objects;
 

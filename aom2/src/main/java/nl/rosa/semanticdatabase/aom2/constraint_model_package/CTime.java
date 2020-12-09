@@ -4,10 +4,9 @@ import java.time.temporal.TemporalAccessor;
 import java.util.List;
 import java.util.Objects;
 
-import semanticdatabase.foundation_types.interval.Interval;
-import semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import semanticdatabase.foundation_types.time_types.Iso8601Time;
-import semanticdatabase.base_types.definitions_package.ValidityKind;
+import semanticdatabase.base.foundation_types.interval.Interval;
+import semanticdatabase.base.foundation_types.interval.MultiplicityInterval;
+import semanticdatabase.base.base_types.definitions_package.ValidityKind;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00

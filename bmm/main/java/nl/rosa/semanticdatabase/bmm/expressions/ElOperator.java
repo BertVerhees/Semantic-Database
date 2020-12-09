@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 
 import java.util.Objects;
 
-import semanticdatabase.foundation_types.primitive_types.Boolean;
+import semanticdatabase.base.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmOperator;
 

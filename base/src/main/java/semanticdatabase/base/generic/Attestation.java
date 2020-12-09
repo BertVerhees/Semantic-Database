@@ -1,10 +1,10 @@
 package semanticdatabase.base.generic;
 
-import semanticdatabase.base_types.datavalues.DvCodedText;
-import semanticdatabase.base_types.datavalues.DvEHRURI;
-import semanticdatabase.base_types.datavalues.DvText;
-import semanticdatabase.base_types.datavalues.encapsulated.DvMultimedia;
-import semanticdatabase.base_types.datavalues.quantity.datetime.DvDateTime;
+import semanticdatabase.base.base_types.datavalues.DvCodedText;
+import semanticdatabase.base.base_types.datavalues.DvEHRURI;
+import semanticdatabase.base.base_types.datavalues.DvText;
+import semanticdatabase.base.base_types.datavalues.encapsulated.DvMultimedia;
+import semanticdatabase.base.base_types.datavalues.quantity.datetime.DvDateTime;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;

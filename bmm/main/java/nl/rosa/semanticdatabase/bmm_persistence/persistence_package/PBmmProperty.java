@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
 import java.util.Objects;
 
-import semanticdatabase.foundation_types.primitive_types.Boolean;
+import semanticdatabase.base.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProperty;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmModel;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;

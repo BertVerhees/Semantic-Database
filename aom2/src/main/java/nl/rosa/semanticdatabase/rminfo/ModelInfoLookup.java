@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.rminfo;
 
 import semanticdatabase.base.paths.PathSegment;
-import semanticdatabase.foundation_types.interval.MultiplicityInterval;
+import semanticdatabase.base.foundation_types.interval.MultiplicityInterval;
 import semanticdatabase.query.APathQuery;
 
 import java.lang.reflect.Field;

@@ -4,7 +4,7 @@ import java.util.Objects;
 
 import nl.rosa.semanticdatabase.bmm.model_access_package.BmmModelMetadata;
 import nl.rosa.semanticdatabase.bmm.classes.BmmClass;
-import semanticdatabase.foundation_types.primitive_types.Boolean;
+import semanticdatabase.base.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.bmm.classes.BmmEnumeration;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProperty;
 import nl.rosa.semanticdatabase.bmm.classes.BmmSimpleClass;

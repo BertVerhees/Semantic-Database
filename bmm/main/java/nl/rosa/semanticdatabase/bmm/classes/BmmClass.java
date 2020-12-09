@@ -6,7 +6,7 @@ import nl.rosa.semanticdatabase.bmm.model_structure.BmmModule;
 import nl.rosa.semanticdatabase.bmm.types.BmmModelType;
 import nl.rosa.semanticdatabase.bmm.model_structure.BmmPackage;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProperty;
-import semanticdatabase.foundation_types.primitive_types.Boolean;
+import semanticdatabase.base.foundation_types.primitive_types.Boolean;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmConstant;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmFunction;
 import nl.rosa.semanticdatabase.bmm.class_features.BmmProcedure;

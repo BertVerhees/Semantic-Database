@@ -6,8 +6,6 @@ import java.util.Objects;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
-import semanticdatabase.foundation_types.primitive_types.Boolean;
-
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees

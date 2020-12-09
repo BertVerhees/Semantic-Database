@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
 import java.util.Objects;
 
-import semanticdatabase.foundation_types.overview.Any;
+import semanticdatabase.base.foundation_types.overview.Any;
 import nl.rosa.semanticdatabase.bmm.classes.BmmEnumeration;
 
 /**

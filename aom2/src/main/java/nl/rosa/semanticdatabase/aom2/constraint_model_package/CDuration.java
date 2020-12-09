@@ -1,13 +1,11 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
-import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalAmount;
 import java.util.List;
 import java.util.Objects;
 
-import semanticdatabase.foundation_types.interval.Interval;
-import semanticdatabase.foundation_types.interval.MultiplicityInterval;
-import semanticdatabase.foundation_types.time_types.Iso8601Duration;
+import semanticdatabase.base.foundation_types.interval.Interval;
+import semanticdatabase.base.foundation_types.interval.MultiplicityInterval;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00

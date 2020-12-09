@@ -7,9 +7,8 @@ import java.util.Objects;
 import java.util.function.BiFunction;
 
 import nl.rosa.semanticdatabase.aom2.utils.AOMUtils;
-import semanticdatabase.base.conformance_checker.RMConformanceChecker;
 import semanticdatabase.base.paths.PathSegment;
-import semanticdatabase.foundation_types.interval.MultiplicityInterval;
+import semanticdatabase.base.foundation_types.interval.MultiplicityInterval;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00

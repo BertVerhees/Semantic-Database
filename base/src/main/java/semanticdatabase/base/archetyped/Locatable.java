@@ -1,10 +1,9 @@
 package semanticdatabase.base.archetyped;
 
+import semanticdatabase.base.foundation_types.text_types.DvText;
 import semanticdatabase.base.paths.PathSegment;
-import semanticdatabase.base.support.identification.UIDBasedId;
-import semanticdatabase.base_types.datavalues.DvText;
+import semanticdatabase.base.foundation_types.identification_package.UidBasedId;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,13 +12,9 @@ public abstract class Locatable extends Pathable {
 
     private DvText name;
     private String archetypeNodeId;
-    @Nullable
-    private UIDBasedId uid;
-    @Nullable
+    private UidBasedId uid;
     private Archetyped archetypeDetails;
-    @Nullable
     private FeederAudit feederAudit;
-    @Nullable
     private List<Link> links = new ArrayList<>();
 
 
@@ -38,7 +33,7 @@ public abstract class Locatable extends Pathable {
     }
 
     public Locatable(
-            UIDBasedId uid,
+            UidBasedId uid,
             String archetypeNodeId,
             DvText name,
             Archetyped archetypeDetails,
@@ -91,11 +86,11 @@ public abstract class Locatable extends Pathable {
         this.archetypeNodeId = archetypeNodeId;
     }
 
-    public UIDBasedId getUid() {
+    public UidBasedId getUid() {
         return uid;
     }
 
-    public void setUid(UIDBasedId uid) {
+    public void setUid(UidBasedId uid) {
         this.uid = uid;
     }
 
@@ -135,12 +130,11 @@ public abstract class Locatable extends Pathable {
         return name == null ? null : name.getValue();
     }
 
-    @Nullable
     public FeederAudit getFeederAudit() {
         return feederAudit;
     }
 
-    public void setFeederAudit(@Nullable FeederAudit feederAudit) {
+    public void setFeederAudit(FeederAudit feederAudit) {
         this.feederAudit = feederAudit;
     }
 

@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
-import semanticdatabase.foundation_types.interval.MultiplicityInterval;
+import semanticdatabase.base.foundation_types.interval.MultiplicityInterval;
 
 import java.util.List;
 import java.util.Objects;

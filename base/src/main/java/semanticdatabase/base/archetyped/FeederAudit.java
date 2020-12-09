@@ -1,7 +1,7 @@
 package semanticdatabase.base.archetyped;
 
-import semanticdatabase.base_types.datavalues.DvIdentifier;
-import semanticdatabase.base_types.datavalues.encapsulated.DvEncapsulated;
+import semanticdatabase.base.base_types.datavalues.DvIdentifier;
+import semanticdatabase.base.base_types.datavalues.encapsulated.DvEncapsulated;
 
 import java.util.List;
 import java.util.Objects;

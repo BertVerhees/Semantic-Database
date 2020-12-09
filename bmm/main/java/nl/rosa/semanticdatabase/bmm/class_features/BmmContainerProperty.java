@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 
 import java.util.Objects;
 
-import semanticdatabase.foundation_types.interval.MultiplicityInterval;
+import semanticdatabase.base.foundation_types.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.bmm.types.BmmContainerType;
 
 /**

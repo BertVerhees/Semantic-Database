@@ -1,8 +1,8 @@
 package semanticdatabase.base.generic;
 
 
-import semanticdatabase.base_types.datavalues.DvIdentifier;
-import semanticdatabase.base_types.identification_package.PartyRef;
+import semanticdatabase.base.base_types.datavalues.DvIdentifier;
+import semanticdatabase.base.foundation_types.identification_package.PartyRef;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;

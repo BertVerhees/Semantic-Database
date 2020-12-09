@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
 import java.util.Objects;
 
 import nl.rosa.semanticdatabase.bmm.expressions.ElProcedureAgent;
-import semanticdatabase.foundation_types.primitive_types.Boolean;
+import semanticdatabase.base.foundation_types.primitive_types.Boolean;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00

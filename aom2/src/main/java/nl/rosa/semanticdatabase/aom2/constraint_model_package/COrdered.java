@@ -3,8 +3,8 @@ package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 import java.util.*;
 import java.util.function.BiFunction;
 
-import semanticdatabase.foundation_types.interval.Interval;
-import semanticdatabase.foundation_types.interval.MultiplicityInterval;
+import semanticdatabase.base.foundation_types.interval.Interval;
+import semanticdatabase.base.foundation_types.interval.MultiplicityInterval;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00

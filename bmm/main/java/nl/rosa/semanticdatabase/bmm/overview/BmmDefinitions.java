@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.bmm.overview;
 
 import java.util.Objects;
 
-import semanticdatabase.base_types.definitions_package.BasicDefinitions;
+import semanticdatabase.base.base_types.definitions_package.BasicDefinitions;
 import nl.rosa.semanticdatabase.bmm.classes.BmmSimpleClass;
 import nl.rosa.semanticdatabase.bmm.types.BmmSimpleType;
 
