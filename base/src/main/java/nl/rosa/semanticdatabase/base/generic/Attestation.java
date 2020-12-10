@@ -1,38 +1,25 @@
 package nl.rosa.semanticdatabase.base.generic;
 
-import com.nedap.archie.rm.datavalues.DvCodedText;
-import com.nedap.archie.rm.datavalues.DvEHRURI;
-import com.nedap.archie.rm.datavalues.DvText;
-import com.nedap.archie.rm.datavalues.encapsulated.DvMultimedia;
-import com.nedap.archie.rm.datavalues.quantity.datetime.DvDateTime;
-import com.nedap.archie.rminfo.RMProperty;
+import semanticdatabase.base.base_types.datavalues.DvCodedText;
+import semanticdatabase.base.base_types.datavalues.DvEHRURI;
+import semanticdatabase.base.base_types.datavalues.DvText;
+import semanticdatabase.base.base_types.datavalues.encapsulated.DvMultimedia;
+import semanticdatabase.base.base_types.datavalues.quantity.datetime.DvDateTime;
 
 import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /**
- * Created by pieter.bos on 08/07/16.
+ * Originally: Created by pieter.bos on 08/07/16.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ATTESTATION")
 public class Attestation extends AuditDetails {
 
-    @Nullable
-    @XmlElement(name = "attested_view")
     private DvMultimedia attestedView;
-    @Nullable
     private String proof;
-    @Nullable
     private List<DvEHRURI> items = new ArrayList<>();
     private DvText reason;
-    @XmlElement(name = "is_pending")
-    @RMProperty("is_pending")
     private boolean isPending;
 
     public Attestation() {

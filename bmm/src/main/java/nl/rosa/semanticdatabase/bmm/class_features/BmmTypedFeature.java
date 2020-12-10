@@ -2,43 +2,43 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * A typed entity that is a feature within a context, and which may therefore be Void, i.e.
  * 'nullable'.
- * 
-*/
+ */
 public interface BmmTypedFeature extends BmmTyped {
 
-/*=========================================================*/
-/* * CONSTANTS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * CONSTANTS * */
+    /*=========================================================*/
 
-/**
- * 
- * True if this element can be null (Void) at execution time.
- * May be interpreted as optionality in subtypes..
- * 
-*/
-    Boolean {default isNullable = false};
+    /**
+     * True if this element can be null (Void) at execution time.
+     * May be interpreted as optionality in subtypes..
+     */
+    Boolean {
+        default
+        isNullable = false
+    }
+
+    ;
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -47,7 +47,6 @@ public interface BmmTypedFeature extends BmmTyped {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

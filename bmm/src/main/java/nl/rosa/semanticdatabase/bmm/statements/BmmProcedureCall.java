@@ -1,49 +1,45 @@
 package nl.rosa.semanticdatabase.bmm.statements;
 
 import java.util.Objects;
+
 import nl.rosa.semanticdatabase.bmm.expressions.ElAgentCall;
 import nl.rosa.semanticdatabase.bmm.expressions.ElProcedureAgent;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * A call made on a closed procedure agent.
- * 
-*/
+ */
 public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
 
     //***** BmmProcedureCall *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * The procedure agent being called.
- * cardinality: 1..1 (redefined)
- * 
-*/
+    /**
+     * The procedure agent being called.
+     * cardinality: 1..1 (redefined)
+     */
     private ElProcedureAgent agent;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * The procedure agent being called.
- * cardinality: 1..1 (redefined)
- * 
-*/
+    /**
+     * The procedure agent being called.
+     * cardinality: 1..1 (redefined)
+     */
     public ElProcedureAgent getAgent() {
         return agent;
     }
+
     public void setAgent(ElProcedureAgent value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
         this.agent = agent;
@@ -51,33 +47,30 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
 
     //***** ElAgentCall *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * The agent being called.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * The agent being called.
+     * cardinality: 1..1
+     */
     private ElAgent agent;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * The agent being called.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * The agent being called.
+     * cardinality: 1..1
+     */
     public ElAgent getAgent() {
         return agent;
     }
+
     public void setAgent(ElAgent value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
         this.agent = agent;
@@ -85,21 +78,22 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
 
     //***** BmmProcedureCall *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected BmmProcedureCall() {}
+    protected BmmProcedureCall() {
+    }
 
     public BmmProcedureCall(
             ElProcedureAgent agent,
             ElAgent agent
-        ){
-        if ( agent == null ) {
+    ) {
+        if (agent == null) {
             throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
         }
-        if ( agent == null ) {
+        if (agent == null) {
             throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
         }
         this.agent = agent;
@@ -107,39 +101,39 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
     }
 
     private BmmProcedureCall(Builder builder) {
-        this.setAgent( builder.agent );
-        this.setAgent( builder.agent );
+        this.setAgent(builder.agent);
+        this.setAgent(builder.agent);
     }
 
     public static class Builder {
         private final ElProcedureAgent agent;  //required
         private final ElAgent agent;  //required
 
-        public Builder (
-            ElProcedureAgent agent,
-            ElAgent agent
-        ){
-            if ( agent == null ) {
+        public Builder(
+                ElProcedureAgent agent,
+                ElAgent agent
+        ) {
+            if (agent == null) {
                 throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
             }
-            if ( agent == null ) {
+            if (agent == null) {
                 throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
             }
             this.agent = agent;
             this.agent = agent;
         }
 
-        public BmmProcedureCall build(){
-            return new BmmProcedureCall( this );
+        public BmmProcedureCall build() {
+            return new BmmProcedureCall(this);
         }
     }
 
 
     //***** BmmProcedureCall *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -148,41 +142,40 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
         if (!super.equals(object)) return false;
         BmmProcedureCall that = (BmmProcedureCall) object;
         return
-            java.util.Objects.equals(agent, that.agent) &&
-            java.util.Objects.equals(agent, that.agent);
+                Objects.equals(agent, that.agent) &&
+                        Objects.equals(agent, that.agent);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            agent,
-            agent
+                super.hashCode(),
+                agent,
+                agent
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "BmmProcedureCall {" +
-            "agent='" + agent + '\'' +
-            "agent='" + agent + '\'' +
-            '}';
+                "BmmProcedureCall {" +
+                        "agent='" + agent + '\'' +
+                        "agent='" + agent + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -191,7 +184,6 @@ public class BmmProcedureCall extends BmmStatement implements ElAgentCall {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

@@ -1,81 +1,75 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
 import java.util.Objects;
+
 import nl.rosa.semanticdatabase.bmm.class_features.BmmUnitaryProperty;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * Persistent form of BMM_GENERIC_PROPERTY.
- * 
-*/
+ */
 public class PBmmGenericProperty extends PBmmProperty {
 
     //***** PBmmGenericProperty *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Type definition of this property, if not a simple String type reference.
- * Persistent attribute.
- * cardinality: 0..1 (redefined)
- * 
-*/
+    /**
+     * Type definition of this property, if not a simple String type reference.
+     * Persistent attribute.
+     * cardinality: 0..1 (redefined)
+     */
     private PBmmGenericType typeDef;
 
-/**
- * 
- * BMM_PROPERTY created by create_bmm_property_definition.
- * cardinality: 0..1 (redefined)
- * 
-*/
+    /**
+     * BMM_PROPERTY created by create_bmm_property_definition.
+     * cardinality: 0..1 (redefined)
+     */
     private BmmUnitaryProperty bmmProperty;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Type definition of this property, if not a simple String type reference.
- * Persistent attribute.
- * cardinality: 0..1 (redefined)
- * 
-*/
+    /**
+     * Type definition of this property, if not a simple String type reference.
+     * Persistent attribute.
+     * cardinality: 0..1 (redefined)
+     */
     public PBmmGenericType getTypeDef() {
         return typeDef;
     }
+
     public void setTypeDef(PBmmGenericType value) {
         this.typeDef = typeDef;
     }
 
-/**
- * 
- * BMM_PROPERTY created by create_bmm_property_definition.
- * cardinality: 0..1 (redefined)
- * 
-*/
+    /**
+     * BMM_PROPERTY created by create_bmm_property_definition.
+     * cardinality: 0..1 (redefined)
+     */
     public BmmUnitaryProperty getBmmProperty() {
         return bmmProperty;
     }
+
     public void setBmmProperty(BmmUnitaryProperty value) {
         this.bmmProperty = bmmProperty;
     }
 
     //***** PBmmGenericProperty *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected PBmmGenericProperty() {}
+    protected PBmmGenericProperty() {
+    }
 
     public PBmmGenericProperty(
             PBmmGenericType typeDef,
@@ -88,30 +82,30 @@ public class PBmmGenericProperty extends PBmmProperty {
             PBmmType typeDef,
             BmmProperty bmmProperty,
             String documentation
-        ){
-        super( 
-            name,
-            isMandatory,
-            isComputed,
-            isImInfrastructure,
-            isImRuntime,
-            documentation
+    ) {
+        super(
+                name,
+                isMandatory,
+                isComputed,
+                isImInfrastructure,
+                isImRuntime,
+                documentation
         );
         this.typeDef = typeDef;
         this.bmmProperty = bmmProperty;
     }
 
     private PBmmGenericProperty(Builder builder) {
-        this.setTypeDef( builder.typeDef );
-        this.setBmmProperty( builder.bmmProperty );
-        this.setName( builder.name );
-        this.setIsMandatory( builder.isMandatory );
-        this.setIsComputed( builder.isComputed );
-        this.setIsImInfrastructure( builder.isImInfrastructure );
-        this.setIsImRuntime( builder.isImRuntime );
-        this.setTypeDef( builder.typeDef );
-        this.setBmmProperty( builder.bmmProperty );
-        this.setDocumentation( builder.documentation );
+        this.setTypeDef(builder.typeDef);
+        this.setBmmProperty(builder.bmmProperty);
+        this.setName(builder.name);
+        this.setIsMandatory(builder.isMandatory);
+        this.setIsComputed(builder.isComputed);
+        this.setIsImInfrastructure(builder.isImInfrastructure);
+        this.setIsImRuntime(builder.isImRuntime);
+        this.setTypeDef(builder.typeDef);
+        this.setBmmProperty(builder.bmmProperty);
+        this.setDocumentation(builder.documentation);
     }
 
     public static class Builder {
@@ -126,10 +120,10 @@ public class PBmmGenericProperty extends PBmmProperty {
         private BmmProperty bmmProperty;
         private String documentation;
 
-        public Builder (
-            String name
-        ){
-            if ( name == null ) {
+        public Builder(
+                String name
+        ) {
+            if (name == null) {
                 throw new NullPointerException("Property:name has cardinality NonNull, but is null");
             }
             this.name = name;
@@ -180,17 +174,17 @@ public class PBmmGenericProperty extends PBmmProperty {
             return this;
         }
 
-        public PBmmGenericProperty build(){
-            return new PBmmGenericProperty( this );
+        public PBmmGenericProperty build() {
+            return new PBmmGenericProperty(this);
         }
     }
 
 
     //***** PBmmGenericProperty *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -199,41 +193,40 @@ public class PBmmGenericProperty extends PBmmProperty {
         if (!super.equals(object)) return false;
         PBmmGenericProperty that = (PBmmGenericProperty) object;
         return
-            java.util.Objects.equals(typeDef, that.typeDef) &&
-            java.util.Objects.equals(bmmProperty, that.bmmProperty);
+                Objects.equals(typeDef, that.typeDef) &&
+                        Objects.equals(bmmProperty, that.bmmProperty);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            typeDef,
-            bmmProperty
+                super.hashCode(),
+                typeDef,
+                bmmProperty
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "PBmmGenericProperty {" +
-            "typeDef='" + typeDef + '\'' +
-            "bmmProperty='" + bmmProperty + '\'' +
-            '}';
+                "PBmmGenericProperty {" +
+                        "typeDef='" + typeDef + '\'' +
+                        "bmmProperty='" + bmmProperty + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -242,7 +235,6 @@ public class PBmmGenericProperty extends PBmmProperty {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

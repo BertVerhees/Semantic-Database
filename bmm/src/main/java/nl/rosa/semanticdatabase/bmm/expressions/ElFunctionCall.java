@@ -1,103 +1,94 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
 import java.util.Objects;
+
 import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * A call made on a closed function agent, returning a result.
  * Equivalent to an 'application' of a function in Lambda calculus.
- * 
-*/
+ */
 public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
 
     //***** ElFunctionCall *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * The function agent being called.
- * cardinality: 1..1 (redefined)
- * 
-*/
+    /**
+     * The function agent being called.
+     * cardinality: 1..1 (redefined)
+     */
     private ElFunctionAgent agent;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * The function agent being called.
- * cardinality: 1..1 (redefined)
- * 
-*/
+    /**
+     * The function agent being called.
+     * cardinality: 1..1 (redefined)
+     */
     public ElFunctionAgent getAgent() {
         return agent;
     }
+
     public void setAgent(ElFunctionAgent value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
         this.agent = agent;
     }
 
-/*=========================================================*/
-/* * FUNCTIONS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FUNCTIONS * */
+    /*=========================================================*/
 
-/**
- * 
- * Return agent.definition.type.
- * cardinality: 1..1 (effected)
- * 
-*/
-    public BmmType  evalType() {
-        BmmType  result = null;
+    /**
+     * Return agent.definition.type.
+     * cardinality: 1..1 (effected)
+     */
+    public BmmType evalType() {
+        BmmType result = null;
 
 
-        if ( result  == null ) {
+        if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return  result;
+        return result;
     }
 
     //***** ElAgentCall *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * The agent being called.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * The agent being called.
+     * cardinality: 1..1
+     */
     private ElAgent agent;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * The agent being called.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * The agent being called.
+     * cardinality: 1..1
+     */
     public ElAgent getAgent() {
         return agent;
     }
+
     public void setAgent(ElAgent value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:agent failed, it has cardinality NonNull, but is null");
         }
         this.agent = agent;
@@ -105,25 +96,26 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
 
     //***** ElFunctionCall *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected ElFunctionCall() {}
+    protected ElFunctionCall() {
+    }
 
     public ElFunctionCall(
             ElFunctionAgent agent,
             ElAgent agent,
             ElInstanceRef scope
-        ){
-        super( 
-            scope
+    ) {
+        super(
+                scope
         );
-        if ( agent == null ) {
+        if (agent == null) {
             throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
         }
-        if ( agent == null ) {
+        if (agent == null) {
             throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
         }
         this.agent = agent;
@@ -131,9 +123,9 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
     }
 
     private ElFunctionCall(Builder builder) {
-        this.setAgent( builder.agent );
-        this.setAgent( builder.agent );
-        this.setScope( builder.scope );
+        this.setAgent(builder.agent);
+        this.setAgent(builder.agent);
+        this.setScope(builder.scope);
     }
 
     public static class Builder {
@@ -141,14 +133,14 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
         private final ElAgent agent;  //required
         private ElInstanceRef scope;
 
-        public Builder (
-            ElFunctionAgent agent,
-            ElAgent agent
-        ){
-            if ( agent == null ) {
+        public Builder(
+                ElFunctionAgent agent,
+                ElAgent agent
+        ) {
+            if (agent == null) {
                 throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
             }
-            if ( agent == null ) {
+            if (agent == null) {
                 throw new NullPointerException("Property:agent has cardinality NonNull, but is null");
             }
             this.agent = agent;
@@ -160,17 +152,17 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
             return this;
         }
 
-        public ElFunctionCall build(){
-            return new ElFunctionCall( this );
+        public ElFunctionCall build() {
+            return new ElFunctionCall(this);
         }
     }
 
 
     //***** ElFunctionCall *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -179,41 +171,40 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
         if (!super.equals(object)) return false;
         ElFunctionCall that = (ElFunctionCall) object;
         return
-            java.util.Objects.equals(agent, that.agent) &&
-            java.util.Objects.equals(agent, that.agent);
+                Objects.equals(agent, that.agent) &&
+                        Objects.equals(agent, that.agent);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            agent,
-            agent
+                super.hashCode(),
+                agent,
+                agent
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "ElFunctionCall {" +
-            "agent='" + agent + '\'' +
-            "agent='" + agent + '\'' +
-            '}';
+                "ElFunctionCall {" +
+                        "agent='" + agent + '\'' +
+                        "agent='" + agent + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -222,7 +213,6 @@ public class ElFunctionCall extends ElScopedRef implements ElAgentCall {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

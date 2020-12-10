@@ -3,100 +3,93 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 import java.util.Objects;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * A single tuple item, with an optional name.
- * 
-*/
+ */
 public class ElTupleItem {
 
     //***** ElTupleItem *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Reference to value entity.
- * If Void, this indicates that the item in this position is Void, e.g.
- * within a routine call parameter list.
- * cardinality: 0..1
- * 
-*/
+    /**
+     * Reference to value entity.
+     * If Void, this indicates that the item in this position is Void, e.g.
+     * within a routine call parameter list.
+     * cardinality: 0..1
+     */
     private ElExpression item;
 
-/**
- * 
- * Optional name of tuple item.
- * cardinality: 0..1
- * 
-*/
+    /**
+     * Optional name of tuple item.
+     * cardinality: 0..1
+     */
     private String name;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Reference to value entity.
- * If Void, this indicates that the item in this position is Void, e.g.
- * within a routine call parameter list.
- * cardinality: 0..1
- * 
-*/
+    /**
+     * Reference to value entity.
+     * If Void, this indicates that the item in this position is Void, e.g.
+     * within a routine call parameter list.
+     * cardinality: 0..1
+     */
     public ElExpression getItem() {
         return item;
     }
+
     public void setItem(ElExpression value) {
         this.item = item;
     }
 
-/**
- * 
- * Optional name of tuple item.
- * cardinality: 0..1
- * 
-*/
+    /**
+     * Optional name of tuple item.
+     * cardinality: 0..1
+     */
     public String getName() {
         return name;
     }
+
     public void setName(String value) {
         this.name = name;
     }
 
     //***** ElTupleItem *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected ElTupleItem() {}
+    protected ElTupleItem() {
+    }
 
     public ElTupleItem(
             ElExpression item,
             String name
-        ){
+    ) {
         this.item = item;
         this.name = name;
     }
 
     private ElTupleItem(Builder builder) {
-        this.setItem( builder.item );
-        this.setName( builder.name );
+        this.setItem(builder.item);
+        this.setName(builder.name);
     }
 
     public static class Builder {
         private ElExpression item;
         private String name;
 
-        public Builder (
-        ){
+        public Builder(
+        ) {
         }
 
         public Builder setItem(ElExpression value) {
@@ -109,17 +102,17 @@ public class ElTupleItem {
             return this;
         }
 
-        public ElTupleItem build(){
-            return new ElTupleItem( this );
+        public ElTupleItem build() {
+            return new ElTupleItem(this);
         }
     }
 
 
     //***** ElTupleItem *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -128,41 +121,40 @@ public class ElTupleItem {
         if (!super.equals(object)) return false;
         ElTupleItem that = (ElTupleItem) object;
         return
-            java.util.Objects.equals(item, that.item) &&
-            java.util.Objects.equals(name, that.name);
+                Objects.equals(item, that.item) &&
+                        Objects.equals(name, that.name);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            item,
-            name
+                super.hashCode(),
+                item,
+                name
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "ElTupleItem {" +
-            "item='" + item + '\'' +
-            "name='" + name + '\'' +
-            '}';
+                "ElTupleItem {" +
+                        "item='" + item + '\'' +
+                        "name='" + name + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -171,7 +163,6 @@ public class ElTupleItem {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

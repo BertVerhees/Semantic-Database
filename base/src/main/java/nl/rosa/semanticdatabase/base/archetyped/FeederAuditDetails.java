@@ -1,9 +1,10 @@
 package nl.rosa.semanticdatabase.base.archetyped;
 
+import nl.rosa.semanticdatabase.base.datastructures.ItemStructure;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDateTime;
 import nl.rosa.semanticdatabase.base.generic.PartyIdentified;
 import nl.rosa.semanticdatabase.base.generic.PartyProxy;
-import nl.rosa.semanticdatabase.base_types.datastructures.ItemStructure;
-import nl.rosa.semanticdatabase.base_types.datavalues.quantity.datetime.DvDateTime;
+
 import java.util.Objects;
 
 public class FeederAuditDetails {
@@ -27,10 +28,10 @@ public class FeederAuditDetails {
             PartyProxy subject,
             String versionId,
             ItemStructure otherDetails) {
-        if(systemId == null){
+        if (systemId == null) {
             throw new NullPointerException("Property:systemId has cardinality NonNull, but is null");
         }
-        if(otherDetails == null){
+        if (otherDetails == null) {
             throw new NullPointerException("Property:otherDetails has cardinality NonNull, but is null");
         }
         this.systemId = systemId;
@@ -47,7 +48,7 @@ public class FeederAuditDetails {
     }
 
     public void setSystemId(String systemId) {
-        if(systemId == null){
+        if (systemId == null) {
             throw new NullPointerException("Property:systemId has cardinality NonNull, but is null");
         }
         this.systemId = systemId;
@@ -98,7 +99,7 @@ public class FeederAuditDetails {
     }
 
     public void setOtherDetails(ItemStructure otherDetails) {
-        if(otherDetails == null){
+        if (otherDetails == null) {
             throw new NullPointerException("Property:otherDetails has cardinality NonNull, but is null");
         }
         this.otherDetails = otherDetails;

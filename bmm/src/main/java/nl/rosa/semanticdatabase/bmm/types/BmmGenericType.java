@@ -1,242 +1,225 @@
 package nl.rosa.semanticdatabase.bmm.types;
 
 import java.util.Objects;
+
 import nl.rosa.semanticdatabase.bmm.classes.BmmGenericClass;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Boolean;
+import semanticdatabase.base.foundation_types.primitive_types.Boolean;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * Meta-type based on a non-container generic class, e.g.
  * Packet<Header>.
- * 
-*/
+ */
 public class BmmGenericType extends BmmModelType {
 
     //***** BmmGenericType *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Generic parameters of the root_type in this type specifier.
- * The order must match the order of the owning class’s formal generic parameter declarations, and the types may be defined types or formal parameter types.
- * cardinality: 1..1
- * 
-*/
-    private List<BmmUnitaryType> genericParameters = new ArrayList<> ();
+    /**
+     * Generic parameters of the root_type in this type specifier.
+     * The order must match the order of the owning class’s formal generic parameter declarations, and the types may be defined types or formal parameter types.
+     * cardinality: 1..1
+     */
+    private List<BmmUnitaryType> genericParameters = new ArrayList<>();
 
-/**
- * 
- * Defining generic class of this type.
- * cardinality: 1..1 (redefined)
- * 
-*/
+    /**
+     * Defining generic class of this type.
+     * cardinality: 1..1 (redefined)
+     */
     private BmmGenericClass baseClass;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Generic parameters of the root_type in this type specifier.
- * The order must match the order of the owning class’s formal generic parameter declarations, and the types may be defined types or formal parameter types.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Generic parameters of the root_type in this type specifier.
+     * The order must match the order of the owning class’s formal generic parameter declarations, and the types may be defined types or formal parameter types.
+     * cardinality: 1..1
+     */
 
-    public void addToGenericParameter(BmmUnitaryType value ) {
-        genericParameters.add( value);
+    public void addToGenericParameter(BmmUnitaryType value) {
+        genericParameters.add(value);
     }
 
-    public void addToGenericParameters(List<BmmUnitaryType> values ) {
+    public void addToGenericParameters(List<BmmUnitaryType> values) {
         values.forEach(value -> addToGenericparameter(value));
     }
 
-    public void removeFromGenericParameter(BmmUnitaryType item ) {
-        if (genericParameters != null ) {
+    public void removeFromGenericParameter(BmmUnitaryType item) {
+        if (genericParameters != null) {
             genericParameters.remove(item);
         }
     }
-    public void removeFromGenericParameters( Collection <BmmUnitaryType> values ) {
+
+    public void removeFromGenericParameters(Collection<BmmUnitaryType> values) {
         values.forEach(this::removeFromGenericParameter);
     }
+
     List<BmmUnitaryType> getGenericParameters() {
         return this.genericParameters;
     }
+
     public BmmGenericType setGenericParameters(List<BmmUnitaryType> genericParameters) {
-        if (genericParameters == null ) {
+        if (genericParameters == null) {
             throw new NullPointerException(" genericParameters has cardinality NonNull, but is null");
         }
         this.genericParameters = genericParameters;
         return this;
     }
+
     public List<BmmUnitaryType> genericParameters() {
         return Collections.unmodifiableList(this.genericParameters);
     }
 
-/**
- * 
- * Defining generic class of this type.
- * cardinality: 1..1 (redefined)
- * 
-*/
+    /**
+     * Defining generic class of this type.
+     * cardinality: 1..1 (redefined)
+     */
     public BmmGenericClass getBaseClass() {
         return baseClass;
     }
+
     public void setBaseClass(BmmGenericClass value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:baseClass failed, it has cardinality NonNull, but is null");
         }
         this.baseClass = baseClass;
     }
 
-/*=========================================================*/
-/* * FUNCTIONS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FUNCTIONS * */
+    /*=========================================================*/
 
-/**
- * 
- * Return the full name of the type including generic parameters, e.g.
- * DV_INTERVAL<T>, TABLE<List<THING>,String>.
- * cardinality: 1..1 (effected)
- * 
-*/
-    public String  typeName() {
-        String  result = null;
+    /**
+     * Return the full name of the type including generic parameters, e.g.
+     * DV_INTERVAL<T>, TABLE<List<THING>,String>.
+     * cardinality: 1..1 (effected)
+     */
+    public String typeName() {
+        String result = null;
 
 
-        if ( result  == null ) {
+        if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return  result;
+        return result;
     }
 
-/**
- * 
- * Signature form of the type, which for generics includes generic parameter constrainer types E.g.
- * Interval<T:Ordered>.
- * cardinality: 1..1 (redefined)
- * 
-*/
-    public String  typeSignature() {
-        String  result = null;
+    /**
+     * Signature form of the type, which for generics includes generic parameter constrainer types E.g.
+     * Interval<T:Ordered>.
+     * cardinality: 1..1 (redefined)
+     */
+    public String typeSignature() {
+        String result = null;
 
 
-        if ( result  == null ) {
+        if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return  result;
+        return result;
     }
 
-/**
- * 
- * True if base_class.is_abstract or if any (non-open) parameter type is abstract.
- * cardinality: 1..1 (effected)
- * 
-*/
-    public Boolean  isAbstract() {
-        Boolean  result = null;
+    /**
+     * True if base_class.is_abstract or if any (non-open) parameter type is abstract.
+     * cardinality: 1..1 (effected)
+     */
+    public Boolean isAbstract() {
+        Boolean result = null;
 
 
-        if ( result  == null ) {
+        if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return  result;
+        return result;
     }
 
-/**
- * 
- * Result is base_class.name followed by names of all generic parameter type names, which may be open or closed.
- * cardinality: 1..1 (effected)
- * 
-*/
-    public List<String>  flattenedTypeList() {
-        List<String>  result = null;
+    /**
+     * Result is base_class.name followed by names of all generic parameter type names, which may be open or closed.
+     * cardinality: 1..1 (effected)
+     */
+    public List<String> flattenedTypeList() {
+        List<String> result = null;
 
 
-        if ( result  == null ) {
+        if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return  result;
+        return result;
     }
 
-/**
- * 
- * Returns True if there is any substituted generic parameter.
- * cardinality: 1..1
- * 
-*/
-    public Boolean  isPartiallyClosed() {
-        Boolean  result = null;
+    /**
+     * Returns True if there is any substituted generic parameter.
+     * cardinality: 1..1
+     */
+    public Boolean isPartiallyClosed() {
+        Boolean result = null;
 
 
-        if ( result  == null ) {
+        if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return  result;
+        return result;
     }
 
-/**
- * 
- * Effective underlying class for this type, abstracting away any container type.
- * cardinality: 1..1
- * 
-*/
-    public BmmGenericClass  effectiveBaseClass() {
-        BmmGenericClass  result = null;
+    /**
+     * Effective underlying class for this type, abstracting away any container type.
+     * cardinality: 1..1
+     */
+    public BmmGenericClass effectiveBaseClass() {
+        BmmGenericClass result = null;
 
 
-        if ( result  == null ) {
+        if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return  result;
+        return result;
     }
 
-/**
- * 
- * True if all generic parameters from ancestor generic types have been substituted in this type.
- * cardinality: 1..1
- * 
-*/
-    public Boolean  isOpen() {
-        Boolean  result = null;
+    /**
+     * True if all generic parameters from ancestor generic types have been substituted in this type.
+     * cardinality: 1..1
+     */
+    public Boolean isOpen() {
+        Boolean result = null;
 
 
-        if ( result  == null ) {
+        if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return  result;
+        return result;
     }
 
     //***** BmmGenericType *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected BmmGenericType() {}
+    protected BmmGenericType() {
+    }
 
     public BmmGenericType(
             List<bmmUnitaryType> genericParameters,
             BmmGenericClass baseClass,
             BmmValueSetSpec valueConstraint,
             BmmClass baseClass
-        ){
-        super( 
-            valueConstraint
+    ) {
+        super(
+                valueConstraint
         );
-        if ( genericParameters == null ) {
+        if (genericParameters == null) {
             throw new NullPointerException("Property:genericParameters has cardinality NonNull, but is null");
         }
-        if ( baseClass == null ) {
+        if (baseClass == null) {
             throw new NullPointerException("Property:baseClass has cardinality NonNull, but is null");
         }
         this.genericParameters = genericParameters;
@@ -244,10 +227,10 @@ public class BmmGenericType extends BmmModelType {
     }
 
     private BmmGenericType(Builder builder) {
-        this.setGenericParameters( builder.genericParameters );
-        this.setBaseClass( builder.baseClass );
-        this.setValueConstraint( builder.valueConstraint );
-        this.setBaseClass( builder.baseClass );
+        this.setGenericParameters(builder.genericParameters);
+        this.setBaseClass(builder.baseClass);
+        this.setValueConstraint(builder.valueConstraint);
+        this.setBaseClass(builder.baseClass);
     }
 
     public static class Builder {
@@ -256,18 +239,18 @@ public class BmmGenericType extends BmmModelType {
         private BmmValueSetSpec valueConstraint;
         private final BmmClass baseClass;  //required
 
-        public Builder (
-            List<bmmUnitaryType> genericParameters,
-            BmmGenericClass baseClass,
-            BmmClass baseClass
-        ){
-            if ( genericParameters == null ) {
+        public Builder(
+                List<bmmUnitaryType> genericParameters,
+                BmmGenericClass baseClass,
+                BmmClass baseClass
+        ) {
+            if (genericParameters == null) {
                 throw new NullPointerException("Property:genericParameters has cardinality NonNull, but is null");
             }
-            if ( baseClass == null ) {
+            if (baseClass == null) {
                 throw new NullPointerException("Property:baseClass has cardinality NonNull, but is null");
             }
-            if ( baseClass == null ) {
+            if (baseClass == null) {
                 throw new NullPointerException("Property:baseClass has cardinality NonNull, but is null");
             }
             this.genericParameters = genericParameters;
@@ -280,17 +263,17 @@ public class BmmGenericType extends BmmModelType {
             return this;
         }
 
-        public BmmGenericType build(){
-            return new BmmGenericType( this );
+        public BmmGenericType build() {
+            return new BmmGenericType(this);
         }
     }
 
 
     //***** BmmGenericType *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -299,41 +282,40 @@ public class BmmGenericType extends BmmModelType {
         if (!super.equals(object)) return false;
         BmmGenericType that = (BmmGenericType) object;
         return
-            java.util.Objects.equals(genericParameters, that.genericParameters) &&
-            java.util.Objects.equals(baseClass, that.baseClass);
+                Objects.equals(genericParameters, that.genericParameters) &&
+                        Objects.equals(baseClass, that.baseClass);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            genericParameters,
-            baseClass
+                super.hashCode(),
+                genericParameters,
+                baseClass
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "BmmGenericType {" +
-            "genericParameters='" + genericParameters + '\'' +
-            "baseClass='" + baseClass + '\'' +
-            '}';
+                "BmmGenericType {" +
+                        "genericParameters='" + genericParameters + '\'' +
+                        "baseClass='" + baseClass + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -342,7 +324,6 @@ public class BmmGenericType extends BmmModelType {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

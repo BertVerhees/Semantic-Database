@@ -1,7 +1,5 @@
 package nl.rosa.semanticdatabase.bmm.overview;
 /**
- * 
- * 
  * 2.
  * Overview
  * 2.1.
@@ -21,16 +19,16 @@ package nl.rosa.semanticdatabase.bmm.overview;
  * As a meta-model it is adapted to the task, i.e.
  * representing entity types that can appear in object models, rather than the over-generalised semantics of the UML meta-model.
  * This reduced scope, and the fact that it contains no diagram semantics enables its serial form to be human-readable.
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * 2.2.
  * Features
  * The Basic Meta-Model supports the representation of object models in the ISO RM/ODP information and computational points of view, i.e.
@@ -42,21 +40,21 @@ package nl.rosa.semanticdatabase.bmm.overview;
  * Its key features are as follows:Functional elements are supported via the inclusion of meta-types representing signatures and tuples, enabling the construction of delayed agent calls, known here as agents, and function applications (i.e.
  * function calls).Note that there is no BMM entity for graphical diagramming semantics.
  * Thus, there is no idea of 'association' distinct from an 'attribute', as per UML, which treats lines between class boxes as formal elements.
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * 2.3.
  * Current State of the Art
- * 
+ * <p>
  * 2.3.1.
  * UML
  * One would expect that the IT industry would have fully computable representations of models and diagramming solved, but it is not yet the case.
@@ -86,13 +84,13 @@ package nl.rosa.semanticdatabase.bmm.overview;
  * Computational Model
  * The BMM is specified as a structural model representing an abstract syntax tree (AST), which is the result of either in-memory construction (such as by a model authoring tool) or by parsing of a serialised representation of a BMM model.
  * It does not specify an abstract syntax, and indeed, more than one concrete syntax could be parsed to a BMM instance.
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * 2.5.
  * Uses of the BMM
- * 
+ * <p>
  * 2.5.1.
  * Class Model Representation
  * The BMM from version 3.0.0 on may be used to represent a full class model at an interface level (i.e.
@@ -124,26 +122,24 @@ package nl.rosa.semanticdatabase.bmm.overview;
  * the in-memory object structure of a BMM.
  * The related BMM Persistence specification defines an object model for a serialised schema form.
  * The latter enables serialisation of a BMM into a concrete syntax such as ODIN, JSON or XML.The BMM packages are as follows:Related packages are:These are illustrated below.
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * Figure 3.
  * Package Overview
  * 2.7.
  * Class Definitions
- * 
+ * <p>
  * 2.7.1.
  * BMM_DEFINITIONS Class
- * 
- * 
-*/
+ */

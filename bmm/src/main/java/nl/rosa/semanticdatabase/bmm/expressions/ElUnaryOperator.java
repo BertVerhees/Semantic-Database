@@ -3,45 +3,40 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 import java.util.Objects;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * Unary operator expression node.
- * 
-*/
+ */
 public class ElUnaryOperator extends ElOperator {
 
     //***** ElUnaryOperator *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Operand node.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Operand node.
+     * cardinality: 1..1
+     */
     private ElSimple operand;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Operand node.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Operand node.
+     * cardinality: 1..1
+     */
     public ElSimple getOperand() {
         return operand;
     }
+
     public void setOperand(ElSimple value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:operand failed, it has cardinality NonNull, but is null");
         }
         this.operand = operand;
@@ -49,35 +44,36 @@ public class ElUnaryOperator extends ElOperator {
 
     //***** ElUnaryOperator *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected ElUnaryOperator() {}
+    protected ElUnaryOperator() {
+    }
 
     public ElUnaryOperator(
             ElSimple operand,
             Boolean precedenceOverridden,
             String symbol,
             BmmFunction definition
-        ){
-        super( 
-            precedenceOverridden,
-            symbol,
-            definition
+    ) {
+        super(
+                precedenceOverridden,
+                symbol,
+                definition
         );
-        if ( operand == null ) {
+        if (operand == null) {
             throw new NullPointerException("Property:operand has cardinality NonNull, but is null");
         }
         this.operand = operand;
     }
 
     private ElUnaryOperator(Builder builder) {
-        this.setOperand( builder.operand );
-        this.setPrecedenceOverridden( builder.precedenceOverridden );
-        this.setSymbol( builder.symbol );
-        this.setDefinition( builder.definition );
+        this.setOperand(builder.operand);
+        this.setPrecedenceOverridden(builder.precedenceOverridden);
+        this.setSymbol(builder.symbol);
+        this.setDefinition(builder.definition);
     }
 
     public static class Builder {
@@ -86,14 +82,14 @@ public class ElUnaryOperator extends ElOperator {
         private String symbol;
         private final BmmFunction definition;  //required
 
-        public Builder (
-            ElSimple operand,
-            BmmFunction definition
-        ){
-            if ( operand == null ) {
+        public Builder(
+                ElSimple operand,
+                BmmFunction definition
+        ) {
+            if (operand == null) {
                 throw new NullPointerException("Property:operand has cardinality NonNull, but is null");
             }
-            if ( definition == null ) {
+            if (definition == null) {
                 throw new NullPointerException("Property:definition has cardinality NonNull, but is null");
             }
             this.operand = operand;
@@ -110,17 +106,17 @@ public class ElUnaryOperator extends ElOperator {
             return this;
         }
 
-        public ElUnaryOperator build(){
-            return new ElUnaryOperator( this );
+        public ElUnaryOperator build() {
+            return new ElUnaryOperator(this);
         }
     }
 
 
     //***** ElUnaryOperator *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -129,38 +125,37 @@ public class ElUnaryOperator extends ElOperator {
         if (!super.equals(object)) return false;
         ElUnaryOperator that = (ElUnaryOperator) object;
         return
-            java.util.Objects.equals(operand, that.operand);
+                Objects.equals(operand, that.operand);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            operand
+                super.hashCode(),
+                operand
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "ElUnaryOperator {" +
-            "operand='" + operand + '\'' +
-            '}';
+                "ElUnaryOperator {" +
+                        "operand='" + operand + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -169,7 +164,6 @@ public class ElUnaryOperator extends ElOperator {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

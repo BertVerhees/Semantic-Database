@@ -16,17 +16,16 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * MetaModel class that provides some opertaions for archetype validation and flattener that is either based on
  * an implementation-derived model (ModelInfoLookup) or BMM
- *
+ * <p>
  * To use, select a model first using the selectModel() method. Then you can use any of the methods from MetaModelInterface
  * or obtain the underlying models directly. Trying to use the MetaModelInterface methods without selecting a model will
  * result in a NoModelSelectedException being thrown.
- *
+ * <p>
  * By default the MetaModels uses the RM version from the archetype. It is possible to override this version either for
  * the entire MetaModels, or for a specific call, with the overrideModelVersion() method, and the two-parameter
  * selectModel() method.
- *
+ * <p>
  * Note that this class is NOT thread-safe and is to be used by a single thread only.
- *
  */
 public class MetaModels implements MetaModelInterface {
 
@@ -59,9 +58,10 @@ public class MetaModels implements MetaModelInterface {
      * Indicate that the model version for the given package by the given publisher should be fixed
      * to a specific version. Useful for validating archetypes against new RM versions, for example OpenEHR
      * RM 1.0.2 archetypes against 1.0.4
+     *
      * @param rmPublisher the publisher of the RM
-     * @param rmPackage the package of the RM to override the version for
-     * @param version the version that should be chosen
+     * @param rmPackage   the package of the RM to override the version for
+     * @param version     the version that should be chosen
      */
     public void overrideModelVersion(String rmPublisher, String rmPackage, String version) {
         this.overriddenMetaModelVersions.put(
@@ -72,8 +72,9 @@ public class MetaModels implements MetaModelInterface {
 
     /**
      * Remove the overriden model version for the given package
+     *
      * @param rmPublisher The publisher of the package
-     * @param rmPackage the RM Package to remove the model version for
+     * @param rmPackage   the RM Package to remove the model version for
      */
     public void removeOverridenModelVersion(String rmPublisher, String rmPackage) {
         this.overriddenMetaModelVersions.remove(BmmDefinitions.publisherQualifiedRmClosureName(rmPublisher, rmPackage));
@@ -86,51 +87,56 @@ public class MetaModels implements MetaModelInterface {
 
     /**
      * Select a meta model based on an archetype
+     *
      * @param archetype the archetype to find the model for
      * @throws ModelNotFoundException when no BMM and no ModelInfoLookup model has been found matching the archetype
      */
-    public void selectModel(Archetype archetype) throws ModelNotFoundException { ;
+    public void selectModel(Archetype archetype) throws ModelNotFoundException {
+        ;
         String overriddenVersion = getOverriddenModelVersion(archetype.getArchetypeId().getRmPublisher(), archetype.getArchetypeId().getRmPackage());
-        selectModel(archetype, overriddenVersion == null ? archetype.getRmRelease(): overriddenVersion);
+        selectModel(archetype, overriddenVersion == null ? archetype.getRmRelease() : overriddenVersion);
     }
 
     /**
      * Select a model based on an archetype, but override the RM Release with the given rm release version
+     *
      * @param archetype the archetype to find the model for
      * @param rmVersion the version of the reference model you want to check with.
      * @throws ModelNotFoundException
      */
-    public void selectModel(Archetype archetype, String rmVersion) throws ModelNotFoundException { ;
+    public void selectModel(Archetype archetype, String rmVersion) throws ModelNotFoundException {
+        ;
         selectModel(archetype.getArchetypeId().getRmPublisher(), archetype.getArchetypeId().getRmPackage(), rmVersion);
     }
 
     /**
      * Select a model based on an publisher, package and rm release version. Will NOT take into account overriden RM
      * versions, use the other selectModel() methods for that.
+     *
      * @param rmPublisher RM Publisher
-     * @param rmPackage RM Package
-     * @param rmRelease the version of the reference model you want to check with.
+     * @param rmPackage   RM Package
+     * @param rmRelease   the version of the reference model you want to check with.
      * @throws ModelNotFoundException
      */
     public void selectModel(String rmPublisher, String rmPackage, String rmRelease) throws ModelNotFoundException {
         ModelInfoLookup selectedModel = null;
         BmmModel selectedBmmModel = null;
         RMObjectMapperProvider objectMapperProvider = null;
-        if(models != null) {
-             selectedModel = models.getModel(rmPublisher, rmPackage);
-             objectMapperProvider = models.getRmObjectMapperProvider(rmPublisher, rmPackage);
+        if (models != null) {
+            selectedModel = models.getModel(rmPublisher, rmPackage);
+            objectMapperProvider = models.getRmObjectMapperProvider(rmPublisher, rmPackage);
         }
-        if(bmmRepository != null) {
-            BmmValidationResult validationResult = bmmRepository.getModelByClosure(BmmDefinitions.publisherQualifiedRmClosureName(rmPublisher, rmPackage) + "_" +  rmRelease);
+        if (bmmRepository != null) {
+            BmmValidationResult validationResult = bmmRepository.getModelByClosure(BmmDefinitions.publisherQualifiedRmClosureName(rmPublisher, rmPackage) + "_" + rmRelease);
             selectedBmmModel = validationResult == null ? null : validationResult.getModel();
         }
 
         this.selectedAomProfile = getAomProfileWithSchemaId(selectedBmmModel);
-        if(this.selectedAomProfile == null) {
+        if (this.selectedAomProfile == null) {
             this.selectedAomProfile = getAomProfileOnPublisher(rmPublisher);
         }
 
-        if(selectedModel == null && selectedBmmModel == null) {
+        if (selectedModel == null && selectedBmmModel == null) {
             throw new ModelNotFoundException(String.format("model for %s.%s version %s not found", rmPublisher, rmPackage, rmRelease));
         }
         this.selectedModel = new MetaModel(selectedModel, selectedBmmModel, selectedAomProfile, objectMapperProvider);
@@ -138,7 +144,7 @@ public class MetaModels implements MetaModelInterface {
     }
 
     private AomProfile getAomProfileWithSchemaId(BmmModel selectedBmmModel) {
-        if(selectedBmmModel != null) {
+        if (selectedBmmModel != null) {
             for (AomProfile profile : aomProfiles.getProfiles()) {
                 if (profile.getRmSchemaPattern().stream().anyMatch(pat -> selectedBmmModel.getSchemaId().matches(pat))) {
                     return profile;
@@ -149,8 +155,8 @@ public class MetaModels implements MetaModelInterface {
     }
 
     private AomProfile getAomProfileOnPublisher(String rmPublisher) {
-        for(AomProfile profile:aomProfiles.getProfiles()) {
-           if(profile.getProfileName().equalsIgnoreCase(rmPublisher)) {
+        for (AomProfile profile : aomProfiles.getProfiles()) {
+            if (profile.getProfileName().equalsIgnoreCase(rmPublisher)) {
                 return profile;
             }
         }
@@ -195,7 +201,7 @@ public class MetaModels implements MetaModelInterface {
     public boolean attributeExists(String rmTypeName, String propertyName) {
         checkThatModelHasBeenSelected();
         return selectedModel.attributeExists(rmTypeName, propertyName);
-   }
+    }
 
     @Override
     public boolean isNullable(String typeId, String attributeName) {
@@ -226,7 +232,7 @@ public class MetaModels implements MetaModelInterface {
     }
 
     private void checkThatModelHasBeenSelected() throws NoModelSelectedException {
-        if(selectedModel == null) {
+        if (selectedModel == null) {
             throw new NoModelSelectedException("Please call the selectModel() method before trying to use MetaModels");
         }
 

@@ -1,90 +1,84 @@
 package nl.rosa.semanticdatabase.bmm.statements;
 
 import java.util.Objects;
+
 import nl.rosa.semanticdatabase.bmm.expressions.ElBooleanExpression;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * A statement that asserts the truth of its expression.
  * If not, generates an exception (depending on run-time settings).
  * May be rendered in syntax as assert condition or similar.
- * 
-*/
+ */
 public class BmmAssertion extends BmmStatement {
 
     //***** BmmAssertion *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * cardinality: 1..1
- * 
-*/
+    /**
+     * cardinality: 1..1
+     */
     private ElBooleanExpression expression;
 
-/**
- * 
- * Optional tag, typically used to designate design intention of the assertion, e.g.
- * "Inv_all_members_valid".
- * cardinality: 0..1
- * 
-*/
+    /**
+     * Optional tag, typically used to designate design intention of the assertion, e.g.
+     * "Inv_all_members_valid".
+     * cardinality: 0..1
+     */
     private String tag;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * cardinality: 1..1
- * 
-*/
+    /**
+     * cardinality: 1..1
+     */
     public ElBooleanExpression getExpression() {
         return expression;
     }
+
     public void setExpression(ElBooleanExpression value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:expression failed, it has cardinality NonNull, but is null");
         }
         this.expression = expression;
     }
 
-/**
- * 
- * Optional tag, typically used to designate design intention of the assertion, e.g.
- * "Inv_all_members_valid".
- * cardinality: 0..1
- * 
-*/
+    /**
+     * Optional tag, typically used to designate design intention of the assertion, e.g.
+     * "Inv_all_members_valid".
+     * cardinality: 0..1
+     */
     public String getTag() {
         return tag;
     }
+
     public void setTag(String value) {
         this.tag = tag;
     }
 
     //***** BmmAssertion *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected BmmAssertion() {}
+    protected BmmAssertion() {
+    }
 
     public BmmAssertion(
             ElBooleanExpression expression,
             String tag
-        ){
-        if ( expression == null ) {
+    ) {
+        if (expression == null) {
             throw new NullPointerException("Property:expression has cardinality NonNull, but is null");
         }
         this.expression = expression;
@@ -92,18 +86,18 @@ public class BmmAssertion extends BmmStatement {
     }
 
     private BmmAssertion(Builder builder) {
-        this.setExpression( builder.expression );
-        this.setTag( builder.tag );
+        this.setExpression(builder.expression);
+        this.setTag(builder.tag);
     }
 
     public static class Builder {
         private final ElBooleanExpression expression;  //required
         private String tag;
 
-        public Builder (
-            ElBooleanExpression expression
-        ){
-            if ( expression == null ) {
+        public Builder(
+                ElBooleanExpression expression
+        ) {
+            if (expression == null) {
                 throw new NullPointerException("Property:expression has cardinality NonNull, but is null");
             }
             this.expression = expression;
@@ -114,17 +108,17 @@ public class BmmAssertion extends BmmStatement {
             return this;
         }
 
-        public BmmAssertion build(){
-            return new BmmAssertion( this );
+        public BmmAssertion build() {
+            return new BmmAssertion(this);
         }
     }
 
 
     //***** BmmAssertion *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -133,41 +127,40 @@ public class BmmAssertion extends BmmStatement {
         if (!super.equals(object)) return false;
         BmmAssertion that = (BmmAssertion) object;
         return
-            java.util.Objects.equals(expression, that.expression) &&
-            java.util.Objects.equals(tag, that.tag);
+                Objects.equals(expression, that.expression) &&
+                        Objects.equals(tag, that.tag);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            expression,
-            tag
+                super.hashCode(),
+                expression,
+                tag
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "BmmAssertion {" +
-            "expression='" + expression + '\'' +
-            "tag='" + tag + '\'' +
-            '}';
+                "BmmAssertion {" +
+                        "expression='" + expression + '\'' +
+                        "tag='" + tag + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -176,7 +169,6 @@ public class BmmAssertion extends BmmStatement {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

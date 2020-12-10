@@ -1,123 +1,118 @@
 package nl.rosa.semanticdatabase.bmm.expressions;
 
 import java.util.Objects;
+
 import nl.rosa.semanticdatabase.bmm.types.BmmType;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * Meta-type for reference to a non-abstract type as an object.
  * Assumed to be accessible at run-time.
  * Typically represented syntactically as TypeName or {TypeName}.
  * May be used as a value, or as the qualifier for a function or constant access.
- * 
-*/
+ */
 public class ElTypeRef extends ElInstanceRef {
 
     //***** ElTypeRef *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Type, directly from the name of the reference, e.g.
- * {SOME_TYPE}.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Type, directly from the name of the reference, e.g.
+     * {SOME_TYPE}.
+     * cardinality: 1..1
+     */
     private BmmType type;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Type, directly from the name of the reference, e.g.
- * {SOME_TYPE}.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Type, directly from the name of the reference, e.g.
+     * {SOME_TYPE}.
+     * cardinality: 1..1
+     */
     public BmmType getType() {
         return type;
     }
+
     public void setType(BmmType value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
     }
 
-/*=========================================================*/
-/* * FUNCTIONS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FUNCTIONS * */
+    /*=========================================================*/
 
-/**
- * 
- * Return type.
- * cardinality: 1..1 (effected)
- * 
-*/
-    public BmmType  evalType() {
-        BmmType  result = null;
+    /**
+     * Return type.
+     * cardinality: 1..1 (effected)
+     */
+    public BmmType evalType() {
+        BmmType result = null;
 
 
-        if ( result  == null ) {
+        if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return  result;
+        return result;
     }
 
     //***** ElTypeRef *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected ElTypeRef() {}
+    protected ElTypeRef() {
+    }
 
     public ElTypeRef(
             BmmType type
-        ){
-        if ( type == null ) {
+    ) {
+        if (type == null) {
             throw new NullPointerException("Property:type has cardinality NonNull, but is null");
         }
         this.type = type;
     }
 
     private ElTypeRef(Builder builder) {
-        this.setType( builder.type );
+        this.setType(builder.type);
     }
 
     public static class Builder {
         private final BmmType type;  //required
 
-        public Builder (
-            BmmType type
-        ){
-            if ( type == null ) {
+        public Builder(
+                BmmType type
+        ) {
+            if (type == null) {
                 throw new NullPointerException("Property:type has cardinality NonNull, but is null");
             }
             this.type = type;
         }
 
-        public ElTypeRef build(){
-            return new ElTypeRef( this );
+        public ElTypeRef build() {
+            return new ElTypeRef(this);
         }
     }
 
 
     //***** ElTypeRef *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -126,38 +121,37 @@ public class ElTypeRef extends ElInstanceRef {
         if (!super.equals(object)) return false;
         ElTypeRef that = (ElTypeRef) object;
         return
-            java.util.Objects.equals(type, that.type);
+                Objects.equals(type, that.type);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            type
+                super.hashCode(),
+                type
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "ElTypeRef {" +
-            "type='" + type + '\'' +
-            '}';
+                "ElTypeRef {" +
+                        "type='" + type + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -166,7 +160,6 @@ public class ElTypeRef extends ElInstanceRef {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

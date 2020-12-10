@@ -1,126 +1,115 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
 import java.util.Objects;
+
 import nl.rosa.semanticdatabase.bmm.class_features.BmmUnitaryProperty;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * Persistent form of a BMM_SINGLE_PROPERTY_OPEN.
- * 
-*/
+ */
 public class PBmmSinglePropertyOpen extends PBmmProperty {
 
     //***** PBmmSinglePropertyOpen *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Type definition of this property computed from type for later use in bmm_property.
- * cardinality: 0..1
- * 
-*/
+    /**
+     * Type definition of this property computed from type for later use in bmm_property.
+     * cardinality: 0..1
+     */
     private PBmmOpenType typeRef;
 
-/**
- * 
- * Type definition of this property, if a simple String type reference.
- * Really we should use type_def to be regular in the schema, but that makes the schema more wordy and less clear.
- * So we use this persisted String value, and compute the type_def on the fly.
- * Persisted attribute.
- * cardinality: 0..1
- * 
-*/
+    /**
+     * Type definition of this property, if a simple String type reference.
+     * Really we should use type_def to be regular in the schema, but that makes the schema more wordy and less clear.
+     * So we use this persisted String value, and compute the type_def on the fly.
+     * Persisted attribute.
+     * cardinality: 0..1
+     */
     private String type;
 
-/**
- * 
- * BMM_PROPERTY created by create_bmm_property_definition.
- * cardinality: 0..1 (redefined)
- * 
-*/
+    /**
+     * BMM_PROPERTY created by create_bmm_property_definition.
+     * cardinality: 0..1 (redefined)
+     */
     private BmmUnitaryProperty bmmProperty;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Type definition of this property computed from type for later use in bmm_property.
- * cardinality: 0..1
- * 
-*/
+    /**
+     * Type definition of this property computed from type for later use in bmm_property.
+     * cardinality: 0..1
+     */
     public PBmmOpenType getTypeRef() {
         return typeRef;
     }
+
     public void setTypeRef(PBmmOpenType value) {
         this.typeRef = typeRef;
     }
 
-/**
- * 
- * Type definition of this property, if a simple String type reference.
- * Really we should use type_def to be regular in the schema, but that makes the schema more wordy and less clear.
- * So we use this persisted String value, and compute the type_def on the fly.
- * Persisted attribute.
- * cardinality: 0..1
- * 
-*/
+    /**
+     * Type definition of this property, if a simple String type reference.
+     * Really we should use type_def to be regular in the schema, but that makes the schema more wordy and less clear.
+     * So we use this persisted String value, and compute the type_def on the fly.
+     * Persisted attribute.
+     * cardinality: 0..1
+     */
     public String getType() {
         return type;
     }
+
     public void setType(String value) {
         this.type = type;
     }
 
-/**
- * 
- * BMM_PROPERTY created by create_bmm_property_definition.
- * cardinality: 0..1 (redefined)
- * 
-*/
+    /**
+     * BMM_PROPERTY created by create_bmm_property_definition.
+     * cardinality: 0..1 (redefined)
+     */
     public BmmUnitaryProperty getBmmProperty() {
         return bmmProperty;
     }
+
     public void setBmmProperty(BmmUnitaryProperty value) {
         this.bmmProperty = bmmProperty;
     }
 
-/*=========================================================*/
-/* * FUNCTIONS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FUNCTIONS * */
+    /*=========================================================*/
 
-/**
- * 
- * Generate type_ref from type and save.
- * cardinality: 1..1
- * 
-*/
-    public PBmmOpenType  typeDef() {
-        PBmmOpenType  result = null;
+    /**
+     * Generate type_ref from type and save.
+     * cardinality: 1..1
+     */
+    public PBmmOpenType typeDef() {
+        PBmmOpenType result = null;
 
 
-        if ( result  == null ) {
+        if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return  result;
+        return result;
     }
 
     //***** PBmmSinglePropertyOpen *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected PBmmSinglePropertyOpen() {}
+    protected PBmmSinglePropertyOpen() {
+    }
 
     public PBmmSinglePropertyOpen(
             PBmmOpenType typeRef,
@@ -134,15 +123,15 @@ public class PBmmSinglePropertyOpen extends PBmmProperty {
             PBmmType typeDef,
             BmmProperty bmmProperty,
             String documentation
-        ){
-        super( 
-            name,
-            isMandatory,
-            isComputed,
-            isImInfrastructure,
-            isImRuntime,
-            typeDef,
-            documentation
+    ) {
+        super(
+                name,
+                isMandatory,
+                isComputed,
+                isImInfrastructure,
+                isImRuntime,
+                typeDef,
+                documentation
         );
         this.typeRef = typeRef;
         this.type = type;
@@ -150,17 +139,17 @@ public class PBmmSinglePropertyOpen extends PBmmProperty {
     }
 
     private PBmmSinglePropertyOpen(Builder builder) {
-        this.setTypeRef( builder.typeRef );
-        this.setType( builder.type );
-        this.setBmmProperty( builder.bmmProperty );
-        this.setName( builder.name );
-        this.setIsMandatory( builder.isMandatory );
-        this.setIsComputed( builder.isComputed );
-        this.setIsImInfrastructure( builder.isImInfrastructure );
-        this.setIsImRuntime( builder.isImRuntime );
-        this.setTypeDef( builder.typeDef );
-        this.setBmmProperty( builder.bmmProperty );
-        this.setDocumentation( builder.documentation );
+        this.setTypeRef(builder.typeRef);
+        this.setType(builder.type);
+        this.setBmmProperty(builder.bmmProperty);
+        this.setName(builder.name);
+        this.setIsMandatory(builder.isMandatory);
+        this.setIsComputed(builder.isComputed);
+        this.setIsImInfrastructure(builder.isImInfrastructure);
+        this.setIsImRuntime(builder.isImRuntime);
+        this.setTypeDef(builder.typeDef);
+        this.setBmmProperty(builder.bmmProperty);
+        this.setDocumentation(builder.documentation);
     }
 
     public static class Builder {
@@ -176,10 +165,10 @@ public class PBmmSinglePropertyOpen extends PBmmProperty {
         private BmmProperty bmmProperty;
         private String documentation;
 
-        public Builder (
-            String name
-        ){
-            if ( name == null ) {
+        public Builder(
+                String name
+        ) {
+            if (name == null) {
                 throw new NullPointerException("Property:name has cardinality NonNull, but is null");
             }
             this.name = name;
@@ -235,17 +224,17 @@ public class PBmmSinglePropertyOpen extends PBmmProperty {
             return this;
         }
 
-        public PBmmSinglePropertyOpen build(){
-            return new PBmmSinglePropertyOpen( this );
+        public PBmmSinglePropertyOpen build() {
+            return new PBmmSinglePropertyOpen(this);
         }
     }
 
 
     //***** PBmmSinglePropertyOpen *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -254,44 +243,43 @@ public class PBmmSinglePropertyOpen extends PBmmProperty {
         if (!super.equals(object)) return false;
         PBmmSinglePropertyOpen that = (PBmmSinglePropertyOpen) object;
         return
-            java.util.Objects.equals(typeRef, that.typeRef) &&
-            java.util.Objects.equals(type, that.type) &&
-            java.util.Objects.equals(bmmProperty, that.bmmProperty);
+                Objects.equals(typeRef, that.typeRef) &&
+                        Objects.equals(type, that.type) &&
+                        Objects.equals(bmmProperty, that.bmmProperty);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            typeRef,
-            type,
-            bmmProperty
+                super.hashCode(),
+                typeRef,
+                type,
+                bmmProperty
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "PBmmSinglePropertyOpen {" +
-            "typeRef='" + typeRef + '\'' +
-            "type='" + type + '\'' +
-            "bmmProperty='" + bmmProperty + '\'' +
-            '}';
+                "PBmmSinglePropertyOpen {" +
+                        "typeRef='" + typeRef + '\'' +
+                        "type='" + type + '\'' +
+                        "bmmProperty='" + bmmProperty + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -300,7 +288,6 @@ public class PBmmSinglePropertyOpen extends PBmmProperty {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

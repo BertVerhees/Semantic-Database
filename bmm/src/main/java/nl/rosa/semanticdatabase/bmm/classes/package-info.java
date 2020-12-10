@@ -1,7 +1,5 @@
 package nl.rosa.semanticdatabase.bmm.classes;
 /**
- * 
- * 
  * 6.
  * Classes
  * 6.1.
@@ -18,24 +16,24 @@ package nl.rosa.semanticdatabase.bmm.classes;
  * BMM_SIMPLE_CLASS and BMM_GENERIC_CLASS, with the first providing a concrete form of BMM_CLASS that applies to non-generic classes, and the latter defining the additional semantics of generic classes.
  * The meta-type BMM_ENUMERATION is a specialisation of BMM_SIMPLE_CLASS used to represent enumeration classes in BMM models.
  * The meta-types are further described below.
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
  * Figure 18.
  * base.bmm.core Package - Classes
- * 
- * 
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * 6.2.
  * Simple Classes
  * The simplest type of class definition in a model is an instance of the meta-type BMM_SIMPLE_CLASS, and has a 1:1 relationship with its type.
  * Such classes might be specified in the following abstract syntax:
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
  * class DvQuantity { feature // feature definitions } class Observation { feature // feature definitions }
  * 6.3.
  * Generic Classes
@@ -44,13 +42,13 @@ package nl.rosa.semanticdatabase.bmm.classes;
  * In BMM, formal parameters have single-letter names, such as 'T', 'U' etc, following typical usage in programming languages.
  * A generic class may also be primitive.
  * Generic classes can be defined in a syntax similar to the following.The following example shows a generic class Interval<T:Ordered>, which is a class Interval with one formal parameter T constrained to be of type Ordered or any descendant.
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
  * // a primitive generic class with an open type parameter primitive class List <T> { feature // feature definitions } // a generic class with a constrained type parameter class DvInterval <T:DvOrdered> { feature // feature definitions } // a primitive generic class two type parameters primitive class HashMap <K:Ordered, V> { feature // feature definitions }
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
  * Figure 19.
  * BMM class - generic class
  * 6.4.
@@ -62,11 +60,11 @@ package nl.rosa.semanticdatabase.bmm.classes;
  * The Pascal language provided a well-known precedent, 'sub-range types' that could restrict primitive type value ranges.
  * BMM supports two kinds of range constraint: enumeration and 'value sets'.
  * The additional meta-classes are shown below.
- * 
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * Figure 20.
  * bmm.core.range_constrained Package - Constrained-range Meta-Types, including Enumeration
  * 6.4.1.
@@ -111,8 +109,8 @@ package nl.rosa.semanticdatabase.bmm.classes;
  * Class Qualifiers
  * The following sub-sections describe qualifiers that may be used on any class definition to achieve a specific status within the model system.
  * BMM qualifiers are designed to map to typical features in programming languages.
- * 
- * 
+ * <p>
+ * <p>
  * 6.5.1.
  * Abstract Classes
  * Any class definition in a BMM model may be marked as 'abstract', to indicate that it cannot be directly instantiated.
@@ -131,11 +129,11 @@ package nl.rosa.semanticdatabase.bmm.classes;
  * A class defined within a model may include invariants, i.e.
  * assertions relating to its state that hold true before and after all public routine calls.
  * Assertions are instances of the class BMM_ASSERTION, which is a tagged Boolean-valued Expression.The following shows classes with invariants.
- * 
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * // a class with simple invariants class COMPOSITION { feature // feature definitions invariant Is_archetype_root: is_archetype_root Content_valid: content /= Void implies not content.is_empty } // a class with more complex invariants class VERSIONED_COMPOSITION { feature // feature definitions invariant Archetype_node_id_valid: all_versions.for_all ( agent (v: VERSION) { v.archetype_node_id.is_equal (all_versions.first.archetype_node_id); } ) Persistent_validity: all_versions.for_all ( agent (v: VERSION) { v.is_persistent = all_versions.first.data.is_persistent; } ) }
  * 6.7.
  * Inheritance
@@ -143,38 +141,36 @@ package nl.rosa.semanticdatabase.bmm.classes;
  * This is primarily to allow classes to be based on specific generic types, rather than just the 'open' type represented by the underlying classes.
  * Multiple inheritance is permitted, with same-named features from different types being treated as clashes needing resolution.
  * See Section 12.1 for a detailed description.
- * 
- * 
+ * <p>
+ * <p>
  * 6.8.
  * Model Theoretic Questions
  * The class meta-model as defined here entails certain choices that have consequences, including:
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * 6.9.
  * Class Definitions
- * 
+ * <p>
  * 6.9.1.
  * BMM_CLASS Class
- * 
+ * <p>
  * 6.9.2.
  * BMM_SIMPLE_CLASS Class
- * 
+ * <p>
  * 6.9.3.
  * BMM_GENERIC_CLASS Class
- * 
+ * <p>
  * 6.9.4.
  * BMM_ENUMERATION Class
- * 
+ * <p>
  * 6.9.5.
  * BMM_ENUMERATION_STRING Class
- * 
+ * <p>
  * 6.9.6.
  * BMM_ENUMERATION_INTEGER Class
- * 
+ * <p>
  * 6.9.7.
  * BMM_VALUE_SET_SPEC Class
- * 
- * 
-*/
+ */

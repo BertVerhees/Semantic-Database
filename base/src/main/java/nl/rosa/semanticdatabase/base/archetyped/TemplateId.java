@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.base.archetyped;
 
-import nl.rosa.semanticdatabase.base.support.identification.ObjectId;
+
+import nl.rosa.semanticdatabase.base.identification.ObjectId;
 
 public class TemplateId extends ObjectId {
 }

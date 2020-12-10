@@ -3,45 +3,38 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 import java.util.Objects;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
- * 
- * 
-*/
+ */
 public abstract class ElDecisionBranch {
 
     //***** ElDecisionBranch *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Result expression of conditional, if its condition evaluates to True.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Result expression of conditional, if its condition evaluates to True.
+     * cardinality: 1..1
+     */
     private ElExpression result;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Result expression of conditional, if its condition evaluates to True.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Result expression of conditional, if its condition evaluates to True.
+     * cardinality: 1..1
+     */
     public ElExpression getResult() {
         return result;
     }
+
     public void setResult(ElExpression value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:result failed, it has cardinality NonNull, but is null");
         }
         this.result = result;
@@ -49,17 +42,18 @@ public abstract class ElDecisionBranch {
 
     //***** ElDecisionBranch *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected ElDecisionBranch() {}
+    protected ElDecisionBranch() {
+    }
 
     protected ElDecisionBranch(
             ElExpression result
-        ){
-        if ( result == null ) {
+    ) {
+        if (result == null) {
             throw new NullPointerException("Property:result has cardinality NonNull, but is null");
         }
         this.result = result;
@@ -68,9 +62,9 @@ public abstract class ElDecisionBranch {
 
     //***** ElDecisionBranch *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -79,38 +73,37 @@ public abstract class ElDecisionBranch {
         if (!super.equals(object)) return false;
         ElDecisionBranch that = (ElDecisionBranch) object;
         return
-            java.util.Objects.equals(result, that.result);
+                Objects.equals(result, that.result);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            result
+                super.hashCode(),
+                result
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "ElDecisionBranch {" +
-            "result='" + result + '\'' +
-            '}';
+                "ElDecisionBranch {" +
+                        "result='" + result + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -119,7 +112,6 @@ public abstract class ElDecisionBranch {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

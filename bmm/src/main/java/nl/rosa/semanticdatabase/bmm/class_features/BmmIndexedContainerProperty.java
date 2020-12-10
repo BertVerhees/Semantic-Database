@@ -1,81 +1,76 @@
 package nl.rosa.semanticdatabase.bmm.class_features;
 
 import java.util.Objects;
+
 import nl.rosa.semanticdatabase.bmm.types.BmmIndexedContainerType;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * Meta-type of for properties of linear container type, such as Hash<Index_type, T> etc.
- * 
-*/
+ */
 public class BmmIndexedContainerProperty extends BmmContainerProperty {
 
     //***** BmmIndexedContainerProperty *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Declared or inferred static type of the entity.
- * cardinality: 1..1 (redefined)
- * 
-*/
+    /**
+     * Declared or inferred static type of the entity.
+     * cardinality: 1..1 (redefined)
+     */
     private BmmIndexedContainerType type;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Declared or inferred static type of the entity.
- * cardinality: 1..1 (redefined)
- * 
-*/
+    /**
+     * Declared or inferred static type of the entity.
+     * cardinality: 1..1 (redefined)
+     */
     public BmmIndexedContainerType getType() {
         return type;
     }
+
     public void setType(BmmIndexedContainerType value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
     }
 
-/*=========================================================*/
-/* * FUNCTIONS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FUNCTIONS * */
+    /*=========================================================*/
 
-/**
- * 
- * Name of this property in form name: ContainerTypeName<IndexTypeName, …​>.
- * cardinality: 1..1 (redefined)
- * 
-*/
-    public String  displayName() {
-        String  result = null;
+    /**
+     * Name of this property in form name: ContainerTypeName<IndexTypeName, …​>.
+     * cardinality: 1..1 (redefined)
+     */
+    public String displayName() {
+        String result = null;
 
 
-        if ( result  == null ) {
+        if (result == null) {
             throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
         }
-        return  result;
+        return result;
     }
 
     //***** BmmIndexedContainerProperty *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected BmmIndexedContainerProperty() {}
+    protected BmmIndexedContainerProperty() {
+    }
 
     public BmmIndexedContainerProperty(
             BmmIndexedContainerType type,
@@ -90,37 +85,37 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
             Map<string, any> documentation,
             BmmDeclaration scope,
             Map<string, any> extensions
-        ){
-        super( 
-            cardinality,
-            visibility,
-            featureExtensions,
-            group,
-            scope,
-            name,
-            documentation,
-            scope,
-            extensions
+    ) {
+        super(
+                cardinality,
+                visibility,
+                featureExtensions,
+                group,
+                scope,
+                name,
+                documentation,
+                scope,
+                extensions
         );
-        if ( type == null ) {
+        if (type == null) {
             throw new NullPointerException("Property:type has cardinality NonNull, but is null");
         }
         this.type = type;
     }
 
     private BmmIndexedContainerProperty(Builder builder) {
-        this.setType( builder.type );
-        this.setCardinality( builder.cardinality );
-        this.setType( builder.type );
-        this.setType( builder.type );
-        this.setVisibility( builder.visibility );
-        this.setFeatureExtensions( builder.featureExtensions );
-        this.setGroup( builder.group );
-        this.setScope( builder.scope );
-        this.setName( builder.name );
-        this.setDocumentation( builder.documentation );
-        this.setScope( builder.scope );
-        this.setExtensions( builder.extensions );
+        this.setType(builder.type);
+        this.setCardinality(builder.cardinality);
+        this.setType(builder.type);
+        this.setType(builder.type);
+        this.setVisibility(builder.visibility);
+        this.setFeatureExtensions(builder.featureExtensions);
+        this.setGroup(builder.group);
+        this.setScope(builder.scope);
+        this.setName(builder.name);
+        this.setDocumentation(builder.documentation);
+        this.setScope(builder.scope);
+        this.setExtensions(builder.extensions);
     }
 
     public static class Builder {
@@ -137,34 +132,34 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
         private final BmmDeclaration scope;  //required
         private Map<string, any> extensions;
 
-        public Builder (
-            BmmIndexedContainerType type,
-            BmmContainerType type,
-            BmmType type,
-            BmmFeatureGroup group,
-            BmmClass scope,
-            String name,
-            BmmDeclaration scope
-        ){
-            if ( type == null ) {
+        public Builder(
+                BmmIndexedContainerType type,
+                BmmContainerType type,
+                BmmType type,
+                BmmFeatureGroup group,
+                BmmClass scope,
+                String name,
+                BmmDeclaration scope
+        ) {
+            if (type == null) {
                 throw new NullPointerException("Property:type has cardinality NonNull, but is null");
             }
-            if ( type == null ) {
+            if (type == null) {
                 throw new NullPointerException("Property:type has cardinality NonNull, but is null");
             }
-            if ( type == null ) {
+            if (type == null) {
                 throw new NullPointerException("Property:type has cardinality NonNull, but is null");
             }
-            if ( group == null ) {
+            if (group == null) {
                 throw new NullPointerException("Property:group has cardinality NonNull, but is null");
             }
-            if ( scope == null ) {
+            if (scope == null) {
                 throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
             }
-            if ( name == null ) {
+            if (name == null) {
                 throw new NullPointerException("Property:name has cardinality NonNull, but is null");
             }
-            if ( scope == null ) {
+            if (scope == null) {
                 throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
             }
             this.type = type;
@@ -201,17 +196,17 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
             return this;
         }
 
-        public BmmIndexedContainerProperty build(){
-            return new BmmIndexedContainerProperty( this );
+        public BmmIndexedContainerProperty build() {
+            return new BmmIndexedContainerProperty(this);
         }
     }
 
 
     //***** BmmIndexedContainerProperty *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -220,38 +215,37 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
         if (!super.equals(object)) return false;
         BmmIndexedContainerProperty that = (BmmIndexedContainerProperty) object;
         return
-            java.util.Objects.equals(type, that.type);
+                Objects.equals(type, that.type);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            type
+                super.hashCode(),
+                type
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "BmmIndexedContainerProperty {" +
-            "type='" + type + '\'' +
-            '}';
+                "BmmIndexedContainerProperty {" +
+                        "type='" + type + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -260,7 +254,6 @@ public class BmmIndexedContainerProperty extends BmmContainerProperty {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

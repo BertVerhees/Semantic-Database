@@ -1,48 +1,44 @@
 package nl.rosa.semanticdatabase.bmm.literal_values;
 
 import java.util.Objects;
-import nl.rosa.semanticdatabase.foundation_types.primitive_types.Integer;
+
+import semanticdatabase.base.foundation_types.primitive_types.Integer;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * Meta-type for a literal Integer value, for which type is fixed to the BMM_TYPE representing Integer and value is of type Integer.
- * 
-*/
+ */
 public class BmmIntegerValue extends BmmPrimitiveValue {
 
     //***** BmmIntegerValue *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Native Integer value.
- * cardinality: 1..1 (redefined)
- * 
-*/
+    /**
+     * Native Integer value.
+     * cardinality: 1..1 (redefined)
+     */
     private Integer value;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Native Integer value.
- * cardinality: 1..1 (redefined)
- * 
-*/
+    /**
+     * Native Integer value.
+     * cardinality: 1..1 (redefined)
+     */
     public Integer getValue() {
         return value;
     }
+
     public void setValue(Integer value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:value failed, it has cardinality NonNull, but is null");
         }
         this.value = value;
@@ -50,12 +46,13 @@ public class BmmIntegerValue extends BmmPrimitiveValue {
 
     //***** BmmIntegerValue *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected BmmIntegerValue() {}
+    protected BmmIntegerValue() {
+    }
 
     public BmmIntegerValue(
             Integer value,
@@ -65,28 +62,28 @@ public class BmmIntegerValue extends BmmPrimitiveValue {
             Any value,
             String syntax,
             BmmType type
-        ){
-        super( 
-            type,
-            type,
-            valueLiteral,
-            syntax,
-            type
+    ) {
+        super(
+                type,
+                type,
+                valueLiteral,
+                syntax,
+                type
         );
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException("Property:value has cardinality NonNull, but is null");
         }
         this.value = value;
     }
 
     private BmmIntegerValue(Builder builder) {
-        this.setValue( builder.value );
-        this.setType( builder.type );
-        this.setType( builder.type );
-        this.setValueLiteral( builder.valueLiteral );
-        this.setValue( builder.value );
-        this.setSyntax( builder.syntax );
-        this.setType( builder.type );
+        this.setValue(builder.value);
+        this.setType(builder.type);
+        this.setType(builder.type);
+        this.setValueLiteral(builder.valueLiteral);
+        this.setValue(builder.value);
+        this.setSyntax(builder.syntax);
+        this.setType(builder.type);
     }
 
     public static class Builder {
@@ -98,26 +95,26 @@ public class BmmIntegerValue extends BmmPrimitiveValue {
         private String syntax;
         private final BmmType type;  //required
 
-        public Builder (
-            Integer value,
-            BmmSimpleType type,
-            BmmUnitaryType type,
-            String valueLiteral,
-            BmmType type
-        ){
-            if ( value == null ) {
+        public Builder(
+                Integer value,
+                BmmSimpleType type,
+                BmmUnitaryType type,
+                String valueLiteral,
+                BmmType type
+        ) {
+            if (value == null) {
                 throw new NullPointerException("Property:value has cardinality NonNull, but is null");
             }
-            if ( type == null ) {
+            if (type == null) {
                 throw new NullPointerException("Property:type has cardinality NonNull, but is null");
             }
-            if ( type == null ) {
+            if (type == null) {
                 throw new NullPointerException("Property:type has cardinality NonNull, but is null");
             }
-            if ( valueLiteral == null ) {
+            if (valueLiteral == null) {
                 throw new NullPointerException("Property:valueLiteral has cardinality NonNull, but is null");
             }
-            if ( type == null ) {
+            if (type == null) {
                 throw new NullPointerException("Property:type has cardinality NonNull, but is null");
             }
             this.value = value;
@@ -137,17 +134,17 @@ public class BmmIntegerValue extends BmmPrimitiveValue {
             return this;
         }
 
-        public BmmIntegerValue build(){
-            return new BmmIntegerValue( this );
+        public BmmIntegerValue build() {
+            return new BmmIntegerValue(this);
         }
     }
 
 
     //***** BmmIntegerValue *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -156,38 +153,37 @@ public class BmmIntegerValue extends BmmPrimitiveValue {
         if (!super.equals(object)) return false;
         BmmIntegerValue that = (BmmIntegerValue) object;
         return
-            java.util.Objects.equals(value, that.value);
+                Objects.equals(value, that.value);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            value
+                super.hashCode(),
+                value
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "BmmIntegerValue {" +
-            "value='" + value + '\'' +
-            '}';
+                "BmmIntegerValue {" +
+                        "value='" + value + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -196,7 +192,6 @@ public class BmmIntegerValue extends BmmPrimitiveValue {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

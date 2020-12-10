@@ -2,8 +2,10 @@ package nl.rosa.semanticdatabase.base.archetyped;
 
 import nl.rosa.semanticdatabase.base.paths.PathSegment;
 import nl.rosa.semanticdatabase.base.paths.PathUtil;
+import nl.rosa.semanticdatabase.base.utils.path_queries.RMObjectWithPath;
+import nl.rosa.semanticdatabase.base.utils.path_queries.RMPathQuery;
+import nl.rosa.semanticdatabase.base.utils.rminfo.RMInfoLookup;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -21,11 +23,11 @@ public abstract class Pathable {
     }
 
     public Object itemAtPath(String s) {
-        return new RMPathQuery(s).find(ArchieRMInfoLookup.getInstance(), this);
+        return new RMPathQuery(s).find(RMInfoLookup.getInstance(), this);
     }
 
     public List<Object> itemsAtPath(String s) {
-        List<RMObjectWithPath> objects = new RMPathQuery(s).findList(ArchieRMInfoLookup.getInstance(), this);
+        List<RMObjectWithPath> objects = new RMPathQuery(s).findList(RMInfoLookup.getInstance(), this);
         List<Object> result = new ArrayList<>();
         for (RMObjectWithPath object : objects) {
             result.add(object.getObject());
@@ -36,9 +38,11 @@ public abstract class Pathable {
     public Pathable getParent() {
         return parent;
     }
+
     private void setParent(Pathable parent) {
         this.parent = parent;
     }
+
     private void setParentAttributeName(String parentAttributeName) {
         this.parentAttributeName = parentAttributeName;
     }

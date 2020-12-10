@@ -3,90 +3,88 @@ package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 import java.util.Objects;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * Persistent form of BMM_PARAMETER_TYPE.
- * 
-*/
+ */
 public class PBmmOpenType extends PBmmBaseType {
 
     //***** PBmmOpenType *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Simple type parameter as a single letter like 'T', 'G' etc.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Simple type parameter as a single letter like 'T', 'G' etc.
+     * cardinality: 1..1
+     */
     private String type;
 
 /**
- * 
+ *
  * Result of create_bmm_type() call.
  * cardinality: 0..1 (redefined)
- * 
-*/
-    private @@ bmmType;
+ *
+ */
+    private @
+    @bmmType;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Simple type parameter as a single letter like 'T', 'G' etc.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Simple type parameter as a single letter like 'T', 'G' etc.
+     * cardinality: 1..1
+     */
     public String getType() {
         return type;
     }
+
     public void setType(String value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:type failed, it has cardinality NonNull, but is null");
         }
         this.type = type;
     }
 
-/**
- * 
- * Result of create_bmm_type() call.
- * cardinality: 0..1 (redefined)
- * 
-*/
-    public @@ getBmmType() {
+    /**
+     *
+     * Result of create_bmm_type() call.
+     * cardinality: 0..1 (redefined)
+     *
+     */
+    public @ @getBmmType() {
         return bmmType;
     }
-    public void setBmmType(@@ value) {
+
+    public void setBmmType(@ @value) {
         this.bmmType = bmmType;
     }
 
     //***** PBmmOpenType *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected PBmmOpenType() {}
+    protected PBmmOpenType() {
+    }
 
     public PBmmOpenType(
             String type,
-            @@ bmmType,
+            @ @bmmType,
             String valueConstraint,
             BmmType bmmType
-        ){
-        super( 
-            valueConstraint
+    ) {
+        super(
+                valueConstraint
         );
-        if ( type == null ) {
+        if (type == null) {
             throw new NullPointerException("Property:type has cardinality NonNull, but is null");
         }
         this.type = type;
@@ -94,28 +92,29 @@ public class PBmmOpenType extends PBmmBaseType {
     }
 
     private PBmmOpenType(Builder builder) {
-        this.setType( builder.type );
-        this.setBmmType( builder.bmmType );
-        this.setValueConstraint( builder.valueConstraint );
-        this.setBmmType( builder.bmmType );
+        this.setType(builder.type);
+        this.setBmmType(builder.bmmType);
+        this.setValueConstraint(builder.valueConstraint);
+        this.setBmmType(builder.bmmType);
     }
 
     public static class Builder {
         private final String type;  //required
-        private @@ bmmType;
+        private @
+        @bmmType;
         private String valueConstraint;
         private BmmType bmmType;
 
-        public Builder (
-            String type
-        ){
-            if ( type == null ) {
+        public Builder(
+                String type
+        ) {
+            if (type == null) {
                 throw new NullPointerException("Property:type has cardinality NonNull, but is null");
             }
             this.type = type;
         }
 
-        public Builder setBmmType(@@ value) {
+        public Builder setBmmType(@ @value) {
             this.bmmType = bmmType;
             return this;
         }
@@ -130,17 +129,17 @@ public class PBmmOpenType extends PBmmBaseType {
             return this;
         }
 
-        public PBmmOpenType build(){
-            return new PBmmOpenType( this );
+        public PBmmOpenType build() {
+            return new PBmmOpenType(this);
         }
     }
 
 
     //***** PBmmOpenType *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -149,41 +148,40 @@ public class PBmmOpenType extends PBmmBaseType {
         if (!super.equals(object)) return false;
         PBmmOpenType that = (PBmmOpenType) object;
         return
-            java.util.Objects.equals(type, that.type) &&
-            java.util.Objects.equals(bmmType, that.bmmType);
+                Objects.equals(type, that.type) &&
+                        Objects.equals(bmmType, that.bmmType);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            type,
-            bmmType
+                super.hashCode(),
+                type,
+                bmmType
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "PBmmOpenType {" +
-            "type='" + type + '\'' +
-            "bmmType='" + bmmType + '\'' +
-            '}';
+                "PBmmOpenType {" +
+                        "type='" + type + '\'' +
+                        "bmmType='" + bmmType + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -192,7 +190,6 @@ public class PBmmOpenType extends PBmmBaseType {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

@@ -1,81 +1,73 @@
 package nl.rosa.semanticdatabase.bmm_persistence.persistence_package;
 
 import java.util.Objects;
+
 import nl.rosa.semanticdatabase.bmm.class_features.BmmIndexedContainerProperty;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
- * 
- * 
-*/
+ */
 public class PBmmIndexedContainerProperty extends PBmmContainerProperty {
 
     //***** PBmmIndexedContainerProperty *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Type definition of this property, if not a simple String type reference.
- * Persistent attribute.
- * cardinality: 0..1 (redefined)
- * 
-*/
+    /**
+     * Type definition of this property, if not a simple String type reference.
+     * Persistent attribute.
+     * cardinality: 0..1 (redefined)
+     */
     private PBmmIndexedContainerType typeDef;
 
-/**
- * 
- * BMM_PROPERTY created by create_bmm_property.
- * cardinality: 0..1 (redefined)
- * 
-*/
+    /**
+     * BMM_PROPERTY created by create_bmm_property.
+     * cardinality: 0..1 (redefined)
+     */
     private BmmIndexedContainerProperty bmmProperty;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Type definition of this property, if not a simple String type reference.
- * Persistent attribute.
- * cardinality: 0..1 (redefined)
- * 
-*/
+    /**
+     * Type definition of this property, if not a simple String type reference.
+     * Persistent attribute.
+     * cardinality: 0..1 (redefined)
+     */
     public PBmmIndexedContainerType getTypeDef() {
         return typeDef;
     }
+
     public void setTypeDef(PBmmIndexedContainerType value) {
         this.typeDef = typeDef;
     }
 
-/**
- * 
- * BMM_PROPERTY created by create_bmm_property.
- * cardinality: 0..1 (redefined)
- * 
-*/
+    /**
+     * BMM_PROPERTY created by create_bmm_property.
+     * cardinality: 0..1 (redefined)
+     */
     public BmmIndexedContainerProperty getBmmProperty() {
         return bmmProperty;
     }
+
     public void setBmmProperty(BmmIndexedContainerProperty value) {
         this.bmmProperty = bmmProperty;
     }
 
     //***** PBmmIndexedContainerProperty *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected PBmmIndexedContainerProperty() {}
+    protected PBmmIndexedContainerProperty() {
+    }
 
     public PBmmIndexedContainerProperty(
             PBmmIndexedContainerType typeDef,
@@ -91,34 +83,34 @@ public class PBmmIndexedContainerProperty extends PBmmContainerProperty {
             PBmmType typeDef,
             BmmProperty bmmProperty,
             String documentation
-        ){
-        super( 
-            cardinality,
-            name,
-            isMandatory,
-            isComputed,
-            isImInfrastructure,
-            isImRuntime,
-            documentation
+    ) {
+        super(
+                cardinality,
+                name,
+                isMandatory,
+                isComputed,
+                isImInfrastructure,
+                isImRuntime,
+                documentation
         );
         this.typeDef = typeDef;
         this.bmmProperty = bmmProperty;
     }
 
     private PBmmIndexedContainerProperty(Builder builder) {
-        this.setTypeDef( builder.typeDef );
-        this.setBmmProperty( builder.bmmProperty );
-        this.setCardinality( builder.cardinality );
-        this.setTypeDef( builder.typeDef );
-        this.setBmmProperty( builder.bmmProperty );
-        this.setName( builder.name );
-        this.setIsMandatory( builder.isMandatory );
-        this.setIsComputed( builder.isComputed );
-        this.setIsImInfrastructure( builder.isImInfrastructure );
-        this.setIsImRuntime( builder.isImRuntime );
-        this.setTypeDef( builder.typeDef );
-        this.setBmmProperty( builder.bmmProperty );
-        this.setDocumentation( builder.documentation );
+        this.setTypeDef(builder.typeDef);
+        this.setBmmProperty(builder.bmmProperty);
+        this.setCardinality(builder.cardinality);
+        this.setTypeDef(builder.typeDef);
+        this.setBmmProperty(builder.bmmProperty);
+        this.setName(builder.name);
+        this.setIsMandatory(builder.isMandatory);
+        this.setIsComputed(builder.isComputed);
+        this.setIsImInfrastructure(builder.isImInfrastructure);
+        this.setIsImRuntime(builder.isImRuntime);
+        this.setTypeDef(builder.typeDef);
+        this.setBmmProperty(builder.bmmProperty);
+        this.setDocumentation(builder.documentation);
     }
 
     public static class Builder {
@@ -136,10 +128,10 @@ public class PBmmIndexedContainerProperty extends PBmmContainerProperty {
         private BmmProperty bmmProperty;
         private String documentation;
 
-        public Builder (
-            String name
-        ){
-            if ( name == null ) {
+        public Builder(
+                String name
+        ) {
+            if (name == null) {
                 throw new NullPointerException("Property:name has cardinality NonNull, but is null");
             }
             this.name = name;
@@ -205,17 +197,17 @@ public class PBmmIndexedContainerProperty extends PBmmContainerProperty {
             return this;
         }
 
-        public PBmmIndexedContainerProperty build(){
-            return new PBmmIndexedContainerProperty( this );
+        public PBmmIndexedContainerProperty build() {
+            return new PBmmIndexedContainerProperty(this);
         }
     }
 
 
     //***** PBmmIndexedContainerProperty *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -224,41 +216,40 @@ public class PBmmIndexedContainerProperty extends PBmmContainerProperty {
         if (!super.equals(object)) return false;
         PBmmIndexedContainerProperty that = (PBmmIndexedContainerProperty) object;
         return
-            java.util.Objects.equals(typeDef, that.typeDef) &&
-            java.util.Objects.equals(bmmProperty, that.bmmProperty);
+                Objects.equals(typeDef, that.typeDef) &&
+                        Objects.equals(bmmProperty, that.bmmProperty);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            typeDef,
-            bmmProperty
+                super.hashCode(),
+                typeDef,
+                bmmProperty
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "PBmmIndexedContainerProperty {" +
-            "typeDef='" + typeDef + '\'' +
-            "bmmProperty='" + bmmProperty + '\'' +
-            '}';
+                "PBmmIndexedContainerProperty {" +
+                        "typeDef='" + typeDef + '\'' +
+                        "bmmProperty='" + bmmProperty + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -267,7 +258,6 @@ public class PBmmIndexedContainerProperty extends PBmmContainerProperty {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

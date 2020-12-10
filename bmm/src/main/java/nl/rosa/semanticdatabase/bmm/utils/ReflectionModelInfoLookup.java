@@ -20,13 +20,13 @@ import java.util.stream.Collectors;
 
 /**
  * Utility that defines the java mapping of type and attribute names of a given reference model.
- *
+ * <p>
  * Use it to obtain java classes for RM Type Names, and java fields, getters, setters and types for RM Attribute Names
- *
+ * <p>
  * This class is never directly created, but subclasses must be created that setup the correct model. Create a subclass
  * per model you want to use with Archie, for example one for an OpenEHR RM implementation, or the CIMI RM implementation
- *
- * Created by pieter.bos on 02/02/16.
+ * <p>
+ * Originally: Created by pieter.bos on 02/02/16.
  */
 public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
 
@@ -48,7 +48,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
      */
     @SuppressWarnings("unchecked")
     private Set<String> forbiddenMethods = new HashSet(
-        Arrays.asList("getClass", "wait", "notify", "notifyAll", "clone", "finalize")
+            Arrays.asList("getClass", "wait", "notify", "notifyAll", "clone", "finalize")
     );
 
     public ReflectionModelInfoLookup(ModelNamingStrategy namingStrategy, Class baseClass) {
@@ -86,6 +86,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
 
     /**
      * Override to disable reflections scanning
+     *
      * @param baseClass
      */
     protected void addTypes(Class baseClass) {
@@ -93,13 +94,13 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
     }
 
     private void addSuperAndSubclassInfo() {
-        for(RMTypeInfo typeInfo:rmTypeNamesToRmTypeInfo.values()) {
+        for (RMTypeInfo typeInfo : rmTypeNamesToRmTypeInfo.values()) {
             Class superclass = typeInfo.getJavaClass().getSuperclass();
-            if(!superclass.equals(Object.class)) {
+            if (!superclass.equals(Object.class)) {
                 addDescendantClass(typeInfo, superclass);
             }
 
-            for(Class interfaceClass:typeInfo.getJavaClass().getInterfaces()) {
+            for (Class interfaceClass : typeInfo.getJavaClass().getInterfaces()) {
                 addDescendantClass(typeInfo, interfaceClass);
             }
         }
@@ -108,7 +109,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
 
     private void addDescendantClass(RMTypeInfo typeInfo, Class interfaceClass) {
         RMTypeInfo superClassTypeInfo = this.getTypeInfo(interfaceClass);
-        if(superClassTypeInfo != null) {
+        if (superClassTypeInfo != null) {
             typeInfo.addDirectParentClass(superClassTypeInfo);
             superClassTypeInfo.addDirectDescendantClass(typeInfo);
         }
@@ -116,6 +117,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
 
     /**
      * Add all subtypes of the given class
+     *
      * @param baseClass
      */
     protected void addSubtypesOf(Class baseClass) {
@@ -132,7 +134,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
         addAttributeInfo(clazz, typeInfo);
         rmTypeNamesToRmTypeInfo.put(rmTypeName, typeInfo);
         classesToRmTypeInfo.put(clazz, typeInfo);
-        if(!inConstructor) {
+        if (!inConstructor) {
             //if someone called this after initial creation, we need to update super/subclass info.
             //could be done more efficiently by only updating for the added class and parents/descendants, but
             //should not be a problem to do it this way
@@ -146,16 +148,16 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
 
         Set<Field> allFields = ReflectionUtils.getAllFields(clazz);
         Map<String, Field> fieldsByName = allFields.stream()
-                .filter( field -> !field.getName().startsWith("$")) //jacoco adds $ fields.. annoying :)
+                .filter(field -> !field.getName().startsWith("$")) //jacoco adds $ fields.. annoying :)
                 .collect(Collectors.toMap((field) -> field.getName(), (field) -> field,
                         (duplicate1, duplicate2) -> duplicate1));
-        for(Field field: fieldsByName.values()) {
+        for (Field field : fieldsByName.values()) {
             addRMAttributeInfo(clazz, typeInfo, typeToken, field);
         }
-        if(addAttributesWithoutField) {
+        if (addAttributesWithoutField) {
             Set<Method> getters = ReflectionUtils.getAllMethods(clazz, (method) -> method.getName().startsWith("get") || method.getName().startsWith("is"));
             for (Method getMethod : getters) {
-                if(shouldAdd(getMethod)) {
+                if (shouldAdd(getMethod)) {
                     addRMAttributeInfo(clazz, typeInfo, typeToken, getMethod, fieldsByName);
                 }
             }
@@ -163,7 +165,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
     }
 
     protected boolean shouldAdd(Method method) {
-        if(method == null) {
+        if (method == null) {
             return true;
         }
         //do not add private or protected properties, they will result in errors
@@ -172,13 +174,13 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
 
     protected void addRMAttributeInfo(Class clazz, RMTypeInfo typeInfo, TypeToken typeToken, Method getMethod, Map<String, Field> fieldsByName) {
         String javaFieldName = null;
-        if(getMethod.getName().startsWith("is")) {
+        if (getMethod.getName().startsWith("is")) {
             javaFieldName = lowerCaseFirstChar(getMethod.getName().substring(2));
         } else {
             javaFieldName = lowerCaseFirstChar(getMethod.getName().substring(3));
         }
         Field field = fieldsByName.get(javaFieldName);
-        if(field == null) {
+        if (field == null) {
             field = fieldsByName.get(getMethod.getName());
         }
         String javaFieldNameUpperCased = upperCaseFirstChar(javaFieldName);
@@ -196,28 +198,29 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
 
         String attributeName = namingStrategy.getAttributeName(field, getMethod);
 
-        TypeToken fieldType = typeToken.resolveType(getMethod.getGenericReturnType());;
+        TypeToken fieldType = typeToken.resolveType(getMethod.getGenericReturnType());
+        ;
 
         Class rawFieldType = fieldType.getRawType();
         Class typeInCollection = getTypeInCollection(fieldType);
-       // if (setMethod != null) {
-            RMAttributeInfo attributeInfo = new RMAttributeInfo(
-                    attributeName,
-                    field,
-                    rawFieldType,
-                    typeInCollection,
-                    this.namingStrategy.getTypeName(typeInCollection),
-                    isNullable(clazz, getMethod, field),
-                    getMethod,
-                    setMethod,
-                    addMethod
-            );
-            if(typeInfo.getAttribute(attributeName) == null) {
-                typeInfo.addAttribute(attributeInfo);
-            }
+        // if (setMethod != null) {
+        RMAttributeInfo attributeInfo = new RMAttributeInfo(
+                attributeName,
+                field,
+                rawFieldType,
+                typeInCollection,
+                this.namingStrategy.getTypeName(typeInCollection),
+                isNullable(clazz, getMethod, field),
+                getMethod,
+                setMethod,
+                addMethod
+        );
+        if (typeInfo.getAttribute(attributeName) == null) {
+            typeInfo.addAttribute(attributeInfo);
+        }
         //} else {
         //    logger.info("property without a set method ignored for field {} on class {}", attributeName, clazz.getSimpleName());
-       // }
+        // }
     }
 
     protected boolean isNullable(Class clazz, Method getMethod, Field field) {
@@ -240,7 +243,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
             logger.debug("No get method found for field {} on class {}", field.getName(), clazz.getSimpleName());
         }
 
-        if(javaFieldName.startsWith("is")) {
+        if (javaFieldName.startsWith("is")) {
             //special case
             String fieldNameWithoutPrefix = javaFieldName.substring(2);
             String withoutPrefixUpperCased = upperCaseFirstChar(fieldNameWithoutPrefix);
@@ -248,10 +251,10 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
                 getMethod = getMethod(clazz, "is" + withoutPrefixUpperCased);
             }
             if (getMethod != null) {
-                if(setMethod == null) {
+                if (setMethod == null) {
                     setMethod = getMethod(clazz, "set" + withoutPrefixUpperCased, getMethod.getReturnType());
                 }
-                if(addMethod == null) {
+                if (addMethod == null) {
                     addMethod = getAddMethod(clazz, typeToken, withoutPrefixUpperCased, getMethod);
                 }
             } else {
@@ -303,8 +306,8 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
                     return (Class) ((java.lang.reflect.TypeVariable) actualTypeArguments[0]).getBounds()[0];
                 }
             }
-        } else if(rawFieldType.isArray()) {
-           return rawFieldType.getComponentType();
+        } else if (rawFieldType.isArray()) {
+            return rawFieldType.getComponentType();
         }
         return rawFieldType;
     }
@@ -333,7 +336,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
     }
 
     private String toSingular(String javaFieldNameUpperCased) {
-        if(javaFieldNameUpperCased.endsWith("s")) {
+        if (javaFieldNameUpperCased.endsWith("s")) {
             return javaFieldNameUpperCased.substring(0, javaFieldNameUpperCased.length() - 1);
         }
         //TODO: a way to override plural names to go back to singular names. Use a library?
@@ -343,19 +346,19 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
     private Method getMethod(Class clazz, String name, Class<?>... parameterTypes) {
         try {
             return clazz.getMethod(name, parameterTypes);
-        } catch(NoSuchMethodException ex) {
+        } catch (NoSuchMethodException ex) {
             return null;
         }
     }
 
     private String upperCaseFirstChar(String name) {
-        return new StringBuilder(name).replace(0,1,
+        return new StringBuilder(name).replace(0, 1,
                 Character.toString(Character.toUpperCase(name.charAt(0)))
-            ).toString();
+        ).toString();
     }
 
     private String lowerCaseFirstChar(String name) {
-        return new StringBuilder(name).replace(0,1,
+        return new StringBuilder(name).replace(0, 1,
                 Character.toString(Character.toLowerCase(name.charAt(0)))
         ).toString();
     }
@@ -375,7 +378,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
     @Override
     public Map<String, Class> getRmTypeNameToClassMap() {
         HashMap<String, Class> result = new HashMap<>();
-        for(String rmTypeName: rmTypeNamesToRmTypeInfo.keySet()) {
+        for (String rmTypeName : rmTypeNamesToRmTypeInfo.keySet()) {
             result.put(rmTypeName, rmTypeNamesToRmTypeInfo.get(rmTypeName).getJavaClass());
         }
         return result;
@@ -394,13 +397,13 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
     }
 
     @Override
-    public RMTypeInfo   getTypeInfo(String rmTypeName) {
+    public RMTypeInfo getTypeInfo(String rmTypeName) {
         String strippedRmTypeName = getTypeWithoutGenericType(rmTypeName);
         return this.rmTypeNamesToRmTypeInfo.get(strippedRmTypeName);
     }
 
     private String getTypeWithoutGenericType(String rmTypeName) {
-        if(rmTypeName.indexOf('<') > 0) {
+        if (rmTypeName.indexOf('<') > 0) {
             //strip generic types, cannot handle them yet
             rmTypeName = rmTypeName.substring(0, rmTypeName.indexOf('<'));
         }
@@ -432,7 +435,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
 
     /**
      * Convert the given reference model object to the object required for the archetype constraint.
-     *
+     * <p>
      * for example, a CTerminologyCode can be used to check a CodePhrase or a DvCodedText. This cannot be directly checked and must be converted first.
      *
      * @param object

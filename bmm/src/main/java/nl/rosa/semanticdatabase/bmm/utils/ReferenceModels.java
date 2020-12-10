@@ -17,7 +17,7 @@ public class ReferenceModels {
     }
 
     public ReferenceModels(ModelInfoLookup... models) {
-        for(ModelInfoLookup model:models) {
+        for (ModelInfoLookup model : models) {
             registerModel(model);
         }
     }
@@ -27,9 +27,9 @@ public class ReferenceModels {
     }
 
     public void registerModel(ModelInfoLookup model, RMObjectMapperProvider rmObjectMapperProvider) {
-        for(RMPackageId id:model.getId()) {
+        for (RMPackageId id : model.getId()) {
             referenceModelsById.put(id, model);
-            if(rmObjectMapperProvider != null) {
+            if (rmObjectMapperProvider != null) {
                 objectMapperProvidersById.put(id, rmObjectMapperProvider);
             }
         }

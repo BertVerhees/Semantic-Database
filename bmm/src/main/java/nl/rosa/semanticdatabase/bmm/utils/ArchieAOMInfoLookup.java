@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by pieter.bos on 06/07/16.
+ * Originally: Created by pieter.bos on 06/07/16.
  */
 public class ArchieAOMInfoLookup extends ReflectionModelInfoLookup {
 
@@ -26,7 +26,7 @@ public class ArchieAOMInfoLookup extends ReflectionModelInfoLookup {
     }
 
     public static ArchieAOMInfoLookup getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new ArchieAOMInfoLookup();
         }
         return instance;
@@ -115,7 +115,7 @@ public class ArchieAOMInfoLookup extends ReflectionModelInfoLookup {
     @Override
     public String getArchetypeNodeIdFromRMObject(Object rmObject) {
         //technically we could implement this :)
-        if(rmObject instanceof CObject) {
+        if (rmObject instanceof CObject) {
             return ((CObject) rmObject).getNodeId();
         }
         throw new UnsupportedOperationException("not supported");//TODO: split this to different classes
@@ -128,7 +128,7 @@ public class ArchieAOMInfoLookup extends ReflectionModelInfoLookup {
 
     @Override
     public String getNameFromRMObject(Object rmObject) {
-        if(rmObject instanceof CObject) {
+        if (rmObject instanceof CObject) {
             return ((CObject) rmObject).getMeaning();
         }
         //This is a bit of a strange operation for the aom model.
@@ -137,7 +137,7 @@ public class ArchieAOMInfoLookup extends ReflectionModelInfoLookup {
 
     @Override
     public Object clone(Object rmObject) {
-        if(rmObject instanceof ArchetypeModelObject) {
+        if (rmObject instanceof ArchetypeModelObject) {
             return ((ArchetypeModelObject) rmObject).clone();
         }
         throw new IllegalArgumentException("The ArchieAOMInfoLookup can only clone archetype model objects");

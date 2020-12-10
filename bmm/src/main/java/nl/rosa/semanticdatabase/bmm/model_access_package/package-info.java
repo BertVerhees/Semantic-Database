@@ -1,7 +1,5 @@
 package nl.rosa.semanticdatabase.bmm.model_access_package;
 /**
- * 
- * 
  * 3.
  * Model Access Package
  * 3.1.
@@ -25,51 +23,49 @@ package nl.rosa.semanticdatabase.bmm.model_access_package;
  * This is convenient for matching models to artefacts (e.g.
  * archetypes) that only mention the model publisher and name, but no version.The following screenshot shows the BMM schema configuration dialog in the openEHR ADL Workbench, including some meta-data, validation status etc, and also the schema nesting structure.
  * A single hierarchy of schemas corresponds to a single instantiated BMM model.The screenshot below shows a number of merged BMM models loaded into the AWB, including some of the packages and classes for the openehr_ehr_extract_1.0.4 model.
- * 
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * Figure 4.
  * lang.bmm.model_access Package
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * Figure 5.
  * BMM schema configuration
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
  * Figure 6.
  * BMM schemas loaded
  * 3.2.
  * Class Definitions
- * 
+ * <p>
  * 3.2.1.
  * BMM_MODEL_ACCESS Class
- * 
+ * <p>
  * 3.2.2.
  * BMM_SCHEMA_DESCRIPTOR Class
- * 
+ * <p>
  * 3.2.3.
  * BMM_MODEL_METADATA Class
- * 
+ * <p>
  * 3.2.4.
  * BMM_SCHEMA Class
- * 
+ * <p>
  * 3.2.5.
  * BMM_SCHEMA_STATE Enumeration
- * 
+ * <p>
  * 3.2.6.
  * BMM_INCLUDE_SPEC Class
- * 
- * 
-*/
+ */

@@ -1,73 +1,66 @@
 package nl.rosa.semanticdatabase.bmm.statements;
 
 import java.util.Objects;
+
 import nl.rosa.semanticdatabase.bmm.expressions.ElExpression;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * Statement type representing an assignment from a value-generating source to a writable entity, i.e.
  * a variable reference or property.
- * 
-*/
+ */
 public class BmmAssignment extends BmmStatement {
 
     //***** BmmAssignment *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * The target variable on the notional left-hand side of this assignment.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * The target variable on the notional left-hand side of this assignment.
+     * cardinality: 1..1
+     */
     private EL_INSTANTIABLE_REF target;
 
-/**
- * 
- * Source right hand side) of the assignment.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Source right hand side) of the assignment.
+     * cardinality: 1..1
+     */
     private ElExpression source;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * The target variable on the notional left-hand side of this assignment.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * The target variable on the notional left-hand side of this assignment.
+     * cardinality: 1..1
+     */
     public EL_INSTANTIABLE_REF getTarget() {
         return target;
     }
+
     public void setTarget(EL_INSTANTIABLE_REF value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:target failed, it has cardinality NonNull, but is null");
         }
         this.target = target;
     }
 
-/**
- * 
- * Source right hand side) of the assignment.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Source right hand side) of the assignment.
+     * cardinality: 1..1
+     */
     public ElExpression getSource() {
         return source;
     }
+
     public void setSource(ElExpression value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:source failed, it has cardinality NonNull, but is null");
         }
         this.source = source;
@@ -75,21 +68,22 @@ public class BmmAssignment extends BmmStatement {
 
     //***** BmmAssignment *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected BmmAssignment() {}
+    protected BmmAssignment() {
+    }
 
     public BmmAssignment(
             ElInstantiableRef target,
             ElExpression source
-        ){
-        if ( target == null ) {
+    ) {
+        if (target == null) {
             throw new NullPointerException("Property:target has cardinality NonNull, but is null");
         }
-        if ( source == null ) {
+        if (source == null) {
             throw new NullPointerException("Property:source has cardinality NonNull, but is null");
         }
         this.target = target;
@@ -97,39 +91,39 @@ public class BmmAssignment extends BmmStatement {
     }
 
     private BmmAssignment(Builder builder) {
-        this.setTarget( builder.target );
-        this.setSource( builder.source );
+        this.setTarget(builder.target);
+        this.setSource(builder.source);
     }
 
     public static class Builder {
         private final ElInstantiableRef target;  //required
         private final ElExpression source;  //required
 
-        public Builder (
-            ElInstantiableRef target,
-            ElExpression source
-        ){
-            if ( target == null ) {
+        public Builder(
+                ElInstantiableRef target,
+                ElExpression source
+        ) {
+            if (target == null) {
                 throw new NullPointerException("Property:target has cardinality NonNull, but is null");
             }
-            if ( source == null ) {
+            if (source == null) {
                 throw new NullPointerException("Property:source has cardinality NonNull, but is null");
             }
             this.target = target;
             this.source = source;
         }
 
-        public BmmAssignment build(){
-            return new BmmAssignment( this );
+        public BmmAssignment build() {
+            return new BmmAssignment(this);
         }
     }
 
 
     //***** BmmAssignment *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -138,41 +132,40 @@ public class BmmAssignment extends BmmStatement {
         if (!super.equals(object)) return false;
         BmmAssignment that = (BmmAssignment) object;
         return
-            java.util.Objects.equals(target, that.target) &&
-            java.util.Objects.equals(source, that.source);
+                Objects.equals(target, that.target) &&
+                        Objects.equals(source, that.source);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            target,
-            source
+                super.hashCode(),
+                target,
+                source
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "BmmAssignment {" +
-            "target='" + target + '\'' +
-            "source='" + source + '\'' +
-            '}';
+                "BmmAssignment {" +
+                        "target='" + target + '\'' +
+                        "source='" + source + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -181,7 +174,6 @@ public class BmmAssignment extends BmmStatement {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

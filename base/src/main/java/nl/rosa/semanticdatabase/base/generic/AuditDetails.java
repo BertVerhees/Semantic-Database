@@ -1,38 +1,21 @@
 package nl.rosa.semanticdatabase.base.generic;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import com.nedap.archie.rm.RMObject;
-import com.nedap.archie.rm.datavalues.DvCodedText;
-import com.nedap.archie.rm.datavalues.DvText;
-import com.nedap.archie.rm.datavalues.quantity.datetime.DvDateTime;
+import semanticdatabase.base.base_types.datavalues.DvCodedText;
+import semanticdatabase.base.base_types.datavalues.DvText;
+import semanticdatabase.base.base_types.datavalues.quantity.datetime.DvDateTime;
 
 import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
 /**
- * Created by pieter.bos on 08/07/16.
+ * Originally: Created by pieter.bos on 08/07/16.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "AUDIT_DETAILS", propOrder = {
-        "systemId",
-        "committer",
-        "timeCommitted",
-        "changeType",
-        "description"
-})
-public class AuditDetails extends RMObject {
+public class AuditDetails {
 
-    @XmlElement(name = "system_id")
     private String systemId;
-    @XmlElement(name = "time_committed")
     private DvDateTime timeCommitted;
-    @XmlElement(name = "change_type")
     private DvCodedText changeType;
-    @Nullable
     private DvText description;
     private PartyProxy committer;
 
@@ -40,7 +23,7 @@ public class AuditDetails extends RMObject {
     }
 
 
-    public AuditDetails(String systemId, PartyProxy committer, DvDateTime timeCommitted, DvCodedText changeType, @Nullable DvText description) {
+    public AuditDetails(String systemId, PartyProxy committer, DvDateTime timeCommitted, DvCodedText changeType, DvText description) {
         this.systemId = systemId;
         this.timeCommitted = timeCommitted;
         this.changeType = changeType;

@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.base.archetyped;
 
-import nl.rosa.semanticdatabase.base_types.datavalues.DvEHRURI;
-import nl.rosa.semanticdatabase.base_types.datavalues.DvText;
+import nl.rosa.semanticdatabase.base.datavalues.DvEHRURI;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
 
 import java.util.Objects;
 
@@ -15,13 +15,13 @@ public class Link {
     }
 
     public Link(DvText meaning, DvText type, DvEHRURI target) {
-        if(meaning == null){
+        if (meaning == null) {
             throw new NullPointerException("Property:meaning has cardinality NonNull, but is null");
         }
-        if(type == null){
+        if (type == null) {
             throw new NullPointerException("Property:type has cardinality NonNull, but is null");
         }
-        if(target == null){
+        if (target == null) {
             throw new NullPointerException("Property:target has cardinality NonNull, but is null");
         }
         this.meaning = meaning;
@@ -34,7 +34,7 @@ public class Link {
     }
 
     public void setMeaning(DvText meaning) {
-        if(meaning == null){
+        if (meaning == null) {
             throw new NullPointerException("Property:meaning has cardinality NonNull, but is null");
         }
         this.meaning = meaning;
@@ -45,7 +45,7 @@ public class Link {
     }
 
     public void setType(DvText type) {
-        if(type == null){
+        if (type == null) {
             throw new NullPointerException("Property:type has cardinality NonNull, but is null");
         }
         this.type = type;
@@ -56,7 +56,7 @@ public class Link {
     }
 
     public void setTarget(DvEHRURI target) {
-        if(target == null){
+        if (target == null) {
             throw new NullPointerException("Property:target has cardinality NonNull, but is null");
         }
         this.target = target;

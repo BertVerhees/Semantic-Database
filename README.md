@@ -1,3 +1,3 @@
 # semantic-database
 
-work in progress
+work in progress.

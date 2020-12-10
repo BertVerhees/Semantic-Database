@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.base.archetyped;
 
-import nl.rosa.semanticdatabase.base_types.datavalues.DvIdentifier;
-import nl.rosa.semanticdatabase.base_types.datavalues.encapsulated.DvEncapsulated;
+import nl.rosa.semanticdatabase.base.datavalues.DvIdentifier;
+import nl.rosa.semanticdatabase.base.datavalues.encapsulated.DvEncapsulated;
 
 import java.util.List;
 import java.util.Objects;
@@ -23,7 +23,7 @@ public class FeederAudit {
             FeederAuditDetails feederSystemAudit,
             List<DvIdentifier> feederSystemItemIds,
             DvEncapsulated originalContent) {
-        if(originatingSystemAudit == null){
+        if (originatingSystemAudit == null) {
             throw new NullPointerException("Property:originatingSystemAudit has cardinality NonNull, but is null");
         }
         this.originatingSystemItemIds = originatingSystemItemIds;
@@ -34,7 +34,7 @@ public class FeederAudit {
     }
 
     public List<DvIdentifier> getOriginatingSystemItemIds() {
-        if(originatingSystemAudit == null){
+        if (originatingSystemAudit == null) {
             throw new NullPointerException("Property:originatingSystemAudit has cardinality NonNull, but is null");
         }
         return originatingSystemItemIds;

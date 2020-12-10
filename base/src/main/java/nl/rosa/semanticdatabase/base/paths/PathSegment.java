@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.base.paths;
 
 import java.util.Map;
 import java.util.regex.Pattern;
+
 import com.google.common.base.Joiner;
 
 /**
@@ -105,7 +106,9 @@ public class PathSegment {
         return nodeId != null && nodeIdPattern.matcher(nodeId).matches();
     }
 
-    public boolean hasNumberIndex() { return index != null;}
+    public boolean hasNumberIndex() {
+        return index != null;
+    }
 
     public boolean hasArchetypeRef() {
         return nodeId != null && archetypeRefPattern.matcher(nodeId).matches();
@@ -113,8 +116,8 @@ public class PathSegment {
 
     @Override
     public String toString() {
-        if(hasExpressions()) {
-            return "/" + nodeName + "[" +  expressionJoiner.join(nodeId, index) + "]";
+        if (hasExpressions()) {
+            return "/" + nodeName + "[" + expressionJoiner.join(nodeId, index) + "]";
         } else {
             return "/" + nodeName;
         }

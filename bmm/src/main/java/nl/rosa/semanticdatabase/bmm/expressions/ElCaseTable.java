@@ -3,120 +3,116 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 import java.util.Objects;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * Compound expression consisting of a list of value-range / expression pairs, and an else member that as a whole, represents a case statement flavour of decision table.
  * Evaluated by iterating through items and for each one, comparing input to the item value_range.
  * If the input is in the range, the evaluation result of the table is that item’s result evaluation result.
  * If no member of items has a True-returning condition, the evaluation result is the result of evaluating the else expression.
- * 
-*/
+ */
 public class ElCaseTable extends ElDecisionTable {
 
     //***** ElCaseTable *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Input value that is compared against each items[i].value_range to determine the overall result.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Input value that is compared against each items[i].value_range to determine the overall result.
+     * cardinality: 1..1
+     */
     private ElSimple input;
 
-/**
- * 
- * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
- * cardinality: 1..1 (redefined)
- * 
-*/
-    private List<ElCase> items = new ArrayList<> ();
+    /**
+     * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
+     * cardinality: 1..1 (redefined)
+     */
+    private List<ElCase> items = new ArrayList<>();
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Input value that is compared against each items[i].value_range to determine the overall result.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Input value that is compared against each items[i].value_range to determine the overall result.
+     * cardinality: 1..1
+     */
     public ElSimple getInput() {
         return input;
     }
+
     public void setInput(ElSimple value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:input failed, it has cardinality NonNull, but is null");
         }
         this.input = input;
     }
 
-/**
- * 
- * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
- * cardinality: 1..1 (redefined)
- * 
-*/
+    /**
+     * Members of the chain, equivalent to branches in an if/then/else chain and cases in a case statement.
+     * cardinality: 1..1 (redefined)
+     */
 
-    public void addToItem(ElCase value ) {
-        items.add( value);
+    public void addToItem(ElCase value) {
+        items.add(value);
     }
 
-    public void addToItems(List<ElCase> values ) {
+    public void addToItems(List<ElCase> values) {
         values.forEach(value -> addToItem(value));
     }
 
-    public void removeFromItem(ElCase item ) {
-        if (items != null ) {
+    public void removeFromItem(ElCase item) {
+        if (items != null) {
             items.remove(item);
         }
     }
-    public void removeFromItems( Collection <ElCase> values ) {
+
+    public void removeFromItems(Collection<ElCase> values) {
         values.forEach(this::removeFromItem);
     }
+
     List<ElCase> getItems() {
         return this.items;
     }
+
     public ElCaseTable setItems(List<ElCase> items) {
-        if (items == null ) {
+        if (items == null) {
             throw new NullPointerException(" items has cardinality NonNull, but is null");
         }
         this.items = items;
         return this;
     }
+
     public List<ElCase> items() {
         return Collections.unmodifiableList(this.items);
     }
 
     //***** ElCaseTable *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected ElCaseTable() {}
+    protected ElCaseTable() {
+    }
 
     public ElCaseTable(
             ElSimple input,
             List<elCase> items,
             ElExpression else,
             List<elDecisionBranch> items
-        ){
+    ) {
         super( 
             else
         );
-        if ( input == null ) {
+        if (input == null) {
             throw new NullPointerException("Property:input has cardinality NonNull, but is null");
         }
-        if ( items == null ) {
+        if (items == null) {
             throw new NullPointerException("Property:items has cardinality NonNull, but is null");
         }
         this.input = input;
@@ -124,10 +120,10 @@ public class ElCaseTable extends ElDecisionTable {
     }
 
     private ElCaseTable(Builder builder) {
-        this.setInput( builder.input );
-        this.setItems( builder.items );
-        this.setElse( builder.else );
-        this.setItems( builder.items );
+        this.setInput(builder.input);
+        this.setItems(builder.items);
+        this.setElse(builder.else );
+        this.setItems(builder.items);
     }
 
     public static class Builder {
@@ -136,22 +132,22 @@ public class ElCaseTable extends ElDecisionTable {
         private final ElExpression else;  //required
         private final List<elDecisionBranch> items;  //required
 
-        public Builder (
-            ElSimple input,
-            List<elCase> items,
-            ElExpression else,
-            List<elDecisionBranch> items
-        ){
-            if ( input == null ) {
+        public Builder(
+                ElSimple input,
+                List<elCase> items,
+                ElExpression else,
+                List<elDecisionBranch> items
+        ) {
+            if (input == null) {
                 throw new NullPointerException("Property:input has cardinality NonNull, but is null");
             }
-            if ( items == null ) {
+            if (items == null) {
                 throw new NullPointerException("Property:items has cardinality NonNull, but is null");
             }
-            if ( else == null ) {
+            if ( else ==null ){
                 throw new NullPointerException("Property:else has cardinality NonNull, but is null");
             }
-            if ( items == null ) {
+            if (items == null) {
                 throw new NullPointerException("Property:items has cardinality NonNull, but is null");
             }
             this.input = input;
@@ -160,17 +156,17 @@ public class ElCaseTable extends ElDecisionTable {
             this.items = items;
         }
 
-        public ElCaseTable build(){
-            return new ElCaseTable( this );
+        public ElCaseTable build() {
+            return new ElCaseTable(this);
         }
     }
 
 
     //***** ElCaseTable *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -179,41 +175,40 @@ public class ElCaseTable extends ElDecisionTable {
         if (!super.equals(object)) return false;
         ElCaseTable that = (ElCaseTable) object;
         return
-            java.util.Objects.equals(input, that.input) &&
-            java.util.Objects.equals(items, that.items);
+                Objects.equals(input, that.input) &&
+                        Objects.equals(items, that.items);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            input,
-            items
+                super.hashCode(),
+                input,
+                items
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "ElCaseTable {" +
-            "input='" + input + '\'' +
-            "items='" + items + '\'' +
-            '}';
+                "ElCaseTable {" +
+                        "input='" + input + '\'' +
+                        "items='" + items + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -222,7 +217,6 @@ public class ElCaseTable extends ElDecisionTable {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

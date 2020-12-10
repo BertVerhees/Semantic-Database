@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.base.archetyped;
 
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
+import nl.rosa.semanticdatabase.base.identification.UidBasedId;
 import nl.rosa.semanticdatabase.base.paths.PathSegment;
-import nl.rosa.semanticdatabase.base.support.identification.UIDBasedId;
-import nl.rosa.semanticdatabase.base_types.datavalues.DvText;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,13 +12,9 @@ public abstract class Locatable extends Pathable {
 
     private DvText name;
     private String archetypeNodeId;
-    @Nullable
-    private UIDBasedId uid;
-    @Nullable
+    private UidBasedId uid;
     private Archetyped archetypeDetails;
-    @Nullable
     private FeederAudit feederAudit;
-    @Nullable
     private List<Link> links = new ArrayList<>();
 
 
@@ -27,10 +22,10 @@ public abstract class Locatable extends Pathable {
     }
 
     public Locatable(String archetypeNodeId, DvText name) {
-        if(name == null){
+        if (name == null) {
             throw new NullPointerException("Property:name has cardinality NonNull, but is null");
         }
-        if(archetypeNodeId == null){
+        if (archetypeNodeId == null) {
             throw new NullPointerException("Property:archetypeNodeId has cardinality NonNull, but is null");
         }
         this.name = name;
@@ -38,7 +33,7 @@ public abstract class Locatable extends Pathable {
     }
 
     public Locatable(
-            UIDBasedId uid,
+            UidBasedId uid,
             String archetypeNodeId,
             DvText name,
             Archetyped archetypeDetails,
@@ -47,10 +42,10 @@ public abstract class Locatable extends Pathable {
             Pathable parent,
             String parentAttributeName) {
         super(parent, parentAttributeName);
-        if(name == null){
+        if (name == null) {
             throw new NullPointerException("Property:name has cardinality NonNull, but is null");
         }
-        if(archetypeNodeId == null){
+        if (archetypeNodeId == null) {
             throw new NullPointerException("Property:archetypeNodeId has cardinality NonNull, but is null");
         }
         this.name = name;
@@ -66,7 +61,7 @@ public abstract class Locatable extends Pathable {
     }
 
     public void setName(DvText name) {
-        if(name == null){
+        if (name == null) {
             throw new NullPointerException("Property:name has cardinality NonNull, but is null");
         }
         this.name = name;
@@ -85,17 +80,17 @@ public abstract class Locatable extends Pathable {
     }
 
     public void setArchetypeNodeId(String archetypeNodeId) {
-        if(archetypeNodeId == null){
+        if (archetypeNodeId == null) {
             throw new NullPointerException("Property:archetypeNodeId has cardinality NonNull, but is null");
         }
         this.archetypeNodeId = archetypeNodeId;
     }
 
-    public UIDBasedId getUid() {
+    public UidBasedId getUid() {
         return uid;
     }
 
-    public void setUid(UIDBasedId uid) {
+    public void setUid(UidBasedId uid) {
         this.uid = uid;
     }
 
@@ -135,12 +130,11 @@ public abstract class Locatable extends Pathable {
         return name == null ? null : name.getValue();
     }
 
-    @Nullable
     public FeederAudit getFeederAudit() {
         return feederAudit;
     }
 
-    public void setFeederAudit(@Nullable FeederAudit feederAudit) {
+    public void setFeederAudit(FeederAudit feederAudit) {
         this.feederAudit = feederAudit;
     }
 

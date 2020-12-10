@@ -3,96 +3,95 @@ package nl.rosa.semanticdatabase.bmm.statements;
 import java.util.Objects;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * A statement 'block' corresponding to the programming language concept of the same name.
  * May be used to establish scope in specific languages.
- * 
-*/
+ */
 public class BmmStatementBlock extends BmmStatementItem {
 
     //***** BmmStatementBlock *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Child blocks of the current block.
- * cardinality: 0..1
- * 
-*/
+    /**
+     * Child blocks of the current block.
+     * cardinality: 0..1
+     */
     private List<BmmStatementItem> items;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Child blocks of the current block.
- * cardinality: 0..1
- * 
-*/
+    /**
+     * Child blocks of the current block.
+     * cardinality: 0..1
+     */
 
-    public void addToItem(BmmStatementItem value ) {
-        if (items == null ) {
-            items = new ArrayList<> ();
+    public void addToItem(BmmStatementItem value) {
+        if (items == null) {
+            items = new ArrayList<>();
         }
-        items.add( value);
+        items.add(value);
     }
 
-    public void addToItems(List<BmmStatementItem> values ) {
+    public void addToItems(List<BmmStatementItem> values) {
         values.forEach(value -> addToItem(value));
     }
 
-    public void removeFromItem(BmmStatementItem item ) {
-        if (items != null ) {
+    public void removeFromItem(BmmStatementItem item) {
+        if (items != null) {
             items.remove(item);
         }
     }
-    public void removeFromItems( Collection <BmmStatementItem> values ) {
+
+    public void removeFromItems(Collection<BmmStatementItem> values) {
         values.forEach(this::removeFromItem);
     }
+
     List<BmmStatementItem> getItems() {
         return this.items;
     }
+
     public BmmStatementBlock setItems(List<BmmStatementItem> items) {
         this.items = items;
         return this;
     }
+
     public List<BmmStatementItem> items() {
         return Collections.unmodifiableList(this.items);
     }
 
     //***** BmmStatementBlock *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected BmmStatementBlock() {}
+    protected BmmStatementBlock() {
+    }
 
     public BmmStatementBlock(
             List<bmmStatementItem> items
-        ){
+    ) {
         this.items = items;
     }
 
     private BmmStatementBlock(Builder builder) {
-        this.setItems( builder.items );
+        this.setItems(builder.items);
     }
 
     public static class Builder {
         private List<bmmStatementItem> items;
 
-        public Builder (
-        ){
+        public Builder(
+        ) {
         }
 
         public Builder setItems(List<bmmStatementItem> value) {
@@ -100,17 +99,17 @@ public class BmmStatementBlock extends BmmStatementItem {
             return this;
         }
 
-        public BmmStatementBlock build(){
-            return new BmmStatementBlock( this );
+        public BmmStatementBlock build() {
+            return new BmmStatementBlock(this);
         }
     }
 
 
     //***** BmmStatementBlock *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -119,38 +118,37 @@ public class BmmStatementBlock extends BmmStatementItem {
         if (!super.equals(object)) return false;
         BmmStatementBlock that = (BmmStatementBlock) object;
         return
-            java.util.Objects.equals(items, that.items);
+                Objects.equals(items, that.items);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            items
+                super.hashCode(),
+                items
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "BmmStatementBlock {" +
-            "items='" + items + '\'' +
-            '}';
+                "BmmStatementBlock {" +
+                        "items='" + items + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -159,7 +157,6 @@ public class BmmStatementBlock extends BmmStatementItem {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

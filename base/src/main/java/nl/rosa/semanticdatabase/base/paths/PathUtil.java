@@ -10,16 +10,16 @@ public class PathUtil {
     public static String getPath(List<PathSegment> pathSegments) {
         StringBuilder result = new StringBuilder();
 
-        if(pathSegments.isEmpty()) {
+        if (pathSegments.isEmpty()) {
             return "/";
         }
-        for(PathSegment segment: pathSegments) {
+        for (PathSegment segment : pathSegments) {
             result.append("/");
             result.append(segment.getNodeName());
-            if(segment.getNodeId() != null && !segment.getNodeId().equals(AdlCodeDefinitions.PRIMITIVE_NODE_ID)) {
+            if (segment.getNodeId() != null && !segment.getNodeId().equals(BMMCodeDefinitions.PRIMITIVE_NODE_ID)) {
                 result.append("[");
                 result.append(segment.getNodeId());
-                if(segment.hasNumberIndex()) {
+                if (segment.hasNumberIndex()) {
                     result.append(",");
                     result.append(segment.getIndex().toString());
                 }

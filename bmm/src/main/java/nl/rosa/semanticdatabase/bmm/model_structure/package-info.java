@@ -1,16 +1,14 @@
 package nl.rosa.semanticdatabase.bmm.model_structure;
 /**
- * 
- * 
  * 4.
  * Model Structure
  * 4.1.
  * Overview
  * The core package defines the main BMM meta-model, within which the model sub-package defines the top-level structure of a model which is an instance of the BMM.
  * The UML for this package is shown below.
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
  * Figure 7.
  * base.bmm.core.model Package - Model structure
  * 4.2.
@@ -19,10 +17,10 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
  * When used computationally within an instantiated BMM model, it is assumed that case-insensitive matching is used.
  * This means that the class name "Hashable" refers to the same class as "HASHABLE".
  * Note however that underscores are not removed during matching, so that the classes "HashMap" and "HASH_MAP" are understood as different classes.
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * 4.3.
  * Model Semantics
  * In BMM, a model is understood as a set of package and module definitions that are developed and maintained as a unit, by some organisation, and usually having an associated hierarchical namespace.
@@ -33,13 +31,13 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
  * It provides an interface that enables any class definition to be retrieved, as well as various accessor functions to interrogate the model.
  * A BMM Model has a name (the inherited name attribute) that is used to identify the model as a whole within a system using multiple models.
  * It contains a number of other meta-data attributes describing authorship etc, and otherwise contains a list of package and class definitions.
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
  * Figure 8.
  * BMM model structure
- * 
- * 
+ * <p>
+ * <p>
  * 4.3.1.
  * Packages
  * In BMM, packages have the same role as in UML - as non-semantic organisational logical containers of classes, usually corresponding to file system folders in software implementations.
@@ -75,32 +73,30 @@ package nl.rosa.semanticdatabase.bmm.model_structure;
  * semantics for an '=' operator) and copying.A BMM model may define its own Any class, but if it does not, the BMM_MODEL instance representing the model will produce a standard 'Any' class via the any_class_definition() method.
  * This will create the following structure, including a default package structure, and an Any type.The Any type defined by the model’s Any class, or else the default one above, will be used as the inheritance parent for every class in the model that doesn’t have any other inheritance parent.
  * As a result, the inheritance graph will always have the Any type as its top node.
- * 
- * 
- * 
- * 
- * 
+ * <p>
+ * <p>
+ * <p>
+ * <p>
+ * <p>
  * Figure 9.
  * Default Any class
- * 
- * 
+ * <p>
+ * <p>
  * 4.5.
  * Class Definitions
- * 
+ * <p>
  * 4.5.1.
  * BMM_DECLARATION Class
- * 
+ * <p>
  * 4.5.2.
  * BMM_PACKAGE_CONTAINER Class
- * 
+ * <p>
  * 4.5.3.
  * BMM_PACKAGE Class
- * 
+ * <p>
  * 4.5.4.
  * BMM_MODEL Class
- * 
+ * <p>
  * 4.5.5.
  * BMM_MODULE Class
- * 
- * 
-*/
+ */

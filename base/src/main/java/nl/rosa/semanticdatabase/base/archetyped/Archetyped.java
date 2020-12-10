@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.base.archetyped;
 
-import nl.rosa.semanticdatabase.base_types.identification_package.ArchetypeId;
+import nl.rosa.semanticdatabase.base.identification.ArchetypeId;
 
 import java.util.Objects;
 
@@ -19,10 +19,10 @@ public class Archetyped {
     }
 
     public Archetyped(ArchetypeId archetypeId, TemplateId templateId, String rmVersion) {
-        if(archetypeId == null){
+        if (archetypeId == null) {
             throw new NullPointerException("Property:archetypeId has cardinality NonNull, but is null");
         }
-        if(rmVersion == null){
+        if (rmVersion == null) {
             throw new NullPointerException("Property:rmVersion has cardinality NonNull, but is null");
         }
         this.archetypeId = archetypeId;
@@ -36,7 +36,7 @@ public class Archetyped {
     }
 
     public void setArchetypeId(ArchetypeId archetypeId) {
-        if(archetypeId == null){
+        if (archetypeId == null) {
             throw new NullPointerException("Property:archetypeId has cardinality NonNull, but is null");
         }
         this.archetypeId = archetypeId;
@@ -55,7 +55,7 @@ public class Archetyped {
     }
 
     public void setRmVersion(String rmVersion) {
-        if(rmVersion == null){
+        if (rmVersion == null) {
             throw new NullPointerException("Property:rmVersion has cardinality NonNull, but is null");
         }
         this.rmVersion = rmVersion;

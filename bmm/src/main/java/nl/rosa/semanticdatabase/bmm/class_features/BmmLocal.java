@@ -3,24 +3,23 @@ package nl.rosa.semanticdatabase.bmm.class_features;
 import java.util.Objects;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * A routine local variable.
- * 
-*/
+ */
 public class BmmLocal extends BmmVariable {
 
     //***** BmmLocal *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected BmmLocal() {}
+    protected BmmLocal() {
+    }
 
     public BmmLocal(
             BmmRoutine scope,
@@ -29,24 +28,24 @@ public class BmmLocal extends BmmVariable {
             Map<string, any> documentation,
             BmmDeclaration scope,
             Map<string, any> extensions
-        ){
-        super( 
-            scope,
-            type,
-            name,
-            documentation,
-            scope,
-            extensions
+    ) {
+        super(
+                scope,
+                type,
+                name,
+                documentation,
+                scope,
+                extensions
         );
     }
 
     private BmmLocal(Builder builder) {
-        this.setScope( builder.scope );
-        this.setType( builder.type );
-        this.setName( builder.name );
-        this.setDocumentation( builder.documentation );
-        this.setScope( builder.scope );
-        this.setExtensions( builder.extensions );
+        this.setScope(builder.scope);
+        this.setType(builder.type);
+        this.setName(builder.name);
+        this.setDocumentation(builder.documentation);
+        this.setScope(builder.scope);
+        this.setExtensions(builder.extensions);
     }
 
     public static class Builder {
@@ -57,22 +56,22 @@ public class BmmLocal extends BmmVariable {
         private final BmmDeclaration scope;  //required
         private Map<string, any> extensions;
 
-        public Builder (
-            BmmRoutine scope,
-            BmmType type,
-            String name,
-            BmmDeclaration scope
-        ){
-            if ( scope == null ) {
+        public Builder(
+                BmmRoutine scope,
+                BmmType type,
+                String name,
+                BmmDeclaration scope
+        ) {
+            if (scope == null) {
                 throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
             }
-            if ( type == null ) {
+            if (type == null) {
                 throw new NullPointerException("Property:type has cardinality NonNull, but is null");
             }
-            if ( name == null ) {
+            if (name == null) {
                 throw new NullPointerException("Property:name has cardinality NonNull, but is null");
             }
-            if ( scope == null ) {
+            if (scope == null) {
                 throw new NullPointerException("Property:scope has cardinality NonNull, but is null");
             }
             this.scope = scope;
@@ -91,17 +90,17 @@ public class BmmLocal extends BmmVariable {
             return this;
         }
 
-        public BmmLocal build(){
-            return new BmmLocal( this );
+        public BmmLocal build() {
+            return new BmmLocal(this);
         }
     }
 
 
     //***** BmmLocal *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -113,31 +112,30 @@ public class BmmLocal extends BmmVariable {
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode()
+                super.hashCode()
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "BmmLocal {" +
-            '}';
+                "BmmLocal {" +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -146,7 +144,6 @@ public class BmmLocal extends BmmVariable {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

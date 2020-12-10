@@ -3,46 +3,41 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 import java.util.Objects;
 
 /**
- * 
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees
  * #License: See bottom of file
- * 
+ * <p>
  * Conditional structure used in condition chain expressions.
  * Evaluated by evaluating its condition, which is a Boolean-returning expression, and if this returns True, the result is the evaluation result of expression.
- * 
-*/
+ */
 public class ElConditionalExpression extends ElDecisionBranch {
 
     //***** ElConditionalExpression *****
 
-/*=========================================================*/
-/* * FIELDS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * FIELDS * */
+    /*=========================================================*/
 
-/**
- * 
- * Gate expression that acts as the condition under which the target expression is returned.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Gate expression that acts as the condition under which the target expression is returned.
+     * cardinality: 1..1
+     */
     private ElSimple condition;
 
-/*=========================================================*/
-/* * POJOS * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * POJOS * */
+    /*=========================================================*/
 
-/**
- * 
- * Gate expression that acts as the condition under which the target expression is returned.
- * cardinality: 1..1
- * 
-*/
+    /**
+     * Gate expression that acts as the condition under which the target expression is returned.
+     * cardinality: 1..1
+     */
     public ElSimple getCondition() {
         return condition;
     }
+
     public void setCondition(ElSimple value) {
-        if ( value == null ) {
+        if (value == null) {
             throw new NullPointerException(" Setting property:condition failed, it has cardinality NonNull, but is null");
         }
         this.condition = condition;
@@ -50,60 +45,61 @@ public class ElConditionalExpression extends ElDecisionBranch {
 
     //***** ElConditionalExpression *****
 
-/*=========================================================*/
-/* * BUILD PATTERN AND CONSTRUCTOR * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * BUILD PATTERN AND CONSTRUCTOR * */
+    /*=========================================================*/
 
 
-    protected ElConditionalExpression() {}
+    protected ElConditionalExpression() {
+    }
 
     public ElConditionalExpression(
             ElSimple condition,
             ElExpression result
-        ){
-        super( 
-            result
+    ) {
+        super(
+                result
         );
-        if ( condition == null ) {
+        if (condition == null) {
             throw new NullPointerException("Property:condition has cardinality NonNull, but is null");
         }
         this.condition = condition;
     }
 
     private ElConditionalExpression(Builder builder) {
-        this.setCondition( builder.condition );
-        this.setResult( builder.result );
+        this.setCondition(builder.condition);
+        this.setResult(builder.result);
     }
 
     public static class Builder {
         private final ElSimple condition;  //required
         private final ElExpression result;  //required
 
-        public Builder (
-            ElSimple condition,
-            ElExpression result
-        ){
-            if ( condition == null ) {
+        public Builder(
+                ElSimple condition,
+                ElExpression result
+        ) {
+            if (condition == null) {
                 throw new NullPointerException("Property:condition has cardinality NonNull, but is null");
             }
-            if ( result == null ) {
+            if (result == null) {
                 throw new NullPointerException("Property:result has cardinality NonNull, but is null");
             }
             this.condition = condition;
             this.result = result;
         }
 
-        public ElConditionalExpression build(){
-            return new ElConditionalExpression( this );
+        public ElConditionalExpression build() {
+            return new ElConditionalExpression(this);
         }
     }
 
 
     //***** ElConditionalExpression *****
 
-/*=========================================================*/
-/* * TOSTRING, EQUALS AND HASHCODE * */
-/*=========================================================*/
+    /*=========================================================*/
+    /* * TOSTRING, EQUALS AND HASHCODE * */
+    /*=========================================================*/
 
 
     public boolean equals(Object object) {
@@ -112,38 +108,37 @@ public class ElConditionalExpression extends ElDecisionBranch {
         if (!super.equals(object)) return false;
         ElConditionalExpression that = (ElConditionalExpression) object;
         return
-            java.util.Objects.equals(condition, that.condition);
+                Objects.equals(condition, that.condition);
     }
 
     public int hashCode() {
         return Objects.hash(
-            super.hashCode(),
-            condition
+                super.hashCode(),
+                condition
         );
     }
 
-    @java.lang.Override
-    public java.lang.String toString() {
+    @Override
+    public String toString() {
         return
-            "ElConditionalExpression {" +
-            "condition='" + condition + '\'' +
-            '}';
+                "ElConditionalExpression {" +
+                        "condition='" + condition + '\'' +
+                        '}';
     }
 
 }
 
 /**
- * 
  * ***** BEGIN LICENSE BLOCK *****
- * 
+ * <p>
  * ISC License
- * 
+ * <p>
  * Copyright (c) 2020, Bert Verhees
- * 
+ * <p>
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
  * copyright notice and this permission notice appear in all copies.
- * 
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS.
@@ -152,7 +147,6 @@ public class ElConditionalExpression extends ElDecisionBranch {
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * 
+ * <p>
  * ***** END LICENSE BLOCK *****
- * 
-*/
+ */

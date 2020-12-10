@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Created by pieter.bos on 08/07/16.
+ * Originally: Created by pieter.bos on 08/07/16.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "REVISION_HISTORY_ITEM")
