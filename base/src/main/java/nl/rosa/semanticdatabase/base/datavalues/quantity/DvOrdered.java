@@ -1,13 +1,8 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-import com.nedap.archie.rm.datatypes.CodePhrase;
-import com.nedap.archie.rm.datavalues.DataValue;
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.datavalues.DataValue;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -15,34 +10,22 @@ import java.util.Objects;
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DV_ORDERED", propOrder = {
-        "normalRange",
-        "otherReferenceRanges",
-        "normalStatus"
-})
 public abstract class DvOrdered<ComparableType> extends DataValue implements Comparable<ComparableType> {
 
-    @Nullable
-    @XmlElement(name = "normal_status")
+    
     private CodePhrase normalStatus;
-    @Nullable
-    @XmlElement(name = "normal_range")
     private DvInterval normalRange;
-
-    @Nullable
-    @XmlElement(name = "other_reference_ranges")
     private List<ReferenceRange> otherReferenceRanges = new ArrayList<>();
 
     public DvOrdered() {
     }
 
-    public DvOrdered(@Nullable List<ReferenceRange> otherReferenceRanges, @Nullable DvInterval normalRange) {
+    public DvOrdered(List<ReferenceRange> otherReferenceRanges, DvInterval normalRange) {
         this.normalRange = normalRange;
         this.otherReferenceRanges = otherReferenceRanges;
     }
 
-    protected DvOrdered(@Nullable List<ReferenceRange> otherReferenceRanges, @Nullable DvInterval normalRange, @Nullable CodePhrase normalStatus) {
+    protected DvOrdered( List<ReferenceRange> otherReferenceRanges,  DvInterval normalRange,  CodePhrase normalStatus) {
         this.normalStatus = normalStatus;
         this.normalRange = normalRange;
         this.otherReferenceRanges = otherReferenceRanges;
@@ -69,12 +52,12 @@ public abstract class DvOrdered<ComparableType> extends DataValue implements Com
         otherReferenceRanges.add(range);
     }
 
-    @Nullable
+    
     public CodePhrase getNormalStatus() {
         return normalStatus;
     }
 
-    public void setNormalStatus(@Nullable CodePhrase normalStatus) {
+    public void setNormalStatus( CodePhrase normalStatus) {
         this.normalStatus = normalStatus;
     }
 

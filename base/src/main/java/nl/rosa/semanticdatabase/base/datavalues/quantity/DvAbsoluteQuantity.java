@@ -1,21 +1,18 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-import com.nedap.archie.rm.datatypes.CodePhrase;
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlType(name = "DV_ABSOLUTE_QUANTITY")
 public abstract class DvAbsoluteQuantity<AccuracyType extends DvAmount, MagnitudeType extends Comparable> extends DvQuantified<AccuracyType, MagnitudeType> {
 
     public DvAbsoluteQuantity() {
     }
 
-    protected DvAbsoluteQuantity(@Nullable List<ReferenceRange> otherReferenceRanges, @Nullable DvInterval normalRange, @Nullable CodePhrase normalStatus, @Nullable String magnitudeStatus) {
+    protected DvAbsoluteQuantity(List<ReferenceRange> otherReferenceRanges, DvInterval normalRange, CodePhrase normalStatus, String magnitudeStatus) {
         super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus);
     }
 }

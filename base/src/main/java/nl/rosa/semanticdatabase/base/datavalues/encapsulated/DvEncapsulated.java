@@ -1,7 +1,8 @@
 package nl.rosa.semanticdatabase.base.datavalues.encapsulated;
 
-import semanticdatabase.base.base_types.datavalues.DataValue;
-import semanticdatabase.base.foundation_types.text_types.CodePhrase;
+
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.datavalues.DataValue;
 
 import java.util.Objects;
 

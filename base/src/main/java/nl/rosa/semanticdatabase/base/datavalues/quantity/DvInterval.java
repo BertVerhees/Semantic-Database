@@ -1,27 +1,15 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-import com.nedap.archie.base.Interval;
-import com.nedap.archie.rm.datavalues.DataValue;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
+import nl.rosa.semanticdatabase.base.datavalues.DataValue;
+import nl.rosa.semanticdatabase.base.interval.Interval;
+
 import java.util.Objects;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.PROPERTY)
-@XmlType(name = "DV_INTERVAL", propOrder = {
-        "lower",
-        "upper",
-        "lowerIncluded",
-        "upperIncluded",
-        "lowerUnbounded",
-        "upperUnbounded"
-})
+
 public class DvInterval<Type extends DvOrdered> extends DataValue {
 
     private final Interval<DvOrdered> interval;
@@ -34,7 +22,7 @@ public class DvInterval<Type extends DvOrdered> extends DataValue {
         interval = new Interval<>(lower, upper);
     }
 
-    @Nullable
+    
     public DvOrdered getLower() {
         return interval.getLower();
     }
@@ -43,7 +31,7 @@ public class DvInterval<Type extends DvOrdered> extends DataValue {
         interval.setLower(lower);
     }
 
-    @Nullable
+    
     public DvOrdered getUpper() {
         return interval.getUpper();
     }
@@ -52,7 +40,6 @@ public class DvInterval<Type extends DvOrdered> extends DataValue {
         interval.setUpper(upper);
     }
 
-    @XmlElement(name = "lower_unbounded")
     public boolean isLowerUnbounded() {
         return interval.isLowerUnbounded();
     }
@@ -61,7 +48,6 @@ public class DvInterval<Type extends DvOrdered> extends DataValue {
         interval.setLowerUnbounded(lowerUnbounded);
     }
 
-    @XmlElement(name = "upper_unbounded")
     public boolean isUpperUnbounded() {
         return interval.isUpperUnbounded();
     }
@@ -70,7 +56,6 @@ public class DvInterval<Type extends DvOrdered> extends DataValue {
         interval.setUpperUnbounded(upperUnbounded);
     }
 
-    @XmlElement(name = "lower_included")
     public boolean isLowerIncluded() {
         return interval.isLowerIncluded();
     }
@@ -79,7 +64,6 @@ public class DvInterval<Type extends DvOrdered> extends DataValue {
         interval.setLowerIncluded(lowerIncluded);
     }
 
-    @XmlElement(name = "upper_included")
     public boolean isUpperIncluded() {
         return interval.isUpperIncluded();
     }

@@ -3,17 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>semanticdatabase</groupId>
+        <groupId>nl.rosa.semanticdatabase</groupId>
         <artifactId>semanticdatabase</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>..</relativePath> <!-- lookup parent from RMRepository -->
+        <relativePath>../pom.xml</relativePath> <!-- lookup parent from RMRepository -->
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>aom2</artifactId>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>
@@ -37,12 +37,7 @@
             <version>26.0-android</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>semanticdatabase</groupId>
-            <artifactId>base</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
+
     </dependencies>
 
     <build>

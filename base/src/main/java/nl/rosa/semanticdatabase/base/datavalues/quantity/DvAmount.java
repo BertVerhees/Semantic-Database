@@ -1,48 +1,34 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-import com.nedap.archie.rm.datatypes.CodePhrase;
-import com.nedap.archie.rm.datavalues.quantity.datetime.DvDuration;
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DV_AMOUNT", propOrder = {
-        "accuracy",
-        "accuracyIsPercent"
-})
-@XmlSeeAlso({
-        DvProportion.class,
-        DvCount.class,
-        DvDuration.class,
-        DvQuantity.class
-})
 public abstract class DvAmount<MagnitudeType extends Comparable> extends DvQuantified<Double, MagnitudeType> {
-    @Nullable
+    
     private Double accuracy;
-    @Nullable
-    @XmlElement(name = "accuracy_is_percent")
+    
     private Boolean accuracyIsPercent;
 
     public DvAmount() {
     }
 
-    public DvAmount(@Nullable List<ReferenceRange> otherReferenceRanges, @Nullable DvInterval normalRange, @Nullable CodePhrase normalStatus, @Nullable Double accuracy, @Nullable Boolean accuracyIsPercent, @Nullable String magnitudeStatus) {
+    public DvAmount(List<ReferenceRange> otherReferenceRanges, DvInterval normalRange, CodePhrase normalStatus, Double accuracy, Boolean accuracyIsPercent, String magnitudeStatus) {
         super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus);
         this.accuracy = accuracy;
         this.accuracyIsPercent = accuracyIsPercent;
     }
 
-    @Nullable
+    
     public Boolean getAccuracyIsPercent() {
         return accuracyIsPercent;
     }
 
-    public void setAccuracyIsPercent(@Nullable Boolean accuracyIsPercent) {
+    public void setAccuracyIsPercent( Boolean accuracyIsPercent) {
         this.accuracyIsPercent = accuracyIsPercent;
     }
 

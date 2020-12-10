@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.base.datavalues.text;
 
-
-import semanticdatabase.base.base_types.datavalues.DataValue;
-import semanticdatabase.base.base_types.datavalues.DvURI;
-import semanticdatabase.base.base_types.datavalues.SingleValuedDataValue;
-import semanticdatabase.base.base_types.datavalues.TermMapping;
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.datavalues.DataValue;
+import nl.rosa.semanticdatabase.base.datavalues.DvURI;
+import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,11 @@
 package nl.rosa.semanticdatabase.base.datastructures;
 
-import semanticdatabase.base.archetyped.Archetyped;
-import semanticdatabase.base.archetyped.FeederAudit;
-import semanticdatabase.base.archetyped.Link;
-import semanticdatabase.base.archetyped.Pathable;
-import semanticdatabase.base.foundation_types.identification_package.UidBasedId;
-import semanticdatabase.base.foundation_types.text_types.DvText;
+import nl.rosa.semanticdatabase.base.archetyped.Archetyped;
+import nl.rosa.semanticdatabase.base.archetyped.FeederAudit;
+import nl.rosa.semanticdatabase.base.archetyped.Link;
+import nl.rosa.semanticdatabase.base.archetyped.Pathable;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
+import nl.rosa.semanticdatabase.base.identification.UidBasedId;
 
 import java.util.List;
 

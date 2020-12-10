@@ -1,25 +1,15 @@
 package nl.rosa.semanticdatabase.base.datavalues.text;
 
 import com.google.common.base.MoreObjects;
-import com.nedap.archie.rm.datatypes.CodePhrase;
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DV_CODED_TEXT", propOrder = {
-        "definingCode"
-})
 public class DvCodedText extends DvText {
 
-    @XmlElement(name = "defining_code")
     private CodePhrase definingCode;
 
 
@@ -31,7 +21,7 @@ public class DvCodedText extends DvText {
         this.definingCode = definingCode;
     }
 
-    public DvCodedText(String value, @Nullable CodePhrase language, @Nullable CodePhrase encoding, CodePhrase definingCode) {
+    public DvCodedText(String value,  CodePhrase language,  CodePhrase encoding, CodePhrase definingCode) {
         super(value, language, encoding);
         this.definingCode = definingCode;
     }

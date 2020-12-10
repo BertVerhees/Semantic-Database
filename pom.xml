@@ -17,12 +17,11 @@
     <modules>
         <module>aom2</module>
         <module>bmm</module>
-        <module>archetype</module>
         <module>base</module>
     </modules>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>8</java.version>
     </properties>
 
     <dependencies>

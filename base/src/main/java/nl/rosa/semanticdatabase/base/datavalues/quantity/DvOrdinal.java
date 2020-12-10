@@ -1,37 +1,25 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-import com.nedap.archie.rm.datavalues.DvCodedText;
-import com.nedap.archie.rm.datavalues.SingleValuedDataValue;
+import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DV_ORDINAL", propOrder = {
-        "value",
-        "symbol"
-})
 public class DvOrdinal extends DvOrdered<DvOrdinal> implements SingleValuedDataValue<Long>, Comparable<DvOrdinal> {
 
     private DvCodedText symbol;
     private Long value;
 
-    public DvOrdinal() {
-    }
-
-    public DvOrdinal(Long value, DvCodedText symbol) {
+   public DvOrdinal(Long value, DvCodedText symbol) {
         this.symbol = symbol;
         this.value = value;
     }
 
-    public DvOrdinal(@Nullable List<ReferenceRange> otherReferenceRanges, @Nullable DvInterval normalRange, Long value, DvCodedText symbol) {
+    public DvOrdinal( List<ReferenceRange> otherReferenceRanges,  DvInterval normalRange, Long value, DvCodedText symbol) {
         super(otherReferenceRanges, normalRange);
         this.symbol = symbol;
         this.value = value;

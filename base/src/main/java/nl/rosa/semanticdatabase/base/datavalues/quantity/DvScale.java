@@ -1,37 +1,28 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-import com.nedap.archie.rm.datavalues.DvCodedText;
-import com.nedap.archie.rm.datavalues.SingleValuedDataValue;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
+
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DV_SCALE", propOrder = {
-        "value",
-        "symbol"
-})
+
 public class DvScale extends DvOrdered<DvScale> implements SingleValuedDataValue<Double>, Comparable<DvScale> {
 
     private DvCodedText symbol;
     private Double value;
 
-    public DvScale() {
-    }
-
     public DvScale(Double value, DvCodedText symbol) {
+        super();
         this.symbol = symbol;
         this.value = value;
     }
 
-    public DvScale(@Nullable List<ReferenceRange> otherReferenceRanges, @Nullable DvInterval normalRange, Double value, DvCodedText symbol) {
+    public DvScale( List<ReferenceRange> otherReferenceRanges,  DvInterval normalRange, Double value, DvCodedText symbol) {
         super(otherReferenceRanges, normalRange);
         this.symbol = symbol;
         this.value = value;

@@ -1,18 +1,13 @@
 package nl.rosa.semanticdatabase.base.datavalues;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+
 import java.net.URI;
 import java.util.Objects;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DV_URI", propOrder = {
-        "value"
-})
+
 public class DvURI extends DataValue implements SingleValuedDataValue<URI> {
 
     private URI value; //supposed to be a string, but this is better. Legal to change this with type replacements.

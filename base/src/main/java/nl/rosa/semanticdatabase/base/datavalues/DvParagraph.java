@@ -4,15 +4,13 @@ package nl.rosa.semanticdatabase.base.datavalues;
  * Originally: Created by pieter.bos on 08/07/16.
  */
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DV_PARAGRAPH")
 public class DvParagraph extends DataValue {
 
     private List<DvText> items = new ArrayList<>();

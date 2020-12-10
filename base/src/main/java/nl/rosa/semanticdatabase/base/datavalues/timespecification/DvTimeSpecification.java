@@ -1,18 +1,13 @@
 package nl.rosa.semanticdatabase.base.datavalues.timespecification;
 
-import com.nedap.archie.rm.datavalues.DataValue;
-import com.nedap.archie.rm.datavalues.encapsulated.DvParsable;
+import nl.rosa.semanticdatabase.base.datavalues.DataValue;
+import nl.rosa.semanticdatabase.base.datavalues.encapsulated.DvParsable;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
 /**
  * Originally: Created by pieter.bos on 08/07/16.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DV_TIME_SPECIFICATION")
 public abstract class DvTimeSpecification extends DataValue {
 
     private DvParsable value;

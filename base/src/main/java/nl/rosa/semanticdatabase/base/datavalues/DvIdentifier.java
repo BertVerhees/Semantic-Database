@@ -1,29 +1,20 @@
 package nl.rosa.semanticdatabase.base.datavalues;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
+
 import java.util.Objects;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DV_IDENTIFIER", propOrder = {
-        "issuer",
-        "assigner",
-        "id",
-        "type"
-})
+
 public class DvIdentifier extends DataValue {
 
-    @Nullable
+    
     private String issuer;
-    @Nullable
+    
     private String assigner;
     private String id;
-    @Nullable
+    
     private String type;
 
     public String getIssuer() {

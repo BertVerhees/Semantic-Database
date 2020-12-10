@@ -1,22 +1,13 @@
 package nl.rosa.semanticdatabase.base.datavalues.encapsulated;
 
-import com.nedap.archie.rm.datatypes.CodePhrase;
-import com.nedap.archie.rm.datavalues.SingleValuedDataValue;
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DV_PARSABLE", propOrder = {
-        "value",
-        "formalism"
-})
 public class DvParsable extends DvEncapsulated implements SingleValuedDataValue<String> {
 
     private String value;
@@ -30,7 +21,7 @@ public class DvParsable extends DvEncapsulated implements SingleValuedDataValue<
         this.formalism = formalism;
     }
 
-    public DvParsable(@Nullable CodePhrase charset, @Nullable CodePhrase language, String value, String formalism) {
+    public DvParsable(CodePhrase charset, CodePhrase language, String value, String formalism) {
         super(charset, language);
         this.value = value;
         this.formalism = formalism;
