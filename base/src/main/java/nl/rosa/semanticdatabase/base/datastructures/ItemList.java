@@ -1,17 +1,12 @@
 package nl.rosa.semanticdatabase.base.datastructures;
 
-import com.nedap.archie.rm.archetyped.Archetyped;
-import com.nedap.archie.rm.archetyped.FeederAudit;
-import com.nedap.archie.rm.archetyped.Link;
-import com.nedap.archie.rm.archetyped.Pathable;
-import com.nedap.archie.rm.datavalues.DvText;
-import com.nedap.archie.rm.support.identification.UIDBasedId;
+import nl.rosa.semanticdatabase.base.archetyped.Archetyped;
+import nl.rosa.semanticdatabase.base.archetyped.FeederAudit;
+import nl.rosa.semanticdatabase.base.archetyped.Link;
+import nl.rosa.semanticdatabase.base.archetyped.Pathable;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
+import nl.rosa.semanticdatabase.base.identification.UidBasedId;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -19,26 +14,16 @@ import java.util.Objects;
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ITEM_LIST", propOrder = {
-        "items"
-})
-@XmlRootElement(name = "item_list")
 public class ItemList extends ItemStructure {
 
-
-    @Nullable
     private List<Element> items = new ArrayList<>();
 
-    public ItemList() {
-    }
-
-    public ItemList(String archetypeNodeId, DvText name, @Nullable List<Element> items) {
+    public ItemList(String archetypeNodeId, DvText name, List<Element> items) {
         super(archetypeNodeId, name);
         setItems(items);
     }
 
-    public ItemList(@Nullable UIDBasedId uid, String archetypeNodeId, DvText name, @Nullable Archetyped archetypeDetails, @Nullable FeederAudit feederAudit, @Nullable List<Link> links, @Nullable Pathable parent, @Nullable String parentAttributeName, @Nullable List<Element> items) {
+    public ItemList(UidBasedId uid, String archetypeNodeId, DvText name, Archetyped archetypeDetails, FeederAudit feederAudit, List<Link> links, Pathable parent, String parentAttributeName, List<Element> items) {
         super(uid, archetypeNodeId, name, archetypeDetails, feederAudit, links, parent, parentAttributeName);
         setItems(items);
     }

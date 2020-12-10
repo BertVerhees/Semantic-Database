@@ -1,54 +1,40 @@
 package nl.rosa.semanticdatabase.base.datastructures;
 
-import com.nedap.archie.rm.archetyped.Archetyped;
-import com.nedap.archie.rm.archetyped.FeederAudit;
-import com.nedap.archie.rm.archetyped.Link;
-import com.nedap.archie.rm.archetyped.Pathable;
-import com.nedap.archie.rm.datavalues.DataValue;
-import com.nedap.archie.rm.datavalues.DvCodedText;
-import com.nedap.archie.rm.datavalues.DvText;
-import com.nedap.archie.rm.datavalues.SingleValuedDataValue;
-import com.nedap.archie.rm.support.identification.UIDBasedId;
+import nl.rosa.semanticdatabase.base.archetyped.Archetyped;
+import nl.rosa.semanticdatabase.base.archetyped.FeederAudit;
+import nl.rosa.semanticdatabase.base.archetyped.Link;
+import nl.rosa.semanticdatabase.base.archetyped.Pathable;
+import nl.rosa.semanticdatabase.base.datavalues.DataValue;
+import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
+import nl.rosa.semanticdatabase.base.identification.UidBasedId;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.*;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "ELEMENT", propOrder = {
-        "value",
-        "nullFlavour",
-        "nullReason"
-})
-@XmlRootElement(name = "element")
 public class Element extends Item implements SingleValuedDataValue<DataValue> {
 
-    @Nullable
     private DataValue value;
 
-    @Nullable
-    @XmlElement(name = "null_flavour")
     private DvCodedText nullFlavour;
 
-    @Nullable
-    @XmlElement(name = "null_reason")
     private DvText nullReason;
 
     public Element() {
     }
 
-    public Element(String archetypeNodeId, DvText name, @Nullable DataValue value) {
+    public Element(String archetypeNodeId, DvText name, DataValue value) {
         super(archetypeNodeId, name);
         this.value = value;
     }
 
-    public Element(@Nullable UIDBasedId uid, String archetypeNodeId, DvText name, @Nullable Archetyped archetypeDetails,
-                   @Nullable FeederAudit feederAudit, @Nullable List<Link> links, @Nullable Pathable parent, @Nullable String parentAttributeName,
-                   @Nullable DataValue value, @Nullable DvCodedText nullFlavour, DvText nullReason) {
+    public Element(UidBasedId uid, String archetypeNodeId, DvText name, Archetyped archetypeDetails,
+                   FeederAudit feederAudit, List<Link> links, Pathable parent, String parentAttributeName,
+                   DataValue value, DvCodedText nullFlavour, DvText nullReason) {
         super(uid, archetypeNodeId, name, archetypeDetails, feederAudit, links, parent, parentAttributeName);
         this.value = value;
         this.nullFlavour = nullFlavour;
@@ -73,12 +59,11 @@ public class Element extends Item implements SingleValuedDataValue<DataValue> {
         this.value = value;
     }
 
-    @Nullable
     public DvText getNullReason() {
         return nullReason;
     }
 
-    public void setNullReason(@Nullable DvText nullReason) {
+    public void setNullReason(DvText nullReason) {
         this.nullReason = nullReason;
     }
 

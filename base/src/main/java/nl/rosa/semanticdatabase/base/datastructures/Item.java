@@ -1,10 +1,10 @@
 package nl.rosa.semanticdatabase.base.datastructures;
 
-import semanticdatabase.base.archetyped.*;
-import semanticdatabase.base.base_types.datavalues.DvText;
-import semanticdatabase.base.foundation_types.identification_package.UidBasedId;
 
-import javax.annotation.Nullable;
+import nl.rosa.semanticdatabase.base.archetyped.*;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
+import nl.rosa.semanticdatabase.base.identification.UidBasedId;
+
 import java.util.List;
 
 public abstract class Item extends Locatable {
@@ -16,7 +16,7 @@ public abstract class Item extends Locatable {
         super(archetypeNodeId, name);
     }
 
-    public Item(@Nullable UidBasedId uid, String archetypeNodeId, DvText name, @Nullable Archetyped archetypeDetails, @Nullable FeederAudit feederAudit, @Nullable List<Link> links, @Nullable Pathable parent, @Nullable String parentAttributeName) {
+    public Item(UidBasedId uid, String archetypeNodeId, DvText name, Archetyped archetypeDetails, FeederAudit feederAudit, List<Link> links, Pathable parent, String parentAttributeName) {
         super(uid, archetypeNodeId, name, archetypeDetails, feederAudit, links, parent, parentAttributeName);
     }
 }

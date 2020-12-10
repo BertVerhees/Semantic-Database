@@ -7,7 +7,6 @@ import nl.rosa.semanticdatabase.base.archetyped.Pathable;
 import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
 import nl.rosa.semanticdatabase.base.identification.UidBasedId;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,7 +26,7 @@ public class Cluster extends Item {
         setItems(items);
     }
 
-    public Cluster(UidBasedId uid, String archetypeNodeId, DvText name, @Nullable Archetyped archetypeDetails, @Nullable FeederAudit feederAudit, @Nullable List<Link> links, @Nullable Pathable parent, @Nullable String parentAttributeName, List<Item> items) {
+    public Cluster(UidBasedId uid, String archetypeNodeId, DvText name, Archetyped archetypeDetails, FeederAudit feederAudit, List<Link> links, Pathable parent, String parentAttributeName, List<Item> items) {
         super(uid, archetypeNodeId, name, archetypeDetails, feederAudit, links, parent, parentAttributeName);
         setItems(items);
     }
