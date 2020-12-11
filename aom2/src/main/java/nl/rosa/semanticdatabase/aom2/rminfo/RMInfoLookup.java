@@ -1,8 +1,8 @@
 package nl.rosa.semanticdatabase.aom2.rminfo;
 
-import nl.rosa.semanticdatabase.aom2.constraint_model_package.CObject;
-import nl.rosa.semanticdatabase.aom2.constraint_model_package.CPrimitiveObject;
-import nl.rosa.semanticdatabase.aom2.constraint_model_package.CTerminologyCode;
+import nl.rosa.semanticdatabase.utils.constraint_model_package.CObject;
+import nl.rosa.semanticdatabase.utils.constraint_model_package.CPrimitiveObject;
+import nl.rosa.semanticdatabase.utils.constraint_model_package.CTerminologyCode;
 import nl.rosa.semanticdatabase.aom2.the_archetype_package.Archetype;
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;

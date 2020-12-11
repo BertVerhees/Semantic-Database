@@ -1,14 +1,14 @@
-package nl.rosa.semanticdatabase.aom2.rminfo;
+package nl.rosa.semanticdatabase.utils.rminfo;
 
 import nl.rosa.semanticdatabase.utils.constraint_model_package.CObject;
 import nl.rosa.semanticdatabase.utils.constraint_model_package.CPrimitiveObject;
 import nl.rosa.semanticdatabase.aom2.the_archetype_package.Archetype;
 import nl.rosa.semanticdatabase.base.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.utils.paths.PathSegment;
-import nl.rosa.semanticdatabase.utils.path_queries.APathQuery;
 import nl.rosa.semanticdatabase.base.utils.rminfo.ModelNamingStrategy;
 import nl.rosa.semanticdatabase.base.utils.rminfo.RMAttributeInfo;
 import nl.rosa.semanticdatabase.base.utils.rminfo.RMTypeInfo;
+import nl.rosa.semanticdatabase.utils.path_queries.APathQuery;
+import nl.rosa.semanticdatabase.utils.paths.PathSegment;
 
 import java.lang.reflect.Field;
 import java.util.Collection;

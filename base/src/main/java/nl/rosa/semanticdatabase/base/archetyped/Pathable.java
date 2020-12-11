@@ -1,9 +1,9 @@
 package nl.rosa.semanticdatabase.base.archetyped;
 
-import nl.rosa.semanticdatabase.base.paths.PathSegment;
-import nl.rosa.semanticdatabase.base.paths.PathUtil;
-import nl.rosa.semanticdatabase.base.utils.path_queries.RMObjectWithPath;
-import nl.rosa.semanticdatabase.base.utils.path_queries.RMPathQuery;
+import nl.rosa.semanticdatabase.utils.paths.PathSegment;
+import nl.rosa.semanticdatabase.utils.paths.PathUtil;
+import nl.rosa.semanticdatabase.utils.path_queries.RMObjectWithPath;
+import nl.rosa.semanticdatabase.utils.path_queries.RMPathQuery;
 import nl.rosa.semanticdatabase.base.utils.rminfo.RMInfoLookup;
 
 import java.util.ArrayList;

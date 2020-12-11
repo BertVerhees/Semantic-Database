@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.rules;
 
 
-import nl.rosa.semanticdatabase.aom2.constraint_model_package.CPrimitiveObject;
+import nl.rosa.semanticdatabase.utils.constraint_model_package.CPrimitiveObject;
 
 /**
  * Originally: Created by pieter.bos on 27/10/15.
