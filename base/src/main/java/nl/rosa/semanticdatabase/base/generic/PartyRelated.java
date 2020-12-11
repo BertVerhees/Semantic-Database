@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.base.generic;
 
-import semanticdatabase.base.base_types.datavalues.DvCodedText;
-import semanticdatabase.base.base_types.datavalues.DvIdentifier;
-import semanticdatabase.base.foundation_types.identification_package.PartyRef;
+import nl.rosa.semanticdatabase.base.datavalues.DvIdentifier;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
+import nl.rosa.semanticdatabase.base.identification.PartyRef;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,7 +16,7 @@ public class PartyRelated extends PartyIdentified {
     public PartyRelated() {
     }
 
-    public PartyRelated(@Nullable PartyRef externalRef, @Nullable String name, @Nullable List<DvIdentifier> identifiers, DvCodedText relationship) {
+    public PartyRelated(PartyRef externalRef, String name, List<DvIdentifier> identifiers, DvCodedText relationship) {
         super(externalRef, name, identifiers);
         this.relationship = relationship;
     }

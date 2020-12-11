@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.base.generic;
 
 
-import semanticdatabase.base.base_types.datavalues.DvIdentifier;
-import semanticdatabase.base.foundation_types.identification_package.PartyRef;
+import nl.rosa.semanticdatabase.base.datavalues.DvIdentifier;
+import nl.rosa.semanticdatabase.base.identification.PartyRef;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,15 +12,15 @@ import java.util.Objects;
  * Originally: Created by pieter.bos on 01/03/16.
  */
 public class PartyIdentified extends PartyProxy {
-    @Nullable
+    
     private String name;
-    @Nullable
+    
     private List<DvIdentifier> identifiers = new ArrayList<>();
 
     public PartyIdentified() {
     }
 
-    public PartyIdentified(@Nullable PartyRef externalRef, @Nullable String name, @Nullable List<DvIdentifier> identifiers) {
+    public PartyIdentified(PartyRef externalRef, String name, List<DvIdentifier> identifiers) {
         super(externalRef);
         this.name = name;
         this.identifiers = identifiers;

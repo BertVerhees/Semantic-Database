@@ -1,5 +1,7 @@
 package nl.rosa.semanticdatabase.base.datatype;
 
+import nl.rosa.semanticdatabase.base.identification.TerminologyId;
+
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

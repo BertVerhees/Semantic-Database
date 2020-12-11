@@ -1,8 +1,6 @@
 package nl.rosa.semanticdatabase.base.generic;
 
-import semanticdatabase.base.foundation_types.identification_package.PartyRef;
-
-import javax.annotation.Nullable;
+import nl.rosa.semanticdatabase.base.identification.PartyRef;
 import java.util.Objects;
 
 /**
@@ -16,7 +14,7 @@ public abstract class PartyProxy {
     public PartyProxy() {
     }
 
-    public PartyProxy(@Nullable PartyRef externalRef) {
+    public PartyProxy( PartyRef externalRef) {
         this.externalRef = externalRef;
     }
 

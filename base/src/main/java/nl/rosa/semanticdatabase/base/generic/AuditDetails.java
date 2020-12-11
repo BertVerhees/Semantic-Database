@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.base.generic;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import semanticdatabase.base.base_types.datavalues.DvCodedText;
-import semanticdatabase.base.base_types.datavalues.DvText;
-import semanticdatabase.base.base_types.datavalues.quantity.datetime.DvDateTime;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDateTime;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
 
 /**
@@ -56,12 +55,12 @@ public class AuditDetails {
         this.changeType = changeType;
     }
 
-    @Nullable
+    
     public DvText getDescription() {
         return description;
     }
 
-    public void setDescription(@Nullable DvText description) {
+    public void setDescription( DvText description) {
         this.description = description;
     }
 

@@ -1,22 +1,13 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-import com.nedap.archie.rm.RMObject;
-import com.nedap.archie.rm.datavalues.DvText;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
 import java.util.Objects;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "REFERENCE_RANGE", propOrder = {
-        "meaning",
-        "range"
-})
-public class ReferenceRange<T extends DvOrdered> extends RMObject {
+public class ReferenceRange<T extends DvOrdered> {
 
     private DvInterval<T> range;
     private DvText meaning;

@@ -1,10 +1,5 @@
 package nl.rosa.semanticdatabase.base.generic;
 
-import com.nedap.archie.rm.RMObject;
-
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -12,9 +7,7 @@ import java.util.Objects;
 /**
  * Originally: Created by pieter.bos on 08/07/16.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "REVISION_HISTORY")
-public class RevisionHistory extends RMObject {
+public class RevisionHistory {
 
 
     public RevisionHistory() {

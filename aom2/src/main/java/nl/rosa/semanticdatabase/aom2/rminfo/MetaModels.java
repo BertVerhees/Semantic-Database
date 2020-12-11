@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.rminfo;
+package nl.rosa.semanticdatabase.aom2.rminfo;
 
 /**
  * MetaModel class that provides some opertaions for archetype validation and flattener that is either based on

@@ -1,8 +1,14 @@
-package nl.rosa.semanticdatabase.rminfo;
+package nl.rosa.semanticdatabase.aom2.rminfo;
 
-import semanticdatabase.base.paths.PathSegment;
-import semanticdatabase.base.foundation_types.interval.MultiplicityInterval;
-import semanticdatabase.query.APathQuery;
+import nl.rosa.semanticdatabase.aom2.constraint_model_package.CObject;
+import nl.rosa.semanticdatabase.aom2.constraint_model_package.CPrimitiveObject;
+import nl.rosa.semanticdatabase.aom2.the_archetype_package.Archetype;
+import nl.rosa.semanticdatabase.base.interval.MultiplicityInterval;
+import nl.rosa.semanticdatabase.base.paths.PathSegment;
+import nl.rosa.semanticdatabase.base.utils.path_queries.APathQuery;
+import nl.rosa.semanticdatabase.base.utils.rminfo.ModelNamingStrategy;
+import nl.rosa.semanticdatabase.base.utils.rminfo.RMAttributeInfo;
+import nl.rosa.semanticdatabase.base.utils.rminfo.RMTypeInfo;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -80,28 +86,29 @@ public interface ModelInfoLookup {
     RMAttributeInfo getAttributeInfo(String rmTypeName, String attributeName);
 
     /**
-     * Returns a list of all known nl.rosa.semanticdatabase.bmm.model.types
+     * Returns a list of all known types
      *
-     * @return a list of all knowns nl.rosa.semanticdatabase.bmm.model.types
+     * @return a list of all knowns types
      */
     List<RMTypeInfo> getAllTypes();
 
     /**
      * Returns the naming strategy for the java classes of this model
+     *
      * @return
      */
-//    ModelNamingStrategy getNamingStrategy();
+    ModelNamingStrategy getNamingStrategy();
 
     /**
      * Converts the given rm object with the constraint in cPrimitiveObject to the corresponding AOM model
-     *
+     * <p>
      * For example, converts an OpenEHR RM CodePhrase to a TerminologyCode
      *
-     * @param object the rm object
+     * @param object           the rm object
      * @param cPrimitiveObject the AOM constraint
      * @return the rm object converted to the corresponding AOM object
      */
-//    Object convertToConstraintObject(Object object, CPrimitiveObject cPrimitiveObject);
+    Object convertToConstraintObject(Object object, CPrimitiveObject cPrimitiveObject);
 
 
     /**
@@ -117,7 +124,7 @@ public interface ModelInfoLookup {
      * Callback after an RM Object has been created based on a constraint. Can for example be used
      * to set names or archetype ID Node values
      */
-//    void processCreatedObject(Object createdObject, CObject constraint);
+    void processCreatedObject(Object createdObject, CObject constraint);
 
 
     /**
@@ -129,6 +136,7 @@ public interface ModelInfoLookup {
      */
     String getArchetypeNodeIdFromRMObject(Object rmObject);
 
+    String getArchetypeIdFromArchetypedRmObject(Object rmObject);
 
     /**
      * Get the name/meaning from the rmObject. Used in path queries with names instead of id codes.
@@ -150,15 +158,15 @@ public interface ModelInfoLookup {
     /**
      * Perform any actions necessary if the value at the given path has just been updated
      * For example, if an ordinal value has been set, this method should also set the symbol.
-     *
+     * <p>
      * In addition to changing the actual values, it returns which additional paths have been updated as well.
      * For example, if an ordinal's symbol was updated, it will update both the value and the symbol of that ordinal
      * and return the value's path and updated value. This is done to obtain a full set of instructions of what must be
      * changed due to the rule evaluation.
-     *
+     * <p>
      * This can be the most complex operation of this entire class to implement. If you just throw an exception instead of implementing it
      * everything will work fine except for the rule evaluation.
-     *
+     * <p>
      * For now this is only needed in the rule evaluation to automatically fix assertions
      *
      * @param rmObject
@@ -168,18 +176,18 @@ public interface ModelInfoLookup {
      * @return Each key is a path that was updated as a result of the previously updated path and each corresponding
      * value is this path's updated value
      */
-//    Map<String, Object> pathHasBeenUpdated(Object rmObject, Archetype archetype, String pathOfParent, Object parent);
+    Map<String, Object> pathHasBeenUpdated(Object rmObject, Archetype archetype, String pathOfParent, Object parent);
 
     /**
      * True if the given attribute at given type is ok for given CPrimitiveObject, false otherwise
      * TODO: this should be solved with AOM_PROFILE
-     * //     * @param rmTypeName the type name of the type to checjk
-     * //     * @param rmAttributeName the attribute name of the attribute to check
-     * //     * @param cObject the primitive object to validate
      *
+     * @param rmTypeName      the type name of the type to checjk
+     * @param rmAttributeName the attribute name of the attribute to check
+     * @param cObject         the primitive object to validate
      * @return true if valid, false if not valid
      */
-//    boolean validatePrimitiveType(String rmTypeName, String rmAttributeName, CPrimitiveObject cObject);
+    boolean validatePrimitiveType(String rmTypeName, String rmAttributeName, CPrimitiveObject cObject);
 
     Collection<RMPackageId> getId();
 
@@ -221,11 +229,11 @@ public interface ModelInfoLookup {
      * @param parentType
      * @return
      */
-    default boolean rmTypesConformant(String childType, String parentType) {
+    default Boolean rmTypesConformant(String childType, String parentType) {
         RMTypeInfo parentTypeInfo = getTypeInfo(parentType);
         RMTypeInfo childTypeInfo = getTypeInfo(childType);
         if (childTypeInfo == null || parentTypeInfo == null) {
-            return true;//cannot check with RM nl.rosa.semanticdatabase.bmm.model.types, will validate elsewhere
+            return true;//cannot check with RM types, will validate elsewhere
         }
         return childTypeInfo.isDescendantOrEqual(parentTypeInfo);
     }

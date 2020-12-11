@@ -1,26 +1,30 @@
-package nl.rosa.semanticdatabase.base.utils.rminfo;
+package nl.rosa.semanticdatabase.aom2.rminfo;
 
 import com.google.common.reflect.TypeToken;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import nl.rosa.semanticdatabase.base.utils.rminfo.RMAttributeInfo;
+import nl.rosa.semanticdatabase.base.utils.rminfo.RMTypeInfo;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.*;
 import java.util.*;
+
 
 /**
  * Utility that defines the java mapping of type and attribute names of a given reference model.
  * <p>
  * Use it to obtain java classes for RM Type Names, and java fields, getters, setters and nl.rosa.semanticdatabase.bmm.model.types for RM Attribute Names
  * <p>
- * This class is never directly created, but subclasses must be created that setup the correct model. Create a subclass
- * per model you want to use with Archie, for example one for an OpenEHR RM implementation, or the CIMI RM implementation
+ * This class is never directly created, but subclasses must be created that setup the correct model.
+ * Create a subclass
+ * per model you want to use with Archie, for example one for an OpenEHR RM implementation,
+ * or the CIMI RM implementation
  * <p>
  * Originally: Created by pieter.bos on 02/02/16.
  */
+
+
 public abstract class BMMModelInfoLookup implements ModelInfoLookup {
 
-    private static final Logger logger = LoggerFactory.getLogger(BMMModelInfoLookup.class);
 
 //    private ModelNamingStrategy namingStrategy;
 

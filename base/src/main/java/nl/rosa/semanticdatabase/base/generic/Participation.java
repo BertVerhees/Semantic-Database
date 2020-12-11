@@ -1,11 +1,10 @@
 package nl.rosa.semanticdatabase.base.generic;
 
-import semanticdatabase.base.base_types.datavalues.DvCodedText;
-import semanticdatabase.base.base_types.datavalues.DvText;
-import semanticdatabase.base.base_types.datavalues.quantity.DvInterval;
-import semanticdatabase.base.base_types.datavalues.quantity.datetime.DvDateTime;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDateTime;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
 
-import javax.annotation.Nullable;
 import java.util.Objects;
 
 /**
@@ -21,7 +20,7 @@ public class Participation {
     public Participation() {
     }
 
-    public Participation(PartyProxy performer, DvText function, @Nullable DvCodedText mode, @Nullable DvInterval<DvDateTime> time) {
+    public Participation(PartyProxy performer, DvText function,  DvCodedText mode,  DvInterval<DvDateTime> time) {
         this.function = function;
         this.mode = mode;
         this.time = time;
@@ -36,21 +35,21 @@ public class Participation {
         this.function = function;
     }
 
-    @Nullable
+    
     public DvCodedText getMode() {
         return mode;
     }
 
-    public void setMode(@Nullable DvCodedText mode) {
+    public void setMode( DvCodedText mode) {
         this.mode = mode;
     }
 
-    @Nullable
+    
     public DvInterval<DvDateTime> getTime() {
         return time;
     }
 
-    public void setTime(@Nullable DvInterval<DvDateTime> time) {
+    public void setTime( DvInterval<DvDateTime> time) {
         this.time = time;
     }
 

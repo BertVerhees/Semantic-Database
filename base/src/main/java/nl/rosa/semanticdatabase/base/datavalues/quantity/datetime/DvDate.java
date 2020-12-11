@@ -1,30 +1,11 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity.datetime;
 
-<<<<<<< HEAD:base/src/main/java/nl/rosa/semanticdatabase/base/datavalues/quantity/datetime/DvDate.java
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
 import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
 
-=======
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.nedap.archie.datetime.DateTimeParsers;
-import com.nedap.archie.json.DateDeserializer;
-import com.nedap.archie.rm.datatypes.CodePhrase;
-import com.nedap.archie.rm.datavalues.SingleValuedDataValue;
-import com.nedap.archie.rm.datavalues.quantity.DvInterval;
-import com.nedap.archie.rm.datavalues.quantity.ReferenceRange;
-import com.nedap.archie.xml.adapters.DateXmlAdapter;
-
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
->>>>>>> 555568c612c426eda0c539017b7a13c84fabaefa:base/src/main/java/nl/rosa/semanticdatabase/base_types/datavalues/quantity/datetime/DvDate.java
 import java.time.LocalDate;
 import java.time.temporal.ChronoField;
 import java.time.temporal.Temporal;
@@ -65,16 +46,6 @@ public class DvDate extends DvTemporal<Long> implements SingleValuedDataValue<Te
     }
 
     @Override
-//    @XmlElements({
-//            @XmlElement(type=LocalDate.class),
-//            @XmlElement(type=YearMonth.class),
-//            @XmlElement(type=Year.class)
-//
-//    })
-<<<<<<< HEAD:base/src/main/java/nl/rosa/semanticdatabase/base/datavalues/quantity/datetime/DvDate.java
-=======
-    @JsonDeserialize(using = DateDeserializer.class)
->>>>>>> 555568c612c426eda0c539017b7a13c84fabaefa:base/src/main/java/nl/rosa/semanticdatabase/base_types/datavalues/quantity/datetime/DvDate.java
     public Temporal getValue() {
         return value;
     }

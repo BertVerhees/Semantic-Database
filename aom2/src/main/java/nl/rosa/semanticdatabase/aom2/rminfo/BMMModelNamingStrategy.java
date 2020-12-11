@@ -1,4 +1,7 @@
-package nl.rosa.semanticdatabase.base.utils.rminfo;
+package nl.rosa.semanticdatabase.aom2.rminfo;
+
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import nl.rosa.semanticdatabase.base.utils.rminfo.ModelNamingStrategy;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

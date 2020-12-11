@@ -1,12 +1,11 @@
 package nl.rosa.semanticdatabase.base.generic;
 
-import semanticdatabase.base.base_types.datavalues.DvCodedText;
-import semanticdatabase.base.base_types.datavalues.DvEHRURI;
-import semanticdatabase.base.base_types.datavalues.DvText;
-import semanticdatabase.base.base_types.datavalues.encapsulated.DvMultimedia;
-import semanticdatabase.base.base_types.datavalues.quantity.datetime.DvDateTime;
+import nl.rosa.semanticdatabase.base.datavalues.DvEHRURI;
+import nl.rosa.semanticdatabase.base.datavalues.encapsulated.DvMultimedia;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDateTime;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -25,7 +24,7 @@ public class Attestation extends AuditDetails {
     public Attestation() {
     }
 
-    public Attestation(String systemId, PartyProxy committer, DvDateTime timeCommitted, DvCodedText changeType, @Nullable DvText description, @Nullable DvMultimedia attestedView, @Nullable String proof, @Nullable List<DvEHRURI> items, DvText reason, boolean isPending) {
+    public Attestation(String systemId, PartyProxy committer, DvDateTime timeCommitted, DvCodedText changeType, DvText description, DvMultimedia attestedView, String proof, List<DvEHRURI> items, DvText reason, boolean isPending) {
         super(systemId, committer, timeCommitted, changeType, description);
         this.attestedView = attestedView;
         this.proof = proof;
@@ -34,30 +33,30 @@ public class Attestation extends AuditDetails {
         this.isPending = isPending;
     }
 
-    @Nullable
+    
     public DvMultimedia getAttestedView() {
         return attestedView;
     }
 
-    public void setAttestedView(@Nullable DvMultimedia attestedView) {
+    public void setAttestedView( DvMultimedia attestedView) {
         this.attestedView = attestedView;
     }
 
-    @Nullable
+    
     public String getProof() {
         return proof;
     }
 
-    public void setProof(@Nullable String proof) {
+    public void setProof( String proof) {
         this.proof = proof;
     }
 
-    @Nullable
+    
     public List<DvEHRURI> getItems() {
         return items;
     }
 
-    public void setItems(@Nullable List<DvEHRURI> items) {
+    public void setItems( List<DvEHRURI> items) {
         this.items = items;
     }
 

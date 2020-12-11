@@ -1,4 +1,13 @@
-package nl.rosa.semanticdatabase.base.utils.rminfo;
+package nl.rosa.semanticdatabase.aom2.rminfo;
+
+import nl.rosa.semanticdatabase.aom2.constraint_model_package.CObject;
+import nl.rosa.semanticdatabase.aom2.constraint_model_package.CPrimitiveObject;
+import nl.rosa.semanticdatabase.aom2.constraint_model_package.CTerminologyCode;
+import nl.rosa.semanticdatabase.aom2.the_archetype_package.Archetype;
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
+import nl.rosa.semanticdatabase.base.utils.rminfo.ModelNamingStrategy;
+import nl.rosa.semanticdatabase.base.utils.rminfo.RMAttributeInfo;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -16,6 +25,8 @@ import java.util.Map;
 public class RMInfoLookup extends BMMModelInfoLookup {
 
     private static RMInfoLookup instance;
+    private Object object;
+    private CPrimitiveObject cPrimitiveObject;
 
     private RMInfoLookup() {
         super(new BMMModelNamingStrategy(), RMObject.class);
@@ -191,6 +202,23 @@ public class RMInfoLookup extends BMMModelInfoLookup {
         return null;
     }
 
+    /**
+     * Converts the given rm object with the constraint in cPrimitiveObject to the corresponding AOM model
+     * <p>
+     * For example, converts an OpenEHR RM CodePhrase to a TerminologyCode
+     *
+     * @param object           the rm object
+     * @param cPrimitiveObject the AOM constraint
+     * @return the rm object converted to the corresponding AOM object
+     */
+    @Override
+    public Object convertToConstraintObject(Object object,
+                                            CPrimitiveObject cPrimitiveObject) {
+        this.object = object;
+        this.cPrimitiveObject = cPrimitiveObject;
+        return null;
+    }
+
     @Override
     public Object convertToConstraintObject(Object object, CPrimitiveObject cPrimitiveObject) {
         if (cPrimitiveObject instanceof CTerminologyCode) {
@@ -217,6 +245,18 @@ public class RMInfoLookup extends BMMModelInfoLookup {
             return convertTerminologyCode((TerminologyCode) object);
         }
         return object;
+    }
+
+    /**
+     * Callback after an RM Object has been created based on a constraint. Can for example be used
+     * to set names or archetype ID Node values
+     *
+     * @param createdObject
+     * @param constraint
+     */
+    @Override
+    public void processCreatedObject(Object createdObject, CObject constraint) {
+
     }
 
     private CodePhrase convertTerminologyCode(TerminologyCode terminologyCode) {
@@ -276,6 +316,32 @@ public class RMInfoLookup extends BMMModelInfoLookup {
             return ((RMObject) rmObject).clone();
         }
         throw new IllegalArgumentException("The ArchieRMInfoLookup can only clone openehr reference model objects");
+    }
+
+    /**
+     * Perform any actions necessary if the value at the given path has just been updated
+     * For example, if an ordinal value has been set, this method should also set the symbol.
+     * <p>
+     * In addition to changing the actual values, it returns which additional paths have been updated as well.
+     * For example, if an ordinal's symbol was updated, it will update both the value and the symbol of that ordinal
+     * and return the value's path and updated value. This is done to obtain a full set of instructions of what must be
+     * changed due to the rule evaluation.
+     * <p>
+     * This can be the most complex operation of this entire class to implement. If you just throw an exception instead of implementing it
+     * everything will work fine except for the rule evaluation.
+     * <p>
+     * For now this is only needed in the rule evaluation to automatically fix assertions
+     *
+     * @param rmObject
+     * @param archetype
+     * @param pathOfParent
+     * @param parent
+     * @return Each key is a path that was updated as a result of the previously updated path and each corresponding
+     * value is this path's updated value
+     */
+    @Override
+    public Map<String, Object> pathHasBeenUpdated(Object rmObject, Archetype archetype, String pathOfParent, Object parent) {
+        return null;
     }
 
     /**

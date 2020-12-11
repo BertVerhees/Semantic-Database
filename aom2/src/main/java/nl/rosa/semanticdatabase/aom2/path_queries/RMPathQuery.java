@@ -1,14 +1,12 @@
-package nl.rosa.semanticdatabase.base.utils.path_queries;
+package nl.rosa.semanticdatabase.aom2.path_queries;
 
 
 import com.google.common.collect.Lists;
+import nl.rosa.semanticdatabase.aom2.rminfo.ModelInfoLookup;
 import nl.rosa.semanticdatabase.base.paths.BMMCodeDefinitions;
 import nl.rosa.semanticdatabase.base.paths.PathSegment;
-<<<<<<< HEAD:base/src/main/java/nl/rosa/semanticdatabase/base/utils/path_queries/RMPathQuery.java
-import nl.rosa.semanticdatabase.base.query.APathQuery;
-=======
->>>>>>> 555568c612c426eda0c539017b7a13c84fabaefa:utils/src/main/java/nl/rosa/semanticdatabase/utils/path_queries/RMPathQuery.java
-import nl.rosa.semanticdatabase.base.utils.rminfo.ModelInfoLookup;
+import nl.rosa.semanticdatabase.base.utils.path_queries.APathQuery;
+import nl.rosa.semanticdatabase.base.utils.path_queries.RMObjectWithPath;
 import nl.rosa.semanticdatabase.base.utils.rminfo.RMAttributeInfo;
 
 import java.lang.reflect.InvocationTargetException;

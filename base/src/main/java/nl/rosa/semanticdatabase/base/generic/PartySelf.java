@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.base.generic;
 
-import semanticdatabase.base.foundation_types.identification_package.PartyRef;
+
+import nl.rosa.semanticdatabase.base.identification.PartyRef;
 
 /**
  * Originally: Created by pieter.bos on 01/03/16.

@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.base.query;
+package nl.rosa.semanticdatabase.base.utils.path_queries;
 
 
 import com.google.common.base.Joiner;

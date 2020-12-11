@@ -1,30 +1,11 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity.datetime;
 
-<<<<<<< HEAD:base/src/main/java/nl/rosa/semanticdatabase/base/datavalues/quantity/datetime/DvTime.java
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
 import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
 
-=======
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.nedap.archie.datetime.DateTimeParsers;
-import com.nedap.archie.json.TimeDeserializer;
-import com.nedap.archie.rm.datatypes.CodePhrase;
-import com.nedap.archie.rm.datavalues.SingleValuedDataValue;
-import com.nedap.archie.rm.datavalues.quantity.DvInterval;
-import com.nedap.archie.rm.datavalues.quantity.ReferenceRange;
-import com.nedap.archie.xml.adapters.TimeXmlAdapter;
-
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlTransient;
-import javax.xml.bind.annotation.XmlType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
->>>>>>> 555568c612c426eda0c539017b7a13c84fabaefa:base/src/main/java/nl/rosa/semanticdatabase/base_types/datavalues/quantity/datetime/DvTime.java
 import java.time.LocalTime;
 import java.time.temporal.TemporalAccessor;
 import java.util.List;
@@ -72,10 +53,6 @@ public class DvTime extends DvTemporal<Double> implements SingleValuedDataValue<
 //            @XmlElement(type=OffsetTime.class),
 //            @XmlElement(type=LocalTime.class)
 //    })    
-<<<<<<< HEAD:base/src/main/java/nl/rosa/semanticdatabase/base/datavalues/quantity/datetime/DvTime.java
-=======
-    @JsonDeserialize(using = TimeDeserializer.class)
->>>>>>> 555568c612c426eda0c539017b7a13c84fabaefa:base/src/main/java/nl/rosa/semanticdatabase/base_types/datavalues/quantity/datetime/DvTime.java
     public TemporalAccessor getValue() {
         return value;
     }

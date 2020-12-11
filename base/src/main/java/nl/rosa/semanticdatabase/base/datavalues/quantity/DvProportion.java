@@ -1,12 +1,7 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nedap.archie.rm.datatypes.CodePhrase;
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,19 +10,11 @@ import java.util.Objects;
  * It does have a type=proportion kind enum
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DV_PROPORTION", propOrder = {
-        "numerator",
-        "denominator",
-        "type",
-        "precision"
-})
 public class DvProportion extends DvAmount<Double> {
 
     private Double numerator;
     private Double denominator;
     private Long type;
-    @Nullable
     private Long precision;
 
     public DvProportion() {
@@ -39,7 +26,7 @@ public class DvProportion extends DvAmount<Double> {
         this.type = type;
     }
 
-    public DvProportion(@Nullable List<ReferenceRange> otherReferenceRanges, @Nullable DvInterval normalRange, @Nullable CodePhrase normalStatus, @Nullable Double accuracy, @Nullable Boolean accuracyIsPercent, @Nullable String magnitudeStatus, Double numerator, Double denominator, Long type, @Nullable Long precision) {
+    public DvProportion(List<ReferenceRange> otherReferenceRanges, DvInterval normalRange, CodePhrase normalStatus, Double accuracy, Boolean accuracyIsPercent, String magnitudeStatus, Double numerator, Double denominator, Long type, Long precision) {
         super(otherReferenceRanges, normalRange, normalStatus, accuracy, accuracyIsPercent, magnitudeStatus);
         this.numerator = numerator;
         this.denominator = denominator;
@@ -72,22 +59,20 @@ public class DvProportion extends DvAmount<Double> {
         this.type = type;
     }
 
-    @Nullable
+    
     public Long getPrecision() {
         return precision;
     }
 
-    public void setPrecision(@Nullable Long precision) {
+    public void setPrecision( Long precision) {
         this.precision = precision;
     }
 
-    @JsonIgnore
     public boolean isIntegral() {
         return precision != null && precision == 0;
     }
 
     @Override
-    @JsonIgnore
     public Double getMagnitude() {
         if (numerator != null && denominator != null && denominator != 0.0d) {
             return numerator / denominator;

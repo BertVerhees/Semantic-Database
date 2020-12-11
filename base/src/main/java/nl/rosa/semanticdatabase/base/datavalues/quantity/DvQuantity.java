@@ -1,40 +1,20 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.nedap.archie.rm.datatypes.CodePhrase;
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 
-import javax.annotation.Nullable;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "DV_QUANTITY", propOrder = {
-        "magnitude",
-        "units",
-        "precision",
-        "unitsSystem",
-        "unitsDisplayName"
-})
 public class DvQuantity extends DvAmount<Double> {
 
-    @Nullable
-    @XmlElement(defaultValue = "-1")
+    
     private Long precision;
     private String units;
-    @XmlElement
     private Double magnitude;
-    @Nullable
-    @XmlElement(name = "units_system")
     private String unitsSystem;
-    @Nullable
-    @XmlElement(name = "units_display_name")
     private String unitsDisplayName;
 
 
@@ -43,33 +23,31 @@ public class DvQuantity extends DvAmount<Double> {
      * don't even serialize
      */
     @Deprecated
-    @JsonIgnore
-    @Nullable
     private transient CodePhrase property;
 
 
     public DvQuantity() {
     }
 
-    public DvQuantity(String units, Double magnitude, @Nullable Long precision) {
+    public DvQuantity(String units, Double magnitude,  Long precision) {
         this.precision = precision;
         this.units = units;
         this.magnitude = magnitude;
     }
 
-    public DvQuantity(@Nullable List<ReferenceRange> otherReferenceRanges, @Nullable DvInterval normalRange, @Nullable CodePhrase normalStatus, @Nullable Double accuracy, @Nullable Boolean accuracyIsPercent, @Nullable String magnitudeStatus, String units, Double magnitude, @Nullable Long precision) {
+    public DvQuantity( List<ReferenceRange> otherReferenceRanges,  DvInterval normalRange,  CodePhrase normalStatus,  Double accuracy,  Boolean accuracyIsPercent,  String magnitudeStatus, String units, Double magnitude,  Long precision) {
         super(otherReferenceRanges, normalRange, normalStatus, accuracy, accuracyIsPercent, magnitudeStatus);
         this.precision = precision;
         this.units = units;
         this.magnitude = magnitude;
     }
 
-    @Nullable
+    
     public Long getPrecision() {
         return precision;
     }
 
-    public void setPrecision(@Nullable Long precision) {
+    public void setPrecision( Long precision) {
         this.precision = precision;
     }
 
@@ -100,21 +78,21 @@ public class DvQuantity extends DvAmount<Double> {
         this.property = property;
     }
 
-    @Nullable
+    
     public String getUnitsSystem() {
         return unitsSystem;
     }
 
-    public void setUnitsSystem(@Nullable String unitsSystem) {
+    public void setUnitsSystem( String unitsSystem) {
         this.unitsSystem = unitsSystem;
     }
 
-    @Nullable
+    
     public String getUnitsDisplayName() {
         return unitsDisplayName;
     }
 
-    public void setUnitsDisplayName(@Nullable String unitsDisplayName) {
+    public void setUnitsDisplayName( String unitsDisplayName) {
         this.unitsDisplayName = unitsDisplayName;
     }
 
