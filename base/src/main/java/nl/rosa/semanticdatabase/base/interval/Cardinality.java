@@ -2,8 +2,6 @@ package nl.rosa.semanticdatabase.base.interval;
 
 import java.util.Objects;
 
-import semanticdatabase.base.foundation_types.primitive_types.Boolean;
-
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
  * #Copyright: Bert Verhees

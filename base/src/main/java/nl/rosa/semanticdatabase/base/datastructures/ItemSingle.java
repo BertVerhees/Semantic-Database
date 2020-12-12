@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.base.datastructures;
 
+import com.google.common.collect.Lists;
 import nl.rosa.semanticdatabase.base.archetyped.Archetyped;
 import nl.rosa.semanticdatabase.base.archetyped.FeederAudit;
 import nl.rosa.semanticdatabase.base.archetyped.Link;

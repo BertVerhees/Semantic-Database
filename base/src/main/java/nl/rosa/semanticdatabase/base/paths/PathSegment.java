@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.utils.paths;
+package nl.rosa.semanticdatabase.base.paths;
 
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -40,7 +40,7 @@ import com.google.common.base.Joiner;
  * @author Kevin Bourrillion
  * @since 2.0
  */
-public class PathSegment {
+public class PathSegment{
     private final static Joiner expressionJoiner = Joiner.on(",").skipNulls();
 
     private static final Pattern archetypeRefPattern = Pattern.compile("(.*::)?.*-.*-.*\\..*\\.v.*");

@@ -1,6 +1,9 @@
 package nl.rosa.semanticdatabase.utils.rminfo;
 
 
+import nl.rosa.semanticdatabase.base.utils_rminfo.ModelInfoLookup;
+import nl.rosa.semanticdatabase.base.utils_rminfo.RMPackageId;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

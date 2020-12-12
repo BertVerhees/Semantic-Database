@@ -1,8 +1,6 @@
-package nl.rosa.semanticdatabase.utils.rminfo;
+package nl.rosa.semanticdatabase.base.utils_rminfo;
 
 import com.google.common.reflect.TypeToken;
-import nl.rosa.semanticdatabase.base.utils_rminfo.ModelInfoLookup;
-import nl.rosa.semanticdatabase.base.utils_rminfo.RMPropertyIgnore;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.*;
@@ -31,8 +29,8 @@ public abstract class BMMModelInfoLookup implements ModelInfoLookup {
     private String packageName;
     private ClassLoader classLoader;
 
-    private Map<String, RMTypeInfo> rmTypeNamesToRmTypeInfo = new HashMap<>();
-    private Map<Class, RMTypeInfo> classesToRmTypeInfo = new HashMap<>();
+    private Map<String, IRMTypeInfo> rmTypeNamesToRmTypeInfo = new HashMap<>();
+    private Map<Class, IRMTypeInfo> classesToRmTypeInfo = new HashMap<>();
 
     private boolean inConstructor = true;
     private boolean addAttributesWithoutField = true;
@@ -86,7 +84,7 @@ public abstract class BMMModelInfoLookup implements ModelInfoLookup {
 //        addSubtypesOf(baseClass);
 //    }
     private void addSuperAndSubclassInfo() {
-        for (RMTypeInfo typeInfo : rmTypeNamesToRmTypeInfo.values()) {
+        for (IRMTypeInfo typeInfo : rmTypeNamesToRmTypeInfo.values()) {
             Class superclass = typeInfo.getJavaClass().getSuperclass();
             if (!superclass.equals(Object.class)) {
                 addDescendantClass(typeInfo, superclass);
@@ -99,8 +97,8 @@ public abstract class BMMModelInfoLookup implements ModelInfoLookup {
 
     }
 
-    private void addDescendantClass(RMTypeInfo typeInfo, Class interfaceClass) {
-        RMTypeInfo superClassTypeInfo = this.getTypeInfo(interfaceClass);
+    private void addDescendantClass(IRMTypeInfo typeInfo, Class interfaceClass) {
+        IRMTypeInfo superClassTypeInfo = this.getTypeInfo(interfaceClass);
         if (superClassTypeInfo != null) {
             typeInfo.addDirectParentClass(superClassTypeInfo);
             superClassTypeInfo.addDirectDescendantClass(typeInfo);
@@ -121,7 +119,7 @@ public abstract class BMMModelInfoLookup implements ModelInfoLookup {
 
 //    protected void addClass(Class clazz) {
 //        String rmTypeName = namingStrategy.getTypeName(clazz);
-//        RMTypeInfo typeInfo = new RMTypeInfo(clazz, rmTypeName);
+//        IRMTypeInfo typeInfo = new IRMTypeInfo(clazz, rmTypeName);
 //        addAttributeInfo(clazz, typeInfo);
 //        rmTypeNamesToRmTypeInfo.put(rmTypeName, typeInfo);
 //        classesToRmTypeInfo.put(clazz, typeInfo);
@@ -133,7 +131,7 @@ public abstract class BMMModelInfoLookup implements ModelInfoLookup {
 //        }
 //    }
 
-//    private void addAttributeInfo(Class clazz, RMTypeInfo typeInfo) {
+//    private void addAttributeInfo(Class clazz, IRMTypeInfo typeInfo) {
 //        //TODO: it's possible to constrain some method as well. should we do that here too?
 //        TypeToken typeToken = TypeToken.of(clazz);
 //
@@ -162,7 +160,7 @@ public abstract class BMMModelInfoLookup implements ModelInfoLookup {
         return Modifier.isPublic(method.getModifiers()) && method.getAnnotation(RMPropertyIgnore.class) == null;
     }
 
-//    protected void addRMAttributeInfo(Class clazz, RMTypeInfo typeInfo, TypeToken typeToken, Method getMethod, Map<String, Field> fieldsByName) {
+//    protected void addRMAttributeInfo(Class clazz, IRMTypeInfo typeInfo, TypeToken typeToken, Method getMethod, Map<String, Field> fieldsByName) {
 //        String javaFieldName = null;
 //        if(getMethod.getName().startsWith("is")) {
 //            javaFieldName = lowerCaseFirstChar(getMethod.getName().substring(2));
@@ -217,7 +215,7 @@ public abstract class BMMModelInfoLookup implements ModelInfoLookup {
     }
 
 
-//    private void addRMAttributeInfo(Class clazz, RMTypeInfo typeInfo, TypeToken typeToken, Field field) {
+//    private void addRMAttributeInfo(Class clazz, IRMTypeInfo typeInfo, TypeToken typeToken, Field field) {
 //        String javaFieldName = field.getName();
 //        String javaFieldNameUpperCased = upperCaseFirstChar(javaFieldName);
 //        Method getMethod = getMethod(clazz, "get" + javaFieldNameUpperCased);
@@ -355,8 +353,8 @@ public abstract class BMMModelInfoLookup implements ModelInfoLookup {
     @Override
     public Class getClass(String rmTypeName) {
         String strippedRmTypeName = getTypeWithoutGenericType(rmTypeName);
-        RMTypeInfo rmTypeInfo = rmTypeNamesToRmTypeInfo.get(strippedRmTypeName);
-        return rmTypeInfo == null ? null : rmTypeInfo.getJavaClass();
+        IRMTypeInfo IRMTypeInfo = rmTypeNamesToRmTypeInfo.get(strippedRmTypeName);
+        return IRMTypeInfo == null ? null : IRMTypeInfo.getJavaClass();
     }
 
     @Override
@@ -374,19 +372,19 @@ public abstract class BMMModelInfoLookup implements ModelInfoLookup {
     }
 
     @Override
-    public RMTypeInfo getTypeInfo(Class clazz) {
+    public IRMTypeInfo getTypeInfo(Class clazz) {
         return this.classesToRmTypeInfo.get(clazz);
     }
 
     @Override
     public Field getField(Class clazz, String attributeName) {
-        RMTypeInfo typeInfo = classesToRmTypeInfo.get(clazz);
-        RMAttributeInfo attributeInfo = typeInfo == null ? null : typeInfo.getAttribute(attributeName);
+        IRMTypeInfo typeInfo = classesToRmTypeInfo.get(clazz);
+        IRMAttributeInfo attributeInfo = typeInfo == null ? null : typeInfo.getAttribute(attributeName);
         return attributeInfo == null ? null : attributeInfo.getField();
     }
 
     @Override
-    public RMTypeInfo getTypeInfo(String rmTypeName) {
+    public IRMTypeInfo getTypeInfo(String rmTypeName) {
         String strippedRmTypeName = getTypeWithoutGenericType(rmTypeName);
         return this.rmTypeNamesToRmTypeInfo.get(strippedRmTypeName);
     }
@@ -400,20 +398,20 @@ public abstract class BMMModelInfoLookup implements ModelInfoLookup {
     }
 
     @Override
-    public RMAttributeInfo getAttributeInfo(Class clazz, String attributeName) {
-        RMTypeInfo typeInfo = this.classesToRmTypeInfo.get(clazz);
+    public IRMAttributeInfo getAttributeInfo(Class clazz, String attributeName) {
+        IRMTypeInfo typeInfo = this.classesToRmTypeInfo.get(clazz);
         return typeInfo == null ? null : typeInfo.getAttribute(attributeName);
     }
 
     @Override
-    public RMAttributeInfo getAttributeInfo(String rmTypeName, String attributeName) {
+    public IRMAttributeInfo getAttributeInfo(String rmTypeName, String attributeName) {
         String strippedRmTypeName = getTypeWithoutGenericType(rmTypeName);
-        RMTypeInfo typeInfo = this.rmTypeNamesToRmTypeInfo.get(strippedRmTypeName);
+        IRMTypeInfo typeInfo = this.rmTypeNamesToRmTypeInfo.get(strippedRmTypeName);
         return typeInfo == null ? null : typeInfo.getAttribute(attributeName);
     }
 
     @Override
-    public List<RMTypeInfo> getAllTypes() {
+    public List<IRMTypeInfo> getAllTypes() {
         return new ArrayList<>(classesToRmTypeInfo.values());
     }
 

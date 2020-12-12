@@ -1,13 +1,11 @@
-package nl.rosa.semanticdatabase.utils.rminfo;
+package nl.rosa.semanticdatabase.base.utils_rminfo;
 
-import nl.rosa.semanticdatabase.aom2.constraint_model_package.CObject;
-import nl.rosa.semanticdatabase.aom2.constraint_model_package.CPrimitiveObject;
-import nl.rosa.semanticdatabase.aom2.the_archetype_package.Archetype;
+import nl.rosa.semanticdatabase.base.aom2_interfaces.IArchetype;
 import nl.rosa.semanticdatabase.base.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.utils.path_queries.APathQuery;
-import nl.rosa.semanticdatabase.utils.paths.PathSegment;
-import nl.rosa.semanticdatabase.utils.rminfo.aom2_interfaces.ICObject;
-import nl.rosa.semanticdatabase.utils.rminfo.aom2_interfaces.ICPrimitiveObject;
+import nl.rosa.semanticdatabase.base.paths.queries.APathQuery;
+import nl.rosa.semanticdatabase.base.paths.PathSegment;
+import nl.rosa.semanticdatabase.base.aom2_interfaces.ICObject;
+import nl.rosa.semanticdatabase.base.aom2_interfaces.ICPrimitiveObject;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -47,7 +45,7 @@ public interface ModelInfoLookup {
      * @param clazz
      * @return
      */
-    RMTypeInfo getTypeInfo(Class clazz);
+    IRMTypeInfo getTypeInfo(Class clazz);
 
     /**
      * Get the java reflection Field of an attribute of a certain class
@@ -64,7 +62,7 @@ public interface ModelInfoLookup {
      * @param rmTypeName
      * @return The type info, or null if the class does not exist in the model
      */
-    RMTypeInfo getTypeInfo(String rmTypeName);
+    IRMTypeInfo getTypeInfo(String rmTypeName);
 
     /**
      * Get AttributeInfo for the given class and attribute
@@ -73,7 +71,7 @@ public interface ModelInfoLookup {
      * @param attributeName the attribute name
      * @return the attribute info, or null if it does not exist
      */
-    RMAttributeInfo getAttributeInfo(Class clazz, String attributeName);
+    IRMAttributeInfo getAttributeInfo(Class clazz, String attributeName);
 
     /**
      * Get AttributeInfo for the given typename and attribute
@@ -82,14 +80,14 @@ public interface ModelInfoLookup {
      * @param attributeName the attribute name
      * @return the attribute info, or null if either the class or attribute does not exist
      */
-    RMAttributeInfo getAttributeInfo(String rmTypeName, String attributeName);
+    IRMAttributeInfo getAttributeInfo(String rmTypeName, String attributeName);
 
     /**
      * Returns a list of all known types
      *
      * @return a list of all knowns types
      */
-    List<RMTypeInfo> getAllTypes();
+    List<IRMTypeInfo> getAllTypes();
 
     /**
      * Returns the naming strategy for the java classes of this model
@@ -175,7 +173,7 @@ public interface ModelInfoLookup {
      * @return Each key is a path that was updated as a result of the previously updated path and each corresponding
      * value is this path's updated value
      */
-    Map<String, Object> pathHasBeenUpdated(Object rmObject, Archetype archetype, String pathOfParent, Object parent);
+    Map<String, Object> pathHasBeenUpdated(Object rmObject, IArchetype archetype, String pathOfParent, Object parent);
 
     /**
      * True if the given attribute at given type is ok for given CPrimitiveObject, false otherwise
@@ -188,7 +186,7 @@ public interface ModelInfoLookup {
      */
     boolean validatePrimitiveType(String rmTypeName, String rmAttributeName, ICPrimitiveObject cObject);
 
-    Collection<RMPackageId> getId();
+    Collection<IRMPackageId> getId();
 
     /**
      * Pass this method to cObject.effectiveOccurrences to get the reference model property multiplicity
@@ -198,18 +196,18 @@ public interface ModelInfoLookup {
      * @return
      */
     default MultiplicityInterval referenceModelPropMultiplicity(String rmTypeName, String rmAttributeNameOrPath) {
-        RMTypeInfo typeInfo = this.getTypeInfo(rmTypeName);
+        IRMTypeInfo typeInfo = this.getTypeInfo(rmTypeName);
         String rmAttributeName = rmAttributeNameOrPath;
         if (rmAttributeNameOrPath.contains("[") || rmAttributeNameOrPath.contains("/")) {
             APathQuery aPathQuery = new APathQuery(rmAttributeNameOrPath);
             for (int i = 0; i < aPathQuery.getPathSegments().size() - 1; i++) {
                 PathSegment segment = aPathQuery.getPathSegments().get(i);
-                RMAttributeInfo attributeInfo = typeInfo.getAttribute(segment.getNodeName());
+                IRMAttributeInfo attributeInfo = typeInfo.getAttribute(segment.getNodeName());
                 typeInfo = this.getTypeInfo(attributeInfo.getTypeNameInCollection());
             }
             rmAttributeName = aPathQuery.getPathSegments().get(aPathQuery.getPathSegments().size() - 1).getNodeName();
         }
-        RMAttributeInfo attributeInfo = typeInfo.getAttribute(rmAttributeName);
+        IRMAttributeInfo attributeInfo = typeInfo.getAttribute(rmAttributeName);
         if (attributeInfo.isMultipleValued()) {
             return MultiplicityInterval.createUpperUnbounded(0);
         } else {
@@ -229,8 +227,8 @@ public interface ModelInfoLookup {
      * @return
      */
     default Boolean rmTypesConformant(String childType, String parentType) {
-        RMTypeInfo parentTypeInfo = getTypeInfo(parentType);
-        RMTypeInfo childTypeInfo = getTypeInfo(childType);
+        IRMTypeInfo parentTypeInfo = getTypeInfo(parentType);
+        IRMTypeInfo childTypeInfo = getTypeInfo(childType);
         if (childTypeInfo == null || parentTypeInfo == null) {
             return true;//cannot check with RM types, will validate elsewhere
         }

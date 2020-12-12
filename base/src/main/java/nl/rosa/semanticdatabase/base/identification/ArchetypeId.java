@@ -1,6 +1,8 @@
 package nl.rosa.semanticdatabase.base.identification;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00
@@ -13,9 +15,74 @@ import java.util.Objects;
  */
 public class ArchetypeId extends ObjectId {
 
+    
+    private String namespace;
+    
+    private String qualifiedRmEntity;
+    
+    private String domainConcept;
+    
+    private String rmOriginator;
+    
+    private String rmName;
+    
+    private String rmEntity;
+    
+    private String specialisation;
+    
+    private String versionId;
+
+    private final static Pattern archetypeIDPattern = Pattern.compile("((?<namespace>.*)::)?(?<publisher>[^.-]*)-(?<package>[^.-]*)-(?<class>[^.-]*)\\.(?<concept>[^.]*)(-(?<specialisation>[^.]*))?(\\.v(?<version>.*))?");
+
     /*=========================================================*/
     /* * FUNCTIONS * */
     /*=========================================================*/
+    private void parseValue(String value) {
+        Matcher m = archetypeIDPattern.matcher(value);
+
+        if (!m.matches()) {
+            throw new IllegalArgumentException(value + " is not a valid archetype human readable id");
+        }
+        namespace = m.group("namespace");
+        rmOriginator = m.group("publisher");
+        rmName = m.group("package");
+        rmEntity = m.group("class");
+        buildQualifiedRmEntity();
+
+        specialisation = m.group("specialisation");
+
+        domainConcept = m.group("concept");
+        versionId = m.group("version");
+    }
+
+
+    public String getFullId() {
+        StringBuilder result = new StringBuilder(30);
+        if(namespace != null) {
+            result.append(namespace);
+            result.append("::");
+        }
+        result.append(rmOriginator);
+        result.append("-");
+        result.append(rmName);
+        result.append("-");
+        result.append(rmEntity);
+        result.append(".");
+        result.append(domainConcept);
+        if(specialisation != null) {
+            result.append("-");
+            result.append(specialisation);
+        }
+        if (versionId == null) {
+            return result.toString();
+        } else if (versionId.startsWith("v")) {
+            result.append(".");
+        } else {
+            result.append(".v");
+        }
+        result.append(versionId);
+        return result.toString();
+    }
 
     /**
      * Globally qualified reference model entity, e.g.
@@ -121,44 +188,65 @@ public class ArchetypeId extends ObjectId {
         return result;
     }
 
+    public void buildQualifiedRmEntity() {
+        qualifiedRmEntity = rmOriginator + "-" + rmName + "-" + rmEntity;
+    }
+
     //***** ArchetypeId *****
 
     /*=========================================================*/
     /* * BUILD PATTERN AND CONSTRUCTOR * */
     /*=========================================================*/
-
-
-    protected ArchetypeId() {
+    public ArchetypeId() {
     }
 
-    public ArchetypeId(
-            String value
-    ) {
-        super(
-                value
-        );
+    /**
+     * Parse the Archetype id from a string
+     *
+     * @param value
+     */
+    public ArchetypeId(String value) {
+
+        parseValue(value);
+
+        setValue(value);
     }
 
-    private ArchetypeId(Builder builder) {
-        this.setValue(builder.value);
-    }
+    /**
+     * Constructor for creating the archetype id based on all fields separate in json
+     *
+     * @param qualifiedRmEntity
+     * @param domainConcept
+     * @param rmOriginator
+     * @param rmName
+     * @param rmEntity
+     * @param specialisation
+     * @param versionId
+     */
 
-    public static class Builder {
-        private final String value;  //required
-
-        public Builder(
-                String value
-        ) {
-            if (value == null) {
-                throw new NullPointerException("Property:value has cardinality NonNull, but is null");
-            }
-            this.value = value;
-        }
-
-        public ArchetypeId build() {
-            return new ArchetypeId(this);
-        }
-    }
+//    public ArchetypeID(@JsonProperty("qualified_rm_entity") String qualifiedRmEntity,
+//                       @JsonProperty("domain_concept") String domainConcept,
+//                       @JsonProperty("rm_originator") String rmOriginator,
+//                       @JsonProperty("rm_name") String rmName,
+//                       @JsonProperty("rm_entity") String rmEntity,
+//                       @JsonProperty("specialisation") String specialisation,
+//                       @JsonProperty("versionId") String versionId,
+//                       @JsonProperty("value") String value) {
+//        if (value != null) {
+//            parseValue(value);
+//            setValue(value);
+//        } else {
+//            this.qualifiedRmEntity = qualifiedRmEntity;
+//            this.domainConcept = domainConcept;
+//            this.rmOriginator = rmOriginator;
+//            this.rmName = rmName;
+//            this.rmEntity = rmEntity;
+//            this.specialisation = specialisation;
+//            this.versionId = versionId;
+//            setValue(getFullId());
+//        }
+//
+//    }
 
 
     //***** ArchetypeId *****

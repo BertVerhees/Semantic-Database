@@ -1,6 +1,8 @@
 package nl.rosa.semanticdatabase.utils.rminfo;
 
 import com.google.common.reflect.TypeToken;
+import nl.rosa.semanticdatabase.base.utils_rminfo.ModelInfoLookup;
+import nl.rosa.semanticdatabase.base.utils_rminfo.RMPropertyIgnore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

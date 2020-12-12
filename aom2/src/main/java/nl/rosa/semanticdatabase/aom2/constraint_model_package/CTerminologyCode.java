@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
+import nl.rosa.semanticdatabase.base.aom2_interfaces.ICTerminologyCode;
 import semanticdatabase.base.foundation_types.interval.MultiplicityInterval;
 import semanticdatabase.base.foundation_types.terminology_package.TerminologyCode;
 
@@ -17,7 +18,7 @@ import semanticdatabase.base.foundation_types.terminology_package.TerminologyCod
  * The constraint_status attribute and constraint_required() function together define whether the constraint is considered formal ('required') or not.
  * In the non-required cases, a data-item matched to this constraint may be any coded term.
  */
-public class CTerminologyCode extends CPrimitiveObject<String, TerminologyCode> {
+public class CTerminologyCode extends CPrimitiveObject<String, TerminologyCode> implements ICTerminologyCode {
 
     //***** CTerminologyCode *****
 

@@ -1,11 +1,11 @@
-package nl.rosa.semanticdatabase.utils.rminfo;
+package nl.rosa.semanticdatabase.base.utils_rminfo;
 
 import java.util.Objects;
 
 /**
  * Representation of an ID of a reference model package, with a publisher and a package. For example OpenEHR-EHR, or CIMI-CORE
  */
-public class RMPackageId {
+public class RMPackageId implements IRMPackageId {
     private String publisher;
     private String aPackage;//package is reserved word in java
 

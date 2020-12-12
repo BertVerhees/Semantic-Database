@@ -1,11 +1,17 @@
-package nl.rosa.semanticdatabase.utils.rminfo;
+package nl.rosa.semanticdatabase.base.utils_rminfo;
 
-import nl.rosa.semanticdatabase.aom2.constraint_model_package.CObject;
-import nl.rosa.semanticdatabase.aom2.constraint_model_package.CPrimitiveObject;
-import nl.rosa.semanticdatabase.aom2.constraint_model_package.CTerminologyCode;
-import nl.rosa.semanticdatabase.aom2.the_archetype_package.Archetype;
+import nl.rosa.semanticdatabase.base.aom2_interfaces.IArchetype;
+import nl.rosa.semanticdatabase.base.aom2_interfaces.ICObject;
+import nl.rosa.semanticdatabase.base.aom2_interfaces.ICPrimitiveObject;
+import nl.rosa.semanticdatabase.base.aom2_interfaces.ICTerminologyCode;
+import nl.rosa.semanticdatabase.base.archetyped.Locatable;
+import nl.rosa.semanticdatabase.base.datastructures.PointEvent;
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
+import nl.rosa.semanticdatabase.base.demographic.Party;
+import nl.rosa.semanticdatabase.base.identification.TerminologyId;
+import nl.rosa.semanticdatabase.base.interval.MultiplicityInterval;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyCode;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -24,13 +30,13 @@ public class RMInfoLookup extends BMMModelInfoLookup {
 
     private static RMInfoLookup instance;
     private Object object;
-    private CPrimitiveObject cPrimitiveObject;
+    private ICPrimitiveObject cPrimitiveObject;
 
-    private RMInfoLookup() {
-        super(new BMMModelNamingStrategy(), RMObject.class);
-    }
+//    private RMInfoLookup() {
+//        super(new BMMModelNamingStrategy(), RMObject.class);
+//    }
 
-    @Override
+//    @Override
     protected void addTypes(Class baseClass) {
 //        addClass(Interval.class); //extra class from the base package. No RMObject because it is also used in the AOM
 //        addClass(AuditDetails.class);
@@ -210,16 +216,8 @@ public class RMInfoLookup extends BMMModelInfoLookup {
      * @return the rm object converted to the corresponding AOM object
      */
     @Override
-    public Object convertToConstraintObject(Object object,
-                                            CPrimitiveObject cPrimitiveObject) {
-        this.object = object;
-        this.cPrimitiveObject = cPrimitiveObject;
-        return null;
-    }
-
-    @Override
-    public Object convertToConstraintObject(Object object, CPrimitiveObject cPrimitiveObject) {
-        if (cPrimitiveObject instanceof CTerminologyCode) {
+    public Object convertToConstraintObject(Object object, ICPrimitiveObject cPrimitiveObject) {
+        if (cPrimitiveObject instanceof ICTerminologyCode) {
             if (object instanceof DvCodedText && ((DvCodedText) object).getDefiningCode() != null) {
                 return convertCodePhrase(((DvCodedText) object).getDefiningCode());
             } else if (object instanceof CodePhrase) {
@@ -245,17 +243,6 @@ public class RMInfoLookup extends BMMModelInfoLookup {
         return object;
     }
 
-    /**
-     * Callback after an RM Object has been created based on a constraint. Can for example be used
-     * to set names or archetype ID Node values
-     *
-     * @param createdObject
-     * @param constraint
-     */
-    @Override
-    public void processCreatedObject(Object createdObject, CObject constraint) {
-
-    }
 
     private CodePhrase convertTerminologyCode(TerminologyCode terminologyCode) {
         CodePhrase result = new CodePhrase();
@@ -264,8 +251,15 @@ public class RMInfoLookup extends BMMModelInfoLookup {
         return result;
     }
 
+    /**
+     * Callback after an RM Object has been created based on a constraint. Can for example be used
+     * to set names or archetype ID Node values
+     *
+     * @param createdObject
+     * @param constraint
+     */
     @Override
-    public void processCreatedObject(Object createdObject, CObject constraint) {
+    public void processCreatedObject(Object createdObject, ICObject constraint) {
         if (createdObject instanceof Locatable) { //and most often, it will be
             Locatable locatable = (Locatable) createdObject;
             locatable.setArchetypeNodeId(constraint.getNodeId());
@@ -308,13 +302,17 @@ public class RMInfoLookup extends BMMModelInfoLookup {
         return null;
     }
 
+    /**
+     * Deeply clone the given RM Object
+     *
+     * @param rmObject
+     * @return
+     */
     @Override
     public Object clone(Object rmObject) {
-        if (rmObject instanceof RMObject) {
-            return ((RMObject) rmObject).clone();
-        }
-        throw new IllegalArgumentException("The ArchieRMInfoLookup can only clone openehr reference model objects");
+        return null;
     }
+
 
     /**
      * Perform any actions necessary if the value at the given path has just been updated
@@ -337,64 +335,64 @@ public class RMInfoLookup extends BMMModelInfoLookup {
      * @return Each key is a path that was updated as a result of the previously updated path and each corresponding
      * value is this path's updated value
      */
-    @Override
-    public Map<String, Object> pathHasBeenUpdated(Object rmObject, Archetype archetype, String pathOfParent, Object parent) {
-        return null;
-    }
 
     /**
      * Notification that a value at a given path has been updated in the given archetype. Perform tasks here to make sure
      * every other paths are updated as well.
      *
-     * @param rmObject
-     * @param archetype
-     * @param pathOfParent
-     * @param parent
+//     * @param rmObject
+//     * @param archetype
+//     * @param pathOfParent
+//     * @param parent
      */
-    @Override
-    public Map<String, Object> pathHasBeenUpdated(Object rmObject, Archetype archetype, String pathOfParent, Object parent) {
-        return UpdatedValueHandler.pathHasBeenUpdated(rmObject, archetype, pathOfParent, parent);
+//    @Override
+    public Map<String, Object> pathHasBeenUpdated(Object rmObject, IArchetype archetype, String pathOfParent, Object parent) {
+//        return UpdatedValueHandler.pathHasBeenUpdated(rmObject, archetype, pathOfParent, parent);
+        return null;
     }
 
-    @Override
-    public boolean validatePrimitiveType(String rmTypeName, String rmAttributeName, CPrimitiveObject cObject) {
-        RMAttributeInfo attributeInfo = this.getAttributeInfo(rmTypeName, rmAttributeName);
-        if (attributeInfo == null) {
-            return true;//cannot validate
-        }
-        Class typeInCollection = attributeInfo.getTypeInCollection();
-        if (cObject instanceof CInteger) {
-            return typeInCollection.equals(Long.class) || typeInCollection.getName().equals("long");
-        } else if (cObject instanceof CReal) {
-            return typeInCollection.equals(Double.class) || typeInCollection.getName().equals("double");
-        } else if (cObject instanceof CString) {
-            return typeInCollection.equals(String.class);
-        } else if (cObject instanceof CDate) {
-            return typeInCollection.equals(String.class) ||
-                    typeInCollection.isAssignableFrom(Temporal.class);
-        } else if (cObject instanceof CDateTime) {
-            return typeInCollection.equals(String.class) ||
-                    typeInCollection.isAssignableFrom(Temporal.class);
-        } else if (cObject instanceof CDuration) {
-            return typeInCollection.equals(String.class) ||
-                    typeInCollection.isAssignableFrom(TemporalAccessor.class) ||
-                    typeInCollection.isAssignableFrom(TemporalAmount.class);
-        } else if (cObject instanceof CTime) {
-            return typeInCollection.equals(String.class) ||
-                    typeInCollection.isAssignableFrom(TemporalAccessor.class);
-        } else if (cObject instanceof CTerminologyCode) {
-            return typeInCollection.equals(CodePhrase.class) ||
-                    typeInCollection.equals(DvCodedText.class);
-        } else if (cObject instanceof CBoolean) {
-            return typeInCollection.equals(Boolean.class) || typeInCollection.getName().equals("boolean");
-        }
+    public boolean validatePrimitiveType(String rmTypeName, String rmAttributeName, ICPrimitiveObject cObject) {
         return false;
-
     }
+//    @Override
+//    public boolean validatePrimitiveType(String rmTypeName, String rmAttributeName, ICPrimitiveObject cObject) {
+//        IRMAttributeInfo attributeInfo = this.getAttributeInfo(rmTypeName, rmAttributeName);
+//        if (attributeInfo == null) {
+//            return true;//cannot validate
+//        }
+//        Class typeInCollection = attributeInfo.getTypeInCollection();
+//        if (cObject instanceof CInteger) {
+//            return typeInCollection.equals(Long.class) || typeInCollection.getName().equals("long");
+//        } else if (cObject instanceof CReal) {
+//            return typeInCollection.equals(Double.class) || typeInCollection.getName().equals("double");
+//        } else if (cObject instanceof CString) {
+//            return typeInCollection.equals(String.class);
+//        } else if (cObject instanceof CDate) {
+//            return typeInCollection.equals(String.class) ||
+//                    typeInCollection.isAssignableFrom(Temporal.class);
+//        } else if (cObject instanceof CDateTime) {
+//            return typeInCollection.equals(String.class) ||
+//                    typeInCollection.isAssignableFrom(Temporal.class);
+//        } else if (cObject instanceof CDuration) {
+//            return typeInCollection.equals(String.class) ||
+//                    typeInCollection.isAssignableFrom(TemporalAccessor.class) ||
+//                    typeInCollection.isAssignableFrom(TemporalAmount.class);
+//        } else if (cObject instanceof CTime) {
+//            return typeInCollection.equals(String.class) ||
+//                    typeInCollection.isAssignableFrom(TemporalAccessor.class);
+//        } else if (cObject instanceof CTerminologyCode) {
+//            return typeInCollection.equals(CodePhrase.class) ||
+//                    typeInCollection.equals(DvCodedText.class);
+//        } else if (cObject instanceof CBoolean) {
+//            return typeInCollection.equals(Boolean.class) || typeInCollection.getName().equals("boolean");
+//        }
+//        return false;
+//
+//    }
 
     @Override
-    public Collection<RMPackageId> getId() {
-        List<RMPackageId> result = new ArrayList<>();
+    public Collection<IRMPackageId> getId() {
+        List<IRMPackageId> result = new ArrayList<>();
         result.add(new RMPackageId("openEHR", "EHR"));
         result.add(new RMPackageId("openEHR", "DEMOGRAPHIC"));
         return result;

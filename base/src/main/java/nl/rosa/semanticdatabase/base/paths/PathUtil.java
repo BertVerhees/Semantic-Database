@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.utils.paths;
+package nl.rosa.semanticdatabase.base.paths;
 
 import nl.rosa.semanticdatabase.base.BMMCodeDefinitions;
 

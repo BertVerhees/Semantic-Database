@@ -1,8 +1,8 @@
-package nl.rosa.semanticdatabase.utils.path_queries;
+package nl.rosa.semanticdatabase.base.paths.queries;
 
 
 import com.google.common.base.Joiner;
-import nl.rosa.semanticdatabase.utils.paths.PathSegment;
+import nl.rosa.semanticdatabase.base.paths.PathSegment;
 
 import java.util.ArrayList;
 import java.util.List;

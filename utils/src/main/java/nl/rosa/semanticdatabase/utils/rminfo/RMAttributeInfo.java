@@ -1,5 +1,7 @@
 package nl.rosa.semanticdatabase.utils.rminfo;
 
+import nl.rosa.semanticdatabase.base.utils_rminfo.IRMAttributeInfo;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Collection;
@@ -7,7 +9,7 @@ import java.util.Collection;
 /**
  * Originally: Created by pieter.bos on 25/03/16.
  */
-public class RMAttributeInfo {
+public class RMAttributeInfo implements IRMAttributeInfo {
     private final String name;
     private final Field field;
     private final Class type;

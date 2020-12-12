@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.base.archetyped;
 
 import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
 import nl.rosa.semanticdatabase.base.identification.UidBasedId;
-import nl.rosa.semanticdatabase.utils.paths.PathSegment;
+import nl.rosa.semanticdatabase.base.paths.PathSegment;
 
 import java.util.ArrayList;
 import java.util.List;

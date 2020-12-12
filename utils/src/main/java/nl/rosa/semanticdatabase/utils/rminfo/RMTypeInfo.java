@@ -1,18 +1,20 @@
 package nl.rosa.semanticdatabase.utils.rminfo;
 
+import nl.rosa.semanticdatabase.base.utils_rminfo.IRMTypeInfo;
+
 import java.util.*;
 
 /**
  * Originally: Created by pieter.bos on 25/03/16.
  */
-public class RMTypeInfo {
+public class RMTypeInfo implements IRMTypeInfo {
 
     private final String rmName;
     private final Class javaClass;
     //only direct parent classes here
-    private final Set<RMTypeInfo> parentClasses = new LinkedHashSet<>();
+    private final Set<IRMTypeInfo> parentClasses = new LinkedHashSet<>();
     //only direct descendant classes here
-    private final Set<RMTypeInfo> descendantClasses = new LinkedHashSet<>();
+    private final Set<IRMTypeInfo> descendantClasses = new LinkedHashSet<>();
     private Map<String, RMAttributeInfo> attributes = new HashMap<>();
 
     public RMTypeInfo(Class clazz, String rmName) {
@@ -40,42 +42,42 @@ public class RMTypeInfo {
         return attributes.get(attributeName);
     }
 
-    public void addDirectParentClass(RMTypeInfo parent) {
+    public void addDirectParentClass(IRMTypeInfo parent) {
         parentClasses.add(parent);
     }
 
-    public Set<RMTypeInfo> getDirectParentClasses() {
+    public Set<IRMTypeInfo> getDirectParentClasses() {
         return parentClasses;
     }
 
-    public void addDirectDescendantClass(RMTypeInfo parent) {
+    public void addDirectDescendantClass(IRMTypeInfo parent) {
         descendantClasses.add(parent);
     }
 
-    public Set<RMTypeInfo> getDirectDescendantClasses() {
+    public Set<IRMTypeInfo> getDirectDescendantClasses() {
         return descendantClasses;
     }
 
-    public Set<RMTypeInfo> getAllDescendantClasses() {
-        Stack<RMTypeInfo> workList = new Stack<>();
-        Set<RMTypeInfo> result = new LinkedHashSet<>();
+    public Set<IRMTypeInfo> getAllDescendantClasses() {
+        Stack<IRMTypeInfo> workList = new Stack<>();
+        Set<IRMTypeInfo> result = new LinkedHashSet<>();
 
         workList.addAll(descendantClasses);
         while (!workList.isEmpty()) {
-            RMTypeInfo descendant = workList.pop();
+            IRMTypeInfo descendant = workList.pop();
             workList.addAll(descendant.getDirectDescendantClasses());
             result.add(descendant);
         }
         return result;
     }
 
-    public Set<RMTypeInfo> getAllParentClasses() {
-        Stack<RMTypeInfo> workList = new Stack<>();
-        Set<RMTypeInfo> result = new LinkedHashSet<>();
+    public Set<IRMTypeInfo> getAllParentClasses() {
+        Stack<IRMTypeInfo> workList = new Stack<>();
+        Set<IRMTypeInfo> result = new LinkedHashSet<>();
 
         workList.addAll(parentClasses);
         while (!workList.isEmpty()) {
-            RMTypeInfo parent = workList.pop();
+            IRMTypeInfo parent = workList.pop();
             workList.addAll(parent.getDirectParentClasses());
             result.add(parent);
         }
@@ -110,7 +112,7 @@ public class RMTypeInfo {
         return rmName;
     }
 
-    public boolean isDescendantOrEqual(RMTypeInfo other) {
+    public boolean isDescendantOrEqual(IRMTypeInfo other) {
         return other.equals(this) || getAllParentClasses().contains(other);
     }
 }

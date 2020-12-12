@@ -1,11 +1,11 @@
-package nl.rosa.semanticdatabase.utils.path_queries;
+package nl.rosa.semanticdatabase.base.paths.queries;
 
 
 import com.google.common.collect.Lists;
-import nl.rosa.semanticdatabase.utils.rminfo.ModelInfoLookup;
 import nl.rosa.semanticdatabase.base.BMMCodeDefinitions;
-import nl.rosa.semanticdatabase.utils.paths.PathSegment;
-import nl.rosa.semanticdatabase.utils.rminfo.RMAttributeInfo;
+import nl.rosa.semanticdatabase.base.paths.PathSegment;
+import nl.rosa.semanticdatabase.base.utils_rminfo.IRMAttributeInfo;
+import nl.rosa.semanticdatabase.base.utils_rminfo.ModelInfoLookup;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -43,7 +43,7 @@ public class RMPathQuery {
                 if (currentObject == null) {
                     return null;
                 }
-                RMAttributeInfo attributeInfo = lookup.getAttributeInfo(currentObject.getClass(), segment.getNodeName());
+                IRMAttributeInfo attributeInfo = lookup.getAttributeInfo(currentObject.getClass(), segment.getNodeName());
                 if (attributeInfo == null) {
                     return null;
                 }
@@ -117,7 +117,7 @@ public class RMPathQuery {
                 for (int i = 0; i < currentObjects.size(); i++) {
                     RMObjectWithPath currentObject = currentObjects.get(i);
                     Object currentRMObject = currentObject.getObject();
-                    RMAttributeInfo attributeInfo = lookup.getAttributeInfo(currentRMObject.getClass(), segment.getNodeName());
+                    IRMAttributeInfo attributeInfo = lookup.getAttributeInfo(currentRMObject.getClass(), segment.getNodeName());
                     if (attributeInfo == null) {
                         continue;
                     }

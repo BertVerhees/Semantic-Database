@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.aom2.the_archetype_package;
 
 import java.util.Objects;
 
-import nl.rosa.semanticdatabase.utils.rminfo.aom2_interfaces.IArchetype;
+import nl.rosa.semanticdatabase.base.aom2_interfaces.IArchetype;
 import nl.rosa.semanticdatabase.aom2.constraint_model_package.CComplexObject;
 import nl.rosa.semanticdatabase.aom2.terminology_package.ArchetypeTerminology;
 import nl.rosa.semanticdatabase.bmm.statements.BmmAssertion;

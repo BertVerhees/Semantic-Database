@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.utils.rminfo;
+package nl.rosa.semanticdatabase.base.utils_rminfo;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

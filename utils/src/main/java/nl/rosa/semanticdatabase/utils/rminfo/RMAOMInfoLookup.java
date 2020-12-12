@@ -1,5 +1,7 @@
 package nl.rosa.semanticdatabase.utils.rminfo;
 
+import nl.rosa.semanticdatabase.base.utils_rminfo.RMPackageId;
+
 import java.util.Collection;
 
 /**
