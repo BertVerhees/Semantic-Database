@@ -72,6 +72,5 @@
     <module>bmm</module>
     <module>base</module>
     <module>utils</module>
-    <module>constraint</module>
   </modules>
 </project>

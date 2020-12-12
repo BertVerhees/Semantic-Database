@@ -2,7 +2,7 @@ package nl.rosa.semanticdatabase.bmm.expressions;
 
 import java.util.Objects;
 
-import nl.rosa.semanticdatabase.utils.constraint_model_package.CObject;
+import nl.rosa.semanticdatabase.aom2.constraint_model_package.CObject;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00

@@ -2,8 +2,8 @@ package nl.rosa.semanticdatabase.aom2.the_archetype_package;
 
 import java.util.Objects;
 
-import semanticdatabase.base.foundation_types.primitive_types.Boolean;
-import nl.rosa.semanticdatabase.utils.constraint_model_package.CComplexObject;
+import nl.rosa.semanticdatabase.utils.rminfo.aom2_interfaces.IArchetype;
+import nl.rosa.semanticdatabase.aom2.constraint_model_package.CComplexObject;
 import nl.rosa.semanticdatabase.aom2.terminology_package.ArchetypeTerminology;
 import nl.rosa.semanticdatabase.bmm.statements.BmmAssertion;
 import nl.rosa.semanticdatabase.aom2.the_rm_overlay_package.RmOverlay;
@@ -18,7 +18,7 @@ import nl.rosa.semanticdatabase.aom2.the_rm_overlay_package.RmOverlay;
  * definition (a C_COMPLEX_OBJECT), terminology (ARCHEYTPE_TERMINOLOGY) and so on.
  * It is the parent class of all concrete types of archetype.
  */
-public abstract class Archetype {
+public abstract class Archetype implements IArchetype {
 
     //***** Archetype *****
 

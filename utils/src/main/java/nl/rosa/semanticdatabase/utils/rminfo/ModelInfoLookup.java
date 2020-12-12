@@ -1,14 +1,13 @@
 package nl.rosa.semanticdatabase.utils.rminfo;
 
-import nl.rosa.semanticdatabase.utils.constraint_model_package.CObject;
-import nl.rosa.semanticdatabase.utils.constraint_model_package.CPrimitiveObject;
+import nl.rosa.semanticdatabase.aom2.constraint_model_package.CObject;
+import nl.rosa.semanticdatabase.aom2.constraint_model_package.CPrimitiveObject;
 import nl.rosa.semanticdatabase.aom2.the_archetype_package.Archetype;
 import nl.rosa.semanticdatabase.base.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.base.utils.rminfo.ModelNamingStrategy;
-import nl.rosa.semanticdatabase.base.utils.rminfo.RMAttributeInfo;
-import nl.rosa.semanticdatabase.base.utils.rminfo.RMTypeInfo;
 import nl.rosa.semanticdatabase.utils.path_queries.APathQuery;
 import nl.rosa.semanticdatabase.utils.paths.PathSegment;
+import nl.rosa.semanticdatabase.utils.rminfo.aom2_interfaces.ICObject;
+import nl.rosa.semanticdatabase.utils.rminfo.aom2_interfaces.ICPrimitiveObject;
 
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -108,7 +107,7 @@ public interface ModelInfoLookup {
      * @param cPrimitiveObject the AOM constraint
      * @return the rm object converted to the corresponding AOM object
      */
-    Object convertToConstraintObject(Object object, CPrimitiveObject cPrimitiveObject);
+    Object convertToConstraintObject(Object object, ICPrimitiveObject cPrimitiveObject);
 
 
     /**
@@ -124,7 +123,7 @@ public interface ModelInfoLookup {
      * Callback after an RM Object has been created based on a constraint. Can for example be used
      * to set names or archetype ID Node values
      */
-    void processCreatedObject(Object createdObject, CObject constraint);
+    void processCreatedObject(Object createdObject, ICObject constraint);
 
 
     /**
@@ -187,7 +186,7 @@ public interface ModelInfoLookup {
      * @param cObject         the primitive object to validate
      * @return true if valid, false if not valid
      */
-    boolean validatePrimitiveType(String rmTypeName, String rmAttributeName, CPrimitiveObject cObject);
+    boolean validatePrimitiveType(String rmTypeName, String rmAttributeName, ICPrimitiveObject cObject);
 
     Collection<RMPackageId> getId();
 

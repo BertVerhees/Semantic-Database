@@ -2,10 +2,10 @@ package nl.rosa.semanticdatabase.utils.path_queries;
 
 
 import com.google.common.collect.Lists;
-import nl.rosa.semanticdatabase.aom2.rminfo.ModelInfoLookup;
+import nl.rosa.semanticdatabase.utils.rminfo.ModelInfoLookup;
 import nl.rosa.semanticdatabase.base.BMMCodeDefinitions;
 import nl.rosa.semanticdatabase.utils.paths.PathSegment;
-import nl.rosa.semanticdatabase.base.utils.rminfo.RMAttributeInfo;
+import nl.rosa.semanticdatabase.utils.rminfo.RMAttributeInfo;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

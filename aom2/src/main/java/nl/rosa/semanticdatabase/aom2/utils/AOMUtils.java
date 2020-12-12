@@ -2,13 +2,13 @@ package nl.rosa.semanticdatabase.aom2.utils;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Joiner;
-import nl.rosa.semanticdatabase.utils.constraint_model_package.*;
+import nl.rosa.semanticdatabase.aom2.constraint_model_package.*;
 import nl.rosa.semanticdatabase.aom2.the_archetype_package.Archetype;
 import semanticdatabase.base.paths.AdlCodeDefinitions;
 import semanticdatabase.base.paths.PathSegment;
 import semanticdatabase.base.paths.PathUtil;
-import nl.rosa.semanticdatabase.aom2.rminfo.RMAttributeInfo;
-import nl.rosa.semanticdatabase.aom2.rminfo.RMTypeInfo;
+import nl.rosa.semanticdatabase.utils.rminfo.RMAttributeInfo;
+import nl.rosa.semanticdatabase.utils.rminfo.RMTypeInfo;
 import semanticdatabase.query.APathQuery;
 import org.apache.commons.lang3.StringUtils;
 
