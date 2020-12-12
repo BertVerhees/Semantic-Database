@@ -34,19 +34,18 @@ public class DvCodedText extends DvText {
         this.definingCode = definingCode;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         DvCodedText that = (DvCodedText) o;
-        return Objects.equals(definingCode, that.definingCode);
+        return getDefiningCode().equals(that.getDefiningCode());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), definingCode);
+        return Objects.hash(super.hashCode(), getDefiningCode());
     }
 
     public String toString() {

@@ -77,13 +77,12 @@ public class DvDate extends DvTemporal<Long> implements SingleValuedDataValue<Te
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-
         DvDate dvDate = (DvDate) o;
-        return Objects.equals(value, dvDate.value);
+        return Objects.equals(getValue(), dvDate.getValue());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), value);
+        return Objects.hash(super.hashCode(), getValue());
     }
 }

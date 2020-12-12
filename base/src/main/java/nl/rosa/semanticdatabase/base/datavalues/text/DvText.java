@@ -105,4 +105,16 @@ public class DvText extends DataValue implements SingleValuedDataValue<String> {
     public int hashCode() {
         return Objects.hash(value, hyperlink, formatting, mappings, language, encoding);
     }
+
+    @Override
+    public String toString() {
+        return "DvText{" +
+                "value='" + value + '\'' +
+                ", hyperlink=" + hyperlink +
+                ", formatting='" + formatting + '\'' +
+                ", mappings=" + mappings +
+                ", language=" + language +
+                ", encoding=" + encoding +
+                '}';
+    }
 }
