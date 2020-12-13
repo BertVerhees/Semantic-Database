@@ -1,7 +1,5 @@
 package nl.rosa.semanticdatabase.base.identification;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -88,6 +86,15 @@ public class ArchetypeId extends ObjectId {
     }
 
     /**
+     * Return localID
+     *
+     * @return localID
+     */
+    public String localId() {
+        return getValue();
+    }
+
+    /**
      * Globally qualified reference model entity, e.g.
      * openehr-EHR-OBSERVATION.
      * cardinality: 1..1
@@ -133,6 +140,15 @@ public class ArchetypeId extends ObjectId {
     }
 
     /**
+     * The contextID
+     *
+     * @return always null
+     */
+    public Uid contextId() {
+        return null;
+    }
+
+    /**
      * Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g.
      * cholesterol .
      * cardinality: 1..1
@@ -149,7 +165,24 @@ public class ArchetypeId extends ObjectId {
         return versionId;
     }
 
+    public String base() {
+        return new StringBuffer(toQualifiedRmEntity(rmOriginator,
+                rmName, rmEntity))
+                .append(AXIS_SEPARATOR)
+                .append(domainConcept)
+                .toString();
+    }
 
+    /**
+     * Return true if both archetypeId has the same value, and versionID is
+     * not included in comparison
+     *
+     * @return true if equals
+     */
+    public boolean equalsIgnoreVersionID(ArchetypeId id) {
+        return qualifiedRmEntity.equals(id.qualifiedRmEntity)
+                && domainConcept.equals(id.domainConcept);
+    }
     //***** ArchetypeId *****
 
     /*=========================================================*/

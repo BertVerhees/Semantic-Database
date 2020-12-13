@@ -5,6 +5,11 @@ package nl.rosa.semanticdatabase.base.identification;
  */
 public class UUid extends Uid {
 
+    /**
+     * Simple UUID pattern
+     */
+    public static final String SIMPLE_UUID_PATTERN = "([0-9a-fA-F])+(-([0-9a-fA-F])+)*";
+
     public UUid() {
     }
 

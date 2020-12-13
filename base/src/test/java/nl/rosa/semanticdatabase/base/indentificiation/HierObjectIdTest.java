@@ -20,49 +20,34 @@
  */
 package nl.rosa.semanticdatabase.base.indentificiation;
 
-import junit.framework.TestCase;
+import nl.rosa.semanticdatabase.base.identification.HierObjectId;
 
-public class HierObjectIDTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-    public HierObjectIDTest(String test) {
-        super(test);
-    }
-
-    /**
-     * The fixture set up called before every test method.
-     */
-    protected void setUp() throws Exception {
-    }
-
-    /**
-     * The fixture clean up called after every test method.
-     */
-    protected void tearDown() throws Exception {
-    }
+public class HierObjectIdTest {
 
     public void testConstructorTakesStringValue() throws Exception {
 
         for (int i = 0; i < STRING_VALUES.length; i++) {
-            assertHOID(new HierObjectID(STRING_VALUES[i]), i);
+            assertHOID(new HierObjectId(STRING_VALUES[i]), i);
         }
     }
 
     public void testConstructorTakesSections() throws Exception {
 
         for (int i = 0; i < STRING_VALUES.length; i++) {
-            assertHOID(new HierObjectID(SECTIONS[i][0],
-            SECTIONS[i][1]), i);
+            assertHOID(new HierObjectId(SECTIONS[i][0],SECTIONS[i][1]), i);
         }
     }
 
-    private void assertHOID(HierObjectID hoid, int i) throws Exception {
+    private void assertHOID(HierObjectId hoid, int i) throws Exception {
         //System.out.println("matches? " + SECTIONS[i][0].matches("(\\d)+(\\.(\\d)+)*"));
-        assertEquals("value", STRING_VALUES[i], hoid.getValue());
+        assertEquals(STRING_VALUES[i], hoid.getValue());
         //System.out.println("root uid? " + hoid.root());
         //String str = hoid.root().getValue();
         
-        assertEquals("root", SECTIONS[i][0], hoid.root().getValue());
-        assertEquals("extension", SECTIONS[i][1], hoid.extension());
+        assertEquals(SECTIONS[i][0], hoid.root().getValue());
+        assertEquals(SECTIONS[i][1], hoid.extension());
     }
 
     private static final String[][] SECTIONS = {

@@ -22,8 +22,7 @@ package nl.rosa.semanticdatabase.base.indentificiation;
 
 import nl.rosa.semanticdatabase.base.identification.ArchetypeId;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -112,11 +111,7 @@ public class ArchetypeIdTest{
     	try {
     		aid = new ArchetypeId("openEHR-EHR-CLUSTER.exam-generic-joint.v1");
     		
-    		List<String> list = new ArrayList<String>();
-    		list.add("generic");
-    		list.add("joint");
-    		
-    		assertEquals("wrong specialisation", list, aid.specialisation());
+    		assertEquals("generic-joint", aid.specialisation());
     		
     	} catch(Exception e) {
     		e.printStackTrace();
@@ -133,7 +128,7 @@ public class ArchetypeIdTest{
     		
     		fail("expect to fail on Swedish concept name");
     		
-    	} catch(Exception e) {
+    	} catch(Exception ignored) {
     		
     	}
     }
@@ -160,40 +155,36 @@ public class ArchetypeIdTest{
 
     // assert content of archetype id
     private void assertArchetypeId(ArchetypeId aid, int i) {
-        assertEquals("value", STRING_VALUE[ i ], aid.getValue());
-        assertEquals("contextID", null, aid.contextID());
-        assertEquals("localID", STRING_VALUE[ i ], aid.localID());
+        assertEquals(STRING_VALUE[ i ], aid.getValue());
+        assertNull(aid.contextId());
+        assertEquals(STRING_VALUE[ i ], aid.localId());
 
-        assertEquals("rmOriginator", SECTIONS[ i ][ 0 ],
+        assertEquals(SECTIONS[ i ][ 0 ],
                 aid.rmOriginator());
-        assertEquals("rmName", SECTIONS[ i ][ 1 ], aid.rmName());
-        assertEquals("rmEntity", SECTIONS[ i ][ 2 ],
+        assertEquals(SECTIONS[ i ][ 1 ], aid.rmName());
+        assertEquals(SECTIONS[ i ][ 2 ],
                 aid.rmEntity());
-        assertEquals("conceptName", SECTIONS[ i ][ 3 ],
-                aid.conceptName());
-        
-        List<String> list = new ArrayList<String>();
-        if(SECTIONS[ i ][ 4 ] != null) {
-        	list.add(SECTIONS[ i ][ 4 ]);
-        }
-        assertEquals("specialisation", list, aid.specialisation());
-
-        assertEquals("qualifiedRmEntity", AXES[ i ][ 0 ],
-                aid.qualifiedRmEntity());
-        assertEquals("domainConcept", AXES[ i ][ 1 ],
+        assertEquals(SECTIONS[ i ][ 3 ],
                 aid.domainConcept());
-        assertEquals("versionID", AXES[ i ][ 2 ],
-                aid.versionID());
+        
+        assertEquals(SECTIONS[ i ][ 4 ], aid.specialisation());
+
+        assertEquals(AXES[ i ][ 0 ],
+                aid.qualifiedRmEntity());
+        assertEquals(AXES[ i ][ 1 ],
+                aid.domainConcept());
+        assertEquals(AXES[ i ][ 2 ],
+                aid.versionId());
     }
 
-    private static String[] STRING_VALUE = {
+    private static final String[] STRING_VALUE = {
         "openehr-ehr_rm-section.physical_examination.v2",
         "openehr-ehr_rm-section.physical_examination-prenatal.v1",
         "hl7-rim-act.progress_note.v1",
         "openehr-ehr_rm-ENTRY.progress_note-naturopathy.draft"
     };
 
-    private static String[][] SECTIONS = {
+    private static final String[][] SECTIONS = {
         {"openehr", "ehr_rm", "section", "physical_examination",
          null, "v2"},
         {"openehr", "ehr_rm", "section", "physical_examination",
@@ -202,7 +193,7 @@ public class ArchetypeIdTest{
         {"openehr", "ehr_rm", "ENTRY", "progress_note", "naturopathy", "draft"}
     };
 
-    private static String[][] AXES = {
+    private static final String[][] AXES = {
         {"openehr-ehr_rm-section", "physical_examination", "v2"},
         {"openehr-ehr_rm-section", "physical_examination-prenatal",
          "v1"},
@@ -210,13 +201,7 @@ public class ArchetypeIdTest{
         {"openehr-ehr_rm-ENTRY", "progress_note-naturopathy", "draft"}
     };
 
-    public String base() {
-        return new StringBuffer(toQualifiedRmEntity(rmOriginator,
-                rmName, rmEntity))
-                .append(AXIS_SEPARATOR)
-                .append(toDomainConcept(conceptName, specialisation))
-                .toString();
-    }
+
 
 }
 /*
