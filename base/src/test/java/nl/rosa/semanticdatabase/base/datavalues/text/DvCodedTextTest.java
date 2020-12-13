@@ -29,7 +29,7 @@ public class DvCodedTextTest {
         assertAll(
                 "testToString",
                 () -> assertEquals("DvCodedText{defining_code=null, value=null}", dvCodedTextOne.toString()),
-                () -> assertEquals("DvCodedText{defining_code=ObjectId {value='UNKNOWN'}::icd10:123, value=some text}", dvCodedTextTwo.toString())
+                () -> assertEquals("DvCodedText{defining_code=UNKNOWN::icd10:123, value=some text}", dvCodedTextTwo.toString())
         );
     }
 }

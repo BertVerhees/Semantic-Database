@@ -1,5 +1,7 @@
 package nl.rosa.semanticdatabase.base.identification;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,24 +17,25 @@ import java.util.regex.Pattern;
  */
 public class ArchetypeId extends ObjectId {
 
-    
-    private String namespace;
-    
-    private String qualifiedRmEntity;
-    
-    private String domainConcept;
-    
-    private String rmOriginator;
-    
-    private String rmName;
-    
-    private String rmEntity;
-    
-    private String specialisation;
-    
-    private String versionId;
+    /* static fields */
+    private static final String AXIS_SEPARATOR = ".";
+    private static final String SECTION_SEPARATOR = "-";
 
+    private static Pattern NAME_PATTERN =
+            Pattern.compile("[a-zA-Z][a-zA-Z0-9()_/%$#&]*");
+    private static Pattern VERSION_PATTERN =
+            Pattern.compile("[a-zA-Z0-9]+");
     private final static Pattern archetypeIDPattern = Pattern.compile("((?<namespace>.*)::)?(?<publisher>[^.-]*)-(?<package>[^.-]*)-(?<class>[^.-]*)\\.(?<concept>[^.]*)(-(?<specialisation>[^.]*))?(\\.v(?<version>.*))?");
+
+
+    private String namespace;
+    private String qualifiedRmEntity;
+    private String domainConcept;
+    private String rmOriginator;
+    private String rmName;
+    private String rmEntity;
+    private String specialisation;
+    private String versionId;
 
     /*=========================================================*/
     /* * FUNCTIONS * */
@@ -90,13 +93,7 @@ public class ArchetypeId extends ObjectId {
      * cardinality: 1..1
      */
     public String qualifiedRmEntity() {
-        String result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return qualifiedRmEntity;
     }
 
     /**
@@ -105,13 +102,7 @@ public class ArchetypeId extends ObjectId {
      * cardinality: 1..1
      */
     public String domainConcept() {
-        String result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return domainConcept;
     }
 
     /**
@@ -120,13 +111,7 @@ public class ArchetypeId extends ObjectId {
      * cardinality: 1..1
      */
     public String rmOriginator() {
-        String result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return rmOriginator;
     }
 
     /**
@@ -135,13 +120,7 @@ public class ArchetypeId extends ObjectId {
      * cardinality: 1..1
      */
     public String rmName() {
-        String result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return rmName;
     }
 
     /**
@@ -150,13 +129,7 @@ public class ArchetypeId extends ObjectId {
      * cardinality: 1..1
      */
     public String rmEntity() {
-        String result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+         return rmEntity;
     }
 
     /**
@@ -165,13 +138,7 @@ public class ArchetypeId extends ObjectId {
      * cardinality: 1..1
      */
     public String specialisation() {
-        String result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return specialisation;
     }
 
     /**
@@ -179,18 +146,9 @@ public class ArchetypeId extends ObjectId {
      * cardinality: 1..1
      */
     public String versionId() {
-        String result = null;
-
-
-        if (result == null) {
-            throw new NullPointerException("Return-value has cardinality NonNull, but is null.");
-        }
-        return result;
+        return versionId;
     }
 
-    public void buildQualifiedRmEntity() {
-        qualifiedRmEntity = rmOriginator + "-" + rmName + "-" + rmEntity;
-    }
 
     //***** ArchetypeId *****
 
@@ -206,48 +164,26 @@ public class ArchetypeId extends ObjectId {
      * @param value
      */
     public ArchetypeId(String value) {
-
         parseValue(value);
-
         setValue(value);
     }
 
-    /**
-     * Constructor for creating the archetype id based on all fields separate in json
-     *
-     * @param qualifiedRmEntity
-     * @param domainConcept
-     * @param rmOriginator
-     * @param rmName
-     * @param rmEntity
-     * @param specialisation
-     * @param versionId
-     */
+    public void buildQualifiedRmEntity() {
+        qualifiedRmEntity = rmOriginator + "-" + rmName + "-" + rmEntity;
+    }
 
-//    public ArchetypeID(@JsonProperty("qualified_rm_entity") String qualifiedRmEntity,
-//                       @JsonProperty("domain_concept") String domainConcept,
-//                       @JsonProperty("rm_originator") String rmOriginator,
-//                       @JsonProperty("rm_name") String rmName,
-//                       @JsonProperty("rm_entity") String rmEntity,
-//                       @JsonProperty("specialisation") String specialisation,
-//                       @JsonProperty("versionId") String versionId,
-//                       @JsonProperty("value") String value) {
-//        if (value != null) {
-//            parseValue(value);
-//            setValue(value);
-//        } else {
-//            this.qualifiedRmEntity = qualifiedRmEntity;
-//            this.domainConcept = domainConcept;
-//            this.rmOriginator = rmOriginator;
-//            this.rmName = rmName;
-//            this.rmEntity = rmEntity;
-//            this.specialisation = specialisation;
-//            this.versionId = versionId;
-//            setValue(getFullId());
-//        }
-//
-//    }
 
+
+    private static String toQualifiedRmEntity(String rmOriginator,
+                                              String rmName,
+                                              String rmEntity) {
+        return new StringBuffer(rmOriginator)
+                .append(SECTION_SEPARATOR)
+                .append(rmName)
+                .append(SECTION_SEPARATOR)
+                .append(rmEntity)
+                .toString();
+    }
 
     //***** ArchetypeId *****
 

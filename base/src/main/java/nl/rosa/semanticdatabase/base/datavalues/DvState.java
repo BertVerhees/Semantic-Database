@@ -12,6 +12,11 @@ public class DvState extends DataValue implements SingleValuedDataValue<DvCodedT
     private boolean isTerminal;
     private DvCodedText value;
 
+    public DvState(DvCodedText value, boolean isTerminal) {
+        this.isTerminal = isTerminal;
+        this.value = value;
+    }
+
     public boolean isTerminal() {
         return isTerminal;
     }

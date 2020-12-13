@@ -90,10 +90,7 @@ public abstract class ObjectId {
 
     @Override
     public String toString() {
-        return
-                "ObjectId {" +
-                        "value='" + value + '\'' +
-                        '}';
+        return value;
     }
 
 }

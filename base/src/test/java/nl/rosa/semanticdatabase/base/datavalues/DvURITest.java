@@ -12,7 +12,6 @@ public class DvURITest {
         DvURI dvURIThree = new DvURI("http://specifications.openehr.de/");
 
         assertAll(
-                "xd",
                 () -> assertEquals(dvURIOne, dvURITwo),
                 () -> assertNotEquals(dvURIOne, dvURIThree)
          );
