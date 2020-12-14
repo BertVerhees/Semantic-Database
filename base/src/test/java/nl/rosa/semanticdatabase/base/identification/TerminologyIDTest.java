@@ -18,7 +18,7 @@
  * @author Rong Chen
  * @version 1.0 
  */
-package nl.rosa.semanticdatabase.base.indentificiation;
+package nl.rosa.semanticdatabase.base.identification;
 
 import junit.framework.TestCase;
 

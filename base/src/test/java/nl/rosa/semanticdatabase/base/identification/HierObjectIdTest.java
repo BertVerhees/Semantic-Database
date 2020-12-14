@@ -18,9 +18,7 @@
  * @author Rong Chen
  * @version 1.0 
  */
-package nl.rosa.semanticdatabase.base.indentificiation;
-
-import nl.rosa.semanticdatabase.base.identification.HierObjectId;
+package nl.rosa.semanticdatabase.base.identification;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

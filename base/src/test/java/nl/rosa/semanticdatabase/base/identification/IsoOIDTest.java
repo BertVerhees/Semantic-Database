@@ -1,6 +1,6 @@
 /*
  * component:   "openEHR Reference Implementation"
- * description: "Class TestTerminologyID"
+ * description: "Class ISO_OIDTest"
  * keywords:    "unit test"
  *
  * author:      "Rong Chen <rong@acode.se>"
@@ -8,37 +8,36 @@
  * copyright:   "Copyright (c) 2004 Acode HB, Sweden"
  * license:     "See notice at bottom of class"
  *
- * file:        "$URL: http://svn.openehr.org/ref_impl_java/BRANCHES/RM-1.0-update/libraries/src/test/org/openehr/rm/support/identification/TestTerminologyID.java $"
+ * file:        "$URL: http://svn.openehr.org/ref_impl_java/BRANCHES/RM-1.0-update/libraries/src/test/org/openehr/rm/support/identification/ISO_OIDTest.java $"
  * revision:    "$LastChangedRevision: 2 $"
  * last_change: "$LastChangedDate: 2005-10-12 23:20:08 +0200 (Wed, 12 Oct 2005) $"
  */
-package nl.rosa.semanticdatabase.base.indentificiation;
-
-import nl.rosa.semanticdatabase.base.identification.TerminologyId;
-
 /**
- * TestTerminologyID
- * 
+ * ISO_OIDTest
+ *
  * @author Rong Chen
- * @version 1.0
+ * @version 1.0 
  */
-public class TestTerminologyID {
+package nl.rosa.semanticdatabase.base.identification;
 
-    /* fields */
-    public static final TerminologyId LANGUAGE;
-    public static final TerminologyId CHARSET;
-    public static final TerminologyId SNOMEDCT;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+public class IsoOIDTest {
 
-    static {
-        LANGUAGE = new TerminologyId("language-test");
+    public void testEquals() throws Exception {
+        String value = "1.2.840.113554.1.2.2";
+        IsoOID oid1 = new IsoOID(value);
+        IsoOID oid2 = new IsoOID(value);
+        assertAll(
+                () -> assertTrue(oid1.equals(oid2)),
+                () -> assertTrue(oid2.equals(oid1)),
 
-        CHARSET = new TerminologyId("charset-test");
-
-        SNOMEDCT = new TerminologyId("snomedct-test");
+                () -> assertTrue(oid1.equals(oid1)),
+                () -> assertTrue(oid2.equals(oid2))
+        );
     }
 }
-
 /*
  *  ***** BEGIN LICENSE BLOCK *****
  *  Version: MPL 1.1/GPL 2.0/LGPL 2.1
@@ -53,7 +52,7 @@ public class TestTerminologyID {
  *  for the specific language governing rights and limitations under the
  *  License.
  *
- *  The Original Code is TestTerminologyID.java
+ *  The Original Code is ISO_OIDTest.java
  *
  *  The Initial Developer of the Original Code is Rong Chen.
  *  Portions created by the Initial Developer are Copyright (C) 2003-2004

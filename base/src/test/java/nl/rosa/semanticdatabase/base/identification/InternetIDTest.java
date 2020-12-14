@@ -19,48 +19,34 @@
  * @author Yin Su Lim
  * @version 1.0 
  */
-package nl.rosa.semanticdatabase.base.indentificiation;
+package nl.rosa.semanticdatabase.base.identification;
 
-import junit.framework.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class InternetIDTest extends TestCase {
+public class InternetIDTest {
     
-    public InternetIDTest(String testName) {
-        super(testName);
-    }
 
-    protected void setUp() throws Exception {
-    }
-
-    protected void tearDown() throws Exception {
-    }
-
-    public static Test suite() {
-        TestSuite suite = new TestSuite(InternetIDTest.class);
-        
-        return suite;
-    }
-    
     public void testConstructorTakeString() throws Exception {
-        assertNotNull(new InternetID("www.google.com"));
-        assertNotNull(new InternetID("m-2.d2"));
-        assertNotNull(new InternetID("a123.com.nz"));
-        assertNotNull(new InternetID("openehr.org"));
-        assertNotNull(new InternetID("openehr1-1.org"));
-        assertNotNull(new InternetID("openehr1-1.com-2"));
-        assertNull(toInternetID("128.17.13.1"));
-        assertNull(toInternetID("123.com"));
-        assertNull(toInternetID("open_ehr.org"));
-        assertNull(toInternetID("openehr1-.org"));
-        assertNull(toInternetID("openehr1-1.0"));
-        assertNull(toInternetID("openehr1-1.com."));
-        
+        assertAll(
+                () -> assertNotNull(new InternetId("www.google.com")),
+                () -> assertNotNull(new InternetId("m-2.d2")),
+                () -> assertNotNull(new InternetId("a123.com.nz")),
+                () -> assertNotNull(new InternetId("openehr.org")),
+                () -> assertNotNull(new InternetId("openehr1-1.org")),
+                () -> assertNotNull(new InternetId("openehr1-1.com-2")),
+                () -> assertNull(toInternetID("128.17.13.1")),
+                () -> assertNull(toInternetID("123.com")),
+                () -> assertNull(toInternetID("open_ehr.org")),
+                () -> assertNull(toInternetID("openehr1-.org")),
+                () -> assertNull(toInternetID("openehr1-1.0")),
+                () -> assertNull(toInternetID("openehr1-1.com."))
+        );
     }
     
-    private InternetID toInternetID(String value) {
-        InternetID id = null;
+    private InternetId toInternetID(String value) {
+        InternetId id = null;
         try {
-            id = new InternetID(value);
+            id = new InternetId(value);
             fail("should have failed this test");
         } catch (IllegalArgumentException iae) {
             

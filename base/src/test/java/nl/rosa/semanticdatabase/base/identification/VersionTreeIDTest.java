@@ -19,10 +19,9 @@
  * @author Yin Su Lim
  * @version 1.0 
  */
-package nl.rosa.semanticdatabase.base.indentificiation;
+package nl.rosa.semanticdatabase.base.identification;
 
 import junit.framework.*;
-import nl.rosa.semanticdatabase.base.identification.VersionTreeId;
 
 
 public class VersionTreeIDTest extends TestCase {

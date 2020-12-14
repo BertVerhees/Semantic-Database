@@ -1,6 +1,6 @@
 /*
  * component:   "openEHR Reference Implementation"
- * description: "Class ISO_OIDTest"
+ * description: "Class TestTerminologyID"
  * keywords:    "unit test"
  *
  * author:      "Rong Chen <rong@acode.se>"
@@ -8,50 +8,35 @@
  * copyright:   "Copyright (c) 2004 Acode HB, Sweden"
  * license:     "See notice at bottom of class"
  *
- * file:        "$URL: http://svn.openehr.org/ref_impl_java/BRANCHES/RM-1.0-update/libraries/src/test/org/openehr/rm/support/identification/ISO_OIDTest.java $"
+ * file:        "$URL: http://svn.openehr.org/ref_impl_java/BRANCHES/RM-1.0-update/libraries/src/test/org/openehr/rm/support/identification/TestTerminologyID.java $"
  * revision:    "$LastChangedRevision: 2 $"
  * last_change: "$LastChangedDate: 2005-10-12 23:20:08 +0200 (Wed, 12 Oct 2005) $"
  */
+package nl.rosa.semanticdatabase.base.identification;
+
 /**
- * ISO_OIDTest
- *
+ * TestTerminologyID
+ * 
  * @author Rong Chen
- * @version 1.0 
+ * @version 1.0
  */
-package nl.rosa.semanticdatabase.base.indentificiation;
+public class TestTerminologyID {
 
-import junit.framework.TestCase;
+    /* fields */
+    public static final TerminologyId LANGUAGE;
+    public static final TerminologyId CHARSET;
+    public static final TerminologyId SNOMEDCT;
 
-public class ISO_OIDTest extends TestCase {
 
-    public ISO_OIDTest(String test) {
-        super(test);
-    }
+    static {
+        LANGUAGE = new TerminologyId("language-test");
 
-    /**
-     * The fixture set up called before every test method.
-     */
-    protected void setUp() throws Exception {
-    }
+        CHARSET = new TerminologyId("charset-test");
 
-    /**
-     * The fixture clean up called after every test method.
-     */
-    protected void tearDown() throws Exception {
-    }
-
-    public void testEquals() throws Exception {
-        String value = "1.2.840.113554.1.2.2";
-        ISO_OID oid1 = new ISO_OID(value);
-        ISO_OID oid2 = new ISO_OID(value);
-
-        assertTrue(oid1.equals(oid2));
-        assertTrue(oid2.equals(oid1));
-
-        assertTrue(oid1.equals(oid1));
-        assertTrue(oid2.equals(oid2));
+        SNOMEDCT = new TerminologyId("snomedct-test");
     }
 }
+
 /*
  *  ***** BEGIN LICENSE BLOCK *****
  *  Version: MPL 1.1/GPL 2.0/LGPL 2.1
@@ -66,7 +51,7 @@ public class ISO_OIDTest extends TestCase {
  *  for the specific language governing rights and limitations under the
  *  License.
  *
- *  The Original Code is ISO_OIDTest.java
+ *  The Original Code is TestTerminologyID.java
  *
  *  The Initial Developer of the Original Code is Rong Chen.
  *  Portions created by the Initial Developer are Copyright (C) 2003-2004

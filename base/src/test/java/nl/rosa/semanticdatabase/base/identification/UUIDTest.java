@@ -5,7 +5,7 @@
  * Created on July 10, 2006, 4:27 PM
  */
 
-package nl.rosa.semanticdatabase.base.indentificiation;
+package nl.rosa.semanticdatabase.base.identification;
 
 import junit.framework.*;
 

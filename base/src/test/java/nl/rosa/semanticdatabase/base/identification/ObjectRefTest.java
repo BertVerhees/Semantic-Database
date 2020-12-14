@@ -19,27 +19,11 @@
  * @author Rong Chen
  * @version 1.0
  */
-package nl.rosa.semanticdatabase.base.indentificiation;
+package nl.rosa.semanticdatabase.base.identification;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class ObjectRefTest extends TestCase {
-
-	public ObjectRefTest(String test) {
-		super(test);
-	}
-
-	/**
-	 * The fixture set up called before every test method.
-	 */
-	protected void setUp() throws Exception {
-	}
-
-	/**
-	 * The fixture clean up called after every test method.
-	 */
-	protected void tearDown() throws Exception {
-	}
+public class ObjectRefTest {
 
 	public void testConstructor() throws Exception {
 		assertExceptionThrown(null, "LOCAL", "EHR", "id");
@@ -52,8 +36,8 @@ public class ObjectRefTest extends TestCase {
 		new ObjectRef(hid("openehr.org::23"), "LOCAL", "EHR");
 	}
 
-	private ObjectID hid(String value) {
-		return new HierObjectID(value);
+	private ObjectId hid(String value) {
+		return new HierObjectId(value);
 	}
 
 	public void testEquals() throws Exception {
@@ -75,7 +59,7 @@ public class ObjectRefTest extends TestCase {
 		assertFalse(or3.equals(or1));
 	}
 
-	private void assertExceptionThrown(ObjectID id, String namespace,
+	private void assertExceptionThrown(ObjectId id, String namespace,
 			String type, String cause) {
 		try {
 			new ObjectRef(id, namespace, type);
