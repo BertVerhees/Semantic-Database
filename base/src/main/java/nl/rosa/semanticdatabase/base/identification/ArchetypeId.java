@@ -1,211 +1,195 @@
+/*
+ * component:   "openEHR Reference Implementation"
+ * description: "Class ArchetypeID"
+ * keywords:    "common"
+ *
+ * author:      "Rong Chen <rong@acode.se>"
+ * support:     "Acode HB <support@acode.se>"
+ * copyright:   "Copyright (c) 2004 Acode HB, Sweden"
+ * license:     "See notice at bottom of class"
+ *
+ * file:        "$URL$"
+ * revision:    "$LastChangedRevision$"
+ * last_change: "$LastChangedDate$"
+ */
 package nl.rosa.semanticdatabase.base.identification;
 
-import java.util.Objects;
-import java.util.regex.Matcher;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringTokenizer;
 import java.util.regex.Pattern;
 
 /**
- * #Generated: 2020-11-26T17:29:11.503+01:00
- * #Copyright: Bert Verhees
- * #License: See bottom of file
- * <p>
- * Identifier for archetypes.
- * Ideally these would identify globally unique archetypes.
- * Lexical form: rm_originator '-' rm_name '-' rm_entity '.' concept_name { '-' specialisation }* '.v' number.
+ * Identifier for archetypes, instances of this class are immutable.
+ *
+ * @author Rong Chen
+ * @version 1.0
  */
-public class ArchetypeId extends ObjectId {
-
-    /* static fields */
-    private static final String AXIS_SEPARATOR = ".";
-    private static final String SECTION_SEPARATOR = "-";
-
-    private static Pattern NAME_PATTERN =
-            Pattern.compile("[a-zA-Z][a-zA-Z0-9()_/%$#&]*");
-    private static Pattern VERSION_PATTERN =
-            Pattern.compile("[a-zA-Z0-9]+");
-    private final static Pattern archetypeIDPattern = Pattern.compile("((?<namespace>.*)::)?(?<publisher>[^.-]*)-(?<package>[^.-]*)-(?<class>[^.-]*)\\.(?<concept>[^.]*)(-(?<specialisation>[^.]*))?(\\.v(?<version>.*))?");
-
-
-    private String namespace;
-    private String qualifiedRmEntity;
-    private String domainConcept;
-    private String rmOriginator;
-    private String rmName;
-    private String rmEntity;
-    private String specialisation;
-    private String versionId;
-
-    /*=========================================================*/
-    /* * FUNCTIONS * */
-    /*=========================================================*/
-    private void parseValue(String value) {
-        Matcher m = archetypeIDPattern.matcher(value);
-
-        if (!m.matches()) {
-            throw new IllegalArgumentException(value + " is not a valid archetype human readable id");
-        }
-        namespace = m.group("namespace");
-        rmOriginator = m.group("publisher");
-        rmName = m.group("package");
-        rmEntity = m.group("class");
-        buildQualifiedRmEntity();
-
-        specialisation = m.group("specialisation");
-
-        domainConcept = m.group("concept");
-        versionId = m.group("version");
-    }
-
-
-    public String getFullId() {
-        StringBuilder result = new StringBuilder(30);
-        if(namespace != null) {
-            result.append(namespace);
-            result.append("::");
-        }
-        result.append(rmOriginator);
-        result.append("-");
-        result.append(rmName);
-        result.append("-");
-        result.append(rmEntity);
-        result.append(".");
-        result.append(domainConcept);
-        if(specialisation != null) {
-            result.append("-");
-            result.append(specialisation);
-        }
-        if (versionId == null) {
-            return result.toString();
-        } else if (versionId.startsWith("v")) {
-            result.append(".");
-        } else {
-            result.append(".v");
-        }
-        result.append(versionId);
-        return result.toString();
-    }
+public final class ArchetypeId extends ObjectId {
 
     /**
-     * Return localID
+     * Constructs an ArchetypeID by a string value
      *
-     * @return localID
+     * @param value
+     * @throws IllegalArgumentException if value wrong format
      */
-    public String localId() {
-        return getValue();
+    public ArchetypeId(String value) {
+        super(value);
+        loadValue(value);
     }
 
-    /**
-     * Globally qualified reference model entity, e.g.
-     * openehr-EHR-OBSERVATION.
-     * cardinality: 1..1
-     */
-    public String qualifiedRmEntity() {
-        return qualifiedRmEntity;
+    private void loadValue(String value) {
+        StringTokenizer tokens = new StringTokenizer(value,
+                AXIS_SEPARATOR);
+        if (tokens.countTokens() != 3) {
+            throw new IllegalArgumentException("bad format, wrong number of \"" +
+                    AXIS_SEPARATOR
+                    + "\", " + value);
+        }
+        qualifiedRmEntity = tokens.nextToken();
+        domainConcept = tokens.nextToken();
+        versionID = tokens.nextToken();
+
+        tokens = new StringTokenizer(qualifiedRmEntity,
+                SECTION_SEPARATOR);
+        if (tokens.countTokens() != 3) {
+            throw new IllegalArgumentException("bad format, wrong number of \"" +
+                    SECTION_SEPARATOR
+                    + "\" , " + value);
+        }
+        rmOriginator = tokens.nextToken();
+        rmName = tokens.nextToken();
+        rmEntity = tokens.nextToken();
+
+        tokens = new StringTokenizer(domainConcept, SECTION_SEPARATOR);
+        if (tokens.countTokens() < 1) {
+            throw new IllegalArgumentException(
+                    "bad format, too few sections for domainConcept, " + value);
+        }
+        conceptName = tokens.nextToken();
+        specialisation = new ArrayList<String>();
+        while(tokens.hasMoreTokens()) {
+            specialisation.add(tokens.nextToken());
+        }
+        validateAll();
     }
 
-    /**
-     * Name of the concept represented by this archetype, including specialisation, e.g.
-     * Biochemistry_result-cholesterol.
-     * cardinality: 1..1
-     */
-    public String domainConcept() {
-        return domainConcept;
-    }
 
-    /**
-     * Organisation originating the reference model on which this archetype is based, e.g.
-     * openehr, cen, hl7 .
-     * cardinality: 1..1
-     */
-    public String rmOriginator() {
-        return rmOriginator;
-    }
-
-    /**
-     * Name of the reference model, e.g.
-     * rim, ehr_rm, en13606 .
-     * cardinality: 1..1
-     */
-    public String rmName() {
-        return rmName;
-    }
-
-    /**
-     * Name of the ontological level within the reference model to which this archetype is targeted, e.g.
-     * for openEHR, folder , composition , section , entry .
-     * cardinality: 1..1
-     */
-    public String rmEntity() {
-         return rmEntity;
-    }
-
-    /**
-     * The contextID
-     *
-     * @return always null
-     */
-    public Uid contextId() {
-        return null;
-    }
-
-    /**
-     * Name of specialisation of concept, if this archetype is a specialisation of another archetype, e.g.
-     * cholesterol .
-     * cardinality: 1..1
-     */
-    public String specialisation() {
-        return specialisation;
-    }
-
-    /**
-     * Version of this archetype.
-     * cardinality: 1..1
-     */
-    public String versionId() {
-        return versionId;
-    }
-
-    public String base() {
-        return new StringBuffer(toQualifiedRmEntity(rmOriginator,
-                rmName, rmEntity))
-                .append(AXIS_SEPARATOR)
-                .append(domainConcept)
-                .toString();
-    }
-
-    /**
-     * Return true if both archetypeId has the same value, and versionID is
-     * not included in comparison
-     *
-     * @return true if equals
-     */
-    public boolean equalsIgnoreVersionID(ArchetypeId id) {
-        return qualifiedRmEntity.equals(id.qualifiedRmEntity)
-                && domainConcept.equals(id.domainConcept);
-    }
-    //***** ArchetypeId *****
-
-    /*=========================================================*/
-    /* * BUILD PATTERN AND CONSTRUCTOR * */
-    /*=========================================================*/
+    // POJO start
     public ArchetypeId() {
     }
 
+    public  void setValue(String value) {
+        loadValue(value);
+        super.setValue(value);
+    }
+    // POJO end
+
     /**
-     * Parse the Archetype id from a string
+     * Create an ArchetypeID by axis and section values
      *
-     * @param value
+     * @param rmOriginator
+     * @param rmName
+     * @param rmEntity
+     * @param conceptName
+     * @param specialisation
+     * @param versionID
+     * @throws IllegalArgumentException if any axis or section value
+     *                                  has wrong format
      */
-    public ArchetypeId(String value) {
-        parseValue(value);
-        setValue(value);
+    public ArchetypeId(String rmOriginator, String rmName,
+                       String rmEntity, String conceptName,
+                       String specialisation, String versionID) {
+        super(toValue(rmOriginator, rmName, rmEntity, conceptName,
+                specialisation, versionID));
+        this.qualifiedRmEntity = toQualifiedRmEntity(rmOriginator,
+                rmName, rmEntity);
+        this.domainConcept = toDomainConcept(conceptName,
+                specialisation);
+        this.rmOriginator = rmOriginator;
+        this.rmName = rmName;
+        this.rmEntity = rmEntity;
+        this.conceptName = conceptName;
+        this.specialisation = new ArrayList<String>();
+        if(specialisation != null) {
+            this.specialisation.add(specialisation);
+        }
+        this.versionID = versionID;
+        validateAll();
     }
 
-    public void buildQualifiedRmEntity() {
-        qualifiedRmEntity = rmOriginator + "-" + rmName + "-" + rmEntity;
+    /**
+     * Create an ArchetypeID by axis and section values
+     *
+     * @param rmOriginator
+     * @param rmName
+     * @param rmEntity
+     * @param conceptName
+     * @param specialisation
+     * @param versionID
+     * @throws IllegalArgumentException if any axis or section value
+     *                                  has wrong format
+     */
+    public ArchetypeId(String rmOriginator, String rmName,
+                       String rmEntity, String conceptName,
+                       List<String> specialisation, String versionID) {
+        super(toValue(rmOriginator, rmName, rmEntity, conceptName,
+                specialisation, versionID));
+        this.qualifiedRmEntity = toQualifiedRmEntity(rmOriginator,
+                rmName, rmEntity);
+        this.domainConcept = toDomainConcept(conceptName,
+                specialisation);
+        this.rmOriginator = rmOriginator;
+        this.rmName = rmName;
+        this.rmEntity = rmEntity;
+        this.conceptName = conceptName;
+        this.specialisation = specialisation == null
+                ? Collections.EMPTY_LIST
+                : Collections.unmodifiableList(specialisation);
+        this.versionID = versionID;
+        validateAll();
     }
 
+    // validate all axis and section values
+    private void validateAll() {
+        validateName(rmOriginator, "rm_originator");
+        validateName(rmName, "rm_name");
+        validateName(rmEntity, "rm_entity");
+        validateName(conceptName, "concept_name");
 
+        if (specialisation != null) {
+            for(String name : specialisation) {
+                validateName(name, "specialisation");
+            }
+        }
+        validateVersionID(versionID);
+    }
+
+    // create value out of axis and section values
+    private static String toValue(String rmOriginator,
+                                  String rmName,
+                                  String rmEntity,
+                                  String conceptName,
+                                  String specialisation,
+                                  String versionID) {
+        return new StringBuffer(toQualifiedRmEntity(rmOriginator,
+                rmName, rmEntity))
+                .append(AXIS_SEPARATOR)
+                .append(toDomainConcept(conceptName, specialisation))
+                .append(AXIS_SEPARATOR)
+                .append(versionID)
+                .toString();
+    }
+
+    private static String toValue(String rmOriginator, String rmName,
+                                  String rmEntity, String conceptName, List<String> specialisation,
+                                  String versionID) {
+        return new StringBuffer(toQualifiedRmEntity(rmOriginator, rmName,
+                rmEntity)).append(AXIS_SEPARATOR).append(
+                toDomainConcept(conceptName, specialisation)).append(
+                AXIS_SEPARATOR).append(versionID).toString();
+    }
 
     private static String toQualifiedRmEntity(String rmOriginator,
                                               String rmName,
@@ -218,54 +202,209 @@ public class ArchetypeId extends ObjectId {
                 .toString();
     }
 
-    //***** ArchetypeId *****
+    private static String toDomainConcept(String conceptName,
+                                          List<String> specialisation) {
+        //return conceptName + ( specialisation == null
+        //        ? "" : SECTION_SEPARATOR + specialisation );
 
-    /*=========================================================*/
-    /* * TOSTRING, EQUALS AND HASHCODE * */
-    /*=========================================================*/
-
-
-    public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
-        return true;
+        StringBuffer buf = new StringBuffer(conceptName);
+        if(specialisation != null && !specialisation.isEmpty()) {
+            for(int i = 0, j = specialisation.size(); i < j; i++) {
+                buf.append(SECTION_SEPARATOR);
+                buf.append(specialisation.get(i));
+            }
+        }
+        return buf.toString();
     }
 
-    public int hashCode() {
-        return Objects.hash(
-                super.hashCode()
-        );
+    private static String toDomainConcept(String conceptName,
+                                          String specialisation) {
+        return conceptName + ( specialisation == null
+                ? "" : SECTION_SEPARATOR + specialisation );
     }
 
-    @Override
-    public String toString() {
-        return
-                "ArchetypeId {" +
-                        '}';
+
+
+    private static void validateName(String value, String label) {
+        if (!NAME_PATTERN.matcher(value).matches()) {
+            throw new IllegalArgumentException("wrong format of "
+                    + label + ": " + value);
+        }
     }
 
+    private static void validateVersionID(String version) {
+        if (!VERSION_PATTERN.matcher(version).matches()) {
+            throw new IllegalArgumentException(
+                    "wrong format of versionID, " + version);
+        }
+    }
+
+    /**
+     * Globally qualified reference model entity,
+     * eg "openehr-ehr_rm-entry"
+     *
+     * @return qualifiedRmEntity
+     */
+    public String qualifiedRmEntity() {
+        return qualifiedRmEntity;
+    }
+
+    /**
+     * Name of the concept represented by this archetype, including
+     * specialisation, eg "biochemistry result-cholesterol"
+     *
+     * @return domainConcept
+     */
+    public String domainConcept() {
+        return domainConcept;
+    }
+
+    /**
+     * Name of the concept represented by this archetype
+     * without specialisation
+     *
+     * @return conceptName
+     */
+    public String conceptName() {
+        return conceptName;
+    }
+
+    /**
+     * Organisation originating the reference model on which this
+     * archetype is based, eg "openehr", "cen", "hl7"
+     *
+     * @return rmOriginator
+     */
+    public String rmOriginator() {
+        return rmOriginator;
+    }
+
+    /**
+     * Name of the reference model, eg "rim", "ehr_rm", "en13606"
+     *
+     * @return rmName
+     */
+    public String rmName() {
+        return rmName;
+    }
+
+    /**
+     * Name of the ontological level within the reference model to
+     * which this archetype is targeted, eg for openEHR, "folder",
+     * "composition", "section", "entry"
+     *
+     * @return rmEntity
+     */
+    public String rmEntity() {
+        return rmEntity;
+    }
+
+    /**
+     * Name of specialisation of concept, if this archetype is a
+     * specialisation of another archetype, eg "cholesterol"
+     *
+     * @return specialisation list or empty if no specialisation
+     */
+    public List<String> specialisation() {
+        return specialisation;
+    }
+
+    /**
+     * Return localID
+     *
+     * @return localID
+     */
+    public String localID() {
+        return getValue();
+    }
+
+    /**
+     * Return versionID
+     *
+     * @return versionID
+     */
+    public String versionID() {
+        return versionID;
+    }
+
+    /**
+     * The contextID
+     *
+     * @return always null
+     */
+    public Uid contextID() {
+        return null;
+    }
+
+    /**
+     * Return true if both archetypeId has the same value, and versionID is
+     * not included in comparison
+     *
+     * @return true if equals
+     */
+    public boolean equalsIgnoreVersionID(ArchetypeId id) {
+        return qualifiedRmEntity.equals(id.qualifiedRmEntity) && domainConcept.equals(id.domainConcept);
+    }
+
+    /**
+     * A base of the archetypeId is the value of it without versionId
+     *
+     * @return base part of the archetypeId
+     */
+    public String base() {
+        return new StringBuffer(toQualifiedRmEntity(rmOriginator,
+                rmName, rmEntity))
+                .append(AXIS_SEPARATOR)
+                .append(toDomainConcept(conceptName, specialisation))
+                .toString();
+    }
+
+    /* static fields */
+    private static final String AXIS_SEPARATOR = ".";
+    private static final String SECTION_SEPARATOR = "-";
+
+    private static Pattern NAME_PATTERN =
+            Pattern.compile("[a-zA-Z][a-zA-Z0-9()_/%$#&]*");
+    private static Pattern VERSION_PATTERN =
+            Pattern.compile("[a-zA-Z0-9]+");
+
+    /* fields */
+    private String qualifiedRmEntity;   // calculated
+    private String rmOriginator;
+    private String rmName;
+    private String rmEntity;
+    private String domainConcept;       // calculated
+    private String conceptName;
+    private List<String> specialisation;
+    private String versionID;
 }
 
-/**
- * ***** BEGIN LICENSE BLOCK *****
- * <p>
- * ISC License
- * <p>
- * Copyright (c) 2020, Bert Verhees
- * <p>
- * Permission to use, copy, modify, and/or distribute this software for any
- * purpose with or without fee is hereby granted, provided that the above
- * copyright notice and this permission notice appear in all copies.
- * <p>
- * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
- * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
- * MERCHANTABILITY AND FITNESS.
- * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
- * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
- * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
- * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
- * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
- * <p>
- * ***** END LICENSE BLOCK *****
+/*
+ *  ***** BEGIN LICENSE BLOCK *****
+ *  Version: MPL 1.1/GPL 2.0/LGPL 2.1
+ *
+ *  The contents of this file are subject to the Mozilla Public License Version
+ *  1.1 (the 'License'); you may not use this file except in compliance with
+ *  the License. You may obtain a copy of the License at
+ *  http://www.mozilla.org/MPL/
+ *
+ *  Software distributed under the License is distributed on an 'AS IS' basis,
+ *  WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ *  for the specific language governing rights and limitations under the
+ *  License.
+ *
+ *  The Original Code is ArchetypeID.java
+ *
+ *  The Initial Developer of the Original Code is Rong Chen.
+ *  Portions created by the Initial Developer are Copyright (C) 2003-2008
+ *  the Initial Developer. All Rights Reserved.
+ *
+ *  Contributor(s):
+ *
+ * Software distributed under the License is distributed on an 'AS IS' basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+ * for the specific language governing rights and limitations under the
+ * License.
+ *
+ *  ***** END LICENSE BLOCK *****
  */

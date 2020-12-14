@@ -20,49 +20,34 @@
  */
 package nl.rosa.semanticdatabase.base.identification;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class TerminologyIDTest extends TestCase {
-
-    public TerminologyIDTest(String test) {
-        super(test);
-    }
-
-    /**
-     * The fixture set up called before every test method.
-     */
-    protected void setUp() throws Exception {
-    }
-
-    /**
-     * The fixture clean up called after every test method.
-     */
-    protected void tearDown() throws Exception {
-    }
+public class TerminologyIDTest {
 
     public void testConstrcutorTakesStringValue() throws Exception {
         for(int i = 0; i < STRING_VALUE.length; i++) {
-            assertTID(new TerminologyID(STRING_VALUE[i]), i);
+            assertTID(new TerminologyId(STRING_VALUE[i]), i);
         }
     }
 
     public void testConstrcutorTakesNameVersion() throws Exception {
         for(int i = 0; i < STRING_VALUE.length; i++) {
-            assertTID(new TerminologyID(SECTIONS[i][0], SECTIONS[i][1]), i);
+            assertTID(new TerminologyId(SECTIONS[i][0], SECTIONS[i][1]), i);
         }
     }
     
     public void testEquals() {
-    	TerminologyID id1 = new TerminologyID("ICD9", "1999");
-    	TerminologyID id2 = new TerminologyID("ICD9", "1999");
-    	assertTrue("equals expected", id1.equals(id2));
-    	assertTrue("equals expected", id2.equals(id1));
+    	TerminologyId id1 = new TerminologyId("ICD9", "1999");
+    	TerminologyId id2 = new TerminologyId("ICD9", "1999");
+    	assertTrue(id1.equals(id2));
+    	assertTrue(id2.equals(id1));
     }
 
-    private void assertTID(TerminologyID tid, int i) {
-        assertEquals("value", STRING_VALUE[i], tid.getValue());
-        assertEquals("name", SECTIONS[i][0], tid.name());
-        assertEquals("version", SECTIONS[i][1], tid.versionID());
+    private void assertTID(TerminologyId tid, int i) {
+        assertEquals(STRING_VALUE[i], tid.getValue());
+        assertEquals(SECTIONS[i][0], tid.name());
+        assertEquals(SECTIONS[i][1], tid.versionID());
     }
 
     private static final String[] STRING_VALUE = {

@@ -21,28 +21,10 @@
  */
 package nl.rosa.semanticdatabase.base.identification;
 
-import junit.framework.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-
-public class VersionTreeIDTest extends TestCase {
+public class VersionTreeIDTest {
     
-    public VersionTreeIDTest(String testName) {
-        super(testName);
-    }
-
-    protected void setUp() throws Exception {
-    }
-
-    protected void tearDown() throws Exception {
-    }
-
-    public static Test suite() {
-        TestSuite suite = new TestSuite(VersionTreeIDTest.class);
-        
-        return suite;
-    }
-
-
     public void testConstructors() throws Exception {
         String[] values = {
             "1.1.2", "2", "1.3.24", "10", "3.0.0"
@@ -64,10 +46,10 @@ public class VersionTreeIDTest extends TestCase {
             assertEquals(v1, v2);
             String bN = intS[i][1] == 0 ? null: Integer.toString(intS[i][1]);
             String bV = intS[i][2] == 0 ? null: Integer.toString(intS[i][2]);
-            assertEquals("trunk", Integer.toString(intS[i][0]), v2.trunkVersion());
-            assertEquals("branchNo", bN, v2.branchNumber());
-            assertEquals("branchVersion", bV, v2.branchVersion());
-            assertEquals("isBranch", isB[i], v2.isBranch());
+            assertEquals( Integer.toString(intS[i][0]), v2.trunkVersion());
+            assertEquals( bN, v2.branchNumber());
+            assertEquals( bV, v2.branchVersion());
+            assertEquals( isB[i], v2.isBranch());
         }
         
     }

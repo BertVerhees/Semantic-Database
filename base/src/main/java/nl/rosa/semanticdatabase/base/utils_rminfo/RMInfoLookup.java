@@ -284,7 +284,7 @@ public class RMInfoLookup extends BMMModelInfoLookup {
         if (rmObject instanceof Locatable) {
             Locatable locatable = (Locatable) rmObject;
             if (locatable.getArchetypeDetails() != null) {
-                return locatable.getArchetypeDetails().getArchetypeId().getFullId();
+                return locatable.getArchetypeDetails().getArchetypeId().getValue();
             }
         }
         return null;

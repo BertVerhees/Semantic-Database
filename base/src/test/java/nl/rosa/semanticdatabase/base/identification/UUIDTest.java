@@ -7,31 +7,16 @@
 
 package nl.rosa.semanticdatabase.base.identification;
 
-import junit.framework.*;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  *
  * @author yinsulim
  */
-public class UUIDTest extends TestCase {
-    
-    public UUIDTest(String testName) {
-        super(testName);
-    }
-
-    protected void setUp() throws Exception {
-    }
-
-    protected void tearDown() throws Exception {
-    }
-
-    public static Test suite() {
-        TestSuite suite = new TestSuite(UUIDTest.class);
-        
-        return suite;
-    }
+public class UUIDTest {
     
     public void testConstructorTakeString() {
-        assertNotNull(new UUID("128-1-1-12-15"));
+        assertNotNull(new UUid("128-1-1-12-15"));
     }
 }
