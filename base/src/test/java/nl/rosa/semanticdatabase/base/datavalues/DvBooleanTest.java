@@ -20,12 +20,12 @@
  */
 package nl.rosa.semanticdatabase.base.datavalues;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DvBooleanTest{
 
-
+    @Test
     public void testValueOf() throws Exception {
         DvBoolean b = DvBoolean.valueOf("false");
         assertEquals(DvBoolean.FALSE, b);

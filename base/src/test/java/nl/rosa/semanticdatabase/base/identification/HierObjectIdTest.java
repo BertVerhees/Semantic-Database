@@ -20,10 +20,13 @@
  */
 package nl.rosa.semanticdatabase.base.identification;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class HierObjectIdTest {
 
+    @Test
     public void testConstructorTakesStringValue() throws Exception {
 
         for (int i = 0; i < STRING_VALUES.length; i++) {
@@ -31,18 +34,19 @@ public class HierObjectIdTest {
         }
     }
 
+    @Test
     public void testConstructorTakesSections() throws Exception {
 
-        for (int i = 0; i < STRING_VALUES.length; i++) {
+        for (int i = 0; i < SECTIONS.length; i++) {
             assertHOID(new HierObjectId(SECTIONS[i][0],SECTIONS[i][1]), i);
         }
     }
 
     private void assertHOID(HierObjectId hoid, int i) throws Exception {
-        //System.out.println("matches? " + SECTIONS[i][0].matches("(\\d)+(\\.(\\d)+)*"));
+//        System.out.println("matches? " + SECTIONS[i][0].matches("(\\d)+(\\.(\\d)+)*"));
         assertEquals(STRING_VALUES[i], hoid.getValue());
-        //System.out.println("root uid? " + hoid.root());
-        //String str = hoid.root().getValue();
+//        System.out.println("root uid? " + hoid.root());
+//        String str = hoid.root().getValue();
         
         assertEquals(SECTIONS[i][0], hoid.root().getValue());
         assertEquals(SECTIONS[i][1], hoid.extension());

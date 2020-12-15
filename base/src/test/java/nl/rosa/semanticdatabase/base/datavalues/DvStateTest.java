@@ -25,11 +25,13 @@ import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
 import nl.rosa.semanticdatabase.base.identification.TerminologyId;
 import nl.rosa.semanticdatabase.base.terminology.TestCodeSetAccess;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DvStateTest {
 
+    @Test
     public void testEquals() throws Exception {
         DvCodedText codeOne = new DvCodedText("some text",
                 TestCodeSetAccess.ENGLISH, TestCodeSetAccess.LATIN_1,

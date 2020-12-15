@@ -21,11 +21,14 @@
  */
 package nl.rosa.semanticdatabase.base.identification;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class InternetIDTest {
     
 
+    @Test
     public void testConstructorTakeString() throws Exception {
         assertAll(
                 () -> assertNotNull(new InternetId("www.google.com")),
@@ -47,7 +50,7 @@ public class InternetIDTest {
         InternetId id = null;
         try {
             id = new InternetId(value);
-            fail("should have failed this test");
+            fail("should have failed this test:"+value);
         } catch (IllegalArgumentException iae) {
             
         }

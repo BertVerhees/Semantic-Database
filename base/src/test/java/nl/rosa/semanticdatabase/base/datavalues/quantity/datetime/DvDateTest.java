@@ -1,6 +1,9 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity.datetime;
 
-import org.junit.Test;
+
+
+
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
