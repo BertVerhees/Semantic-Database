@@ -3,6 +3,8 @@ package nl.rosa.semanticdatabase.base.datavalues.encapsulated;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.DataValue;
+import nl.rosa.semanticdatabase.base.terminology.OpenEHRCodeSetIdentifiers;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
 
 import java.util.Objects;
 
@@ -18,6 +20,16 @@ public abstract class DvEncapsulated extends DataValue {
     }
 
     public DvEncapsulated(CodePhrase charset, CodePhrase language) {
+        this.charset = charset;
+        this.language = language;
+    }
+
+    protected DvEncapsulated(CodePhrase charset, CodePhrase language,
+                             TerminologyService terminologyService) {
+
+        if ((charset != null || language != null) && terminologyService == null) {
+            throw new IllegalArgumentException("null terminologyService");
+        }
         this.charset = charset;
         this.language = language;
     }

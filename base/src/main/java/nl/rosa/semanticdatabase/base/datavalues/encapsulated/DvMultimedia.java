@@ -3,6 +3,8 @@ package nl.rosa.semanticdatabase.base.datavalues.encapsulated;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.DvURI;
+import nl.rosa.semanticdatabase.base.terminology.OpenEHRCodeSetIdentifiers;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -12,6 +14,65 @@ import java.util.Objects;
  */
 
 public class DvMultimedia extends DvEncapsulated {
+
+    public DvMultimedia( CodePhrase charset,
+                         CodePhrase language,
+                         String alternateText,
+                         CodePhrase mediaType,
+                         CodePhrase compressionAlgorithm,
+                         byte[] integrityCheck,
+                         CodePhrase integrityCheckAlgorithm,
+                         DvMultimedia thumbnail,
+                         DvURI uri,
+                         byte[] data,
+                         TerminologyService terminologyService) {
+
+        super(charset, language, terminologyService);
+
+        if (mediaType == null) {
+            throw new IllegalArgumentException("null mediaType");
+        }
+        if (compressionAlgorithm == null) {
+            throw new IllegalArgumentException("null compressionAlgorithm");
+        }
+        if (integrityCheck != null &&
+                integrityCheckAlgorithm == null) {
+            throw new IllegalArgumentException(
+                    "null integrity check algorithm");
+        }
+
+/*
+        if (!terminologyService.codeSetForId(
+                OpenEHRCodeSetIdentifiers.MEDIA_TYPES).hasCode(mediaType)) {
+            throw new IllegalArgumentException(
+                    "unknown media types: " + mediaType);
+        }
+        if (!terminologyService.codeSetForId(
+                OpenEHRCodeSetIdentifiers.COMPRESSION_ALGORITHMS).hasCode(
+                compressionAlgorithm)) {
+            throw new IllegalArgumentException("unknown compression algorithm: "
+                    + compressionAlgorithm);
+        }
+        if (!terminologyService.codeSetForId(
+                OpenEHRCodeSetIdentifiers.INTEGRITY_CHECK_ALGORITHMS).hasCode(
+                integrityCheckAlgorithm)) {
+            throw new IllegalArgumentException(
+                    "unknown integrity check algorithm: "
+                            + integrityCheckAlgorithm);
+        }
+*/
+        if (uri == null && data == null) {
+            throw new IllegalArgumentException("both uri and ata are null");
+        }
+        this.alternateText = alternateText;
+        this.mediaType = mediaType;
+        this.compressionAlgorithm = compressionAlgorithm;
+        this.integrityCheck = integrityCheck;
+        this.integrityCheckAlgorithm = integrityCheckAlgorithm;
+        this.thumbnail = thumbnail;
+        this.uri = uri;
+        this.data = data;
+    }
     
     private String alternateText;
     private DvURI uri;
@@ -101,6 +162,8 @@ public class DvMultimedia extends DvEncapsulated {
     public void setSize(Integer size) {
         this.size = size;
     }
+
+
 
 
     @Override
