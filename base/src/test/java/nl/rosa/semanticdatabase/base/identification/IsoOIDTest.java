@@ -20,21 +20,21 @@
  */
 package nl.rosa.semanticdatabase.base.identification;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class IsoOIDTest {
 
+    @Test
     public void testEquals() throws Exception {
         String value = "1.2.840.113554.1.2.2";
         IsoOID oid1 = new IsoOID(value);
         IsoOID oid2 = new IsoOID(value);
         assertAll(
                 () -> assertTrue(oid1.equals(oid2)),
-                () -> assertTrue(oid2.equals(oid1)),
-
-                () -> assertTrue(oid1.equals(oid1)),
-                () -> assertTrue(oid2.equals(oid2))
+                () -> assertTrue(oid2.equals(oid1))
         );
     }
 }

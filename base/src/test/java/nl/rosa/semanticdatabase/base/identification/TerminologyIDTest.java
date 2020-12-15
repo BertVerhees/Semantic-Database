@@ -20,23 +20,28 @@
  */
 package nl.rosa.semanticdatabase.base.identification;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TerminologyIDTest {
 
-    public void testConstrcutorTakesStringValue() throws Exception {
+    @Test
+    public void testConstructorTakesStringValue() throws Exception {
         for(int i = 0; i < STRING_VALUE.length; i++) {
             assertTID(new TerminologyId(STRING_VALUE[i]), i);
         }
     }
 
-    public void testConstrcutorTakesNameVersion() throws Exception {
+    @Test
+    public void testConstructorTakesNameVersion() throws Exception {
         for(int i = 0; i < STRING_VALUE.length; i++) {
             assertTID(new TerminologyId(SECTIONS[i][0], SECTIONS[i][1]), i);
         }
     }
-    
+
+    @Test
     public void testEquals() {
     	TerminologyId id1 = new TerminologyId("ICD9", "1999");
     	TerminologyId id2 = new TerminologyId("ICD9", "1999");

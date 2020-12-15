@@ -21,10 +21,13 @@
  */
 package nl.rosa.semanticdatabase.base.identification;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VersionTreeIDTest {
-    
+
+    @Test
     public void testConstructors() throws Exception {
         String[] values = {
             "1.1.2", "2", "1.3.24", "10", "3.0.0"
@@ -53,7 +56,8 @@ public class VersionTreeIDTest {
         }
         
     }
-    
+
+    @Test
     public void testConstructorsFail() throws Exception {
         String[] values = {
             "1.0.2", "0", "0.3.24", "1.1.0", "0.0.0", "1.1"
@@ -87,11 +91,12 @@ public class VersionTreeIDTest {
         VersionTreeId v = null;
         try {
             v = new VersionTreeId(t, bN, bV);
-        } catch (IllegalArgumentException iae) {           
+        } catch (IllegalArgumentException iae) {
         }
         return v;
     }
-    
+
+    @Test
     public void testIsFirst() {
         
         String[] values = {"1", "1.0.0", "1.1.1", "2"};
@@ -102,6 +107,7 @@ public class VersionTreeIDTest {
          
     }
 
+    @Test
     public void testNext() {
         String[] values = {"1", "1.0.0", "1.1.1", "2"};
         String[] nextV = {"2", "2", "1.1.2", "3"};
@@ -110,23 +116,24 @@ public class VersionTreeIDTest {
         }
     }
 
+    @Test
     public void testToString() {
         int[][] intS = {
-            {1, 1, 2},
+            {1, 2, 3},
             {1, 0, 0},
             {1, 3, 1},
         };
         String[] values = {
-            "1.1.2", "1", "1.3.1"
+            "1.2.3", "1", "1.3.1"
         };
         for(int i  = 0; i < values.length; i++) {
             assertEquals(values[i], toVersionTreeID(intS[i][0], intS[i][1], intS[i][2]).toString());
         }
         String[] tValues = {
-            "1.1.2", "1", "1.0.0", "2.0.0"
+            "1.4.2", "1", "1.0.0", "2.0.0"
         };
         String[] eValues = {
-            "1.1.2", "1", "1", "2"
+            "1.4.2", "1", "1", "2"
         };
         for(int i  = 0; i < values.length; i++) {
             assertEquals(eValues[i], toVersionTreeID(tValues[i]).toString());

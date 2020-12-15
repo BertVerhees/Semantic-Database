@@ -73,7 +73,6 @@ public abstract class Uid {
     public boolean equals(Object object) {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
         Uid that = (Uid) object;
         return
                 Objects.equals(value, that.value);

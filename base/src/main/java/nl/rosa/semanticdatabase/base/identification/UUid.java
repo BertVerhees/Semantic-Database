@@ -15,5 +15,7 @@ public class UUid extends Uid {
 
     public UUid(String value) {
         super(value);
+        // kind of validation
+        java.util.UUID.fromString(value);
     }
 }

@@ -59,8 +59,7 @@ public class VersionTreeId  {
         String trunk = Integer.toString(trunkVersion);
         this.trunkVersion = trunk;
         if(branchNumber > 0 ) {
-            this.value = trunk + "." + Integer.toString(branchNumber) +  "."
-                    + Integer.toString(branchVersion);
+            this.value = trunk + "." + branchNumber +  "." + branchVersion;
             this.branchNumber = Integer.toString(branchNumber);
             this.branchVersion = Integer.toString(branchVersion);
         } else {
@@ -69,7 +68,10 @@ public class VersionTreeId  {
     }
 
     private void validateValues(int trunk, int branchNo, int branchV) {
-        if (trunk < 1 || branchNo < 0 || branchV < 0) {
+        if (trunk < 1) {
+            throw new IllegalArgumentException("trunk number smaller than 1");
+        }
+        if (branchNo < 0 || branchV < 0) {
             throw new IllegalArgumentException("version number smaller than 0");
         }
         //0 for branchNo or branchV is special case,
@@ -159,5 +161,16 @@ public class VersionTreeId  {
     @Override
     public int hashCode() {
         return Objects.hash(value);
+    }
+
+    @Override
+    public String toString() {
+        if(branchVersion == null ){
+            if(branchNumber == null ){
+                return trunkVersion.toString();
+            }
+            return trunkVersion + "." + branchNumber;
+        }
+        return trunkVersion + "." + branchNumber +  "." + branchVersion;
     }
 }

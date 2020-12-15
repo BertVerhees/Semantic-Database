@@ -21,10 +21,13 @@
  */
 package nl.rosa.semanticdatabase.base.identification;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ObjectRefTest {
 
+	@Test
 	public void testConstructor() throws Exception {
 		assertExceptionThrown(null, "LOCAL", "EHR", "id");
 
@@ -40,6 +43,7 @@ public class ObjectRefTest {
 		return new HierObjectId(value);
 	}
 
+	@Test
 	public void testEquals() throws Exception {
 		ObjectRef or1 = new ObjectRef(hid("1-2-80-11-1"), "LOCAL", "EHR");
 		ObjectRef or2 = new ObjectRef(hid("1-2-80-11-1"), "LOCAL", "EHR");

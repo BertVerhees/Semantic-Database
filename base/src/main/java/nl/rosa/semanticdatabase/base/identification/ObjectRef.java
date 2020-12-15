@@ -16,6 +16,15 @@ public class ObjectRef<Idtype extends ObjectId> {
     }
 
     public ObjectRef(Idtype id, String namespace, String type) {
+        if (id == null) {
+            throw new IllegalArgumentException("ObjectRef cannot be created with null id");
+        }
+        if (namespace == null) {
+            throw new IllegalArgumentException("ObjectRef cannot be created with null namespace");
+        }
+        if (type == null) {
+            throw new IllegalArgumentException("ObjectRef cannot be created with null type");
+        }
         this.namespace = namespace;
         this.type = type;
         this.id = id;
