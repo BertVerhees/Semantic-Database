@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.measurement.MeasurementService;
 
 import java.util.List;
 import java.util.Objects;
@@ -27,6 +28,38 @@ public class DvQuantity extends DvAmount<Double> {
 
 
     public DvQuantity() {
+    }
+
+    public DvQuantity(List<ReferenceRange<DvQuantity>> otherReferenceRanges,
+                      DvInterval<DvQuantity> normalRange,
+                      CodePhrase normalStatus,
+                      double accuracy,
+                      boolean accuracyPercent,
+                      String magnitudeStatus,
+                      String units,
+                      double magnitude,
+                      int precision,
+                      MeasurementService measurementService) {
+
+        super(otherReferenceRanges, normalRange, normalStatus, accuracy,
+                accuracyPercent, magnitudeStatus);
+
+        if (precision < -1) {
+            throw new IllegalArgumentException("negative precision");
+        }
+
+
+        /* Relaxed in order to create quantity without measurementService.
+         * One possibility is to use the mixin class ExternalEnvironmentAccess
+        if (StringUtils.isNotEmpty(units)
+                && measurementService == null) {
+            throw new IllegalArgumentException("null measurementService");
+        }
+        */
+        this.magnitude = magnitude;
+        this.precision = precision;
+        this.measurementService = measurementService;
+        this.units = units;
     }
 
     public DvQuantity(String units, Double magnitude,  Long precision) {

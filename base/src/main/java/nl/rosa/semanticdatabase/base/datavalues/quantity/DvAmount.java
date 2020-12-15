@@ -8,13 +8,27 @@ import java.util.Objects;
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
-public abstract class DvAmount<MagnitudeType extends Comparable> extends DvQuantified<Double, MagnitudeType> {
+public abstract class DvAmount<T extends Comparable> extends DvQuantified<Double, T> {
     
     private Double accuracy;
     
     private Boolean accuracyIsPercent;
 
     public DvAmount() {
+    }
+
+    protected DvAmount(
+            List<ReferenceRange<T>> otherReferenceRanges,
+            DvInterval<T> normalRange,
+            CodePhrase normalStatus,
+            double accuracy,
+            boolean accuracyPercent,
+            String magnitudeStatus) {
+
+        super(otherReferenceRanges, normalRange, normalStatus , magnitudeStatus);
+
+        this.accuracy = accuracy;
+        this.accuracyPercent = accuracyPercent;
     }
 
     public DvAmount(List<ReferenceRange> otherReferenceRanges, DvInterval normalRange, CodePhrase normalStatus, Double accuracy, Boolean accuracyIsPercent, String magnitudeStatus) {
