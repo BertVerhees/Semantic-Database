@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.base.datatype;
 
+import nl.rosa.semanticdatabase.base.datavalues.DataValue;
 import nl.rosa.semanticdatabase.base.identification.TerminologyId;
 
 import java.util.Objects;
@@ -10,7 +11,7 @@ import java.util.regex.Pattern;
  * TODO: reuse archetype model TerminologyCode? Thing is, that doesn't constrain as nicely with the archetype model...
  * Created by pieter.bos on 04/11/15.
  */
-public class CodePhrase {
+public class CodePhrase extends DataValue {
 
     private TerminologyId terminologyId;
     private String codeString;

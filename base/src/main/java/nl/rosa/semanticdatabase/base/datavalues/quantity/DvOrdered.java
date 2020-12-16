@@ -60,6 +60,24 @@ public abstract class DvOrdered<ComparableType> extends DataValue implements Com
     public void setNormalStatus( CodePhrase normalStatus) {
         this.normalStatus = normalStatus;
     }
+    /**
+     * Value is in the normal range if there is one, otherwise True
+     *
+     * @return true if normal
+     * @throws IllegalStateException if both normalRange and normalStatus null
+     */
+    public boolean isNormal() throws IllegalStateException {
+        if(normalRange == null && normalStatus == null) {
+            throw new IllegalStateException(
+                    "both normalRange and normalStatus null");
+        }
+        if(normalRange != null) {
+            return getNormalRange().has(this);
+        } else {
+            return normalStatus.getCodeString().equals("N");
+        }
+    }
+
 
     @Override
     public boolean equals(Object o) {

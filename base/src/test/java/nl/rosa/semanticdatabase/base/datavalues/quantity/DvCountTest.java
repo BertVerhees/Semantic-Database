@@ -40,6 +40,7 @@ public class DvCountTest{
         assertEquals(expected, c1.getMagnitude() + c2.getMagnitude());
     }
 
+    @Test
     public void testSubtract() throws Exception {
         DvCount c1 = new DvCount(3L);
         DvCount c2 = new DvCount(5L);
@@ -47,6 +48,7 @@ public class DvCountTest{
         assertEquals(expected, c2.getMagnitude() - c1.getMagnitude());
     }
 
+    @Test
     public void testCompareTo() throws Exception {
         DvCount c1 = new DvCount(3L);
         DvCount c2 = new DvCount(5L);
@@ -57,28 +59,21 @@ public class DvCountTest{
         assertTrue(c3.getMagnitude() - c1.getMagnitude() == 0);
         assertTrue(c1.getMagnitude() - c3.getMagnitude() == 0);
     }
-    
+
+    @Test
     public void testGetOtherReferenceRanges() throws Exception {
     	Map<String, Object> values = new HashMap<String, Object>();
-        DvText normal = new DvText(ReferenceRange.NORMAL);
+        DvText normal = new DvText("normal");
         DvCount lower = new DvCount(1L);
         DvCount upper = new DvCount(10L);
-        ReferenceRange<DvCount> normalRange = new ReferenceRange<DvCount>(
-                normal, new DvInterval<DvCount>(lower, upper));
-        List<ReferenceRange<DvCount>> otherReferenceRanges =
-                new ArrayList<ReferenceRange<DvCount>>();
+        ReferenceRange<DvCount> normalRange = new ReferenceRange<>(normal, new DvInterval<>(lower, upper));
+        List<ReferenceRange> otherReferenceRanges = new ArrayList<>();
         otherReferenceRanges.add(normalRange);
         
         DvCount count = new DvCount(otherReferenceRanges, null, null, 0.0, 
-        		false, null, 5);
+        		false, null, 5L);
         
-        assertEquals("otherReferenceRanges wrong", otherReferenceRanges,
-        				count.getOtherReferenceRanges());
-    }
-
-    public void testValueOf() {
-        DvCount dvCount = DvCount.valueOf("5");
-        assertEquals(5, dvCount.getMagnitude().intValue());
+        assertEquals(otherReferenceRanges, count.getOtherReferenceRanges());
     }
 }
 /*

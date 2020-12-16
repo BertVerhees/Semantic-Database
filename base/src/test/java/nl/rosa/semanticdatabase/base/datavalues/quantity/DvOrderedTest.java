@@ -14,22 +14,23 @@
  */
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import org.junit.jupiter.api.Test;
+
 import java.util.List;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.openehr.rm.datatypes.text.CodePhrase;
-
-public class DvOrderedTest extends TestCase {
-	
+public class DvOrderedTest {
+	@Test
 	public void testIsNormalWithoutNormalStatusAndNormalRange() {
-		List<ReferenceRange<DvCount>> referenceRanges = null;
+		List<ReferenceRange> referenceRanges = null;
 		DvInterval<DvCount> normalRange = null;
 		CodePhrase normalStatus = null;
 		double accuracy = 0;
 		boolean accuracyPercent = false; 
 		String magnitudeStatus = null;
-		int magnitude = 1;
+		Long magnitude = 1L;
 		DvCount count = 
 			new DvCount(referenceRanges, normalRange, normalStatus, accuracy,
 					accuracyPercent, magnitudeStatus, magnitude);		
@@ -41,73 +42,78 @@ public class DvOrderedTest extends TestCase {
 		}
 	}
 
+	@Test
 	public void testIsNormalWithNormalStatus() {
-		List<ReferenceRange<DvCount>> referenceRanges = null;
+		List<ReferenceRange> referenceRanges = null;
 		DvInterval<DvCount> normalRange = null;
 		CodePhrase normalStatus = new CodePhrase("normal statuses", "N");
 		double accuracy = 0;
 		boolean accuracyPercent = false; 
 		String magnitudeStatus = null;
-		int magnitude = 1;
+		Long magnitude = 1L;
 		DvCount count = 
 			new DvCount(referenceRanges, normalRange, normalStatus, accuracy,
 					accuracyPercent, magnitudeStatus, magnitude);		
 		assertTrue(count.isNormal());
 	}
-	
+
+	@Test
 	public void testIsNormalWithAbnormalStatus() {
-		List<ReferenceRange<DvCount>> referenceRanges = null;
+		List<ReferenceRange> referenceRanges = null;
 		DvInterval<DvCount> normalRange = null;
 		CodePhrase normalStatus = new CodePhrase("normal statuses", "L");
 		double accuracy = 0;
 		boolean accuracyPercent = false; 
 		String magnitudeStatus = null;
-		int magnitude = 1;
+		Long magnitude = 1L;
 		DvCount count = 
 			new DvCount(referenceRanges, normalRange, normalStatus, accuracy,
 					accuracyPercent, magnitudeStatus, magnitude);		
 		assertFalse(count.isNormal());
 	}
-	
+
+	@Test
 	public void testIsNormalWithNormalRange() {
-		List<ReferenceRange<DvCount>> referenceRanges = null;
+		List<ReferenceRange> referenceRanges = null;
 		DvInterval<DvCount> normalRange = new DvInterval<DvCount>(
-				new DvCount(0), new DvCount(2));
+				new DvCount(0L), new DvCount(2L));
 		CodePhrase normalStatus = null;
 		double accuracy = 0;
 		boolean accuracyPercent = false; 
 		String magnitudeStatus = null;
-		int magnitude = 1;
+		Long magnitude = 1L;
 		DvCount count = 
 			new DvCount(referenceRanges, normalRange, normalStatus, accuracy,
 					accuracyPercent, magnitudeStatus, magnitude);		
 		assertTrue(count.isNormal());
 	}
-	
+
+	@Test
 	public void testIsNormalWithNoneInclusiveNormalRange() {
-		List<ReferenceRange<DvCount>> referenceRanges = null;
+		List<ReferenceRange> referenceRanges = null;
 		DvInterval<DvCount> normalRange = new DvInterval<DvCount>(
-				new DvCount(2), new DvCount(4));
+				new DvCount(2L), new DvCount(4L));
 		CodePhrase normalStatus = null;
 		double accuracy = 0;
 		boolean accuracyPercent = false; 
 		String magnitudeStatus = null;
-		int magnitude = 1;
+		Long magnitude = 1L;
 		DvCount count = 
 			new DvCount(referenceRanges, normalRange, normalStatus, accuracy,
 					accuracyPercent, magnitudeStatus, magnitude);		
 		assertFalse(count.isNormal());
 	}
-	
+
+	@Test
 	public void testIsNormalWithNormalStatusAndNormalRange() {
-		List<ReferenceRange<DvCount>> referenceRanges = null;
+		List<ReferenceRange> referenceRanges = null;
 		DvInterval<DvCount> normalRange = new DvInterval<DvCount>(
-				new DvCount(0), new DvCount(2));
+				new DvCount(0L), new DvCount(2L));
 		CodePhrase normalStatus = new CodePhrase("normal statuses", "N");
 		double accuracy = 0;
 		boolean accuracyPercent = false; 
 		String magnitudeStatus = null;
-		int magnitude = 1;
+		Long magnitude = 1L;
 		DvCount count = 
 			new DvCount(referenceRanges, normalRange, normalStatus, accuracy,
 					accuracyPercent, magnitudeStatus, magnitude);		

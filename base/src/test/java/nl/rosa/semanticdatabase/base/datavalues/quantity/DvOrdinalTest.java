@@ -1,19 +1,19 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-import org.openehr.rm.datatypes.basic.DataValue;
-import org.openehr.rm.datatypes.text.CodePhrase;
-import org.openehr.rm.datatypes.text.DvCodedText;
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.datavalues.DataValue;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class DvOrdinalTest extends TestCase {
+public class DvOrdinalTest {
 	
 	public void testCreateDvOrdinalWithNegativeValue() {
         CodePhrase definingCode = new CodePhrase("test", "123");
-        DvCodedText coded = new DvCodedText("coded text", definingCode);        
+        DvCodedText coded = new DvCodedText("coded text", definingCode);
         
         try {
-        	new DvOrdinal(-1, coded);
+        	new DvOrdinal(-1L, coded);
         	
         } catch (IllegalArgumentException e) {
         	fail("failed to create dvOrdinal with negative value");
