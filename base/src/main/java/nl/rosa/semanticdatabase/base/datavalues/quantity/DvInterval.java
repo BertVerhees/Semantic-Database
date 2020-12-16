@@ -1,15 +1,13 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-
 import nl.rosa.semanticdatabase.base.datavalues.DataValue;
 import nl.rosa.semanticdatabase.base.interval.Interval;
 
 import java.util.Objects;
 
 /**
- * Originally: Created by pieter.bos on 04/11/15.
+ * Created by pieter.bos on 04/11/15.
  */
-
 public class DvInterval<Type extends DvOrdered> extends DataValue {
 
     private final Interval<DvOrdered> interval;

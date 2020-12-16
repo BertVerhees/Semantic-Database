@@ -20,9 +20,19 @@ public class CodePhrase {
     public CodePhrase() {
 
     }
+    public CodePhrase(String terminologyId, String codeString) {
+        this(new TerminologyId(terminologyId), codeString, null);
+    }
+
 
     public CodePhrase(TerminologyId terminologyId, String codeString) {
         this(terminologyId, codeString, null);
+    }
+
+    public CodePhrase(String terminologyId, String codeString, String preferredTerm) {
+        this.terminologyId = new TerminologyId(terminologyId);
+        this.codeString = codeString;
+        this.preferredTerm = preferredTerm;
     }
 
     public CodePhrase(TerminologyId terminologyId, String codeString, String preferredTerm) {

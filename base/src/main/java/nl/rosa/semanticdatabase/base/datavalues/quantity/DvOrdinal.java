@@ -7,14 +7,17 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Originally: Created by pieter.bos on 04/11/15.
+ * Created by pieter.bos on 04/11/15.
  */
 public class DvOrdinal extends DvOrdered<DvOrdinal> implements SingleValuedDataValue<Long>, Comparable<DvOrdinal> {
 
     private DvCodedText symbol;
     private Long value;
 
-   public DvOrdinal(Long value, DvCodedText symbol) {
+    public DvOrdinal() {
+    }
+
+    public DvOrdinal(Long value, DvCodedText symbol) {
         this.symbol = symbol;
         this.value = value;
     }

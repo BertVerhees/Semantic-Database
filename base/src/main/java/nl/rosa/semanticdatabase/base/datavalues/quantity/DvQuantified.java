@@ -7,10 +7,11 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Originally: Created by pieter.bos on 04/11/15.
+ * Created by pieter.bos on 04/11/15.
  */
 public abstract class DvQuantified<AccuracyType, MagnitudeType extends Comparable> extends DvOrdered<MagnitudeType> {
 
+    
     private String magnitudeStatus;
 
     public DvQuantified() {

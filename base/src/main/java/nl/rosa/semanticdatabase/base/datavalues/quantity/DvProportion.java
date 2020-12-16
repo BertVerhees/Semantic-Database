@@ -8,13 +8,14 @@ import java.util.Objects;
 /**
  * TODO: This does not implement PROPORTION KIND, because multiple inheritance - won't work.
  * It does have a type=proportion kind enum
- * Originally: Created by pieter.bos on 04/11/15.
+ * Created by pieter.bos on 04/11/15.
  */
 public class DvProportion extends DvAmount<Double> {
 
     private Double numerator;
     private Double denominator;
     private Long type;
+    
     private Long precision;
 
     public DvProportion() {

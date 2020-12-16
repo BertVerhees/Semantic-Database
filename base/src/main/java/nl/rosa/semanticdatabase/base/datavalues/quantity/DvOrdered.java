@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Originally: Created by pieter.bos on 04/11/15.
+ * Created by pieter.bos on 04/11/15.
  */
 public abstract class DvOrdered<ComparableType> extends DataValue implements Comparable<ComparableType> {
 
@@ -20,12 +20,12 @@ public abstract class DvOrdered<ComparableType> extends DataValue implements Com
     public DvOrdered() {
     }
 
-    public DvOrdered(List<ReferenceRange> otherReferenceRanges, DvInterval normalRange) {
+    public DvOrdered( List<ReferenceRange> otherReferenceRanges, DvInterval normalRange) {
         this.normalRange = normalRange;
         this.otherReferenceRanges = otherReferenceRanges;
     }
 
-    protected DvOrdered( List<ReferenceRange> otherReferenceRanges,  DvInterval normalRange,  CodePhrase normalStatus) {
+    protected DvOrdered( List<ReferenceRange> otherReferenceRanges, DvInterval normalRange,  CodePhrase normalStatus) {
         this.normalStatus = normalStatus;
         this.normalRange = normalRange;
         this.otherReferenceRanges = otherReferenceRanges;

@@ -24,16 +24,6 @@ public abstract class DvEncapsulated extends DataValue {
         this.language = language;
     }
 
-    protected DvEncapsulated(CodePhrase charset, CodePhrase language,
-                             TerminologyService terminologyService) {
-
-        if ((charset != null || language != null) && terminologyService == null) {
-            throw new IllegalArgumentException("null terminologyService");
-        }
-        this.charset = charset;
-        this.language = language;
-    }
-
     public CodePhrase getCharset() {
         return charset;
     }

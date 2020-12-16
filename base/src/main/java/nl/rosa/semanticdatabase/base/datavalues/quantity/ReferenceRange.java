@@ -5,7 +5,7 @@ import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
 import java.util.Objects;
 
 /**
- * Originally: Created by pieter.bos on 04/11/15.
+ * Created by pieter.bos on 04/11/15.
  */
 public class ReferenceRange<T extends DvOrdered> {
 

@@ -1,17 +1,19 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 
 import java.util.List;
 import java.util.Objects;
 
 /**
- * Originally: Created by pieter.bos on 04/11/15.
+ * Created by pieter.bos on 04/11/15.
  */
 public class DvCount extends DvAmount<Long> {
 
     private Long magnitude;
+
+    public DvCount() {
+    }
 
     public DvCount(Long magnitude) {
         this.magnitude = magnitude;

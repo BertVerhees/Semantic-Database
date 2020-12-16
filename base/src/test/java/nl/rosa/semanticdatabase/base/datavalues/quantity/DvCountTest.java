@@ -20,65 +20,49 @@
  */
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.openehr.rm.datatypes.text.DvCodedText;
-import org.openehr.rm.datatypes.text.DvText;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import junit.framework.TestCase;
+public class DvCountTest{
 
-public class DvCountTest extends TestCase {
-
-    public DvCountTest(String test) {
-        super(test);
-    }
-
-    /**
-     * The fixture set up called before every test method.
-     */
-    protected void setUp() throws Exception {
-    }
-
-    /**
-     * The fixture clean up called after every test method.
-     */
-    protected void tearDown() throws Exception {
-    }
-
+    @Test
     public void testAdd() throws Exception {
-        DvCount c1 = new DvCount(3);
-        DvCount c2 = new DvCount(5);
-        DvCount expected = new DvCount(8);
-        assertEquals(expected, c1.add(c2));
-        assertEquals(expected, c2.add(c1));
+        DvCount c1 = new DvCount(3L);
+        DvCount c2 = new DvCount(5L);
+        DvCount expected = new DvCount(8L);
+        assertEquals(expected, c1.getMagnitude() + c2.getMagnitude());
     }
 
     public void testSubtract() throws Exception {
-        DvCount c1 = new DvCount(3);
-        DvCount c2 = new DvCount(5);
-        DvCount expected = new DvCount(2);
-        assertEquals(expected, c2.subtract(c1));
+        DvCount c1 = new DvCount(3L);
+        DvCount c2 = new DvCount(5L);
+        DvCount expected = new DvCount(2L);
+        assertEquals(expected, c2.getMagnitude() - c1.getMagnitude());
     }
 
     public void testCompareTo() throws Exception {
-        DvCount c1 = new DvCount(3);
-        DvCount c2 = new DvCount(5);
-        DvCount c3 = new DvCount(3);
+        DvCount c1 = new DvCount(3L);
+        DvCount c2 = new DvCount(5L);
+        DvCount c3 = new DvCount(3L);
 
-        assertTrue("c1 < c2", c1.compareTo(c2) < 0);
-        assertTrue("c2 > c1", c2.compareTo(c1) > 0);
-        assertTrue("c3 == c1", c3.compareTo(c1) == 0);
-        assertTrue("c1 == c3", c1.compareTo(c3) == 0);
+        assertTrue(c1.getMagnitude() - c2.getMagnitude() < 0);
+        assertTrue(c2.getMagnitude() - c1.getMagnitude() > 0);
+        assertTrue(c3.getMagnitude() - c1.getMagnitude() == 0);
+        assertTrue(c1.getMagnitude() - c3.getMagnitude() == 0);
     }
     
     public void testGetOtherReferenceRanges() throws Exception {
     	Map<String, Object> values = new HashMap<String, Object>();
         DvText normal = new DvText(ReferenceRange.NORMAL);
-        DvCount lower = new DvCount(1);
-        DvCount upper = new DvCount(10);
+        DvCount lower = new DvCount(1L);
+        DvCount upper = new DvCount(10L);
         ReferenceRange<DvCount> normalRange = new ReferenceRange<DvCount>(
                 normal, new DvInterval<DvCount>(lower, upper));
         List<ReferenceRange<DvCount>> otherReferenceRanges =

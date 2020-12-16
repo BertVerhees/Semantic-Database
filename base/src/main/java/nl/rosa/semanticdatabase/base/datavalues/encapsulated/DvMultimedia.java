@@ -27,7 +27,7 @@ public class DvMultimedia extends DvEncapsulated {
                          byte[] data,
                          TerminologyService terminologyService) {
 
-        super(charset, language, terminologyService);
+        super(charset, language);
 
         if (mediaType == null) {
             throw new IllegalArgumentException("null mediaType");
@@ -40,27 +40,6 @@ public class DvMultimedia extends DvEncapsulated {
             throw new IllegalArgumentException(
                     "null integrity check algorithm");
         }
-
-/*
-        if (!terminologyService.codeSetForId(
-                OpenEHRCodeSetIdentifiers.MEDIA_TYPES).hasCode(mediaType)) {
-            throw new IllegalArgumentException(
-                    "unknown media types: " + mediaType);
-        }
-        if (!terminologyService.codeSetForId(
-                OpenEHRCodeSetIdentifiers.COMPRESSION_ALGORITHMS).hasCode(
-                compressionAlgorithm)) {
-            throw new IllegalArgumentException("unknown compression algorithm: "
-                    + compressionAlgorithm);
-        }
-        if (!terminologyService.codeSetForId(
-                OpenEHRCodeSetIdentifiers.INTEGRITY_CHECK_ALGORITHMS).hasCode(
-                integrityCheckAlgorithm)) {
-            throw new IllegalArgumentException(
-                    "unknown integrity check algorithm: "
-                            + integrityCheckAlgorithm);
-        }
-*/
         if (uri == null && data == null) {
             throw new IllegalArgumentException("both uri and ata are null");
         }

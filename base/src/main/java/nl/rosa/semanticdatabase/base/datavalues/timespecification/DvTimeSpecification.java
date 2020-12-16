@@ -16,6 +16,9 @@ public abstract class DvTimeSpecification extends DataValue {
     }
 
     public DvTimeSpecification(DvParsable value) {
+        if(value == null) {
+            throw new IllegalArgumentException("Cannot create DvTimeSpecification with null value");
+        }
         this.value = value;
     }
 

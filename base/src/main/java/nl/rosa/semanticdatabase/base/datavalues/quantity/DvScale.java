@@ -1,6 +1,5 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-
 import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
 import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
 
@@ -8,16 +7,17 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * Originally: Created by pieter.bos on 04/11/15.
+ * Created by pieter.bos on 04/11/15.
  */
-
 public class DvScale extends DvOrdered<DvScale> implements SingleValuedDataValue<Double>, Comparable<DvScale> {
 
     private DvCodedText symbol;
     private Double value;
 
+    public DvScale() {
+    }
+
     public DvScale(Double value, DvCodedText symbol) {
-        super();
         this.symbol = symbol;
         this.value = value;
     }
