@@ -34,6 +34,15 @@ public class DvProportion extends DvAmount<Double> {
         this.type = type;
         this.precision = precision;
     }
+    /**
+     * Creates a simple DvProportion
+     */
+    public DvProportion(double numerator, double denominator,
+                        ProportionKind type, Long precision) {
+        this(null, null, null, 0.0, false, null, numerator, denominator, type.getPk(),
+                precision);
+    }
+
 
     public Double getNumerator() {
         return numerator;

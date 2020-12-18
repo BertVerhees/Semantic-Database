@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.measurement.MeasurementService;
 
 import java.util.List;
 import java.util.Objects;
@@ -15,7 +16,7 @@ public class DvQuantity extends DvAmount<Double> {
     private Double magnitude;
     private String unitsSystem;
     private String unitsDisplayName;
-
+    private MeasurementService measurementService; // add final
 
     /**
      * This has been r many archetypes to fail because they still define it. So introduce, but don't use
@@ -23,6 +24,29 @@ public class DvQuantity extends DvAmount<Double> {
      */
     @Deprecated
     private transient CodePhrase property;
+
+    /**
+     * Constructs a integer Quantity by double value
+     *
+     * @param magnitude
+     * @throws IllegalArgumentException
+     */
+    public DvQuantity(double magnitude) {
+        this("", magnitude, 0L, null);
+    }
+    /**
+     * Constructs a Quantity by units, getMagnitude and precision
+     *
+     * @param units
+     * @param magnitude
+     * @param precision >= 0
+     * @throws IllegalArgumentException
+     */
+    public DvQuantity(String units, double magnitude, Long precision,
+                      MeasurementService measurementService) {
+        this(null, null, null, 0, false, null, units, magnitude, precision,
+                measurementService);
+    }
 
 
     public DvQuantity() {
@@ -40,6 +64,38 @@ public class DvQuantity extends DvAmount<Double> {
         this.units = units;
         this.magnitude = magnitude;
     }
+    public DvQuantity(List<ReferenceRange> otherReferenceRanges,
+                      DvInterval<DvQuantity> normalRange,
+                      CodePhrase normalStatus,
+                      double accuracy,
+                      boolean accuracyPercent,
+                      String magnitudeStatus,
+                      String units,
+                      double magnitude,
+                      Long precision,
+                      MeasurementService measurementService) {
+
+        super(otherReferenceRanges, normalRange, normalStatus, accuracy,
+                accuracyPercent, magnitudeStatus);
+
+        if (precision < -1) {
+            throw new IllegalArgumentException("negative precision");
+        }
+
+
+        /* Relaxed in order to create quantity without measurementService.
+         * One possibility is to use the mixin class ExternalEnvironmentAccess
+        if (StringUtils.isNotEmpty(units)
+                && measurementService == null) {
+            throw new IllegalArgumentException("null measurementService");
+        }
+        */
+        this.magnitude = magnitude;
+        this.precision = precision;
+        this.measurementService = measurementService;
+        this.units = units;
+    }
+
 
     
     public Long getPrecision() {

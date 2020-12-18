@@ -1,5 +1,8 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.datavalues.DataValue;
+import nl.rosa.semanticdatabase.base.datavalues.ReferenceModelName;
 import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
 import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
 
@@ -27,6 +30,20 @@ public class DvOrdinal extends DvOrdered<DvOrdinal> implements SingleValuedDataV
         this.symbol = symbol;
         this.value = value;
     }
+    /**
+     * Constructs an Ordinal by value and symbol
+     *
+     * @param value
+     * @param dvCodedTextValue
+     * @param dvCodedTextTerminology
+     * @param dvCodedTextCode
+     * @throws IllegalArgumentException
+     */
+    public DvOrdinal(Long value, String dvCodedTextValue, String dvCodedTextTerminology, String dvCodedTextCode) {
+        this(null, null, value, new DvCodedText(dvCodedTextValue, new CodePhrase(dvCodedTextTerminology, dvCodedTextCode)));
+    }
+
+
 
     @Override
     public Long getValue() {
@@ -50,6 +67,21 @@ public class DvOrdinal extends DvOrdered<DvOrdinal> implements SingleValuedDataV
 
     public void setSymbol(DvCodedText symbol) {
         this.symbol = symbol;
+    }
+
+    public static DvOrdinal valueOf(String value) {
+        int i = value.indexOf("|");
+        if (i < 0) {
+            throw new IllegalArgumentException("failed to parse DvOrdinal '" + value + "', wrong number of tokens.");
+        }
+        Long ordinalValue = 0L;
+        try {
+            ordinalValue = Long.parseLong(value.substring(0, i));
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("failed to parse DvOrdinal '" + value + "', invalid integer value.");
+        }
+        String str = ReferenceModelName.DV_CODED_TEXT.getName() + "," + value.substring(i + 1);
+        return new DvOrdinal(ordinalValue, (DvCodedText) DataValue.parseValue(str));
     }
 
     @Override
