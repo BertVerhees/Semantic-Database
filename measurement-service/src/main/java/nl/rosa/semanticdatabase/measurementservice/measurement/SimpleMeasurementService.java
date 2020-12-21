@@ -12,15 +12,17 @@
  * revision:    "$LastChangedRevision$"
  * last_change: "$LastChangedDate$"
  */
-package nl.rosa.semanticdatabase.base.measurement;
+package nl.rosa.semanticdatabase.measurementservice.measurement;
+
+import javax.measure.unit.Unit;
+import javax.measure.Measure;
+import javax.measure.converter.ConversionException;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.measure.Measure;
-import javax.measure.converter.ConversionException;
-import javax.measure.unit.Unit;
+
 
 /**
  * Simple implementation of measurement information service
@@ -180,7 +182,7 @@ public class  SimpleMeasurementService implements MeasurementService {
 	   Unit<?> unit1 = Unit.valueOf(units1);
        Unit<?> unit2 = Unit.valueOf(units2);
 	try {
-        return (unit1.getConverterToAny(unit2).convert(1) ==1);
+        return (unit2.getConverterToAny(unit1).convert(1) ==1);
     } catch (UnsupportedOperationException e) {      
         return false;
     } catch (ConversionException e) {

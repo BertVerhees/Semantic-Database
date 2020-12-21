@@ -61,9 +61,10 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>javax.measure</groupId>
-      <artifactId>jsr-275</artifactId>
-      <version>0.9.4</version>
+      <groupId>nl.rosa.semanticdatabase</groupId>
+      <artifactId>measurement-service</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
 

@@ -144,7 +144,7 @@ public class DvQuantityTest extends TestCase {
     public void testDataValueParseQuantityWithoutPrecision() throws Exception {
     	String value = "78,kg";
     	DvQuantity expected = new DvQuantity("kg", 78.0, 0L);
-    	DataValue q = DataValue.parseValue("DV_QUANTITY," + value);
+    	DataValue q = DvQuantity.valueOf(value);
     	assertEquals("failed to parse quantity as DataValue without precision", expected, q);
     }
 

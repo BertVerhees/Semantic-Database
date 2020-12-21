@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.base.measurement;
+package nl.rosa.semanticdatabase.measurementservice.measurement;
 
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetEncoder;

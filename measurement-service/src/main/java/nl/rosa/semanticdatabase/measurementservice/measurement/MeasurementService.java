@@ -12,7 +12,7 @@
  * revision:    "$LastChangedRevision: 2 $"
  * last_change: "$LastChangedDate: 2005-10-12 23:20:08 +0200 (Wed, 12 Oct 2005) $"
  */
-package nl.rosa.semanticdatabase.base.measurement;
+package nl.rosa.semanticdatabase.measurementservice.measurement;
 
 import java.io.Serializable;
 

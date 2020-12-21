@@ -80,8 +80,19 @@ public class DvOrdinal extends DvOrdered<DvOrdinal> implements SingleValuedDataV
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("failed to parse DvOrdinal '" + value + "', invalid integer value.");
         }
-        String str = ReferenceModelName.DV_CODED_TEXT.getName() + "," + value.substring(i + 1);
-        return new DvOrdinal(ordinalValue, (DvCodedText) DataValue.parseValue(str));
+        String str = value.substring(i + 1);
+        i = str.indexOf("|");
+        if (i < 0) {
+            throw new IllegalArgumentException("failed to parse DvCodedText '" + str + "', wrong number of tokens.");
+        }
+        value = str.substring(i+1);
+        i = str.indexOf("::");
+        if (i < 0) {
+            throw new IllegalArgumentException("failed to parse CodePhrase '" + str.substring(0,i) + "', wrong number of tokens.");
+        }
+        CodePhrase codePhrase = new CodePhrase(str.substring(0,i));
+        DvCodedText codedText = new DvCodedText(str,codePhrase);
+        return new DvOrdinal(ordinalValue, codedText);
     }
 
     @Override

@@ -23,13 +23,6 @@ public class DvOrdinalTest {
     }
 
 	@Test
-    public void testParseDvOrdinal() throws Exception {
-    	String value = "DV_ORDINAL,1|SNOMED-CT::313267000|Stroke|";
-    	DataValue dv = DataValue.parseValue(value);
-    	assertTrue(dv instanceof DvOrdinal);
-    }
-
-	@Test
 	public void testValueOf() throws Exception {
 		DvOrdinal dvOrdinal = DvOrdinal.valueOf("1|SNOMED-CT::313267000|Stroke|");
 		assertEquals(1, dvOrdinal.getValue());

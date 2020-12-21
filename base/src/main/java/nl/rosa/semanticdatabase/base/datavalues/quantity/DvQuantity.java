@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
-import nl.rosa.semanticdatabase.base.measurement.MeasurementService;
+import nl.rosa.semanticdatabase.measurementservice.measurement.MeasurementService;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;

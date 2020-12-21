@@ -16,6 +16,9 @@ public abstract class Locatable extends Pathable {
     private Archetyped archetypeDetails;
     private FeederAudit feederAudit;
     private List<Link> links = new ArrayList<>();
+    public static final String PATH_SEPARATOR = "/";
+    public static final String ROOT = PATH_SEPARATOR;
+
 
 
     public Locatable() {
