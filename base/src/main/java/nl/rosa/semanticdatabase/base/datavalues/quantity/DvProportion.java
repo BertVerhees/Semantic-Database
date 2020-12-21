@@ -27,6 +27,65 @@ public class DvProportion extends DvAmount<Double> {
         this.type = type;
     }
 
+    public DvProportion(
+            List<ReferenceRange> otherReferenceRanges,
+            DvInterval<DvProportion> normalRange,
+            CodePhrase normalStatus,
+            double accuracy,
+            boolean accuracyPercent,
+            String magnitudeStatus,
+            double numerator,
+            double denominator,
+            ProportionKind type,
+            Long precision) {
+
+        super(otherReferenceRanges, normalRange, normalStatus , accuracy,
+                accuracyPercent, magnitudeStatus);
+
+        if(type == null) {
+            throw new IllegalArgumentException("null type");
+        } else if(type == ProportionKind.UNITARY) {
+            if(denominator != 1) {
+                throw new IllegalArgumentException(
+                        "denominator for unitary proportion must be 1");
+            }
+        } else if(type == ProportionKind.PERCENT) {
+            if(denominator != 100) {
+                throw new IllegalArgumentException(
+                        "denominator for unitary proportion must be 100");
+            }
+        } else if(type == ProportionKind.FRACTION ||
+                type == ProportionKind.INTEGER_FRACTION) {
+
+            if(! bothIntegral(numerator, denominator)) {
+                throw new IllegalArgumentException(
+                        "both numberator and denominator must be integral for " +
+                                "fraction or integer fraction proportion");
+            }
+        }
+
+        if(bothIntegral(numerator, denominator)
+                && (precision != null && precision != 0)) {
+            throw new IllegalArgumentException("precision must be 0 if both " +
+                    "numerator and denominator are integral");
+        }
+        if( !bothIntegral(numerator, denominator)
+                && (precision != null && precision == 0)) {
+            throw new IllegalArgumentException("zero precision for " +
+                    "non-integral numerator or denominator");
+        }
+
+        this.numerator = numerator;
+        this.denominator = denominator;
+        this.type = Long.valueOf(type.getPk());
+        this.precision = precision;
+    }
+
+    private boolean bothIntegral(double num1, double num2) {
+        return (Math.floor(num1) == num1) && (Math.floor(num2) == num2);
+    }
+
+/*
     public DvProportion(List<ReferenceRange> otherReferenceRanges, DvInterval normalRange, CodePhrase normalStatus, Double accuracy, Boolean accuracyIsPercent, String magnitudeStatus, Double numerator, Double denominator, Long type, Long precision) {
         super(otherReferenceRanges, normalRange, normalStatus, accuracy, accuracyIsPercent, magnitudeStatus);
         this.numerator = numerator;
@@ -34,13 +93,26 @@ public class DvProportion extends DvAmount<Double> {
         this.type = type;
         this.precision = precision;
     }
+*/
     /**
      * Creates a simple DvProportion
      */
     public DvProportion(double numerator, double denominator,
                         ProportionKind type, Long precision) {
-        this(null, null, null, 0.0, false, null, numerator, denominator, type.getPk(),
+        this(null, null, null, 0.0, false, null, numerator, denominator, type,
                 precision);
+    }
+
+    /**
+     * Create a unitary proportion
+     *
+     * @param numerator
+     * @param precision
+     * @return
+     */
+    public static DvProportion createUnitaryProportion(double numerator,
+                                                       Long precision) {
+        return new DvProportion(numerator, 1.0, ProportionKind.UNITARY, precision);
     }
 
 

@@ -15,4 +15,21 @@ public enum ProportionKind {
     public long getPk() {
         return pk;
     }
+
+    public static ProportionKind fromValue(int value) {
+        switch (value) {
+            case 0:
+                return RATIO;
+            case 1:
+                return UNITARY;
+            case 2:
+                return PERCENT;
+            case 3:
+                return FRACTION;
+            case 4:
+                return INTEGER_FRACTION;
+            default:
+                throw new IllegalArgumentException("unknown value");
+        }
+    }
 }

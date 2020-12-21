@@ -3,6 +3,8 @@ package nl.rosa.semanticdatabase.base.datavalues.quantity;
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.measurement.MeasurementService;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,6 +19,8 @@ public class DvQuantity extends DvAmount<Double> {
     private String unitsSystem;
     private String unitsDisplayName;
     private MeasurementService measurementService; // add final
+
+    public static final char DECIMAL_SEPARATOR = '.';
 
     /**
      * This has been r many archetypes to fail because they still define it. So introduce, but don't use
@@ -48,15 +52,43 @@ public class DvQuantity extends DvAmount<Double> {
                 measurementService);
     }
 
+    /**
+     * Constructs a Measurable only by units
+     *
+     * @param magnitude
+     * @param precision
+     * @throws IllegalArgumentException if units is null
+     */
+    public DvQuantity(double magnitude, Long precision,
+                      MeasurementService measurementService) {
+        this("", magnitude, precision, measurementService);
+    }
+
 
     public DvQuantity() {
     }
 
-    public DvQuantity(String units, Double magnitude,  Long precision) {
-        this.precision = precision;
-        this.units = units;
-        this.magnitude = magnitude;
+    /**
+     * Constructs a Measurable only by units
+     *
+     * @param units not null
+     * @throws IllegalArgumentException if units is null
+     */
+    public DvQuantity(String units, double magnitude,
+                      MeasurementService measurementService) {
+        this(units, magnitude, 0L, measurementService);
     }
+    /**
+     * New construct that does not require a measurementService
+     *
+     * @param units
+     * @param magnitude
+     * @param precision
+     */
+    public DvQuantity(String units, double magnitude, Long precision) {
+        this(units, magnitude, precision, null);
+    }
+
 
     public DvQuantity( List<ReferenceRange> otherReferenceRanges,  DvInterval normalRange,  CodePhrase normalStatus,  Double accuracy,  Boolean accuracyIsPercent,  String magnitudeStatus, String units, Double magnitude,  Long precision) {
         super(otherReferenceRanges, normalRange, normalStatus, accuracy, accuracyIsPercent, magnitudeStatus);
@@ -96,8 +128,32 @@ public class DvQuantity extends DvAmount<Double> {
         this.units = units;
     }
 
+    public DvQuantity parse(String value) {
+        return valueOf(value);
+    }
 
-    
+    public static DvQuantity valueOf(String value) {
+        int i = value.indexOf(",");
+        String num = value;
+        String units = "";
+
+        if (i >= 0) {
+            num = value.substring(0, i);
+            units = value.substring(i + 1);
+        }
+        Long precision = 0L;
+        i = num.indexOf(DECIMAL_SEPARATOR);
+        if (i >= 0) {
+            precision = Long.valueOf(num.length() - i - 1);
+        }
+        try {
+            double magnitude = Double.parseDouble(num);
+            return new DvQuantity(units, magnitude, precision);
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException("failed to parse quantity["
+                    + num + "]", nfe);
+        }
+    }
     public Long getPrecision() {
         return precision;
     }
@@ -168,5 +224,23 @@ public class DvQuantity extends DvAmount<Double> {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), precision, units, magnitude, property);
+    }
+
+    /**
+     * string form displayable for humans
+     *
+     * @return string presentation
+     */
+    public String toString() {
+        DecimalFormat format = new DecimalFormat();
+        format.setMinimumFractionDigits(precision.intValue());
+        format.setMaximumFractionDigits(precision.intValue());
+        DecimalFormatSymbols dfs = format.getDecimalFormatSymbols();
+        dfs.setDecimalSeparator(DECIMAL_SEPARATOR);
+        format.setDecimalFormatSymbols(dfs);
+        format.setGroupingUsed(false);
+        String tmp = format.format(magnitude) + (getUnits().isEmpty() ? "" : "," +
+                getUnits());
+        return tmp;
     }
 }

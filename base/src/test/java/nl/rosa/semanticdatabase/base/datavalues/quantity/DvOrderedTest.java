@@ -91,7 +91,7 @@ public class DvOrderedTest {
 	@Test
 	public void testIsNormalWithNoneInclusiveNormalRange() {
 		List<ReferenceRange> referenceRanges = null;
-		DvInterval<DvCount> normalRange = new DvInterval<DvCount>(
+		DvInterval<DvCount> normalRange = new DvInterval<>(
 				new DvCount(2L), new DvCount(4L));
 		CodePhrase normalStatus = null;
 		double accuracy = 0;

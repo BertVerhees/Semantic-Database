@@ -37,7 +37,7 @@ public class DvCountTest{
         DvCount c1 = new DvCount(3L);
         DvCount c2 = new DvCount(5L);
         DvCount expected = new DvCount(8L);
-        assertEquals(expected, c1.getMagnitude() + c2.getMagnitude());
+        assertEquals(expected.getMagnitude(), c1.getMagnitude() + c2.getMagnitude());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class DvCountTest{
         DvCount c1 = new DvCount(3L);
         DvCount c2 = new DvCount(5L);
         DvCount expected = new DvCount(2L);
-        assertEquals(expected, c2.getMagnitude() - c1.getMagnitude());
+        assertEquals(expected.getMagnitude(), c2.getMagnitude() - c1.getMagnitude());
     }
 
     @Test
