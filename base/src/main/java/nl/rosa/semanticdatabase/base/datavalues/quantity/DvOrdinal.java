@@ -1,8 +1,6 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
-import nl.rosa.semanticdatabase.base.datavalues.DataValue;
-import nl.rosa.semanticdatabase.base.datavalues.ReferenceModelName;
 import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
 import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
 
@@ -12,7 +10,9 @@ import java.util.Objects;
 /**
  * Created by pieter.bos on 04/11/15.
  */
-public class DvOrdinal extends DvOrdered<DvOrdinal> implements SingleValuedDataValue<Long>, Comparable<DvOrdinal> {
+public class DvOrdinal
+        extends DvOrdered<DvOrdinal>
+        implements SingleValuedDataValue<Long>, Comparable<DvOrdinal> {
 
     private DvCodedText symbol;
     private Long value;
@@ -25,7 +25,11 @@ public class DvOrdinal extends DvOrdered<DvOrdinal> implements SingleValuedDataV
         this.value = value;
     }
 
-    public DvOrdinal( List<ReferenceRange> otherReferenceRanges,  DvInterval normalRange, Long value, DvCodedText symbol) {
+    public DvOrdinal(
+            List<ReferenceRange> otherReferenceRanges,
+            DvInterval normalRange,
+            Long value,
+            DvCodedText symbol) {
         super(otherReferenceRanges, normalRange);
         this.symbol = symbol;
         this.value = value;
@@ -39,8 +43,22 @@ public class DvOrdinal extends DvOrdered<DvOrdinal> implements SingleValuedDataV
      * @param dvCodedTextCode
      * @throws IllegalArgumentException
      */
-    public DvOrdinal(Long value, String dvCodedTextValue, String dvCodedTextTerminology, String dvCodedTextCode) {
-        this(null, null, value, new DvCodedText(dvCodedTextValue, new CodePhrase(dvCodedTextTerminology, dvCodedTextCode)));
+    public DvOrdinal(
+            Long value,
+            String dvCodedTextValue,
+            String dvCodedTextTerminology,
+            String dvCodedTextCode) {
+        this(
+                null,
+                null,
+                value,
+                new DvCodedText(
+                        dvCodedTextValue,
+                        new CodePhrase(
+                                dvCodedTextTerminology,
+                                dvCodedTextCode)
+                )
+        );
     }
 
 

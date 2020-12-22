@@ -9,7 +9,8 @@ import java.util.Objects;
 /**
  * Created by pieter.bos on 04/11/15.
  */
-public abstract class DvQuantified<AccuracyType, MagnitudeType extends Comparable> extends DvOrdered<MagnitudeType> {
+public abstract class DvQuantified<AT, MT extends Comparable>
+        extends DvOrdered<MT> {
 
     
     private String magnitudeStatus;
@@ -17,7 +18,11 @@ public abstract class DvQuantified<AccuracyType, MagnitudeType extends Comparabl
     public DvQuantified() {
     }
 
-    public DvQuantified(List<ReferenceRange> otherReferenceRanges, DvInterval normalRange, CodePhrase normalStatus, String magnitudeStatus) {
+    public DvQuantified(
+            List<ReferenceRange> otherReferenceRanges,
+            DvInterval normalRange,
+            CodePhrase normalStatus,
+            String magnitudeStatus) {
         super(otherReferenceRanges, normalRange, normalStatus);
         this.magnitudeStatus = magnitudeStatus;
     }
@@ -32,12 +37,13 @@ public abstract class DvQuantified<AccuracyType, MagnitudeType extends Comparabl
     }
 
     
-    public abstract AccuracyType getAccuracy();
+    public abstract AT getAccuracy();
 
-    public abstract MagnitudeType getMagnitude();
+    public abstract MT getMagnitude();
+
 
     @Override
-    public int compareTo(MagnitudeType other) {
+    public int compareTo(MT other) {
         return getMagnitude().compareTo(other);
     }
 

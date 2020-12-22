@@ -8,6 +8,4 @@ package nl.rosa.semanticdatabase.base.datavalues;
  * Originally: Created by pieter.bos on 04/11/15.
  */
 public abstract class DataValue {
-
-
 }

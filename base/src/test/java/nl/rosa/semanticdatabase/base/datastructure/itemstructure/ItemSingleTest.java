@@ -21,21 +21,24 @@
 package nl.rosa.semanticdatabase.base.datastructure.itemstructure;
 
 
-import org.openehr.rm.datastructure.DataStructureTestBase;
-import org.openehr.rm.datastructure.itemstructure.representation.Element;
-import org.openehr.rm.datatypes.text.DvText;
+import nl.rosa.semanticdatabase.base.datastructure.DataStructureTestBase;
+import nl.rosa.semanticdatabase.base.datastructures.Element;
+import nl.rosa.semanticdatabase.base.datastructures.ItemSingle;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ItemSingleTest extends DataStructureTestBase {
-
-    public ItemSingleTest(String test) {
-        super(test);
-    }
 
     /**
      * The fixture set up called before every test method.
      */
+    @BeforeEach
     protected void setUp() throws Exception {
-        element = new Element("at0002", new DvText("test element"), 
+        element = new Element("at0002", new DvText("test element"),
         		new DvText("text value"));
         itemSingle = new ItemSingle(null, "at0001", text("single item"),
                 null, null, null, null, element);
@@ -44,6 +47,7 @@ public class ItemSingleTest extends DataStructureTestBase {
     /**
      * The fixture clean up called after every test method.
      */
+    @AfterEach
     protected void tearDown() throws Exception {
     	path = null;
     	value = null;
@@ -51,84 +55,98 @@ public class ItemSingleTest extends DataStructureTestBase {
     	itemSingle = null;
     }
 
+    @Test
     public void testItemAtPathOnItem() throws Exception {
     	path = "/item";
     	value = itemSingle.itemAtPath(path);
-    	assertEquals("unexpected item", element, value);
+    	assertEquals( element, value);
     }
-    
+
+	@Test
     public void testItemAtPathOnItemWithName() throws Exception {
     	path = "/item['test element']";
     	value = itemSingle.itemAtPath(path);
-    	assertEquals("unexpected item", element, value);
+    	assertEquals( element, value);
     }
-    
+
+	@Test
     public void testItemAtPathOnItemWithATCode() throws Exception {
     	path = "/item[at0002]";
     	value = itemSingle.itemAtPath(path);
-    	assertEquals("unexpected item", element, value);
+    	assertEquals( element, value);
     }
-    
+
+	@Test
     public void testItemAtPathOnItemWithNameAndATCode() throws Exception {
     	path = "/item[at0002, 'test element']";
     	value = itemSingle.itemAtPath(path);
-    	assertEquals("unexpected item", element, value);
+    	assertEquals(element, value);
     }
-    
+
+	@Test
     public void testItemAtPathOnItemValue() throws Exception {
     	path = "/item/value";
     	value = itemSingle.itemAtPath(path);
-    	assertEquals("unexpected item.value", element.getValue(), value);
+    	assertEquals(element.getValue(), value);
     }
-    
+
+	@Test
     public void testItemAtPathOnItemValueWithName() throws Exception {
     	path = "/item['test element']/value";
     	value = itemSingle.itemAtPath(path);
-    	assertEquals("unexpected item.value", element.getValue(), value);
+    	assertEquals( element.getValue(), value);
     }
-    
+
+	@Test
     public void testItemAtPathOnItemValueWithATCode() throws Exception {
     	path = "/item[at0002]/value";
     	value = itemSingle.itemAtPath(path);
-    	assertEquals("unexpected item.value", element.getValue(), value);
+    	assertEquals(element.getValue(), value);
     }
-    
+
+	@Test
     public void testItemAtPathOnItemValueWithNameAndATCode() throws Exception {
     	path = "/item[at0002, 'test element']/value";
     	value = itemSingle.itemAtPath(path);
-    	assertEquals("unexpected item.value", element.getValue(), value);
+    	assertEquals( element.getValue(), value);
     }
-    
+
+	@Test
     public void testItemAtPathOnItemUnmatched() throws Exception {
     	path = "/item2";
     	value = itemSingle.itemAtPath(path);
-    	assertNull("expected null", value);
+    	assertNull(value);
     }
-    
+
+	@Test
     public void testItemAtPathOnItemWithNameUnmatched() throws Exception {
     	path = "/item['test element 2']";
     	value = itemSingle.itemAtPath(path);
-    	assertNull("expected null", value);
+    	assertNull( value);
     }
-    
+
+	@Test
     public void testItemAtPathOnItemWithATCodeUnmatched() throws Exception {
     	path = "/item[at0222]";
     	value = itemSingle.itemAtPath(path);
-    	assertNull("expected null", value);
+    	assertNull(value);
     }
-    
+
+	@Test
     public void testItemAtPathOnItemWithNameAndATCodeUnmatched() throws Exception {
     	path = "/item[at3333, 'test element']";
     	value = itemSingle.itemAtPath(path);
-    	assertNull("expected null", value);
+    	assertNull(value);
     }
-    
+
+	@Test
     public void testItemAtPathOnWhole() throws Exception {
     	path = "/";
     	value = itemSingle.itemAtPath(path);
-    	assertEquals("unexpected whole", itemSingle, value);
+    	assertEquals(itemSingle, value);
     }
-    
+
+	@Test
 	public void testEquals() {
 		Element elementOne = new Element("at0002", new DvText("test element"),
 				new DvText("text value"));
@@ -143,6 +161,7 @@ public class ItemSingleTest extends DataStructureTestBase {
 		assertTrue(itemSingleOne.equals(itemSingleTwo));
 	}
 
+	@Test
 	public void testNotEquals() {
 		Element elementOne = new Element("at0002", new DvText("test element"),
 				new DvText("text value"));

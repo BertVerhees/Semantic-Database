@@ -99,7 +99,7 @@ public class DataStructureTestBase {
 
     // create a quantityRatio
     protected DvProportion proportion(double numerator, double denominator) {
-        return new DvProportion(numerator, denominator, ProportionKind.FRACTION, 0);
+        return new DvProportion(numerator, denominator, ProportionKind.FRACTION, 0L);
     }
 
     protected static final String sep = Locatable.PATH_SEPARATOR;

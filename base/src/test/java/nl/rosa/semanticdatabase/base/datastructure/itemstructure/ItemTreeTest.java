@@ -20,29 +20,31 @@
  */
 package nl.rosa.semanticdatabase.base.datastructure.itemstructure;
 
-import org.openehr.rm.datastructure.DataStructureTestBase;
-import org.openehr.rm.datastructure.itemstructure.representation.Cluster;
-import org.openehr.rm.datastructure.itemstructure.representation.Element;
-import org.openehr.rm.datastructure.itemstructure.representation.Item;
-import org.openehr.rm.datatypes.quantity.DvQuantity;
-import org.openehr.rm.datatypes.text.CodePhrase;
-import org.openehr.rm.datatypes.text.DvCodedText;
-import org.openehr.rm.datatypes.text.DvText;
-import org.openehr.rm.support.measurement.MeasurementService;
-import org.openehr.rm.support.measurement.TestMeasurementService;
+import nl.rosa.semanticdatabase.base.datastructure.DataStructureTestBase;
+import nl.rosa.semanticdatabase.base.datastructures.Cluster;
+import nl.rosa.semanticdatabase.base.datastructures.Element;
+import nl.rosa.semanticdatabase.base.datastructures.Item;
+import nl.rosa.semanticdatabase.base.datastructures.ItemTree;
+import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.DvQuantity;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
+import nl.rosa.semanticdatabase.base.measurement.MeasurementService;
+import nl.rosa.semanticdatabase.base.measurement.SimpleMeasurementService;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemTreeTest extends DataStructureTestBase {
+import static org.junit.jupiter.api.Assertions.*;
 
-    public ItemTreeTest(String test) {
-        super(test);
-    }
+public class ItemTreeTest extends DataStructureTestBase {
 
     /**
      * The fixture set up called before every test method.
      */
+    @BeforeEach
     protected void setUp() throws Exception {
         init();
     }
@@ -50,6 +52,7 @@ public class ItemTreeTest extends DataStructureTestBase {
     /**
      * The fixture clean up called after every test method.
      */
+    @AfterEach
     protected void tearDown() throws Exception {
         itemTree = null;
     }
@@ -57,7 +60,7 @@ public class ItemTreeTest extends DataStructureTestBase {
     private void init() {
     	
         // sample
-    	sample = new Element("at0001", new DvText("sample"), 
+    	sample = new Element("at0001", new DvText("sample"),
     			new DvCodedText("serum", new CodePhrase("terminology", "111")));
     	
     	// lipid studies
@@ -70,7 +73,7 @@ public class ItemTreeTest extends DataStructureTestBase {
     	hdlCholesterol = new Element("at0004", new DvText("HDL cholesterol"),
     			new DvQuantity("mmol/L", 5.2, measureServ));
     	
-    	List<Item> items = new ArrayList<Item>();
+    	List<Item> items = new ArrayList<>();
     	items.add(totalCholesterol);
     	items.add(ldlCholesterol);
     	items.add(hdlCholesterol);
@@ -274,7 +277,7 @@ public class ItemTreeTest extends DataStructureTestBase {
     private Element hdlCholesterol;
     private Element comment;
     private Cluster lipidStudies;
-    private MeasurementService measureServ = TestMeasurementService.getInstance();
+    private MeasurementService measureServ = SimpleMeasurementService.getInstance();
 }
 /*
  *  ***** BEGIN LICENSE BLOCK *****

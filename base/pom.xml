@@ -4,12 +4,13 @@
   <parent>
     <artifactId>semanticdatabase</artifactId>
     <groupId>nl.rosa.semanticdatabase</groupId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>..</relativePath>
   </parent>
 
   <groupId>nl.rosa.semanticdatabase</groupId>
   <artifactId>base</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
 
 
 
@@ -24,7 +25,6 @@
     </properties>
 
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
@@ -55,16 +55,9 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter</artifactId>
-      <version>RELEASE</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>nl.rosa.semanticdatabase</groupId>
-      <artifactId>measurement-service</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-      <scope>compile</scope>
+      <groupId>javax.measure</groupId>
+      <artifactId>jsr-275</artifactId>
+      <version>0.9.4</version>
     </dependency>
   </dependencies>
 
@@ -89,10 +82,6 @@
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>

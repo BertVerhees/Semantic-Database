@@ -2,10 +2,12 @@ package nl.rosa.semanticdatabase.base.datavalues.quantity.datetime;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.DvAmount;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
 import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.TemporalAccessor;
 import java.util.List;
@@ -20,7 +22,9 @@ import java.util.Objects;
  * <p>
  * Originally: Created by pieter.bos on 04/11/15.
  */
-public class DvTime extends DvTemporal<Double> implements SingleValuedDataValue<TemporalAccessor> {
+public class DvTime
+        extends DvTemporal<DvTime>
+        implements SingleValuedDataValue<TemporalAccessor> {
 
     private TemporalAccessor value;
 
@@ -38,7 +42,13 @@ public class DvTime extends DvTemporal<Double> implements SingleValuedDataValue<
         this.value = DateTimeParsers.parseTimeValue(iso8601Time);
     }
 
-    public DvTime(List<ReferenceRange> otherReferenceRanges, DvInterval normalRange, CodePhrase normalStatus, String magnitudeStatus, DvDuration accuracy, TemporalAccessor value) {
+    public DvTime(
+            List<ReferenceRange> otherReferenceRanges,
+            DvInterval normalRange,
+            CodePhrase normalStatus,
+            String magnitudeStatus,
+            DvDuration accuracy,
+            TemporalAccessor value) {
         super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus, accuracy);
         this.value = value;
     }
@@ -85,5 +95,67 @@ public class DvTime extends DvTemporal<Double> implements SingleValuedDataValue<
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), value);
+    }
+
+    /**
+     * Addition of a Duration to this DvTime.
+     * @param q
+     * @return product of addition
+     */
+    @Override
+    public DvTime add(DvDuration q) {
+        if (!getDiffType().isInstance(q)) {
+            throw new IllegalArgumentException("invalid difference type");
+        }
+        DvDuration d = (DvDuration) q;
+        LocalDateTime mdate = getDateTime();
+        mdate.plus(d.getValue());
+        return new DvTime(
+                getOtherReferenceRanges(),
+                getNormalRange(),
+                getNormalStatus(),
+                getAccuracy(),
+                getMagnitudeStatus(),
+                mdate.plus(d.getValue()));
+    }
+
+    /**
+     * Subtract a Duration from this DvTime.
+     * @param q
+     * @return product of substration
+     */
+    @Override
+    public DvTime subtract(DvDuration q) {
+        if (!getDiffType().isInstance(q)) {
+            throw new IllegalArgumentException("invalid difference type");
+        }
+        return add(q.negative());
+    }
+
+    /**
+     * Difference between this DvTime and other.
+     * @param other
+     * @return diff type
+     */
+    public DvDuration diff(DvTime other) {
+        return null;
+    }
+
+    /**
+     * True if other is less than this Quantified object. Based on comparison of magnitude.
+     * @param other
+     * @return
+     */
+    public Boolean lessThan(DvTime other){
+        return null;
+    }
+
+    /**
+     * True, for any two Dates.
+     * @param other
+     * @return
+     */
+    public Boolean isStrictlyComparableTo(DvTime other){
+        return null;
     }
 }

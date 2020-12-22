@@ -19,8 +19,21 @@ public class DvCount extends DvAmount<Long> {
         this.magnitude = magnitude;
     }
 
-    public DvCount(List<ReferenceRange> otherReferenceRanges, DvInterval normalRange, CodePhrase normalStatus, Double accuracy, Boolean accuracyIsPercent, String magnitudeStatus, Long magnitude) {
-        super(otherReferenceRanges, normalRange, normalStatus, accuracy, accuracyIsPercent, magnitudeStatus);
+    public DvCount(
+            List<ReferenceRange> otherReferenceRanges,
+            DvInterval normalRange,
+            CodePhrase normalStatus,
+            Double accuracy,
+            Boolean accuracyIsPercent,
+            String magnitudeStatus,
+            Long magnitude) {
+        super(
+                otherReferenceRanges,
+                normalRange,
+                normalStatus,
+                accuracy,
+                accuracyIsPercent,
+                magnitudeStatus);
         this.magnitude = magnitude;
     }
 

@@ -7,6 +7,8 @@ import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
 import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.temporal.TemporalAmount;
 import java.util.List;
 import java.util.Objects;
@@ -16,14 +18,16 @@ import java.util.Objects;
  * Originally: Created by pieter.bos on 04/11/15.
  */
 
-public class DvDuration extends DvAmount<Long> implements SingleValuedDataValue<TemporalAmount> {
+public class DvDuration
+        extends DvAmount<Long>
+        implements SingleValuedDataValue<TemporalAmount> {
 
-    private TemporalAmount value;
+    private Duration value;
 
     public DvDuration() {
     }
 
-    public DvDuration(TemporalAmount value) {
+    public DvDuration(Duration value) {
         this.value = value;
     }
 
@@ -36,7 +40,14 @@ public class DvDuration extends DvAmount<Long> implements SingleValuedDataValue<
         this.value = DateTimeParsers.parseDurationValue(iso8601Duration);
     }
 
-    public DvDuration(List<ReferenceRange> otherReferenceRanges, DvInterval normalRange, CodePhrase normalStatus, Double accuracy, Boolean accuracyIsPercent, String magnitudeStatus, TemporalAmount value) {
+    public DvDuration(
+            List<ReferenceRange> otherReferenceRanges,
+            DvInterval normalRange,
+            CodePhrase normalStatus,
+            Double accuracy,
+            Boolean accuracyIsPercent,
+            String magnitudeStatus,
+            TemporalAmount value) {
         super(otherReferenceRanges, normalRange, normalStatus, accuracy, accuracyIsPercent, magnitudeStatus);
         this.value = value;
     }
@@ -54,6 +65,90 @@ public class DvDuration extends DvAmount<Long> implements SingleValuedDataValue<
     @Override
     public Long getMagnitude() {
         return null; //no magnitude defined in spec
+    }
+
+    /**
+     * Create a Duration from two instances of DvWorldTime
+     *
+     * @param start
+     * @param end
+     */
+    public static DvDuration getDifference(DvTemporal start, DvTemporal end) {
+        return new DvDuration(
+                null,
+                null,
+                null,
+                0.0,
+                false,
+                null,
+                Duration.between(start.getDateTime(), end.getDateTime()));
+    }
+    /**
+     * Addition of a Duration to this DvDuration.
+     * @param q
+     * @return product of addition
+     */
+    @Override
+    public DvDuration add(DvDuration q) {
+        DvDuration d = (DvDuration) q;
+        return new DvDuration(
+                getOtherReferenceRanges(),
+                getNormalRange(),
+                getNormalStatus(),
+                getAccuracy(),
+                getMagnitudeStatus(),
+                ((Duration)d.getValue()).addTo(q.getValue()));
+    }
+
+    /**
+     * Subtract a DvDuration from this DvDuration.
+     * @param q
+     * @return product of substration
+     */
+    @Override
+    public DvDuration subtract(DvDuration q) {
+        if (!getDiffType().isInstance(q)) {
+            throw new IllegalArgumentException("invalid difference type");
+        }
+        return add(q.negative());
+    }
+
+    /**
+     * Difference between this DvDuration and other.
+     * @param other
+     * @return diff type
+     */
+    public DvDuration diff(DvDuration other) {
+        return null;
+    }
+
+    /**
+     * Negated version of current duration.
+     *
+     * Assuming the current duration is positive, the negated version represents a time prior to some
+     * origin point, or a negative age (e.g. so-called 'adjusted age' of premature infant).
+     * @return
+     */
+    public DvDuration negative(){
+        return null;
+    }
+
+    /**
+     * True if other is less than this Quantified object. Based on comparison of magnitude.
+     * @param other
+     * @return
+     */
+    public Boolean lessThan(DvDuration other){
+        return null;
+    }
+
+    /**
+     * True, for any two Dates.
+     * @param other
+     * @return
+     */
+    public Boolean isStrictlyComparableTo(DvDuration other){
+        return null;
     }
 
 

@@ -8,7 +8,8 @@ import java.util.Objects;
 /**
  * Created by pieter.bos on 04/11/15.
  */
-public abstract class DvAmount<MagnitudeType extends Comparable> extends DvQuantified<Double, MagnitudeType> {
+public abstract class DvAmount<MT extends Comparable>
+        extends DvQuantified<Double, MT> {
     
     private Double accuracy;
     private Boolean accuracyIsPercent;

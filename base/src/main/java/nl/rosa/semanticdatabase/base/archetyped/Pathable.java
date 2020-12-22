@@ -17,6 +17,15 @@ public abstract class Pathable {
     public Pathable() {
     }
 
+    /**
+     * Creates a Pathable
+     *
+     * @param parent null if not present
+     */
+    public Pathable(Pathable parent) {
+        this.parent = parent;
+    }
+
     public Pathable(Pathable parent, String parentAttributeName) {
         this.parent = parent;
         this.parentAttributeName = parentAttributeName;

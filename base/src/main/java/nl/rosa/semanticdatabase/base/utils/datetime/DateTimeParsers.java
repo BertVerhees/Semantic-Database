@@ -65,12 +65,13 @@ public class DateTimeParsers {
         }
     }
 
-    public static TemporalAmount parseDurationValue(String text) {
+    public static Duration parseDurationValue(String text) {
         try {
             if (text.startsWith("PT") || text.startsWith("-PT")) {
                 return Duration.parse(text);
             } else if (text.contains("T")) {
-                return PeriodDuration.parse(text);
+                return Duration.parse(text);
+//                return PeriodDuration.parse(text);
             } else {
                 return Period.parse(text);
             }

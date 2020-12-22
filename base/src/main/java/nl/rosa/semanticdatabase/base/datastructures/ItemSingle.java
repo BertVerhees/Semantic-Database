@@ -10,6 +10,7 @@ import nl.rosa.semanticdatabase.base.identification.UidBasedId;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * added constraint is that this contains only one item
@@ -25,7 +26,35 @@ public class ItemSingle extends ItemStructure {
         this.item = item;
     }
 
-    public ItemSingle(UidBasedId uid, String archetypeNodeId, DvText name, Archetyped archetypeDetails, FeederAudit feederAudit, List<Link> links, Pathable parent, String parentAttributeName, Element item) {
+    /**
+     * Construct a ItemSingle
+     *
+     * @param uid
+     * @param archetypeNodeId
+     * @param name
+     * @param archetypeDetails
+     * @param feederAudit
+     * @param links
+     * @param item not null
+     * @throws IllegalArgumentException if item null
+     */
+    public ItemSingle(UidBasedId uid,
+                      String archetypeNodeId,
+                      DvText name,
+                      Archetyped archetypeDetails,
+                      FeederAudit feederAudit,
+                      Set<Link> links,
+                      Pathable parent,
+                      Element item) {
+        super(uid, archetypeNodeId, name, archetypeDetails, feederAudit,
+                links, parent);
+        if(item == null) {
+            throw new IllegalArgumentException("item null");
+        }
+        this.item = item;
+    }
+
+    public ItemSingle(UidBasedId uid, String archetypeNodeId, DvText name, Archetyped archetypeDetails, FeederAudit feederAudit, Set<Link> links, Pathable parent, String parentAttributeName, Element item) {
         super(uid, archetypeNodeId, name, archetypeDetails, feederAudit, links, parent, parentAttributeName);
         this.item = item;
     }

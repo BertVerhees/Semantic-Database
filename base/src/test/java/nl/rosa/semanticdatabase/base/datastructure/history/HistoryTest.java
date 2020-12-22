@@ -21,18 +21,24 @@
 
 package nl.rosa.semanticdatabase.base.datastructure.history;
 
+import nl.rosa.semanticdatabase.base.archetyped.Locatable;
 import nl.rosa.semanticdatabase.base.datastructure.DataStructureTestBase;
-import nl.rosa.semanticdatabase.base.datastructures.ItemSingle;
+import nl.rosa.semanticdatabase.base.datastructures.*;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDateTime;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDuration;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
+import nl.rosa.semanticdatabase.base.terminology.TestTerminologyService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class HistoryTest extends DataStructureTestBase {
 
-	public HistoryTest(String testName) {
-		super(testName);	
-	}
-	
+	@BeforeEach
 	public void setUp() {
 		history = initWithItemList();
 	}
@@ -50,8 +56,8 @@ public class HistoryTest extends DataStructureTestBase {
 					new DvDateTime(TIME), item, null));
 		}
 		return new History<ItemSingle>(null, "at0002", text(NAME), null, null,
-				null, null, new DvDateTime(TIME), items, DvDuration
-						.getInstance("PT1h"), DvDuration.getInstance("PT3h"),
+				null, null, new DvDateTime(TIME), items, new DvDuration("PT1h"),
+				new DvDuration("PT3h"),
 				null);
 
 	}
@@ -60,11 +66,11 @@ public class HistoryTest extends DataStructureTestBase {
 		ItemSingle summary = new ItemSingle(null, "at0001", text(ELEMENT_NAME),
 				null, null, null, null, element);
 		return new History<ItemSingle>(null, "at0002", text(NAME), null, null,
-				null, null, new DvDateTime(TIME), null, DvDuration
-						.getInstance("PT1h"), DvDuration.getInstance("PT3h"),
+				null, null, new DvDateTime(TIME), null, new DvDuration("PT1h"), new DvDuration("PT3h"),
 				summary);
 	}
-	
+
+	@Test
 	public void testGetParent() {
 		History<ItemSingle> h1 = initWithItemSingle();
 		for (Event<ItemSingle> event : h1.getEvents()) {
@@ -76,6 +82,7 @@ public class HistoryTest extends DataStructureTestBase {
 		}
 	}
 
+	@Test
 	public void testHistoryContructorWithSharedParent() {
 		element = element("element name", "value");
 		History<ItemSingle> h1 = initWithSummary();
@@ -90,21 +97,20 @@ public class HistoryTest extends DataStructureTestBase {
 		}
 		try {
 			new History<ItemSingle>(null, "at0002", text(NAME), null, null,
-					null, null, new DvDateTime(TIME), items, DvDuration
-							.getInstance("PT1h"), DvDuration
-							.getInstance("PT3h"), null);
+					null, null, new DvDateTime(TIME), items, new DvDuration("PT1h"),
+					new DvDuration("PT3h"), null);
 			fail("this construction of History should fail, events already "
 					+ "have parent assigned");
 		} catch (IllegalArgumentException e) {
 		}
 	}
-	
+
+	@Test
 	public void testHistoryContructorWithNullValues() {
 		try {
 			new History<ItemSingle>(null, "at0002", text(NAME), null, null,
-					null, null, new DvDateTime(TIME), null, DvDuration
-							.getInstance("PT1h"), DvDuration
-							.getInstance("PT3h"), null);
+					null, null, new DvDateTime(TIME), null, new DvDuration("PT1h"),
+					new DvDuration("PT3h"), null);
 			fail("this construction of History should fail, both events "
 					+ "and summary are null");
 		} catch (IllegalArgumentException iae) {
@@ -188,79 +194,81 @@ public class HistoryTest extends DataStructureTestBase {
 		List<Event<ItemList>> intEvent = new ArrayList<Event<ItemList>>();
 		intEvent.add(new IntervalEvent<ItemList>(null, "at0004",
 				text("interval event"), null, null, null, null, new DvDateTime(
-						"2006-07-07T10:59:00"), itemList, null, DvDuration
-						.getInstance("PT30m"), codedText("mean", "meanCode"),
-				0, TestTerminologyService.getInstance()));
+						"2006-07-07T10:59:00"), itemList, null,
+				new DvDuration("PT30m"), codedText("mean", "meanCode"),
+				0L, TestTerminologyService.getInstance()));
 		return new History<ItemList>(null, "at0005", text(NAME), null, null,
-				null, null, new DvDateTime(TIME), intEvent, DvDuration
-						.getInstance("PT1h"), DvDuration.getInstance("PT3h"),
+				null, null, new DvDateTime(TIME), intEvent,
+				new DvDuration("PT1h"),
+				new DvDuration("PT3h"),
 				null);
 	}
-	
+
+	@Test
 	public void testItemAtPathWithRoot() throws Exception {
-		assertEquals("/ return wrong", history, history.itemAtPath("/"));
+		assertEquals( history, history.itemAtPath("/"));
 	}
-	
+
+	@Test
 	public void testItemAtPathWithArchetypePredicateWithMatch() throws Exception {
 		expression = "/events[at0004]";
 		ret = history.itemAtPath(expression);
-		assertNotNull(expression + " should return event", ret);
-		assertTrue(expression +  " should return event, but got: " + ret.getClass(),	
-				ret instanceof IntervalEvent);
+		assertNotNull( ret);
+		assertTrue(ret instanceof IntervalEvent);
 		Locatable locatable = (Locatable) ret;
 		assertEquals(expression + " return wrong", "at0004",	locatable.getArchetypeNodeId());
 	}
-	
+
+	@Test
 	public void testItemAtPathWithNamePredicateWithMatch() throws Exception {
 		expression = "/events['interval event']";
 		ret = history.itemAtPath(expression);
-		assertNotNull(expression + " should return event", ret);
-		assertTrue(expression +  " should return event, but got: " + ret.getClass(),	
-				ret instanceof IntervalEvent);
+		assertNotNull(ret);
+		assertTrue(ret instanceof IntervalEvent);
 		Locatable locatable = (Locatable) ret;
 		assertEquals(expression + " return wrong", "at0004",	locatable.getArchetypeNodeId());
 	}
-	
+
+	@Test
 	public void testItemAtPathWithArchetypeNamePredicateWithMatch() throws Exception {
 		expression = "/events[at0004, 'interval event']";
 		ret = history.itemAtPath(expression);
-		assertNotNull(expression + " should return event", ret);
-		assertTrue(expression +  " should return event, but got: " + ret.getClass(),	
-				ret instanceof IntervalEvent);
+		assertNotNull(ret);
+		assertTrue(ret instanceof IntervalEvent);
 		Locatable locatable = (Locatable) ret;
-		assertEquals(expression + " return wrong", "at0004",	locatable.getArchetypeNodeId());
+		assertEquals( "at0004",	locatable.getArchetypeNodeId());
 	}
-	
+
+	@Test
 	public void testItemAtPathWithPredicatesAndTailingPart() throws Exception {
 		expression = "/events[at0004, 'interval event']/data/items[at0014, 'element 1']";
 		ret = history.itemAtPath(expression);
 		
-		assertNotNull(expression + " expected Element, but got null", ret);
-		assertTrue(expression +  " should return Element, but got: " + ret.getClass(),	
-				ret instanceof Element);
+		assertNotNull(ret);
+		assertTrue(ret instanceof Element);
 		Element e = (Element) ret;
 		assertEquals("element name wrong", "element 1", e.getName().getValue());
 	}
-	
+
+	@Test
 	public void testItemAtPathWithPredicatesAndTailingPartValue() throws Exception {
 		expression = "/events[at0004, 'interval event']/data/items[at0014, 'element 1']/value";
 		ret = history.itemAtPath(expression);
 		
-		assertNotNull(expression + " should return a DvText", ret);
-		assertTrue(expression +  " should return DvText, but got: " + ret.getClass(),	
-				ret instanceof DvText);
+		assertNotNull( ret);
+		assertTrue(ret instanceof DvText);
 		DvText dt = (DvText) ret;
 		assertEquals("dvText value wrong", "text 1", dt.getValue());
 	}
-	
+
+	@Test
 	public void testItemAtPathWithPredicatesAndTailingPartValueValue() throws Exception {
 		expression = "/events[at0004, 'interval event']/data/items[at0014, 'element 1']/value/value";
 		ret = history.itemAtPath(expression);
 		
-		assertNotNull(expression + " return a null", ret);
-		assertTrue("expected a string, but got: " + ret.getClass(), 
-				ret instanceof String);
-		assertEquals("dvText value wrong", "text 1", ret);
+		assertNotNull(ret);
+		assertTrue(ret instanceof String);
+		assertEquals( "text 1", ret);
 	}
 
 	/* test fixtures */

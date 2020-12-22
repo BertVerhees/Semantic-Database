@@ -4,9 +4,7 @@ import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
 import nl.rosa.semanticdatabase.base.identification.UidBasedId;
 import nl.rosa.semanticdatabase.base.paths.PathSegment;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class Locatable extends Pathable {
 
@@ -15,7 +13,7 @@ public abstract class Locatable extends Pathable {
     private UidBasedId uid;
     private Archetyped archetypeDetails;
     private FeederAudit feederAudit;
-    private List<Link> links = new ArrayList<>();
+    private Set<Link> links = new HashSet<>();
     public static final String PATH_SEPARATOR = "/";
     public static final String ROOT = PATH_SEPARATOR;
 
@@ -35,13 +33,53 @@ public abstract class Locatable extends Pathable {
         this.archetypeNodeId = archetypeNodeId;
     }
 
+    /**
+     * Constructs a Locatable
+     *
+     * @param uid              null if not specified
+     * @param archetypeNodeId  not null
+     * @param name             not null
+     * @param archetypeDetails null if not specified
+     * @param feederAudit      null if not specified
+     * @param links            null if not specified
+     * @param parent			 null if not specified
+     * @throws IllegalArgumentException if name null or archetypeNodeId null
+     *                                  or links not null and empty
+     */
+    protected Locatable(
+            UidBasedId uid,
+            String archetypeNodeId,
+            DvText name,
+            Archetyped archetypeDetails,
+            FeederAudit feederAudit,
+            Set<Link> links,
+            Pathable parent) {
+        super(parent);
+
+        if (archetypeNodeId == null) {
+            throw new IllegalArgumentException("null archetypeNodeId");
+        }
+        if (name == null) {
+            throw new IllegalArgumentException("null name");
+        }
+        if (links != null && links.isEmpty()) {
+            throw new IllegalArgumentException("empty links");
+        }
+        this.uid = uid;
+        this.archetypeNodeId = archetypeNodeId;
+        this.name = name;
+        this.archetypeDetails = archetypeDetails;
+        this.feederAudit = feederAudit;
+        this.links = links;
+    }
+
     public Locatable(
             UidBasedId uid,
             String archetypeNodeId,
             DvText name,
             Archetyped archetypeDetails,
             FeederAudit feederAudit,
-            List<Link> links,
+            Set<Link> links,
             Pathable parent,
             String parentAttributeName) {
         super(parent, parentAttributeName);
@@ -105,11 +143,11 @@ public abstract class Locatable extends Pathable {
         this.archetypeDetails = archetypeDetails;
     }
 
-    public List<Link> getLinks() {
+    public Set<Link> getLinks() {
         return links;
     }
 
-    public void setLinks(List<Link> linked) {
+    public void setLinks(Set<Link> linked) {
         this.links = linked;
     }
 

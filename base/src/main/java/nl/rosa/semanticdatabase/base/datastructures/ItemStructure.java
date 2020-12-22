@@ -8,6 +8,7 @@ import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
 import nl.rosa.semanticdatabase.base.identification.UidBasedId;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
@@ -18,8 +19,47 @@ public abstract class ItemStructure extends DataStructure {
         super(archetypeNodeId, name);
     }
 
-    public ItemStructure(UidBasedId uid, String archetypeNodeId, DvText name, Archetyped archetypeDetails, FeederAudit feederAudit, List<Link> links, Pathable parent, String parentAttributeName) {
-        super(uid, archetypeNodeId, name, archetypeDetails, feederAudit, links, parent, parentAttributeName);
+    /**
+     * Constructs a ItemStructure
+     *
+     * @param uid
+     * @param archetypeNodeId
+     * @param name
+     * @param archetypeDetails
+     * @param feederAudit
+     * @param links
+     * @param parent
+     */
+    protected ItemStructure(
+            UidBasedId uid,
+            String archetypeNodeId,
+            DvText name,
+            Archetyped archetypeDetails,
+            FeederAudit feederAudit,
+            Set<Link> links,
+            Pathable parent) {
+        super(uid, archetypeNodeId, name, archetypeDetails, feederAudit,
+                links, parent);
+    }
+
+    public ItemStructure(
+            UidBasedId uid,
+            String archetypeNodeId,
+            DvText name,
+            Archetyped archetypeDetails,
+            FeederAudit feederAudit,
+            Set<Link> links,
+            Pathable parent,
+            String parentAttributeName) {
+        super(
+                uid,
+                archetypeNodeId,
+                name,
+                archetypeDetails,
+                feederAudit,
+                links,
+                parent,
+                parentAttributeName);
     }
 
     /**

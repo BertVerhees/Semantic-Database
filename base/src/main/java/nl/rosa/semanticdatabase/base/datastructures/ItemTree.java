@@ -11,6 +11,7 @@ import nl.rosa.semanticdatabase.base.identification.UidBasedId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
@@ -24,7 +25,7 @@ public class ItemTree extends ItemStructure {
         setItems(items);
     }
 
-    public ItemTree(UidBasedId uid, String archetypeNodeId, DvText name, Archetyped archetypeDetails, FeederAudit feederAudit, List<Link> links, Pathable parent, String parentAttributeName, List<Item> items) {
+    public ItemTree(UidBasedId uid, String archetypeNodeId, DvText name, Archetyped archetypeDetails, FeederAudit feederAudit, Set<Link> links, Pathable parent, String parentAttributeName, List<Item> items) {
         super(uid, archetypeNodeId, name, archetypeDetails, feederAudit, links, parent, parentAttributeName);
         setItems(items);
     }

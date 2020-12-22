@@ -10,6 +10,7 @@ import java.time.Duration;
 import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Originally: Created by pieter.bos on 03/11/15.
@@ -30,9 +31,67 @@ public abstract class Event<Type extends ItemStructure> extends Locatable {
         this.data = data;
     }
 
+    /**
+     * Constructs an Event
+     *
+     * @param uid
+     * @param archetypeNodeId
+     * @param name
+     * @param archetypeDetails
+     * @param feederAudit
+     * @param links
+     * @param parent	null if unspecified
+     * @param time		not null
+     * @param data		not null
+     * @param state
+     * @throws IllegalArgumentException if time, data or parent null
+     */
+    public Event(
+            UidBasedId uid,
+            String archetypeNodeId,
+            DvText name,
+            Archetyped archetypeDetails,
+            FeederAudit feederAudit,
+            Set<Link> links,
+            History<Type> parent,
+            DvDateTime time,
+            Type data,
+            Type state) {
+        super(uid, archetypeNodeId, name, archetypeDetails, feederAudit, links, parent);
+        if (time == null) {
+            throw new IllegalArgumentException("null time");
+        }
+        if (data == null) {
+            throw new IllegalArgumentException("null data");
+        }
+        //this.parent = parent;
+        this.time = time;
+        this.data = data;
+        this.state = state;
+    }
 
-    public Event(UidBasedId uid, String archetypeNodeId, DvText name, Archetyped archetypeDetails, FeederAudit feederAudit, List<Link> links, Pathable parent, String parentAttributeName, DvDateTime time, Type data, Type state) {
-        super(uid, archetypeNodeId, name, archetypeDetails, feederAudit, links, parent, parentAttributeName);
+
+    public Event(
+            UidBasedId uid,
+            String archetypeNodeId,
+            DvText name,
+            Archetyped archetypeDetails,
+            FeederAudit feederAudit,
+            Set<Link> links,
+            Pathable parent,
+            String parentAttributeName,
+            DvDateTime time,
+            Type data,
+            Type state) {
+        super(
+                uid,
+                archetypeNodeId,
+                name,
+                archetypeDetails,
+                feederAudit,
+                links,
+                parent,
+                parentAttributeName);
         this.time = time;
         this.state = state;
         this.data = data;

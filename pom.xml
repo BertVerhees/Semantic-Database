@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>nl.rosa.semanticdatabase</groupId>
   <artifactId>semanticdatabase</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>semanticdatabase</name>
   <!-- FIXME change it to the project's website -->
@@ -74,10 +74,9 @@
     </pluginManagement>
   </build>
   <modules>
+    <module>base</module>
     <module>aom2</module>
     <module>bmm</module>
-    <module>base</module>
     <module>utils</module>
-    <module>measurement-service</module>
   </modules>
 </project>

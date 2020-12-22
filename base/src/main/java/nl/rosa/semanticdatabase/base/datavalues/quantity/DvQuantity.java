@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
-import nl.rosa.semanticdatabase.measurementservice.measurement.MeasurementService;
+import nl.rosa.semanticdatabase.base.measurement.MeasurementService;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -18,7 +18,7 @@ public class DvQuantity extends DvAmount<Double> {
     private Double magnitude;
     private String unitsSystem;
     private String unitsDisplayName;
-    private MeasurementService measurementService; // add final
+    private MeasurementService measurementService;
 
     public static final char DECIMAL_SEPARATOR = '.';
 
@@ -48,7 +48,16 @@ public class DvQuantity extends DvAmount<Double> {
      */
     public DvQuantity(String units, double magnitude, Long precision,
                       MeasurementService measurementService) {
-        this(null, null, null, 0, false, null, units, magnitude, precision,
+        this(
+                null,
+                null,
+                null,
+                0,
+                false,
+                null,
+                units,
+                magnitude,
+                precision,
                 measurementService);
     }
 
@@ -59,9 +68,16 @@ public class DvQuantity extends DvAmount<Double> {
      * @param precision
      * @throws IllegalArgumentException if units is null
      */
-    public DvQuantity(double magnitude, Long precision,
-                      MeasurementService measurementService) {
-        this("", magnitude, precision, measurementService);
+    public DvQuantity(
+            double magnitude,
+            Long precision,
+
+            MeasurementService measurementService) {
+        this(
+                "",
+                magnitude,
+                precision,
+                measurementService);
     }
 
 
@@ -74,9 +90,16 @@ public class DvQuantity extends DvAmount<Double> {
      * @param units not null
      * @throws IllegalArgumentException if units is null
      */
-    public DvQuantity(String units, double magnitude,
-                      MeasurementService measurementService) {
-        this(units, magnitude, 0L, measurementService);
+    public DvQuantity(
+            String units,
+            double magnitude,
+
+            MeasurementService measurementService) {
+        this(
+                units,
+                magnitude,
+                0L,
+                measurementService);
     }
     /**
      * New construct that does not require a measurementService
@@ -85,13 +108,35 @@ public class DvQuantity extends DvAmount<Double> {
      * @param magnitude
      * @param precision
      */
-    public DvQuantity(String units, double magnitude, Long precision) {
-        this(units, magnitude, precision, null);
+    public DvQuantity(
+            String units,
+            double magnitude,
+            Long precision) {
+        this(
+                units,
+                magnitude,
+                precision,
+                null);
     }
 
 
-    public DvQuantity( List<ReferenceRange> otherReferenceRanges,  DvInterval normalRange,  CodePhrase normalStatus,  Double accuracy,  Boolean accuracyIsPercent,  String magnitudeStatus, String units, Double magnitude,  Long precision) {
-        super(otherReferenceRanges, normalRange, normalStatus, accuracy, accuracyIsPercent, magnitudeStatus);
+    public DvQuantity(
+            List<ReferenceRange> otherReferenceRanges,
+            DvInterval normalRange,
+            CodePhrase normalStatus,
+            Double accuracy,
+            Boolean accuracyIsPercent,
+            String magnitudeStatus,
+            String units,
+            Double magnitude,
+            Long precision) {
+        super(
+                otherReferenceRanges,
+                normalRange,
+                normalStatus,
+                accuracy,
+                accuracyIsPercent,
+                magnitudeStatus);
         this.precision = precision;
         this.units = units;
         this.magnitude = magnitude;

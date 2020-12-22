@@ -12,6 +12,7 @@ import nl.rosa.semanticdatabase.base.identification.UidBasedId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Originally: Created by pieter.bos on 04/11/15.
@@ -31,13 +32,44 @@ public final class History<Type extends ItemStructure> extends DataStructure {
         this.events = events;
     }
 
-    public History(UidBasedId uid, String archetypeNodeId, DvText name, Archetyped archetypeDetails, FeederAudit feederAudit, List<Link> links, Pathable parent, String parentAttributeName, DvDateTime origin, List<Event<Type>> events, DvDuration period, DvDuration duration, Type summary) {
+    public History(UidBasedId uid, String archetypeNodeId, DvText name, Archetyped archetypeDetails, FeederAudit feederAudit, Set<Link> links, Pathable parent, String parentAttributeName, DvDateTime origin, List<Event<Type>> events, DvDuration period, DvDuration duration, Type summary) {
         super(uid, archetypeNodeId, name, archetypeDetails, feederAudit, links, parent, parentAttributeName);
         this.origin = origin;
         this.period = period;
         this.duration = duration;
         this.summary = summary;
         this.events = events;
+    }
+
+    public History(
+            UidBasedId uid,
+            String archetypeNodeId,
+            DvText name,
+            Archetyped archetypeDetails,
+            FeederAudit feederAudit,
+            Set<Link> links,
+            Pathable parent,
+            DvDateTime origin,
+            List<Event<Type>> events,
+            DvDuration period,
+            DvDuration duration,
+            Type summary){
+        super(uid, archetypeNodeId, name, archetypeDetails, feederAudit,
+                links, parent);
+        if (origin == null) {
+            throw new IllegalArgumentException("null origin");
+        }
+        if (events != null && events.size() == 0) {
+            throw new IllegalArgumentException("empty events");
+        }
+        if (events == null && summary == null) {
+            throw new IllegalArgumentException("null events and summary");
+        }
+        this.origin = origin;
+        setEvents(events);
+        this.period = period;
+        this.duration = duration;
+        this.summary = summary;
     }
 
     public DvDateTime getOrigin() {

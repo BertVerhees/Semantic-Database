@@ -20,29 +20,34 @@
  */
 package nl.rosa.semanticdatabase.base.datastructure.itemstructure;
 
-import org.openehr.rm.datastructure.DataStructureTestBase;
-import org.openehr.rm.datastructure.itemstructure.representation.Cluster;
-import org.openehr.rm.datastructure.itemstructure.representation.Element;
-import org.openehr.rm.datastructure.itemstructure.representation.Item;
-import org.openehr.rm.datatypes.quantity.*;
-import org.openehr.rm.datatypes.text.DvText;
+import nl.rosa.semanticdatabase.base.datastructure.DataStructureTestBase;
+import nl.rosa.semanticdatabase.base.datastructures.Cluster;
+import nl.rosa.semanticdatabase.base.datastructures.Element;
+import nl.rosa.semanticdatabase.base.datastructures.Item;
+import nl.rosa.semanticdatabase.base.datastructures.ItemTable;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.DvProportion;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.ProportionKind;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemTableTest extends DataStructureTestBase {
+import org.junit.jupiter.api.*;
 
-    public ItemTableTest(String test) {
-        super(test);
-    }
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ItemTableTest extends DataStructureTestBase {
 
     /**
      * The fixture set up called before every test method.
      */
+    @BeforeEach
     protected void setUp() throws Exception {
     	createTable();       
     }
-    
+
     private void createTable() throws Exception {
     	rows = new ArrayList<Cluster>();
     	
@@ -50,7 +55,7 @@ public class ItemTableTest extends DataStructureTestBase {
     	Element eyes = new Element("at0001", new DvText("eye(s)"),
     			new DvText("right"));
     	Element acuity = new Element("at0002", new DvText("visual acuity"),
-    			new DvProportion(6, 6, ProportionKind.RATIO, 0));
+    			new DvProportion(6, 6, ProportionKind.RATIO, 0L));
     	List<Item> items = new ArrayList<Item>();
     	items.add(eyes);
     	items.add(acuity);
@@ -60,7 +65,7 @@ public class ItemTableTest extends DataStructureTestBase {
     	eyes = new Element("at0004", new DvText("eye(s)"),
      			new DvText("left"));
      	acuity = new Element("at0005", new DvText("visual acuity"),
-     			new DvProportion(6, 18, ProportionKind.RATIO, 0));
+     			new DvProportion(6, 18, ProportionKind.RATIO, 0L));
      	items = new ArrayList<Item>();
      	items.add(eyes);
      	items.add(acuity);
@@ -70,238 +75,286 @@ public class ItemTableTest extends DataStructureTestBase {
      	eyes = new Element("at0007", new DvText("eye(s)"),
      			new DvText("both"));
      	acuity = new Element("at0008", new DvText("visual acuity"),
-     			new DvProportion(6, 6, ProportionKind.RATIO, 0));
+     			new DvProportion(6, 6, ProportionKind.RATIO, 0L));
      	items = new ArrayList<Item>();
      	items.add(eyes);
      	items.add(acuity);
      	rows.add(new Cluster("at0009", new DvText("3"), items));    	
     	
-        itemTable = new ItemTable("at0010", new DvText("vision"), rows);       
+        itemTable = new ItemTable("at0010", new DvText("vision"), rows);
     }
 
     /**
      * The fixture clean up called after every test method.
      */
+    @AfterEach
     protected void tearDown() throws Exception {
         itemTable = null;
     }
 
-    public void testColumnCount() throws Exception {
-        assertEquals("column count wrong", 2, itemTable.columnCount());
+    @Test
+    public void testColumnCount() {
+        assertEquals(2, itemTable.columnCount());
     }
 
+    @Test
     public void testRowCount() throws Exception {
-        assertEquals("row count wrong", 3, itemTable.rowCount());
+        assertEquals( 3, itemTable.rowCount());
     }
 
+    @Test
     public void testRowNames() throws Exception {
         List<DvText> names = new ArrayList<DvText>();
         names.add(new DvText("1"));
         names.add(new DvText("2"));
         names.add(new DvText("3"));
-        assertEquals("row names wrong", names, itemTable.rowNames());
+        assertEquals(names, itemTable.rowNames());
     }
 
+    @Test
     public void testIthRow1() throws Exception {
         assertEquals(rows.get(0), itemTable.ithRow(1));
     }
-    
+
+    @Test
     public void testIthRow2() throws Exception {
         assertEquals(rows.get(1), itemTable.ithRow(2));
     }
-    
+
+    @Test
     public void testIthRow3() throws Exception {
         assertEquals(rows.get(2), itemTable.ithRow(3));
     }
 
+    @Test
     public void testHasRowWithNameOne() throws Exception {
         assertTrue(itemTable.hasRowWithName("1"));        
     }
-    
+
+    @Test
     public void testHasRowWithNameTwo() throws Exception {
         assertTrue(itemTable.hasRowWithName("2"));        
     }
-    
+
+    @Test
     public void testHasRowWithNameThree() throws Exception {
         assertTrue(itemTable.hasRowWithName("3"));        
     }
-    
+
+    @Test
     public void testHasRowWithNameUnkown() throws Exception {
         assertFalse(itemTable.hasRowWithName("unknown"));        
     }
 
+    @Test
     public void testHasColumnWithNameEyes() throws Exception {
         assertTrue(itemTable.hasColumnWithName("eye(s)"));
     }
-    
+
+    @Test
     public void testHasColumnWithNameAcuity() throws Exception {
         assertTrue(itemTable.hasColumnWithName("visual acuity"));
     }
-    
+
+    @Test
     public void testElementAtColumn1Row1() throws Exception {
     	Element element = itemTable.elementAtCell(1, 1);
     	assertEquals("at0001", element.getArchetypeNodeId());
     }
-    
+
+    @Test
     public void testElementAtColumn2Row1() throws Exception {
     	Element element = itemTable.elementAtCell(2, 1);
     	assertEquals("at0002", element.getArchetypeNodeId());
     }
-    
+
+    @Test
     public void testElementAtColumn1Row2() throws Exception {
     	Element element = itemTable.elementAtCell(1, 2);
     	assertEquals("at0004", element.getArchetypeNodeId());
     }
-    
+
+    @Test
     public void testElementAtColumn2Row2() throws Exception {
     	Element element = itemTable.elementAtCell(2, 2);
     	assertEquals("at0005", element.getArchetypeNodeId());
     }
-    
+
+    @Test
     public void testElementAtColumn1Row3() throws Exception {
     	Element element = itemTable.elementAtCell(1, 3);
     	assertEquals("at0007", element.getArchetypeNodeId());
     }
-    
+
+    @Test
     public void testElementAtColumn2Row3() throws Exception {
     	Element element = itemTable.elementAtCell(2, 3);
     	assertEquals("at0008", element.getArchetypeNodeId());
     }
 
+    @Test
     public void testNamedRow1() throws Exception {
         assertEquals(rows.get(0), itemTable.namedRow("1"));
     }
-    
+
+    @Test
     public void testNamedRow2() throws Exception {
         assertEquals(rows.get(1), itemTable.namedRow("2"));
     }
-    
+
+    @Test
     public void testNamedRow3() throws Exception {
         assertEquals(rows.get(2), itemTable.namedRow("3"));
     }
 
+    @Test
     public void testElementAtNamedCellOneEyes() throws Exception {
     	element = itemTable.elementAtNamedCell("1", "eye(s)");
         assertEquals("at0001", element.getArchetypeNodeId());
     }
-    
+
+    @Test
     public void testElementAtNamedCellOneAcuity() throws Exception {
     	element = itemTable.elementAtNamedCell("1", "visual acuity");
         assertEquals("at0002", element.getArchetypeNodeId());
     }
-    
+
+    @Test
     public void testElementAtNamedCellTwoEyes() throws Exception {
     	element = itemTable.elementAtNamedCell("2", "eye(s)");
         assertEquals("at0004", element.getArchetypeNodeId());
     }
-    
+
+    @Test
     public void testElementAtNamedCellTwoAcuity() throws Exception {
     	element = itemTable.elementAtNamedCell("2", "visual acuity");
         assertEquals("at0005", element.getArchetypeNodeId());
     }
-    
+
+    @Test
     public void testElementAtNamedCellThreeEyes() throws Exception {
     	element = itemTable.elementAtNamedCell("3", "eye(s)");
         assertEquals("at0007", element.getArchetypeNodeId());
     }
-    
+
+    @Test
     public void testElementAtNamedCellThreeAcuity() throws Exception {
     	element = itemTable.elementAtNamedCell("3", "visual acuity");
         assertEquals("at0008", element.getArchetypeNodeId());
     }
 
+    @Test
     public void testItemAtPathWhole() throws Exception {
         assertEquals(itemTable, itemTable.itemAtPath("/"));
     }
-    
+
+    @Test
     public void testItemAtPathRow1() throws Exception {
         assertEquals(rows.get(0), itemTable.itemAtPath("/rows[at0003]"));
     }
-    
+
+    @Test
     public void testItemAtPathRow1Column1() throws Exception {
         assertEquals(rows.get(0).getItems().get(0), 
         		itemTable.itemAtPath("/rows[at0003]/items[at0001]"));
     }
-    
+
+    @Test
     public void testItemAtPathRow1Column2() throws Exception {
         assertEquals(rows.get(0).getItems().get(1), 
         		itemTable.itemAtPath("/rows[at0003]/items[at0002]"));
     }
-    
+
+    @Test
     public void testItemAtPathRow2() throws Exception {
         assertEquals(rows.get(1), 
         		itemTable.itemAtPath("/rows[at0006]"));
     }
-    
+
+    @Test
     public void testItemAtPathRow2Column1() throws Exception {
         assertEquals(rows.get(1).getItems().get(0), 
         		itemTable.itemAtPath("/rows[at0006]/items[at0004]"));
     }
-    
+
+    @Test
     public void testItemAtPathRow2Column2() throws Exception {
         assertEquals(rows.get(1).getItems().get(1), 
         		itemTable.itemAtPath("/rows[at0006]/items[at0005]"));
     }
-    
+
+    @Test
     public void testItemAtPathRow3() throws Exception {
         assertEquals(rows.get(2), 
         		itemTable.itemAtPath("/rows[at0009]"));
     }
-    
+
+    @Test
     public void testItemAtPathRow3Column1() throws Exception {
         assertEquals(rows.get(2).getItems().get(0), 
         		itemTable.itemAtPath("/rows[at0009]/items[at0007]"));
     }
-    
+
+    @Test
     public void testItemAtPathRow3Column2() throws Exception {
         assertEquals(rows.get(2).getItems().get(1), 
         		itemTable.itemAtPath("/rows[at0009]/items[at0008]"));
     }
-    
+
+    @Test
     public void testItemAtPathRow1Name() throws Exception {
         assertEquals(rows.get(0), itemTable.itemAtPath("/rows['1']"));
     }
-    
+
+    @Test
     public void testItemAtPathRow1Column1Name() throws Exception {
         assertEquals(rows.get(0).getItems().get(0), 
         		itemTable.itemAtPath("/rows['1']/items['eye(s)']"));
     }
-    
+
+    @Test
     public void testItemAtPathRow1Column2Name() throws Exception {
         assertEquals(rows.get(0).getItems().get(1), 
         		itemTable.itemAtPath("/rows['1']/items['visual acuity']"));
     }
-    
+
+    @Test
     public void testItemAtPathRow2Name() throws Exception {
         assertEquals(rows.get(1), 
         		itemTable.itemAtPath("/rows['2']"));
     }
-    
+
+    @Test
     public void testItemAtPathRow2Column1Name() throws Exception {
         assertEquals(rows.get(1).getItems().get(0), 
         		itemTable.itemAtPath("/rows['2']/items['eye(s)']"));
     }
-    
+
+    @Test
     public void testItemAtPathRow2Column2Name() throws Exception {
         assertEquals(rows.get(1).getItems().get(1), 
         		itemTable.itemAtPath("/rows['2']/items['visual acuity']"));
     }
-    
+
+    @Test
     public void testItemAtPathRow3Name() throws Exception {
         assertEquals(rows.get(2), 
         		itemTable.itemAtPath("/rows['3']"));
     }
-    
+
+    @Test
     public void testItemAtPathRow3Column1Name() throws Exception {
         assertEquals(rows.get(2).getItems().get(0), 
         		itemTable.itemAtPath("/rows['3']/items['eye(s)']"));
     }
-    
+
+    @Test
     public void testItemAtPathRow3Column2Name() throws Exception {
         assertEquals(rows.get(2).getItems().get(1), 
         		itemTable.itemAtPath("/rows['3']/items['visual acuity']"));
     }
 
+    @Test
 	public void testEquals() {
 		List<Cluster> rows = new ArrayList<Cluster>();
 
@@ -309,16 +362,16 @@ public class ItemTableTest extends DataStructureTestBase {
 		Element eyes = new Element("at0001", new DvText("eye(s)"), new DvText(
 				"right"));
 		Element acuity = new Element("at0002", new DvText("visual acuity"),
-				new DvProportion(6, 6, ProportionKind.RATIO, 0));
-		List<Item> itemsOne = new ArrayList<Item>();
+				new DvProportion(6, 6, ProportionKind.RATIO, 0L));
+		List<Item> itemsOne = new ArrayList<>();
 		itemsOne.add(eyes);
 		itemsOne.add(acuity);
 
 		// 2nd row
 		eyes = new Element("at0004", new DvText("eye(s)"), new DvText("left"));
 		acuity = new Element("at0005", new DvText("visual acuity"),
-				new DvProportion(6, 18, ProportionKind.RATIO, 0));
-		List<Item> itemsTwo = new ArrayList<Item>();
+				new DvProportion(6, 18, ProportionKind.RATIO, 0L));
+		List<Item> itemsTwo = new ArrayList<>();
 		itemsTwo.add(eyes);
 		itemsTwo.add(acuity);
 
@@ -332,7 +385,8 @@ public class ItemTableTest extends DataStructureTestBase {
 
 		assertTrue(itemTableOne.equals(itemTableTwo));
 	}
-	
+
+    @Test
 	public void testNotEqualsDifferentNodeId() {
 		List<Cluster> rows = new ArrayList<Cluster>();
 
@@ -340,7 +394,7 @@ public class ItemTableTest extends DataStructureTestBase {
 		Element eyes = new Element("at0001", new DvText("eye(s)"), new DvText(
 				"right"));
 		Element acuity = new Element("at0002", new DvText("visual acuity"),
-				new DvProportion(6, 6, ProportionKind.RATIO, 0));
+				new DvProportion(6, 6, ProportionKind.RATIO, 0L));
 		List<Item> itemsOne = new ArrayList<Item>();
 		itemsOne.add(eyes);
 		itemsOne.add(acuity);
@@ -348,7 +402,7 @@ public class ItemTableTest extends DataStructureTestBase {
 		// 2nd row
 		eyes = new Element("at0004", new DvText("eye(s)"), new DvText("left"));
 		acuity = new Element("at0005", new DvText("visual acuity"),
-				new DvProportion(6, 18, ProportionKind.RATIO, 0));
+				new DvProportion(6, 18, ProportionKind.RATIO, 0L));
 		List<Item> itemsTwo = new ArrayList<Item>();
 		itemsTwo.add(eyes);
 		itemsTwo.add(acuity);
