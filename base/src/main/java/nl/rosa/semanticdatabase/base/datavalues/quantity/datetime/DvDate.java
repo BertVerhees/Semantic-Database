@@ -65,7 +65,7 @@ public class DvDate
     @Override
     public LocalDate add(DvDuration q) {
         LocalDateTime dateTime = value.atStartOfDay();
-        PeriodDuration duration = q.getValue();
+        MyPeriodDuration duration = q.getValue();
         return dateTime.plus(duration).toLocalDate();
     }
 
@@ -77,7 +77,7 @@ public class DvDate
     @Override
     public LocalDate subtract(DvDuration q) {
         LocalDateTime dateTime = value.atStartOfDay();
-        PeriodDuration duration = q.getValue();
+        MyPeriodDuration duration = q.getValue();
         return dateTime.minus(duration).toLocalDate();
     }
 
@@ -87,8 +87,8 @@ public class DvDate
      * @return diff type
      */
     @Override
-    public Duration diff(LocalDate other) {
-        return Duration.between(value, other);
+    public MyPeriodDuration diff(LocalDate other) {
+        return MyPeriodDuration.between(value, other);
     }
 
     /**

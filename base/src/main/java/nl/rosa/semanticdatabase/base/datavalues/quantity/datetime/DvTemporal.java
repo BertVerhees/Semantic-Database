@@ -65,7 +65,7 @@ public abstract class DvTemporal<MT extends Comparable>
      *
      * @return diff type
      */
-    public abstract Duration diff(MT other);
+    public abstract MyPeriodDuration diff(MT other);
 
     /**
      * True if other is less than this Quantified object. Based on comparison of magnitude.

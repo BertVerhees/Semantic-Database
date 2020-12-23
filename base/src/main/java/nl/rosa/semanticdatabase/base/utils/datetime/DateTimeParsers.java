@@ -71,7 +71,7 @@ public class DateTimeParsers {
                 return PeriodDuration.from(Duration.parse(text));
             } else if (text.contains("T")) {
                 return PeriodDuration.from(Duration.parse(text));
-//                return PeriodDuration.parse(text);
+//                return MyPeriodDuration.parse(text);
             } else {
                 return PeriodDuration.from(Period.parse(text));
             }
