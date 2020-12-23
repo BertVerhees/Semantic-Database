@@ -2,31 +2,60 @@ package nl.rosa.semanticdatabase.base.datavalues.quantity.datetime;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
-import nl.rosa.semanticdatabase.base.datavalues.quantity.DvAmount;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
-import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
+import org.threeten.extra.PeriodDuration;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.chrono.ChronoLocalDate;
 import java.time.temporal.ChronoField;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.time.temporal.TemporalAccessor;
 import java.util.List;
 import java.util.Objects;
 
+import static nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers.*;
+
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
 public class DvDate
-        extends DvTemporal<DvDate>
-        implements SingleValuedDataValue<TemporalAccessor> {
+        extends DvTemporal<LocalDate>
+        implements SingleValuedDataValue<LocalDate> {
 
-    private TemporalAccessor value;
-
+    private LocalDate value;
 
     public DvDate() {
     }
+
+    public DvDate(LocalDate value) {
+        setValue(value);
+    }
+
+    /**
+     * Constructs a DvDate from an ISO 8601 Date String
+     *
+     * @param iso8601Date
+     */
+    public DvDate(String iso8601Date) {
+        setValue(parseDateValue(iso8601Date));
+    }
+
+    public DvDate(
+            List<ReferenceRange> otherReferenceRanges,
+            DvInterval normalRange,
+            CodePhrase normalStatus,
+            DvDuration accuracy,
+            String magnitudeStatus,
+            LocalDate value) {
+        super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus, accuracy);
+        this.value = value;
+    }
+
 
     /**
      * Addition of a Duration to this Date.
@@ -34,17 +63,10 @@ public class DvDate
      * @return product of addition
      */
     @Override
-    public DvDate add(DvDuration q) {
-        if (!getDiffType().isInstance(q)) {
-            throw new IllegalArgumentException("invalid difference type");
-        }
-        return new DvDate(
-                getOtherReferenceRanges(),
-                getNormalRange(),
-                getNormalStatus(),
-                getAccuracy(),
-                getMagnitudeStatus(),
-                q.getValue().);
+    public LocalDate add(DvDuration q) {
+        LocalDateTime dateTime = value.atStartOfDay();
+        PeriodDuration duration = q.getValue();
+        return dateTime.plus(duration).toLocalDate();
     }
 
     /**
@@ -53,11 +75,10 @@ public class DvDate
      * @return product of substration
      */
     @Override
-    public DvDate subtract(DvDuration q) {
-        if (!getDiffType().isInstance(q)) {
-            throw new IllegalArgumentException("invalid difference type");
-        }
-        return add(q.negative());
+    public LocalDate subtract(DvDuration q) {
+        LocalDateTime dateTime = value.atStartOfDay();
+        PeriodDuration duration = q.getValue();
+        return dateTime.minus(duration).toLocalDate();
     }
 
     /**
@@ -65,8 +86,9 @@ public class DvDate
      * @param other
      * @return diff type
      */
-    public DvDuration diff(DvDate other) {
-        return null;
+    @Override
+    public Duration diff(LocalDate other) {
+        return Duration.between(value, other);
     }
 
     /**
@@ -74,88 +96,27 @@ public class DvDate
      * @param other
      * @return
      */
-    public Boolean lessThan(DvDate other){
-        return null;
-    }
-
-    /**
-     * True, for any two Dates.
-     * @param other
-     * @return
-     */
-    public Boolean isStrictlyComparableTo(DvDate other){
-        return null;
-    }
-
-
-
-    public DvDate(TemporalAccessor value) {
-        setValue(value);
-    }
-
-
-    /**
-     * Constructs a DvDate from an ISO 8601 Date String
-     *
-     * @param iso8601Date
-     */
-    public DvDate(String iso8601Date) {
-
-        setValue(DateTimeParsers.parseDateValue(iso8601Date));
-    }
-
-    public DvDate(
-            List<ReferenceRange> otherReferenceRanges,
-            DvInterval normalRange,
-            CodePhrase normalStatus,
-            DvDuration accuracy,
-            String magnitudeStatus,
-            Temporal value) {
-        super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus, accuracy);
-        this.value = value;
-    }
-
-    public DvDate(
-            List<ReferenceRange> otherReferenceRanges,
-            DvInterval normalRange,
-            CodePhrase normalStatus,
-            DvDuration accuracy,
-            String magnitudeStatus,
-            LocalDateTime value) {
-        super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus, accuracy);
-        this.value = value;
+    public Boolean lessThan(LocalDate other){
+        return value.compareTo(value.from(other))<0;
     }
 
     @Override
-    public TemporalAccessor getValue() {
+    public LocalDate getValue() {
         return value;
     }
 
     @Override
-    public void setValue(TemporalAccessor temporalAccessor) {
-
-    }
-
-    @Override
-    public void setValue(TemporalAccessor value) {
-        if (value.isSupported(ChronoField.HOUR_OF_DAY)) {
-            //TODO: do we really need this validation?
-            throw new IllegalArgumentException("value must only have a year, month or date, but this supports hours: " + value);
-        }
+    public void setValue(LocalDate value) {
         this.value = value;
     }
 
     @Override
-    public Long getMagnitude() {
-        return value == null ? null : (long) LocalDate.from(value).toEpochDay();
+    public LocalDate getMagnitude() {
+        return value;
     }
 
-    public void setMagnitude(Long magnitude) {
-        if (magnitude == null) {
-            value = null;
-        } else {
-            value = LocalDate.ofEpochDay(magnitude);
-        }
+    public void setMagnitude(LocalDate magnitude) {
+            value = magnitude;
     }
 
     @Override

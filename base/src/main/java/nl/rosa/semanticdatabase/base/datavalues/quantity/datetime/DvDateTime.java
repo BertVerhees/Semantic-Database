@@ -5,11 +5,12 @@ import nl.rosa.semanticdatabase.base.datavalues.SingleValuedDataValue;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvAmount;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
+import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeFormatters;
 import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
 
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
+import java.time.*;
+import java.time.chrono.ChronoLocalDate;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.TemporalAccessor;
 import java.time.temporal.TemporalQueries;
 import java.util.List;
@@ -20,10 +21,23 @@ import java.util.Objects;
  */
 
 public class DvDateTime
-        extends DvTemporal<DvDateTime>
-        implements SingleValuedDataValue<TemporalAccessor> {
+        extends DvTemporal<LocalDateTime>
+        implements SingleValuedDataValue<LocalDateTime> {
 
-    private TemporalAccessor value;
+    public TemporalAccessor parseDateTimeValue(String text) {
+        try {
+            return DateTimeFormatters.ISO_8601_DATE_TIME.parseBest(text, OffsetDateTime::from, LocalDateTime::from, LocalDate::from, YearMonth::from, Year::from);
+        } catch (DateTimeParseException e) {
+            try {
+                //some more interesting date_time expression without hyphens...
+                return DateTimeFormatters.ISO_8601_DATE_TIME_COMPACT.parseBest(text, OffsetDateTime::from,  LocalDateTime::from);
+            } catch (DateTimeParseException e2) {
+                throw new IllegalArgumentException(e2.getMessage() + ":" + text);
+            }
+        }
+    }
+
+    private LocalDateTime value;
 
 
     public DvDateTime() {
@@ -35,20 +49,9 @@ public class DvDateTime
      * @return product of addition
      */
     @Override
-    public DvDateTime add(DvDuration q) {
-        if (!getDiffType().isInstance(q)) {
-            throw new IllegalArgumentException("invalid difference type");
-        }
-        DvDuration d = (DvDuration) q;
-        LocalDateTime mdate = getDateTime();
-        mdate.plus(d.getValue());
-        return new DvDateTime(
-                getOtherReferenceRanges(),
-                getNormalRange(),
-                getNormalStatus(),
-                getMagnitudeStatus(),
-                getAccuracy(),
-                mdate.plus(d.getValue()));
+    public LocalDateTime add(DvDuration q) {
+        Duration duration = q.getValue();
+        return value.plus(duration);
     }
 
     /**
@@ -57,11 +60,9 @@ public class DvDateTime
      * @return product of substration
      */
     @Override
-    public DvDateTime subtract(DvDuration q) {
-        if (!getDiffType().isInstance(q)) {
-            throw new IllegalArgumentException("invalid difference type");
-        }
-        return add(q.negative());
+    public LocalDateTime subtract(DvDuration q) {
+        Duration duration = q.getValue();
+        return value.minus(duration);
     }
 
     /**
@@ -69,8 +70,8 @@ public class DvDateTime
      * @param other
      * @return diff type
      */
-    public DvDuration diff(DvDateTime other) {
-        return null;
+    public Duration diff(LocalDateTime other) {
+        return Duration.between(value, other);
     }
 
     /**
@@ -78,20 +79,11 @@ public class DvDateTime
      * @param other
      * @return
      */
-    public Boolean lessThan(DvDateTime other){
-        return null;
+    public Boolean lessThan(LocalDateTime other){
+        return value.compareTo(value.from(other))<0;
     }
 
-    /**
-     * True, for any two DvDateTime.
-     * @param other
-     * @return
-     */
-    public Boolean isStrictlyComparableTo(DvDateTime other){
-        return null;
-    }
-
-    public DvDateTime(TemporalAccessor value) {
+    public DvDateTime(LocalDateTime value) {
         this.value = value;
     }
 
@@ -111,39 +103,28 @@ public class DvDateTime
             CodePhrase normalStatus,
             String magnitudeStatus,
             DvDuration accuracy,
-            TemporalAccessor value) {
+            LocalDateTime value) {
         super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus, accuracy);
         this.value = value;
     }
 
     @Override
-    public TemporalAccessor getValue() {
+    public LocalDateTime getValue() {
         return value;
     }
 
     @Override
-    public void setValue(TemporalAccessor value) {
+    public void setValue(LocalDateTime value) {
         this.value = value;
     }
 
     @Override
-    public Long getMagnitude() {
-        if (value == null) {
-            return null;
-        }
-        if (value.query(TemporalQueries.zone()) != null) {
-            return ZonedDateTime.from(value).toEpochSecond();
-        } else {
-            return LocalDateTime.from(value).toEpochSecond(ZoneOffset.UTC);
-        }
+    public LocalDateTime getMagnitude() {
+            return value;
     }
 
-    public void setMagnitude(Long magnitude) {
-        if (magnitude == null) {
-            value = null;
-        } else {
-            value = LocalDateTime.ofEpochSecond(magnitude, 0, ZoneOffset.UTC);
-        }
+    public void setMagnitude(LocalDateTime magnitude) {
+            value = magnitude;
     }
 
 

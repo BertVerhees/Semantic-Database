@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDate;
 
 import java.util.List;
 
@@ -21,28 +22,5 @@ public abstract class DvAbsoluteQuantity<AT extends DvAmount, MT extends Compara
         super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus);
     }
 
-    /**
-     * Sum of this quantity and another whose formal type must be the
-     * difference type of this quantity.
-     *
-     * @param s
-     * @return product of addition
-     */
-    public abstract MT add(AT s);
 
-    /**
-     * Difference of this quantity and another whose formal type must
-     * be the difference type of this quantity type.
-     *
-     * @param s
-     * @return product of substration
-     */
-    public abstract MT subtract(AT s);
-
-    /**
-     * Difference of two quantities.
-     *
-     * @return diff type
-     */
-    public abstract AT diff(MT other);
 }

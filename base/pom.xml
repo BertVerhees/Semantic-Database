@@ -59,6 +59,11 @@
       <artifactId>jsr-275</artifactId>
       <version>0.9.4</version>
     </dependency>
+    <dependency>
+      <groupId>nl.rosa.semanticdatabase</groupId>
+      <artifactId>utils</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
   </dependencies>
 
   <build>

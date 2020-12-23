@@ -7,6 +7,7 @@ import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
 import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.TemporalAccessor;
@@ -23,13 +24,13 @@ import java.util.Objects;
  * Originally: Created by pieter.bos on 04/11/15.
  */
 public class DvTime
-        extends DvTemporal<DvTime>
-        implements SingleValuedDataValue<TemporalAccessor> {
+        extends DvTemporal<LocalTime>
+        implements SingleValuedDataValue<LocalTime> {
 
-    private TemporalAccessor value;
+    private LocalTime value;
 
 
-    public DvTime(TemporalAccessor value) {
+    public DvTime(LocalTime value) {
         this.value = value;
     }
 
@@ -48,13 +49,13 @@ public class DvTime
             CodePhrase normalStatus,
             String magnitudeStatus,
             DvDuration accuracy,
-            TemporalAccessor value) {
+            LocalTime value) {
         super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus, accuracy);
         this.value = value;
     }
 
     @Override
-    public void setValue(TemporalAccessor value) {
+    public void setValue(LocalTime value) {
         this.value = value;
     }
 
@@ -63,21 +64,17 @@ public class DvTime
 //            @XmlElement(type=OffsetTime.class),
 //            @XmlElement(type=LocalTime.class)
 //    })    
-    public TemporalAccessor getValue() {
+    public LocalTime getValue() {
         return value;
     }
 
     @Override
-    public Double getMagnitude() {
-        return value == null ? null : (double) LocalTime.from(value).toSecondOfDay();
+    public LocalTime getMagnitude() {
+        return value;
     }
 
-    public void setMagnitude(Double magnitude) {
-        if (magnitude == null) {
-            value = null;
-        } else {
-            value = LocalTime.ofSecondOfDay(Math.round(magnitude));
-        }
+    public void setMagnitude(LocalTime magnitude) {
+            value = magnitude;
     }
 
     @Override
@@ -103,20 +100,9 @@ public class DvTime
      * @return product of addition
      */
     @Override
-    public DvTime add(DvDuration q) {
-        if (!getDiffType().isInstance(q)) {
-            throw new IllegalArgumentException("invalid difference type");
-        }
-        DvDuration d = (DvDuration) q;
-        LocalDateTime mdate = getDateTime();
-        mdate.plus(d.getValue());
-        return new DvTime(
-                getOtherReferenceRanges(),
-                getNormalRange(),
-                getNormalStatus(),
-                getAccuracy(),
-                getMagnitudeStatus(),
-                mdate.plus(d.getValue()));
+    public LocalTime add(DvDuration q) {
+        Duration duration = q.getValue();
+        return value.plus(duration);
     }
 
     /**
@@ -125,11 +111,9 @@ public class DvTime
      * @return product of substration
      */
     @Override
-    public DvTime subtract(DvDuration q) {
-        if (!getDiffType().isInstance(q)) {
-            throw new IllegalArgumentException("invalid difference type");
-        }
-        return add(q.negative());
+    public LocalTime subtract(DvDuration q) {
+        Duration duration = q.getValue();
+        return value.minus(duration);
     }
 
     /**
@@ -137,8 +121,8 @@ public class DvTime
      * @param other
      * @return diff type
      */
-    public DvDuration diff(DvTime other) {
-        return null;
+    public Duration diff(LocalTime other) {
+        return Duration.between(value, other);
     }
 
     /**
@@ -146,16 +130,7 @@ public class DvTime
      * @param other
      * @return
      */
-    public Boolean lessThan(DvTime other){
-        return null;
-    }
-
-    /**
-     * True, for any two Dates.
-     * @param other
-     * @return
-     */
-    public Boolean isStrictlyComparableTo(DvTime other){
-        return null;
+    public Boolean lessThan(LocalTime other){
+        return value.compareTo(value.from(other))<0;
     }
 }

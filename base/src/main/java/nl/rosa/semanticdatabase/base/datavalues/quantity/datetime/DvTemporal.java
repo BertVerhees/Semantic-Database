@@ -5,6 +5,7 @@ import nl.rosa.semanticdatabase.base.datavalues.quantity.DvAbsoluteQuantity;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -41,43 +42,30 @@ public abstract class DvTemporal<MT extends Comparable>
      * @param q
      * @return product of addition
      */
-    public DvTemporal add(DvDuration q) {
-        if (!getDiffType().isInstance(q)) {
-            throw new IllegalArgumentException("invalid difference type");
-        }
-        DvDuration d = (DvDuration) q;
-        LocalDateTime mdate = getDateTime();
-        mdate.plus(d.getValue());
-        return new DvDate(
-                getOtherReferenceRanges(),
-                getNormalRange(),
-                getNormalStatus(),
-                getAccuracy(),
-                getMagnitudeStatus(),
-                mdate.plus(d.getValue()));
-    }
+    /**
+     * Sum of this quantity and another whose formal type must be the
+     * difference type of this quantity.
+     *
+     * @param s
+     * @return product of addition
+     */
+    public abstract MT add(DvDuration s);
 
     /**
-     * Subtract a Duration from this Date.
-     * @param q
+     * Difference of this quantity and another whose formal type must
+     * be the difference type of this quantity type.
+     *
+     * @param s
      * @return product of substration
      */
-    @Override
-    public DvTemporal subtract(DvDuration q) {
-        if (!getDiffType().isInstance(q)) {
-            throw new IllegalArgumentException("invalid difference type");
-        }
-        return add(q.negative());
-    }
+    public abstract MT subtract(DvDuration s);
 
     /**
-     * Difference between this Date and other.
-     * @param other
+     * Difference of two quantities.
+     *
      * @return diff type
      */
-    public DvDuration diff(DvTemporal other) {
-        return null;
-    }
+    public abstract Duration diff(MT other);
 
     /**
      * True if other is less than this Quantified object. Based on comparison of magnitude.
