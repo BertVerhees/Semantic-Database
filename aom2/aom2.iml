@@ -39,6 +39,7 @@
     <orderEntry type="library" name="Maven: org.threeten:threeten-extra:1.5.0" level="project" />
     <orderEntry type="module" module-name="base" />
     <orderEntry type="library" name="Maven: javax.measure:jsr-275:0.9.4" level="project" />
+    <orderEntry type="library" name="Maven: org.joda:joda-convert:2.2.0" level="project" />
     <orderEntry type="module" module-name="utils" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.7.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.0" level="project" />

@@ -3,57 +3,42 @@
 // (powered by Fernflower decompiler)
 //
 
-package nl.rosa.semanticdatabase.base.datavalues.quantity.datetime;
+package nl.rosa.semanticdatabase.utils.datetime;
 
 import java.io.Serializable;
-import java.time.DateTimeException;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.Period;
+import java.time.*;
 import java.time.chrono.ChronoPeriod;
 import java.time.chrono.IsoChronology;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.IsoFields;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAmount;
-import java.time.temporal.TemporalQueries;
-import java.time.temporal.TemporalUnit;
-import java.time.temporal.UnsupportedTemporalTypeException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
+import java.time.temporal.*;
+import java.util.*;
 
-public final class MyPeriodDuration implements TemporalAmount, Serializable, Comparable<MyPeriodDuration> {
-    public static final MyPeriodDuration ZERO;
+public final class AlmostComparablePeriodDuration implements TemporalAmount, Serializable, Comparable<AlmostComparablePeriodDuration> {
+    public static final AlmostComparablePeriodDuration ZERO;
     private static final long serialVersionUID = 8815521625671589L;
     private static final List<TemporalUnit> SUPPORTED_UNITS;
     private static final long SECONDS_PER_DAY = 86400L;
     private final Period period;
     private final Duration duration;
 
-    public static MyPeriodDuration of(Period period, Duration duration) {
+    public static AlmostComparablePeriodDuration of(Period period, Duration duration) {
         Objects.requireNonNull(period, "The period must not be null");
         Objects.requireNonNull(duration, "The duration must not be null");
-        return new MyPeriodDuration(period, duration);
+        return new AlmostComparablePeriodDuration(period, duration);
     }
 
-    public static MyPeriodDuration of(Period period) {
+    public static AlmostComparablePeriodDuration of(Period period) {
         Objects.requireNonNull(period, "The period must not be null");
-        return new MyPeriodDuration(period, Duration.ZERO);
+        return new AlmostComparablePeriodDuration(period, Duration.ZERO);
     }
 
-    public static MyPeriodDuration of(Duration duration) {
+    public static AlmostComparablePeriodDuration of(Duration duration) {
         Objects.requireNonNull(duration, "The duration must not be null");
-        return new MyPeriodDuration(Period.ZERO, duration);
+        return new AlmostComparablePeriodDuration(Period.ZERO, duration);
     }
 
-    public static MyPeriodDuration from(TemporalAmount amount) {
-        if (amount instanceof MyPeriodDuration) {
-            return (MyPeriodDuration)amount;
+    public static AlmostComparablePeriodDuration from(TemporalAmount amount) {
+        if (amount instanceof AlmostComparablePeriodDuration) {
+            return (AlmostComparablePeriodDuration)amount;
         } else if (amount instanceof Period) {
             return of((Period)amount);
         } else if (amount instanceof Duration) {
@@ -104,7 +89,7 @@ public final class MyPeriodDuration implements TemporalAmount, Serializable, Com
         }
     }
 
-    public static MyPeriodDuration parse(CharSequence text) {
+    public static AlmostComparablePeriodDuration parse(CharSequence text) {
         Objects.requireNonNull(text, "text");
         String upper = text.toString().toUpperCase(Locale.ENGLISH);
         String negate = "";
@@ -129,7 +114,7 @@ public final class MyPeriodDuration implements TemporalAmount, Serializable, Com
         }
     }
 
-    public static MyPeriodDuration between(Temporal startInclusive, Temporal endExclusive) {
+    public static AlmostComparablePeriodDuration between(Temporal startInclusive, Temporal endExclusive) {
         LocalDate startDate = (LocalDate)startInclusive.query(TemporalQueries.localDate());
         LocalDate endDate = (LocalDate)endExclusive.query(TemporalQueries.localDate());
         Period period = Period.ZERO;
@@ -145,7 +130,7 @@ public final class MyPeriodDuration implements TemporalAmount, Serializable, Com
         return of(period, duration);
     }
 
-    private MyPeriodDuration(Period period, Duration duration) {
+    private AlmostComparablePeriodDuration(Period period, Duration duration) {
         this.period = period;
         this.duration = duration;
     }
@@ -181,7 +166,7 @@ public final class MyPeriodDuration implements TemporalAmount, Serializable, Com
         return this.period;
     }
 
-    public MyPeriodDuration withPeriod(Period period) {
+    public AlmostComparablePeriodDuration withPeriod(Period period) {
         return of(period, this.duration);
     }
 
@@ -189,7 +174,7 @@ public final class MyPeriodDuration implements TemporalAmount, Serializable, Com
         return this.duration;
     }
 
-    public MyPeriodDuration withDuration(Duration duration) {
+    public AlmostComparablePeriodDuration withDuration(Duration duration) {
         return of(this.period, duration);
     }
 
@@ -197,29 +182,29 @@ public final class MyPeriodDuration implements TemporalAmount, Serializable, Com
         return this.period.isZero() && this.duration.isZero();
     }
 
-    public MyPeriodDuration plus(TemporalAmount amountToAdd) {
-        MyPeriodDuration other = from(amountToAdd);
+    public AlmostComparablePeriodDuration plus(TemporalAmount amountToAdd) {
+        AlmostComparablePeriodDuration other = from(amountToAdd);
         return of(this.period.plus(other.period), this.duration.plus(other.duration));
     }
 
-    public MyPeriodDuration minus(TemporalAmount amountToAdd) {
-        MyPeriodDuration other = from(amountToAdd);
+    public AlmostComparablePeriodDuration minus(TemporalAmount amountToAdd) {
+        AlmostComparablePeriodDuration other = from(amountToAdd);
         return of(this.period.minus(other.period), this.duration.minus(other.duration));
     }
 
-    public MyPeriodDuration multipliedBy(int scalar) {
+    public AlmostComparablePeriodDuration multipliedBy(int scalar) {
         return scalar == 1 ? this : of(this.period.multipliedBy(scalar), this.duration.multipliedBy((long)scalar));
     }
 
-    public MyPeriodDuration negated() {
+    public AlmostComparablePeriodDuration negated() {
         return this.multipliedBy(-1);
     }
 
-    public MyPeriodDuration normalizedYears() {
+    public AlmostComparablePeriodDuration normalizedYears() {
         return this.withPeriod(this.period.normalized());
     }
 
-    public MyPeriodDuration normalizedStandardDays() {
+    public AlmostComparablePeriodDuration normalizedStandardDays() {
         long totalSecs = (long)this.period.getDays() * 86400L + this.duration.getSeconds();
         int splitDays = Math.toIntExact(totalSecs / 86400L);
         long splitSecs = totalSecs % 86400L;
@@ -237,10 +222,10 @@ public final class MyPeriodDuration implements TemporalAmount, Serializable, Com
     public boolean equals(Object otherAmount) {
         if (this == otherAmount) {
             return true;
-        } else if (!(otherAmount instanceof MyPeriodDuration)) {
+        } else if (!(otherAmount instanceof AlmostComparablePeriodDuration)) {
             return false;
         } else {
-            MyPeriodDuration other = (MyPeriodDuration)otherAmount;
+            AlmostComparablePeriodDuration other = (AlmostComparablePeriodDuration)otherAmount;
             return this.period.equals(other.period) && this.duration.equals(other.duration);
         }
     }
@@ -258,7 +243,7 @@ public final class MyPeriodDuration implements TemporalAmount, Serializable, Com
     }
 
     static {
-        ZERO = new MyPeriodDuration(Period.ZERO, Duration.ZERO);
+        ZERO = new AlmostComparablePeriodDuration(Period.ZERO, Duration.ZERO);
         SUPPORTED_UNITS = Collections.unmodifiableList(Arrays.asList(ChronoUnit.YEARS, ChronoUnit.MONTHS, ChronoUnit.DAYS, ChronoUnit.SECONDS, ChronoUnit.NANOS));
     }
 
@@ -302,7 +287,7 @@ public final class MyPeriodDuration implements TemporalAmount, Serializable, Com
      *                              from being compared to this object.
      */
     @Override
-    public int compareTo(MyPeriodDuration o) {
+    public int compareTo(AlmostComparablePeriodDuration o) {
         if(duration.equals(o.duration) && period.equals(o.period)){
             return 0;
         }

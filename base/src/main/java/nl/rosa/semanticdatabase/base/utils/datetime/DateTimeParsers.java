@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.base.utils.datetime;
 
-import org.threeten.extra.PeriodDuration;
+import nl.rosa.semanticdatabase.utils.datetime.AlmostComparablePeriodDuration;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -12,9 +12,6 @@ import java.time.Period;
 import java.time.Year;
 import java.time.YearMonth;
 import java.time.format.DateTimeParseException;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAmount;
 
 /**
  * ISO date time parsers
@@ -65,15 +62,15 @@ public class DateTimeParsers {
         }
     }
 
-    public static PeriodDuration parseDurationValue(String text) {
+    public static AlmostComparablePeriodDuration parseDurationValue(String text) {
         try {
             if (text.startsWith("PT") || text.startsWith("-PT")) {
-                return PeriodDuration.from(Duration.parse(text));
+                return AlmostComparablePeriodDuration.from(Duration.parse(text));
             } else if (text.contains("T")) {
-                return PeriodDuration.from(Duration.parse(text));
+                return AlmostComparablePeriodDuration.from(Duration.parse(text));
 //                return MyPeriodDuration.parse(text);
             } else {
-                return PeriodDuration.from(Period.parse(text));
+                return AlmostComparablePeriodDuration.from(Period.parse(text));
             }
         } catch (DateTimeParseException e) {
             throw new IllegalArgumentException(e.getMessage() + ":" + text);

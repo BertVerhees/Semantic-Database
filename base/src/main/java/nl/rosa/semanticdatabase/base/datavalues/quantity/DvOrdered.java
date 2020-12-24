@@ -10,14 +10,24 @@ import java.util.Objects;
 /**
  * Created by pieter.bos on 04/11/15.
  */
-public abstract class DvOrdered<CT>
+public abstract class DvOrdered<T extends DvOrdered>
         extends DataValue
-        implements Comparable<CT> {
+        implements Comparable<T> {
 
-    
+    /**
+     * Optional normal status indicator of value with respect to normal range for this value.
+     * Often included by lab, even if the normal range itself is not included. Coded by ordinals in series HHH, HH, H,
+     * (nothing), L, LL, LLL; see openEHR terminology group normal_status.
+     */
     private CodePhrase normalStatus;
-    private DvInterval normalRange;
-    private List<ReferenceRange> otherReferenceRanges = new ArrayList<>();
+    /**
+     * Optional normal range.
+     */
+    private DvInterval<T> normalRange;
+    /**
+     * Optional tagged other reference ranges for this value in its particular measurement context.
+     */
+    private List<ReferenceRange<T>> otherReferenceRanges;
 
     public DvOrdered() {
     }
@@ -56,6 +66,9 @@ public abstract class DvOrdered<CT>
     }
 
     public void addOtherReferenceRange(ReferenceRange range) {
+        if(otherReferenceRanges==null){
+            otherReferenceRanges = new ArrayList<>();
+        }
         otherReferenceRanges.add(range);
     }
 

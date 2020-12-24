@@ -4,6 +4,7 @@ import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvAbsoluteQuantity;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
+import nl.rosa.semanticdatabase.utils.datetime.AlmostComparablePeriodDuration;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -38,34 +39,11 @@ public abstract class DvTemporal<MT extends Comparable>
     }
 
     /**
-     * Addition of a Duration to this Date.
-     * @param q
-     * @return product of addition
-     */
-    /**
-     * Sum of this quantity and another whose formal type must be the
-     * difference type of this quantity.
-     *
-     * @param s
-     * @return product of addition
-     */
-    public abstract MT add(DvDuration s);
-
-    /**
-     * Difference of this quantity and another whose formal type must
-     * be the difference type of this quantity type.
-     *
-     * @param s
-     * @return product of substration
-     */
-    public abstract MT subtract(DvDuration s);
-
-    /**
      * Difference of two quantities.
      *
      * @return diff type
      */
-    public abstract MyPeriodDuration diff(MT other);
+    public abstract AlmostComparablePeriodDuration diff(MT other);
 
     /**
      * True if other is less than this Quantified object. Based on comparison of magnitude.

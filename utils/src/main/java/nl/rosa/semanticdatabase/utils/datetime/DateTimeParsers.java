@@ -12,8 +12,6 @@ import java.time.YearMonth;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.Temporal;
 import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAmount;
-import org.threeten.extra.PeriodDuration;
 
 /**
  * ISO date time parsers
@@ -66,14 +64,14 @@ public class DateTimeParsers {
         }
     }
 
-    public static TemporalAmount parseDurationValue(String text) {
+    public static AlmostComparablePeriodDuration parseDurationValue(String text) {
         try {
-            if(text.startsWith("PT") || text.startsWith("-PT")) {
-                return Duration.parse(text);
+            if (text.startsWith("PT") || text.startsWith("-PT")) {
+                return AlmostComparablePeriodDuration.from(Duration.parse(text));
             } else if (text.contains("T")) {
-                return PeriodDuration.parse(text);
+                return AlmostComparablePeriodDuration.from(Duration.parse(text));
             } else {
-                return Period.parse(text);
+                return AlmostComparablePeriodDuration.from(Period.parse(text));
             }
         } catch (DateTimeParseException e) {
             throw new IllegalArgumentException(e.getMessage() + ":" + text);
