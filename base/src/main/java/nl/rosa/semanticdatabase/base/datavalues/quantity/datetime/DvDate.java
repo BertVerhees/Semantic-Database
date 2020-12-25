@@ -25,12 +25,7 @@ import static nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers.*;
  * Originally: Created by pieter.bos on 04/11/15.
  */
 public class DvDate
-        extends DvTemporal<LocalDate> {
-
-    private LocalDate value;
-
-    public DvDate() {
-    }
+        extends DvTemporal<DvDate> {
 
     public DvDate(LocalDate value) {
         setValue(value);
@@ -52,8 +47,7 @@ public class DvDate
             DvDuration accuracy,
             String magnitudeStatus,
             LocalDate value) {
-        super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus, accuracy);
-        this.value = value;
+        super(otherReferenceRanges, normalRange, normalStatus, accuracy, magnitudeStatus, value.atStartOfDay());
     }
 
 
@@ -63,10 +57,12 @@ public class DvDate
      * @return product of addition
      */
     @Override
-    public LocalDate add(DvDuration q) {
-        LocalDateTime dateTime = value.atStartOfDay();
+    public DvDate add(DvDuration q) {
+        LocalDate date = getValue();
         AlmostComparablePeriodDuration duration = q.getValue();
-        return dateTime.plus(duration).toLocalDate();
+        return new DvDate(getOtherReferenceRanges(), getNormalRange(),
+                getNormalStatus(), getAccuracy(), getMagnitudeStatus(),
+                date.plus(duration));
     }
 
     /**
@@ -75,10 +71,12 @@ public class DvDate
      * @return product of substration
      */
     @Override
-    public LocalDate subtract(DvDuration q) {
-        LocalDateTime dateTime = value.atStartOfDay();
+    public DvDate subtract(DvDuration q) {
+        LocalDate date = getValue();
         AlmostComparablePeriodDuration duration = q.getValue();
-        return dateTime.minus(duration).toLocalDate();
+        return new DvDate(getOtherReferenceRanges(), getNormalRange(),
+                getNormalStatus(), getAccuracy(), getMagnitudeStatus(),
+                date.minus(duration));
     }
 
     /**

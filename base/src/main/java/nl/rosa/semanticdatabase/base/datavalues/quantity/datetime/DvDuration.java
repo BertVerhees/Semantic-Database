@@ -82,8 +82,10 @@ public class DvDuration
      */
     @Override
     public DvQuantified<DvDuration> add(DvQuantified q) {
-        AlmostComparablePeriodDuration duration = q.getValue();
-        return value.plus(duration);
+        AlmostComparablePeriodDuration duration = ((DvDuration)q).getValue();
+        return new DvDuration(getOtherReferenceRanges(), getNormalRange(),
+                getNormalStatus(), getAccuracy(), getAccuracyIsPercent(),
+                getMagnitudeStatus(), value.plus(duration));
     }
 
     /**
@@ -93,8 +95,10 @@ public class DvDuration
      */
     @Override
     public DvQuantified<DvDuration> subtract(DvQuantified q) {
-        AlmostComparablePeriodDuration duration = q.getValue();
-        return value.minus(duration);
+        AlmostComparablePeriodDuration duration = ((DvDuration)q).getValue();
+        return new DvDuration(getOtherReferenceRanges(), getNormalRange(),
+                getNormalStatus(), getAccuracy(), getAccuracyIsPercent(),
+                getMagnitudeStatus(), value.minus(duration));
     }
 
     /**

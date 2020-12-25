@@ -22,13 +22,7 @@ import java.util.Objects;
  */
 
 public class DvDateTime
-        extends DvTemporal<LocalDateTime> {
-
-    private LocalDateTime value;
-
-
-    public DvDateTime() {
-    }
+        extends DvTemporal<DvDateTime> {
 
     /**
      * Addition of a Duration to this DvDateTime.
@@ -36,9 +30,12 @@ public class DvDateTime
      * @return product of addition
      */
     @Override
-    public LocalDateTime add(DvDuration q) {
+    public DvDateTime add(DvDuration q) {
+        LocalDateTime dateTime = getValue();
         AlmostComparablePeriodDuration duration = q.getValue();
-        return value.plus(duration);
+        return new DvDateTime(getOtherReferenceRanges(), getNormalRange(),
+                getNormalStatus(), getAccuracy(), getMagnitudeStatus(),
+                dateTime.plus(duration));
     }
 
     /**
@@ -47,9 +44,12 @@ public class DvDateTime
      * @return product of substration
      */
     @Override
-    public LocalDateTime subtract(DvDuration q) {
+    public DvDateTime subtract(DvDuration q) {
+        LocalDateTime dateTime = getValue();
         AlmostComparablePeriodDuration duration = q.getValue();
-        return value.minus(duration);
+        return new DvDateTime(getOtherReferenceRanges(), getNormalRange(),
+                getNormalStatus(), getAccuracy(), getMagnitudeStatus(),
+                dateTime.minus(duration));
     }
 
     /**
@@ -88,11 +88,10 @@ public class DvDateTime
             List<ReferenceRange> otherReferenceRanges,
             DvInterval normalRange,
             CodePhrase normalStatus,
-            String magnitudeStatus,
             DvDuration accuracy,
+            String magnitudeStatus,
             LocalDateTime value) {
-        super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus, accuracy);
-        this.value = value;
+        super(otherReferenceRanges, normalRange, normalStatus, accuracy, magnitudeStatus, value);
     }
 
     @Override

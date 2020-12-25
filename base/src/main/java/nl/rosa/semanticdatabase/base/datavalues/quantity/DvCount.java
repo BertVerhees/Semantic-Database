@@ -42,7 +42,7 @@ public class DvCount extends DvAmount<DvCount> {
      * Sum of this quantity and another whose formal type must be the
      * difference type of this quantity.
      *
-     * @param s
+     * @param q
      * @return product of addition
      */
     @Override
@@ -62,13 +62,20 @@ public class DvCount extends DvAmount<DvCount> {
      * Difference of this quantity and another whose formal type must
      * be the difference type of this quantity type.
      *
-     * @param s
+     * @param q
      * @return product of substration
      */
     @Override
     public DvQuantified<DvCount> subtract(DvQuantified q) {
         final DvCount c = (DvCount) q;
-        return null;
+        return new DvCount(
+                getOtherReferenceRanges(),
+                getNormalRange(),
+                getNormalStatus(),
+                getAccuracy(),
+                getAccuracyIsPercent(),
+                getMagnitudeStatus(),
+                magnitude - c.magnitude);
     }
 
     @Override

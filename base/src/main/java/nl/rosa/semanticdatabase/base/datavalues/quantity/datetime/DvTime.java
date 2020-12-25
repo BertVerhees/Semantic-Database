@@ -6,8 +6,10 @@ import nl.rosa.semanticdatabase.base.datavalues.quantity.DvAmount;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
 import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
+import nl.rosa.semanticdatabase.utils.datetime.AlmostComparablePeriodDuration;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.TemporalAccessor;
@@ -24,10 +26,7 @@ import java.util.Objects;
  * Originally: Created by pieter.bos on 04/11/15.
  */
 public class DvTime
-        extends DvTemporal<LocalTime> {
-
-    private LocalTime value;
-
+        extends DvTemporal<DvTime> {
 
     public DvTime(LocalTime value) {
         this.value = value;
@@ -46,11 +45,10 @@ public class DvTime
             List<ReferenceRange> otherReferenceRanges,
             DvInterval normalRange,
             CodePhrase normalStatus,
-            String magnitudeStatus,
             DvDuration accuracy,
+            String magnitudeStatus,
             LocalTime value) {
-        super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus, accuracy);
-        this.value = value;
+        super(otherReferenceRanges, normalRange, normalStatus, accuracy, magnitudeStatus, value);
     }
 
     @Override
@@ -99,9 +97,12 @@ public class DvTime
      * @return product of addition
      */
     @Override
-    public LocalTime add(DvDuration q) {
-        MyPeriodDuration duration = q.getValue();
-        return value.plus(duration);
+    public DvTime add(DvDuration q) {
+        LocalTime time = getValue();
+        AlmostComparablePeriodDuration duration = q.getValue();
+        return new DvTime(getOtherReferenceRanges(), getNormalRange(),
+                getNormalStatus(), getAccuracy(), getMagnitudeStatus(),
+                time.plus(duration));
     }
 
     /**
@@ -110,9 +111,12 @@ public class DvTime
      * @return product of substration
      */
     @Override
-    public LocalTime subtract(DvDuration q) {
-        MyPeriodDuration duration = q.getValue();
-        return value.minus(duration);
+    public DvTime subtract(DvDuration q) {
+        LocalTime time = getValue();
+        AlmostComparablePeriodDuration duration = q.getValue();
+        return new DvTime(getOtherReferenceRanges(), getNormalRange(),
+                getNormalStatus(), getAccuracy(), getMagnitudeStatus(),
+                time.minus(duration));
     }
 
     /**
