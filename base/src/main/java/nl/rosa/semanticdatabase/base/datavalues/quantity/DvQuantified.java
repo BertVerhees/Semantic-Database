@@ -25,12 +25,9 @@ public abstract class DvQuantified<T extends DvQuantified>
      */
     private String magnitudeStatus;
 
-    public DvQuantified() {
-    }
-
-    public DvQuantified(
-            List<ReferenceRange> otherReferenceRanges,
-            DvInterval normalRange,
+    protected DvQuantified(
+            List<ReferenceRange<T>> otherReferenceRanges,
+            DvInterval<T> normalRange,
             CodePhrase normalStatus,
             String magnitudeStatus) {
         super(otherReferenceRanges, normalRange, normalStatus);
@@ -44,6 +41,7 @@ public abstract class DvQuantified<T extends DvQuantified>
     public void setMagnitudeStatus( String magnitudeStatus) {
         this.magnitudeStatus = magnitudeStatus;
     }
+
     public Boolean validMagnitudeStatus() {
         String[] resultTest = {"=", "<", ">", "<=", ">=", "~"};
         if(magnitudeStatus!=null && !Arrays.asList().contains(magnitudeStatus)){
@@ -52,29 +50,24 @@ public abstract class DvQuantified<T extends DvQuantified>
         return true;
     }
 
-    public abstract MT getMagnitude();
+    public abstract T getMagnitude();
 
     /**
      * True if other is less than this Quantified object. Based on comparison of magnitude.
      * @param other
      * @return Post_result: Result = magnitude < other.magnitude
      */
-    public Boolean lessThan(DvQuantified<AT,MT> other){
+    public Boolean lessThan(DvQuantified<T> other){
         return getMagnitude().compareTo(other.getMagnitude())>0;
     }
 
-
-    @Override
-    public int compareTo(MT other) {
-        return getMagnitude().compareTo(other);
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        DvQuantified<?, ?> that = (DvQuantified<?, ?>) o;
+        DvQuantified<?> that = (DvQuantified<?>) o;
         return Objects.equals(magnitudeStatus, that.magnitudeStatus);
     }
 

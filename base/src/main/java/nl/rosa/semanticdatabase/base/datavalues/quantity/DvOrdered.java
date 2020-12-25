@@ -29,19 +29,16 @@ public abstract class DvOrdered<T extends DvOrdered>
      */
     private List<ReferenceRange<T>> otherReferenceRanges;
 
-    public DvOrdered() {
-    }
-
-    public DvOrdered(
-            List<ReferenceRange> otherReferenceRanges,
-            DvInterval normalRange) {
+    protected DvOrdered(
+            List<ReferenceRange<T>> otherReferenceRanges,
+            DvInterval<T> normalRange) {
         this.normalRange = normalRange;
         this.otherReferenceRanges = otherReferenceRanges;
     }
 
     protected DvOrdered(
-            List<ReferenceRange> otherReferenceRanges,
-            DvInterval normalRange,
+            List<ReferenceRange<T>> otherReferenceRanges,
+            DvInterval<T> normalRange,
             CodePhrase normalStatus) {
         this.normalStatus = normalStatus;
         this.normalRange = normalRange;
@@ -49,23 +46,23 @@ public abstract class DvOrdered<T extends DvOrdered>
     }
 
 
-    public DvInterval getNormalRange() {
+    public DvInterval<T> getNormalRange() {
         return normalRange;
     }
 
-    public void setNormalRange(DvInterval normalRange) {
+    public void setNormalRange(DvInterval<T> normalRange) {
         this.normalRange = normalRange;
     }
 
-    public List<ReferenceRange> getOtherReferenceRanges() {
+    public List<ReferenceRange<T>> getOtherReferenceRanges() {
         return otherReferenceRanges;
     }
 
-    public void setOtherReferenceRanges(List<ReferenceRange> otherReferenceRanges) {
+    public void setOtherReferenceRanges(List<ReferenceRange<T>> otherReferenceRanges) {
         this.otherReferenceRanges = otherReferenceRanges;
     }
 
-    public void addOtherReferenceRange(ReferenceRange range) {
+    public void addOtherReferenceRange(ReferenceRange<T> range) {
         if(otherReferenceRanges==null){
             otherReferenceRanges = new ArrayList<>();
         }
@@ -81,15 +78,18 @@ public abstract class DvOrdered<T extends DvOrdered>
         this.normalStatus = normalStatus;
     }
     /**
-     * Value is in the normal range if there is one, otherwise True
-     *
+     * Value is in the normal range, determined by comparison of the value to normal_range if present,
+     * or by the normal_status marker if present.
      * @return true if normal
      * @throws IllegalStateException if both normalRange and normalStatus null
+     * Pre: normal_range /= Void or normal_status /= Void
+     * Post_range: normal_range /= Void implies Result = normal_range.has (self)
+     * Post_status: normal_status /= Void implies normal_status.code_string.is_equal (“N”)
      */
     public boolean isNormal() throws IllegalStateException {
         if(normalRange == null && normalStatus == null) {
             throw new IllegalStateException(
-                    "both normalRange and normalStatus null");
+                    "Both normalRange and normalStatus must not be null");
         }
         if(normalRange != null) {
             return getNormalRange().has(this);
@@ -97,6 +97,23 @@ public abstract class DvOrdered<T extends DvOrdered>
             return normalStatus.getCodeString().equals("N");
         }
     }
+
+    /**
+     * Test if two instances are strictly comparable. Effected in descendants.
+     * @param other
+     * @return
+     */
+    public abstract Boolean isStrictlyComparableTo(DvOrdered<T> other);
+
+    /**
+     * True if this quantity has no reference ranges.
+     * @return
+     */
+    public Boolean isSimple(){
+        return otherReferenceRanges == null || otherReferenceRanges.size() == 0;
+    }
+
+    public abstract Boolean lessThen(DvOrdered<T> other);
 
 
     @Override

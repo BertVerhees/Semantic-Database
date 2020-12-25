@@ -21,12 +21,9 @@ public abstract class DvAmount<T extends DvAmount>
     private Double accuracy = null;
     private Boolean accuracyIsPercent = null;
 
-    public DvAmount() {
-    }
-
-    public DvAmount(
-            List<ReferenceRange> otherReferenceRanges,
-            DvInterval normalRange,
+    protected DvAmount(
+            List<ReferenceRange<T>> otherReferenceRanges,
+            DvInterval<T> normalRange,
             CodePhrase normalStatus,
             Double accuracy,
             Boolean accuracyIsPercent,
@@ -64,7 +61,6 @@ public abstract class DvAmount<T extends DvAmount>
         this.accuracyIsPercent = accuracyIsPercent;
     }
 
-    @Override
     public Double getAccuracy() {
         return accuracy;
     }
@@ -72,6 +68,14 @@ public abstract class DvAmount<T extends DvAmount>
     public void setAccuracy(Double accuracy) {
         this.accuracy = accuracy;
     }
+
+    public Boolean lessThen(DvAmount<T> other){
+        if(isStrictlyComparableTo(other)){
+            return this.accuracy.compareTo(other.accuracy) < 0;
+        }
+        return false;
+    }
+
 
     @Override
     public boolean equals(Object o) {
