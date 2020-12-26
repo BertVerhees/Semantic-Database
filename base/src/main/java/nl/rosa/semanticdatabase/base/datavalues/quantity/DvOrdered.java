@@ -113,7 +113,7 @@ public abstract class DvOrdered<T extends DvOrdered>
         return otherReferenceRanges == null || otherReferenceRanges.size() == 0;
     }
 
-    public abstract Boolean lessThen(DvOrdered<T> other);
+    public abstract Boolean lessThan(DvOrdered<T> other);
 
 
     @Override

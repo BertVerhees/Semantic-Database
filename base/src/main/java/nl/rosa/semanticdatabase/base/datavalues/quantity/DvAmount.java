@@ -69,14 +69,6 @@ public abstract class DvAmount<T extends DvAmount>
         this.accuracy = accuracy;
     }
 
-    public Boolean lessThen(DvAmount<T> other){
-        if(isStrictlyComparableTo(other)){
-            return this.accuracy.compareTo(other.accuracy) < 0;
-        }
-        return false;
-    }
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

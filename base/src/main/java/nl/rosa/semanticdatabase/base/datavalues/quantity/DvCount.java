@@ -13,16 +13,13 @@ public class DvCount extends DvAmount<DvCount> {
 
     private Long magnitude;
 
-    public DvCount() {
-    }
-
     public DvCount(Long magnitude) {
-        this.magnitude = magnitude;
+        this(null, null, null, null, null, null, magnitude);
     }
 
     public DvCount(
-            List<ReferenceRange> otherReferenceRanges,
-            DvInterval normalRange,
+            List<ReferenceRange<DvCount>> otherReferenceRanges,
+            DvInterval<DvCount> normalRange,
             CodePhrase normalStatus,
             Double accuracy,
             Boolean accuracyIsPercent,
@@ -85,6 +82,27 @@ public class DvCount extends DvAmount<DvCount> {
 
     public void setMagnitude(Long magnitude) {
         this.magnitude = magnitude;
+    }
+
+    /**
+     * Test if two instances are strictly comparable. Effected in descendants.
+     *
+     * @param other
+     * @return
+     */
+    @Override
+    public Boolean isStrictlyComparableTo(DvOrdered<DvCount> other) {
+        return true;
+    }
+
+    @Override
+    public Boolean lessThan(DvOrdered<DvCount> other) {
+        return compareTo(other)<0;
+    }
+
+    public int compareTo(DvOrdered<DvCount> o) {
+        final DvCount c = (DvCount) o;
+        return magnitude.compareTo(c.magnitude);
     }
 
     @Override

@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -50,7 +51,7 @@ public abstract class DvQuantified<T extends DvQuantified>
         return true;
     }
 
-    public abstract T getMagnitude();
+    public abstract Number getMagnitude();
 
     /**
      * True if other is less than this Quantified object. Based on comparison of magnitude.
@@ -58,7 +59,10 @@ public abstract class DvQuantified<T extends DvQuantified>
      * @return Post_result: Result = magnitude < other.magnitude
      */
     public Boolean lessThan(DvQuantified<T> other){
-        return getMagnitude().compareTo(other.getMagnitude())>0;
+        Integer i = 0;
+        BigDecimal b1 = BigDecimal.valueOf(getMagnitude().doubleValue());
+        BigDecimal b2 = BigDecimal.valueOf(other.getMagnitude().doubleValue());
+        return b1.compareTo(b2)<0;
     }
 
 

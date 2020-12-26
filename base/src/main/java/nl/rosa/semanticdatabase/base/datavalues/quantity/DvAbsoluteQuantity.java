@@ -12,10 +12,10 @@ public abstract class DvAbsoluteQuantity<A extends DvAmount, T extends DvAbsolut
         extends DvQuantified<T> {
 
     protected DvAbsoluteQuantity(
-            List<ReferenceRange> otherReferenceRanges,
-            DvInterval normalRange,
+            List<ReferenceRange<T>> otherReferenceRanges,
+            DvInterval<T> normalRange,
             CodePhrase normalStatus,
-            A  accuracy,
+            A accuracy,
             String magnitudeStatus) {
         super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus);
         this.accuracy = accuracy;
