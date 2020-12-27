@@ -2,17 +2,21 @@ package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.DataValue;
+import nl.rosa.semanticdatabase.base.terminology.OpenEHRCodeSetIdentifiers;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 /**
- * Created by pieter.bos on 04/11/15.
+ * Originally: Created by pieter.bos on 04/11/15.
  */
 public abstract class DvOrdered<T extends DvOrdered>
         extends DataValue
         implements Comparable<T> {
+
+    private TerminologyService terminologyService;
 
     /**
      * Optional normal status indicator of value with respect to normal range for this value.
@@ -29,6 +33,10 @@ public abstract class DvOrdered<T extends DvOrdered>
      */
     private List<ReferenceRange<T>> otherReferenceRanges;
 
+    protected DvOrdered(){
+        this(null, null);
+    }
+
     protected DvOrdered(
             List<ReferenceRange<T>> otherReferenceRanges,
             DvInterval<T> normalRange) {
@@ -39,10 +47,30 @@ public abstract class DvOrdered<T extends DvOrdered>
     protected DvOrdered(
             List<ReferenceRange<T>> otherReferenceRanges,
             DvInterval<T> normalRange,
-            CodePhrase normalStatus) {
+            CodePhrase normalStatus,
+            TerminologyService terminologyService) {
+        if (otherReferenceRanges == null) {
+            this.otherReferenceRanges =
+                    new ArrayList<>(otherReferenceRanges);
+        }
+        if(normalStatus != null) {
+            if(terminologyService == null) {
+                throw new IllegalArgumentException("If normalStatus is not null, terminologyService must nott be null");
+            }
+            //TODO replace OpenEhr terminology by generic terminology
+            if (!terminologyService.codeSetForId(
+                    OpenEHRCodeSetIdentifiers.NORMAL_STATUSES).hasCode(
+                    normalStatus)) {
+                throw new IllegalArgumentException(
+                        "unknown normal status: " + normalStatus);
+            }
+        }
+        if(normalRange == null && normalStatus == null) {
+            throw new IllegalStateException(
+                    "Both normalRange and normalStatus must not be null");
+        }
         this.normalStatus = normalStatus;
         this.normalRange = normalRange;
-        this.otherReferenceRanges = otherReferenceRanges;
     }
 
 
@@ -69,7 +97,10 @@ public abstract class DvOrdered<T extends DvOrdered>
         otherReferenceRanges.add(range);
     }
 
-    
+    public TerminologyService getTerminologyService() {
+        return terminologyService;
+    }
+
     public CodePhrase getNormalStatus() {
         return normalStatus;
     }
@@ -131,3 +162,25 @@ public abstract class DvOrdered<T extends DvOrdered>
         return Objects.hash(normalStatus, normalRange, otherReferenceRanges);
     }
 }
+/**
+ * ***** BEGIN LICENSE BLOCK *****
+ * <p>
+ * ISC License
+ * <p>
+ * Copyright (c) 2020, Bert Verhees
+ * <p>
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ * <p>
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ * <p>
+ * ***** END LICENSE BLOCK *****
+ */

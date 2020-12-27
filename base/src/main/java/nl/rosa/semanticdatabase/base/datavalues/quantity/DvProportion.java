@@ -1,6 +1,7 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
 
 import java.util.List;
 import java.util.Objects;
@@ -8,9 +9,9 @@ import java.util.Objects;
 /**
  * TODO: This does not implement PROPORTION KIND, because multiple inheritance - won't work.
  * It does have a type=proportion kind enum
- * Created by pieter.bos on 04/11/15.
+ * Originally: Created by pieter.bos on 04/11/15.
  */
-public class DvProportion extends DvAmount<Double> {
+public class DvProportion extends DvAmount<DvProportion> {
 
     private Double numerator;
     private Double denominator;
@@ -22,6 +23,23 @@ public class DvProportion extends DvAmount<Double> {
     }
 
     /**
+     * Test if two instances are strictly comparable. Effected in descendants.
+     *
+     * @param other
+     * @return
+     */
+    @Override
+    public Boolean isStrictlyComparableTo(DvOrdered<DvProportion> other) {
+        DvProportion p 
+        return type == other.t
+    }
+
+    @Override
+    public Boolean lessThan(DvOrdered<DvProportion> other) {
+        return null;
+    }
+
+    /**
      * Sum of this quantity and another whose formal type must be the
      * difference type of this quantity.
      *
@@ -29,7 +47,7 @@ public class DvProportion extends DvAmount<Double> {
      * @return product of addition
      */
     @Override
-    public DvQuantified<Double> add(DvQuantified<Double> s) {
+    public DvQuantified<DvProportion> add(DvQuantified s) {
         return null;
     }
 
@@ -41,7 +59,7 @@ public class DvProportion extends DvAmount<Double> {
      * @return product of substration
      */
     @Override
-    public DvQuantified<Double> subtract(DvQuantified<Double> s) {
+    public DvQuantified<DvProportion> subtract(DvQuantified s) {
         return null;
     }
 
@@ -52,9 +70,10 @@ public class DvProportion extends DvAmount<Double> {
     }
 
     public DvProportion(
-            List<ReferenceRange> otherReferenceRanges,
+            List<ReferenceRange<DvProportion>> otherReferenceRanges,
             DvInterval<DvProportion> normalRange,
             CodePhrase normalStatus,
+            TerminologyService terminologyService,
             double accuracy,
             boolean accuracyPercent,
             String magnitudeStatus,
@@ -63,7 +82,7 @@ public class DvProportion extends DvAmount<Double> {
             ProportionKind type,
             Long precision) {
 
-        super(otherReferenceRanges, normalRange, normalStatus , accuracy,
+        super(otherReferenceRanges, normalRange, normalStatus, terminologyService, accuracy,
                 accuracyPercent, magnitudeStatus);
 
         if(type == null) {
@@ -250,3 +269,25 @@ public class DvProportion extends DvAmount<Double> {
         return 0;
     }
 }
+/**
+ * ***** BEGIN LICENSE BLOCK *****
+ * <p>
+ * ISC License
+ * <p>
+ * Copyright (c) 2020, Bert Verhees
+ * <p>
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ * <p>
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ * <p>
+ * ***** END LICENSE BLOCK *****
+ */

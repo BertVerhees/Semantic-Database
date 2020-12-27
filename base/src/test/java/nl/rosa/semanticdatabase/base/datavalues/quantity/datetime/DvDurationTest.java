@@ -20,4 +20,68 @@ public class DvDurationTest {
                 () -> assertEquals(dvDurationFour, dvDurationFive)
         );
     }
+
+    @Test
+    void getValue() {
+    }
+
+    @Test
+    void getMagnitude() {
+    }
+
+    @Test
+    void add() {
+    }
+
+    @Test
+    void subtract() {
+    }
+
+    @Test
+    void multiply() {
+    }
+
+    @Test
+    void negative() {
+    }
+
+    @Test
+    void lessThan() {
+    }
+
+    @Test
+    void testEquals1() {
+    }
+
+    @Test
+    void getYears() {
+    }
+
+    @Test
+    void getMonths() {
+    }
+
+    @Test
+    void getWeeks() {
+    }
+
+    @Test
+    void getDays() {
+    }
+
+    @Test
+    void getHours() {
+    }
+
+    @Test
+    void getMinutes() {
+    }
+
+    @Test
+    void getSeconds() {
+    }
+
+    @Test
+    void getFractionalSeconds() {
+    }
 }

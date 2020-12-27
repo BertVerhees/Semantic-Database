@@ -2,12 +2,13 @@ package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDuration;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
 
 import java.util.List;
 import java.util.Objects;
 
 /**
- * Created by pieter.bos on 04/11/15.
+ * Originally: Created by pieter.bos on 04/11/15.
  */
 public abstract class DvAmount<T extends DvAmount>
         extends DvQuantified<T> {
@@ -21,14 +22,26 @@ public abstract class DvAmount<T extends DvAmount>
     private Double accuracy = null;
     private Boolean accuracyIsPercent = null;
 
+    protected DvAmount(){
+        this(
+           null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+    }
+
     protected DvAmount(
             List<ReferenceRange<T>> otherReferenceRanges,
             DvInterval<T> normalRange,
             CodePhrase normalStatus,
+            TerminologyService terminologyService,
             Double accuracy,
             Boolean accuracyIsPercent,
             String magnitudeStatus) {
-        super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus);
+        super(otherReferenceRanges, normalRange, normalStatus, terminologyService, magnitudeStatus);
         this.accuracy = accuracy;
         this.accuracyIsPercent = accuracyIsPercent;
     }
@@ -50,8 +63,6 @@ public abstract class DvAmount<T extends DvAmount>
      * @return product of substration
      */
     public abstract DvQuantified<T> subtract(DvQuantified<T> s);
-
-
 
     public Boolean getAccuracyIsPercent() {
         return accuracyIsPercent;
@@ -84,3 +95,25 @@ public abstract class DvAmount<T extends DvAmount>
         return Objects.hash(super.hashCode(), accuracy, accuracyIsPercent);
     }
 }
+/**
+ * ***** BEGIN LICENSE BLOCK *****
+ * <p>
+ * ISC License
+ * <p>
+ * Copyright (c) 2020, Bert Verhees
+ * <p>
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ * <p>
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ * <p>
+ * ***** END LICENSE BLOCK *****
+ */

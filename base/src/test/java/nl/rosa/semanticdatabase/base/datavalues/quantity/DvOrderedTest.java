@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DvOrderedTest {
 	@Test
 	public void testIsNormalWithoutNormalStatusAndNormalRange() {
-		List<ReferenceRange> referenceRanges = null;
+		List<ReferenceRange<DvCount>> referenceRanges = null;
 		DvInterval<DvCount> normalRange = null;
 		CodePhrase normalStatus = null;
 		double accuracy = 0;
@@ -44,7 +44,7 @@ public class DvOrderedTest {
 
 	@Test
 	public void testIsNormalWithNormalStatus() {
-		List<ReferenceRange> referenceRanges = null;
+		List<ReferenceRange<DvCount>> referenceRanges = null;
 		DvInterval<DvCount> normalRange = null;
 		CodePhrase normalStatus = new CodePhrase("normal statuses", "N");
 		double accuracy = 0;
@@ -59,7 +59,7 @@ public class DvOrderedTest {
 
 	@Test
 	public void testIsNormalWithAbnormalStatus() {
-		List<ReferenceRange> referenceRanges = null;
+		List<ReferenceRange<DvCount>> referenceRanges = null;
 		DvInterval<DvCount> normalRange = null;
 		CodePhrase normalStatus = new CodePhrase("normal statuses", "L");
 		double accuracy = 0;
@@ -74,7 +74,7 @@ public class DvOrderedTest {
 
 	@Test
 	public void testIsNormalWithNormalRange() {
-		List<ReferenceRange> referenceRanges = null;
+		List<ReferenceRange<DvCount>> referenceRanges = null;
 		DvInterval<DvCount> normalRange = new DvInterval<DvCount>(
 				new DvCount(0L), new DvCount(2L));
 		CodePhrase normalStatus = null;
@@ -90,7 +90,7 @@ public class DvOrderedTest {
 
 	@Test
 	public void testIsNormalWithNoneInclusiveNormalRange() {
-		List<ReferenceRange> referenceRanges = null;
+		List<ReferenceRange<DvCount>> referenceRanges = null;
 		DvInterval<DvCount> normalRange = new DvInterval<>(
 				new DvCount(2L), new DvCount(4L));
 		CodePhrase normalStatus = null;
@@ -106,7 +106,7 @@ public class DvOrderedTest {
 
 	@Test
 	public void testIsNormalWithNormalStatusAndNormalRange() {
-		List<ReferenceRange> referenceRanges = null;
+		List<ReferenceRange<DvCount>> referenceRanges = null;
 		DvInterval<DvCount> normalRange = new DvInterval<DvCount>(
 				new DvCount(0L), new DvCount(2L));
 		CodePhrase normalStatus = new CodePhrase("normal statuses", "N");
@@ -119,7 +119,46 @@ public class DvOrderedTest {
 					accuracyPercent, magnitudeStatus, magnitude);		
 		assertTrue(count.isNormal());
 	}
-	
+
+    @Test
+    void getNormalRange() {
+    }
+
+    @Test
+    void setNormalRange() {
+    }
+
+    @Test
+    void getOtherReferenceRanges() {
+    }
+
+    @Test
+    void setOtherReferenceRanges() {
+    }
+
+    @Test
+    void addOtherReferenceRange() {
+    }
+
+    @Test
+    void getNormalStatus() {
+    }
+
+    @Test
+    void setNormalStatus() {
+    }
+
+    @Test
+    void isNormal() {
+    }
+
+    @Test
+    void isSimple() {
+    }
+
+    @Test
+    void testEquals() {
+    }
 }
 /*
  *  ***** BEGIN LICENSE BLOCK *****

@@ -12,33 +12,45 @@ import java.time.chrono.IsoChronology;
 import java.time.temporal.*;
 import java.util.*;
 
-public final class AlmostComparablePeriodDuration implements TemporalAmount, Serializable, Comparable<AlmostComparablePeriodDuration> {
-    public static final AlmostComparablePeriodDuration ZERO;
+/**
+ * Funny name it ios not really comparable.
+ *
+ * It consists from two Java-classes Duration and Period.
+ * Duration is comparable
+ * Period is not because of daylight saving time
+ *
+ * I needed this class to be comparable, so I ignored this fact, and give it a funny name instead.
+ * I am always open to other, better sloutions
+ *
+ * Have a nice day
+ */
+public final class KindOfComparablePeriodDuration implements TemporalAmount, Serializable, Comparable<KindOfComparablePeriodDuration> {
+    public static final KindOfComparablePeriodDuration ZERO;
     private static final long serialVersionUID = 8815521625671589L;
     private static final List<TemporalUnit> SUPPORTED_UNITS;
     private static final long SECONDS_PER_DAY = 86400L;
     private final Period period;
     private final Duration duration;
 
-    public static AlmostComparablePeriodDuration of(Period period, Duration duration) {
+    public static KindOfComparablePeriodDuration of(Period period, Duration duration) {
         Objects.requireNonNull(period, "The period must not be null");
         Objects.requireNonNull(duration, "The duration must not be null");
-        return new AlmostComparablePeriodDuration(period, duration);
+        return new KindOfComparablePeriodDuration(period, duration);
     }
 
-    public static AlmostComparablePeriodDuration of(Period period) {
+    public static KindOfComparablePeriodDuration of(Period period) {
         Objects.requireNonNull(period, "The period must not be null");
-        return new AlmostComparablePeriodDuration(period, Duration.ZERO);
+        return new KindOfComparablePeriodDuration(period, Duration.ZERO);
     }
 
-    public static AlmostComparablePeriodDuration of(Duration duration) {
+    public static KindOfComparablePeriodDuration of(Duration duration) {
         Objects.requireNonNull(duration, "The duration must not be null");
-        return new AlmostComparablePeriodDuration(Period.ZERO, duration);
+        return new KindOfComparablePeriodDuration(Period.ZERO, duration);
     }
 
-    public static AlmostComparablePeriodDuration from(TemporalAmount amount) {
-        if (amount instanceof AlmostComparablePeriodDuration) {
-            return (AlmostComparablePeriodDuration)amount;
+    public static KindOfComparablePeriodDuration from(TemporalAmount amount) {
+        if (amount instanceof KindOfComparablePeriodDuration) {
+            return (KindOfComparablePeriodDuration)amount;
         } else if (amount instanceof Period) {
             return of((Period)amount);
         } else if (amount instanceof Duration) {
@@ -89,7 +101,7 @@ public final class AlmostComparablePeriodDuration implements TemporalAmount, Ser
         }
     }
 
-    public static AlmostComparablePeriodDuration parse(CharSequence text) {
+    public static KindOfComparablePeriodDuration parse(CharSequence text) {
         Objects.requireNonNull(text, "text");
         String upper = text.toString().toUpperCase(Locale.ENGLISH);
         String negate = "";
@@ -114,7 +126,7 @@ public final class AlmostComparablePeriodDuration implements TemporalAmount, Ser
         }
     }
 
-    public static AlmostComparablePeriodDuration between(Temporal startInclusive, Temporal endExclusive) {
+    public static KindOfComparablePeriodDuration between(Temporal startInclusive, Temporal endExclusive) {
         LocalDate startDate = (LocalDate)startInclusive.query(TemporalQueries.localDate());
         LocalDate endDate = (LocalDate)endExclusive.query(TemporalQueries.localDate());
         Period period = Period.ZERO;
@@ -130,7 +142,7 @@ public final class AlmostComparablePeriodDuration implements TemporalAmount, Ser
         return of(period, duration);
     }
 
-    private AlmostComparablePeriodDuration(Period period, Duration duration) {
+    private KindOfComparablePeriodDuration(Period period, Duration duration) {
         this.period = period;
         this.duration = duration;
     }
@@ -166,7 +178,7 @@ public final class AlmostComparablePeriodDuration implements TemporalAmount, Ser
         return this.period;
     }
 
-    public AlmostComparablePeriodDuration withPeriod(Period period) {
+    public KindOfComparablePeriodDuration withPeriod(Period period) {
         return of(period, this.duration);
     }
 
@@ -174,7 +186,7 @@ public final class AlmostComparablePeriodDuration implements TemporalAmount, Ser
         return this.duration;
     }
 
-    public AlmostComparablePeriodDuration withDuration(Duration duration) {
+    public KindOfComparablePeriodDuration withDuration(Duration duration) {
         return of(this.period, duration);
     }
 
@@ -182,29 +194,29 @@ public final class AlmostComparablePeriodDuration implements TemporalAmount, Ser
         return this.period.isZero() && this.duration.isZero();
     }
 
-    public AlmostComparablePeriodDuration plus(TemporalAmount amountToAdd) {
-        AlmostComparablePeriodDuration other = from(amountToAdd);
+    public KindOfComparablePeriodDuration plus(TemporalAmount amountToAdd) {
+        KindOfComparablePeriodDuration other = from(amountToAdd);
         return of(this.period.plus(other.period), this.duration.plus(other.duration));
     }
 
-    public AlmostComparablePeriodDuration minus(TemporalAmount amountToAdd) {
-        AlmostComparablePeriodDuration other = from(amountToAdd);
+    public KindOfComparablePeriodDuration minus(TemporalAmount amountToAdd) {
+        KindOfComparablePeriodDuration other = from(amountToAdd);
         return of(this.period.minus(other.period), this.duration.minus(other.duration));
     }
 
-    public AlmostComparablePeriodDuration multipliedBy(int scalar) {
+    public KindOfComparablePeriodDuration multipliedBy(int scalar) {
         return scalar == 1 ? this : of(this.period.multipliedBy(scalar), this.duration.multipliedBy((long)scalar));
     }
 
-    public AlmostComparablePeriodDuration negated() {
+    public KindOfComparablePeriodDuration negated() {
         return this.multipliedBy(-1);
     }
 
-    public AlmostComparablePeriodDuration normalizedYears() {
+    public KindOfComparablePeriodDuration normalizedYears() {
         return this.withPeriod(this.period.normalized());
     }
 
-    public AlmostComparablePeriodDuration normalizedStandardDays() {
+    public KindOfComparablePeriodDuration normalizedStandardDays() {
         long totalSecs = (long)this.period.getDays() * 86400L + this.duration.getSeconds();
         int splitDays = Math.toIntExact(totalSecs / 86400L);
         long splitSecs = totalSecs % 86400L;
@@ -222,10 +234,10 @@ public final class AlmostComparablePeriodDuration implements TemporalAmount, Ser
     public boolean equals(Object otherAmount) {
         if (this == otherAmount) {
             return true;
-        } else if (!(otherAmount instanceof AlmostComparablePeriodDuration)) {
+        } else if (!(otherAmount instanceof KindOfComparablePeriodDuration)) {
             return false;
         } else {
-            AlmostComparablePeriodDuration other = (AlmostComparablePeriodDuration)otherAmount;
+            KindOfComparablePeriodDuration other = (KindOfComparablePeriodDuration)otherAmount;
             return this.period.equals(other.period) && this.duration.equals(other.duration);
         }
     }
@@ -243,7 +255,7 @@ public final class AlmostComparablePeriodDuration implements TemporalAmount, Ser
     }
 
     static {
-        ZERO = new AlmostComparablePeriodDuration(Period.ZERO, Duration.ZERO);
+        ZERO = new KindOfComparablePeriodDuration(Period.ZERO, Duration.ZERO);
         SUPPORTED_UNITS = Collections.unmodifiableList(Arrays.asList(ChronoUnit.YEARS, ChronoUnit.MONTHS, ChronoUnit.DAYS, ChronoUnit.SECONDS, ChronoUnit.NANOS));
     }
 
@@ -287,7 +299,7 @@ public final class AlmostComparablePeriodDuration implements TemporalAmount, Ser
      *                              from being compared to this object.
      */
     @Override
-    public int compareTo(AlmostComparablePeriodDuration o) {
+    public int compareTo(KindOfComparablePeriodDuration o) {
         if(duration.equals(o.duration) && period.equals(o.period)){
             return 0;
         }

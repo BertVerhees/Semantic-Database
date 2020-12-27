@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDuration;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
 
 import java.util.List;
 import java.util.Objects;
@@ -14,13 +15,21 @@ public class DvCount extends DvAmount<DvCount> {
     private Long magnitude;
 
     public DvCount(Long magnitude) {
-        this(null, null, null, null, null, null, magnitude);
+        this(null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                magnitude);
     }
 
     public DvCount(
             List<ReferenceRange<DvCount>> otherReferenceRanges,
             DvInterval<DvCount> normalRange,
             CodePhrase normalStatus,
+            TerminologyService terminologyService,
             Double accuracy,
             Boolean accuracyIsPercent,
             String magnitudeStatus,
@@ -29,6 +38,7 @@ public class DvCount extends DvAmount<DvCount> {
                 otherReferenceRanges,
                 normalRange,
                 normalStatus,
+                terminologyService,
                 accuracy,
                 accuracyIsPercent,
                 magnitudeStatus);
@@ -49,6 +59,7 @@ public class DvCount extends DvAmount<DvCount> {
                 getOtherReferenceRanges(),
                 getNormalRange(),
                 getNormalStatus(),
+                getTerminologyService(),
                 getAccuracy(),
                 getAccuracyIsPercent(),
                 getMagnitudeStatus(),
@@ -69,11 +80,31 @@ public class DvCount extends DvAmount<DvCount> {
                 getOtherReferenceRanges(),
                 getNormalRange(),
                 getNormalStatus(),
+                getTerminologyService(),
                 getAccuracy(),
                 getAccuracyIsPercent(),
                 getMagnitudeStatus(),
                 magnitude - c.magnitude);
     }
+
+    /**
+     * Product of this DV_COUNT and factor.
+     * @param q
+     * @return
+     */
+    public DvQuantified<DvCount> multiply(DvQuantified q) {
+        final DvCount c = (DvCount) q;
+        return new DvCount(
+                getOtherReferenceRanges(),
+                getNormalRange(),
+                getNormalStatus(),
+                getTerminologyService(),
+                getAccuracy(),
+                getAccuracyIsPercent(),
+                getMagnitudeStatus(),
+                magnitude * c.magnitude);
+    }
+
 
     @Override
     public Long getMagnitude() {
@@ -97,12 +128,8 @@ public class DvCount extends DvAmount<DvCount> {
 
     @Override
     public Boolean lessThan(DvOrdered<DvCount> other) {
-        return compareTo(other)<0;
-    }
-
-    public int compareTo(DvOrdered<DvCount> o) {
-        final DvCount c = (DvCount) o;
-        return magnitude.compareTo(c.magnitude);
+        DvCount o = (DvCount)other;
+        return magnitude.compareTo(o.magnitude)<0;
     }
 
     @Override
@@ -160,6 +187,28 @@ public class DvCount extends DvAmount<DvCount> {
      */
     @Override
     public int compareTo(DvCount o) {
-        return 0;
+        return magnitude.compareTo(o.magnitude);
     }
 }
+/**
+ * ***** BEGIN LICENSE BLOCK *****
+ * <p>
+ * ISC License
+ * <p>
+ * Copyright (c) 2020, Bert Verhees
+ * <p>
+ * Permission to use, copy, modify, and/or distribute this software for any
+ * purpose with or without fee is hereby granted, provided that the above
+ * copyright notice and this permission notice appear in all copies.
+ * <p>
+ * THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+ * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS.
+ * IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+ * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+ * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+ * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+ * <p>
+ * ***** END LICENSE BLOCK *****
+ */

@@ -64,14 +64,14 @@ public class DateTimeParsers {
         }
     }
 
-    public static AlmostComparablePeriodDuration parseDurationValue(String text) {
+    public static KindOfComparablePeriodDuration parseDurationValue(String text) {
         try {
             if (text.startsWith("PT") || text.startsWith("-PT")) {
-                return AlmostComparablePeriodDuration.from(Duration.parse(text));
+                return KindOfComparablePeriodDuration.from(Duration.parse(text));
             } else if (text.contains("T")) {
-                return AlmostComparablePeriodDuration.from(Duration.parse(text));
+                return KindOfComparablePeriodDuration.from(Duration.parse(text));
             } else {
-                return AlmostComparablePeriodDuration.from(Period.parse(text));
+                return KindOfComparablePeriodDuration.from(Period.parse(text));
             }
         } catch (DateTimeParseException e) {
             throw new IllegalArgumentException(e.getMessage() + ":" + text);
