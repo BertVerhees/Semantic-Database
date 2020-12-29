@@ -2,6 +2,8 @@ package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.measurement.MeasurementService;
+import nl.rosa.semanticdatabase.base.measurement.SimpleMeasurementService;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -11,7 +13,7 @@ import java.util.Objects;
 /**
  * Created by pieter.bos on 04/11/15.
  */
-public class DvQuantity extends DvAmount<Double> {
+public class DvQuantity extends DvAmount<DvQuantity> {
 
     private Long precision;
     private String units;
@@ -52,6 +54,7 @@ public class DvQuantity extends DvAmount<Double> {
                 null,
                 null,
                 null,
+                null,
                 0,
                 false,
                 null,
@@ -85,27 +88,67 @@ public class DvQuantity extends DvAmount<Double> {
     }
 
     /**
+     * Test if two instances are strictly comparable. Effected in descendants.
+     *
+     * @param other
+     * @return
+     */
+    @Override
+    public Boolean isStrictlyComparableTo(DvOrdered<DvQuantity> other) {
+        final DvQuantity q = (DvQuantity) other;
+        return measurementService.unitsEquivalent(getUnits(), q.getUnits());
+    }
+
+    @Override
+    public Boolean lessThan(DvOrdered<DvQuantity> other) {
+        return null;
+    }
+
+    /**
      * Sum of this quantity and another whose formal type must be the
      * difference type of this quantity.
      *
-     * @param s
-     * @return product of addition
+     * @param q
+     * @return result of addition
+     * @throws ClassCastException if the specified object's type
+     *                            prevents it from being added to this Object.
      */
-    @Override
-    public DvQuantified<Double> add(DvQuantified<Double> s) {
-        return null;
+    public DvQuantified<DvQuantity> add(DvQuantified<DvQuantity> q) {
+        DvQuantity qt = (DvQuantity) q;
+        return new DvQuantity(getOtherReferenceRanges(), getNormalRange(),
+                getNormalStatus(), getTerminologyService(), getAccuracy(), getAccuracyIsPercent(),
+                getMagnitudeStatus(), getUnits(), magnitude + qt.magnitude,
+                precision, measurementService);
     }
 
     /**
      * Difference of this quantity and another whose formal type must
      * be the difference type of this quantity type.
      *
-     * @param s
-     * @return product of substration
+     * @param q
+     * @return result of subtraction
+     * @throws ClassCastException if the specified object's type
+     *                            prevents it from being subtracted to this Object.
      */
-    @Override
-    public DvQuantified<Double> subtract(DvQuantified<Double> s) {
-        return null;
+    public DvQuantified<DvQuantity> subtract(DvQuantified<DvQuantity> q) {
+        DvQuantity qt = (DvQuantity) q;
+        return new DvQuantity(getOtherReferenceRanges(), getNormalRange(),
+                getNormalStatus(), getTerminologyService(), getAccuracy(), getAccuracyIsPercent(),
+                getMagnitudeStatus(), getUnits(), magnitude - qt.magnitude,
+                precision, measurementService);
+    }
+
+    /**
+     * Negated version of current object, such as used for
+     * representing a difference, like a weight loss.
+     *
+     * @return negated version
+     */
+    public DvQuantity negate() {
+        return new DvQuantity(getOtherReferenceRanges(), getNormalRange(),
+                getNormalStatus(), getTerminologyService(), getAccuracy(), getAccuracyIsPercent(),
+                getMagnitudeStatus(), getUnits(), -magnitude,
+                precision, measurementService);
     }
 
     /**
@@ -145,9 +188,10 @@ public class DvQuantity extends DvAmount<Double> {
 
 
     public DvQuantity(
-            List<ReferenceRange> otherReferenceRanges,
-            DvInterval normalRange,
+            List<ReferenceRange<DvQuantity>> otherReferenceRanges,
+            DvInterval<DvQuantity> normalRange,
             CodePhrase normalStatus,
+            TerminologyService terminologyService,
             Double accuracy,
             Boolean accuracyIsPercent,
             String magnitudeStatus,
@@ -158,6 +202,7 @@ public class DvQuantity extends DvAmount<Double> {
                 otherReferenceRanges,
                 normalRange,
                 normalStatus,
+                terminologyService,
                 accuracy,
                 accuracyIsPercent,
                 magnitudeStatus);
@@ -165,9 +210,10 @@ public class DvQuantity extends DvAmount<Double> {
         this.units = units;
         this.magnitude = magnitude;
     }
-    public DvQuantity(List<ReferenceRange> otherReferenceRanges,
+    public DvQuantity(List<ReferenceRange<DvQuantity>> otherReferenceRanges,
                       DvInterval<DvQuantity> normalRange,
                       CodePhrase normalStatus,
+                      TerminologyService terminologyService,
                       double accuracy,
                       boolean accuracyPercent,
                       String magnitudeStatus,
@@ -176,7 +222,7 @@ public class DvQuantity extends DvAmount<Double> {
                       Long precision,
                       MeasurementService measurementService) {
 
-        super(otherReferenceRanges, normalRange, normalStatus, accuracy,
+        super(otherReferenceRanges, normalRange, normalStatus, terminologyService, accuracy,
                 accuracyPercent, magnitudeStatus);
 
         if (precision < -1) {
@@ -353,9 +399,9 @@ public class DvQuantity extends DvAmount<Double> {
      *                              from being compared to this object.
      */
     @Override
-    public int compareTo(DvQuantity o) {
-        return 0;
-    }
+    public int compareTo(DvQuantity arg0) {
+            return SimpleMeasurementService.getInstance().compare(getUnits(), getMagnitude(), arg0.getUnits(), arg0.getMagnitude());
+        }
 }
 /**
  * ***** BEGIN LICENSE BLOCK *****

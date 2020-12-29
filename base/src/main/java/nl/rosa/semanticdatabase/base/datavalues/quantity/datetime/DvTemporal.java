@@ -2,10 +2,11 @@ package nl.rosa.semanticdatabase.base.datavalues.quantity.datetime;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvAbsoluteQuantity;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.DvAmount;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
 import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
-import nl.rosa.semanticdatabase.utils.datetime.KindOfComparablePeriodDuration;
 
 import java.time.LocalDateTime;
 import java.time.temporal.Temporal;
@@ -20,60 +21,19 @@ public abstract class DvTemporal<T extends DvTemporal>
 
     
     private DvDuration accuracy;
-    private Temporal value;
-
-    protected DvTemporal( LocalDateTime value) {
-        this(null, null, null, null, null, value);
-    }
 
     protected DvTemporal(
-            List<ReferenceRange> otherReferenceRanges,
-            DvInterval normalRange,
+            List<ReferenceRange<T>> otherReferenceRanges,
+            DvInterval<T> normalRange,
             CodePhrase normalStatus,
+            TerminologyService terminologyService,
             DvDuration accuracy,
-            String magnitudeStatus,
-            String value
+            String magnitudeStatus
             ) {
-        super(otherReferenceRanges, normalRange, normalStatus, accuracy, magnitudeStatus);
-        this.value = DateTimeParsers.parseDateTimeValue(value);
+        super(otherReferenceRanges, normalRange, normalStatus, terminologyService, accuracy, magnitudeStatus);
+//        this.value = DateTimeParsers.parseDateTimeValue(value);
     }
 
-    protected DvTemporal(
-            List<ReferenceRange> otherReferenceRanges,
-            DvInterval normalRange,
-            CodePhrase normalStatus,
-            DvDuration accuracy,
-            String magnitudeStatus,
-            Temporal value
-    ) {
-        super(otherReferenceRanges, normalRange, normalStatus, accuracy, magnitudeStatus);
-        this.value = value;
-    }
-
-    /**
-     * Difference of two quantities.
-     *
-     * @return diff type
-     */
-    public abstract KindOfComparablePeriodDuration diff(T other);
-
-    /**
-     * True if other is less than this Quantified object. Based on comparison of magnitude.
-     * @param other
-     * @return
-     */
-    public Boolean lessThan(DvTemporal other){
-        return null;
-    }
-
-    /**
-     * True, for any two Dates.
-     * @param other
-     * @return
-     */
-    public Boolean isStrictlyComparableTo(DvTemporal other){
-        return null;
-    }
     /**
      * Type of quantity which can be added or subtracted to this quantity.
      * Usually the same type, but may be different as in the case of dates and
@@ -84,24 +44,6 @@ public abstract class DvTemporal<T extends DvTemporal>
     public Class<DvDuration> getDiffType() {
         return DvDuration.class;
     }
-
-    @Override
-    public DvDuration getAccuracy() {
-        return accuracy;
-    }
-
-    public void setAccuracy(DvDuration accuracy) {
-        this.accuracy = accuracy;
-    }
-
-    public Temporal getValue(){
-        return value;
-    }
-
-    public void setValue(Temporal value){
-        this.value = value;
-    }
-
 
     @Override
     public boolean equals(Object o) {

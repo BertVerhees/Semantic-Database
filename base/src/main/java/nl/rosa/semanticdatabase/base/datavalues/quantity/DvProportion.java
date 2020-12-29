@@ -15,7 +15,7 @@ public class DvProportion extends DvAmount<DvProportion> {
 
     private Double numerator;
     private Double denominator;
-    private Long type;
+    private ProportionKind type;
     
     private Long precision;
 
@@ -30,8 +30,7 @@ public class DvProportion extends DvAmount<DvProportion> {
      */
     @Override
     public Boolean isStrictlyComparableTo(DvOrdered<DvProportion> other) {
-        DvProportion p 
-        return type == other.t
+        return type .equals (((DvProportion) other).type);
     }
 
     @Override
@@ -63,22 +62,16 @@ public class DvProportion extends DvAmount<DvProportion> {
         return null;
     }
 
-    public DvProportion(Double numerator, Double denominator, Long type) {
-        this.numerator = numerator;
-        this.denominator = denominator;
-        this.type = type;
-    }
-
     public DvProportion(
             List<ReferenceRange<DvProportion>> otherReferenceRanges,
             DvInterval<DvProportion> normalRange,
             CodePhrase normalStatus,
             TerminologyService terminologyService,
-            double accuracy,
-            boolean accuracyPercent,
+            Double accuracy,
+            Boolean accuracyPercent,
             String magnitudeStatus,
-            double numerator,
-            double denominator,
+            Double numerator,
+            Double denominator,
             ProportionKind type,
             Long precision) {
 
@@ -120,7 +113,7 @@ public class DvProportion extends DvAmount<DvProportion> {
 
         this.numerator = numerator;
         this.denominator = denominator;
-        this.type = Long.valueOf(type.getPk());
+        this.type = type;
         this.precision = precision;
     }
 
@@ -128,21 +121,22 @@ public class DvProportion extends DvAmount<DvProportion> {
         return (Math.floor(num1) == num1) && (Math.floor(num2) == num2);
     }
 
-/*
-    public DvProportion(List<ReferenceRange> otherReferenceRanges, DvInterval normalRange, CodePhrase normalStatus, Double accuracy, Boolean accuracyIsPercent, String magnitudeStatus, Double numerator, Double denominator, Long type, Long precision) {
-        super(otherReferenceRanges, normalRange, normalStatus, accuracy, accuracyIsPercent, magnitudeStatus);
-        this.numerator = numerator;
-        this.denominator = denominator;
-        this.type = type;
-        this.precision = precision;
-    }
-*/
+
     /**
      * Creates a simple DvProportion
      */
     public DvProportion(double numerator, double denominator,
                         ProportionKind type, Long precision) {
-        this(null, null, null, 0.0, false, null, numerator, denominator, type,
+        this(null,
+                null,
+                null,
+                null,
+                0.0,
+                false,
+                null,
+                numerator,
+                denominator,
+                type,
                 precision);
     }
 
@@ -176,11 +170,11 @@ public class DvProportion extends DvAmount<DvProportion> {
         this.denominator = denominator;
     }
 
-    public Long getType() {
+    public ProportionKind getType() {
         return type;
     }
 
-    public void setType(Long type) {
+    public void setType(ProportionKind type) {
         this.type = type;
     }
 
@@ -265,8 +259,13 @@ public class DvProportion extends DvAmount<DvProportion> {
      *                              from being compared to this object.
      */
     @Override
-    public int compareTo(DvProportion o) {
-        return 0;
+    public int compareTo(DvProportion p) {
+        if (getDenominator()==0 || p.getDenominator()==0){
+            throw new IllegalArgumentException("Cannot compare proportions with denominator==0");
+        }
+        Double result = (getNumerator()/getDenominator());
+        Double resultB = (p.getNumerator()/p.getDenominator());
+        return result.compareTo(resultB);
     }
 }
 /**

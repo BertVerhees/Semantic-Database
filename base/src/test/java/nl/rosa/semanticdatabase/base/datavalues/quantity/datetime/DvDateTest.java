@@ -28,4 +28,44 @@ public class DvDateTest {
                 () -> assertEquals(dvDateSix, dvDateSeven)
         );
     }
+
+    @Test
+    void add() {
+    }
+
+    @Test
+    void subtract() {
+    }
+
+    @Test
+    void diff() {
+    }
+
+    @Test
+    void lessThan() {
+    }
+
+    @Test
+    void getMagnitude() {
+    }
+
+    @Test
+    void setMagnitude() {
+    }
+
+    @Test
+    void isStrictlyComparableTo() {
+    }
+
+    @Test
+    void testLessThan() {
+    }
+
+    @Test
+    void testEquals1() {
+    }
+
+    @Test
+    void compareTo() {
+    }
 }

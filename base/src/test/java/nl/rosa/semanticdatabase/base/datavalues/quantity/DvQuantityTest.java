@@ -158,6 +158,46 @@ public class DvQuantityTest extends TestCase {
     }
 
     private MeasurementService ms = SimpleMeasurementService.getInstance();
+
+    @Test
+    void isStrictlyComparableTo() {
+    }
+
+    @Test
+    void lessThan() {
+    }
+
+    @Test
+    void add() {
+    }
+
+    @Test
+    void subtract() {
+    }
+
+    @Test
+    void negate() {
+    }
+
+    @Test
+    void parse() {
+    }
+
+    @Test
+    void valueOf() {
+    }
+
+    @Test
+    void testEquals1() {
+    }
+
+    @Test
+    void testToString1() {
+    }
+
+    @Test
+    void compareTo() {
+    }
 }
 /*
  *  ***** BEGIN LICENSE BLOCK *****

@@ -114,6 +114,33 @@ public class DvProportionTest extends TestCase {
 		assertEquals(1.2, dp.getNumerator(), 0);
 	}
 
+    @Test
+    void isStrictlyComparableTo() {
+    }
+
+    @Test
+    void lessThan() {
+    }
+
+    @Test
+    void add() {
+    }
+
+    @Test
+    void subtract() {
+    }
+
+    @Test
+    void createUnitaryProportion() {
+    }
+
+    @Test
+    void testEquals() {
+    }
+
+    @Test
+    void compareTo() {
+    }
 }
 /*
  *  ***** BEGIN LICENSE BLOCK *****

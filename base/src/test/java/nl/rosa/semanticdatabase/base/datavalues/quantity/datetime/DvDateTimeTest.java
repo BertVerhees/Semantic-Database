@@ -36,4 +36,36 @@ public class DvDateTimeTest {
                 () -> assertEquals("2019", new DvDateTime("2019").getValue().toString())
         );
     }
+
+    @Test
+    void add() {
+    }
+
+    @Test
+    void subtract() {
+    }
+
+    @Test
+    void diff() {
+    }
+
+    @Test
+    void lessThan() {
+    }
+
+    @Test
+    void getMagnitude() {
+    }
+
+    @Test
+    void setMagnitude() {
+    }
+
+    @Test
+    void isStrictlyComparableTo() {
+    }
+
+    @Test
+    void compareTo() {
+    }
 }

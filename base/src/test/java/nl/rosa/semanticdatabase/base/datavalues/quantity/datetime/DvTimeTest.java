@@ -22,4 +22,40 @@ public class DvTimeTest {
                 () -> assertEquals(dvTimeFour, dvTimeFive)
         );
     }
+
+    @Test
+    void getMagnitude() {
+    }
+
+    @Test
+    void setMagnitude() {
+    }
+
+    @Test
+    void isStrictlyComparableTo() {
+    }
+
+    @Test
+    void lessThan() {
+    }
+
+    @Test
+    void add() {
+    }
+
+    @Test
+    void subtract() {
+    }
+
+    @Test
+    void diff() {
+    }
+
+    @Test
+    void testLessThan() {
+    }
+
+    @Test
+    void compareTo() {
+    }
 }

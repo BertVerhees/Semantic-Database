@@ -1,8 +1,11 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity.datetime;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.DvAmount;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.DvOrdered;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
 import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
 import nl.rosa.semanticdatabase.utils.datetime.KindOfComparablePeriodDuration;
 
@@ -10,12 +13,16 @@ import java.time.*;
 import java.util.List;
 import java.util.Objects;
 
+import static java.time.ZoneOffset.UTC;
+
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
 
 public class DvDateTime
         extends DvTemporal<DvDateTime> {
+
+    private LocalDateTime value;
 
     /**
      * Addition of a Duration to this DvDateTime.
@@ -26,8 +33,12 @@ public class DvDateTime
     public DvDateTime add(DvDuration q) {
         LocalDateTime dateTime = getValue();
         KindOfComparablePeriodDuration duration = q.getValue();
-        return new DvDateTime(getOtherReferenceRanges(), getNormalRange(),
-                getNormalStatus(), getAccuracy(), getMagnitudeStatus(),
+        return new DvDateTime(getOtherReferenceRanges(),
+                getNormalRange(),
+                getNormalStatus(),
+                getTerminologyService(),
+                getAccuracy(),
+                getMagnitudeStatus(),
                 dateTime.plus(duration));
     }
 
@@ -40,30 +51,36 @@ public class DvDateTime
     public DvDateTime subtract(DvDuration q) {
         LocalDateTime dateTime = getValue();
         KindOfComparablePeriodDuration duration = q.getValue();
-        return new DvDateTime(getOtherReferenceRanges(), getNormalRange(),
-                getNormalStatus(), getAccuracy(), getMagnitudeStatus(),
+        return new DvDateTime(getOtherReferenceRanges(),
+                getNormalRange(),
+                getNormalStatus(),
+                getTerminologyService(),
+                getAccuracy(),
+                getMagnitudeStatus(),
                 dateTime.minus(duration));
     }
 
     /**
      * Difference between this DvDateTime and other.
+     *
      * @param other
      * @return diff type
      */
-    public KindOfComparablePeriodDuration diff(LocalDateTime other) {
-        return KindOfComparablePeriodDuration.between(value, other);
-    }
-
-    /**
-     * True if other is less than this Quantified object. Based on comparison of magnitude.
-     * @param other
-     * @return
-     */
-    public Boolean lessThan(LocalDateTime other){
-        return value.compareTo(value.from(other))<0;
+    @Override
+    public DvDuration diff(DvDateTime other) {
+        LocalDateTime dateTime = getValue();
+        KindOfComparablePeriodDuration duration =
+                KindOfComparablePeriodDuration.between(dateTime, other.getValue());
+        return new DvDuration(duration);
     }
 
     public DvDateTime(LocalDateTime value) {
+        super(null,
+                null,
+                null,
+                null,
+                null,
+                null);
         this.value = value;
     }
 
@@ -73,40 +90,61 @@ public class DvDateTime
      * @param iso8601DateTime
      */
     public DvDateTime(String iso8601DateTime) {
+        super(null,
+                null,
+                null,
+                null,
+                null,
+                null);
         this.value = DateTimeParsers.parseDateTimeValue(iso8601DateTime);
     }
 
 
     public DvDateTime(
-            List<ReferenceRange> otherReferenceRanges,
-            DvInterval normalRange,
+            List<ReferenceRange<DvDateTime>> otherReferenceRanges,
+            DvInterval<DvDateTime> normalRange,
             CodePhrase normalStatus,
+            TerminologyService terminologyService,
             DvDuration accuracy,
             String magnitudeStatus,
             LocalDateTime value) {
-        super(otherReferenceRanges, normalRange, normalStatus, accuracy, magnitudeStatus, value);
+        super(otherReferenceRanges, normalRange, normalStatus, terminologyService, accuracy, magnitudeStatus);
+        this.value = value;
     }
 
-    @Override
     public LocalDateTime getValue() {
         return value;
     }
 
-    @Override
     public void setValue(LocalDateTime value) {
         this.value = value;
     }
 
+    public Long getMagnitude() {
+        return value.toEpochSecond(UTC);
+    }
+
+    public void setMagnitude(Long magnitude) {
+        value = LocalDateTime.ofEpochSecond(magnitude, 0, UTC);
+    }
+
+
+    /**
+     * Test if two instances are strictly comparable. Effected in descendants.
+     *
+     * @param other
+     * @return
+     */
     @Override
-    public LocalDateTime getMagnitude() {
-            return value;
+    public Boolean isStrictlyComparableTo(DvOrdered<DvDateTime> other) {
+        return other instanceof DvDateTime;
     }
 
-    public void setMagnitude(LocalDateTime magnitude) {
-            value = magnitude;
+    @Override
+    public Boolean lessThan(DvOrdered<DvDateTime> other) {
+        DvDateTime o = (DvDateTime) other;
+        return value.compareTo(value.from(o.value))<0;
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -166,7 +204,7 @@ public class DvDateTime
      */
     @Override
     public int compareTo(DvDateTime o) {
-        return 0;
+        return value.compareTo(value.from(o.value));
     }
 }
 /**

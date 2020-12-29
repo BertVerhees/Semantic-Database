@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDate;
+import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
 
 import java.util.List;
 
@@ -15,9 +16,10 @@ public abstract class DvAbsoluteQuantity<A extends DvAmount, T extends DvAbsolut
             List<ReferenceRange<T>> otherReferenceRanges,
             DvInterval<T> normalRange,
             CodePhrase normalStatus,
+            TerminologyService terminologyService,
             A accuracy,
             String magnitudeStatus) {
-        super(otherReferenceRanges, normalRange, normalStatus, magnitudeStatus);
+        super(otherReferenceRanges, normalRange, normalStatus, terminologyService, magnitudeStatus);
         this.accuracy = accuracy;
     }
 

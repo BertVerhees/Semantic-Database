@@ -101,8 +101,11 @@ public class DvDuration
      * @param start
      * @param end
      */
-    public static KindOfComparablePeriodDuration getDifference(DvTemporal start, DvTemporal end) {
-        return KindOfComparablePeriodDuration.between(start.getValue(), end.getValue());
+    public static DvDuration getDifference(DvTemporal start, DvTemporal end) {
+        TemporalAmount
+        KindOfComparablePeriodDuration d = KindOfComparablePeriodDuration.from(start.getDateTime() - end.getDateTime());
+        return new DvDuration(null, null, null, 0.0, false, null,
+                d.toPeriodFrom(start.getDateTime()));
     }
     /**
      * Addition of a Duration to this DvDuration.
