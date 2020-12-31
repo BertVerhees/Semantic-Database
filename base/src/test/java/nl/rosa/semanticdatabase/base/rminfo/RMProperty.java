@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.utils.rminfo;
+package nl.rosa.semanticdatabase.base.rminfo;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -7,8 +7,8 @@ import nl.rosa.semanticdatabase.aom2.the_archetype_package.Archetype;
 import semanticdatabase.base.paths.AdlCodeDefinitions;
 import semanticdatabase.base.paths.PathSegment;
 import semanticdatabase.base.paths.PathUtil;
-import nl.rosa.semanticdatabase.utils.rminfo.RMAttributeInfo;
-import nl.rosa.semanticdatabase.utils.rminfo.RMTypeInfo;
+import nl.rosa.semanticdatabase.base.rminfo.RMAttributeInfo;
+import nl.rosa.semanticdatabase.base.rminfo.RMTypeInfo;
 import semanticdatabase.query.APathQuery;
 import org.apache.commons.lang3.StringUtils;
 

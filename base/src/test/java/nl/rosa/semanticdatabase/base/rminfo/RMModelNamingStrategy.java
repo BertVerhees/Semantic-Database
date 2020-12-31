@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.utils.rminfo;
+package nl.rosa.semanticdatabase.base.rminfo;
 
 //import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 

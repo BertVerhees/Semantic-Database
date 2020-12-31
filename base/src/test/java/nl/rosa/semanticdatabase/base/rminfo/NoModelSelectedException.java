@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.utils.rminfo;
+package nl.rosa.semanticdatabase.base.rminfo;
 
 public class NoModelSelectedException extends RuntimeException {
 

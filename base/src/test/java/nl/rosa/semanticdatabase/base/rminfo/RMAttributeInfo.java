@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.utils.rminfo;
+package nl.rosa.semanticdatabase.base.rminfo;
 
 import nl.rosa.semanticdatabase.base.utils_rminfo.IRMAttributeInfo;
 

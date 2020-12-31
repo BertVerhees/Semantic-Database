@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.utils.rminfo;
+package nl.rosa.semanticdatabase.base.rminfo;
 
 import com.google.common.reflect.TypeToken;
 import nl.rosa.semanticdatabase.base.utils_rminfo.ModelInfoLookup;

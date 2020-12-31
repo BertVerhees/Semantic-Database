@@ -1,6 +1,6 @@
-package nl.rosa.semanticdatabase.utils.rminfo;
+package nl.rosa.semanticdatabase.base.rminfo;
 
-import nl.rosa.semanticdatabase.utils.rminfo.MetaModelInterface;
+import nl.rosa.semanticdatabase.base.rminfo.MetaModelInterface;
 
 /**
  * MetaModel class that provides some opertaions for archetype validation and flattener that is either based on
