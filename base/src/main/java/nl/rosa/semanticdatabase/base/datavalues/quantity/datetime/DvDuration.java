@@ -8,6 +8,7 @@ import nl.rosa.semanticdatabase.utils.datetime.KindOfComparablePeriodDuration;
 
 import java.time.Duration;
 import java.time.Period;
+import java.time.format.DateTimeParseException;
 import java.time.temporal.TemporalAmount;
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +22,9 @@ public class DvDuration
         extends DvAmount<DvDuration>{
 
     private KindOfComparablePeriodDuration value;
+    private Period period;
+    private Duration duration;
+
 
     public DvDuration() {
         this(null,
@@ -29,19 +33,7 @@ public class DvDuration
                 null,
                 null,
                 null,
-                null,
                 null);
-    }
-
-    public DvDuration(KindOfComparablePeriodDuration value) {
-        this(null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                value);
     }
 
     /**
@@ -57,8 +49,8 @@ public class DvDuration
                 null,
                 null,
                 null,
-                null,
-                DateTimeParsers.parseDurationValue(iso8601Duration));
+                null);
+        parseDurationValue(iso8601Duration);
     }
 
     public DvDuration(
@@ -68,10 +60,8 @@ public class DvDuration
             TerminologyService terminologyService,
             Double accuracy,
             Boolean accuracyIsPercent,
-            String magnitudeStatus,
-            KindOfComparablePeriodDuration value) {
+            String magnitudeStatus) {
         super(otherReferenceRanges, normalRange, normalStatus, terminologyService, accuracy, accuracyIsPercent, magnitudeStatus);
-        this.value = value;
     }
 
     public KindOfComparablePeriodDuration getValue() {
@@ -236,7 +226,26 @@ public class DvDuration
      */
     @Override
     public int compareTo(DvDuration o) {
-        return value.compareTo(o.value);
+        if(duration.equals(o.duration) && period.equals(o.period)){
+            return 0;
+        }
+        long thisSeconds = (
+                (period.getDays() +
+                        (period.getMonths()*12) +
+                        (period.getYears()*365))
+                * 86400) +
+                duration.getSeconds();
+        long otherSeconds = (
+                (o.period.getDays() +
+                        (o.period.getMonths()*12) +
+                        (o.period.getYears()*365))
+                        * 86400) +
+                o.duration.getSeconds();
+        int cmp = Long.compare(thisSeconds, otherSeconds);
+        if (cmp != 0) {
+            return cmp;
+        }
+        return duration.getNano() - o.duration.getNano();
     }
 
     /**
@@ -245,7 +254,7 @@ public class DvDuration
      * @return years
      */
     public int getYears() {
-        return value.getPeriod().getYears();
+        return period.getYears();
     }
 
     /**
@@ -254,12 +263,11 @@ public class DvDuration
      * @return months
      */
     public int getMonths() {
-        return value.getPeriod().getMonths();
+        return period.getMonths();
     }
 
     public int getWeeks() {
-        Double d = Math.floor(getDays()/7);
-        return d.intValue();
+        (Double.valueOf(Math.floor(getDays()/7))).longValue();
     }
 
     /**
@@ -267,8 +275,8 @@ public class DvDuration
      *
      * @return days
      */
-    public int getDays() {
-        return value.getPeriod().getDays();
+    public long getDays() {
+        return (Double.valueOf(Math.floor(duration.getSeconds()/86400))).longValue() + period.getDays();
     }
 
     /**
@@ -308,6 +316,23 @@ public class DvDuration
     public double getFractionalSeconds() {
         return value.getDuration().getSeconds() / 10E2;
     }
+
+    private void parseDurationValue(String text) {
+        try {
+            if (text.startsWith("P") || text.startsWith("-P")) {
+                String periodString = text.split("T")[0];
+                period = Period.parse(periodString);
+                if(text.contains("T")) {
+                    duration = Duration.parse(text);
+                }
+            }else {
+                throw new IllegalArgumentException("Illegal ISO 8601 string for Duration:" + text);
+            }
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException(e.getMessage() + ":" + text);
+        }
+    }
+}
 
 }
 /**

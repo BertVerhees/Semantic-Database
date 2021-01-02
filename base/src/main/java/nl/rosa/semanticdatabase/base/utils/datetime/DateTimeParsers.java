@@ -68,7 +68,6 @@ public class DateTimeParsers {
                 return KindOfComparablePeriodDuration.from(Duration.parse(text));
             } else if (text.contains("T")) {
                 return KindOfComparablePeriodDuration.from(Duration.parse(text));
-//                return MyPeriodDuration.parse(text);
             } else {
                 return KindOfComparablePeriodDuration.from(Period.parse(text));
             }
