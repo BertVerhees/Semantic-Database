@@ -13,7 +13,7 @@ import java.time.temporal.*;
 import java.util.*;
 
 /**
- * Funny name it ios not really comparable.
+ * Funny name it is not really comparable.
  *
  * It consists from two Java-classes Duration and Period.
  * Duration is comparable
@@ -24,33 +24,45 @@ import java.util.*;
  *
  * Have a nice day
  */
-public final class KindOfComparablePeriodDuration implements TemporalAmount, Serializable, Comparable<KindOfComparablePeriodDuration> {
-    public static final KindOfComparablePeriodDuration ZERO;
+public final class CombinedPeriodDuration implements TemporalAmount, Serializable, Comparable<CombinedPeriodDuration> {
+    public static final CombinedPeriodDuration ZERO;
     private static final long serialVersionUID = 8815521625671589L;
     private static final List<TemporalUnit> SUPPORTED_UNITS;
     private static final long SECONDS_PER_DAY = 86400L;
+    /**
+     * Period is used for date-related calculations
+     */
     private final Period period;
+    /**
+     * Duration is used for TemporalAmount and Time-related calculations
+     * The duration is a copy of the total-amount of days of the period plus the time.
+     */
     private final Duration duration;
 
-    public static KindOfComparablePeriodDuration of(Period period, Duration duration) {
+    /**
+     * Duration is used for TemporalAmount and Time-related calculations
+     * The duration is a copy of the total-amount of days of the period plus the time.
+     */
+
+    public static CombinedPeriodDuration of(Period period, Duration duration) {
         Objects.requireNonNull(period, "The period must not be null");
         Objects.requireNonNull(duration, "The duration must not be null");
-        return new KindOfComparablePeriodDuration(period, duration);
+        return new CombinedPeriodDuration(period, duration);
     }
 
-    public static KindOfComparablePeriodDuration of(Period period) {
+    public static CombinedPeriodDuration of(Period period) {
         Objects.requireNonNull(period, "The period must not be null");
-        return new KindOfComparablePeriodDuration(period, Duration.ZERO);
+        return new CombinedPeriodDuration(period, Duration.ZERO);
     }
 
-    public static KindOfComparablePeriodDuration of(Duration duration) {
+    public static CombinedPeriodDuration of(Duration duration) {
         Objects.requireNonNull(duration, "The duration must not be null");
-        return new KindOfComparablePeriodDuration(Period.ZERO, duration);
+        return new CombinedPeriodDuration(Period.ZERO, duration);
     }
 
-    public static KindOfComparablePeriodDuration from(TemporalAmount amount) {
-        if (amount instanceof KindOfComparablePeriodDuration) {
-            return (KindOfComparablePeriodDuration)amount;
+    public static CombinedPeriodDuration from(TemporalAmount amount) {
+        if (amount instanceof CombinedPeriodDuration) {
+            return (CombinedPeriodDuration)amount;
         } else if (amount instanceof Period) {
             return of((Period)amount);
         } else if (amount instanceof Duration) {
@@ -101,7 +113,7 @@ public final class KindOfComparablePeriodDuration implements TemporalAmount, Ser
         }
     }
 
-    public static KindOfComparablePeriodDuration parse(CharSequence text) {
+    public static CombinedPeriodDuration parse(CharSequence text) {
         Objects.requireNonNull(text, "text");
         String upper = text.toString().toUpperCase(Locale.ENGLISH);
         String negate = "";
@@ -126,7 +138,7 @@ public final class KindOfComparablePeriodDuration implements TemporalAmount, Ser
         }
     }
 
-    public static KindOfComparablePeriodDuration between(Temporal startInclusive, Temporal endExclusive) {
+    public static CombinedPeriodDuration between(Temporal startInclusive, Temporal endExclusive) {
         LocalDate startDate = (LocalDate)startInclusive.query(TemporalQueries.localDate());
         LocalDate endDate = (LocalDate)endExclusive.query(TemporalQueries.localDate());
         Period period = Period.ZERO;
@@ -142,9 +154,9 @@ public final class KindOfComparablePeriodDuration implements TemporalAmount, Ser
         return of(period, duration);
     }
 
-    private KindOfComparablePeriodDuration(Period period, Duration duration) {
-        this.period = period;
+    private CombinedPeriodDuration(Period period, Duration duration) {
         this.duration = duration;
+        this.period = period;
     }
 
     private Object readResolve() {
@@ -178,7 +190,7 @@ public final class KindOfComparablePeriodDuration implements TemporalAmount, Ser
         return this.period;
     }
 
-    public KindOfComparablePeriodDuration withPeriod(Period period) {
+    public CombinedPeriodDuration withPeriod(Period period) {
         return of(period, this.duration);
     }
 
@@ -186,7 +198,7 @@ public final class KindOfComparablePeriodDuration implements TemporalAmount, Ser
         return this.duration;
     }
 
-    public KindOfComparablePeriodDuration withDuration(Duration duration) {
+    public CombinedPeriodDuration withDuration(Duration duration) {
         return of(this.period, duration);
     }
 
@@ -194,29 +206,29 @@ public final class KindOfComparablePeriodDuration implements TemporalAmount, Ser
         return this.period.isZero() && this.duration.isZero();
     }
 
-    public KindOfComparablePeriodDuration plus(TemporalAmount amountToAdd) {
-        KindOfComparablePeriodDuration other = from(amountToAdd);
+    public CombinedPeriodDuration plus(TemporalAmount amountToAdd) {
+        CombinedPeriodDuration other = from(amountToAdd);
         return of(this.period.plus(other.period), this.duration.plus(other.duration));
     }
 
-    public KindOfComparablePeriodDuration minus(TemporalAmount amountToAdd) {
-        KindOfComparablePeriodDuration other = from(amountToAdd);
+    public CombinedPeriodDuration minus(TemporalAmount amountToAdd) {
+        CombinedPeriodDuration other = from(amountToAdd);
         return of(this.period.minus(other.period), this.duration.minus(other.duration));
     }
 
-    public KindOfComparablePeriodDuration multipliedBy(int scalar) {
+    public CombinedPeriodDuration multipliedBy(int scalar) {
         return scalar == 1 ? this : of(this.period.multipliedBy(scalar), this.duration.multipliedBy((long)scalar));
     }
 
-    public KindOfComparablePeriodDuration negated() {
+    public CombinedPeriodDuration negated() {
         return this.multipliedBy(-1);
     }
 
-    public KindOfComparablePeriodDuration normalizedYears() {
+    public CombinedPeriodDuration normalizedYears() {
         return this.withPeriod(this.period.normalized());
     }
 
-    public KindOfComparablePeriodDuration normalizedStandardDays() {
+    public CombinedPeriodDuration normalizedStandardDays() {
         long totalSecs = (long)this.period.getDays() * 86400L + this.duration.getSeconds();
         int splitDays = Math.toIntExact(totalSecs / 86400L);
         long splitSecs = totalSecs % 86400L;
@@ -234,10 +246,10 @@ public final class KindOfComparablePeriodDuration implements TemporalAmount, Ser
     public boolean equals(Object otherAmount) {
         if (this == otherAmount) {
             return true;
-        } else if (!(otherAmount instanceof KindOfComparablePeriodDuration)) {
+        } else if (!(otherAmount instanceof CombinedPeriodDuration)) {
             return false;
         } else {
-            KindOfComparablePeriodDuration other = (KindOfComparablePeriodDuration)otherAmount;
+            CombinedPeriodDuration other = (CombinedPeriodDuration)otherAmount;
             return this.period.equals(other.period) && this.duration.equals(other.duration);
         }
     }
@@ -255,7 +267,7 @@ public final class KindOfComparablePeriodDuration implements TemporalAmount, Ser
     }
 
     static {
-        ZERO = new KindOfComparablePeriodDuration(Period.ZERO, Duration.ZERO);
+        ZERO = new CombinedPeriodDuration(Period.ZERO, Duration.ZERO);
         SUPPORTED_UNITS = Collections.unmodifiableList(Arrays.asList(ChronoUnit.YEARS, ChronoUnit.MONTHS, ChronoUnit.DAYS, ChronoUnit.SECONDS, ChronoUnit.NANOS));
     }
 
@@ -299,12 +311,18 @@ public final class KindOfComparablePeriodDuration implements TemporalAmount, Ser
      *                              from being compared to this object.
      */
     @Override
-    public int compareTo(KindOfComparablePeriodDuration o) {
+    public int compareTo(CombinedPeriodDuration o) {
         if(duration.equals(o.duration) && period.equals(o.period)){
             return 0;
         }
-        long thisSeconds = period.getDays() * 86400 + duration.getSeconds();
-        long otherSeconds = o.period.getDays() * 86400 + o.duration.getSeconds();
+        long thisSeconds = duration.getSeconds() +
+                period.getDays()*SECONDS_PER_DAY +
+                period.getMonths()*30*SECONDS_PER_DAY +
+                period.getYears()*365*SECONDS_PER_DAY;
+        long otherSeconds = o.duration.getSeconds() +
+                o.period.getDays()*SECONDS_PER_DAY +
+                o.period.getMonths()*30*SECONDS_PER_DAY +
+                o.period.getYears()*365*SECONDS_PER_DAY;
         int cmp = Long.compare(thisSeconds, otherSeconds);
         if (cmp != 0) {
             return cmp;

@@ -1,20 +1,16 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity.datetime;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
-import nl.rosa.semanticdatabase.base.datavalues.quantity.DvAmount;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvOrdered;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
 import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
 import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
-import nl.rosa.semanticdatabase.utils.datetime.KindOfComparablePeriodDuration;
+import nl.rosa.semanticdatabase.utils.datetime.CombinedPeriodDuration;
 
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
-
-import static java.time.ZoneOffset.UTC;
 
 /**
  * <p>
@@ -129,7 +125,7 @@ public class DvTime
     @Override
     public DvTime add(DvDuration q) {
         LocalTime time = getValue();
-        KindOfComparablePeriodDuration duration = q.getValue();
+        CombinedPeriodDuration duration = q.getValue();
         return new DvTime(getOtherReferenceRanges(),
                 getNormalRange(),
                 getNormalStatus(),
@@ -147,7 +143,7 @@ public class DvTime
     @Override
     public DvTime subtract(DvDuration q) {
         LocalTime time = getValue();
-        KindOfComparablePeriodDuration duration = q.getValue();
+        CombinedPeriodDuration duration = q.getValue();
         return new DvTime(getOtherReferenceRanges(),
                 getNormalRange(),
                 getNormalStatus(),
@@ -166,8 +162,8 @@ public class DvTime
     @Override
     public DvDuration diff(DvTime other) {
         LocalTime time = getValue();
-        KindOfComparablePeriodDuration duration =
-                KindOfComparablePeriodDuration.between(time, other.getValue());
+        CombinedPeriodDuration duration =
+                CombinedPeriodDuration.between(time, other.getValue());
         return new DvDuration(duration);
     }
 

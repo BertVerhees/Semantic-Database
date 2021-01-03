@@ -10,10 +10,8 @@ import java.util.Arrays;
 
 import static java.time.temporal.ChronoUnit.*;
 import static org.junit.jupiter.api.Assertions.*;
-import com.tngtech.java.junit.dataprovider.DataProvider;
+
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
-import com.tngtech.java.junit.dataprovider.UseDataProvider;
-import org.junit.jupiter.api.function.Executable;
 import org.junit.runner.RunWith;
 import org.threeten.extra.*;
 
@@ -26,7 +24,7 @@ import org.threeten.extra.*;
  */
 
 @RunWith(DataProviderRunner.class)
-class KindOfComparablePeriodDurationTest {
+class CombinedPeriodDurationTest {
 
     private static final Period P1Y2M3D = Period.of(1, 2, 3);
     private static final Duration DUR_5 = Duration.ofSeconds(5);
@@ -35,13 +33,13 @@ class KindOfComparablePeriodDurationTest {
     //-----------------------------------------------------------------------
     @Test
     public void test_isSerializable() {
-        assertTrue(Serializable.class.isAssignableFrom(KindOfComparablePeriodDuration.class));
+        assertTrue(Serializable.class.isAssignableFrom(CombinedPeriodDuration.class));
     }
 
     //-----------------------------------------------------------------------
     @Test
     public void test_serialization() throws Exception {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5);
+        CombinedPeriodDuration test = CombinedPeriodDuration.of(P1Y2M3D, DUR_5);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try (ObjectOutputStream oos = new ObjectOutputStream(baos)) {
             oos.writeObject(test);
@@ -54,30 +52,30 @@ class KindOfComparablePeriodDurationTest {
     //-----------------------------------------------------------------------
     @Test
     public void test_ZERO() {
-        assertEquals(KindOfComparablePeriodDuration.ZERO, KindOfComparablePeriodDuration.of(Period.ZERO, Duration.ZERO));
-        assertEquals(KindOfComparablePeriodDuration.ZERO, KindOfComparablePeriodDuration.of(Period.ZERO));
-        assertEquals(KindOfComparablePeriodDuration.ZERO, KindOfComparablePeriodDuration.of(Duration.ZERO));
-        assertEquals(Period.ZERO, KindOfComparablePeriodDuration.ZERO.getPeriod());
-        assertEquals(Duration.ZERO, KindOfComparablePeriodDuration.ZERO.getDuration());
-        assertEquals(true, KindOfComparablePeriodDuration.ZERO.isZero());
-        assertEquals(Arrays.asList(YEARS, MONTHS, DAYS, SECONDS, NANOS), KindOfComparablePeriodDuration.ZERO.getUnits());
-        assertEquals(0, KindOfComparablePeriodDuration.ZERO.get(YEARS));
-        assertEquals(0, KindOfComparablePeriodDuration.ZERO.get(MONTHS));
-        assertEquals(0, KindOfComparablePeriodDuration.ZERO.get(DAYS));
-        assertEquals(0, KindOfComparablePeriodDuration.ZERO.get(SECONDS));
-        assertEquals(0, KindOfComparablePeriodDuration.ZERO.get(NANOS));
+        assertEquals(CombinedPeriodDuration.ZERO, CombinedPeriodDuration.of(Period.ZERO, Duration.ZERO));
+        assertEquals(CombinedPeriodDuration.ZERO, CombinedPeriodDuration.of(Period.ZERO));
+        assertEquals(CombinedPeriodDuration.ZERO, CombinedPeriodDuration.of(Duration.ZERO));
+        assertEquals(Period.ZERO, CombinedPeriodDuration.ZERO.getPeriod());
+        assertEquals(Duration.ZERO, CombinedPeriodDuration.ZERO.getDuration());
+        assertEquals(true, CombinedPeriodDuration.ZERO.isZero());
+        assertEquals(Arrays.asList(YEARS, MONTHS, DAYS, SECONDS, NANOS), CombinedPeriodDuration.ZERO.getUnits());
+        assertEquals(0, CombinedPeriodDuration.ZERO.get(YEARS));
+        assertEquals(0, CombinedPeriodDuration.ZERO.get(MONTHS));
+        assertEquals(0, CombinedPeriodDuration.ZERO.get(DAYS));
+        assertEquals(0, CombinedPeriodDuration.ZERO.get(SECONDS));
+        assertEquals(0, CombinedPeriodDuration.ZERO.get(NANOS));
     }
 
     public void test_ZERO_getEra() {
         Assertions.assertThrows(DateTimeException.class, () -> {
-            KindOfComparablePeriodDuration.ZERO.get(ERAS);
+            CombinedPeriodDuration.ZERO.get(ERAS);
         });
     }
 
     //-----------------------------------------------------------------------
     @Test
     public void test_of_both() {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.of(P1Y2M3D, Duration.ofSeconds(4));
+        CombinedPeriodDuration test = CombinedPeriodDuration.of(P1Y2M3D, Duration.ofSeconds(4));
         assertEquals(P1Y2M3D, test.getPeriod());
         assertEquals(Duration.ofSeconds(4), test.getDuration());
         assertEquals(false, test.isZero());
@@ -90,7 +88,7 @@ class KindOfComparablePeriodDurationTest {
 
     @Test
     public void test_of_period() {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.of(P1Y2M3D);
+        CombinedPeriodDuration test = CombinedPeriodDuration.of(P1Y2M3D);
         assertEquals(P1Y2M3D, test.getPeriod());
         assertEquals(Duration.ZERO, test.getDuration());
         assertEquals(false, test.isZero());
@@ -103,7 +101,7 @@ class KindOfComparablePeriodDurationTest {
 
     @Test
     public void test_of_duration() {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.of(Duration.ofSeconds(4));
+        CombinedPeriodDuration test = CombinedPeriodDuration.of(Duration.ofSeconds(4));
         assertEquals(Period.ZERO, test.getPeriod());
         assertEquals(Duration.ofSeconds(4), test.getDuration());
         assertEquals(false, test.isZero());
@@ -117,28 +115,34 @@ class KindOfComparablePeriodDurationTest {
     //-----------------------------------------------------------------------
     @Test
     public void test_between_dates() {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.between(LocalDate.of(2012, 6, 20), LocalDate.of(2012, 8, 25));
+        CombinedPeriodDuration test = CombinedPeriodDuration.between(LocalDate.of(2012, 6, 20), LocalDate.of(2012, 8, 25));
         assertEquals(Period.between(LocalDate.of(2012, 6, 20), LocalDate.of(2012, 8, 25)), test.getPeriod());
         assertEquals(Duration.ZERO, test.getDuration());
     }
 
     @Test
     public void test_between_times() {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.between(LocalTime.of(11, 20), LocalTime.of(12, 25));
+        CombinedPeriodDuration test = CombinedPeriodDuration.between(
+                LocalTime.of(11, 20),
+                LocalTime.of(12, 25));
         assertEquals(Period.ZERO, test.getPeriod());
-        assertEquals(Duration.between(LocalTime.of(11, 20), LocalTime.of(12, 25)), test.getDuration());
+        assertEquals(Duration.between(
+                LocalTime.of(11, 20),
+                LocalTime.of(12, 25)), test.getDuration());
     }
 
     @Test
     public void test_between_mixed1() {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.between(LocalDate.of(2012, 6, 20), LocalTime.of(11, 25));
+        CombinedPeriodDuration test = CombinedPeriodDuration.between(
+                LocalDate.of(2012, 6, 20),
+                LocalTime.of(11, 25));
         assertEquals(Period.ZERO, test.getPeriod());
         assertEquals(Duration.ofHours(11).plusMinutes(25), test.getDuration());
     }
 
     @Test
     public void test_between_mixed2() {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.between(LocalDate.of(2012, 6, 20), LocalDateTime.of(2012, 7, 22, 11, 25));
+        CombinedPeriodDuration test = CombinedPeriodDuration.between(LocalDate.of(2012, 6, 20), LocalDateTime.of(2012, 7, 22, 11, 25));
         assertEquals(Period.of(0, 1, 2), test.getPeriod());
         assertEquals(Duration.ofHours(11).plusMinutes(25), test.getDuration());
     }
@@ -146,14 +150,14 @@ class KindOfComparablePeriodDurationTest {
     //-----------------------------------------------------------------------
     @Test
     public void test_from() {
-        assertEquals(KindOfComparablePeriodDuration.from(KindOfComparablePeriodDuration.of(P1Y2M3D)), KindOfComparablePeriodDuration.from(KindOfComparablePeriodDuration.of(P1Y2M3D)));
-        assertEquals(KindOfComparablePeriodDuration.of(Period.ofYears(2)), KindOfComparablePeriodDuration.from(Period.ofYears(2)));
-        assertEquals(KindOfComparablePeriodDuration.of(Duration.ofSeconds(2)), KindOfComparablePeriodDuration.from(Duration.ofSeconds(2)));
-        assertEquals(KindOfComparablePeriodDuration.of(Period.ofYears(2)), KindOfComparablePeriodDuration.from(Years.of(2)));
-        assertEquals(KindOfComparablePeriodDuration.of(Period.ofMonths(2)), KindOfComparablePeriodDuration.from(Months.of(2)));
-        assertEquals(KindOfComparablePeriodDuration.of(Period.ofWeeks(2)), KindOfComparablePeriodDuration.from(Weeks.of(2)));
-        assertEquals(KindOfComparablePeriodDuration.of(Period.ofDays(2)), KindOfComparablePeriodDuration.from(Days.of(2)));
-        assertEquals(KindOfComparablePeriodDuration.of(Duration.ofHours(2)), KindOfComparablePeriodDuration.from(Hours.of(2)));
+        assertEquals(CombinedPeriodDuration.from(CombinedPeriodDuration.of(P1Y2M3D)), CombinedPeriodDuration.from(CombinedPeriodDuration.of(P1Y2M3D)));
+        assertEquals(CombinedPeriodDuration.of(Period.ofYears(2)), CombinedPeriodDuration.from(Period.ofYears(2)));
+        assertEquals(CombinedPeriodDuration.of(Duration.ofSeconds(2)), CombinedPeriodDuration.from(Duration.ofSeconds(2)));
+        assertEquals(CombinedPeriodDuration.of(Period.ofYears(2)), CombinedPeriodDuration.from(Years.of(2)));
+        assertEquals(CombinedPeriodDuration.of(Period.ofMonths(2)), CombinedPeriodDuration.from(Months.of(2)));
+        assertEquals(CombinedPeriodDuration.of(Period.ofWeeks(2)), CombinedPeriodDuration.from(Weeks.of(2)));
+        assertEquals(CombinedPeriodDuration.of(Period.ofDays(2)), CombinedPeriodDuration.from(Days.of(2)));
+        assertEquals(CombinedPeriodDuration.of(Duration.ofHours(2)), CombinedPeriodDuration.from(Hours.of(2)));
     }
 
     //-----------------------------------------------------------------------
@@ -193,21 +197,21 @@ class KindOfComparablePeriodDurationTest {
     @Test
     public void test_parse_CharSequence_valid() {
         Arrays.stream(dataValid).forEach((dV) ->
-                assertEquals(KindOfComparablePeriodDuration.of(dV.period, dV.duration), KindOfComparablePeriodDuration.parse(dV.str))
+                assertEquals(CombinedPeriodDuration.of(dV.period, dV.duration), CombinedPeriodDuration.parse(dV.str))
         );
     }
     
     @Test
     public void test_parse_CharSequence_valid_initialPlus() {
         Arrays.stream(dataValid).forEach((dV) ->
-            assertEquals(KindOfComparablePeriodDuration.of(dV.period, dV.duration), KindOfComparablePeriodDuration.parse("+" + dV.str))
+            assertEquals(CombinedPeriodDuration.of(dV.period, dV.duration), CombinedPeriodDuration.parse("+" + dV.str))
         );
     }
 
     @Test
    public void test_parse_CharSequence_valid_initialMinus() {
         Arrays.stream(dataValid).forEach((dV) ->
-            assertEquals(KindOfComparablePeriodDuration.of(dV.period, dV.duration).negated(), KindOfComparablePeriodDuration.parse("-" + dV.str))
+            assertEquals(CombinedPeriodDuration.of(dV.period, dV.duration).negated(), CombinedPeriodDuration.parse("-" + dV.str))
         );
     }
 
@@ -228,7 +232,7 @@ class KindOfComparablePeriodDurationTest {
         };
         Arrays.stream(testData).forEach(str ->
             Assertions.assertThrows(DateTimeParseException.class,
-                     () -> KindOfComparablePeriodDuration.parse(str)
+                     () -> CombinedPeriodDuration.parse(str)
             )
         );
     }
@@ -236,29 +240,37 @@ class KindOfComparablePeriodDurationTest {
     @Test
     public void test_parse_CharSequence_null() {
         Assertions.assertThrows(NullPointerException.class,
-                () -> KindOfComparablePeriodDuration.parse((CharSequence) null)
+                () -> CombinedPeriodDuration.parse((CharSequence) null)
         );
     }
 
     //-----------------------------------------------------------------------
     @Test
     public void test_plus_TemporalAmount_PeriodDuration() {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5);
-        assertEquals(KindOfComparablePeriodDuration.of(Period.of(4, 4, 4), DUR_5), test.plus(Period.of(3, 2, 1)));
-        assertEquals(KindOfComparablePeriodDuration.of(P1Y2M3D, Duration.ofSeconds(9)), test.plus(Duration.ofSeconds(4)));
+        CombinedPeriodDuration test = CombinedPeriodDuration.of(P1Y2M3D, DUR_5);
+        assertEquals(CombinedPeriodDuration.of(
+                Period.of(4, 4, 4), DUR_5),
+                test.plus(Period.of(3, 2, 1)));
+        assertEquals(CombinedPeriodDuration.of(
+                P1Y2M3D, Duration.ofSeconds(9)),
+                test.plus(Duration.ofSeconds(4)));
     }
 
     @Test
     public void test_plus_TemporalAmount_overflowTooBig() {
         Assertions.assertThrows(ArithmeticException.class,
-                () -> KindOfComparablePeriodDuration.of(Period.of(Integer.MAX_VALUE - 1, 0, 0)).plus(KindOfComparablePeriodDuration.of(Period.ofYears(2)))
+                () -> CombinedPeriodDuration.of(
+                        Period.of(Integer.MAX_VALUE - 1, 0, 0))
+                        .plus(CombinedPeriodDuration.of(Period.ofYears(2)))
         );
     }
 
     @Test
     public void test_plus_TemporalAmount_overflowTooSmall() {
         Assertions.assertThrows(ArithmeticException.class,
-                () -> KindOfComparablePeriodDuration.of(Period.of(Integer.MIN_VALUE + 1, 0, 0)).plus(KindOfComparablePeriodDuration.of(Period.ofYears(-2)))
+                () -> CombinedPeriodDuration.of(
+                        Period.of(Integer.MIN_VALUE + 1, 0, 0))
+                        .plus(CombinedPeriodDuration.of(Period.ofYears(-2)))
         );
     }
 
@@ -272,22 +284,32 @@ class KindOfComparablePeriodDurationTest {
     //-----------------------------------------------------------------------
     @Test
     public void test_minus_TemporalAmount_PeriodDuration() {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5);
-        assertEquals(KindOfComparablePeriodDuration.of(Period.of(0, 1, 2), DUR_5), test.minus(Period.of(1, 1, 1)));
-        assertEquals(KindOfComparablePeriodDuration.of(P1Y2M3D, Duration.ofSeconds(1)), test.minus(Duration.ofSeconds(4)));
+        //1Y 2M 3D T 5 sec - 1Y 1M 1D = 0Y 1M 2D T 5sec
+        CombinedPeriodDuration test = CombinedPeriodDuration.of(P1Y2M3D, DUR_5);
+        assertEquals(CombinedPeriodDuration.of(
+                Period.of(0, 1, 2), DUR_5),
+                test.minus(Period.of(1, 1, 1)));
+        //1Y 2M 3D T 5 sec - 1Y 2M 3D T 1sec = 4sec
+        assertEquals(CombinedPeriodDuration.of(
+                P1Y2M3D, Duration.ofSeconds(1)),
+                test.minus(Duration.ofSeconds(4)));
     }
 
     @Test
     public void test_minus_TemporalAmount_overflowTooBig() {
         Assertions.assertThrows(ArithmeticException.class,
-                () -> KindOfComparablePeriodDuration.of(Period.of(Integer.MAX_VALUE - 1, 0, 0)).minus(KindOfComparablePeriodDuration.of(Period.ofYears(-2)))
+                () -> CombinedPeriodDuration.of(
+                        Period.of(Integer.MAX_VALUE - 1, 0, 0))
+                        .minus(CombinedPeriodDuration.of(Period.ofYears(-2)))
         );
     }
 
     @Test
     public void test_minus_TemporalAmount_overflowTooSmall() {
         Assertions.assertThrows(ArithmeticException.class,
-                () -> KindOfComparablePeriodDuration.of(Period.of(Integer.MIN_VALUE + 1, 0, 0)).minus(KindOfComparablePeriodDuration.of(Period.ofYears(2)))
+                () -> CombinedPeriodDuration.of(
+                        Period.of(Integer.MIN_VALUE + 1, 0, 0))
+                        .minus(CombinedPeriodDuration.of(Period.ofYears(2)))
         );
     }
 
@@ -301,86 +323,113 @@ class KindOfComparablePeriodDurationTest {
     //-----------------------------------------------------------------------
     @Test
     public void test_multipliedBy() {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5);
-        assertEquals(KindOfComparablePeriodDuration.ZERO, test.multipliedBy(0));
+        CombinedPeriodDuration test = CombinedPeriodDuration.of(P1Y2M3D, DUR_5);
+        assertEquals(CombinedPeriodDuration.ZERO, test.multipliedBy(0));
         assertEquals(test, test.multipliedBy(1));
-        assertEquals(KindOfComparablePeriodDuration.of(Period.of(5,  10, 15), Duration.ofSeconds(25)), test.multipliedBy(5));
-        assertEquals(KindOfComparablePeriodDuration.of(Period.of(-3,  -6, -9), Duration.ofSeconds(-15)), test.multipliedBy(-3));
+        assertEquals(CombinedPeriodDuration.of(
+                Period.of(5,  10, 15), Duration.ofSeconds(25)),
+                test.multipliedBy(5));
+        assertEquals(CombinedPeriodDuration.of(
+                Period.of(-3,  -6, -9), Duration.ofSeconds(-15)),
+                test.multipliedBy(-3));
     }
 
     @Test
     public void test_multipliedBy_overflowTooBig() {
         Assertions.assertThrows(ArithmeticException.class,
-                () -> KindOfComparablePeriodDuration.of(Period.ofYears(Integer.MAX_VALUE / 2 + 1)).multipliedBy(2)
+                () -> CombinedPeriodDuration.of(
+                        Period.ofYears(Integer.MAX_VALUE / 2 + 1))
+                        .multipliedBy(2)
         );
     }
 
     @Test
     public void test_multipliedBy_overflowTooSmall() {
         Assertions.assertThrows(ArithmeticException.class,
-                () -> KindOfComparablePeriodDuration.of(Period.ofYears(Integer.MIN_VALUE / 2 - 1)).multipliedBy(2)
+                () -> CombinedPeriodDuration.of(
+                        Period.ofYears(Integer.MIN_VALUE / 2 - 1))
+                        .multipliedBy(2)
         );
     }
 
     //-----------------------------------------------------------------------
     @Test
     public void test_negated() {
-        assertEquals(KindOfComparablePeriodDuration.of(P1Y2M3D.negated(), DUR_5.negated()), KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5).negated());
+        assertEquals(CombinedPeriodDuration.of(
+                P1Y2M3D.negated(), DUR_5.negated()),
+                CombinedPeriodDuration.of(P1Y2M3D, DUR_5).negated());
     }
 
     @Test
     public void test_negated_overflow() {
         Assertions.assertThrows(ArithmeticException.class,
-                () -> KindOfComparablePeriodDuration.of(Duration.ofSeconds(Long.MIN_VALUE)).negated()
+                () -> CombinedPeriodDuration.of(
+                        Duration.ofSeconds(Long.MIN_VALUE)).negated()
         );
     }
 
     //-----------------------------------------------------------------------
     @Test
     public void test_normalizedYears() {
-        assertEquals(KindOfComparablePeriodDuration.of(P1Y2M3D.normalized(), DUR_5), KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5).normalizedYears());
+        assertEquals(CombinedPeriodDuration.of
+                        (P1Y2M3D.normalized(), DUR_5),
+                CombinedPeriodDuration.of(P1Y2M3D, DUR_5).normalizedYears());
     }
 
     //-----------------------------------------------------------------------
     @Test
     public void test_normalizedStandardDays() {
         assertEquals(
-                KindOfComparablePeriodDuration.of(P1Y2M3D, Duration.ofHours(5)),
-                KindOfComparablePeriodDuration.of(P1Y2M3D, Duration.ofHours(5)).normalizedStandardDays());
+                CombinedPeriodDuration.of(P1Y2M3D, Duration.ofHours(5)),
+                CombinedPeriodDuration.of(P1Y2M3D, Duration.ofHours(5)).normalizedStandardDays());
         assertEquals(
-                KindOfComparablePeriodDuration.of(P1Y2M3D.plusDays(1), Duration.ofHours(1)),
-                KindOfComparablePeriodDuration.of(P1Y2M3D, Duration.ofHours(25)).normalizedStandardDays());
+                CombinedPeriodDuration.of(P1Y2M3D.plusDays(1), Duration.ofHours(1)),
+                CombinedPeriodDuration.of(P1Y2M3D, Duration.ofHours(25)).normalizedStandardDays());
         assertEquals(
-                KindOfComparablePeriodDuration.of(P1Y2M3D.plusDays(-3), Duration.ofHours(-1)),
-                KindOfComparablePeriodDuration.of(P1Y2M3D, Duration.ofHours(-73)).normalizedStandardDays());
+                CombinedPeriodDuration.of(P1Y2M3D.plusDays(-3), Duration.ofHours(-1)),
+                CombinedPeriodDuration.of(P1Y2M3D, Duration.ofHours(-73)).normalizedStandardDays());
     }
 
     @Test
     public void test_normalizedStandardDaysn_overflow() {
         Assertions.assertThrows(ArithmeticException.class,
-                () -> KindOfComparablePeriodDuration.of(Duration.ofSeconds(Long.MIN_VALUE)).normalizedStandardDays()
+                () -> CombinedPeriodDuration.of(Duration.ofSeconds(Long.MIN_VALUE)).normalizedStandardDays()
         );
     }
 
     //-----------------------------------------------------------------------
     @Test
     public void test_addTo() {
+        //2012-06-20T11:30:00 + 1Y-2M-3D T 5S = 2011-08-23:11:30:05
         LocalDateTime base = LocalDateTime.of(2012, 6, 20, 11, 30, 0);
-        assertEquals(LocalDateTime.of(2013, 8, 23, 11, 30, 5), KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5).addTo(base));
+        assertEquals(
+                LocalDateTime.of(2013, 8, 23, 11, 30, 5),
+                CombinedPeriodDuration.of(P1Y2M3D, DUR_5).addTo(base));
+        //2012-06-20T11:30:00 - 1Y-2M-3D T 1D5S = 2011-04-16:11:29:55
+        assertEquals(
+                LocalDateTime.of(2013, 8, 24, 11, 30, 5),
+                CombinedPeriodDuration.of(P1Y2M3D, Duration.ofSeconds(86405L)).addTo(base));
     }
 
     //-----------------------------------------------------------------------
     @Test
     public void test_subtractFrom() {
+        //2012-06-20T11:30:00 - 1Y-2M-3D T 5S = 2011-04-17:11:29:55
         LocalDateTime base = LocalDateTime.of(2012, 6, 20, 11, 30, 0);
-        assertEquals(LocalDateTime.of(2011, 4, 17, 11, 29, 55), KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5).subtractFrom(base));
+        assertEquals(
+                LocalDateTime.of(2011, 4, 17, 11, 29, 55),
+                CombinedPeriodDuration.of(P1Y2M3D, DUR_5).subtractFrom(base));
+        //2012-06-20T11:30:00 - 1Y-2M-3D T 1D5S = 2011-04-16:11:29:55
+        assertEquals(
+                LocalDateTime.of(2011, 4, 16, 11, 29, 55),
+                CombinedPeriodDuration.of(P1Y2M3D, Duration.ofSeconds(86405L)).subtractFrom(base));
     }
 
     //-----------------------------------------------------------------------
     @Test
     public void test_equals() {
-        KindOfComparablePeriodDuration test5 = KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5);
-        KindOfComparablePeriodDuration test6 = KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_6);
+        CombinedPeriodDuration test5 = CombinedPeriodDuration.of(P1Y2M3D, DUR_5);
+        CombinedPeriodDuration test6 = CombinedPeriodDuration.of(P1Y2M3D, DUR_6);
         assertEquals(true, test5.equals(test5));
         assertEquals(false, test5.equals(test6));
         assertEquals(false, test6.equals(test5));
@@ -388,21 +437,21 @@ class KindOfComparablePeriodDurationTest {
 
     @Test
     public void test_equals_null() {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5);
+        CombinedPeriodDuration test = CombinedPeriodDuration.of(P1Y2M3D, DUR_5);
         assertEquals(false, test.equals(null));
     }
 
     @Test
     public void test_equals_otherClass() {
-        KindOfComparablePeriodDuration test = KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5);
+        CombinedPeriodDuration test = CombinedPeriodDuration.of(P1Y2M3D, DUR_5);
         assertEquals(false, test.equals(""));
     }
 
     //-----------------------------------------------------------------------
     @Test
     public void test_hashCode() {
-        KindOfComparablePeriodDuration test5 = KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5);
-        KindOfComparablePeriodDuration test6 = KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_6);
+        CombinedPeriodDuration test5 = CombinedPeriodDuration.of(P1Y2M3D, DUR_5);
+        CombinedPeriodDuration test6 = CombinedPeriodDuration.of(P1Y2M3D, DUR_6);
         assertEquals(true, test5.hashCode() == test5.hashCode());
         assertEquals(false, test5.hashCode() == test6.hashCode());
     }
@@ -410,57 +459,9 @@ class KindOfComparablePeriodDurationTest {
     //-----------------------------------------------------------------------
     @Test
     public void test_toString() {
-        assertEquals("P1Y2M3DT5S", KindOfComparablePeriodDuration.of(P1Y2M3D, DUR_5).toString());
-        assertEquals("P1Y2M3D", KindOfComparablePeriodDuration.of(P1Y2M3D, Duration.ZERO).toString());
-        assertEquals("PT5S", KindOfComparablePeriodDuration.of(Period.ZERO, DUR_5).toString());
-    }
-
-    @Test
-    void of() {
-    }
-
-    @Test
-    void testOf() {
-    }
-
-    @Test
-    void testOf1() {
-    }
-
-    @Test
-    void from() {
-    }
-
-    @Test
-    void parse() {
-    }
-
-    @Test
-    void between() {
-    }
-
-    @Test
-    void withPeriod() {
-    }
-
-    @Test
-    void withDuration() {
-    }
-
-    @Test
-    void plus() {
-    }
-
-    @Test
-    void minus() {
-    }
-
-    @Test
-    void multipliedBy() {
-    }
-
-    @Test
-    void negated() {
+        assertEquals("P1Y2M3DT5S", CombinedPeriodDuration.of(P1Y2M3D, DUR_5).toString());
+        assertEquals("P1Y2M3D", CombinedPeriodDuration.of(P1Y2M3D, Duration.ZERO).toString());
+        assertEquals("PT5S", CombinedPeriodDuration.of(Period.ZERO, DUR_5).toString());
     }
 
     @Test
@@ -472,14 +473,33 @@ class KindOfComparablePeriodDurationTest {
     }
 
     @Test
-    void subtractFrom() {
-    }
-
-    @Test
     void testEquals() {
     }
 
     @Test
     void compareTo() {
+        CombinedPeriodDuration c1 = CombinedPeriodDuration.of(
+                Period.of(1, 2, 3), Duration.ofSeconds(5));
+        CombinedPeriodDuration c2 = CombinedPeriodDuration.of(
+                Period.of(1, 2, 3), Duration.ofSeconds(6));
+        assertEquals(-1,c1.compareTo(c2));
+        c2 = CombinedPeriodDuration.of(
+                Period.of(1, 2, 3), Duration.ofSeconds(7));
+        assertEquals(-1,c1.compareTo(c2));
+        c2 = CombinedPeriodDuration.of(
+                Period.of(1, 2, 3), Duration.ofSeconds(4));
+        assertEquals(1,c1.compareTo(c2));
+        c2 = CombinedPeriodDuration.of(
+                Period.of(1, 2, 3), Duration.ofSeconds(3));
+        assertEquals(1,c1.compareTo(c2));
+        c2 = CombinedPeriodDuration.of(
+                Period.of(1, 2, 3), Duration.ofSeconds(5));
+        assertEquals(0,c1.compareTo(c2));
+        c2 = CombinedPeriodDuration.of(
+                Period.of(1, 1, 3), Duration.ofSeconds(5));
+        assertEquals(1,c1.compareTo(c2));
+        c2 = CombinedPeriodDuration.of(
+                Period.of(1, 1, 33), Duration.ofSeconds(5));
+        assertEquals(0,c1.compareTo(c2));
     }
 }

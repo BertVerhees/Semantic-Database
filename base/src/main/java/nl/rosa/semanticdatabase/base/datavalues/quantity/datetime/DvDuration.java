@@ -3,13 +3,12 @@ package nl.rosa.semanticdatabase.base.datavalues.quantity.datetime;
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.*;
 import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
-import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
-import nl.rosa.semanticdatabase.utils.datetime.KindOfComparablePeriodDuration;
+import nl.rosa.semanticdatabase.utils.datetime.CombinedPeriodDuration;
 
 import java.time.Duration;
 import java.time.Period;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeParseException;
-import java.time.temporal.TemporalAmount;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,13 +20,11 @@ import java.util.Objects;
 public class DvDuration
         extends DvAmount<DvDuration>{
 
-    private KindOfComparablePeriodDuration value;
-    private Period period;
-    private Duration duration;
-
+    private CombinedPeriodDuration value;
 
     public DvDuration() {
         this(null,
+                null,
                 null,
                 null,
                 null,
@@ -49,8 +46,8 @@ public class DvDuration
                 null,
                 null,
                 null,
-                null);
-        parseDurationValue(iso8601Duration);
+                null,
+        parseDurationValue(iso8601Duration));
     }
 
     public DvDuration(
@@ -60,15 +57,16 @@ public class DvDuration
             TerminologyService terminologyService,
             Double accuracy,
             Boolean accuracyIsPercent,
-            String magnitudeStatus) {
+            String magnitudeStatus,
+            CombinedPeriodDuration value) {
         super(otherReferenceRanges, normalRange, normalStatus, terminologyService, accuracy, accuracyIsPercent, magnitudeStatus);
     }
 
-    public KindOfComparablePeriodDuration getValue() {
+    public CombinedPeriodDuration getValue() {
         return value;
     }
 
-    public void setValue(KindOfComparablePeriodDuration value) {
+    public void setValue(CombinedPeriodDuration value) {
         this.value = value;
     }
 
@@ -91,11 +89,10 @@ public class DvDuration
      * @param start
      * @param end
      */
-    public static DvDuration getDifference(DvTemporal start, DvTemporal end) {
-        TemporalAmount
-        KindOfComparablePeriodDuration d = KindOfComparablePeriodDuration.from(start.getDateTime() - end.getDateTime());
-        return new DvDuration(null, null, null, 0.0, false, null,
-                d.toPeriodFrom(start.getDateTime()));
+    public static DvDuration getDifference(DvDateTime start, DvDateTime end) {
+        CombinedPeriodDuration d = CombinedPeriodDuration.between(
+                start.getValue(), end.getValue());
+        return new DvDuration(null, null, null, null, 0.0, false, null, d);
     }
     /**
      * Addition of a Duration to this DvDuration.
@@ -104,7 +101,7 @@ public class DvDuration
      */
     @Override
     public DvQuantified<DvDuration> add(DvQuantified q) {
-        KindOfComparablePeriodDuration duration = ((DvDuration)q).getValue();
+        CombinedPeriodDuration duration = ((DvDuration)q).getValue();
         return new DvDuration(getOtherReferenceRanges(), getNormalRange(),
                 getNormalStatus(), getTerminologyService(), getAccuracy(), getAccuracyIsPercent(),
                 getMagnitudeStatus(), value.plus(duration));
@@ -117,7 +114,7 @@ public class DvDuration
      */
     @Override
     public DvQuantified<DvDuration> subtract(DvQuantified q) {
-        KindOfComparablePeriodDuration duration = ((DvDuration)q).getValue();
+        CombinedPeriodDuration duration = ((DvDuration)q).getValue();
         return new DvDuration(getOtherReferenceRanges(), getNormalRange(),
                 getNormalStatus(), getTerminologyService(), getAccuracy(), getAccuracyIsPercent(),
                 getMagnitudeStatus(), value.minus(duration));
@@ -226,26 +223,7 @@ public class DvDuration
      */
     @Override
     public int compareTo(DvDuration o) {
-        if(duration.equals(o.duration) && period.equals(o.period)){
-            return 0;
-        }
-        long thisSeconds = (
-                (period.getDays() +
-                        (period.getMonths()*12) +
-                        (period.getYears()*365))
-                * 86400) +
-                duration.getSeconds();
-        long otherSeconds = (
-                (o.period.getDays() +
-                        (o.period.getMonths()*12) +
-                        (o.period.getYears()*365))
-                        * 86400) +
-                o.duration.getSeconds();
-        int cmp = Long.compare(thisSeconds, otherSeconds);
-        if (cmp != 0) {
-            return cmp;
-        }
-        return duration.getNano() - o.duration.getNano();
+        return value.compareTo(o.value);
     }
 
     /**
@@ -254,7 +232,7 @@ public class DvDuration
      * @return years
      */
     public int getYears() {
-        return period.getYears();
+        return value.getPeriod().getYears();
     }
 
     /**
@@ -263,11 +241,11 @@ public class DvDuration
      * @return months
      */
     public int getMonths() {
-        return period.getMonths();
+        return value.getPeriod().getMonths();
     }
 
     public int getWeeks() {
-        (Double.valueOf(Math.floor(getDays()/7))).longValue();
+        return (Double.valueOf(Math.floor(value.getPeriod().getDays()/7))).intValue();
     }
 
     /**
@@ -276,7 +254,7 @@ public class DvDuration
      * @return days
      */
     public long getDays() {
-        return (Double.valueOf(Math.floor(duration.getSeconds()/86400))).longValue() + period.getDays();
+        return (Double.valueOf(Math.floor(value.getDuration().getSeconds()/86400))).longValue() + value.getPeriod().getDays();
     }
 
     /**
@@ -317,14 +295,13 @@ public class DvDuration
         return value.getDuration().getSeconds() / 10E2;
     }
 
-    private void parseDurationValue(String text) {
+    private static CombinedPeriodDuration parseDurationValue(String text) {
         try {
             if (text.startsWith("P") || text.startsWith("-P")) {
+                Duration duration = Duration.parse(text);;
                 String periodString = text.split("T")[0];
-                period = Period.parse(periodString);
-                if(text.contains("T")) {
-                    duration = Duration.parse(text);
-                }
+                Period period = Period.parse(periodString);
+                return CombinedPeriodDuration.of(period, duration);
             }else {
                 throw new IllegalArgumentException("Illegal ISO 8601 string for Duration:" + text);
             }
@@ -334,7 +311,7 @@ public class DvDuration
     }
 }
 
-}
+
 /**
  * ***** BEGIN LICENSE BLOCK *****
  * <p>

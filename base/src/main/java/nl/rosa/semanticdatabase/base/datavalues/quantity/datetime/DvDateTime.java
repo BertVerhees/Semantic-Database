@@ -1,13 +1,12 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity.datetime;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
-import nl.rosa.semanticdatabase.base.datavalues.quantity.DvAmount;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvInterval;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.DvOrdered;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.ReferenceRange;
 import nl.rosa.semanticdatabase.base.terminology.TerminologyService;
 import nl.rosa.semanticdatabase.base.utils.datetime.DateTimeParsers;
-import nl.rosa.semanticdatabase.utils.datetime.KindOfComparablePeriodDuration;
+import nl.rosa.semanticdatabase.utils.datetime.CombinedPeriodDuration;
 
 import java.time.*;
 import java.util.List;
@@ -32,7 +31,7 @@ public class DvDateTime
     @Override
     public DvDateTime add(DvDuration q) {
         LocalDateTime dateTime = getValue();
-        KindOfComparablePeriodDuration duration = q.getValue();
+        CombinedPeriodDuration duration = q.getValue();
         return new DvDateTime(getOtherReferenceRanges(),
                 getNormalRange(),
                 getNormalStatus(),
@@ -50,7 +49,7 @@ public class DvDateTime
     @Override
     public DvDateTime subtract(DvDuration q) {
         LocalDateTime dateTime = getValue();
-        KindOfComparablePeriodDuration duration = q.getValue();
+        CombinedPeriodDuration duration = q.getValue();
         return new DvDateTime(getOtherReferenceRanges(),
                 getNormalRange(),
                 getNormalStatus(),
@@ -69,8 +68,8 @@ public class DvDateTime
     @Override
     public DvDuration diff(DvDateTime other) {
         LocalDateTime dateTime = getValue();
-        KindOfComparablePeriodDuration duration =
-                KindOfComparablePeriodDuration.between(dateTime, other.getValue());
+        CombinedPeriodDuration duration =
+                CombinedPeriodDuration.between(dateTime, other.getValue());
         return new DvDuration(duration);
     }
 
