@@ -21,35 +21,33 @@
  */
 package nl.rosa.semanticdatabase.base.datastructure.history;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import org.openehr.rm.datastructure.DataStructureTestBase;
-import org.openehr.rm.datastructure.itemstructure.ItemSingle;
-import org.openehr.rm.datastructure.itemstructure.representation.Element;
-import org.openehr.rm.datatypes.quantity.datetime.DvDateTime;
-import org.openehr.rm.datatypes.quantity.datetime.DvDuration;
-import org.openehr.rm.datatypes.text.DvText;
+import nl.rosa.semanticdatabase.base.datastructure.DataStructureTestBase;
+import nl.rosa.semanticdatabase.base.datastructures.Element;
+import nl.rosa.semanticdatabase.base.datastructures.History;
+import nl.rosa.semanticdatabase.base.datastructures.ItemSingle;
+
+import nl.rosa.semanticdatabase.base.datastructures.PointEvent;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDateTime;
+import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDuration;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PointEventTest extends DataStructureTestBase {
 
-	public PointEventTest(String testName) {
-		super(testName);
-	}
-
+	@AfterEach
 	protected void tearDown() throws Exception {
 		element = null;
 		pointEvent = null;
 	}
 
-	public static Test suite() {
-		TestSuite suite = new TestSuite(PointEventTest.class);
-
-		return suite;
-	}
-
 	/**
 	 * The fixture set up called before every test method.
 	 */
+	@BeforeEach
 	protected void setUp() throws Exception {
 		element = element("element name", "value");
 		item = new ItemSingle(null, "at0001", text("point event item"), null,
@@ -66,6 +64,7 @@ public class PointEventTest extends DataStructureTestBase {
 				DvDuration.getInstance("PT3h"), summary);
 	}
 
+	@Test
 	public void testPointEvent() {
 		pointEvent = new PointEvent<ItemSingle>(null, "at0002",
 				text("point event"), null, null, null, h, new DvDateTime(TIME),
@@ -74,6 +73,7 @@ public class PointEventTest extends DataStructureTestBase {
 		assertEquals(h, pointEvent.getParent());
 	}
 
+	@Test
 	public void testCreatePointEventWithConvenientConstructor() {
 		String nodeId = "at0002";
 		DvText name = new DvText("point event");

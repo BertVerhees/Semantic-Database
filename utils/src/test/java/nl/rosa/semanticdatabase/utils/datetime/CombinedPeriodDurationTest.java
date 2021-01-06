@@ -1,5 +1,6 @@
 package nl.rosa.semanticdatabase.utils.datetime;
 
+import nl.rosa.semanticdatabase.utils.datetime.threeten.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -11,10 +12,6 @@ import java.util.Arrays;
 import static java.time.temporal.ChronoUnit.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.tngtech.java.junit.dataprovider.DataProviderRunner;
-import org.junit.runner.RunWith;
-import org.threeten.extra.*;
-
 /**
  * Test class.
  */
@@ -23,7 +20,6 @@ import org.threeten.extra.*;
  * Default created on 30-12-2020
  */
 
-@RunWith(DataProviderRunner.class)
 class CombinedPeriodDurationTest {
 
     private static final Period P1Y2M3D = Period.of(1, 2, 3);

@@ -5,6 +5,7 @@ import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDateTime;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDuration;
 import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
 import nl.rosa.semanticdatabase.base.identification.UidBasedId;
+import nl.rosa.semanticdatabase.utils.datetime.CombinedPeriodDuration;
 
 import java.time.Duration;
 import java.time.OffsetDateTime;
@@ -126,7 +127,7 @@ public abstract class Event<Type extends ItemStructure> extends Locatable {
     public DvDuration getOffset() {
         DvDuration result = new DvDuration();
         Duration duration = Duration.between(OffsetDateTime.from(((History) getParent()).getOrigin().getValue()), OffsetDateTime.from(time.getValue()));
-        result.setValue(duration);
+        result.setValue(CombinedPeriodDuration.of(duration));
         //would be even better if we could set the accurary too. Let's not for now
         return result;
 

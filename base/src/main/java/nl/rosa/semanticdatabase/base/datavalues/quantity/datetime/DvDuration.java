@@ -50,6 +50,22 @@ public class DvDuration
         parseDurationValue(iso8601Duration));
     }
 
+    public static DvDuration getInstance(String iso8601Duration){
+        return new DvDuration(iso8601Duration);
+    }
+
+    public DvDuration(CombinedPeriodDuration value) {
+
+        this(null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                value);
+    }
+
     public DvDuration(
             List<ReferenceRange<DvDuration>> otherReferenceRanges,
             DvInterval<DvDuration> normalRange,
@@ -60,6 +76,7 @@ public class DvDuration
             String magnitudeStatus,
             CombinedPeriodDuration value) {
         super(otherReferenceRanges, normalRange, normalStatus, terminologyService, accuracy, accuracyIsPercent, magnitudeStatus);
+        this.value = value;
     }
 
     public CombinedPeriodDuration getValue() {
@@ -125,9 +142,10 @@ public class DvDuration
      * @param q
      * @return
      */
-    public DvQuantified<DvDuration> multiply(Double q) {
-        //TODO fix me
-        return null;
+    public DvQuantified<DvDuration> multiply(int q) {
+        return new DvDuration(getOtherReferenceRanges(), getNormalRange(),
+                getNormalStatus(), getTerminologyService(), getAccuracy(), getAccuracyIsPercent(),
+                getMagnitudeStatus(), value.multipliedBy(q));
     }
 
 
@@ -292,7 +310,7 @@ public class DvDuration
      * @return fractional seconds
      */
     public double getFractionalSeconds() {
-        return value.getDuration().getSeconds() / 10E2;
+        return value.getDuration().getNano() / 10E9;
     }
 
     private static CombinedPeriodDuration parseDurationValue(String text) {

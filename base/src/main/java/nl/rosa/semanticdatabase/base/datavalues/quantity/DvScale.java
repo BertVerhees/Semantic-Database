@@ -45,13 +45,29 @@ public class DvScale
     }
 
     public DvScale(
-            List<ReferenceRange> otherReferenceRanges,
+            List<ReferenceRange<DvScale>> otherReferenceRanges,
             DvInterval<DvScale> normalRange,
             Double value,
             DvCodedText symbol) {
         super(otherReferenceRanges, normalRange);
         this.symbol = symbol;
         this.value = value;
+    }
+
+    /**
+     * Test if two instances are strictly comparable. Effected in descendants.
+     *
+     * @param other
+     * @return
+     */
+    @Override
+    public Boolean isStrictlyComparableTo(DvOrdered<DvScale> other) {
+        return null;
+    }
+
+    @Override
+    public Boolean lessThan(DvOrdered<DvScale> other) {
+        return null;
     }
 
     @Override

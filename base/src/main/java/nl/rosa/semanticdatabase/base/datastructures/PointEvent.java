@@ -49,9 +49,10 @@ public class PointEvent<Type extends ItemStructure> extends Event<Type> {
             FeederAudit feederAudit,
             Set<Link> links,
             History<Type> parent,
+            String parentAttributeName,
             DvDateTime time,
             Type data,
-            ItemStructure state) {
+            Type state) {
         super(uid, archetypeNodeId, name, archetypeDetails, feederAudit, links,
                 parent, time, data, state);
     }

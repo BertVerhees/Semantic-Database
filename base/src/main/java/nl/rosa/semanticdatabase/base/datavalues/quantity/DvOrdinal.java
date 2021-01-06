@@ -20,13 +20,29 @@ public class DvOrdinal
     public DvOrdinal() {
     }
 
+    /**
+     * Test if two instances are strictly comparable. Effected in descendants.
+     *
+     * @param other
+     * @return
+     */
+    @Override
+    public Boolean isStrictlyComparableTo(DvOrdered<DvOrdinal> other) {
+        return null;
+    }
+
+    @Override
+    public Boolean lessThan(DvOrdered<DvOrdinal> other) {
+        return null;
+    }
+
     public DvOrdinal(Long value, DvCodedText symbol) {
         this.symbol = symbol;
         this.value = value;
     }
 
     public DvOrdinal(
-            List<ReferenceRange> otherReferenceRanges,
+            List<ReferenceRange<DvOrdinal>> otherReferenceRanges,
             DvInterval normalRange,
             Long value,
             DvCodedText symbol) {
