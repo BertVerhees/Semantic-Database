@@ -48,8 +48,6 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.threeten.extra.Temporals;
-
 /**
  * A month-based amount of time, such as '12 months'.
  * <p>

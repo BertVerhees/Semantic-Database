@@ -1,7 +1,5 @@
 package nl.rosa.semanticdatabase.utils.datetime;
 
-import org.threeten.extra.PeriodDuration;
-
 import java.time.Duration;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
@@ -58,8 +56,8 @@ public class DateTimeSerializerFormatters {
             return serializeDuration((Duration) amount);
         } else if (amount instanceof Period) {
             return serializeDuration((Period) amount);
-        } else if (amount instanceof PeriodDuration) {
-            return serializePeriodDuration((PeriodDuration) amount);
+        } else if (amount instanceof CombinedPeriodDuration) {
+            return serializeCombinedPeriodDuration((CombinedPeriodDuration) amount);
         }
         return amount.toString();
     }
@@ -78,7 +76,7 @@ public class DateTimeSerializerFormatters {
         return period.toString();
     }
 
-    private static String serializePeriodDuration(PeriodDuration periodDuration) {
+    private static String serializeCombinedPeriodDuration(CombinedPeriodDuration periodDuration) {
         if(periodDuration.getPeriod().isNegative() || periodDuration.getDuration().isNegative()) {
             return "-" + periodDuration.negated();
         }

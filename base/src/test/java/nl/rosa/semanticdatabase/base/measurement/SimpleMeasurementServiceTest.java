@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.base.measurement;
 
-import nl.rosa.semanticdatabase.measurementservice.measurement.MeasurementService;
-import nl.rosa.semanticdatabase.measurementservice.measurement.SimpleMeasurementService;
+import nl.rosa.semanticdatabase.base.measurement.MeasurementService;
+import nl.rosa.semanticdatabase.base.measurement.SimpleMeasurementService;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
