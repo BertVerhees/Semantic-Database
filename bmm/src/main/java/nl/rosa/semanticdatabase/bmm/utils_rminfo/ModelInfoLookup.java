@@ -1,11 +1,11 @@
-package nl.rosa.semanticdatabase.base.utils_rminfo;
+package nl.rosa.semanticdatabase.bmm.utils_rminfo;
 
 import nl.rosa.semanticdatabase.base.aom2_interfaces.IArchetype;
-import nl.rosa.semanticdatabase.base.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.base.paths.queries.APathQuery;
-import nl.rosa.semanticdatabase.base.paths.PathSegment;
 import nl.rosa.semanticdatabase.base.aom2_interfaces.ICObject;
 import nl.rosa.semanticdatabase.base.aom2_interfaces.ICPrimitiveObject;
+import nl.rosa.semanticdatabase.base.interval.MultiplicityInterval;
+import nl.rosa.semanticdatabase.utils.paths.PathSegment;
+import nl.rosa.semanticdatabase.utils.paths.queries.APathQuery;
 
 import java.lang.reflect.Field;
 import java.util.Collection;

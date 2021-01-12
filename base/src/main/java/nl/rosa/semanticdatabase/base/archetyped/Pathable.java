@@ -1,10 +1,9 @@
 package nl.rosa.semanticdatabase.base.archetyped;
 
-import nl.rosa.semanticdatabase.base.paths.PathSegment;
-import nl.rosa.semanticdatabase.base.paths.PathUtil;
-import nl.rosa.semanticdatabase.base.paths.queries.RMObjectWithPath;
-import nl.rosa.semanticdatabase.base.paths.queries.RMPathQuery;
-import nl.rosa.semanticdatabase.base.utils_rminfo.RMInfoLookup;
+import nl.rosa.semanticdatabase.utils.paths.PathSegment;
+import nl.rosa.semanticdatabase.utils.paths.PathUtil;
+import nl.rosa.semanticdatabase.utils.paths.queries.RMObjectWithPath;
+import nl.rosa.semanticdatabase.utils.paths.queries.RMPathQuery;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,11 +31,11 @@ public abstract class Pathable {
     }
 
     public Object itemAtPath(String s) {
-        return new RMPathQuery(s).find(RMInfoLookup.getInstance(), this);
+        return new RMPathQuery(s).find( this);
     }
 
     public List<Object> itemsAtPath(String s) {
-        List<RMObjectWithPath> objects = new RMPathQuery(s).findList(RMInfoLookup.getInstance(), this);
+        List<RMObjectWithPath> objects = new RMPathQuery(s).findList( this);
         List<Object> result = new ArrayList<>();
         for (RMObjectWithPath object : objects) {
             result.add(object.getObject());

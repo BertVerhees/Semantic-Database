@@ -29,6 +29,7 @@ import nl.rosa.semanticdatabase.base.datastructures.ItemSingle;
 import nl.rosa.semanticdatabase.base.datastructures.PointEvent;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDateTime;
 import nl.rosa.semanticdatabase.base.datavalues.quantity.datetime.DvDuration;
+import nl.rosa.semanticdatabase.base.datavalues.text.DvText;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -52,9 +53,18 @@ public class PointEventTest extends DataStructureTestBase {
 		element = element("element name", "value");
 		item = new ItemSingle(null, "at0001", text("point event item"), null,
 				null, null, null, element);
-		pointEvent = new PointEvent<ItemSingle>(null, "at0002",
-				text("point event"), null, null, null, null, new DvDateTime(
-						TIME), item, null);
+		pointEvent = new PointEvent<ItemSingle>(
+				null,
+				"at0002",
+				text("point event"),
+				null,
+				null,
+				null,
+				null,
+				null,
+				new DvDateTime(	TIME),
+				item,
+				null);
 		ItemSingle summary = new ItemSingle(null, "at0001",
 				text("summary item"), null, null, null, null, element(
 						"summary element", "summary content"));
@@ -66,10 +76,19 @@ public class PointEventTest extends DataStructureTestBase {
 
 	@Test
 	public void testPointEvent() {
-		pointEvent = new PointEvent<ItemSingle>(null, "at0002",
-				text("point event"), null, null, null, h, new DvDateTime(TIME),
-				item, null);
-		assertEquals(DvDuration.getInstance("PT10m"), pointEvent.offset());
+		pointEvent = new PointEvent<ItemSingle>(
+				null,
+				"at0002",
+				text("point event"),
+				null,
+				null,
+				null,
+				h,
+				null,
+				new DvDateTime(TIME),
+				item,
+				null);
+		assertEquals(DvDuration.getInstance("PT10m"), pointEvent.getOffset());
 		assertEquals(h, pointEvent.getParent());
 	}
 

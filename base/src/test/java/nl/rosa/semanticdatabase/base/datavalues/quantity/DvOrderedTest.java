@@ -32,8 +32,15 @@ public class DvOrderedTest {
 		String magnitudeStatus = null;
 		Long magnitude = 1L;
 		DvCount count = 
-			new DvCount(referenceRanges, normalRange, normalStatus, accuracy,
-					accuracyPercent, magnitudeStatus, magnitude);		
+			new DvCount(
+					referenceRanges,
+					normalRange,
+					normalStatus,
+					null,
+					accuracy,
+					accuracyPercent,
+					magnitudeStatus,
+					magnitude);
 		try {
 			count.isNormal();
 			fail("exception should be thrown");
@@ -51,9 +58,16 @@ public class DvOrderedTest {
 		boolean accuracyPercent = false; 
 		String magnitudeStatus = null;
 		Long magnitude = 1L;
-		DvCount count = 
-			new DvCount(referenceRanges, normalRange, normalStatus, accuracy,
-					accuracyPercent, magnitudeStatus, magnitude);		
+		DvCount count =
+				new DvCount(
+						referenceRanges,
+						normalRange,
+						normalStatus,
+						null,
+						accuracy,
+						accuracyPercent,
+						magnitudeStatus,
+						magnitude);
 		assertTrue(count.isNormal());
 	}
 
@@ -66,9 +80,16 @@ public class DvOrderedTest {
 		boolean accuracyPercent = false; 
 		String magnitudeStatus = null;
 		Long magnitude = 1L;
-		DvCount count = 
-			new DvCount(referenceRanges, normalRange, normalStatus, accuracy,
-					accuracyPercent, magnitudeStatus, magnitude);		
+		DvCount count =
+				new DvCount(
+						referenceRanges,
+						normalRange,
+						normalStatus,
+						null,
+						accuracy,
+						accuracyPercent,
+						magnitudeStatus,
+						magnitude);
 		assertFalse(count.isNormal());
 	}
 
@@ -82,9 +103,16 @@ public class DvOrderedTest {
 		boolean accuracyPercent = false; 
 		String magnitudeStatus = null;
 		Long magnitude = 1L;
-		DvCount count = 
-			new DvCount(referenceRanges, normalRange, normalStatus, accuracy,
-					accuracyPercent, magnitudeStatus, magnitude);		
+		DvCount count =
+				new DvCount(
+						referenceRanges,
+						normalRange,
+						normalStatus,
+						null,
+						accuracy,
+						accuracyPercent,
+						magnitudeStatus,
+						magnitude);
 		assertTrue(count.isNormal());
 	}
 
@@ -98,9 +126,16 @@ public class DvOrderedTest {
 		boolean accuracyPercent = false; 
 		String magnitudeStatus = null;
 		Long magnitude = 1L;
-		DvCount count = 
-			new DvCount(referenceRanges, normalRange, normalStatus, accuracy,
-					accuracyPercent, magnitudeStatus, magnitude);		
+		DvCount count =
+				new DvCount(
+						referenceRanges,
+						normalRange,
+						normalStatus,
+						null,
+						accuracy,
+						accuracyPercent,
+						magnitudeStatus,
+						magnitude);
 		assertFalse(count.isNormal());
 	}
 
@@ -114,9 +149,16 @@ public class DvOrderedTest {
 		boolean accuracyPercent = false; 
 		String magnitudeStatus = null;
 		Long magnitude = 1L;
-		DvCount count = 
-			new DvCount(referenceRanges, normalRange, normalStatus, accuracy,
-					accuracyPercent, magnitudeStatus, magnitude);		
+		DvCount count =
+				new DvCount(
+						referenceRanges,
+						normalRange,
+						normalStatus,
+						null,
+						accuracy,
+						accuracyPercent,
+						magnitudeStatus,
+						magnitude);
 		assertTrue(count.isNormal());
 	}
 

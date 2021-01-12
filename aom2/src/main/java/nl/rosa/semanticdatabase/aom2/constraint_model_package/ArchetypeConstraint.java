@@ -1,8 +1,8 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
 import nl.rosa.semanticdatabase.base.BMMCodeDefinitions;
-import nl.rosa.semanticdatabase.base.paths.PathSegment;
-import nl.rosa.semanticdatabase.base.paths.PathUtil;
+import nl.rosa.semanticdatabase.utils.paths.PathSegment;
+import nl.rosa.semanticdatabase.utils.paths.PathUtil;
 
 import java.util.List;
 import java.util.Objects;

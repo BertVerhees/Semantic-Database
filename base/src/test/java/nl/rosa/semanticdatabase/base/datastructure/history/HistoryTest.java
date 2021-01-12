@@ -51,9 +51,19 @@ public class HistoryTest extends DataStructureTestBase {
 			Element element = element("element " + i, CODES[i]);
 			ItemSingle item = new ItemSingle(null, "at0001", text(ITEMS[i]),
 					null, null, null, null, element);
-			items.add(new PointEvent<ItemSingle>(null, "at0003",
-					text("point event"), null, null, null, null,
-					new DvDateTime(TIME), item, null));
+			items.add(new PointEvent<ItemSingle>(
+					null,
+					"at0003",
+					text("point event"),
+					null,
+					null,
+					null,
+					null,
+					null,
+					new DvDateTime(TIME),
+					item,
+					null)
+			);
 		}
 		return new History<ItemSingle>(null, "at0002", text(NAME), null, null,
 				null, null, new DvDateTime(TIME), items, new DvDuration("PT1h"),
@@ -91,9 +101,18 @@ public class HistoryTest extends DataStructureTestBase {
 			Element element = element("element " + i, CODES[i]);
 			ItemSingle item = new ItemSingle(null, "at0001", text(ITEMS[i]),
 					null, null, null, null, element);
-			items.add(new PointEvent<ItemSingle>(null, "at0003",
-					text("point event"), null, null, null, h1, new DvDateTime(
-							TIME), item, null));
+			items.add(new PointEvent<ItemSingle>(
+					null,
+					"at0003",
+					text("point event"),
+					null,
+					null,
+					null,
+					h1,
+					null, new DvDateTime(TIME),
+					item,
+					null)
+			);
 		}
 		try {
 			new History<ItemSingle>(null, "at0002", text(NAME), null, null,

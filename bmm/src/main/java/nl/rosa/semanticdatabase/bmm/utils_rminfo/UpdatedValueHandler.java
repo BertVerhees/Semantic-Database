@@ -1,15 +1,4 @@
-package nl.rosa.semanticdatabase.base.utils_rminfo;
-
-import com.google.common.base.Joiner;
-import nl.rosa.semanticdatabase.base.aom2_interfaces.IArchetype;
-import nl.rosa.semanticdatabase.base.archetyped.Archetyped;
-import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
-import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
-
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+package nl.rosa.semanticdatabase.bmm.utils_rminfo;
 
 public class UpdatedValueHandler {
 

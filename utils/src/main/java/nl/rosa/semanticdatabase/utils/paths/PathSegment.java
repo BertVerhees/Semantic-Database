@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.base.paths;
+package nl.rosa.semanticdatabase.utils.paths;
 
 import java.util.Map;
 import java.util.regex.Pattern;

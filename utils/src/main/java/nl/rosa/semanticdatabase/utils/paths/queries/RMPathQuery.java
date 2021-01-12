@@ -1,11 +1,8 @@
-package nl.rosa.semanticdatabase.base.paths.queries;
+package nl.rosa.semanticdatabase.utils.paths.queries;
 
 
 import com.google.common.collect.Lists;
-import nl.rosa.semanticdatabase.base.BMMCodeDefinitions;
-import nl.rosa.semanticdatabase.base.paths.PathSegment;
-import nl.rosa.semanticdatabase.base.utils_rminfo.IRMAttributeInfo;
-import nl.rosa.semanticdatabase.base.utils_rminfo.ModelInfoLookup;
+import nl.rosa.semanticdatabase.utils.paths.PathSegment;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -36,7 +33,9 @@ public class RMPathQuery {
 
     //TODO: get diagnostic information about where the finder stopped in the path - could be very useful!
 
-    public <T> T find(ModelInfoLookup lookup, Object root) {
+    public <T> T find(Object root) {
+        ModelInfoLookup lookup = RMInfoLookup.getInstance();
+
         Object currentObject = root;
         try {
             for (PathSegment segment : pathSegments) {
@@ -105,7 +104,8 @@ public class RMPathQuery {
     /**
      * You will want to use RMQueryContext in many cases. For perforamnce reasons, this could still be useful
      */
-    public <T> List<RMObjectWithPath> findList(ModelInfoLookup lookup, Object root) {
+    public <T> List<RMObjectWithPath> findList(Object root) {
+        ModelInfoLookup lookup = RMInfoLookup.getInstance();
         List<RMObjectWithPath> currentObjects = Lists.newArrayList(new RMObjectWithPath(root, "/"));
         try {
             for (PathSegment segment : pathSegments) {

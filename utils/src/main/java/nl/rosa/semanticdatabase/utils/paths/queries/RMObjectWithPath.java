@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.base.paths.queries;
+package nl.rosa.semanticdatabase.utils.paths.queries;
 
 /**
  * Originally: Created by pieter.bos on 18/04/16.

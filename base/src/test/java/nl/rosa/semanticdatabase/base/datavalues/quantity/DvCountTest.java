@@ -67,11 +67,18 @@ public class DvCountTest{
         DvCount lower = new DvCount(1L);
         DvCount upper = new DvCount(10L);
         ReferenceRange<DvCount> normalRange = new ReferenceRange<>(normal, new DvInterval<>(lower, upper));
-        List<ReferenceRange> otherReferenceRanges = new ArrayList<>();
+        List<ReferenceRange<DvCount>> otherReferenceRanges = new ArrayList<>();
         otherReferenceRanges.add(normalRange);
         
-        DvCount count = new DvCount(otherReferenceRanges, null, null, 0.0, 
-        		false, null, 5L);
+        DvCount count = new DvCount(
+                otherReferenceRanges,
+                null,
+                null,
+                null,
+                0.0,
+        		false,
+                null,
+                5L);
         
         assertEquals(otherReferenceRanges, count.getOtherReferenceRanges());
     }

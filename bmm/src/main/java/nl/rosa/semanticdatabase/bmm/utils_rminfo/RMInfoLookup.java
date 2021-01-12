@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.base.utils_rminfo;
+package nl.rosa.semanticdatabase.bmm.utils_rminfo;
 
 import nl.rosa.semanticdatabase.base.aom2_interfaces.IArchetype;
 import nl.rosa.semanticdatabase.base.aom2_interfaces.ICObject;
@@ -15,9 +15,6 @@ import nl.rosa.semanticdatabase.base.terminology.TerminologyCode;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.time.temporal.Temporal;
-import java.time.temporal.TemporalAccessor;
-import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

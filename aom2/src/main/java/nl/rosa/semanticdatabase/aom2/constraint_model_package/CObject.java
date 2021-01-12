@@ -8,7 +8,7 @@ import java.util.function.BiFunction;
 
 import nl.rosa.semanticdatabase.aom2.utils.AOMUtils;
 import nl.rosa.semanticdatabase.base.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.base.paths.PathSegment;
+import nl.rosa.semanticdatabase.utils.paths.PathSegment;
 import nl.rosa.semanticdatabase.base.aom2_interfaces.ICObject;
 
 /**
