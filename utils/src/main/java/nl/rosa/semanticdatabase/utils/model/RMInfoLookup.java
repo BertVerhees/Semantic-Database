@@ -1,17 +1,4 @@
-package nl.rosa.semanticdatabase.bmm.utils_rminfo;
-
-import nl.rosa.semanticdatabase.base.aom2_interfaces.IArchetype;
-import nl.rosa.semanticdatabase.base.aom2_interfaces.ICObject;
-import nl.rosa.semanticdatabase.base.aom2_interfaces.ICPrimitiveObject;
-import nl.rosa.semanticdatabase.base.aom2_interfaces.ICTerminologyCode;
-import nl.rosa.semanticdatabase.base.archetyped.Locatable;
-import nl.rosa.semanticdatabase.base.datastructures.PointEvent;
-import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
-import nl.rosa.semanticdatabase.base.datavalues.text.DvCodedText;
-import nl.rosa.semanticdatabase.base.demographic.Party;
-import nl.rosa.semanticdatabase.base.identification.TerminologyId;
-import nl.rosa.semanticdatabase.base.interval.MultiplicityInterval;
-import nl.rosa.semanticdatabase.base.terminology.TerminologyCode;
+package nl.rosa.semanticdatabase.utils.model;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -19,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+
+import nl.rosa.semanticdatabase.utils.aom2_interfaces.*;
 
 /**
  * Originally: Created by pieter.bos on 02/02/16.

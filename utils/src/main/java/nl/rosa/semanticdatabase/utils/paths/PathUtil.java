@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.utils.paths;
 
-import nl.rosa.semanticdatabase.base.BMMCodeDefinitions;
+import nl.rosa.semanticdatabase.utils.definitions.BMMCodeDefinitions;
 
 import java.util.List;
 

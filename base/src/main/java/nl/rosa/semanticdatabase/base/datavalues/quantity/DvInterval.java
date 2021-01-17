@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datavalues.DataValue;
-import nl.rosa.semanticdatabase.base.interval.Interval;
+import nl.rosa.semanticdatabase.utils.interval.Interval;
 
 import java.util.Objects;
 

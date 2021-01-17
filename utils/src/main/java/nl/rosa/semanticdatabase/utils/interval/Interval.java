@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.base.interval;
+package nl.rosa.semanticdatabase.utils.interval;
 
 import java.time.temporal.TemporalAmount;
 import java.util.Objects;

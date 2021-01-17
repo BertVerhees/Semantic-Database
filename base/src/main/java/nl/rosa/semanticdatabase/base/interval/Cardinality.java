@@ -1,5 +1,7 @@
 package nl.rosa.semanticdatabase.base.interval;
 
+import nl.rosa.semanticdatabase.utils.interval.MultiplicityInterval;
+
 import java.util.Objects;
 
 /**

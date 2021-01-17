@@ -2,6 +2,7 @@ package nl.rosa.semanticdatabase.utils.paths.queries;
 
 
 import com.google.common.collect.Lists;
+import nl.rosa.semanticdatabase.utils.model.ModelInfoLookup;
 import nl.rosa.semanticdatabase.utils.paths.PathSegment;
 
 import java.lang.reflect.InvocationTargetException;

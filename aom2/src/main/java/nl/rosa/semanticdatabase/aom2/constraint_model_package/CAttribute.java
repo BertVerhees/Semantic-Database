@@ -5,7 +5,7 @@ import java.util.function.BiFunction;
 
 import nl.rosa.semanticdatabase.aom2.utils.AOMUtils;
 import nl.rosa.semanticdatabase.base.interval.Cardinality;
-import nl.rosa.semanticdatabase.base.interval.MultiplicityInterval;
+import nl.rosa.semanticdatabase.utils.interval.MultiplicityInterval;
 import nl.rosa.semanticdatabase.utils.paths.queries.APathQuery;
 import nl.rosa.semanticdatabase.utils.paths.PathSegment;
 

@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.base;
+package nl.rosa.semanticdatabase.utils.definitions;
 
 /**
  * Created by:

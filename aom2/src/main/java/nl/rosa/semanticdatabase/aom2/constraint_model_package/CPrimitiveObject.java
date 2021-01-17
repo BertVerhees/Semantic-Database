@@ -3,7 +3,7 @@ package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 import java.util.*;
 import java.util.function.BiFunction;
 
-import nl.rosa.semanticdatabase.base.aom2_interfaces.ICPrimitiveObject;
+import nl.rosa.semanticdatabase.utils.aom2_interfaces.ICPrimitiveObject;
 
 /**
  * #Generated: 2020-11-26T17:29:11.503+01:00

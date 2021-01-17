@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.aom2.constraint_model_package;
 
-import nl.rosa.semanticdatabase.base.interval.MultiplicityInterval;
+import nl.rosa.semanticdatabase.utils.interval.MultiplicityInterval;
 
 import java.util.*;
 import java.util.function.BiFunction;

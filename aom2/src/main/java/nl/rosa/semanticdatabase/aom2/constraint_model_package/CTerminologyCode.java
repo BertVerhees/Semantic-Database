@@ -4,7 +4,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Objects;
 
-import nl.rosa.semanticdatabase.base.aom2_interfaces.ICTerminologyCode;
+import nl.rosa.semanticdatabase.utils.aom2_interfaces.ICTerminologyCode;
 import semanticdatabase.base.foundation_types.interval.MultiplicityInterval;
 import semanticdatabase.base.foundation_types.terminology_package.TerminologyCode;
 
