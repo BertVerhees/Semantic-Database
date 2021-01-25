@@ -1,7 +1,7 @@
 package nl.rosa.semanticdatabase.base.rminfo;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import nl.rosa.semanticdatabase.base.utils_rminfo.ModelNamingStrategy;
+import nl.rosa.semanticdatabase.utils.model.ModelNamingStrategy;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

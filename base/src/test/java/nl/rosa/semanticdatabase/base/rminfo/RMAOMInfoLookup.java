@@ -1,13 +1,14 @@
 package nl.rosa.semanticdatabase.base.rminfo;
 
-import nl.rosa.semanticdatabase.base.utils_rminfo.RMPackageId;
+import nl.rosa.semanticdatabase.utils.model.IRMPackageId;
+import nl.rosa.semanticdatabase.utils.model.RMPackageId;
 
 import java.util.Collection;
 
 /**
  * Originally: Created by pieter.bos on 06/07/16.
  */
-public class RMAOMInfoLookup extends ReflectionModelInfoLookup {
+public abstract class RMAOMInfoLookup extends ReflectionModelInfoLookup {
     @Override
     public String getArchetypeNodeIdFromRMObject(Object rmObject) {
         return null;
@@ -24,7 +25,7 @@ public class RMAOMInfoLookup extends ReflectionModelInfoLookup {
     }
 
     @Override
-    public Collection<RMPackageId> getId() {
+    public Collection<IRMPackageId> getId() {
         return null;
     }
 

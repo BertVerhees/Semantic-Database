@@ -152,13 +152,13 @@ public abstract class BMMModelInfoLookup implements ModelInfoLookup {
 //            }
 //        }
 //    }
-    protected boolean shouldAdd(Method method) {
-        if (method == null) {
-            return true;
-        }
-        //do not add private or protected properties, they will result in errors
-        return Modifier.isPublic(method.getModifiers()) && method.getAnnotation(RMPropertyIgnore.class) == null;
-    }
+//    protected boolean shouldAdd(Method method) {
+//        if (method == null) {
+//            return true;
+//        }
+//        //do not add private or protected properties, they will result in errors
+//        return Modifier.isPublic(method.getModifiers()) && method.getAnnotation(RMPropertyIgnore.class) == null;
+//    }
 
 //    protected void addRMAttributeInfo(Class clazz, IRMTypeInfo typeInfo, TypeToken typeToken, Method getMethod, Map<String, Field> fieldsByName) {
 //        String javaFieldName = null;

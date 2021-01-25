@@ -1,8 +1,9 @@
 package nl.rosa.semanticdatabase.base.rminfo;
 
 
-import nl.rosa.semanticdatabase.base.utils_rminfo.ModelInfoLookup;
-import nl.rosa.semanticdatabase.base.utils_rminfo.RMPackageId;
+import nl.rosa.semanticdatabase.utils.model.IRMPackageId;
+import nl.rosa.semanticdatabase.utils.model.ModelInfoLookup;
+import nl.rosa.semanticdatabase.utils.model.RMPackageId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +24,8 @@ public class ReferenceModels {
     }
 
     public void registerModel(ModelInfoLookup model) {
-        for (RMPackageId id : model.getId()) {
-            referenceModelsById.put(id, model);
+        for (IRMPackageId id : model.getId()) {
+            referenceModelsById.put((RMPackageId) id, model);
         }
     }
 

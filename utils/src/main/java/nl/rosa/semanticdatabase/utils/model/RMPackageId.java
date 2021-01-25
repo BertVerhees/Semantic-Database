@@ -1,4 +1,4 @@
-package nl.rosa.semanticdatabase.bmm.utils_rminfo;
+package nl.rosa.semanticdatabase.utils.model;
 
 import java.util.Objects;
 

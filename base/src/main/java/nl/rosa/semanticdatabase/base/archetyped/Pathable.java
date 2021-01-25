@@ -31,16 +31,18 @@ public abstract class Pathable {
     }
 
     public Object itemAtPath(String s) {
-        return new RMPathQuery(s).find( this);
+//        return new RMPathQuery(s).find( this);
+        return null;
     }
 
     public List<Object> itemsAtPath(String s) {
-        List<RMObjectWithPath> objects = new RMPathQuery(s).findList( this);
-        List<Object> result = new ArrayList<>();
-        for (RMObjectWithPath object : objects) {
-            result.add(object.getObject());
-        }
-        return result;
+//        List<RMObjectWithPath> objects = new RMPathQuery(s).findList( this);
+//        List<Object> result = new ArrayList<>();
+//        for (RMObjectWithPath object : objects) {
+//            result.add(object.getObject());
+//        }
+//        return result;
+        return null;
     }
 
     public Pathable getParent() {

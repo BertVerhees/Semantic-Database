@@ -1,8 +1,9 @@
 package nl.rosa.semanticdatabase.base.rminfo;
 
 import com.google.common.reflect.TypeToken;
-import nl.rosa.semanticdatabase.base.utils_rminfo.ModelInfoLookup;
-import nl.rosa.semanticdatabase.base.utils_rminfo.RMPropertyIgnore;
+import nl.rosa.semanticdatabase.utils.model.IRMTypeInfo;
+import nl.rosa.semanticdatabase.utils.model.ModelInfoLookup;
+import nl.rosa.semanticdatabase.utils.model.RMPropertyIgnore;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -411,7 +412,7 @@ public abstract class ReflectionModelInfoLookup implements ModelInfoLookup {
     }
 
     @Override
-    public List<RMTypeInfo> getAllTypes() {
+    public List<IRMTypeInfo> getAllTypes() {
         return new ArrayList<>(classesToRmTypeInfo.values());
     }
 

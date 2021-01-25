@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.base.rminfo;
 
-import nl.rosa.semanticdatabase.base.utils_rminfo.IRMAttributeInfo;
+import nl.rosa.semanticdatabase.utils.model.IRMAttributeInfo;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

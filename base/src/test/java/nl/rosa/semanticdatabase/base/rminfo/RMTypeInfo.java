@@ -1,6 +1,6 @@
 package nl.rosa.semanticdatabase.base.rminfo;
 
-import nl.rosa.semanticdatabase.base.utils_rminfo.IRMTypeInfo;
+import nl.rosa.semanticdatabase.utils.model.IRMTypeInfo;
 
 import java.util.*;
 

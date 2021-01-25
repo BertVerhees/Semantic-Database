@@ -12,7 +12,7 @@ import nl.rosa.semanticdatabase.utils.aom2_interfaces.*;
 /**
  * Originally: Created by pieter.bos on 02/02/16.
  */
-public class RMInfoLookup extends BMMModelInfoLookup {
+public abstract class RMInfoLookup extends BMMModelInfoLookup {
 
     private static RMInfoLookup instance;
     private Object object;
@@ -150,37 +150,37 @@ public class RMInfoLookup extends BMMModelInfoLookup {
 //        addClass(TranslationDetails.class);
     }
 
-    @Override
-    protected boolean isNullable(Class clazz, Method getMethod, Field field) {
-        //The Party class has a non-null field that is nullable in its ancestor Actor. Cannot model that in Java
-        //with Nullable annotations, or have to add really complicated stuff. This works too.
-        if (field != null) {
-            if (Party.class.isAssignableFrom(clazz) && field.getName().equalsIgnoreCase("uid")) {
-                return false;
-            }
-        } else if (getMethod != null) {
-            if (Party.class.isAssignableFrom(clazz) && getMethod.getName().equalsIgnoreCase("getUid")) {
-                return false;
-            }
-        }
-        return super.isNullable(clazz, getMethod, field);
-    }
+//    @Override
+//    protected boolean isNullable(Class clazz, Method getMethod, Field field) {
+//        //The Party class has a non-null field that is nullable in its ancestor Actor. Cannot model that in Java
+//        //with Nullable annotations, or have to add really complicated stuff. This works too.
+//        if (field != null) {
+//            if (Party.class.isAssignableFrom(clazz) && field.getName().equalsIgnoreCase("uid")) {
+//                return false;
+//            }
+//        } else if (getMethod != null) {
+//            if (Party.class.isAssignableFrom(clazz) && getMethod.getName().equalsIgnoreCase("getUid")) {
+//                return false;
+//            }
+//        }
+//        return super.isNullable(clazz, getMethod, field);
+//    }
 
-    public static RMInfoLookup getInstance() {
-        if (instance == null) {
-            instance = new RMInfoLookup();
-        }
-        return instance;
-    }
+//    public static RMInfoLookup getInstance() {
+//        if (instance == null) {
+//            instance = new RMInfoLookup();
+//        }
+//        return instance;
+//    }
 
-    @Override
-    public Class getClassToBeCreated(String rmTypename) {
-        if (rmTypename.equals("EVENT")) {
-            //this is an abstract class and cannot be created. Create point event instead
-            return PointEvent.class;
-        }
-        return getClass(rmTypename);
-    }
+//    @Override
+//    public Class getClassToBeCreated(String rmTypename) {
+//        if (rmTypename.equals("EVENT")) {
+//            //this is an abstract class and cannot be created. Create point event instead
+//            return PointEvent.class;
+//        }
+//        return getClass(rmTypename);
+//    }
 
     /**
      * Returns the naming strategy for the java classes of this model
@@ -201,41 +201,41 @@ public class RMInfoLookup extends BMMModelInfoLookup {
      * @param cPrimitiveObject the AOM constraint
      * @return the rm object converted to the corresponding AOM object
      */
-    @Override
-    public Object convertToConstraintObject(Object object, ICPrimitiveObject cPrimitiveObject) {
-        if (cPrimitiveObject instanceof ICTerminologyCode) {
-            if (object instanceof DvCodedText && ((DvCodedText) object).getDefiningCode() != null) {
-                return convertCodePhrase(((DvCodedText) object).getDefiningCode());
-            } else if (object instanceof CodePhrase) {
-                return convertCodePhrase((CodePhrase) object);
-            } else {
-                return new TerminologyCode();
-            }
-        }
-        return object;
-    }
+//    @Override
+//    public Object convertToConstraintObject(Object object, ICPrimitiveObject cPrimitiveObject) {
+//        if (cPrimitiveObject instanceof ICTerminologyCode) {
+//            if (object instanceof DvCodedText && ((DvCodedText) object).getDefiningCode() != null) {
+//                return convertCodePhrase(((DvCodedText) object).getDefiningCode());
+//            } else if (object instanceof CodePhrase) {
+//                return convertCodePhrase((CodePhrase) object);
+//            } else {
+//                return new TerminologyCode();
+//            }
+//        }
+//        return object;
+//    }
 
-    private TerminologyCode convertCodePhrase(CodePhrase codePhrase) {
-        TerminologyCode result = new TerminologyCode();
-        result.setCodeString(codePhrase.getCodeString());
-        result.setTerminologyId(codePhrase.getTerminologyId() == null ? null : codePhrase.getTerminologyId().getValue());
-        return result;
-    }
+//    private TerminologyCode convertCodePhrase(CodePhrase codePhrase) {
+//        TerminologyCode result = new TerminologyCode();
+//        result.setCodeString(codePhrase.getCodeString());
+//        result.setTerminologyId(codePhrase.getTerminologyId() == null ? null : codePhrase.getTerminologyId().getValue());
+//        return result;
+//    }
 
-    public Object convertConstrainedPrimitiveToRMObject(Object object) {
-        if (object instanceof TerminologyCode) {
-            return convertTerminologyCode((TerminologyCode) object);
-        }
-        return object;
-    }
+//    public Object convertConstrainedPrimitiveToRMObject(Object object) {
+//        if (object instanceof TerminologyCode) {
+//            return convertTerminologyCode((TerminologyCode) object);
+//        }
+//        return object;
+//    }
 
 
-    private CodePhrase convertTerminologyCode(TerminologyCode terminologyCode) {
-        CodePhrase result = new CodePhrase();
-        result.setCodeString(terminologyCode.getCodeString());
-        result.setTerminologyId(terminologyCode == null ? null : new TerminologyId(terminologyCode.getTerminologyId()));
-        return result;
-    }
+//    private CodePhrase convertTerminologyCode(TerminologyCode terminologyCode) {
+//        CodePhrase result = new CodePhrase();
+//        result.setCodeString(terminologyCode.getCodeString());
+//        result.setTerminologyId(terminologyCode == null ? null : new TerminologyId(terminologyCode.getTerminologyId()));
+//        return result;
+//    }
 
     /**
      * Callback after an RM Object has been created based on a constraint. Can for example be used
@@ -244,49 +244,49 @@ public class RMInfoLookup extends BMMModelInfoLookup {
      * @param createdObject
      * @param constraint
      */
-    @Override
-    public void processCreatedObject(Object createdObject, ICObject constraint) {
-        if (createdObject instanceof Locatable) { //and most often, it will be
-            Locatable locatable = (Locatable) createdObject;
-            locatable.setArchetypeNodeId(constraint.getNodeId());
-            locatable.setNameAsString(constraint.getMeaning());
-        }
-    }
+//    @Override
+//    public void processCreatedObject(Object createdObject, ICObject constraint) {
+//        if (createdObject instanceof Locatable) { //and most often, it will be
+//            Locatable locatable = (Locatable) createdObject;
+//            locatable.setArchetypeNodeId(constraint.getNodeId());
+//            locatable.setNameAsString(constraint.getMeaning());
+//        }
+//    }
 
-    @Override
-    public String getArchetypeNodeIdFromRMObject(Object rmObject) {
-        if (rmObject == null) {
-            return null;
-        }
-        if (rmObject instanceof Locatable) {
-            Locatable locatable = (Locatable) rmObject;
-            return locatable.getArchetypeNodeId();
-        }
-        return null;
-    }
+//    @Override
+//    public String getArchetypeNodeIdFromRMObject(Object rmObject) {
+//        if (rmObject == null) {
+//            return null;
+//        }
+//        if (rmObject instanceof Locatable) {
+//            Locatable locatable = (Locatable) rmObject;
+//            return locatable.getArchetypeNodeId();
+//        }
+//        return null;
+//    }
 
-    @Override
-    public String getArchetypeIdFromArchetypedRmObject(Object rmObject) {
-        if (rmObject instanceof Locatable) {
-            Locatable locatable = (Locatable) rmObject;
-            if (locatable.getArchetypeDetails() != null) {
-                return locatable.getArchetypeDetails().getArchetypeId().getValue();
-            }
-        }
-        return null;
-    }
+//    @Override
+//    public String getArchetypeIdFromArchetypedRmObject(Object rmObject) {
+//        if (rmObject instanceof Locatable) {
+//            Locatable locatable = (Locatable) rmObject;
+//            if (locatable.getArchetypeDetails() != null) {
+//                return locatable.getArchetypeDetails().getArchetypeId().getValue();
+//            }
+//        }
+//        return null;
+//    }
 
-    @Override
-    public String getNameFromRMObject(Object rmObject) {
-        if (rmObject == null) {
-            return null;
-        }
-        if (rmObject instanceof Locatable) {
-            Locatable locatable = (Locatable) rmObject;
-            return locatable.getNameAsString();
-        }
-        return null;
-    }
+//    @Override
+//    public String getNameFromRMObject(Object rmObject) {
+//        if (rmObject == null) {
+//            return null;
+//        }
+//        if (rmObject instanceof Locatable) {
+//            Locatable locatable = (Locatable) rmObject;
+//            return locatable.getNameAsString();
+//        }
+//        return null;
+//    }
 
     /**
      * Deeply clone the given RM Object
@@ -376,13 +376,13 @@ public class RMInfoLookup extends BMMModelInfoLookup {
 //
 //    }
 
-    @Override
-    public Collection<IRMPackageId> getId() {
-        List<IRMPackageId> result = new ArrayList<>();
-        result.add(new RMPackageId("openEHR", "EHR"));
-        result.add(new RMPackageId("openEHR", "DEMOGRAPHIC"));
-        return result;
-    }
+//    @Override
+//    public Collection<IRMPackageId> getId() {
+//        List<IRMPackageId> result = new ArrayList<>();
+//        result.add(new RMPackageId("openEHR", "EHR"));
+//        result.add(new RMPackageId("openEHR", "DEMOGRAPHIC"));
+//        return result;
+//    }
 
     /**
      * Pass this method to cObject.effectiveOccurrences to get the reference model property multiplicity
@@ -391,10 +391,10 @@ public class RMInfoLookup extends BMMModelInfoLookup {
      * @param rmAttributeNameOrPath The rm attribute name or path lookup to an rm attribute to get the occurrences for
      * @return
      */
-    @Override
-    public MultiplicityInterval referenceModelPropMultiplicity(String rmTypeName, String rmAttributeNameOrPath) {
-        return null;
-    }
+//    @Override
+//    public MultiplicityInterval referenceModelPropMultiplicity(String rmTypeName, String rmAttributeNameOrPath) {
+//        return null;
+//    }
 
     /**
      * Pass this method to cObject.cConformsTo to enable it to check if the two type names are conformant
