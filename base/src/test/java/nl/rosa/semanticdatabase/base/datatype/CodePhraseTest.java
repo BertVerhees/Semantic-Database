@@ -15,7 +15,9 @@ public class CodePhraseTest {
         assertAll(
                 () -> assertEquals(codePhraseOne, codePhraseTwo),
                 () -> assertNotEquals(codePhraseOne, codePhraseThree),
-                () -> assertNotEquals(codePhraseOne, codePhraseFour)
+                () -> assertNotEquals(codePhraseOne, codePhraseFour),
+                () -> assertEquals("gender",codePhraseOne.getCodeString()),
+                () -> assertEquals("hl7",codePhraseOne.getTerminologyId())
         );
     }
 
