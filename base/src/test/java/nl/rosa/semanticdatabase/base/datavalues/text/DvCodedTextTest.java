@@ -10,14 +10,17 @@ public class DvCodedTextTest {
 
     @Test
     public void testEquals() {
-        DvCodedText dvCodedTextOne = new DvCodedText("some text", new CodePhrase("icd10:123"));
-        DvCodedText dvCodedTextTwo = new DvCodedText("some text", new CodePhrase("icd10:123"));
-        DvCodedText dvCodedTextThree = new DvCodedText("some text", new CodePhrase("icd10:234"));
+        DvCodedText dvCodedTextOne = new DvCodedText("some text", new CodePhrase("icd10::123"));
+        DvCodedText dvCodedTextTwo = new DvCodedText("some text", new CodePhrase("icd10::123"));
+        DvCodedText dvCodedTextThree = new DvCodedText("some text", new CodePhrase("icd10::234"));
 
         assertAll(
                 "testEquals",
                 () -> assertEquals(dvCodedTextOne, dvCodedTextTwo),
-                () -> assertNotEquals(dvCodedTextOne, dvCodedTextThree)
+                () -> assertNotEquals(dvCodedTextOne, dvCodedTextThree),
+                () -> assertEquals("some text",dvCodedTextOne.getValue()),
+                () -> assertEquals("icd10",dvCodedTextOne.getDefiningCode().getTerminologyId().getValue()),
+                () -> assertEquals("123",dvCodedTextOne.getDefiningCode().getCodeString())
         );
     }
 

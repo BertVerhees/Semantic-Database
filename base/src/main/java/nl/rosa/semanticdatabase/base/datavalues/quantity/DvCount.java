@@ -10,6 +10,13 @@ import java.util.Objects;
 /**
  * Created by pieter.bos on 04/11/15.
  */
+
+/**
+ * Countable quantities. Used for countable types such as pregnancies and steps (taken by a physiotherapy patient),
+ * number of cigarettes smoked in a day.
+ *
+ * Misuse: Not to be used for amounts of physical entities (which all have units).
+ */
 public class DvCount extends DvAmount<DvCount> {
 
     private Long magnitude;

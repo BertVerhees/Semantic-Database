@@ -10,6 +10,12 @@ import java.util.Objects;
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
+
+/**
+ * Abstract class defining the concept of relative quantified 'amounts'. For relative quantities,
+ * the + and - operators are defined (unlike descendants of DV_ABSOLUTE_QUANTITY, such as the date/time types).
+ * @param <T>
+ */
 public abstract class DvAmount<T extends DvAmount>
         extends DvQuantified<T> {
 
@@ -20,6 +26,10 @@ public abstract class DvAmount<T extends DvAmount>
      * A value of unknown_accuracy_value means that accuracy was not recorded.
      */
     private Double accuracy = null;
+    /**
+     * If True, indicates that when this object was created, accuracy was recorded as a percent value;
+     * if False, as an absolute quantity value.
+     */
     private Boolean accuracyIsPercent = null;
 
     protected DvAmount(){
