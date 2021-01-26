@@ -12,6 +12,24 @@ import java.util.Objects;
 /**
  * Originally: Created by pieter.bos on 04/11/15.
  */
+
+/**
+ * Abstract class defining the concept of ordered values, which includes ordinals as well as true quantities.
+ * It defines the functions < and is_strictly_comparable_to(), the latter of which must evaluate to True for instances
+ * being compared with the < function, or used as limits in the DV_INTERVAL<T> class.
+ *
+ * Data value types which are to be used as limits in the DV_INTERVAL<T> class must inherit from this class,
+ * and implement the function is_strictly_comparable_to() to ensure that instances compare meaningfully.
+ * For example, instances of DV_QUANTITY can only be compared if they measure the same kind of physical quantity.
+ *
+ * Invariants
+ *
+ * Other_reference_ranges_validity: other_reference_ranges /= Void implies not other_reference_ranges.is_empty
+ * Is_simple_validity: (normal_range = Void and other_reference_ranges = Void) implies is_simple
+ * Normal_status_validity: normal_status /= Void implies code_set (Code_set_id_normal_statuses).has_code (normal_status)
+ * Normal_range_and_status_consistency: (normal_range /= Void and normal_status /= Void) implies (normal_status.code_string.is_equal (“N”) xor not normal_range.has (self))
+ * @param <T>
+ */
 public abstract class DvOrdered<T extends DvOrdered>
         extends DataValue
         implements Comparable<T> {
@@ -49,13 +67,12 @@ public abstract class DvOrdered<T extends DvOrdered>
             DvInterval<T> normalRange,
             CodePhrase normalStatus,
             TerminologyService terminologyService) {
-        if (otherReferenceRanges == null) {
-            this.otherReferenceRanges =
-                    new ArrayList<>(otherReferenceRanges);
+        if (otherReferenceRanges != null && otherReferenceRanges.isEmpty()) {
+            throw new IllegalArgumentException("otherReferenceRanges must be null or not empty");
         }
         if(normalStatus != null) {
             if(terminologyService == null) {
-                throw new IllegalArgumentException("If normalStatus is not null, terminologyService must nott be null");
+                throw new IllegalArgumentException("If normalStatus is not null, terminologyService must not be null");
             }
             //TODO replace OpenEhr terminology by generic terminology
             if (!terminologyService.codeSetForId(
@@ -65,12 +82,14 @@ public abstract class DvOrdered<T extends DvOrdered>
                         "unknown normal status: " + normalStatus);
             }
         }
-        if(normalRange == null && normalStatus == null) {
-            throw new IllegalStateException(
-                    "Both normalRange and normalStatus must not be null");
+        if(normalRange != null && normalStatus != null) {
+            if(!normalStatus.getCodeString().equals("N")){
+                throw new IllegalArgumentException("normalStatus.codestring must be \"N\", when normalStatus and normalRange is not null");
+            }
         }
         this.normalStatus = normalStatus;
         this.normalRange = normalRange;
+        this.otherReferenceRanges = otherReferenceRanges;
     }
 
 
@@ -141,7 +160,7 @@ public abstract class DvOrdered<T extends DvOrdered>
      * @return
      */
     public Boolean isSimple(){
-        return otherReferenceRanges == null || otherReferenceRanges.size() == 0;
+        return otherReferenceRanges == null && normalRange == null;
     }
 
     public abstract Boolean lessThan(DvOrdered<T> other);
