@@ -115,6 +115,12 @@ public class DvQuantity extends DvAmount<DvQuantity> {
      */
     public DvQuantified<DvQuantity> add(DvQuantified<DvQuantity> q) {
         DvQuantity qt = (DvQuantity) q;
+        if(!qt.precision.equals(precision)){
+            throw new IllegalArgumentException("Cannot add DvQuantity with different precision");
+        }
+        if(!qt.units.equals(units)){
+            throw new IllegalArgumentException("Cannot add DvQuantity with different units");
+        }
         return new DvQuantity(getOtherReferenceRanges(), getNormalRange(),
                 getNormalStatus(), getTerminologyService(), getAccuracy(), getAccuracyIsPercent(),
                 getMagnitudeStatus(), getUnits(), magnitude + qt.magnitude,
@@ -132,6 +138,12 @@ public class DvQuantity extends DvAmount<DvQuantity> {
      */
     public DvQuantified<DvQuantity> subtract(DvQuantified<DvQuantity> q) {
         DvQuantity qt = (DvQuantity) q;
+        if(!qt.precision.equals(precision)){
+            throw new IllegalArgumentException("Cannot substract DvQuantity with different precision");
+        }
+        if(!qt.units.equals(units)){
+            throw new IllegalArgumentException("Cannot substract DvQuantity with different units");
+        }
         return new DvQuantity(getOtherReferenceRanges(), getNormalRange(),
                 getNormalStatus(), getTerminologyService(), getAccuracy(), getAccuracyIsPercent(),
                 getMagnitudeStatus(), getUnits(), magnitude - qt.magnitude,

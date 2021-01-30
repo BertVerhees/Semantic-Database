@@ -20,59 +20,57 @@
  */
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 import nl.rosa.semanticdatabase.base.datavalues.DataValue;
 import nl.rosa.semanticdatabase.base.measurement.MeasurementService;
 import nl.rosa.semanticdatabase.base.measurement.SimpleMeasurementService;
-import org.junit.jupiter.api.Test;
 
-import java.text.DecimalFormatSymbols;
-
-public class DvQuantityTest extends TestCase {
+public class DvQuantityTest {
 
     // also test equals() from both Quantified and Measurable
     @Test
     public void testEquals() throws Exception {
         DvQuantity q1 = new DvQuantity("mg", 10, 2L, ms);
         DvQuantity q2 = new DvQuantity("mg", 10, 2L, ms);
-        assertTrue(q1 + " equals " + q2, q1.equals(q2));
+        assertEquals(q1,q2);
 
         q1 = new DvQuantity("mg", 10, ms);
         q2 = new DvQuantity("mg", 10, ms);
-        assertTrue(q1 + " equals " + q2, q1.equals(q2));
+        assertEquals(q1,q2);
 
         q1 = new DvQuantity(10);
         q2 = new DvQuantity(10);
-        assertTrue(q1 + " equals " + q2, q1.equals(q2));
+        assertEquals(q1,q2);
 
         q1 = new DvQuantity(10.5);
         q2 = new DvQuantity(10.5);
-        assertTrue(q1 + " equals " + q2, q1.equals(q2));
+        assertEquals(q1,q2);
 
         // missing precision
         q1 = new DvQuantity("mg", 10, 2L, ms);
         q2 = new DvQuantity("mg", 10, ms);
-        assertFalse(q1 + " not equals " + q2, q1.equals(q2));
+        assertNotEquals(q1,q2);
 
         // missing units
         q1 = new DvQuantity(10);
         q2 = new DvQuantity("mg", 10, ms);
-        assertFalse(q1 + " not equals " + q2, q1.equals(q2));
+        assertNotEquals(q1,q2);
 
         // diff precision
         q1 = new DvQuantity("mg", 10, 2L, ms);
         q2 = new DvQuantity("mg", 10, 3L, ms);
-        assertFalse(q1 + " not equals " + q2, q1.equals(q2));
+        assertNotEquals(q1,q2);
 
         // diff units
         q1 = new DvQuantity("kg", 10, 2L, ms);
         q2 = new DvQuantity("mg", 10, 2L, ms);
-        assertFalse(q1 + " not equals " + q2, q1.equals(q2));
+        assertNotEquals(q1,q2);
 
         // diff getMagnitude
         q1 = new DvQuantity("mg", 12, 2L, ms);
         q2 = new DvQuantity("mg", 10, 2L, ms);
-        assertFalse(q1 + " not equals " + q2, q1.equals(q2));
+        assertNotEquals(q1,q2);
     }
 
     public void testToString() throws Exception {
@@ -106,7 +104,7 @@ public class DvQuantityTest extends TestCase {
     	String value = "78.500,kg";
     	DvQuantity expected = new DvQuantity("kg", 78.5, 3L);
     	DvQuantity q = expected.parse(value);
-    	assertEquals("failed to parse quantity with precision", expected, q);
+    	assertEquals(expected, q);
     }
 
     @Test
@@ -129,7 +127,7 @@ public class DvQuantityTest extends TestCase {
     	String value = "78,kg";
     	DvQuantity expected = new DvQuantity("kg", 78.0, 0L);
     	DvQuantity q = expected.parse(value);
-    	assertEquals("failed to parse quantity without precision", expected, q);
+    	assertEquals(expected, q);
     }
 
     @Test
@@ -137,7 +135,7 @@ public class DvQuantityTest extends TestCase {
       String value = "78";
       DvQuantity expected = new DvQuantity(78);
       DataValue q = expected.parse(value);
-      assertEquals("failed to parse quantity without unit", expected, q);
+      assertEquals(expected, q);
     }
 
     @Test
@@ -145,7 +143,7 @@ public class DvQuantityTest extends TestCase {
     	String value = "78,kg";
     	DvQuantity expected = new DvQuantity("kg", 78.0, 0L);
     	DataValue q = DvQuantity.valueOf(value);
-    	assertEquals("failed to parse quantity as DataValue without precision", expected, q);
+    	assertEquals(expected, q);
     }
 
     @Test
@@ -165,18 +163,48 @@ public class DvQuantityTest extends TestCase {
 
     @Test
     void lessThan() {
+        DvQuantity one = new DvQuantity(78);
+        DvQuantity two = new DvQuantity(77);
+        assertTrue(two.lessThan(one));
     }
 
     @Test
     void add() {
+        DvQuantity one = new DvQuantity(78.3);
+        DvQuantity two = new DvQuantity(77.2);
+        assertEquals(one.getMagnitude()+two.getMagnitude(), one.add(two).getMagnitude());
+        assertEquals(one.getUnits(),((DvQuantity)one.add(two)).getUnits());
+        assertEquals(one.getUnitsDisplayName(),((DvQuantity)one.add(two)).getUnitsDisplayName());
+        assertEquals(one.getPrecision(),((DvQuantity)one.add(two)).getPrecision());
+        assertEquals(one.getUnitsSystem(),((DvQuantity)one.add(two)).getUnitsSystem());
+        assertEquals(two.getMagnitude()+one.getMagnitude(), two.add(one).getMagnitude());
+        assertEquals(two.getUnits(),((DvQuantity)two.add(one)).getUnits());
+        assertEquals(two.getUnitsDisplayName(),((DvQuantity)two.add(one)).getUnitsDisplayName());
+        assertEquals(two.getPrecision(),((DvQuantity)two.add(one)).getPrecision());
+        assertEquals(two.getUnitsSystem(),((DvQuantity)two.add(one)).getUnitsSystem());
     }
 
     @Test
     void subtract() {
+        DvQuantity one = new DvQuantity(78.3);
+        DvQuantity two = new DvQuantity(77.2);
+        assertEquals(one.getMagnitude()-two.getMagnitude(), one.subtract(two).getMagnitude());
+        assertEquals(one.getUnits(),((DvQuantity)one.subtract(two)).getUnits());
+        assertEquals(one.getUnitsDisplayName(),((DvQuantity)one.subtract(two)).getUnitsDisplayName());
+        assertEquals(one.getPrecision(),((DvQuantity)one.subtract(two)).getPrecision());
+        assertEquals(one.getUnitsSystem(),((DvQuantity)one.subtract(two)).getUnitsSystem());
+        assertEquals(two.getMagnitude()-one.getMagnitude(), two.subtract(one).getMagnitude());
+        assertEquals(two.getUnits(),((DvQuantity)two.subtract(one)).getUnits());
+        assertEquals(two.getUnitsDisplayName(),((DvQuantity)two.subtract(one)).getUnitsDisplayName());
+        assertEquals(two.getPrecision(),((DvQuantity)two.subtract(one)).getPrecision());
+        assertEquals(two.getUnitsSystem(),((DvQuantity)two.subtract(one)).getUnitsSystem());
     }
 
     @Test
     void negate() {
+        DvQuantity org = new DvQuantity(78.3);
+        DvQuantity negate = org.negate();
+        assertEquals(-78.3,negate.getMagnitude());
     }
 
     @Test
@@ -185,14 +213,6 @@ public class DvQuantityTest extends TestCase {
 
     @Test
     void valueOf() {
-    }
-
-    @Test
-    void testEquals1() {
-    }
-
-    @Test
-    void testToString1() {
     }
 
     @Test
