@@ -26,7 +26,13 @@ public class DvOrdinalTest {
 	public void testValueOf() throws Exception {
 		DvOrdinal dvOrdinal = DvOrdinal.valueOf("1|SNOMED-CT::313267000|Stroke|");
 		assertEquals(1, dvOrdinal.getValue());
-		assertEquals("SNOMED-CT", dvOrdinal.getSymbol().getDefiningCode().getTerminologyId());
+		assertEquals("SNOMED-CT", dvOrdinal.getSymbol().getDefiningCode().getTerminologyId().getValue());
+		assertEquals("313267000", dvOrdinal.getSymbol().getDefiningCode().getCodeString());
+		assertEquals("Stroke", dvOrdinal.getSymbol().getValue());
+
+		dvOrdinal = DvOrdinal.valueOf("1|SNOMED-CT::313267000|Stroke");
+		assertEquals(1, dvOrdinal.getValue());
+		assertEquals("SNOMED-CT", dvOrdinal.getSymbol().getDefiningCode().getTerminologyId().getValue());
 		assertEquals("313267000", dvOrdinal.getSymbol().getDefiningCode().getCodeString());
 		assertEquals("Stroke", dvOrdinal.getSymbol().getValue());
 	}

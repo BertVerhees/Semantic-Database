@@ -120,12 +120,15 @@ public class DvOrdinal
             throw new IllegalArgumentException("failed to parse DvCodedText '" + str + "', wrong number of tokens.");
         }
         value = str.substring(i+1);
-        i = str.indexOf("::");
+        if(value.contains("|")){
+            value = value.substring(0,value.lastIndexOf('|'));
+        }
+        i = str.indexOf("|");
         if (i < 0) {
             throw new IllegalArgumentException("failed to parse CodePhrase '" + str.substring(0,i) + "', wrong number of tokens.");
         }
         CodePhrase codePhrase = new CodePhrase(str.substring(0,i));
-        DvCodedText codedText = new DvCodedText(str,codePhrase);
+        DvCodedText codedText = new DvCodedText(value,codePhrase);
         return new DvOrdinal(ordinalValue, codedText);
     }
 

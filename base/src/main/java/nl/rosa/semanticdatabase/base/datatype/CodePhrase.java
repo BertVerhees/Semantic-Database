@@ -56,19 +56,32 @@ public class CodePhrase extends DataValue {
      * @param phrase
      */
     public CodePhrase(String phrase) {
-        //'[' NAME_CHAR+ ( '(' NAME_CHAR+ ')' )? '::' NAME_CHAR+ ']' ;
-        Pattern pattern = Pattern.compile("\\[?(?<terminologyId>.+)(\\((?<terminologyVersion>.+)\\))?::(?<codeString>[^\\]]+)\\]?");
-        Matcher matcher = pattern.matcher(phrase);
-
-        if (matcher.matches()) {
-            terminologyId = new TerminologyId(matcher.group("terminologyId"), matcher.group("terminologyVersion"));
-            codeString = matcher.group("codeString");
-        } else {
-            terminologyId = new TerminologyId();
-            terminologyId.setValue("UNKNOWN");
-            codeString = phrase;//no id
+        if(phrase == null) {
+            throw new IllegalArgumentException("null value");
         }
+        int i = phrase.indexOf("::");
+        if(i <= 0 || i >= phrase.length() -1) {
+            throw new IllegalArgumentException("wrong format of code phrase");
+        }
+        String t = phrase.substring(0, i);
+        String c = phrase.substring(i + 2);
+        this.terminologyId = new TerminologyId(t);
+        this.codeString = c;
     }
+
+//    public CodePhrase parse(String value) {
+//        if(value == null) {
+//            throw new IllegalArgumentException("null value");
+//        }
+//        int i = value.indexOf("::");
+//        if(i <= 0 || i >= value.length() -1) {
+//            throw new IllegalArgumentException("wrong format of code phrase");
+//        }
+//        String t = value.substring(0, i);
+//        String c = value.substring(i + 2);
+//        this.terminologyId = new TerminologyId(t);
+//        this.codeString = c;
+//    }
 
     public TerminologyId getTerminologyId() {
         return terminologyId;
