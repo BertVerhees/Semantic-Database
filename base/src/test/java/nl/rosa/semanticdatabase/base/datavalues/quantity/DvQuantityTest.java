@@ -209,14 +209,34 @@ public class DvQuantityTest {
 
     @Test
     void parse() {
-    }
+            String value = "78.500,kg";
+            DvQuantity expected = new DvQuantity("kg", 78.5, 3L);
+            DvQuantity q = expected.parse(value);
+            assertEquals(expected, q);
 
-    @Test
-    void valueOf() {
+            DvQuantity dvQuantity = DvQuantity.valueOf("113,min/wk");
+            assertEquals(113.0, dvQuantity.getMagnitude());
+            assertEquals("min/wk", dvQuantity.getUnits());
+
+            dvQuantity = DvQuantity.valueOf("78.500,kg");
+            assertEquals(78.5, dvQuantity.getMagnitude());
+            assertEquals("kg", dvQuantity.getUnits());
+            assertEquals(3, dvQuantity.getPrecision());
+
+            value = "78,kg";
+            expected = new DvQuantity("kg", 78, 0L);
+            q = expected.parse(value);
+            assertEquals(expected, q);
+
+            value = "78";
+            expected = new DvQuantity(78);
+            q = expected.parse(value);
+            assertEquals(expected, q);
     }
 
     @Test
     void compareTo() {
+        //TODO
     }
 }
 /*
