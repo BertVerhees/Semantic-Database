@@ -15,8 +15,10 @@
 package nl.rosa.semanticdatabase.base.datavalues.quantity;
 
 import nl.rosa.semanticdatabase.base.datatype.CodePhrase;
+import nl.rosa.semanticdatabase.base.terminology.TestTerminologyService;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,7 +65,7 @@ public class DvOrderedTest {
 						referenceRanges,
 						normalRange,
 						normalStatus,
-						null,
+						new TestTerminologyService(),
 						accuracy,
 						accuracyPercent,
 						magnitudeStatus,
@@ -85,7 +87,7 @@ public class DvOrderedTest {
 						referenceRanges,
 						normalRange,
 						normalStatus,
-						null,
+						new TestTerminologyService(),
 						accuracy,
 						accuracyPercent,
 						magnitudeStatus,
@@ -154,7 +156,7 @@ public class DvOrderedTest {
 						referenceRanges,
 						normalRange,
 						normalStatus,
-						null,
+						new TestTerminologyService(),
 						accuracy,
 						accuracyPercent,
 						magnitudeStatus,
@@ -163,43 +165,70 @@ public class DvOrderedTest {
 	}
 
     @Test
-    void getNormalRange() {
-    }
-
-    @Test
-    void setNormalRange() {
-    }
-
-    @Test
-    void getOtherReferenceRanges() {
-    }
-
-    @Test
-    void setOtherReferenceRanges() {
-    }
-
-    @Test
-    void addOtherReferenceRange() {
-    }
-
-    @Test
-    void getNormalStatus() {
-    }
-
-    @Test
-    void setNormalStatus() {
-    }
-
-    @Test
-    void isNormal() {
-    }
-
-    @Test
     void isSimple() {
-    }
+		List<ReferenceRange<DvCount>> referenceRanges = null;
+		DvInterval<DvCount> normalRange = new DvInterval<DvCount>(
+				new DvCount(0L), new DvCount(2L));
+		CodePhrase normalStatus = new CodePhrase("normal statuses", "N");
+		double accuracy = 0;
+		boolean accuracyPercent = false;
+		String magnitudeStatus = null;
+		Long magnitude = 1L;
+		DvCount count =
+				new DvCount(
+						referenceRanges,
+						normalRange,
+						normalStatus,
+						new TestTerminologyService(),
+						accuracy,
+						accuracyPercent,
+						magnitudeStatus,
+						magnitude);
 
-    @Test
-    void testEquals() {
+		assertFalse(count.isSimple());
+
+		referenceRanges = new ArrayList<>();
+		ReferenceRange<DvCount> referenceRange = new ReferenceRange<>(null,new DvInterval<DvCount>(
+				new DvCount(0L), new DvCount(2L)));
+		referenceRanges.add(referenceRange);
+		normalRange = null;
+		normalStatus = null;
+		accuracy = 0;
+		accuracyPercent = false;
+		magnitudeStatus = null;
+		magnitude = 1L;
+		count =
+				new DvCount(
+						referenceRanges,
+						normalRange,
+						normalStatus,
+						new TestTerminologyService(),
+						accuracy,
+						accuracyPercent,
+						magnitudeStatus,
+						magnitude);
+		assertFalse(count.isSimple());
+
+		referenceRanges = null;
+		normalRange = null;
+		normalStatus = null;
+		accuracy = 0;
+		accuracyPercent = false;
+		magnitudeStatus = null;
+		magnitude = 1L;
+		count =
+				new DvCount(
+						referenceRanges,
+						normalRange,
+						normalStatus,
+						new TestTerminologyService(),
+						accuracy,
+						accuracyPercent,
+						magnitudeStatus,
+						magnitude);
+
+		assertTrue(count.isSimple());
+
     }
 }
 /*

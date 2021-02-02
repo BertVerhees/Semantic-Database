@@ -25,7 +25,7 @@ public abstract class DvQuantified<T extends DvQuantified>
      * "~" : value is approximately magnitude
      * If not present, assumed meaning is "=" .
      */
-    private String magnitudeStatus;
+    private String magnitudeStatus = "=";
 
     protected DvQuantified(){
         this(null, null, null, null, null);
@@ -70,12 +70,6 @@ public abstract class DvQuantified<T extends DvQuantified>
         BigDecimal b2 = BigDecimal.valueOf(other.getMagnitude().doubleValue());
         return b1.compareTo(b2)<0;
     }
-    public boolean isValidPercentage(Number num) {
-        return 0 <= num.doubleValue() && num.doubleValue()<=100;
-    }
-
-
-
 
     @Override
     public boolean equals(Object o) {

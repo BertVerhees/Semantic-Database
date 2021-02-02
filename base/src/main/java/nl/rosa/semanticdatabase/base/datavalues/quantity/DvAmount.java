@@ -90,6 +90,20 @@ public abstract class DvAmount<T extends DvAmount>
         this.accuracy = accuracy;
     }
 
+    /**
+     * Accuracy of measurement instrument or method which applies
+     * to this specific instance of Quantified, expressed either
+     * as a half-range percent value (accuracy_is_percent = True)
+     * or a half-range quantity.
+     * <p/>
+     * A value of 0 means that accuracy was not recorded.
+     *
+     * @return accuracy
+     */
+    public Boolean isAccuracyRecorded() {
+        return accuracy != null;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
