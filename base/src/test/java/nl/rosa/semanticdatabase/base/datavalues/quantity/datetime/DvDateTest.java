@@ -3,6 +3,7 @@ package nl.rosa.semanticdatabase.base.datavalues.quantity.datetime;
 
 
 
+import nl.rosa.semanticdatabase.base.datavalues.quantity.DvQuantity;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,6 +32,10 @@ public class DvDateTest {
 
     @Test
     void add() {
+        DvDate one = new DvDate("2019-07-11");
+        DvDuration two = new DvDuration("P3Y6M4D");
+        assertEquals(one.getMagnitude()+two.getMagnitude(), one.add(two).getMagnitude());
+        assertEquals(two.getMagnitude()+one.getMagnitude(), two.add(one).getMagnitude());
     }
 
     @Test

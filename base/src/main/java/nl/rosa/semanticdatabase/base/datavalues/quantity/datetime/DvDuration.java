@@ -315,13 +315,12 @@ public class DvDuration
 
     private static CombinedPeriodDuration parseDurationValue(String text) {
         try {
-            if (text.startsWith("P") || text.startsWith("-P")) {
-                Duration duration = Duration.parse(text);;
-                String periodString = text.split("T")[0];
-                Period period = Period.parse(periodString);
-                return CombinedPeriodDuration.of(period, duration);
-            }else {
-                throw new IllegalArgumentException("Illegal ISO 8601 string for Duration:" + text);
+            if (text.startsWith("PT") || text.startsWith("-PT")) {
+                Duration duration = Duration.parse(text);
+            }else if (text.contains("T")) {
+                return CombinedPeriodDuration.parse(text);
+            } else {
+                return Period.parse(text);
             }
         } catch (DateTimeParseException e) {
             throw new IllegalArgumentException(e.getMessage() + ":" + text);
