@@ -12,7 +12,7 @@ After that, these will be packed in microservices and run isolated from the kern
 
 The kernel-module will be written in Golang, and will act as spider in the web.
 
-There will be an extra module, which will connect database, this will also be in SPRING gRPC API.
+There will be an extra module, which will connect database, this will also be in gRPC API but probably not SPRING.
 
 These are the plans.
 
