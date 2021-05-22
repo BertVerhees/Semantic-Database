@@ -3,7 +3,9 @@
 work in progress.
 
 The project will consist in at least three layers:
+
 The Reference Model, this will be used to construct a reference model in OCL. It will be contained by an SPRING-gRPC API
+
 The archetype-handling model, this will also be covered by a SPRING-gRPC API
 
 After that, these will be packed in microservices and run isolated from the kernel-module.
