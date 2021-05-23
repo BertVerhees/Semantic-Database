@@ -1,6 +1,6 @@
 # semantic-database
 
-work in progress, do not expert a useful project, at this moment
+work in progress, do not expect a useful project, at this moment
 
 The project will consist in at least three layers:
 
