@@ -1,0 +1,6 @@
+[submodule "archetype/archie"]
+	path = archetype/archie
+	url = git@github.com:openEHR/archie.git
+[submodule "reference_model/acceleo"]
+	path = reference_model/acceleo
+	url = git@github.com:eclipse/acceleo.git
